@@ -1,0 +1,28 @@
+{
+  "logoLight": {
+    "width": 973,
+    "height": 381,
+    "sourceBackground": [
+      254,
+      247,
+      236
+    ]
+  },
+  "logoDark": {
+    "width": 974,
+    "height": 381,
+    "sourceBackground": [
+      15,
+      14,
+      15
+    ]
+  },
+  "mark": {
+    "width": 709,
+    "height": 1097
+  },
+  "markDark": {
+    "width": 206,
+    "height": 320
+  }
+}

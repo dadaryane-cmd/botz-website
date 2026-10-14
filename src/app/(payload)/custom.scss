@@ -1,0 +1,8 @@
+
+.botz-admin-logo img {
+  height: auto;
+}
+html[data-theme='dark'] .botz-logo-light,
+html:not([data-theme='dark']) .botz-logo-dark {
+  display: none;
+}

@@ -1,0 +1,478 @@
+/* ============================================================
+   Bulb theme toggle (src/components/client/BulbThemeToggle.tsx)
+   Tunables: sizes, colours and light timings below.
+   ============================================================ */
+:root {
+  --bulb-w: 40px; /* bulb width (desktop) */
+  --bulb-cord-len: 16px;
+  --bulb-bead: 10px;
+  --bulb-hit: 44px; /* minimum touch target width */
+  --bulb-wire: color-mix(in srgb, var(--text) 55%, transparent);
+  --bulb-cord: color-mix(in srgb, var(--text) 70%, transparent);
+  --bulb-bead-color: var(--accent);
+  --bulb-cap-light: #d9d4cc;
+  --bulb-cap-dark: #7b746b;
+  --bulb-glass-off: rgba(170, 182, 196, 0.22);
+  --bulb-glass-stroke: rgba(170, 182, 196, 0.65);
+  --bulb-glass-on-core: rgba(255, 236, 190, 0.95);
+  --bulb-glass-on-edge: rgba(255, 201, 77, 0.35);
+  --bulb-filament-dim: #8a4a20;
+  --bulb-filament-on: #ffc94d;
+  --bulb-filament-hot: #ff9f1c;
+  --bulb-glow: rgba(255, 190, 80, 0.55);
+  --bulb-flicker-ms: 250ms;
+  --bulb-on-ms: 400ms;
+  --bulb-off-ms: 150ms;
+  --bulb-afterglow-ms: 300ms;
+}
+@media (max-width: 759px) {
+  :root {
+    --bulb-w: 34px;
+    --bulb-cord-len: 13px;
+    --bulb-bead: 9px;
+  }
+}
+
+.bulb-toggle {
+  position: relative;
+  align-self: center;
+  flex: 0 0 auto;
+  width: var(--bulb-hit);
+  height: 44px; /* layout slot = touch target; the bulb drawing hangs from the header top */
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  border-radius: 14px;
+}
+.bulb-toggle.is-dragging {
+  cursor: grabbing;
+}
+.bulb-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.bulb-sway,
+.bulb-swing,
+.bulb-cord,
+.bulb-bead,
+.bulb-bead-lift,
+.bulb-bead-shape,
+.bulb-halo,
+.bulb-mote {
+  display: block;
+}
+.bulb-sway {
+  position: absolute;
+  /* header row is 76px, tools are 44px and centred → 16px up to the header's top edge */
+  top: var(--bulb-drop, -16px);
+  left: 50%;
+  width: var(--bulb-w);
+  margin-left: calc(var(--bulb-w) / -2);
+  transform-origin: 50% 0;
+}
+.bulb-swing {
+  position: relative;
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+.bulb-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--bulb-w);
+  height: calc(var(--bulb-w) * 1.5);
+  overflow: visible;
+}
+.bulb-wire {
+  stroke: var(--bulb-wire);
+  stroke-width: 1.5;
+}
+.bulb-ridges {
+  stroke: rgba(0, 0, 0, 0.28);
+  stroke-width: 1;
+}
+.bulb-glass {
+  fill: var(--bulb-glass-off);
+  stroke: var(--bulb-glass-stroke);
+  stroke-width: 1;
+}
+.bulb-glass-on {
+  opacity: 0;
+  transition: opacity var(--bulb-on-ms) ease;
+}
+.bulb-fil-dim {
+  fill: none;
+  stroke: var(--bulb-filament-dim);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  opacity: 0.35;
+}
+.bulb-fil-hot {
+  opacity: 0;
+  transition: opacity var(--bulb-off-ms) ease-out;
+}
+.bulb-fil-core {
+  fill: none;
+  stroke: #fff4d6;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+.bulb-fil-glow {
+  fill: none;
+  stroke: var(--bulb-filament-hot);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.bulb-shine {
+  fill: rgba(255, 255, 255, 0.45);
+}
+.bulb-halo {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: calc(var(--bulb-w) * 1.075);
+  width: calc(var(--bulb-w) * 3);
+  height: calc(var(--bulb-w) * 3);
+  margin: calc(var(--bulb-w) * -1.5) 0 0 calc(var(--bulb-w) * -1.5);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bulb-glow) 0%, transparent 68%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  pointer-events: none;
+}
+.bulb-mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffe2a0;
+  opacity: 0;
+}
+.bulb-mote:nth-child(1) {
+  left: 30%;
+  top: 55%;
+}
+.bulb-mote:nth-child(2) {
+  left: 62%;
+  top: 62%;
+  animation-delay: -0.9s;
+}
+.bulb-mote:nth-child(3) {
+  left: 45%;
+  top: 70%;
+  animation-delay: -1.8s;
+}
+.bulb-mote:nth-child(4) {
+  left: 70%;
+  top: 45%;
+  animation-delay: -2.7s;
+}
+.bulb-cord {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(var(--bulb-w) * 1.375 - 1px);
+  width: 1.75px;
+  margin-left: -0.875px;
+  height: var(--bulb-cord-len);
+  background: var(--bulb-cord);
+  border-radius: 2px;
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+.bulb-bead {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(var(--bulb-w) * 1.375 + var(--bulb-cord-len) - 2px);
+  width: var(--bulb-bead);
+  margin-left: calc(var(--bulb-bead) / -2);
+  will-change: transform;
+}
+.bulb-bead-lift {
+  transition: transform 0.25s ease;
+}
+.bulb-bead-shape {
+  width: var(--bulb-bead);
+  height: var(--bulb-bead);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.75) 0 18%, transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--bulb-bead-color), color-mix(in srgb, var(--bulb-bead-color) 55%, #000) 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transform-origin: 50% 0;
+}
+
+/* ON (light theme): warm glass, glowing filament, halo. */
+[data-theme='light'] .bulb-glass-on {
+  opacity: 1;
+}
+[data-theme='light'] .bulb-fil-hot {
+  opacity: 1;
+  transition-duration: var(--bulb-on-ms);
+}
+[data-theme='light'] .bulb-fil-dim {
+  opacity: 0;
+}
+[data-theme='light'] .bulb-halo {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--bulb-on-ms);
+}
+[data-theme='light'] .bulb-svg {
+  /* faint shadow of the bulb on the header */
+  filter: drop-shadow(2px 5px 3px rgba(80, 40, 0, 0.16));
+}
+
+/* Switching: flicker when warming up, afterglow when switched off. */
+.bulb-toggle.is-turning-on .bulb-fil-hot {
+  animation: bulb-flicker var(--bulb-flicker-ms) steps(1, end);
+}
+@keyframes bulb-flicker {
+  0% {
+    opacity: 0.25;
+  }
+  18% {
+    opacity: 0.9;
+  }
+  34% {
+    opacity: 0.15;
+  }
+  52% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 0.4;
+  }
+  84% {
+    opacity: 1;
+  }
+}
+.bulb-toggle.is-turning-on .bulb-halo {
+  animation: bulb-halo-in var(--bulb-on-ms) ease-out;
+}
+@keyframes bulb-halo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.bulb-toggle.is-turning-off .bulb-fil-dim {
+  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) ease-out;
+}
+@keyframes bulb-afterglow {
+  0% {
+    opacity: 0.95;
+  }
+  35% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+.bulb-toggle.is-click .bulb-bead-shape {
+  animation: bulb-squash 80ms ease-out;
+}
+@keyframes bulb-squash {
+  50% {
+    transform: scale(1.1, 0.85);
+  }
+}
+
+/* Idle and hover motion — only when motion is allowed (html.js-motion). */
+html.js-motion .bulb-sway {
+  animation: bulb-sway 5s ease-in-out infinite;
+}
+@keyframes bulb-sway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+@media (hover: hover) {
+  html.js-motion .bulb-toggle:hover .bulb-sway {
+    animation: bulb-sway-hover 1.6s ease-in-out infinite;
+  }
+  .bulb-toggle:hover .bulb-bead-lift {
+    transform: translateY(-3px);
+  }
+  .bulb-toggle.is-dragging .bulb-bead-lift {
+    transform: none;
+  }
+}
+@keyframes bulb-sway-hover {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+html.js-motion[data-theme='light'] .bulb-toggle:not(.is-turning-on) .bulb-halo {
+  animation: bulb-breathe 3s ease-in-out infinite;
+}
+@keyframes bulb-breathe {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+html.js-motion[data-motion='expressive'][data-theme='light'] .bulb-mote {
+  animation-name: bulb-mote;
+  animation-duration: 3.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes bulb-mote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 4px);
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(4px, -10px);
+  }
+}
+
+/* Page theme change: circular reveal (View Transitions) or a short crossfade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html[data-vt='off']::view-transition-old(root) {
+  z-index: 2;
+}
+html[data-vt='off']::view-transition-new(root) {
+  z-index: 1;
+}
+/* Snapshots must show final colours, not mid-transition ones. */
+html[data-vt],
+html[data-vt] * {
+  transition: none !important;
+}
+html.theme-fade,
+html.theme-fade body,
+html.theme-fade .section,
+html.theme-fade .site-header,
+html.theme-fade .site-footer {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease !important;
+}
+
+/* Reduced motion (device setting or Animation = Off): no sway, particles or flicker; quick fade only. */
+@media (prefers-reduced-motion: reduce) {
+  .bulb-sway,
+  .bulb-halo,
+  .bulb-mote,
+  .bulb-fil-hot,
+  .bulb-fil-dim,
+  .bulb-bead-shape {
+    animation: none !important;
+  }
+}
+html[data-motion='off'] .bulb-sway,
+html[data-motion='off'] .bulb-halo,
+html[data-motion='off'] .bulb-mote,
+html[data-motion='off'] .bulb-fil-hot,
+html[data-motion='off'] .bulb-fil-dim {
+  animation: none !important;
+}
+html[data-motion='off'] .bulb-halo,
+html[data-motion='off'] .bulb-fil-hot,
+html[data-motion='off'] .bulb-glass-on {
+  transition-duration: 150ms;
+}
+
+/* "Pull the cord" tip — hangs just below the bead, arrow pointing up at it. */
+.bulb-hint {
+  position: absolute;
+  top: 74px;
+  right: calc(50% - 10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  z-index: 3;
+}
+.bulb-hint.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.bulb-hint-arrow {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+html.js-motion .bulb-hint.is-visible {
+  animation: bulb-hint-bob 1.8s ease-in-out 0.4s infinite;
+}
+@keyframes bulb-hint-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@media (max-width: 759px) {
+  .bulb-hint {
+    top: 66px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bulb-hint {
+    animation: none !important;
+  }
+}
+
+/* Invisible, finger-sized grab area around the small bead. */
+.bulb-bead::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36px;
+  height: 40px;
+  margin: -16px 0 0 -18px;
+  border-radius: 50%;
+}

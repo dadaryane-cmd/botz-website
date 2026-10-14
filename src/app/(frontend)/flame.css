@@ -1,0 +1,117 @@
+/* ============================================================
+   Living-flame hero (FlameBackground.tsx + RenderBlocks "flame" variant)
+   ============================================================ */
+.hero-flame-variant {
+  padding: 0;
+}
+.hero-flame-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  /* Fill the first screen: viewport minus header and the ticker below. */
+  min-height: clamp(560px, calc(100svh - 76px - 84px), 940px);
+}
+.hero-flame-content {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(40px, 9vh, 112px);
+  /* Keep the copy in the calm upper/middle area; flames own the bottom. */
+  padding-bottom: clamp(160px, 30vh, 320px);
+}
+.hero-flame-variant .h1 {
+  max-width: 15ch;
+}
+:lang(hy) .hero-flame-variant .h1,
+:lang(ru) .hero-flame-variant .h1 {
+  max-width: 17ch;
+}
+.hero-flame-variant .hero-sub {
+  max-width: 54ch;
+}
+/* Soft scrim in the page colour behind the copy keeps text readable over the fire. */
+.hero-copy {
+  position: relative;
+}
+.hero-copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -12% -18% -18% -12%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--bg) 78%, transparent) 0%, color-mix(in srgb, var(--bg) 45%, transparent) 55%, transparent 100%);
+  pointer-events: none;
+}
+.hero-flame-variant .btn {
+  box-shadow: 0 10px 30px color-mix(in srgb, #000 28%, transparent);
+}
+.hero-flame-variant .btn-secondary {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-flame-ticker .ticker {
+  margin-top: 0;
+}
+
+/* Layers: CSS poster (first paint) → WebGL canvas, or looping video fallback. */
+.flame-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.flame-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--flame-poster-dark);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center bottom;
+  transition: opacity 0.6s ease;
+}
+[data-theme='light'] .flame-bg::before {
+  background-image: var(--flame-poster-light);
+}
+.flame-bg[data-mode='webgl']::before,
+.flame-bg[data-mode='video']::before {
+  opacity: 0;
+}
+.flame-canvas,
+.flame-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.flame-canvas {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.flame-bg[data-mode='webgl'] .flame-canvas {
+  opacity: 1;
+}
+.flame-video {
+  display: none;
+  object-fit: cover;
+  object-position: center bottom;
+  /* The loop is rendered on black: screen-blending removes the black on the dark theme. */
+  mix-blend-mode: screen;
+}
+.flame-bg[data-mode='video'] .flame-video {
+  display: block;
+}
+@media (max-width: 759px) {
+  .hero-flame-stage {
+    min-height: calc(100svh - 76px - 60px);
+  }
+  .hero-flame-content {
+    padding-top: 28px;
+    padding-bottom: 200px;
+  }
+  .hero-copy::before {
+    inset: -6% -10% -8% -10%;
+  }
+}
