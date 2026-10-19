@@ -40,7 +40,34 @@ export function contactInfoFrom(settings: Raw): ContactInfo {
   }
 }
 
-export type Strings = { [G in keyof typeof uiDefaults]: { [K in keyof (typeof uiDefaults)[G]]: string } }
+export type Offer = {
+  enabled: boolean
+  spots: number
+  /** Empty in the CMS → shown as “[X]” until the owner sets it. */
+  discount: string
+  months: number
+  spotsLeft: number | null
+  showSpotsLeft: boolean
+  showAudit: boolean
+  showTrial: boolean
+}
+
+export function offerFrom(raw: Raw | null | undefined): Offer {
+  const o = raw ?? {}
+  const num = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? v : null)
+  return {
+    enabled: o.enabled !== false,
+    spots: num(o.spots) ?? 5,
+    discount: num(o.discount) !== null ? String(o.discount) : '[X]',
+    months: num(o.months) ?? 3,
+    spotsLeft: num(o.spotsLeft),
+    showSpotsLeft: Boolean(o.showSpotsLeft) && num(o.spotsLeft) !== null,
+    showAudit: o.showAudit !== false,
+    showTrial: o.showTrial !== false,
+  }
+}
+
+export type Strings ={ [G in keyof typeof uiDefaults]: { [K in keyof (typeof uiDefaults)[G]]: string } }
 
 /** Interface text for a locale: CMS value, or the built-in default when a value is empty. */
 export async function loadStrings(payload: Payload, locale: Locale): Promise<Strings> {

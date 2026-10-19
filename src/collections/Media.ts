@@ -61,7 +61,8 @@ export const Media: CollectionConfig = {
   },
   upload: {
     // SVG is excluded on purpose: uploaded SVGs can carry scripts.
-    mimeTypes: ['image/png', 'image/jpeg', 'image/webp', 'image/avif', 'image/gif', 'video/mp4', 'video/webm', 'image/x-icon', 'image/vnd.microsoft.icon'],
+    // PDFs are for downloadable samples (audit, report, content plan).
+    mimeTypes: ['image/png', 'image/jpeg', 'image/webp', 'image/avif', 'image/gif', 'video/mp4', 'video/webm', 'image/x-icon', 'image/vnd.microsoft.icon', 'application/pdf'],
     focalPoint: true,
     crop: true,
     imageSizes: [
@@ -111,6 +112,7 @@ export const Media: CollectionConfig = {
         { label: 'Portfolio', value: 'portfolio' },
         { label: 'Blog', value: 'blog' },
         { label: 'People', value: 'people' },
+        { label: 'Document (PDF sample)', value: 'document' },
       ],
     },
     {

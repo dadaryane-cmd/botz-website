@@ -113,9 +113,11 @@ export interface Config {
     'site-settings': SiteSetting;
     theme: Theme;
     navigation: Navigation;
+    'growth-offer': GrowthOffer;
     'ui-general': UiGeneral;
     'ui-pricing': UiPricing;
     'ui-forms': UiForm;
+    'ui-trust': UiTrust;
   };
   globalsSelect: {
     'pricing-catalog': PricingCatalogSelect<false> | PricingCatalogSelect<true>;
@@ -123,9 +125,11 @@ export interface Config {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
     theme: ThemeSelect<false> | ThemeSelect<true>;
     navigation: NavigationSelect<false> | NavigationSelect<true>;
+    'growth-offer': GrowthOfferSelect<false> | GrowthOfferSelect<true>;
     'ui-general': UiGeneralSelect<false> | UiGeneralSelect<true>;
     'ui-pricing': UiPricingSelect<false> | UiPricingSelect<true>;
     'ui-forms': UiFormsSelect<false> | UiFormsSelect<true>;
+    'ui-trust': UiTrustSelect<false> | UiTrustSelect<true>;
   };
   locale: 'hy' | 'en' | 'ru';
   widgets: {
@@ -184,6 +188,10 @@ export interface Page {
         | RichTextBlock
         | MediaBlockType
         | ServicesBlock
+        | TeamBlock
+        | SamplesBlock
+        | GrowthBlock
+        | OfferBlock
         | PackagePreviewBlock
         | PricingBlock
         | ComparisonBlock
@@ -243,11 +251,28 @@ export interface HeroBlock {
         id?: string | null;
       }[]
     | null;
+  /**
+   * One short line under the buttons, e.g. “Founders with 6+ years in SEO and social media”.
+   */
+  proofLine?: string | null;
+  /**
+   * Card on the right side of the hero on large screens. The offer card hides itself when the offer is switched off.
+   */
+  sideCard?: ('none' | 'offer' | 'sample') | null;
   media?: (number | null) | Media;
   /**
    * Optional words that scroll under the hero (e.g. service names).
    */
   tickerItems?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Short phrases (one to three words) handwritten on scraps of paper that tumble down the hero and burn in the fire — the things clients leave behind with BOTZ. Leave empty to turn the effect off.
+   */
+  burnWords?:
     | {
         text: string;
         id?: string | null;
@@ -285,7 +310,7 @@ export interface Media {
    */
   alt: string;
   caption?: string | null;
-  category?: ('brand' | 'site' | 'portfolio' | 'blog' | 'people') | null;
+  category?: ('brand' | 'site' | 'portfolio' | 'blog' | 'people' | 'document') | null;
   /**
    * Where this file is used (calculated).
    */
@@ -548,6 +573,192 @@ export interface ServicesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlock".
+ */
+export interface TeamBlock {
+  /**
+   * Small label above the heading
+   */
+  eyebrow?: string | null;
+  heading?: string | null;
+  intro?: string | null;
+  founders?:
+    | {
+        name: string;
+        /**
+         * e.g. Social media marketing
+         */
+        role?: string | null;
+        /**
+         * Years of experience, e.g. 6
+         */
+        years?: string | null;
+        /**
+         * Square portrait works best. Empty shows a placeholder.
+         */
+        photo?: (number | null) | Media;
+        bio?: string | null;
+        certifications?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Heading for the optional past-work row.
+   */
+  pastWorkHeading?: string | null;
+  /**
+   * Work done as freelancers or employees. Only items marked “Permission to show” appear; the row is hidden when none do.
+   */
+  pastWork?:
+    | {
+        title: string;
+        text?: string | null;
+        /**
+         * Optional link (https://…)
+         */
+        url?: string | null;
+        permission?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Spacing, background and alignment for this section.
+   */
+  settings?: {
+    background?: ('default' | 'surface' | 'inverse' | 'accent') | null;
+    align?: ('start' | 'center') | null;
+    width?: ('narrow' | 'normal' | 'wide') | null;
+    /**
+     * Optional id for #links, e.g. "contact"
+     */
+    anchor?: string | null;
+    paddingTop?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    hidden?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'team';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SamplesBlock".
+ */
+export interface SamplesBlock {
+  /**
+   * Small label above the heading
+   */
+  eyebrow?: string | null;
+  heading?: string | null;
+  intro?: string | null;
+  items?:
+    | {
+        title: string;
+        text?: string | null;
+        /**
+         * Upload the PDF here (preferred).
+         */
+        file?: (number | null) | Media;
+        /**
+         * Or a file in /public, e.g. /samples/sample-seo-audit.pdf
+         */
+        filePath?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Spacing, background and alignment for this section.
+   */
+  settings?: {
+    background?: ('default' | 'surface' | 'inverse' | 'accent') | null;
+    align?: ('start' | 'center') | null;
+    width?: ('narrow' | 'normal' | 'wide') | null;
+    /**
+     * Optional id for #links, e.g. "contact"
+     */
+    anchor?: string | null;
+    paddingTop?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    hidden?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'samples';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GrowthBlock".
+ */
+export interface GrowthBlock {
+  /**
+   * Small label above the heading
+   */
+  eyebrow?: string | null;
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Spacing, background and alignment for this section.
+   */
+  settings?: {
+    background?: ('default' | 'surface' | 'inverse' | 'accent') | null;
+    align?: ('start' | 'center') | null;
+    width?: ('narrow' | 'normal' | 'wide') | null;
+    /**
+     * Optional id for #links, e.g. "contact"
+     */
+    anchor?: string | null;
+    paddingTop?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    hidden?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'growth';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OfferBlock".
+ */
+export interface OfferBlock {
+  link?: {
+    label?: string | null;
+    type?: ('page' | 'path' | 'url' | 'contact') | null;
+    appearance?: ('primary' | 'secondary' | 'link') | null;
+    page?: (number | null) | Page;
+    /**
+     * Path without language, e.g. "/pricing#compare" or "#contact".
+     */
+    path?: string | null;
+    url?: string | null;
+    contact?: ('mariam' | 'edgar') | null;
+    newTab?: boolean | null;
+  };
+  /**
+   * Spacing, background and alignment for this section.
+   */
+  settings?: {
+    background?: ('default' | 'surface' | 'inverse' | 'accent') | null;
+    align?: ('start' | 'center') | null;
+    width?: ('narrow' | 'normal' | 'wide') | null;
+    /**
+     * Optional id for #links, e.g. "contact"
+     */
+    anchor?: string | null;
+    paddingTop?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    paddingBottom?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+    hidden?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'offer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PackagePreviewBlock".
  */
 export interface PackagePreviewBlock {
@@ -565,6 +776,7 @@ export interface PackagePreviewBlock {
    * Duration used for the “from” price.
    */
   duration?: ('1' | '3' | '6' | '9' | '12') | null;
+  showGuideLink?: boolean | null;
   link?: {
     label?: string | null;
     type?: ('page' | 'path' | 'url' | 'contact') | null;
@@ -754,6 +966,7 @@ export interface FaqBlock {
     | {
         question: string;
         answer: string;
+        openByDefault?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -1346,6 +1559,10 @@ export interface PagesSelect<T extends boolean = true> {
         richText?: T | RichTextBlockSelect<T>;
         mediaBlock?: T | MediaBlockTypeSelect<T>;
         services?: T | ServicesBlockSelect<T>;
+        team?: T | TeamBlockSelect<T>;
+        samples?: T | SamplesBlockSelect<T>;
+        growth?: T | GrowthBlockSelect<T>;
+        offer?: T | OfferBlockSelect<T>;
         packagePreview?: T | PackagePreviewBlockSelect<T>;
         pricing?: T | PricingBlockSelect<T>;
         comparison?: T | ComparisonBlockSelect<T>;
@@ -1391,8 +1608,16 @@ export interface HeroBlockSelect<T extends boolean = true> {
         newTab?: T;
         id?: T;
       };
+  proofLine?: T;
+  sideCard?: T;
   media?: T;
   tickerItems?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  burnWords?:
     | T
     | {
         text?: T;
@@ -1549,6 +1774,138 @@ export interface ServicesBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlock_select".
+ */
+export interface TeamBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  founders?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        years?: T;
+        photo?: T;
+        bio?: T;
+        certifications?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  pastWorkHeading?: T;
+  pastWork?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        url?: T;
+        permission?: T;
+        id?: T;
+      };
+  settings?:
+    | T
+    | {
+        background?: T;
+        align?: T;
+        width?: T;
+        anchor?: T;
+        paddingTop?: T;
+        paddingBottom?: T;
+        hidden?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SamplesBlock_select".
+ */
+export interface SamplesBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        file?: T;
+        filePath?: T;
+        id?: T;
+      };
+  settings?:
+    | T
+    | {
+        background?: T;
+        align?: T;
+        width?: T;
+        anchor?: T;
+        paddingTop?: T;
+        paddingBottom?: T;
+        hidden?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GrowthBlock_select".
+ */
+export interface GrowthBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  settings?:
+    | T
+    | {
+        background?: T;
+        align?: T;
+        width?: T;
+        anchor?: T;
+        paddingTop?: T;
+        paddingBottom?: T;
+        hidden?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OfferBlock_select".
+ */
+export interface OfferBlockSelect<T extends boolean = true> {
+  link?:
+    | T
+    | {
+        label?: T;
+        type?: T;
+        appearance?: T;
+        page?: T;
+        path?: T;
+        url?: T;
+        contact?: T;
+        newTab?: T;
+      };
+  settings?:
+    | T
+    | {
+        background?: T;
+        align?: T;
+        width?: T;
+        anchor?: T;
+        paddingTop?: T;
+        paddingBottom?: T;
+        hidden?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PackagePreviewBlock_select".
  */
 export interface PackagePreviewBlockSelect<T extends boolean = true> {
@@ -1557,6 +1914,7 @@ export interface PackagePreviewBlockSelect<T extends boolean = true> {
   intro?: T;
   categories?: T;
   duration?: T;
+  showGuideLink?: T;
   link?:
     | T
     | {
@@ -1700,6 +2058,7 @@ export interface FaqBlockSelect<T extends boolean = true> {
     | {
         question?: T;
         answer?: T;
+        openByDefault?: T;
         id?: T;
       };
   structuredData?: T;
@@ -2628,6 +2987,56 @@ export interface Navigation {
   createdAt?: string | null;
 }
 /**
+ * Founding-client offer (on/off, spots, discount) and our own channel numbers. Update the numbers monthly.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "growth-offer".
+ */
+export interface GrowthOffer {
+  id: number;
+  offer?: {
+    enabled?: boolean | null;
+    /**
+     * Number of founding spots
+     */
+    spots?: number | null;
+    /**
+     * Discount in %. Empty shows “[X]”.
+     */
+    discount?: number | null;
+    /**
+     * How many months the discount lasts
+     */
+    months?: number | null;
+    /**
+     * Spots still open
+     */
+    spotsLeft?: number | null;
+    showSpotsLeft?: boolean | null;
+    showAudit?: boolean | null;
+    showTrial?: boolean | null;
+  };
+  growth?: {
+    lastUpdated?: string | null;
+    metrics?:
+      | {
+          channel: 'instagram' | 'website';
+          /**
+           * e.g. Followers
+           */
+          label: string;
+          /**
+           * e.g. 1,240 — or [placeholder]
+           */
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * Buttons, labels, form messages and other small texts, in every language.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3465,6 +3874,115 @@ export interface UiForm {
   createdAt?: string | null;
 }
 /**
+ * Buttons, labels, form messages and other small texts, in every language.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ui-trust".
+ */
+export interface UiTrust {
+  id: number;
+  trust?: {
+    /**
+     * English default: Sample
+     */
+    sampleLabel?: string | null;
+    /**
+     * English default: Preview
+     */
+    preview?: string | null;
+    /**
+     * English default: Download PDF
+     */
+    download?: string | null;
+    /**
+     * English default: Example with illustrative data — it shows the format you will receive.
+     */
+    sampleNote?: string | null;
+    /**
+     * English default: Your browser cannot show the preview here. Download the PDF instead.
+     */
+    previewUnavailable?: string | null;
+    /**
+     * English default: {years} years of experience  — keep {placeholders} unchanged.
+     */
+    years?: string | null;
+    /**
+     * English default: Certifications
+     */
+    certifications?: string | null;
+    /**
+     * English default: Photo of {name}  — keep {placeholders} unchanged.
+     */
+    photoOf?: string | null;
+    /**
+     * English default: Last updated {date}  — keep {placeholders} unchanged.
+     */
+    lastUpdated?: string | null;
+    /**
+     * English default: Our Instagram
+     */
+    channel_instagram?: string | null;
+    /**
+     * English default: Our website
+     */
+    channel_website?: string | null;
+    /**
+     * English default: Founding-client offer
+     */
+    offerBadge?: string | null;
+    /**
+     * English default: The first {spots} clients get {discount}% off for {months} months in exchange for a case study and an honest review.  — keep {placeholders} unchanged.
+     */
+    offerText?: string | null;
+    /**
+     * English default: {left} of {total} spots left  — keep {placeholders} unchanged.
+     */
+    spotsLeft?: string | null;
+    /**
+     * English default: Claim a founding spot
+     */
+    offerCta?: string | null;
+    /**
+     * English default: Free 20-minute audit or consultation — no obligation.
+     */
+    auditNote?: string | null;
+    /**
+     * English default: Start with a 1-month term — no long contract.
+     */
+    trialNote?: string | null;
+    /**
+     * English default: Not sure where to start? Answer six questions
+     */
+    finderLink?: string | null;
+    /**
+     * English default: Package groups
+     */
+    packageGroups?: string | null;
+    /**
+     * English default: Term: {term}  — keep {placeholders} unchanged.
+     */
+    term?: string | null;
+    /**
+     * English default: We reply within 1 working day.
+     */
+    replyTime?: string | null;
+    /**
+     * English default: The package finder suggested {package} ({service}). I would like to discuss it.  — keep {placeholders} unchanged.
+     */
+    finderMessage?: string | null;
+    /**
+     * English default: Light / dark theme
+     */
+    themeTooltip?: string | null;
+    /**
+     * English default: Monthly report
+     */
+    sampleReportTitle?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pricing-catalog_select".
  */
@@ -3809,6 +4327,40 @@ export interface NavigationSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "growth-offer_select".
+ */
+export interface GrowthOfferSelect<T extends boolean = true> {
+  offer?:
+    | T
+    | {
+        enabled?: T;
+        spots?: T;
+        discount?: T;
+        months?: T;
+        spotsLeft?: T;
+        showSpotsLeft?: T;
+        showAudit?: T;
+        showTrial?: T;
+      };
+  growth?:
+    | T
+    | {
+        lastUpdated?: T;
+        metrics?:
+          | T
+          | {
+              channel?: T;
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ui-general_select".
  */
 export interface UiGeneralSelect<T extends boolean = true> {
@@ -4079,6 +4631,43 @@ export interface UiFormsSelect<T extends boolean = true> {
         usePackage?: T;
         temporary?: T;
         noMatch?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ui-trust_select".
+ */
+export interface UiTrustSelect<T extends boolean = true> {
+  trust?:
+    | T
+    | {
+        sampleLabel?: T;
+        preview?: T;
+        download?: T;
+        sampleNote?: T;
+        previewUnavailable?: T;
+        years?: T;
+        certifications?: T;
+        photoOf?: T;
+        lastUpdated?: T;
+        channel_instagram?: T;
+        channel_website?: T;
+        offerBadge?: T;
+        offerText?: T;
+        spotsLeft?: T;
+        offerCta?: T;
+        auditNote?: T;
+        trialNote?: T;
+        finderLink?: T;
+        packageGroups?: T;
+        term?: T;
+        replyTime?: T;
+        finderMessage?: T;
+        themeTooltip?: T;
+        sampleReportTitle?: T;
       };
   updatedAt?: T;
   createdAt?: T;

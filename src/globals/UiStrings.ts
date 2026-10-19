@@ -18,13 +18,14 @@ const groupLabels: Record<UiGroup, string> = {
   work: 'Portfolio',
   blog: 'Blog',
   whatsapp: 'WhatsApp message',
+  trust: 'Trust, offer & extras',
 }
 
 /**
  * Interface text is split over three globals: SQLite limits how many
  * localized columns one table can hold, and smaller screens are easier to edit.
  */
-export const uiStringGlobals: { slug: 'ui-general' | 'ui-pricing' | 'ui-forms'; label: string; groups: UiGroup[] }[] = [
+export const uiStringGlobals: { slug: 'ui-general' | 'ui-pricing' | 'ui-forms' | 'ui-trust'; label: string; groups: UiGroup[] }[] = [
   {
     slug: 'ui-general',
     label: 'Interface text: general',
@@ -32,6 +33,7 @@ export const uiStringGlobals: { slug: 'ui-general' | 'ui-pricing' | 'ui-forms'; 
   },
   { slug: 'ui-pricing', label: 'Interface text: pricing', groups: ['pricing', 'compare'] },
   { slug: 'ui-forms', label: 'Interface text: forms & guide', groups: ['form', 'guide'] },
+  { slug: 'ui-trust', label: 'Interface text: trust & offer', groups: ['trust'] },
 ]
 
 const tabsFor = (groups: UiGroup[]): Field[] => [

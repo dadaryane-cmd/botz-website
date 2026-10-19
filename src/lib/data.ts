@@ -9,7 +9,7 @@ import { themeDefaults } from '@/globals/Theme'
 import { CMS_TAG } from '@/hooks/revalidate'
 import type { Locale } from '@/i18n/config'
 import { uiStringGlobals } from '@/globals/UiStrings'
-import { contactInfoFrom, loadSettings, mergeStrings } from './site'
+import { contactInfoFrom, loadSettings, mergeStrings, offerFrom } from './site'
 import { loadCatalog } from './pricing/fromCms'
 import type { GuideConfig } from './guide'
 
@@ -47,13 +47,14 @@ function cached<A extends unknown[], R>(key: string, fn: (...args: A) => Promise
 
 const site = async (locale: Locale, draft: boolean) => {
   const payload = await payloadClient()
-  const [settings, theme, nav, strings] = await Promise.all([
+  const [settings, theme, nav, strings, growthOffer] = await Promise.all([
     loadSettings(payload, locale),
     payload.findGlobal({ slug: 'theme', depth: 1, overrideAccess: true }) as Promise<Raw>,
     payload.findGlobal({ slug: 'navigation', locale, fallbackLocale: false, depth: 1, overrideAccess: true }) as Promise<Raw>,
     Promise.all(
       uiStringGlobals.map((g) => payload.findGlobal({ slug: g.slug, locale, fallbackLocale: false, depth: 0, overrideAccess: true }) as Promise<Raw>),
     ).then((parts) => Object.assign({}, ...parts) as Raw),
+    payload.findGlobal({ slug: 'growth-offer', locale, fallbackLocale: false, depth: 0, overrideAccess: true }) as Promise<Raw>,
   ])
   const counts = await Promise.all(
     (['case-studies', 'posts', 'testimonials'] as const).map(
@@ -70,6 +71,15 @@ const site = async (locale: Locale, draft: boolean) => {
     nav,
     uiRaw: strings,
     contacts: contactInfoFrom(settings),
+    offer: offerFrom(growthOffer?.offer),
+    growth: {
+      lastUpdated: (growthOffer?.growth?.lastUpdated as string | undefined) ?? null,
+      metrics: ((growthOffer?.growth?.metrics ?? []) as Raw[]).map((m) => ({
+        channel: (m.channel === 'website' ? 'website' : 'instagram') as 'instagram' | 'website',
+        label: String(m.label ?? ''),
+        value: String(m.value ?? ''),
+      })),
+    },
     has: { work: counts[0] > 0, blog: counts[1] > 0, testimonials: counts[2] > 0 },
     draft,
   }

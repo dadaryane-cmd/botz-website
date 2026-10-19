@@ -12,6 +12,7 @@ const btn = (label: L10n, path: string, appearance: 'primary' | 'secondary' | 'l
 const settings = (s: Record<string, unknown> = {}) => ({ background: 'default', align: 'start', width: 'normal', paddingTop: 'lg', paddingBottom: 'lg', ...s })
 
 const T = {
+  freeAudit: L('Get a free audit', 'Ստանալ անվճար աուդիտ', 'Получить бесплатный аудит'),
   explore: L('Explore packages', 'Դիտել փաթեթները', 'Смотреть пакеты'),
   discuss: L('Discuss my project', 'Քննարկել իմ նախագիծը', 'Обсудить мой проект'),
   pricing: L('See prices', 'Տեսնել գները', 'Посмотреть цены'),
@@ -41,6 +42,133 @@ const ticker = [
   L('Reels', 'Reels', 'Reels'),
 ].map((text) => ({ text }))
 
+/** Phrases written on the papers that tumble down through the home hero. */
+export const burnWords = [
+  L('Bad marketing', 'Վատ մարքեթինգ', 'Плохой маркетинг'),
+  L('Zero results', 'Զրո արդյունք', 'Ноль результатов'),
+  L('Random posts', 'Պատահական գրառումներ', 'Случайные посты'),
+  L('Amateur work', 'Սիրողական աշխատանք', 'Любительская работа'),
+  L('Wasted budget', 'Վատնված բյուջե', 'Слитый бюджет'),
+  L('Missed deadlines', 'Խախտված ժամկետներ', 'Сорванные сроки'),
+  L('Invisible on Google', 'Անտեսանելի Google-ում', 'Невидимы в Google'),
+  L('Empty promises', 'Դատարկ խոստումներ', 'Пустые обещания'),
+  L('Guesswork', 'Աչքաչափով որոշումներ', 'Работа наугад'),
+  L('Ignored messages', 'Անպատասխան նամակներ', 'Сообщения без ответа'),
+].map((text) => ({ text }))
+
+/*
+ * Trust sections for a new agency (no clients yet). Everything that needs a real fact from the
+ * founders is a visible “[placeholder]” / “[X]” — nothing here is invented. Armenian and Russian: review wording.
+ */
+const P = L('[placeholder]', '[placeholder]', '[placeholder]')
+
+const teamBlock: Block = {
+  blockType: 'team',
+  heading: L('Who’s behind *BOTZ*', 'Ովքեր են *BOTZ*-ի հետևում', 'Кто стоит за *BOTZ*'),
+  intro: L(
+    'Two founders, one for each discipline. You work with us directly — no account managers in between.',
+    'Երկու հիմնադիր՝ յուրաքանչյուրն իր ոլորտում։ Դուք աշխատում եք անմիջապես մեզ հետ՝ առանց միջնորդ մենեջերների։',
+    'Два основателя — по одному на каждое направление. Вы работаете напрямую с нами, без менеджеров-посредников.',
+  ),
+  founders: [
+    {
+      name: L('Mariam', 'Մարիամ', 'Мариам'),
+      role: L('Social media marketing', 'Սոցիալական մեդիա մարքեթինգ', 'Маркетинг в соцсетях'),
+      years: '[X]',
+      bio: L(
+        '[placeholder] Short bio: Mariam’s background, the kinds of brands she has worked on and how she approaches content.',
+        '[placeholder] Կարճ կենսագրություն՝ Մարիամի փորձը, բրենդների տեսակները, որոնց հետ աշխատել է, և նրա մոտեցումը բովանդակությանը։',
+        '[placeholder] Короткая биография: опыт Мариам, с какими брендами она работала и как подходит к контенту.',
+      ),
+      certifications: [{ text: P }],
+    },
+    {
+      name: L('Edgar', 'Էդգար', 'Эдгар'),
+      role: L('SEO & website creation', 'SEO և կայքերի ստեղծում', 'SEO и создание сайтов'),
+      years: '[X]',
+      bio: L(
+        '[placeholder] Short bio: Edgar’s background in SEO and web development, and the kinds of sites he has built and optimised.',
+        '[placeholder] Կարճ կենսագրություն՝ Էդգարի փորձը SEO-ում և վեբ մշակման մեջ, կայքերի տեսակները, որոնք ստեղծել և օպտիմալացրել է։',
+        '[placeholder] Короткая биография: опыт Эдгара в SEO и веб-разработке, какие сайты он создавал и оптимизировал.',
+      ),
+      certifications: [{ text: P }],
+    },
+  ],
+  pastWorkHeading: L('Earlier work (shown with permission)', 'Նախկին աշխատանքներ (ցուցադրվում են թույլտվությամբ)', 'Прежние работы (с разрешения)'),
+  pastWork: [],
+  settings: settings(),
+}
+
+const whyNewBlock: Block = {
+  blockType: 'split',
+  statement: L('Why work with a *new agency?*', 'Ինչու՞ աշխատել *նոր գործակալության* հետ', 'Почему стоит работать с *новым агентством?*'),
+  body: L(
+    'Being new means every client gets our full attention — and the people who sell the work are the people who do it.',
+    'Նոր լինելը նշանակում է, որ յուրաքանչյուր հաճախորդ ստանում է մեր ամբողջ ուշադրությունը, իսկ աշխատանքը վաճառողները հենց այն կատարողներն են։',
+    'Мы новые, поэтому каждый клиент получает всё наше внимание, а те, кто обсуждает с вами работу, её и выполняют.',
+  ),
+  points: [
+    {
+      title: L('Senior people on every project', 'Փորձառու մասնագետներ յուրաքանչյուր նախագծում', 'Опытные специалисты в каждом проекте'),
+      text: L('The founders do the work themselves — no hand-offs to juniors.', 'Աշխատանքը կատարում են հիմնադիրներն իրենք՝ առանց սկսնակներին փոխանցելու։', 'Работу делают сами основатели — без передачи новичкам.'),
+    },
+    {
+      title: L('You talk directly to the founders', 'Դուք խոսում եք անմիջապես հիմնադիրների հետ', 'Вы общаетесь напрямую с основателями'),
+      text: L('Mariam for social media, Edgar for SEO and websites.', 'Մարիամը՝ սոցցանցերի, Էդգարը՝ SEO-ի և կայքերի համար։', 'Мариам — по соцсетям, Эдгар — по SEO и сайтам.'),
+    },
+    {
+      title: L('Founding-client pricing', 'Առաջին հաճախորդների գներ', 'Цены для первых клиентов'),
+      text: L(
+        'Our first clients get a founding discount in exchange for a case study and an honest review.',
+        'Մեր առաջին հաճախորդները ստանում են զեղչ՝ նախագծի նկարագրության և անկեղծ կարծիքի դիմաց։',
+        'Первые клиенты получают скидку в обмен на кейс и честный отзыв.',
+      ),
+    },
+  ],
+  settings: settings({ background: 'surface' }),
+}
+
+const samplesBlock: Block = {
+  blockType: 'samples',
+  heading: L('See exactly *what you’ll get*', 'Տեսեք, թե *ինչ կստանաք*', 'Посмотрите, *что вы получите*'),
+  intro: L(
+    'The real formats of our deliverables, filled with illustrative data.',
+    'Մեր աշխատանքների իրական ձևաչափերը՝ պայմանական տվյալներով։',
+    'Реальные форматы наших материалов с условными данными.',
+  ),
+  items: [
+    {
+      title: L('SEO audit', 'SEO աուդիտ', 'SEO-аудит'),
+      text: L('Technical issues, priorities and a clear action list.', 'Տեխնիկական խնդիրներ, առաջնահերթություններ և հստակ անելիքների ցանկ։', 'Технические проблемы, приоритеты и понятный список действий.'),
+      filePath: '/samples/sample-seo-audit.pdf',
+    },
+    {
+      title: L('Monthly report', 'Ամսական հաշվետվություն', 'Ежемесячный отчёт'),
+      text: L('What we did, what changed and what comes next — in plain language.', 'Ինչ արեցինք, ինչ փոխվեց և ինչ է հաջորդը՝ պարզ լեզվով։', 'Что сделано, что изменилось и что дальше — простым языком.'),
+      filePath: '/samples/sample-monthly-report.pdf',
+    },
+    {
+      title: L('One-month SMM content plan', 'Մեկ ամսվա SMM բովանդակային պլան', 'Контент-план SMM на месяц'),
+      text: L('Topics, formats and a posting calendar for one month.', 'Թեմաներ, ձևաչափեր և մեկ ամսվա հրապարակումների օրացույց։', 'Темы, форматы и календарь публикаций на месяц.'),
+      filePath: '/samples/sample-smm-content-plan.pdf',
+    },
+  ],
+  settings: settings({ anchor: 'samples' }),
+}
+
+/** Numbers that change (Website → Growth & offer). Placeholders until the founders fill them in. */
+export const growthOffer = {
+  offer: { enabled: true, spots: 5, months: 3, spotsLeft: 5, showSpotsLeft: false, showAudit: true, showTrial: true },
+  growth: {
+    metrics: [
+      { channel: 'instagram', label: L('Followers', 'Հետևորդներ', 'Подписчики'), value: '[placeholder]' },
+      { channel: 'instagram', label: L('Posts this month', 'Հրապարակումներ այս ամիս', 'Публикаций за месяц'), value: '[placeholder]' },
+      { channel: 'website', label: L('Organic visitors / month', 'Օրգանիկ այցելուներ / ամիս', 'Органические посетители / мес.'), value: '[placeholder]' },
+      { channel: 'website', label: L('Pages ranking on Google', 'Google-ում դիրքավորված էջեր', 'Страниц в выдаче Google'), value: '[placeholder]' },
+    ],
+  },
+}
+
 const faqGeneral = [
   {
     question: L('How do contract lengths affect the price?', 'Ինչպե՞ս է պայմանագրի ժամկետն ազդում գնի վրա', 'Как срок договора влияет на цену?'),
@@ -65,6 +193,7 @@ const faqGeneral = [
       'Ոչ։ Այն օգնում է ստանալ առաջարկ։ Նախ ծավալը համաձայնեցնում ենք ձեզ հետ, և կայքի միջոցով ոչինչ չի գանձվում։',
       'Нет. Он помогает запросить предложение. Сначала мы согласуем с вами объём, а через сайт ничего не оплачивается.',
     ),
+    openByDefault: true,
   },
   {
     question: L('Do you guarantee results?', 'Երաշխավորո՞ւմ եք արդյունքները', 'Вы гарантируете результат?'),
@@ -73,6 +202,7 @@ const faqGeneral = [
       'Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։',
       'Мы отвечаем за работу, её качество и прозрачную отчётность. Результат зависит от рынка, конкуренции, бюджета и внедрения, поэтому мы не обещаем позиции, продажи или число подписчиков.',
     ),
+    openByDefault: true,
   },
   {
     question: L('Who will I be working with?', 'Ու՞մ հետ եմ աշխատելու', 'С кем я буду работать?'),
@@ -81,6 +211,7 @@ const faqGeneral = [
       'Մարիամը ղեկավարում է սոցցանցերի ուղղությունը, Էդգարը՝ SEO-ն և կայքերը։ Համակցված փաթեթներում նրանք աշխատում են համատեղ, և դուք համաձայնեցնում եք մեկ հիմնական կոնտակտ։',
       'Мариам ведёт соцсети, Эдгар — SEO и сайты. В комплексных планах они работают вместе, а вы выбираете один основной контакт.',
     ),
+    openByDefault: true,
   },
 ]
 
@@ -203,8 +334,15 @@ export const pages: { seedKey: string; slug: string; pageType: string; title: L1
           'BOTZ-ը վարում է սոցցանցեր, որոնողական օպտիմալացում և կայքեր աճող բիզնեսների համար՝ հստակ փաթեթներով, բաց գներով և երկու մարդով, որոնց հետ կարող եք իսկապես խոսել։',
           'BOTZ ведёт соцсети, поисковую оптимизацию и сайты растущих компаний — с понятными пакетами, открытыми ценами и двумя людьми, с которыми действительно можно поговорить.',
         ),
-        buttons: [btn(T.explore, '/pricing'), btn(T.discuss, '#contact', 'secondary')],
+        buttons: [btn(T.freeAudit, '#contact'), btn(T.explore, '/pricing', 'secondary')],
+        proofLine: L(
+          'Founders with [X]+ years in SEO and social media',
+          'Հիմնադիրներ՝ SEO-ի և սոցցանցերի [X]+ տարվա փորձով',
+          'Основатели с опытом [X]+ лет в SEO и соцсетях',
+        ),
+        sideCard: 'offer',
         tickerItems: ticker,
+        burnWords,
         settings: settings({ paddingTop: 'md', paddingBottom: 'md', width: 'wide' }),
       },
       {
@@ -241,6 +379,10 @@ export const pages: { seedKey: string; slug: string; pageType: string; title: L1
         items: servicesItems,
         settings: settings({ background: 'surface' }),
       },
+      teamBlock,
+      whyNewBlock,
+      samplesBlock,
+      guideBlock,
       {
         blockType: 'packagePreview',
         heading: L('Packages, *priced in the open*', 'Փաթեթներ՝ *բաց գներով*', 'Пакеты *с открытыми ценами*'),
@@ -252,9 +394,9 @@ export const pages: { seedKey: string; slug: string; pageType: string; title: L1
         categories: ['smm', 'seo', 'bundle', 'website'],
         duration: '12',
         link: { label: T.explore, type: 'path', path: '/pricing', appearance: 'primary' },
+        showGuideLink: true,
         settings: settings(),
       },
-      guideBlock,
       processBlock,
       {
         blockType: 'faq',

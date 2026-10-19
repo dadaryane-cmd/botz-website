@@ -14,6 +14,7 @@ import { fontStack, fontVariables } from '../fonts'
 import '../styles.css'
 import '../bulb.css'
 import '../flame.css'
+import '../trust.css'
 
 export const dynamicParams = false
 

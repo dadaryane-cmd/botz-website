@@ -23,6 +23,8 @@ export function Guide({
   s,
   p,
   contactHref,
+  messageTemplate,
+  serviceNames,
 }: {
   config: GuideConfig
   catalog: Catalog
@@ -30,6 +32,9 @@ export function Guide({
   s: Strings['guide']
   p: Strings['pricing']
   contactHref: string
+  /** e.g. “The package finder suggested {package} ({service}).” — pre-fills the contact message. */
+  messageTemplate: string
+  serviceNames: Strings['services']
 }) {
   const id = useId()
   const [step, setStep] = useState(0)
@@ -49,7 +54,9 @@ export function Guide({
   }
 
   const use = (c: Candidate) => {
-    setSelection((x) => ({ ...x, packageKey: c.pkg.key, duration: c.pkg.category === 'website' ? null : c.duration, category: c.pkg.category }))
+    // Service and contact person follow the package; the message names the suggestion.
+    const note = fill(messageTemplate, { package: c.pkg.name, service: serviceNames[c.pkg.category] ?? c.pkg.category })
+    setSelection((x) => ({ ...x, packageKey: c.pkg.key, duration: c.pkg.category === 'website' ? null : c.duration, category: c.pkg.category, note }))
     const form = document.querySelector<HTMLFormElement>('form[data-contact-form]')
     if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' })
     else window.location.href = contactHref

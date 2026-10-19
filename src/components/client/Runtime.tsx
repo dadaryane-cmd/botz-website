@@ -78,14 +78,20 @@ export function Runtime({ analytics, consentText, locale }: Props) {
   // Keep the phone browser's address-bar colour in step with the site theme (including manual switches).
   useEffect(() => {
     const root = document.documentElement
+    // Update the existing tags in place: they belong to React (Next's viewport metadata), and removing
+    // them made React crash later ("Cannot read properties of null (reading 'removeChild')").
     const sync = () => {
       const bg = getComputedStyle(root).getPropertyValue('--bg').trim()
       if (!bg) return
-      document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.remove())
-      const meta = document.createElement('meta')
-      meta.name = 'theme-color'
-      meta.content = bg
-      document.head.appendChild(meta)
+      const metas = document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
+      if (metas.length) metas.forEach((m) => (m.content = bg))
+      else {
+        const meta = document.createElement('meta')
+        meta.name = 'theme-color'
+        meta.content = bg
+        meta.dataset.botz = ''
+        document.head.appendChild(meta)
+      }
     }
     sync()
     const mo = new MutationObserver(sync)
@@ -93,7 +99,9 @@ export function Runtime({ analytics, consentText, locale }: Props) {
     return () => mo.disconnect()
   }, [])
 
-  // Scroll reveals (only when motion is allowed; see html.js-motion).
+  // Scroll reveals (only when motion is allowed; see html.js-motion). Content is hidden only once
+  // this code runs (html.reveal-ready), so it stays visible if JavaScript fails or loads slowly.
+  // Anything already on screen is marked visible first, so it never blinks out.
   useEffect(() => {
     const root = document.documentElement
     const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-in)'))
@@ -101,6 +109,16 @@ export function Runtime({ analytics, consentText, locale }: Props) {
       els.forEach((el) => el.classList.add('is-in'))
       return
     }
+    const early = window.innerHeight * 1.15
+    const pending = els.filter((el) => {
+      const r = el.getBoundingClientRect()
+      if (r.top < early && r.bottom > 0) {
+        el.classList.add('is-in')
+        return false
+      }
+      return true
+    })
+    root.classList.add('reveal-ready')
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries)
@@ -109,9 +127,10 @@ export function Runtime({ analytics, consentText, locale }: Props) {
             io.unobserve(e.target)
           }
       },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+      // Start revealing a little before the element scrolls into view.
+      { rootMargin: '0px 0px 15% 0px', threshold: 0 },
     )
-    els.forEach((el) => io.observe(el))
+    pending.forEach((el) => io.observe(el))
     return () => io.disconnect()
   }, [pathname])
 

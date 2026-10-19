@@ -10,7 +10,7 @@ import { findAddon, findPackage, quote } from '@/lib/pricing/engine'
 import { durationLabel } from '@/lib/pricing/present'
 import type { Strings } from '@/lib/site'
 
-type FormStrings = Strings['form'] & { services: Strings['services']; pricing: Strings['pricing'] }
+type FormStrings = Strings['form'] & { services: Strings['services']; pricing: Strings['pricing']; replyTime?: string }
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'success'; name: string } | { kind: 'error'; message: string }
 
 const fill = (t: string, v: Record<string, string>) => t.replace(/\{(\w+)\}/g, (m, k) => v[k] ?? m)
@@ -45,6 +45,17 @@ export function ContactForm({
   const submissionId = useRef<string>('')
   const formRef = useRef<HTMLFormElement>(null)
   const statusRef = useRef<HTMLDivElement>(null)
+  const messageRef = useRef<HTMLTextAreaElement>(null)
+  const lastNote = useRef<string>('')
+
+  // A suggestion (e.g. from the package finder) fills the message, unless the visitor already wrote their own.
+  useEffect(() => {
+    const el = messageRef.current
+    const note = selection.note ?? ''
+    if (!el || !note || note === lastNote.current) return
+    if (!el.value.trim() || el.value === lastNote.current) el.value = note
+    lastNote.current = note
+  }, [selection.note])
 
   const selectedPkg = catalog && selection.packageKey ? findPackage(catalog, selection.packageKey) : undefined
   const suggestedService = selectedPkg?.category ?? (selection.addons?.length ? 'addon' : null) ?? defaultService ?? pageCategory ?? ''
@@ -227,7 +238,7 @@ export function ContactForm({
         </fieldset>
         <div className="field full">
           <label htmlFor={`${id}-message`}>{s.message}</label>
-          <textarea {...field('message')} placeholder={s.messagePlaceholder} required maxLength={4000} />
+          <textarea {...field('message')} ref={messageRef} placeholder={s.messagePlaceholder} required maxLength={4000} />
           {err('message')}
         </div>
         {attached && catalog && (
@@ -264,10 +275,11 @@ export function ContactForm({
           <input id={`${id}-website`} name="website" tabIndex={-1} autoComplete="off" />
         </div>
       </div>
-      <div className="btn-row" style={{ marginTop: 20 }}>
+      <div className="btn-row form-submit-row" style={{ marginTop: 20 }}>
         <button type="submit" className="btn" disabled={status.kind === 'sending'} aria-busy={status.kind === 'sending'}>
           {status.kind === 'sending' ? s.sending : s.submit}
         </button>
+        {s.replyTime && <span className="reply-time">{s.replyTime}</span>}
       </div>
       <p className="field-hint">{s.privacy}</p>
       <div ref={statusRef} tabIndex={-1} aria-live="assertive">

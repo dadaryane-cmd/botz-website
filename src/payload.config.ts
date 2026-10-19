@@ -17,6 +17,7 @@ import { Pages } from './collections/Pages'
 import { CaseStudies, Posts, Testimonials } from './collections/Showcase'
 import { Users } from './collections/Users'
 import { inquiryEndpoint, inquiryTokenEndpoint } from './endpoints/inquiry'
+import { GrowthOffer } from './globals/GrowthOffer'
 import { Navigation } from './globals/Navigation'
 import { PackageGuide } from './globals/PackageGuide'
 import { PricingCatalog } from './globals/PricingCatalog'
@@ -109,7 +110,7 @@ export default buildConfig({
     },
   },
   collections: [Pages, Media, CaseStudies, Testimonials, Posts, Leads, Estimates, Users],
-  globals: [PricingCatalog, PackageGuide, SiteSettings, Theme, Navigation, ...UiStringsGlobals],
+  globals: [PricingCatalog, PackageGuide, SiteSettings, Theme, Navigation, GrowthOffer, ...UiStringsGlobals],
   localization: {
     locales: locales.map((code) => ({ code, label: localeLabels[code] })),
     defaultLocale,

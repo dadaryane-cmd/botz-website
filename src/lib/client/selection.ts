@@ -8,7 +8,12 @@ import type { Category, Selection } from '@/lib/pricing/types'
  * contact bar. Kept in sessionStorage only (this tab), never sent anywhere
  * unless the visitor submits the form or creates a share link.
  */
-export type SelectionState = Selection & { category?: Category | null; estimateToken?: string | null }
+export type SelectionState = Selection & {
+  category?: Category | null
+  estimateToken?: string | null
+  /** Suggested opening for the contact form's message (e.g. from the package finder). */
+  note?: string | null
+}
 
 const KEY = 'botz:selection'
 let state: SelectionState = {}

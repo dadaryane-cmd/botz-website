@@ -104,14 +104,46 @@
   display: block;
 }
 @media (max-width: 759px) {
+  /* Phones: the copy, both buttons and the proof line come first; the fire is a strip below them
+     instead of ~40% of the first screen. */
   .hero-flame-stage {
-    min-height: calc(100svh - 76px - 60px);
+    min-height: 0;
   }
   .hero-flame-content {
-    padding-top: 28px;
-    padding-bottom: 200px;
+    padding-top: 22px;
+    /* Room below the copy for the falling papers to drop into the fire. */
+    padding-bottom: 150px;
+  }
+  .hero-flame-variant .hero-sub {
+    font-size: 1rem;
+    margin-top: 14px;
+  }
+  .hero-flame-variant .btn-row {
+    margin-top: 20px;
   }
   .hero-copy::before {
     inset: -6% -10% -8% -10%;
   }
+}
+
+/* ============================================================
+   Falling papers (FlameWords.tsx): drawn on one canvas above the flames, below the copy
+   ============================================================ */
+.flame-words {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.flame-words-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* Falling papers: dark theme only. */
+[data-theme='light'] .flame-words {
+  display: none;
 }

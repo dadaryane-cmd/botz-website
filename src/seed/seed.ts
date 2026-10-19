@@ -10,7 +10,7 @@ import { locales, type Locale } from '@/i18n/config'
 import { uiStringGlobals } from '@/globals/UiStrings'
 import { uiDefaults } from '@/i18n/ui-defaults'
 import { addons, featureDefs, packages, reviewChecklist, terms } from './catalog'
-import { guide, navigation, pages, people, seoDefaults } from './content'
+import { growthOffer, guide, navigation, pages, people, seoDefaults } from './content'
 import { pick, withIds } from './helpers'
 
 const ctx = { disableRevalidate: true, skipApprovalGate: false }
@@ -214,6 +214,11 @@ export async function runSeed(payload: Payload) {
     await seedGlobal(payload, 'package-guide', guide, { status: 'published' })
     log('package guide seeded and published')
   } else log('package guide exists — skipped')
+
+  if (!(await hasVersions(payload, 'growth-offer'))) {
+    await seedGlobal(payload, 'growth-offer', growthOffer)
+    log('growth & offer seeded (placeholders)')
+  } else log('growth & offer exists — skipped')
 
   await seedCatalog(payload)
   await seedPages(payload)

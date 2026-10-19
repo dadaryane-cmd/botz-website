@@ -21,6 +21,15 @@ A short, plain-language guide to changing the BOTZ website. Everything here is d
 - Drag sections by the handle to **reorder**. Use the row menu to **duplicate** or **remove**. Tick **Hide this section** in *Section layout* to hide it without deleting.
 - *Section layout* sets background (page, soft surface, inverse, orange), alignment, width, spacing and an optional `#anchor` for links.
 - Wrap words in `*asterisks*` in headings to make them orange.
+- The home page Hero (style *Living flame background*) has **Words on falling papers**: short phrases (one to three words, max 28 characters) handwritten on scraps of paper that tumble down the hero, catch fire and burn away (developers can tune the feel at `/dev/flame-words`, development only). Translate each phrase in every language; leave the list empty to switch the effect off. It runs on the dark theme only; visitors who turned off animations never see it.
+- The Hero also has a **proof line** (one short line under the buttons) and, for the flame style, a **side card** on large screens: the founding-client offer, a sample-report preview, or none.
+- **FAQ** questions have an **Open by default** tick box.
+- **Package preview** has a tick box for the “Not sure where to start?” link to the package finder (it jumps to the section with the `#guide` anchor). On phones the package groups become tabs automatically.
+- Builder sections for a new agency:
+  - **Founders (who’s behind BOTZ)** — photo, role, years of experience, bio and certifications for each founder, plus an optional **Past work** row. A past project appears only when **Permission to show** is ticked; with none ticked, the row stays hidden.
+  - **Sample deliverables** — cards labelled “Sample” that open a PDF preview and offer a download. Upload the PDF in each card (**File**), or point **File path** to a file in `/public/samples/`.
+  - **Our own channels** — shows the numbers from **Website → Growth & offer**.
+  - **Founding-client offer banner** — shows the offer from **Website → Growth & offer**, and hides itself when the offer is switched off.
 - **Published languages** (right side of a page): untick a language while its translation is not ready. Visitors then see a clear “not available yet” link instead of a half-translated page.
 - Changing the address of a published page automatically creates a **redirect** from the old address (see **Website → Redirects**).
 
@@ -33,6 +42,12 @@ A short, plain-language guide to changing the BOTZ website. Everything here is d
 - **Feature labels** (tab) name each comparable inclusion once for all packages.
 - **Approval state** must be **Approved** before you can publish. Use the **Private review** tab for notes and the review checklist — they are never shown on the website.
 - **Right now:** the website shows the original prices and package names. The detailed revised scopes are waiting as a draft marked *Proposed*. Review them (Preview → Pricing page), tick off the checklist, set *Approved*, then **Publish**.
+
+## Growth & offer (update monthly)
+
+- **Website → Growth & offer**, tab **Founding-client offer**: untick **Show the offer** once all spots are taken. That one switch removes the banner, the badges on package cards and the hero card. Set the number of **spots**, the **discount %** (empty shows “[X]”), the number of **months**, and optionally **spots left** with **Show “N of 5 spots left”**. The free 20-minute audit and 1-month starting term mentions each have their own tick box.
+- Tab **Our own channels**: the real numbers for BOTZ’s own Instagram and website, plus the **Last updated** date. Edit them once a month.
+- The offer wording and other small texts are in **Interface text: trust & offer**.
 
 ## Find-my-package guide
 

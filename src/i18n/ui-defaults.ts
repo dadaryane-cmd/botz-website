@@ -317,6 +317,61 @@ export const uiDefaults = {
     estimate: { en: 'Estimate shown: {total}.', hy: 'Ցուցադրված նախահաշիվ՝ {total}։', ru: 'Показанный расчёт: {total}.' },
     closing: { en: 'Could we discuss it?', hy: 'Կարո՞ղ ենք քննարկել։', ru: 'Можем обсудить?' },
   },
+  // Trust sections, the founding-client offer and small additions (Armenian / Russian: review wording).
+  trust: {
+    sampleLabel: { en: 'Sample', hy: 'Նմուշ', ru: 'Образец' },
+    preview: { en: 'Preview', hy: 'Դիտել', ru: 'Посмотреть' },
+    download: { en: 'Download PDF', hy: 'Ներբեռնել PDF', ru: 'Скачать PDF' },
+    sampleNote: {
+      en: 'Example with illustrative data — it shows the format you will receive.',
+      hy: 'Օրինակ՝ պայմանական տվյալներով․ ցույց է տալիս այն ձևաչափը, որը կստանաք։',
+      ru: 'Пример с условными данными — показывает формат, который вы получите.',
+    },
+    previewUnavailable: {
+      en: 'Your browser cannot show the preview here. Download the PDF instead.',
+      hy: 'Ձեր դիտարկիչը չի կարող ցույց տալ նախադիտումը։ Ներբեռնեք PDF-ը։',
+      ru: 'Браузер не может показать предпросмотр. Скачайте PDF.',
+    },
+    years: { en: '{years} years of experience', hy: '{years} տարվա փորձ', ru: 'Опыт: {years} лет' },
+    certifications: { en: 'Certifications', hy: 'Հավաստագրեր', ru: 'Сертификаты' },
+    photoOf: { en: 'Photo of {name}', hy: '{name}-ի լուսանկարը', ru: 'Фото: {name}' },
+    lastUpdated: { en: 'Last updated {date}', hy: 'Վերջին թարմացում՝ {date}', ru: 'Обновлено {date}' },
+    channel_instagram: { en: 'Our Instagram', hy: 'Մեր Instagram-ը', ru: 'Наш Instagram' },
+    channel_website: { en: 'Our website', hy: 'Մեր կայքը', ru: 'Наш сайт' },
+    offerBadge: { en: 'Founding-client offer', hy: 'Առաջին հաճախորդների առաջարկ', ru: 'Для первых клиентов' },
+    offerText: {
+      en: 'The first {spots} clients get {discount}% off for {months} months in exchange for a case study and an honest review.',
+      hy: 'Առաջին {spots} հաճախորդները {months} ամիս ստանում են {discount}% զեղչ՝ նախագծի նկարագրության (case study) և անկեղծ կարծիքի դիմաց։',
+      ru: 'Первые {spots} клиентов получают скидку {discount}% на {months} мес. в обмен на кейс и честный отзыв.',
+    },
+    spotsLeft: { en: '{left} of {total} spots left', hy: 'Մնացել է {left} տեղ՝ {total}-ից', ru: 'Осталось мест: {left} из {total}' },
+    offerCta: { en: 'Claim a founding spot', hy: 'Ամրագրել տեղը', ru: 'Занять место' },
+    auditNote: {
+      en: 'Free 20-minute audit or consultation — no obligation.',
+      hy: 'Անվճար 20 րոպեանոց աուդիտ կամ խորհրդատվություն՝ առանց պարտավորության։',
+      ru: 'Бесплатный 20-минутный аудит или консультация — без обязательств.',
+    },
+    trialNote: {
+      en: 'Start with a 1-month term — no long contract.',
+      hy: 'Սկսեք 1 ամսվա ժամկետով՝ առանց երկարաժամկետ պայմանագրի։',
+      ru: 'Начните с договора на 1 месяц — без долгих обязательств.',
+    },
+    finderLink: {
+      en: 'Not sure where to start? Answer six questions',
+      hy: 'Չգիտե՞ք որտեղից սկսել։ Պատասխանեք վեց հարցի',
+      ru: 'Не знаете, с чего начать? Ответьте на шесть вопросов',
+    },
+    packageGroups: { en: 'Package groups', hy: 'Փաթեթների խմբեր', ru: 'Группы пакетов' },
+    term: { en: 'Term: {term}', hy: 'Ժամկետ՝ {term}', ru: 'Срок: {term}' },
+    replyTime: { en: 'We reply within 1 working day.', hy: 'Պատասխանում ենք 1 աշխատանքային օրվա ընթացքում։', ru: 'Отвечаем в течение 1 рабочего дня.' },
+    finderMessage: {
+      en: 'The package finder suggested {package} ({service}). I would like to discuss it.',
+      hy: 'Փաթեթների ընտրիչն առաջարկեց {package} ({service})։ Կցանկանայի քննարկել։',
+      ru: 'Подбор пакета предложил {package} ({service}). Хотел(а) бы обсудить.',
+    },
+    themeTooltip: { en: 'Light / dark theme', hy: 'Բաց / մուգ թեմա', ru: 'Светлая / тёмная тема' },
+    sampleReportTitle: { en: 'Monthly report', hy: 'Ամսական հաշվետվություն', ru: 'Ежемесячный отчёт' },
+  },
 } satisfies Record<string, Record<string, L10n>>
 
 export type UiDefaults = typeof uiDefaults

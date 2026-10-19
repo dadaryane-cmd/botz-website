@@ -2,7 +2,9 @@ import { RichText } from '@payloadcms/richtext-lexical/react'
 import Link from 'next/link'
 import type { Locale } from '@/i18n/config'
 import type { SiteData } from '@/lib/data'
-import { formatNumber } from '@/lib/format'
+import { formatDate, formatNumber } from '@/lib/format'
+import { fill } from '@/lib/site'
+import { paperFonts } from '@/app/(frontend)/fonts'
 import type { GuideConfig } from '@/lib/guide'
 import { localizedPath, type CmsLink } from '@/lib/links'
 import { availableDurations, isDuration, isRecurring, packagesIn, priceLine } from '@/lib/pricing/engine'
@@ -12,9 +14,12 @@ import { ContactForm } from '../client/ContactForm'
 import { Comparison } from '../client/Comparison'
 import { Guide } from '../client/Guide'
 import { FlameBackground } from '../client/FlameBackground'
+import { FlameWords } from '../client/FlameWords'
 import { HeroMark } from '../client/HeroMark'
 import { PeopleCards } from '../client/PeopleCards'
+import { PackageTabs } from '../client/PackageTabs'
 import { PricingExplorer } from '../client/PricingExplorer'
+import { SampleDialog } from '../client/SampleDialog'
 import { WorkCard } from '../client/WorkCard'
 import { Media, type MediaDoc } from '../Media'
 import { CmsButton, Eyebrow, Highlight, Icon, ServiceIcon } from '../ui'
@@ -48,14 +53,225 @@ function Head({ b, as = 'h2' }: { b: Raw; as?: 'h1' | 'h2' }) {
   )
 }
 
+/** “#contact” only works on pages with a contact section; elsewhere it goes to the contact page. */
+function withContactTarget(l: CmsLink, ctx: BlockContext): CmsLink {
+  return l.type === 'path' && l.path === '#contact' ? { ...l, path: ctx.contactHref } : l
+}
+
 function Buttons({ links, ctx }: { links?: CmsLink[] | null; ctx: BlockContext }) {
   if (!links?.length) return null
   return (
     <div className="btn-row">
       {links.map((l, i) => (
-        <CmsButton key={i} link={l} locale={ctx.locale} contacts={ctx.site.contacts} />
+        <CmsButton key={i} link={withContactTarget(l, ctx)} locale={ctx.locale} contacts={ctx.site.contacts} />
       ))}
     </div>
+  )
+}
+
+/* ───────────── Trust sections & founding-client offer ───────────── */
+
+/** The founding-client offer (numbers from Website → Growth & offer). Renders nothing when switched off. */
+function OfferCard({ ctx, compact = false, link }: { ctx: BlockContext; compact?: boolean; link?: CmsLink | null }) {
+  const o = ctx.site.offer
+  const t = ctx.site.strings.trust
+  if (!o.enabled) return null
+  const taken = o.spotsLeft !== null ? Math.max(0, o.spots - o.spotsLeft) : 0
+  return (
+    <div className={`offer-card${compact ? ' is-compact' : ''}`}>
+      <span className="offer-pill">{t.offerBadge}</span>
+      <p className="offer-text">{fill(t.offerText, { spots: o.spots, discount: o.discount, months: o.months })}</p>
+      {o.showSpotsLeft && o.spotsLeft !== null && (
+        <p className="offer-spots">
+          <span className="offer-dots" aria-hidden="true">
+            {Array.from({ length: o.spots }, (_, i) => (
+              <span key={i} className={i < taken ? 'is-taken' : undefined} />
+            ))}
+          </span>
+          <strong>{fill(t.spotsLeft, { left: o.spotsLeft, total: o.spots })}</strong>
+        </p>
+      )}
+      {(o.showAudit || o.showTrial) && (
+        <ul className="offer-notes">
+          {o.showAudit && <li>{t.auditNote}</li>}
+          {o.showTrial && <li>{t.trialNote}</li>}
+        </ul>
+      )}
+      <div className="btn-row">
+        {link?.label ? (
+          <CmsButton link={withContactTarget(link, ctx)} locale={ctx.locale} contacts={ctx.site.contacts} />
+        ) : (
+          <a className="btn btn-sm" href={ctx.contactHref}>
+            {t.offerCta} <span aria-hidden="true">→</span>
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+/** A tasteful preview of what a monthly report looks like — labelled “Sample”, no figures. */
+function SampleReportCard({ ctx }: { ctx: BlockContext }) {
+  const t = ctx.site.strings.trust
+  return (
+    <div className="sample-report-card">
+      <div className="sample-report-head">
+        <strong>{t.sampleReportTitle}</strong>
+        <span className="offer-pill">{t.sampleLabel}</span>
+      </div>
+      <svg className="sample-report-chart" viewBox="0 0 240 80" aria-hidden="true" focusable="false">
+        <polyline points="0,64 30,58 60,60 90,46 120,48 150,34 180,30 210,20 240,14" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <ul className="sample-report-rows" aria-hidden="true">
+        {[78, 54, 36].map((w, i) => (
+          <li key={i}>
+            <span className="bar" style={{ width: `${w}%` }} />
+          </li>
+        ))}
+      </ul>
+      <p className="small muted" style={{ margin: 0 }}>
+        {t.sampleNote}
+      </p>
+      <a className="btn-link" href="#samples">
+        {t.preview} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  )
+}
+
+function OfferSection({ b, ctx }: { b: Raw; ctx: BlockContext }) {
+  if (!ctx.site.offer.enabled) return null
+  return (
+    <Section settings={b.settings} className="offer-section">
+      <div data-reveal>
+        <OfferCard ctx={ctx} link={b.link?.label ? b.link : null} />
+      </div>
+    </Section>
+  )
+}
+
+type Founder = { name: string; role?: string; years?: string; photo?: MediaDoc | number | null; bio?: string; certifications?: { text: string }[] }
+type PastWork = { title: string; text?: string; url?: string; permission?: boolean }
+
+function Team({ b, ctx }: { b: Raw; ctx: BlockContext }) {
+  const t = ctx.site.strings.trust
+  const founders = (b.founders ?? []) as Founder[]
+  // Past work appears only with the client's or employer's permission.
+  const past = ((b.pastWork ?? []) as PastWork[]).filter((p) => p.permission && p.title)
+  return (
+    <Section settings={b.settings}>
+      <Head b={b} />
+      <div className="team-grid">
+        {founders.map((f, i) => (
+          <article className="team-card" key={i} data-reveal style={{ ['--d' as string]: i }}>
+            <div className="team-photo">
+              {f.photo && typeof f.photo === 'object' ? (
+                <Media media={f.photo} sizes="(min-width: 960px) 240px, 40vw" />
+              ) : (
+                // TODO: upload a portrait in the CMS (Pages → Home → Founders → Photo).
+                <div className="team-photo-placeholder" role="img" aria-label={fill(t.photoOf, { name: f.name })}>
+                  <span aria-hidden="true">{f.name.slice(0, 1)}</span>
+                  <small>[photo placeholder]</small>
+                </div>
+              )}
+            </div>
+            <div className="team-body">
+              <h3>{f.name}</h3>
+              {f.role && <p className="team-role">{f.role}</p>}
+              {f.years && <p className="chip team-years">{fill(t.years, { years: f.years })}</p>}
+              {f.bio && <p>{f.bio}</p>}
+              {f.certifications && f.certifications.length > 0 && (
+                <>
+                  <h4 className="team-sub">{t.certifications}</h4>
+                  <ul className="team-certs">
+                    {f.certifications.map((c, j) => (
+                      <li key={j}>{c.text}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      {past.length > 0 && (
+        <div className="past-work" data-reveal>
+          {b.pastWorkHeading && <h3 className="h3">{b.pastWorkHeading}</h3>}
+          <div className="past-work-row">
+            {past.map((p, i) => (
+              <article className="past-work-card" key={i}>
+                <h4>{p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a> : p.title}</h4>
+                {p.text && <p className="small muted">{p.text}</p>}
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+    </Section>
+  )
+}
+
+type SampleItem = { title: string; text?: string; file?: (MediaDoc & { url?: string; mimeType?: string }) | number | null; filePath?: string }
+
+function Samples({ b, ctx }: { b: Raw; ctx: BlockContext }) {
+  const t = ctx.site.strings.trust
+  const items = (b.items ?? []) as SampleItem[]
+  return (
+    <Section settings={b.settings}>
+      <Head b={b} />
+      <div className="samples-grid">
+        {items.map((it, i) => {
+          const url = (it.file && typeof it.file === 'object' ? it.file.url : null) || it.filePath || null
+          return (
+            <article className="sample-card" key={i} data-reveal style={{ ['--d' as string]: i }}>
+              <span className="offer-pill">{t.sampleLabel}</span>
+              <h3>{it.title}</h3>
+              {it.text && <p className="muted">{it.text}</p>}
+              <p className="small muted">{t.sampleNote}</p>
+              {url ? (
+                <SampleDialog
+                  title={`${t.sampleLabel}: ${it.title}`}
+                  url={url}
+                  labels={{ preview: t.preview, download: t.download, close: ctx.site.strings.common.close, unavailable: t.previewUnavailable }}
+                />
+              ) : (
+                <p className="small">[placeholder — sample file coming soon]</p>
+              )}
+            </article>
+          )
+        })}
+      </div>
+    </Section>
+  )
+}
+
+function Growth({ b, ctx }: { b: Raw; ctx: BlockContext }) {
+  const t = ctx.site.strings.trust
+  const { metrics, lastUpdated } = ctx.site.growth
+  if (!metrics.length) return null
+  const channels = (['instagram', 'website'] as const).map((c) => ({ c, list: metrics.filter((m) => m.channel === c) })).filter((g) => g.list.length)
+  return (
+    <Section settings={b.settings}>
+      <Head b={b} />
+      <div className="growth-grid">
+        {channels.map(({ c, list }, i) => (
+          <article className="growth-card" key={c} data-reveal style={{ ['--d' as string]: i }}>
+            <h3 className="growth-channel">
+              {c === 'instagram' ? Icon.instagram : <ServiceIcon service="website" />} {t[`channel_${c}`]}
+            </h3>
+            <dl className="growth-metrics">
+              {list.map((m, j) => (
+                <div key={j}>
+                  <dt>{m.label}</dt>
+                  <dd className={`display${/^\[.*\]$/.test(m.value.trim()) ? ' is-placeholder' : ''}`}>{m.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </article>
+        ))}
+      </div>
+      <p className="small muted growth-updated">{fill(t.lastUpdated, { date: lastUpdated ? formatDate(lastUpdated, ctx.locale) : '[date]' })}</p>
+    </Section>
   )
 }
 
@@ -86,6 +302,18 @@ function Hero({ b, ctx, first }: { b: Raw; ctx: BlockContext; first: boolean }) 
 
   if (variant === 'flame') {
     const s = (b.settings ?? {}) as BlockSettings
+    const burnWords = ((b.burnWords ?? []) as { text?: string }[]).map((w) => w.text?.trim() ?? '').filter(Boolean)
+    const sideKind = b.sideCard ?? 'offer'
+    const side =
+      sideKind === 'offer' && ctx.site.offer.enabled ? (
+        <aside className="hero-side" aria-label={ctx.site.strings.trust.offerBadge}>
+          <OfferCard ctx={ctx} compact />
+        </aside>
+      ) : sideKind === 'sample' ? (
+        <aside className="hero-side" aria-label={ctx.site.strings.trust.sampleReportTitle}>
+          <SampleReportCard ctx={ctx} />
+        </aside>
+      ) : null
     return (
       <section id={s.anchor || undefined} className="section hero hero-flame-variant">
         <div className="hero-flame-stage">
@@ -93,7 +321,8 @@ function Hero({ b, ctx, first }: { b: Raw; ctx: BlockContext; first: boolean }) 
             video={{ webm: '/brand/hero-flame.webm', mp4: '/brand/hero-flame.mp4' }}
             poster={{ dark: '/brand/hero-flame-poster-dark.webp', light: '/brand/hero-flame-poster-light.webp' }}
           />
-          <div className="container hero-flame-content">
+          {burnWords.length > 0 && <FlameWords words={burnWords} fonts={paperFonts} />}
+          <div className={`container hero-flame-content${side ? ' has-side' : ''}`}>
             <div className="hero-copy">
               <Eyebrow text={b.eyebrow} />
               <Tag className="display h1">
@@ -101,10 +330,12 @@ function Hero({ b, ctx, first }: { b: Raw; ctx: BlockContext; first: boolean }) 
               </Tag>
               {b.subheading && <p className="lead hero-sub">{b.subheading}</p>}
               <Buttons links={b.buttons} ctx={ctx} />
+              {b.proofLine && <p className="hero-proof">{b.proofLine}</p>}
             </div>
+            {side}
           </div>
         </div>
-        {tickerEl && <div className="container hero-flame-ticker">{tickerEl}</div>}
+        {tickerEl && <div className="hero-flame-ticker">{tickerEl}</div>}
       </section>
     )
   }
@@ -180,7 +411,9 @@ function Services({ b, ctx }: { b: Raw; ctx: BlockContext }) {
                 ))}
               </ul>
             )}
-            {it.link?.label && <CmsButton link={{ ...it.link, appearance: 'link' }} locale={ctx.locale} contacts={ctx.site.contacts} />}
+            {it.link?.label && (
+              <CmsButton link={withContactTarget({ ...it.link, appearance: 'link' }, ctx)} locale={ctx.locale} contacts={ctx.site.contacts} />
+            )}
           </article>
         ))}
       </div>
@@ -201,15 +434,12 @@ function PackagePreview({ b, ctx }: { b: Raw; ctx: BlockContext }) {
   )
   const groups = cats.map((c) => ({ c, list: packagesIn(ctx.catalog, c) })).filter((g) => g.list.length)
   if (!groups.length) return null
-  return (
-    <Section settings={b.settings}>
-      <Head b={b} />
-      <div className="pkg-groups">
-        {groups.map(({ c, list }) => (
+  const t = ctx.site.strings.trust
+  const offerOn = ctx.site.offer.enabled
+  const panels = groups.map(({ c, list }) => (
           <div key={c} data-reveal>
             <div className="pkg-group-title">
               <h3>{ctx.site.strings.services[c]}</h3>
-              {c !== 'website' && <span className="muted small">{durationLabel(s, duration)}</span>}
             </div>
             <div className="pkg-grid">
               {list.map((p) => {
@@ -242,11 +472,9 @@ function PackagePreview({ b, ctx }: { b: Raw; ctx: BlockContext }) {
                         </>
                       )}
                     </div>
-                    {line && line.months !== duration && (
-                      <p className="price-meta">
-                        {s.availableFor.replace('{list}', availableDurations(p).map((x) => durationLabel(s, x)).join(', '))}
-                      </p>
-                    )}
+                    {/* Every recurring card states the term its price is based on; all terms are in the pricing tool. */}
+                    {line && <p className="price-meta">{fill(t.term, { term: durationLabel(s, line.months) })}</p>}
+                    {offerOn && isRecurring(p) && <span className="pkg-offer">★ {t.offerBadge}</span>}
                     <span className="btn-link pkg-more">
                       {s.seeDetails} <span aria-hidden="true">→</span>
                     </span>
@@ -255,11 +483,21 @@ function PackagePreview({ b, ctx }: { b: Raw; ctx: BlockContext }) {
               })}
             </div>
           </div>
-        ))}
-      </div>
+        ))
+  return (
+    <Section settings={b.settings}>
+      <Head b={b} />
+      {b.showGuideLink !== false && (
+        <p className="pkg-finder-link">
+          <a className="btn-link" href="#guide">
+            {t.finderLink} <span aria-hidden="true">→</span>
+          </a>
+        </p>
+      )}
+      <PackageTabs labels={groups.map(({ c }) => s[`cat_${c}`])} ariaLabel={t.packageGroups} panels={panels} />
       {b.link?.label && (
         <div className="btn-row">
-          <CmsButton link={b.link} locale={ctx.locale} contacts={ctx.site.contacts} />
+          <CmsButton link={withContactTarget(b.link, ctx)} locale={ctx.locale} contacts={ctx.site.contacts} />
         </div>
       )}
     </Section>
@@ -320,7 +558,7 @@ function Process({ b }: { b: Raw }) {
 }
 
 function Faq({ b }: { b: Raw }) {
-  const items = (b.items ?? []) as { question: string; answer: string }[]
+  const items = (b.items ?? []) as { question: string; answer: string; openByDefault?: boolean }[]
   const ld =
     b.structuredData !== false && items.length
       ? {
@@ -334,7 +572,7 @@ function Faq({ b }: { b: Raw }) {
       <Head b={b} />
       <div className="faq-list">
         {items.map((i, k) => (
-          <details className="faq-item" key={k}>
+          <details className="faq-item" key={k} open={Boolean(i.openByDefault)}>
             <summary>
               <span>{i.question}</span>
               <span className="faq-icon" aria-hidden="true">
@@ -396,7 +634,12 @@ function Contact({ b, ctx }: { b: Raw; ctx: BlockContext }) {
           )}
         </div>
         {b.showForm !== false && (
-          <ContactForm locale={ctx.locale} s={{ ...st.form, services: st.services, pricing: st.pricing }} contacts={c} defaultService={b.defaultService} />
+          <ContactForm
+            locale={ctx.locale}
+            s={{ ...st.form, services: st.services, pricing: st.pricing, replyTime: st.trust.replyTime }}
+            contacts={c}
+            defaultService={b.defaultService}
+          />
         )}
       </div>
     </Section>
@@ -507,7 +750,16 @@ function GuideSection({ b, ctx }: { b: Raw; ctx: BlockContext }) {
   return (
     <Section settings={b.settings}>
       <Head b={b} />
-      <Guide config={ctx.guide} catalog={ctx.catalog} locale={ctx.locale} s={ctx.site.strings.guide} p={ctx.site.strings.pricing} contactHref={ctx.contactHref} />
+      <Guide
+        config={ctx.guide}
+        catalog={ctx.catalog}
+        locale={ctx.locale}
+        s={ctx.site.strings.guide}
+        p={ctx.site.strings.pricing}
+        contactHref={ctx.contactHref}
+        messageTemplate={ctx.site.strings.trust.finderMessage}
+        serviceNames={ctx.site.strings.services}
+      />
     </Section>
   )
 }
@@ -529,6 +781,14 @@ export function RenderBlocks({ blocks, ctx }: { blocks: Raw[]; ctx: BlockContext
             return <MediaSection key={key} b={b} />
           case 'services':
             return <Services key={key} b={b} ctx={ctx} />
+          case 'team':
+            return <Team key={key} b={b} ctx={ctx} />
+          case 'samples':
+            return <Samples key={key} b={b} ctx={ctx} />
+          case 'growth':
+            return <Growth key={key} b={b} ctx={ctx} />
+          case 'offer':
+            return <OfferSection key={key} b={b} ctx={ctx} />
           case 'packagePreview':
             return <PackagePreview key={key} b={b} ctx={ctx} />
           case 'pricing':

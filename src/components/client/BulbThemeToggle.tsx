@@ -22,7 +22,7 @@ export const BULB_TUNING = {
   DRAG_SLOP: 4,
   /** Auto-pull on click/keyboard. */
   AUTO_PULL: 35,
-  AUTO_PULL_MS: 180,
+  AUTO_PULL_MS: 130,
   /** Bulb dip as a fraction of the pull, and horizontal tilt per px of sideways drag. */
   DIP_RATIO: 0.12,
   TILT_PER_PX: 0.18,
@@ -35,8 +35,13 @@ export const BULB_TUNING = {
   SWING_STIFFNESS: 60,
   SWING_DAMPING: 3.2,
   /** Page reveal durations (ms) for the View Transitions circle. */
-  REVEAL_ON_MS: 600,
-  REVEAL_OFF_MS: 500,
+  REVEAL_ON_MS: 460,
+  REVEAL_OFF_MS: 400,
+  /** Quick start, soft settle. */
+  REVEAL_EASING: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  /** Soft edge of the reveal circle, as a share of its radius (px cap). */
+  REVEAL_FEATHER: 0.22,
+  REVEAL_FEATHER_MAX: 240,
   /** Fallback crossfade when View Transitions are unavailable. */
   FADE_MS: 300,
   /** How long the turning-on / turning-off light effects stay applied (ms). */
@@ -143,28 +148,46 @@ function applyTheme(next: Theme, origin: { x: number; y: number }, animate: bool
     return
   }
   const turningOn = next === 'light'
+  const r = Math.hypot(Math.max(origin.x, innerWidth - origin.x), Math.max(origin.y, innerHeight - origin.y))
+  // Soft-edged circle needs an animatable custom property (@property); otherwise a crisp clip-path.
+  const soft = typeof CSS !== 'undefined' && 'registerProperty' in CSS
+  const feather = Math.round(Math.min(T.REVEAL_FEATHER_MAX, r * T.REVEAL_FEATHER))
   root.dataset.vt = turningOn ? 'on' : 'off'
+  if (soft) {
+    root.dataset.vtSoft = ''
+    root.style.setProperty('--vt-x', `${origin.x}px`)
+    root.style.setProperty('--vt-y', `${origin.y}px`)
+    root.style.setProperty('--vt-feather', `${feather}px`)
+  }
   const vt = doc.startViewTransition(commit)
   vt.ready
     .then(() => {
-      const r = Math.hypot(Math.max(origin.x, innerWidth - origin.x), Math.max(origin.y, innerHeight - origin.y))
+      const options = {
+        duration: turningOn ? T.REVEAL_ON_MS : T.REVEAL_OFF_MS,
+        easing: T.REVEAL_EASING,
+        fill: 'both' as const,
+        pseudoElement: turningOn ? '::view-transition-new(root)' : '::view-transition-old(root)',
+      }
+      if (soft) {
+        const closed = '0px'
+        const open = `${r + feather}px`
+        root.animate({ '--vt-r': turningOn ? [closed, open] : [open, closed] }, options)
+        return
+      }
       const small = `circle(0px at ${origin.x}px ${origin.y}px)`
       const big = `circle(${r}px at ${origin.x}px ${origin.y}px)`
-      root.animate(
-        { clipPath: turningOn ? [small, big] : [big, small] },
-        {
-          duration: turningOn ? T.REVEAL_ON_MS : T.REVEAL_OFF_MS,
-          easing: 'ease-in-out',
-          pseudoElement: turningOn ? '::view-transition-new(root)' : '::view-transition-old(root)',
-        },
-      )
+      root.animate({ clipPath: turningOn ? [small, big] : [big, small] }, options)
     })
     .catch(() => undefined)
-  vt.finished.finally(() => delete root.dataset.vt)
+  vt.finished.finally(() => {
+    delete root.dataset.vt
+    delete root.dataset.vtSoft
+    for (const p of ['--vt-x', '--vt-y', '--vt-feather']) root.style.removeProperty(p)
+  })
 }
 
 /* ───────────────────────── Component ───────────────────────── */
-export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark: string; theme: string; hint: string } }) {
+export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark: string; theme: string; hint: string; tooltip: string } }) {
   // null on the server and during hydration → neutral markup, no mismatch.
   const theme = useSyncExternalStore(subscribeTheme, readTheme, () => null)
 
@@ -240,12 +263,21 @@ export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark:
     el.classList.add('is-click')
   }
 
+  /** Switch the page theme from the bulb (light effects + reveal). */
+  const switchTheme = useCallback(() => {
+    const next: Theme = readTheme() === 'dark' ? 'light' : 'dark'
+    lightFx(next)
+    applyTheme(next, bulbCentre(), true)
+  }, [])
+
   /** Let go of the cord: snap back with a bouncy spring; toggle if pulled far enough. */
   const release = useCallback(
-    (fromKeyboardOrClick = false) => {
+    (fromKeyboardOrClick = false, alreadySwitched = false) => {
       const s = state.current
       const shouldToggle = s.pull >= T.THRESHOLD
       stopAll()
+      // The cord can be pulled again straight away, even while it is still bouncing.
+      s.busy = false
       cancels.current.push(
         spring({
           from: s.pull,
@@ -255,9 +287,6 @@ export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark:
           onUpdate: (v) => {
             s.pull = v
             paint()
-          },
-          onDone: () => {
-            s.busy = false
           },
         }),
       )
@@ -289,14 +318,12 @@ export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark:
           },
         }),
       )
-      const next: Theme = readTheme() === 'dark' ? 'light' : 'dark'
-      lightFx(next)
-      applyTheme(next, bulbCentre(), true)
+      if (!alreadySwitched) switchTheme()
     },
-    [paint],
+    [paint, switchTheme],
   )
 
-  /** Click / Enter / Space: a short automatic pull, then release. */
+  /** Click / Enter / Space: switch at once; the short automatic pull plays alongside the reveal. */
   const autoToggle = useCallback(() => {
     const s = state.current
     if (s.busy) return
@@ -307,13 +334,14 @@ export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark:
     }
     s.busy = true
     stopAll()
+    switchTheme()
     cancels.current.push(
       tween(s.pull, T.AUTO_PULL, T.AUTO_PULL_MS, (v) => {
         s.pull = v
         paint()
-      }, () => release(true)),
+      }, () => release(true, true)),
     )
-  }, [paint, release])
+  }, [paint, release, switchTheme])
 
   /* Pointer: drag the cord (mouse, touch, pen). A press without travel is a click. */
   const onPointerDown = (e: ReactPointerEvent<HTMLButtonElement>) => {
@@ -362,7 +390,6 @@ export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark:
       type="button"
       className="bulb-toggle"
       aria-label={label}
-      title={label}
       aria-pressed={theme === null ? undefined : theme === 'light'}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -424,6 +451,10 @@ export function BulbThemeToggle({ labels }: { labels: { toLight: string; toDark:
             </span>
           </span>
         </span>
+      </span>
+      {/* Hover / keyboard-focus tooltip saying what the bulb does (the button's name is read out instead). */}
+      <span className={`bulb-tip${hint ? ' is-suppressed' : ''}`} aria-hidden="true">
+        {labels.tooltip}
       </span>
       <span className={`bulb-hint${hint ? ' is-visible' : ''}`} aria-hidden="true">
         {labels.hint}

@@ -49,6 +49,26 @@ export const HeroBlock: Block = {
     { name: 'subheading', type: 'textarea', localized: true },
     buttons,
     {
+      name: 'proofLine',
+      type: 'text',
+      localized: true,
+      admin: { description: 'One short line under the buttons, e.g. “Founders with 6+ years in SEO and social media”.' },
+    },
+    {
+      name: 'sideCard',
+      type: 'select',
+      defaultValue: 'offer',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'Founding-client offer (from Growth & offer)', value: 'offer' },
+        { label: 'Sample monthly report preview', value: 'sample' },
+      ],
+      admin: {
+        condition: (_, s) => s?.variant === 'flame',
+        description: 'Card on the right side of the hero on large screens. The offer card hides itself when the offer is switched off.',
+      },
+    },
+    {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
@@ -60,6 +80,17 @@ export const HeroBlock: Block = {
       label: 'Moving ticker words',
       admin: { description: 'Optional words that scroll under the hero (e.g. service names).' },
       fields: [{ name: 'text', type: 'text', localized: true, required: true }],
+    },
+    {
+      name: 'burnWords',
+      type: 'array',
+      label: 'Words on falling papers',
+      admin: {
+        condition: (_, s) => s?.variant === 'flame',
+        description:
+          'Short phrases (one to three words) handwritten on scraps of paper that tumble down the hero and burn in the fire — the things clients leave behind with BOTZ. Leave empty to turn the effect off.',
+      },
+      fields: [{ name: 'text', type: 'text', localized: true, required: true, maxLength: 28 }],
     },
     blockSettings,
   ],
@@ -171,6 +202,12 @@ export const PackagePreviewBlock: Block = {
       admin: { description: 'Which package groups to preview. Empty = all.' },
     },
     { name: 'duration', type: 'select', defaultValue: '12', options: durationOptions, admin: { description: 'Duration used for the “from” price.' } },
+    {
+      name: 'showGuideLink',
+      type: 'checkbox',
+      defaultValue: true,
+      label: 'Show a “Not sure where to start?” link to the package finder (#guide) at the top',
+    },
     { name: 'link', type: 'group', fields: linkFields({ required: false }) },
     blockSettings,
   ],
@@ -259,6 +296,7 @@ export const FaqBlock: Block = {
       fields: [
         { name: 'question', type: 'text', localized: true, required: true },
         { name: 'answer', type: 'textarea', localized: true, required: true },
+        { name: 'openByDefault', type: 'checkbox', defaultValue: false, label: 'Open by default' },
       ],
     },
     { name: 'structuredData', type: 'checkbox', defaultValue: true, label: 'Add FAQ structured data for search engines' },
@@ -335,12 +373,138 @@ export const CollectionListBlock: Block = {
   ],
 }
 
+export const TeamBlock: Block = {
+  slug: 'team',
+  labels: { singular: 'Founders (who’s behind BOTZ)', plural: 'Founders sections' },
+  interfaceName: 'TeamBlock',
+  fields: [
+    eyebrow,
+    heading(),
+    intro,
+    {
+      name: 'founders',
+      type: 'array',
+      minRows: 1,
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            { name: 'name', type: 'text', localized: true, required: true, admin: { width: '40%' } },
+            { name: 'role', type: 'text', localized: true, admin: { width: '40%', description: 'e.g. Social media marketing' } },
+            { name: 'years', type: 'text', admin: { width: '20%', description: 'Years of experience, e.g. 6' } },
+          ],
+        },
+        { name: 'photo', type: 'upload', relationTo: 'media', admin: { description: 'Square portrait works best. Empty shows a placeholder.' } },
+        { name: 'bio', type: 'textarea', localized: true },
+        {
+          name: 'certifications',
+          type: 'array',
+          labels: { singular: 'Certification', plural: 'Certifications' },
+          fields: [{ name: 'text', type: 'text', localized: true, required: true }],
+        },
+      ],
+    },
+    { name: 'pastWorkHeading', type: 'text', localized: true, admin: { description: 'Heading for the optional past-work row.' } },
+    {
+      name: 'pastWork',
+      type: 'array',
+      labels: { singular: 'Past project', plural: 'Past work' },
+      admin: {
+        description:
+          'Work done as freelancers or employees. Only items marked “Permission to show” appear; the row is hidden when none do.',
+      },
+      fields: [
+        { name: 'title', type: 'text', localized: true, required: true },
+        { name: 'text', type: 'textarea', localized: true },
+        { name: 'url', type: 'text', admin: { description: 'Optional link (https://…)' } },
+        { name: 'permission', type: 'checkbox', defaultValue: false, label: 'Permission to show (from the client or employer)' },
+      ],
+    },
+    blockSettings,
+  ],
+}
+
+export const SamplesBlock: Block = {
+  slug: 'samples',
+  labels: { singular: 'Sample deliverables', plural: 'Sample deliverables' },
+  interfaceName: 'SamplesBlock',
+  fields: [
+    eyebrow,
+    heading(),
+    intro,
+    {
+      name: 'items',
+      type: 'array',
+      minRows: 1,
+      maxRows: 6,
+      fields: [
+        { name: 'title', type: 'text', localized: true, required: true },
+        { name: 'text', type: 'textarea', localized: true },
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'file',
+              type: 'upload',
+              relationTo: 'media',
+              admin: { width: '50%', description: 'Upload the PDF here (preferred).' },
+            },
+            {
+              name: 'filePath',
+              type: 'text',
+              admin: { width: '50%', description: 'Or a file in /public, e.g. /samples/sample-seo-audit.pdf' },
+            },
+          ],
+        },
+      ],
+    },
+    blockSettings,
+  ],
+}
+
+export const GrowthBlock: Block = {
+  slug: 'growth',
+  labels: { singular: 'Our own channels (live case study)', plural: 'Our own channels' },
+  interfaceName: 'GrowthBlock',
+  admin: {},
+  fields: [
+    eyebrow,
+    heading(),
+    intro,
+    {
+      name: 'note',
+      type: 'ui',
+      admin: { components: { Field: '@/admin/components/Notes#GrowthNote' } },
+    },
+    blockSettings,
+  ],
+}
+
+export const OfferBlock: Block = {
+  slug: 'offer',
+  labels: { singular: 'Founding-client offer banner', plural: 'Offer banners' },
+  interfaceName: 'OfferBlock',
+  fields: [
+    {
+      name: 'note',
+      type: 'ui',
+      admin: { components: { Field: '@/admin/components/Notes#OfferNote' } },
+    },
+    { name: 'link', type: 'group', fields: linkFields({ required: false }) },
+    blockSettings,
+  ],
+}
+
 export const allBlocks: Block[] = [
   HeroBlock,
   SplitTextBlock,
   RichTextBlock,
   MediaBlock,
   ServicesBlock,
+  TeamBlock,
+  SamplesBlock,
+  GrowthBlock,
+  OfferBlock,
   PackagePreviewBlock,
   PricingBlock,
   ComparisonBlock,
