@@ -2737,7 +2737,7 @@ export interface SiteSetting {
   };
   forms?: {
     /**
-     * Comma-separated addresses that receive new-inquiry emails. Empty = agency email.
+     * Comma-separated addresses that receive new-inquiry emails. Empty = INQUIRY_NOTIFY_TO, or dadaryane@gmail.com.
      */
     notifyEmails?: string | null;
     /**

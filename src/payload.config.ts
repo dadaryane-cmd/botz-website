@@ -134,7 +134,8 @@ export default buildConfig({
   }),
   email: process.env.SMTP_HOST
     ? nodemailerAdapter({
-        defaultFromAddress: process.env.SMTP_FROM_ADDRESS || 'no-reply@localhost',
+        // Gmail and most providers only send from the signed-in account, so default to it.
+        defaultFromAddress: process.env.SMTP_FROM_ADDRESS || process.env.SMTP_USER || 'no-reply@localhost',
         defaultFromName: process.env.SMTP_FROM_NAME || 'BOTZ Website',
         transportOptions: {
           host: process.env.SMTP_HOST,

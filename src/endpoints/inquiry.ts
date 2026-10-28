@@ -23,7 +23,18 @@ export async function readJson(req: PayloadRequest): Promise<unknown> {
 
 export const smtpConfigured = () => Boolean(process.env.SMTP_HOST)
 
-function emailBody(lead: InquiryInput, snap: PriceSnapshot | null, assigned: string, adminUrl: string) {
+/** Where new-inquiry emails go when Site settings → Forms → Notify emails is empty. */
+export const DEFAULT_NOTIFY_EMAIL = 'dadaryane@gmail.com'
+
+export function notifyRecipients(setting?: string | null): string[] {
+  const list = (value?: string | null) => (value ?? '').split(',').map((s) => s.trim()).filter(Boolean)
+  const fromSettings = list(setting)
+  if (fromSettings.length) return fromSettings
+  const fromEnv = list(process.env.INQUIRY_NOTIFY_TO)
+  return fromEnv.length ? fromEnv : [DEFAULT_NOTIFY_EMAIL]
+}
+
+function emailBody(lead: InquiryInput, snap: PriceSnapshot | null, assigned: string, adminUrl: string | null) {
   const lines = [
     `New website inquiry (${lead.locale.toUpperCase()})`,
     '',
@@ -43,7 +54,7 @@ function emailBody(lead: InquiryInput, snap: PriceSnapshot | null, assigned: str
     for (const a of snap.addons) lines.push(`Add-on: ${a.name} ×${a.qty} = AMD ${a.total.toLocaleString('en-US')}`)
     lines.push(`Combined estimate: AMD ${snap.combinedTotal.toLocaleString('en-US')}${snap.isMinimum ? ' (minimum)' : ''}`)
   }
-  lines.push('', `Open in admin: ${adminUrl}`)
+  lines.push('', adminUrl ? `Open in admin: ${adminUrl}` : 'Note: this inquiry could not be saved to the admin panel. Reply directly from this email.')
   return lines.join('\n')
 }
 
@@ -120,6 +131,24 @@ export const inquiryEndpoint: Endpoint = {
       assignedTo = routed.length === 1 ? routed[0].key : null
     }
 
+    type Notification = { status: 'sent' | 'failed' | 'not_configured'; error?: string }
+    const notify = async (leadId: number | string | null): Promise<Notification> => {
+      if (!smtpConfigured()) return { status: 'not_configured' }
+      try {
+        const base = process.env.NEXT_PUBLIC_SERVER_URL ?? ''
+        await payload.sendEmail({
+          to: notifyRecipients(settings?.forms?.notifyEmails as string | undefined),
+          subject: `New inquiry: ${input.name} · ${snapshot?.packageName ?? input.service}`,
+          text: emailBody(input, snapshot, nameFor(assignedTo) ?? 'unassigned', leadId == null ? null : `${base}/admin/collections/leads/${leadId}`),
+          replyTo: input.email || undefined,
+        })
+        return { status: 'sent' }
+      } catch (err) {
+        payload.logger.error({ err }, 'Inquiry notification email failed')
+        return { status: 'failed', error: err instanceof Error ? err.message.slice(0, 200) : 'unknown error' }
+      }
+    }
+
     let lead
     try {
       lead = await payload.create({
@@ -154,28 +183,14 @@ export const inquiryEndpoint: Endpoint = {
       })
       if (again.docs[0]) return json({ ok: true, contactName: nameFor(again.docs[0].assignedTo) ?? null, duplicate: true })
       payload.logger.error({ err }, 'Failed to save inquiry')
+      // The message must still reach the team: if the email goes out, the visitor's inquiry is delivered.
+      const emailed = await notify(null)
+      if (emailed.status === 'sent') return json({ ok: true, contactName: nameFor(assignedTo) ?? null })
       return json({ ok: false, code: 'save_failed' }, 500)
     }
 
     // The inquiry is saved. Notification problems are recorded, never reported as delivered.
-    let notification: { status: 'sent' | 'failed' | 'not_configured'; error?: string } = { status: 'not_configured' }
-    if (smtpConfigured()) {
-      const to =
-        (settings?.forms?.notifyEmails as string | undefined)?.split(',').map((s) => s.trim()).filter(Boolean) ?? []
-      try {
-        const base = process.env.NEXT_PUBLIC_SERVER_URL ?? ''
-        await payload.sendEmail({
-          to: to.length ? to : contacts.email,
-          subject: `New inquiry: ${input.name} · ${snapshot?.packageName ?? input.service}`,
-          text: emailBody(input, snapshot, nameFor(assignedTo) ?? 'unassigned', `${base}/admin/collections/leads/${lead.id}`),
-          replyTo: input.email || undefined,
-        })
-        notification = { status: 'sent' }
-      } catch (err) {
-        notification = { status: 'failed', error: err instanceof Error ? err.message.slice(0, 200) : 'unknown error' }
-        payload.logger.error({ err }, 'Inquiry saved but notification email failed')
-      }
-    }
+    const notification = await notify(lead.id)
     try {
       await payload.update({
         collection: 'leads',

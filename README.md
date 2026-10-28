@@ -95,6 +95,10 @@ The app is a standard Node.js server (`npm run build && npm start`). It needs:
    a hosted database and a bucket, because their filesystem is temporary.
 3. Environment variables from `.env.example` (at least `PAYLOAD_SECRET`,
    `NEXT_PUBLIC_SERVER_URL`, `DATABASE_URL`).
+4. **Contact-form emails** — set the `SMTP_*` variables (Gmail: `smtp.gmail.com`, port 465,
+   `SMTP_SECURE=true`, your Gmail address and an App Password). New inquiries are emailed to
+   `dadaryane@gmail.com` unless `INQUIRY_NOTIFY_TO` or *Site settings → Forms → Notify emails*
+   says otherwise. Without SMTP, inquiries are only stored in *Leads* in the admin.
 
 ### Recommended: a small VPS (simplest, cheapest)
 

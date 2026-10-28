@@ -146,7 +146,7 @@ export const SiteSettings: GlobalConfig = {
             {
               name: 'notifyEmails',
               type: 'text',
-              admin: { description: 'Comma-separated addresses that receive new-inquiry emails. Empty = agency email.' },
+              admin: { description: 'Comma-separated addresses that receive new-inquiry emails. Empty = INQUIRY_NOTIFY_TO, or dadaryane@gmail.com.' },
             },
             {
               type: 'row',

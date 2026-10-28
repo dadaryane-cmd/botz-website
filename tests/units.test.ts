@@ -14,6 +14,7 @@ import { contrast } from '@/lib/color'
 import { themeDefaults } from '@/globals/Theme'
 import { mergeStrings } from '@/lib/site'
 import { inquirySchema } from '@/lib/inquiry'
+import { notifyRecipients } from '@/endpoints/inquiry'
 
 const catalog = toPublicCatalog(
   pick({
@@ -148,6 +149,16 @@ describe('security helpers', () => {
   it('CSV export neutralises spreadsheet formulas', () => {
     expect(csvCell('=HYPERLINK("x")')).toBe(`"'=HYPERLINK(""x"")"`)
     expect(csvCell('Hello')).toBe('"Hello"')
+  })
+  it('inquiry emails go to the admin setting, then INQUIRY_NOTIFY_TO, then the default address', () => {
+    const prev = process.env.INQUIRY_NOTIFY_TO
+    delete process.env.INQUIRY_NOTIFY_TO
+    expect(notifyRecipients('')).toEqual(['dadaryane@gmail.com'])
+    process.env.INQUIRY_NOTIFY_TO = 'a@example.com, b@example.com'
+    expect(notifyRecipients(null)).toEqual(['a@example.com', 'b@example.com'])
+    expect(notifyRecipients(' sales@example.com ')).toEqual(['sales@example.com'])
+    if (prev === undefined) delete process.env.INQUIRY_NOTIFY_TO
+    else process.env.INQUIRY_NOTIFY_TO = prev
   })
   it('inquiry validation needs an email or a phone', () => {
     const base = { submissionId: crypto.randomUUID(), formToken: 'x'.repeat(20), name: 'Ann', service: 'seo', message: 'Hello there', preferredContact: 'edgar', locale: 'en' }
