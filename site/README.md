@@ -39,6 +39,7 @@ site/
 │   │       ├── layout/         header, footer, mobile bar
 │   │       ├── sections/       one render function per section type + index.js registry
 │   │       ├── flame/          animated WebGL fire behind the home hero
+│   │       ├── bulb/           hanging light bulb with a pull cord (light / dark switch)
 │   │       └── inquiry-form.js
 │   ├── images/
 │   ├── media/                  fire video (fallback when WebGL is unavailable)

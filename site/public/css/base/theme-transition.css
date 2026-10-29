@@ -1,0 +1,76 @@
+/*
+ * Theme change (js/lib/theme.js): a circle of the new theme spreading from the bulb
+ * (View Transitions API), or a short crossfade where that is not supported.
+ */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Turning off: the old (light) page shrinks into the bulb, so it must be on top. */
+html[data-vt='off']::view-transition-old(root) {
+  z-index: 2;
+}
+
+html[data-vt='off']::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Soft-edged reveal: a feathered radial mask whose radius (--vt-r) is animated from JavaScript. */
+@property --vt-r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+html[data-vt='on'][data-vt-soft]::view-transition-new(root),
+html[data-vt='off'][data-vt-soft]::view-transition-old(root) {
+  --vt-mask: radial-gradient(
+    circle at var(--vt-x) var(--vt-y),
+    #000 calc(var(--vt-r) - var(--vt-feather)),
+    rgb(0 0 0 / 0.55) calc(var(--vt-r) - var(--vt-feather) * 0.45),
+    transparent var(--vt-r)
+  );
+  mask-image: var(--vt-mask);
+}
+
+/* The page being covered stays fully visible until the animation takes over. */
+html[data-vt='off'][data-vt-soft]::view-transition-old(root) {
+  --vt-r: 400vmax;
+}
+
+/* The bulb gets its own live layer, so it keeps swinging and glowing during the reveal. */
+html[data-vt] .bulb-toggle {
+  view-transition-name: theme-bulb;
+}
+
+::view-transition-group(theme-bulb),
+::view-transition-new(theme-bulb) {
+  animation: none;
+}
+
+::view-transition-old(theme-bulb) {
+  display: none;
+}
+
+/* Snapshots must show final colours, not mid-transition ones (the live bulb keeps its own). */
+html[data-vt],
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *) {
+  transition: none !important;
+}
+
+/* No View Transitions: crossfade every colour together. */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease,
+    fill 300ms ease,
+    stroke 300ms ease,
+    box-shadow 300ms ease !important;
+}

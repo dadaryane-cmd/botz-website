@@ -1,22 +1,86 @@
+/**
+ * Light/dark theme on <html data-theme>. theme-init.js sets it before first paint (the saved
+ * choice, else the system setting); a choice made on the site is saved and wins from then on.
+ */
 import { load, save } from './storage.js'
 
-/**
- * Light/dark theme. An explicit choice is stored and set as <html data-theme>;
- * without one the system setting applies. theme-init.js applies the saved choice before first paint.
- */
 const root = document.documentElement
 const systemDark = window.matchMedia('(prefers-color-scheme: dark)')
-const listeners = new Set()
 
-export const getTheme = () => root.dataset.theme ?? (systemDark.matches ? 'dark' : 'light')
-
-export function setTheme(theme) {
-  root.dataset.theme = theme
-  save('theme', theme)
-  listeners.forEach((listener) => listener(theme))
+const REVEAL = {
+  onMs: 460,
+  offMs: 400,
+  easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  /** Soft edge of the reveal circle, as a share of its radius, capped in px. */
+  feather: 0.22,
+  featherMax: 240,
+  /** Crossfade used where View Transitions are not supported. */
+  fadeMs: 300,
 }
 
-export function onThemeChange(listener) {
-  listeners.add(listener)
-  systemDark.addEventListener('change', () => load('theme') ?? listener(getTheme()))
+export const getTheme = () => (root.dataset.theme === 'dark' ? 'dark' : 'light')
+
+/** Until the visitor picks a theme, follow changes of the system setting. */
+export function followSystemTheme() {
+  systemDark.addEventListener('change', (event) => {
+    if (!load('theme')) root.dataset.theme = event.matches ? 'dark' : 'light'
+  })
+}
+
+/**
+ * Switch to `theme`. With `origin` ({ x, y } in viewport px) the new theme spreads from that point
+ * as a circle (View Transitions API); otherwise, or where unsupported, colours crossfade.
+ */
+export function setTheme(theme, { origin, animate = true } = {}) {
+  const commit = () => {
+    root.dataset.theme = theme
+    save('theme', theme)
+  }
+  if (!animate) return commit()
+  if (!document.startViewTransition || !origin) return crossfade(commit)
+  revealFrom(origin, theme === 'light', commit)
+}
+
+function crossfade(commit) {
+  root.classList.add('theme-fade')
+  commit()
+  setTimeout(() => root.classList.remove('theme-fade'), REVEAL.fadeMs + 50)
+}
+
+/** Light grows out of the origin when turning on; darkness closes into it when turning off. */
+function revealFrom({ x, y }, turningOn, commit) {
+  const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+  const feather = Math.round(Math.min(REVEAL.featherMax, radius * REVEAL.feather))
+  // A soft edge needs an animatable custom property (@property); otherwise use a crisp clip-path.
+  const soft = 'registerProperty' in CSS
+
+  root.dataset.vt = turningOn ? 'on' : 'off'
+  if (soft) {
+    root.dataset.vtSoft = ''
+    root.style.setProperty('--vt-x', `${x}px`)
+    root.style.setProperty('--vt-y', `${y}px`)
+    root.style.setProperty('--vt-feather', `${feather}px`)
+  }
+
+  const transition = document.startViewTransition(commit)
+  transition.ready
+    .then(() => {
+      const options = {
+        duration: turningOn ? REVEAL.onMs : REVEAL.offMs,
+        easing: REVEAL.easing,
+        fill: 'both',
+        pseudoElement: turningOn ? '::view-transition-new(root)' : '::view-transition-old(root)',
+      }
+      const [small, large] = soft
+        ? ['0px', `${radius + feather}px`]
+        : [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
+      const frames = turningOn ? [small, large] : [large, small]
+      root.animate(soft ? { '--vt-r': frames } : { clipPath: frames }, options)
+    })
+    .catch(() => {})
+  transition.finished.finally(() => {
+    delete root.dataset.vt
+    delete root.dataset.vtSoft
+    for (const property of ['--vt-x', '--vt-y', '--vt-feather']) root.style.removeProperty(property)
+  })
 }

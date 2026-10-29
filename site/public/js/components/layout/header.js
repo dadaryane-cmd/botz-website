@@ -3,12 +3,10 @@ import { navigation, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { getLanguage, setLanguage, t, ui } from '../../lib/i18n.js'
 import { currentFile } from '../../lib/page.js'
-import { getTheme, setTheme } from '../../lib/theme.js'
+import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 
-/** Logo, navigation, language switch, theme toggle and the mobile menu button. */
+/** Logo, navigation, language switch, the bulb theme toggle and the mobile menu button. */
 export function renderHeader(header) {
-  const isDark = getTheme() === 'dark'
-
   const nav = h(
     'nav',
     { class: 'nav', id: 'site-nav', 'aria-label': ui('common', 'menu') },
@@ -51,18 +49,6 @@ export function renderHeader(header) {
     ),
   )
 
-  const themeToggle = h(
-    'button',
-    {
-      type: 'button',
-      class: 'icon-button',
-      title: ui('trust', 'themeTooltip'),
-      'aria-label': ui('common', isDark ? 'switchToLight' : 'switchToDark'),
-      onclick: () => setTheme(isDark ? 'light' : 'dark'),
-    },
-    isDark ? '☀' : '☾',
-  )
-
   const menuToggle = h(
     'button',
     {
@@ -84,18 +70,28 @@ export function renderHeader(header) {
     h(
       'div',
       { class: 'container container-wide header-bar' },
+      // Both logos are rendered; CSS shows the one for the current theme, so a theme change
+      // never re-renders the header (and never interrupts the bulb's animation).
       h(
         'a',
         { class: 'logo', href: 'index.html' },
         h('img', {
-          src: `images/botz-logo-${isDark ? 'dark' : 'light'}.webp`,
+          class: 'logo-light',
+          src: 'images/botz-logo-light.webp',
+          alt: t(site.name),
+          width: 112,
+          height: 44,
+        }),
+        h('img', {
+          class: 'logo-dark',
+          src: 'images/botz-logo-dark.webp',
           alt: t(site.name),
           width: 112,
           height: 44,
         }),
       ),
       nav,
-      h('div', { class: 'header-tools' }, languageSwitch, themeToggle, menuToggle),
+      h('div', { class: 'header-tools' }, languageSwitch, renderBulbToggle(), menuToggle),
     ),
   )
 }

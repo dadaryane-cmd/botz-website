@@ -942,6 +942,9 @@ content:
           - name: switchToDark
             label: Switch to dark
             component: line
+          - name: pullHint
+            label: Pull hint
+            component: line
       - name: services
         label: Services
         type: object

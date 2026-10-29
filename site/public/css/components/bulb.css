@@ -1,0 +1,531 @@
+/* Hanging light bulb theme toggle (js/components/bulb/bulb-toggle.js). */
+
+:root {
+  --bulb-width: 40px;
+  --bulb-cord-length: 16px;
+  --bulb-bead-size: 10px;
+  /* Header row 72px, tools 44px and centred: 14px up to the header's top edge. */
+  --bulb-drop: -14px;
+  --bulb-wire: color-mix(in srgb, var(--text) 55%, transparent);
+  --bulb-cord: color-mix(in srgb, var(--text) 70%, transparent);
+  --bulb-bead-color: var(--accent);
+  --bulb-cap-light: #d9d4cc;
+  --bulb-cap-dark: #7b746b;
+  --bulb-glass-off: rgb(170 182 196 / 0.22);
+  --bulb-glass-stroke: rgb(170 182 196 / 0.65);
+  --bulb-glass-on-core: rgb(255 236 190 / 0.95);
+  --bulb-glass-on-edge: rgb(255 201 77 / 0.35);
+  --bulb-filament-dim: #8a4a20;
+  --bulb-filament-hot: #ff9f1c;
+  --bulb-glow: rgb(255 190 80 / 0.55);
+  --bulb-flicker-ms: 250ms;
+  --bulb-on-ms: 400ms;
+  --bulb-off-ms: 150ms;
+  --bulb-afterglow-ms: 300ms;
+}
+
+@media (max-width: 759px) {
+  :root {
+    --bulb-width: 34px;
+    --bulb-cord-length: 13px;
+    --bulb-bead-size: 9px;
+  }
+}
+
+/* ---- the button: a 44px touch target; the drawing hangs from the header's top edge ---- */
+
+.bulb-toggle {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: none;
+  color: inherit;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bulb-toggle.is-dragging {
+  cursor: grabbing;
+}
+
+.bulb-sway,
+.bulb-swing,
+.bulb-cord,
+.bulb-bead,
+.bulb-bead-lift,
+.bulb-bead-shape,
+.bulb-halo,
+.bulb-mote {
+  display: block;
+}
+
+.bulb-sway {
+  position: absolute;
+  top: var(--bulb-drop);
+  left: 50%;
+  width: var(--bulb-width);
+  margin-left: calc(var(--bulb-width) / -2);
+  transform-origin: 50% 0;
+}
+
+.bulb-swing {
+  position: relative;
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+/* ---- drawing ---- */
+
+.bulb-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--bulb-width);
+  height: calc(var(--bulb-width) * 1.5);
+  overflow: visible;
+}
+
+.bulb-wire {
+  stroke: var(--bulb-wire);
+  stroke-width: 1.5;
+}
+
+.bulb-ridges {
+  stroke: rgb(0 0 0 / 0.28);
+  stroke-width: 1;
+}
+
+.bulb-glass {
+  fill: var(--bulb-glass-off);
+  stroke: var(--bulb-glass-stroke);
+  stroke-width: 1;
+}
+
+.bulb-glass-on {
+  opacity: 0;
+  transition: opacity var(--bulb-on-ms) ease;
+}
+
+.bulb-filament-dim {
+  fill: none;
+  stroke: var(--bulb-filament-dim);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  opacity: 0.35;
+}
+
+.bulb-filament-hot {
+  opacity: 0;
+  transition: opacity var(--bulb-off-ms) ease-out;
+}
+
+.bulb-filament-core {
+  fill: none;
+  stroke: #fff4d6;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.bulb-filament-glow {
+  fill: none;
+  stroke: var(--bulb-filament-hot);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.bulb-shine {
+  fill: rgb(255 255 255 / 0.45);
+}
+
+.bulb-halo {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: calc(var(--bulb-width) * 1.075);
+  width: calc(var(--bulb-width) * 3);
+  height: calc(var(--bulb-width) * 3);
+  margin: calc(var(--bulb-width) * -1.5) 0 0 calc(var(--bulb-width) * -1.5);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bulb-glow) 0%, transparent 68%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  pointer-events: none;
+}
+
+.bulb-mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffe2a0;
+  opacity: 0;
+}
+
+.bulb-mote:nth-child(1) {
+  left: 30%;
+  top: 55%;
+}
+
+.bulb-mote:nth-child(2) {
+  left: 62%;
+  top: 62%;
+  animation-delay: -0.9s;
+}
+
+.bulb-mote:nth-child(3) {
+  left: 45%;
+  top: 70%;
+  animation-delay: -1.8s;
+}
+
+.bulb-mote:nth-child(4) {
+  left: 70%;
+  top: 45%;
+  animation-delay: -2.7s;
+}
+
+.bulb-cord {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(var(--bulb-width) * 1.375 - 1px);
+  width: 1.75px;
+  height: var(--bulb-cord-length);
+  margin-left: -0.875px;
+  border-radius: 2px;
+  background: var(--bulb-cord);
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+.bulb-bead {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(var(--bulb-width) * 1.375 + var(--bulb-cord-length) - 2px);
+  width: var(--bulb-bead-size);
+  margin-left: calc(var(--bulb-bead-size) / -2);
+  will-change: transform;
+}
+
+/* Invisible, finger-sized grab area around the small bead. */
+.bulb-bead::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36px;
+  height: 40px;
+  margin: -16px 0 0 -18px;
+  border-radius: 50%;
+}
+
+.bulb-bead-lift {
+  transition: transform 0.25s ease;
+}
+
+.bulb-bead-shape {
+  width: var(--bulb-bead-size);
+  height: var(--bulb-bead-size);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.75) 0 18%, transparent 42%),
+    radial-gradient(
+      circle at 50% 55%,
+      var(--bulb-bead-color),
+      color-mix(in srgb, var(--bulb-bead-color) 55%, #000) 100%
+    );
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+  transform-origin: 50% 0;
+}
+
+/* ---- on (light theme): warm glass, glowing filament, halo ---- */
+
+[data-theme='light'] .bulb-glass-on {
+  opacity: 1;
+}
+
+[data-theme='light'] .bulb-filament-hot {
+  opacity: 1;
+  transition-duration: var(--bulb-on-ms);
+}
+
+[data-theme='light'] .bulb-filament-dim {
+  opacity: 0;
+}
+
+[data-theme='light'] .bulb-halo {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--bulb-on-ms);
+}
+
+/* A faint shadow of the bulb on the header. */
+[data-theme='light'] .bulb-svg {
+  filter: drop-shadow(2px 5px 3px rgb(80 40 0 / 0.16));
+}
+
+/* ---- switching: flicker when warming up, afterglow when switched off ---- */
+
+.bulb-toggle.is-turning-on .bulb-filament-hot {
+  animation: bulb-flicker var(--bulb-flicker-ms) steps(1, end);
+}
+
+.bulb-toggle.is-turning-on .bulb-halo {
+  animation: bulb-halo-in var(--bulb-on-ms) ease-out;
+}
+
+.bulb-toggle.is-turning-off .bulb-filament-dim {
+  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) ease-out;
+}
+
+.bulb-toggle.is-click .bulb-bead-shape {
+  animation: bulb-squash 80ms ease-out;
+}
+
+@keyframes bulb-flicker {
+  0% {
+    opacity: 0.25;
+  }
+  18% {
+    opacity: 0.9;
+  }
+  34% {
+    opacity: 0.15;
+  }
+  52% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 0.4;
+  }
+  84% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulb-halo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bulb-afterglow {
+  0% {
+    opacity: 0.95;
+  }
+  35% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes bulb-squash {
+  50% {
+    transform: scale(1.1, 0.85);
+  }
+}
+
+/* ---- idle and hover motion ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .bulb-sway {
+    animation: bulb-sway 5s ease-in-out infinite;
+  }
+
+  [data-theme='light'] .bulb-toggle:not(.is-turning-on) .bulb-halo {
+    animation: bulb-breathe 3s ease-in-out infinite;
+  }
+
+  [data-theme='light'] .bulb-mote {
+    animation: bulb-mote 3.6s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .bulb-toggle:hover .bulb-sway {
+    animation: bulb-sway-hover 1.6s ease-in-out infinite;
+  }
+}
+
+@media (hover: hover) {
+  .bulb-toggle:hover .bulb-bead-lift {
+    transform: translateY(-3px);
+  }
+
+  .bulb-toggle.is-dragging .bulb-bead-lift {
+    transform: none;
+  }
+}
+
+@keyframes bulb-sway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+@keyframes bulb-sway-hover {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes bulb-breathe {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulb-mote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 4px);
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(4px, -10px);
+  }
+}
+
+/* ---- tooltip (hover / keyboard focus) ---- */
+
+.bulb-tip {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: calc(100% + 8px);
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.16);
+  opacity: 0;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .bulb-toggle:hover .bulb-tip {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+.bulb-toggle:focus-visible .bulb-tip {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.bulb-tip.is-suppressed {
+  display: none;
+}
+
+/* ---- first-visit "Pull the cord" hint, just below the bead ---- */
+
+.bulb-hint {
+  position: absolute;
+  z-index: 3;
+  top: 74px;
+  right: calc(50% - 10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  pointer-events: none;
+}
+
+.bulb-hint.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.bulb-hint-arrow {
+  flex: none;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bulb-hint.is-visible {
+    animation: bulb-hint-bob 1.8s ease-in-out 0.4s infinite;
+  }
+}
+
+@keyframes bulb-hint-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Phones: beside the bulb inside the header row, so it never covers the hero headline. */
+@media (max-width: 759px) {
+  .bulb-hint {
+    top: 50%;
+    right: calc(100% + 6px);
+    transform: translate(6px, -50%);
+  }
+
+  .bulb-hint.is-visible {
+    transform: translate(0, -50%);
+    animation: none;
+  }
+
+  .bulb-hint-arrow {
+    order: 1;
+    transform: rotate(45deg);
+  }
+}

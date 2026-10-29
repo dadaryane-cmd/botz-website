@@ -17,6 +17,7 @@
 
 /* Page frame */
 @import url('layout/header.css');
+@import url('components/bulb.css');
 @import url('layout/footer.css');
 @import url('layout/mobile-bar.css');
 
@@ -34,4 +35,5 @@
 @import url('components/contact.css');
 
 /* Overrides */
+@import url('base/theme-transition.css');
 @import url('base/motion.css');

@@ -24,6 +24,11 @@
       "hy": "Միացնել մուգ թեման",
       "en": "Switch to dark mode",
       "ru": "Включить тёмную тему"
+    },
+    "pullHint": {
+      "hy": "Քաշեք լարը",
+      "en": "Pull the cord",
+      "ru": "Потяните шнурок"
     }
   },
   "services": {
