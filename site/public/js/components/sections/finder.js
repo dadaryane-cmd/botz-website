@@ -17,11 +17,16 @@ export function renderFinder(config) {
   let step = INTRO
   const panel = h('div', { class: 'finder-panel' })
 
+  /** The intro, one of the questions, or the result after the last question. */
+  const screen = () => {
+    if (step === INTRO) return intro()
+    if (step < questions.length) return questionScreen(questions[step])
+    return result()
+  }
+
   const show = (next) => {
     step = next
-    const content =
-      step === INTRO ? intro() : step < questions.length ? question(questions[step]) : result()
-    panel.replaceChildren(...content.filter(Boolean))
+    panel.replaceChildren(...screen().filter(Boolean))
     panel.querySelector('input:checked, input, .btn-primary')?.focus()
   }
 
@@ -34,7 +39,7 @@ export function renderFinder(config) {
     h('p', { class: 'muted small' }, ui('guide', 'temporary')),
   ]
 
-  function question(q) {
+  function questionScreen(question) {
     const isLast = step === questions.length - 1
     return [
       h(
@@ -45,23 +50,23 @@ export function renderFinder(config) {
       h(
         'fieldset',
         { class: 'finder-question' },
-        h('legend', null, t(q.label)),
-        hasText(q.help) && h('p', { class: 'muted small' }, t(q.help)),
+        h('legend', null, t(question.label)),
+        hasText(question.help) && h('p', { class: 'muted small' }, t(question.help)),
         h(
           'div',
           { class: 'options' },
-          q.options.map((option) =>
+          question.options.map((option) =>
             h(
               'label',
               { class: 'option' },
               h('input', {
                 type: 'radio',
-                name: `finder-${q.key}`,
+                name: `finder-${question.key}`,
                 value: option.value,
-                checked: answers[q.key] === option.value,
+                checked: answers[question.key] === option.value,
                 // Re-render to reveal "Next"; no auto-advance, so arrow keys still move between options.
                 onchange: () => {
-                  answers[q.key] = option.value
+                  answers[question.key] = option.value
                   show(step)
                 },
               }),
@@ -79,7 +84,7 @@ export function renderFinder(config) {
             { type: 'button', class: 'btn btn-link', onclick: () => show(step - 1) },
             `← ${ui('guide', 'back')}`,
           ),
-        answers[q.key] &&
+        answers[question.key] &&
           h(
             'button',
             { type: 'button', class: 'btn btn-secondary', onclick: () => show(step + 1) },
@@ -94,22 +99,7 @@ export function renderFinder(config) {
     return [
       h('h3', null, ui('guide', 'resultTitle')),
       best ? recommendation(best) : h('p', null, ui('guide', 'noMatch')),
-      alternatives.length > 0 && h('p', { class: 'label' }, ui('guide', 'alternatives')),
-      alternatives.length > 0 &&
-        h(
-          'ul',
-          { class: 'alternatives' },
-          alternatives.map((c) =>
-            h(
-              'li',
-              null,
-              h('strong', null, `${categoryLabel(c.pkg.category)} ${t(c.pkg.name)}`),
-              ` — ${costLine(c)}`,
-              !c.withinBudget &&
-                h('span', { class: 'muted small' }, ` · ${ui('guide', 'overBudget')}`),
-            ),
-          ),
-        ),
+      alternatives.length > 0 && alternativeList(alternatives),
       suggestCustom && h('p', { class: 'muted' }, ui('guide', 'custom')),
       h(
         'div',
@@ -128,26 +118,27 @@ export function renderFinder(config) {
     ]
   }
 
-  function recommendation(c) {
-    const service = ui('services', c.pkg.category)
+  function recommendation(candidate) {
+    const { pkg } = candidate
+    const service = ui('services', pkg.category)
     const useInEstimate = () =>
       updateSelection({
-        packageKey: c.pkg.key,
-        months: c.months ?? getSelection().months,
-        note: ui('trust', 'finderMessage', { package: t(c.pkg.name), service }),
+        packageKey: pkg.key,
+        months: candidate.months ?? getSelection().months,
+        note: ui('trust', 'finderMessage', { package: t(pkg.name), service }),
       })
     return h(
       'div',
       { class: 'card finder-result' },
       h('p', { class: 'badge badge-accent' }, service),
-      h('p', { class: 'finder-package' }, t(c.pkg.name)),
-      h('p', null, t(c.pkg.tagline)),
-      h('p', { class: 'price-small' }, costLine(c)),
+      h('p', { class: 'finder-package' }, t(pkg.name)),
+      h('p', null, t(pkg.tagline)),
+      h('p', { class: 'price-small' }, costLine(candidate)),
       h('p', { class: 'label' }, ui('guide', 'why')),
       h(
         'ul',
         { class: 'check-list' },
-        c.reasons.map((reason) => h('li', null, t(reason))),
+        candidate.reasons.map((reason) => h('li', null, t(reason))),
       ),
       h(
         'a',
@@ -173,11 +164,35 @@ export function renderFinder(config) {
   )
 }
 
-function costLine(c) {
-  if (c.monthly === null) return `${formatAmd(c.total)} · ${ui('pricing', 'oneTime')}`
+/** Other packages worth a look, with a note when they are over the stated budget. */
+function alternativeList(alternatives) {
+  return [
+    h('p', { class: 'label' }, ui('guide', 'alternatives')),
+    h(
+      'ul',
+      { class: 'alternatives' },
+      alternatives.map((candidate) =>
+        h(
+          'li',
+          null,
+          h('strong', null, `${categoryLabel(candidate.pkg.category)} ${t(candidate.pkg.name)}`),
+          ` — ${costLine(candidate)}`,
+          !candidate.withinBudget &&
+            h('span', { class: 'muted small' }, ` · ${ui('guide', 'overBudget')}`),
+        ),
+      ),
+    ),
+  ]
+}
+
+/** "420,000 ֏ per month × 6 = 2,520,000 ֏", or the one-time price. */
+function costLine(candidate) {
+  if (candidate.monthly === null) {
+    return `${formatAmd(candidate.total)} · ${ui('pricing', 'oneTime')}`
+  }
   return ui('guide', 'trueCost', {
-    monthly: formatAmd(c.monthly),
-    n: c.months,
-    total: formatAmd(c.total),
+    monthly: formatAmd(candidate.monthly),
+    n: candidate.months,
+    total: formatAmd(candidate.total),
   })
 }

@@ -25,10 +25,10 @@ export function renderFooter(footer) {
       h(
         'div',
         { class: 'footer-columns' },
-        navigation.footerColumns.map((col) =>
+        navigation.footerColumns.map((group) =>
           column(
-            t(col.title),
-            col.links.map((link) => h('a', { href: link.href }, t(link.label))),
+            t(group.title),
+            group.links.map((link) => h('a', { href: link.href }, t(link.label))),
           ),
         ),
         column(ui('footer', 'contactTitle'), [

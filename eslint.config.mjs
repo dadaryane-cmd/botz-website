@@ -25,6 +25,20 @@ const eslintConfig = [
     },
   },
   {
+    // The static site: clean, readable plain JavaScript (see CLAUDE.md).
+    files: ['site/**/*.js'],
+    rules: {
+      'no-nested-ternary': 'error',
+      'no-sequences': 'error',
+      'no-return-assign': ['error', 'always'],
+      curly: ['error', 'multi-line', 'consistent'],
+      'id-length': ['error', { min: 2, exceptions: ['i', 'x', 'y', 't', 'h'], properties: 'never' }],
+      'prefer-const': 'error',
+      'no-var': 'error',
+      eqeqeq: ['error', 'smart'],
+    },
+  },
+  {
     ignores: ['.next/', 'src/payload-types.ts', 'src/payload-generated-schema.ts', 'src/migrations/', 'src/app/(payload)/admin/importMap.js'],
   },
 ]

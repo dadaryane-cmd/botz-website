@@ -62,11 +62,14 @@ export function renderFlameBackground() {
 /** Pre-rendered loop on a black background, so it only suits the dark theme. */
 function playVideoFallback(layer, video) {
   if (getTheme() !== 'dark' || prefersReducedMotion()) return
+  const showPoster = () => {
+    layer.dataset.mode = 'poster'
+  }
   const webm = video.canPlayType('video/webm; codecs="vp9"')
   video.src = webm ? 'media/hero-flame.webm' : 'media/hero-flame.mp4'
-  video.onerror = () => (layer.dataset.mode = 'poster')
+  video.onerror = showPoster
   layer.dataset.mode = 'video'
-  video.play().catch(() => (layer.dataset.mode = 'poster'))
+  video.play().catch(showPoster)
 }
 
 /** Compile the shaders and return `{ start }`, or null when WebGL is unavailable. */
@@ -99,16 +102,18 @@ function linkProgram(gl) {
     const shader = gl.createShader(type)
     gl.shaderSource(shader, source)
     gl.compileShader(shader)
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
       throw new Error(gl.getShaderInfoLog(shader))
+    }
     return shader
   }
   const program = gl.createProgram()
   gl.attachShader(program, compile(gl.VERTEX_SHADER, VERTEX_SHADER))
   gl.attachShader(program, compile(gl.FRAGMENT_SHADER, FRAGMENT_SHADER))
   gl.linkProgram(program)
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     throw new Error(gl.getProgramInfoLog(program))
+  }
   return program
 }
 
@@ -143,12 +148,12 @@ function animate(gl, program, canvas, layer) {
       TUNING.renderScale * Math.min(window.devicePixelRatio || 1, 2),
       TUNING.maxRenderWidth / Math.max(width, 1),
     )
-    const w = Math.max(1, Math.round(width * scale))
-    const h = Math.max(1, Math.round(height * scale))
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width = w
-      canvas.height = h
-      gl.viewport(0, 0, w, h)
+    const pixelWidth = Math.max(1, Math.round(width * scale))
+    const pixelHeight = Math.max(1, Math.round(height * scale))
+    if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+      canvas.width = pixelWidth
+      canvas.height = pixelHeight
+      gl.viewport(0, 0, pixelWidth, pixelHeight)
     }
   }
 
@@ -196,7 +201,13 @@ function animate(gl, program, canvas, layer) {
 
   function start() {
     cancelAnimationFrame(state.frame)
-    if (prefersReducedMotion()) return requestAnimationFrame(() => (resize(), stillFrame()))
+    if (prefersReducedMotion()) {
+      requestAnimationFrame(() => {
+        resize()
+        stillFrame()
+      })
+      return
+    }
     state.last = performance.now()
     state.frame = requestAnimationFrame(tick)
   }
@@ -243,7 +254,9 @@ function animate(gl, program, canvas, layer) {
       },
       { passive: true },
     )
-    listen(document, 'pointerleave', () => (state.leanTarget = 0))
+    listen(document, 'pointerleave', () => {
+      state.leanTarget = 0
+    })
   }
 
   return { start }

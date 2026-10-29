@@ -19,14 +19,6 @@ export function startReveals() {
     return
   }
 
-  // On screen, nearly on screen, or already scrolled past (e.g. opened at #contact): show at once.
-  const nearlyVisible = window.innerHeight * 1.15
-  const later = pending.filter((element) => {
-    if (element.getBoundingClientRect().top < nearlyVisible) element.classList.add('is-in')
-    return !element.classList.contains('is-in')
-  })
-  root.classList.add('reveal-ready')
-
   observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
@@ -38,5 +30,12 @@ export function startReveals() {
     // Start a little before the element scrolls into view.
     { rootMargin: '0px 0px 15% 0px' },
   )
-  later.forEach((element) => observer.observe(element))
+
+  // On screen, nearly on screen, or already scrolled past (e.g. opened at #contact): show at once.
+  const nearlyVisible = window.innerHeight * 1.15
+  for (const element of pending) {
+    if (element.getBoundingClientRect().top < nearlyVisible) element.classList.add('is-in')
+    else observer.observe(element)
+  }
+  root.classList.add('reveal-ready')
 }

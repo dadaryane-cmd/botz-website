@@ -3,7 +3,7 @@
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE = /^\+?[0-9 ()-]{6,20}$/
 
-/** Field name → message key in content/ui.js (`form` group). Empty object = valid. */
+/** Field name → message key in content/ui.json (`form` group). Empty object = valid. */
 export function validateInquiry({ name, email, phone, service, message }) {
   const errors = {}
   if (name.length < 2) errors.name = 'required'

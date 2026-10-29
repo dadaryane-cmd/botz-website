@@ -21,10 +21,14 @@ export function animatedAmount(key, value, format = formatAmd) {
     visible,
     h('span', { class: 'sr-only' }, format(value)),
   )
-  if (previous === undefined || previous === value || prefersReducedMotion() || document.hidden)
+  const unchanged = previous === undefined || previous === value
+  if (unchanged || prefersReducedMotion() || document.hidden) {
     return amount
+  }
 
-  const show = (shown) => (visible.textContent = format(Math.round(shown)))
+  const show = (shown) => {
+    visible.textContent = format(Math.round(shown))
+  }
   show(previous)
   const cancel = tween(previous, value, DURATION_MS, show)
   // Frames can be paused (background tab): never leave a stale price on screen.

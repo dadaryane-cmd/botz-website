@@ -19,7 +19,10 @@ The owner's standing rule: **write clean JS code.** For `site/` that means:
   `site/tests/` for new logic.
 - **Respect `prefers-reduced-motion`** for every animation; clean up observers, timers and
   animation frames when an element leaves the page.
-- **Format with Prettier** (repo `.prettierrc.json`) and keep `npx eslint site` clean.
+- **Format with Prettier** (repo `.prettierrc.json`) and keep `npx eslint site` clean. The
+  `site/**` block in `eslint.config.mjs` enforces the readability rules: no nested ternaries,
+  comma or assignment expressions, braces on multi-line blocks, no one-letter names
+  (except `i`, `x`, `y`, `t` and `h`).
 - **Make edits directly in the files** (Edit tool), not with ad-hoc patch scripts.
 
 ## Before pushing changes to `site/`

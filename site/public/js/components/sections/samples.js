@@ -1,5 +1,6 @@
 import { h } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
+import { external } from '../../lib/links.js'
 import { reveal } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
@@ -25,12 +26,7 @@ const sampleCard = (item, index) =>
       { class: 'btn-row' },
       h(
         'a',
-        {
-          class: 'btn btn-secondary btn-small',
-          href: item.file,
-          target: '_blank',
-          rel: 'noopener',
-        },
+        { class: 'btn btn-secondary btn-small', href: item.file, ...external },
         ui('trust', 'preview'),
       ),
       h(

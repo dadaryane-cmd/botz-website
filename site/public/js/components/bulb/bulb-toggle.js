@@ -166,6 +166,13 @@ export function renderBulbToggle() {
     updateLabel()
   }
 
+  /** The bulb swings away from any sideways pull; without one, a click swings it right. */
+  function swingDirection(fromClick) {
+    if (state.tilt > 0.5) return -1
+    if (state.tilt < -0.5) return 1
+    return fromClick ? 1 : -1
+  }
+
   /** Let go of the cord: snap back; if it was pulled far enough, swing and switch. */
   function release({ fromClick = false, alreadySwitched = false } = {}) {
     const shouldSwitch = state.pull >= TUNING.threshold
@@ -180,9 +187,7 @@ export function renderBulbToggle() {
     if (!shouldSwitch) return
 
     replayClass('is-click')
-    // Swing away from any sideways pull.
-    const direction = state.tilt > 0.5 ? -1 : state.tilt < -0.5 ? 1 : fromClick ? 1 : -1
-    state.angle = TUNING.swing.startDeg * direction
+    state.angle = TUNING.swing.startDeg * swingDirection(fromClick)
     animateValue('angle', {
       to: 0,
       stiffness: TUNING.swing.stiffness,

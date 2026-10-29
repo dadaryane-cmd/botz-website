@@ -46,5 +46,5 @@ export const hasText = (value) => t(value).trim() !== ''
 export const interpolate = (template, vars = {}) =>
   String(template).replace(/\{(\w+)\}/g, (match, name) => (name in vars ? vars[name] : match))
 
-/** Interface text from content/ui.js, e.g. `ui('pricing', 'totalFor', { n: 6 })`. */
+/** Interface text from content/ui.json, e.g. `ui('pricing', 'totalFor', { n: 6 })`. */
 export const ui = (group, key, vars) => interpolate(t(strings[group]?.[key]) || key, vars)

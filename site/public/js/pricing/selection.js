@@ -34,8 +34,11 @@ export const clearSelection = () => updateSelection(empty())
 
 /** Call `listener` on every change while `element` is on the page. */
 export function subscribe(element, listener) {
-  const wrapped = (value) => (element.isConnected ? listener(value) : listeners.delete(wrapped))
-  listeners.add(wrapped)
+  const whileOnPage = (value) => {
+    if (element.isConnected) listener(value)
+    else listeners.delete(whileOnPage)
+  }
+  listeners.add(whileOnPage)
 }
 
 /* ---------- shareable links ---------- */

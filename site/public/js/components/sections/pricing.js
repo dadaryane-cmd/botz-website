@@ -30,8 +30,12 @@ import { heading, section } from './section.js'
 
 export function renderPricing(config) {
   const selected = findPackage(catalog, getSelection().packageKey)
+  // Open on the selected package's group, unless this page shows one group only.
   let category = !config.lockCategory && selected ? selected.category : config.defaultCategory
-  if (!selected && config.defaultDuration > 1) updateSelection({ months: config.defaultDuration })
+  // Nothing chosen yet: start at the contract length this page suggests.
+  if (!selected && config.defaultDuration > 1) {
+    updateSelection({ months: config.defaultDuration })
+  }
 
   const body = h('div', { class: 'pricing' })
   const render = () => {
@@ -89,16 +93,18 @@ function filters(config, category, selection, onCategory) {
     !config.lockCategory &&
       group(
         ui('pricing', 'filterLabel'),
-        PACKAGE_CATEGORIES.map((c) =>
-          toggle(`category-${c}`, c === category, categoryLabel(c), () => onCategory(c)),
+        PACKAGE_CATEGORIES.map((option) =>
+          toggle(`category-${option}`, option === category, categoryLabel(option), () =>
+            onCategory(option),
+          ),
         ),
       ),
     category !== 'website' &&
       group(
         ui('pricing', 'durationLabel'),
-        CONTRACT_LENGTHS.map((m) =>
-          toggle(`months-${m}`, m === selection.months, formatMonths(m), () =>
-            updateSelection({ months: m }),
+        CONTRACT_LENGTHS.map((months) =>
+          toggle(`months-${months}`, months === selection.months, formatMonths(months), () =>
+            updateSelection({ months }),
           ),
         ),
       ),
@@ -272,17 +278,8 @@ function addonRow(addon, quantity) {
 
 /* ---------- estimate ---------- */
 
-function estimatePanel(selection) {
-  const q = quote(catalog, selection)
-  const title = h('h3', null, ui('pricing', 'estimateTitle'))
-  if (q.isEmpty)
-    return h(
-      'aside',
-      { class: 'card estimate' },
-      title,
-      h('p', { class: 'muted' }, ui('pricing', 'noSelection')),
-    )
-
+/** Package, add-ons, subtotals and the combined total, as `<dt>` / `<dd>` rows. */
+function estimateRows(totals) {
   const row = (label, value, kind) =>
     h(
       'div',
@@ -291,40 +288,48 @@ function estimatePanel(selection) {
       h('dd', null, value),
     )
   const rows = []
-  if (q.recurring) {
+
+  if (totals.recurring) {
+    const { monthly, months, total } = totals.recurring
+    const perMonth = [animatedAmount('estimate-monthly', monthly), ` × ${months}`]
+    rows.push(row(packageTitle(totals.pkg), perMonth))
     rows.push(
-      row(packageTitle(q.pkg), [
-        animatedAmount('estimate-monthly', q.recurring.monthly),
-        ` × ${q.recurring.months}`,
-      ]),
+      row(ui('pricing', 'recurringFees'), animatedAmount('estimate-recurring', total), 'subtotal'),
     )
-    rows.push(
-      row(
-        ui('pricing', 'recurringFees'),
-        animatedAmount('estimate-recurring', q.recurring.total),
-        'subtotal',
-      ),
-    )
-  } else if (q.pkg) {
-    rows.push(row(packageTitle(q.pkg), formatAmd(q.packageOneTime)))
+  } else if (totals.pkg) {
+    rows.push(row(packageTitle(totals.pkg), formatAmd(totals.packageOneTime)))
   }
-  for (const line of q.addons)
+
+  for (const line of totals.addons) {
     rows.push(row(`${t(line.addon.name)} ×${line.quantity}`, formatAmd(line.total)))
-  if (q.oneTimeTotal)
-    rows.push(
-      row(
-        ui('pricing', 'oneTimeFees'),
-        animatedAmount('estimate-one-time', q.oneTimeTotal),
-        'subtotal',
-      ),
-    )
+  }
+  if (totals.oneTimeTotal) {
+    const oneTime = animatedAmount('estimate-one-time', totals.oneTimeTotal)
+    rows.push(row(ui('pricing', 'oneTimeFees'), oneTime, 'subtotal'))
+  }
+
+  const from = totals.isMinimum && `${ui('pricing', 'from')} `
   rows.push(
     row(
       ui('pricing', 'combinedEstimate'),
-      [q.isMinimum && `${ui('pricing', 'from')} `, animatedAmount('estimate-total', q.total)],
+      [from, animatedAmount('estimate-total', totals.total)],
       'total',
     ),
   )
+  return rows
+}
+
+function estimatePanel(selection) {
+  const totals = quote(catalog, selection)
+  const title = h('h3', null, ui('pricing', 'estimateTitle'))
+  if (totals.isEmpty) {
+    return h(
+      'aside',
+      { class: 'card estimate' },
+      title,
+      h('p', { class: 'muted' }, ui('pricing', 'noSelection')),
+    )
+  }
 
   const status = h('p', { class: 'small', role: 'status' })
   const share = async () => {
@@ -338,7 +343,7 @@ function estimatePanel(selection) {
   }
   const whatsappMessage = [
     ui('whatsapp', 'greeting', { contact: 'BOTZ' }),
-    estimateSummary(q),
+    estimateSummary(totals),
     ui('whatsapp', 'closing'),
   ].join('\n')
 
@@ -346,8 +351,8 @@ function estimatePanel(selection) {
     'aside',
     { class: 'card estimate', 'aria-live': 'polite' },
     title,
-    h('dl', { class: 'estimate-rows' }, rows),
-    q.isMinimum && h('p', { class: 'muted small' }, ui('pricing', 'minimumNote')),
+    h('dl', { class: 'estimate-rows' }, estimateRows(totals)),
+    totals.isMinimum && h('p', { class: 'muted small' }, ui('pricing', 'minimumNote')),
     h('p', { class: 'muted small' }, ui('pricing', 'notContract')),
     h(
       'div',

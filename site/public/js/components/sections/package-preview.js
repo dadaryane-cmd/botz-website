@@ -4,8 +4,8 @@ import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
-import { reveal } from '../../lib/reveal.js'
 import { sectionHref } from '../../lib/page.js'
+import { reveal } from '../../lib/reveal.js'
 import {
   availableLengths,
   isRecurring,
@@ -56,14 +56,17 @@ function categoryColumn(category, months, index) {
   )
 }
 
+/** One-time price, the monthly price for `months`, or "from" the lowest monthly price. */
+function previewPrice(pkg, price) {
+  const perMonth = ui('pricing', 'perMonth')
+  if (!isRecurring(pkg)) return `${formatAmd(pkg.oneTimePrice)} · ${ui('pricing', 'oneTime')}`
+  if (price) return `${formatAmd(price.monthly)} / ${perMonth}`
+  return `${ui('pricing', 'from')} ${formatAmd(lowestMonthlyPrice(pkg))} / ${perMonth}`
+}
+
 function previewRow(pkg, months) {
   const price = isRecurring(pkg) ? priceFor(pkg, months) : null
-  let priceText
-  if (!isRecurring(pkg)) priceText = `${formatAmd(pkg.oneTimePrice)} · ${ui('pricing', 'oneTime')}`
-  else if (price) priceText = `${formatAmd(price.monthly)} / ${ui('pricing', 'perMonth')}`
-  else
-    priceText = `${ui('pricing', 'from')} ${formatAmd(lowestMonthlyPrice(pkg))} / ${ui('pricing', 'perMonth')}`
-
+  // Link to the pricing tool at this length, or at the longest one offered.
   const linkMonths = price ? months : (availableLengths(pkg).at(-1) ?? 1)
   return h(
     'li',
@@ -74,6 +77,6 @@ function previewRow(pkg, months) {
       h('strong', null, t(pkg.name)),
       pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
     ),
-    h('span', { class: 'price-small' }, priceText),
+    h('span', { class: 'price-small' }, previewPrice(pkg, price)),
   )
 }

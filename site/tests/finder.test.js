@@ -46,7 +46,7 @@ describe('recommend', () => {
       answers({ goal: 'search', website: 'yes', social: undefined, term: 'm12' }),
     )
     const fundamental = [result.best, ...result.alternatives].find(
-      (c) => c?.pkg.key === 'seo-fundamental',
+      (option) => option?.pkg.key === 'seo-fundamental',
     )
     assert.equal(fundamental.lengthAvailable, false)
     assert.equal(fundamental.months, 6)

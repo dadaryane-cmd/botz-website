@@ -27,17 +27,17 @@ describe('priceFor', () => {
 
 describe('quote', () => {
   it('adds recurring fees and one-time add-ons', () => {
-    const q = quote(catalog, { packageKey: 'seo-vision', months: 12, addons: { reel: 2 } })
-    assert.equal(q.recurring.total, 299000 * 12)
-    assert.equal(q.oneTimeTotal, 50000)
-    assert.equal(q.total, 299000 * 12 + 50000)
-    assert.equal(q.isMinimum, false)
+    const totals = quote(catalog, { packageKey: 'seo-vision', months: 12, addons: { reel: 2 } })
+    assert.equal(totals.recurring.total, 299000 * 12)
+    assert.equal(totals.oneTimeTotal, 50000)
+    assert.equal(totals.total, 299000 * 12 + 50000)
+    assert.equal(totals.isMinimum, false)
   })
 
   it('treats website creation as a one-time price', () => {
-    const q = quote(catalog, { packageKey: 'website-creation', months: 6, addons: {} })
-    assert.equal(q.recurring, null)
-    assert.equal(q.total, 299000)
+    const totals = quote(catalog, { packageKey: 'website-creation', months: 6, addons: {} })
+    assert.equal(totals.recurring, null)
+    assert.equal(totals.total, 299000)
   })
 
   it('marks totals with "from" add-ons as a minimum', () => {
@@ -48,9 +48,9 @@ describe('quote', () => {
   })
 
   it('ignores unknown add-ons and zero quantities', () => {
-    const q = quote(catalog, { packageKey: null, months: 6, addons: { nope: 3, reel: 0 } })
-    assert.equal(q.isEmpty, true)
-    assert.equal(q.total, 0)
+    const totals = quote(catalog, { packageKey: null, months: 6, addons: { nope: 3, reel: 0 } })
+    assert.equal(totals.isEmpty, true)
+    assert.equal(totals.total, 0)
   })
 })
 

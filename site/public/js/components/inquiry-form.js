@@ -45,8 +45,12 @@ export function renderInquiryForm({ service: pageService }) {
     'service',
     { onchange: () => suggestContact() },
     h('option', { value: '' }, ui('form', 'choose')),
-    INQUIRY_SERVICES.map((s) =>
-      h('option', { value: s, selected: s === initialService }, ui('services', s)),
+    INQUIRY_SERVICES.map((service) =>
+      h(
+        'option',
+        { value: service, selected: service === initialService },
+        ui('services', service),
+      ),
     ),
   )
   const message = control('textarea', 'message', {
@@ -57,25 +61,25 @@ export function renderInquiryForm({ service: pageService }) {
   if (selection.note) message.value = selection.note
 
   const contactOptions = [
-    ...people.map((p) => ({ value: p.key, label: t(p.name) })),
+    ...people.map((person) => ({ value: person.key, label: t(person.name) })),
     { value: 'either', label: ui('form', 'either') },
   ]
   const contactChoice = h(
     'fieldset',
     { class: 'full radios' },
     h('legend', null, ui('form', 'preferredContact')),
-    contactOptions.map((o) =>
+    contactOptions.map((option) =>
       h(
         'label',
         { class: 'option' },
-        h('input', { type: 'radio', name: 'preferredContact', value: o.value }),
-        h('span', null, o.label),
+        h('input', { type: 'radio', name: 'preferredContact', value: option.value }),
+        h('span', null, option.label),
       ),
     ),
   )
   // Suggest the founder who handles the chosen service; combined plans go to either.
   function suggestContact() {
-    const responsible = people.filter((p) => p.services.includes(serviceSelect.value))
+    const responsible = people.filter((person) => person.services.includes(serviceSelect.value))
     const value = responsible.length === 1 ? responsible[0].key : 'either'
     contactChoice.querySelector(`input[value="${value}"]`).checked = true
   }
@@ -179,9 +183,10 @@ export function renderInquiryForm({ service: pageService }) {
       return
     }
 
-    const contactName =
-      t(people.find((p) => p.key === values.preferredContact)?.name) || ui('form', 'teamName')
-    if (values.website) return showSuccess(contactName) // honeypot filled: a bot, so pretend it worked
+    const contact = people.find((person) => person.key === values.preferredContact)
+    const contactName = t(contact?.name) || ui('form', 'teamName')
+    // The honeypot was filled in, so this is a bot: pretend it worked and send nothing.
+    if (values.website) return showSuccess(contactName)
 
     setSending(true)
     try {
@@ -231,8 +236,9 @@ export function renderInquiryForm({ service: pageService }) {
 
 function readValues(form) {
   const values = Object.fromEntries(new FormData(form))
-  for (const key of ['name', 'email', 'phone', 'message'])
+  for (const key of ['name', 'email', 'phone', 'message']) {
     values[key] = String(values[key] ?? '').trim()
+  }
   return values
 }
 

@@ -11,25 +11,27 @@ export const categoryLabel = (category) => ui('pricing', `cat_${category}`)
 export const packageTitle = (pkg) =>
   pkg.category === 'website' ? t(pkg.name) : `${categoryLabel(pkg.category)} ${t(pkg.name)}`
 
-export const currentQuote = () => quote(catalog, getSelection())
+const currentQuote = () => quote(catalog, getSelection())
 
 /** Plain text for the inquiry email and WhatsApp messages; empty when nothing is selected. */
-export function estimateSummary(q = currentQuote()) {
-  if (q.isEmpty) return ''
+export function estimateSummary(totals = currentQuote()) {
+  if (totals.isEmpty) return ''
   const lines = []
-  if (q.recurring) {
+  if (totals.recurring) {
+    const { months, monthly } = totals.recurring
+    const term = formatMonths(months)
     lines.push(
-      `${packageTitle(q.pkg)}, ${formatMonths(q.recurring.months)} — ${formatAmd(q.recurring.monthly)} ${ui('pricing', 'perMonth')}`,
+      `${packageTitle(totals.pkg)}, ${term} — ${formatAmd(monthly)} ${ui('pricing', 'perMonth')}`,
     )
-  } else if (q.pkg) {
-    lines.push(
-      `${packageTitle(q.pkg)} — ${formatAmd(q.packageOneTime)} ${ui('pricing', 'oneTime')}`,
-    )
+  } else if (totals.pkg) {
+    const price = formatAmd(totals.packageOneTime)
+    lines.push(`${packageTitle(totals.pkg)} — ${price} ${ui('pricing', 'oneTime')}`)
   }
-  for (const line of q.addons)
+  for (const line of totals.addons) {
     lines.push(`${t(line.addon.name)} ×${line.quantity} — ${formatAmd(line.total)}`)
-  const from = q.isMinimum ? `${ui('pricing', 'from')} ` : ''
-  lines.push(`${ui('pricing', 'combinedEstimate')}: ${from}${formatAmd(q.total)}`)
+  }
+  const from = totals.isMinimum ? `${ui('pricing', 'from')} ` : ''
+  lines.push(`${ui('pricing', 'combinedEstimate')}: ${from}${formatAmd(totals.total)}`)
   return lines.join('\n')
 }
 

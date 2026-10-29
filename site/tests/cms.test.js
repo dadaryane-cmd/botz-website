@@ -26,7 +26,7 @@ function assertDeclared(data, fields, path) {
       if (field.type === 'object') assertDeclared(item, field.fields, itemPath)
       if (field.type === 'block') {
         const { [field.blockKey]: blockName, ...rest } = item
-        const block = field.blocks.find((b) => b.name === blockName)
+        const block = field.blocks.find((definition) => definition.name === blockName)
         assert.ok(block, `${itemPath}: unknown block "${blockName}"`)
         assertDeclared(rest, block.fields, `${itemPath}<${blockName}>`)
       }

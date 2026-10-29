@@ -77,6 +77,7 @@ function revealFrom({ x, y }, turningOn, commit) {
       const frames = turningOn ? [small, large] : [large, small]
       root.animate(soft ? { '--vt-r': frames } : { clipPath: frames }, options)
     })
+    // The browser may skip the transition (e.g. the tab is hidden); the theme still changes.
     .catch(() => {})
   transition.finished.finally(() => {
     delete root.dataset.vt

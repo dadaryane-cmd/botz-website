@@ -38,7 +38,9 @@ function* translations(value) {
 
 describe('content', () => {
   it('has an HTML file for every page, and a page for every HTML file', () => {
-    const htmlFiles = readdirSync(publicDir).filter((f) => f.endsWith('.html') && f !== '404.html')
+    const htmlFiles = readdirSync(publicDir).filter(
+      (file) => file.endsWith('.html') && file !== '404.html',
+    )
     assert.deepEqual(PAGES.map(htmlFile).sort(), htmlFiles.sort())
     for (const key of PAGES) {
       const html = readFileSync(join(publicDir, htmlFile(key)), 'utf8')
@@ -51,8 +53,9 @@ describe('content', () => {
 
   it('only uses known section types', () => {
     for (const [key, page] of Object.entries(pages)) {
-      for (const section of page.sections)
+      for (const section of page.sections) {
         assert.ok(SECTION_TYPES.includes(section.type), `${key}: ${section.type}`)
+      }
     }
   })
 
@@ -60,12 +63,13 @@ describe('content', () => {
     const links = [
       ...navigation.header,
       navigation.cta,
-      ...navigation.footerColumns.flatMap((c) => c.links),
+      ...navigation.footerColumns.flatMap((group) => group.links),
     ]
-    const hrefs = JSON.stringify(pages)
+    // Every "href" and "file" value in the page content.
+    const pageLinks = JSON.stringify(pages)
       .match(/"(?:href|file)":"[^"#]+/g)
-      .map((m) => m.split(':"')[1])
-    for (const href of [...links.map((l) => l.href), ...hrefs]) {
+      .map((match) => match.split(':"')[1])
+    for (const href of [...links.map((link) => link.href), ...pageLinks]) {
       if (/^(https?:|mailto:|tel:|#)/.test(href)) continue
       assert.ok(existsSync(publicDir + href.split('#')[0]), `missing ${href}`)
     }
@@ -84,16 +88,18 @@ describe('content', () => {
   })
 
   it('refers only to packages in the catalog', () => {
-    const keys = new Set(catalog.packages.map((p) => p.key))
+    const keys = new Set(catalog.packages.map((pkg) => pkg.key))
     for (const rule of finder.rules) assert.ok(keys.has(rule.packageKey), rule.packageKey)
-    for (const pkg of catalog.packages)
+    for (const pkg of catalog.packages) {
       for (const key of pkg.components ?? []) assert.ok(keys.has(key), key)
+    }
   })
 
   it('has every text in all three languages', () => {
     for (const value of translations({ pages, catalog, finder, navigation })) {
-      for (const language of ['en', 'hy', 'ru'])
+      for (const language of ['en', 'hy', 'ru']) {
         assert.ok(value[language]?.trim(), `${value.en} → ${language}`)
+      }
     }
   })
 })

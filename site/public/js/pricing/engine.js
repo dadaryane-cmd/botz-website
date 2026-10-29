@@ -1,5 +1,5 @@
 /**
- * Price calculations. Pure functions over the catalog in content/catalog.js,
+ * Price calculations. Pure functions over the catalog in content/catalog.json,
  * so they run the same in the browser and in the unit tests.
  */
 import { CONTRACT_LENGTHS } from '../config.js'
