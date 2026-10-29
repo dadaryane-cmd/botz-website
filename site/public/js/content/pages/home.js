@@ -82,7 +82,6 @@ export const home = {
         },
       ],
       variant: 'home',
-      offerCard: true,
     },
     {
       type: 'split',

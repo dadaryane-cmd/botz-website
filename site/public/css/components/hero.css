@@ -1,70 +1,147 @@
-/* Hero section. */
+/* Hero section. The home variant fills the first screen with animated fire. */
 
 .hero {
   position: relative;
   padding: clamp(56px, 10vw, 128px) 0 clamp(40px, 6vw, 72px);
-  overflow: hidden;
 }
+
+/* A page title is followed directly by its content. */
+.hero:not(.hero-home) + .section {
+  padding-top: clamp(16px, 3vw, 40px);
+}
+
+/* ---- home: fire stage ---- */
 
 .hero-home {
-  padding-bottom: 0;
+  padding: 0;
 }
 
-.hero-grid {
+.hero-stage {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 40px;
-  align-items: end;
+  isolation: isolate;
+  overflow: hidden;
+  /* The first screen minus the header and the ticker below. */
+  min-height: clamp(560px, calc(100svh - 72px - 64px), 940px);
 }
 
-.hero-flame {
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(40px, 9vh, 112px);
+  /* The copy stays in the calm upper area; the flames own the bottom. */
+  padding-bottom: clamp(160px, 30vh, 320px);
+}
+
+.hero-home .hero-text {
+  position: relative;
+}
+
+/* Soft scrim in the page colour keeps the copy readable over the fire. */
+.hero-home .hero-text::before {
+  content: '';
   position: absolute;
-  inset: auto 0 0 0;
-  height: 70%;
-  background: url('../../images/hero-flame-poster-light.webp') center bottom / cover no-repeat;
-  opacity: 0.55;
+  z-index: -1;
+  inset: -12% -18% -18% -12%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--bg) 78%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 45%, transparent) 55%,
+    transparent 100%
+  );
   pointer-events: none;
-  animation: flicker 4s ease-in-out infinite alternate;
 }
 
-:root[data-theme='dark'] .hero-flame {
+.hero-home .btn {
+  box-shadow: 0 10px 30px color-mix(in srgb, #000 28%, transparent);
+}
+
+.hero-home .btn-secondary {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 759px) {
+  /* Phones: copy and buttons first, the fire as a strip below them. */
+  .hero-stage {
+    min-height: 0;
+  }
+
+  .hero-content {
+    padding-top: 24px;
+    padding-bottom: 150px;
+  }
+
+  .hero-home .hero-text::before {
+    inset: -6% -10% -8% -10%;
+  }
+}
+
+/* ---- fire layers: poster (first paint) → WebGL canvas, or looping video ---- */
+
+.flame-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.flame-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../../images/hero-flame-poster-light.webp') center bottom / 100% 100% no-repeat;
+  transition: opacity 0.6s ease;
+}
+
+:root[data-theme='dark'] .flame-background::before {
   background-image: url('../../images/hero-flame-poster-dark.webp');
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .hero-flame {
+  :root:not([data-theme='light']) .flame-background::before {
     background-image: url('../../images/hero-flame-poster-dark.webp');
   }
 }
 
-@keyframes flicker {
-  from {
-    opacity: 0.45;
-    transform: scaleY(0.96);
-    transform-origin: bottom;
-  }
-  to {
-    opacity: 0.65;
-    transform: scaleY(1.04);
-    transform-origin: bottom;
-  }
+.flame-background[data-mode='webgl']::before,
+.flame-background[data-mode='video']::before {
+  opacity: 0;
 }
 
-.offer-card {
-  max-width: 340px;
-  margin-bottom: 40px;
+.flame-canvas,
+.flame-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.offer-mark {
-  float: right;
-  width: 48px;
-  margin: 0 0 8px 12px;
+.flame-canvas {
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
+
+.flame-background[data-mode='webgl'] .flame-canvas {
+  opacity: 1;
+}
+
+.flame-video {
+  display: none;
+  object-fit: cover;
+  object-position: center bottom;
+  /* The loop is rendered on black; screen blending removes the black. */
+  mix-blend-mode: screen;
+}
+
+.flame-background[data-mode='video'] .flame-video {
+  display: block;
+}
+
+/* ---- ticker ---- */
 
 .ticker {
   position: relative;
-  margin-top: 40px;
   padding: 16px 0;
   background: var(--inverse-bg);
   color: var(--inverse-text);
@@ -92,20 +169,5 @@
 @keyframes ticker {
   to {
     transform: translateX(-50%);
-  }
-}
-
-/* A page title is followed directly by its content. */
-.hero:not(.hero-home) + .section {
-  padding-top: clamp(16px, 3vw, 40px);
-}
-
-@media (max-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-card {
-    max-width: none;
   }
 }

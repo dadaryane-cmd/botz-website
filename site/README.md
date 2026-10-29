@@ -35,8 +35,10 @@ site/
 │   │   └── components/
 │   │       ├── layout/         header, footer, mobile bar
 │   │       ├── sections/       one render function per section type + index.js registry
+│   │       ├── flame/          animated WebGL fire behind the home hero
 │   │       └── inquiry-form.js
 │   ├── images/
+│   ├── media/                  fire video (fallback when WebGL is unavailable)
 │   └── downloads/              sample PDFs
 ├── scripts/serve.js            local dev server
 └── tests/                      unit tests for pricing, finder, inquiry and content

@@ -1,43 +1,31 @@
 import { h } from '../../lib/dom.js'
-import { t, ui } from '../../lib/i18n.js'
+import { t } from '../../lib/i18n.js'
+import { renderFlameBackground } from '../flame/flame-background.js'
 import { buttonRow, heading, lead } from './section.js'
 
-/** Page title. The home variant adds the flame background, the offer card and the ticker. */
+/** Page title. The home variant fills the first screen with animated fire and adds the ticker. */
 export function renderHero(config) {
-  const isHome = config.variant === 'home'
+  const text = h(
+    'div',
+    { class: 'hero-text' },
+    heading(config.heading, 'h1'),
+    lead(config.subheading),
+    buttonRow(config.buttons),
+  )
+
+  if (config.variant !== 'home') {
+    return h('section', { class: 'hero' }, h('div', { class: 'container' }, text))
+  }
   return h(
     'section',
-    { class: isHome ? 'hero hero-home' : 'hero' },
-    isHome && h('div', { class: 'hero-flame', 'aria-hidden': 'true' }),
+    { class: 'hero hero-home' },
     h(
       'div',
-      { class: 'container container-wide hero-grid' },
-      h(
-        'div',
-        { class: 'hero-text' },
-        heading(config.heading, 'h1'),
-        lead(config.subheading),
-        buttonRow(config.buttons),
-      ),
-      config.offerCard && offerCard(),
+      { class: 'hero-stage' },
+      renderFlameBackground(),
+      h('div', { class: 'container container-wide hero-content' }, text),
     ),
     config.ticker && ticker(config.ticker),
-  )
-}
-
-function offerCard() {
-  return h(
-    'aside',
-    { class: 'card offer-card' },
-    h('img', { class: 'offer-mark', src: 'images/botz-mark.webp', alt: '', width: 48, height: 74 }),
-    h('p', { class: 'badge' }, ui('trust', 'offerBadge')),
-    h(
-      'ul',
-      { class: 'check-list' },
-      h('li', null, ui('trust', 'auditNote')),
-      h('li', null, ui('trust', 'trialNote')),
-    ),
-    h('a', { class: 'btn btn-primary', href: '#contact' }, ui('trust', 'offerCta')),
   )
 }
 

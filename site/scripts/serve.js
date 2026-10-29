@@ -19,6 +19,8 @@ const types = {
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
   '.pdf': 'application/pdf',
+  '.webm': 'video/webm',
+  '.mp4': 'video/mp4',
 }
 
 async function resolve(urlPath) {
