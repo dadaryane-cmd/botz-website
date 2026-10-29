@@ -1,5 +1,9 @@
 # BOTZ Marketing Agency — website & CMS
 
+> **Static version:** `site/` contains the same website as plain HTML, CSS and JavaScript
+> (no server needed). It is published to GitHub Pages by `.github/workflows/pages.yml`.
+> See `site/README.md`.
+
 Trilingual (Armenian / English / Russian) agency website with interactive pricing,
 package comparison, a "find my package" guide, shareable estimates, lead management
 and a full content-management admin.
