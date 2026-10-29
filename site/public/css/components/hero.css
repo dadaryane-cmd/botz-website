@@ -36,6 +36,11 @@
   position: relative;
 }
 
+/* The highlighted phrase of the headline always starts its own line. */
+.hero-home .heading em {
+  display: block;
+}
+
 /* Soft scrim in the page colour keeps the copy readable over the fire. */
 .hero-home .hero-text::before {
   content: '';
