@@ -1,0 +1,15 @@
+/* Cta section. */
+
+.cta {
+  text-align: center;
+}
+
+.cta .heading,
+.cta .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta .btn-row {
+  justify-content: center;
+}

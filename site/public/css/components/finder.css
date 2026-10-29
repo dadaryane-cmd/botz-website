@@ -1,0 +1,28 @@
+/* Package finder. */
+
+.finder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: clamp(24px, 5vw, 64px);
+  align-items: start;
+}
+
+.finder-question {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.finder-question legend {
+  margin-bottom: 16px;
+  font: 700 clamp(1.2rem, 2.4vw, 1.6rem) / 1.25 var(--font-display);
+}
+
+.finder-package {
+  font: 800 1.8rem var(--font-display);
+  margin-bottom: 4px;
+}
+
+.alternatives {
+  padding-left: 20px;
+}

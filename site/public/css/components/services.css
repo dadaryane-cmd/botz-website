@@ -1,0 +1,29 @@
+/* Services section. */
+
+.services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+}
+
+.service-card .index {
+  display: block;
+  margin-bottom: 12px;
+  font: 700 0.9rem var(--font-display);
+  color: var(--accent-text);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.85rem;
+  font-weight: 600;
+}

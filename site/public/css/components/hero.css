@@ -1,0 +1,111 @@
+/* Hero section. */
+
+.hero {
+  position: relative;
+  padding: clamp(56px, 10vw, 128px) 0 clamp(40px, 6vw, 72px);
+  overflow: hidden;
+}
+
+.hero-home {
+  padding-bottom: 0;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: end;
+}
+
+.hero-flame {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 70%;
+  background: url('../../images/hero-flame-poster-light.webp') center bottom / cover no-repeat;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: flicker 4s ease-in-out infinite alternate;
+}
+
+:root[data-theme='dark'] .hero-flame {
+  background-image: url('../../images/hero-flame-poster-dark.webp');
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .hero-flame {
+    background-image: url('../../images/hero-flame-poster-dark.webp');
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 0.45;
+    transform: scaleY(0.96);
+    transform-origin: bottom;
+  }
+  to {
+    opacity: 0.65;
+    transform: scaleY(1.04);
+    transform-origin: bottom;
+  }
+}
+
+.offer-card {
+  max-width: 340px;
+  margin-bottom: 40px;
+}
+
+.offer-mark {
+  float: right;
+  width: 48px;
+  margin: 0 0 8px 12px;
+}
+
+.ticker {
+  position: relative;
+  margin-top: 40px;
+  padding: 16px 0;
+  background: var(--inverse-bg);
+  color: var(--inverse-text);
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker span {
+  padding: 0 28px;
+  font: 700 clamp(1rem, 2vw, 1.4rem) var(--font-display);
+  white-space: nowrap;
+}
+
+.ticker span::after {
+  content: '✦';
+  margin-left: 56px;
+  color: var(--accent);
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* A page title is followed directly by its content. */
+.hero:not(.hero-home) + .section {
+  padding-top: clamp(16px, 3vw, 40px);
+}
+
+@media (max-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-card {
+    max-width: none;
+  }
+}

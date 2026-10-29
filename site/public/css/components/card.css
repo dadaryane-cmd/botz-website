@@ -1,0 +1,9 @@
+/* Card section. */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: var(--shadow);
+}

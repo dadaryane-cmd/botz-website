@@ -1,0 +1,38 @@
+/** Inquiry form rules and the email it produces. No DOM access, so it is unit-tested. */
+
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PHONE = /^\+?[0-9 ()-]{6,20}$/
+
+/** Field name → message key in content/ui.js (`form` group). Empty object = valid. */
+export function validateInquiry({ name, email, phone, service, message }) {
+  const errors = {}
+  if (name.length < 2) errors.name = 'required'
+  if (!email && !phone) errors.email = 'needEmailOrPhone'
+  if (email && !EMAIL.test(email)) errors.email = 'invalidEmail'
+  if (phone && !PHONE.test(phone)) errors.phone = 'invalidPhone'
+  if (!service) errors.service = 'required'
+  if (message.length < 5) errors.message = 'messageTooShort'
+  return errors
+}
+
+/**
+ * FormSubmit fields. Keys starting with `_` configure the email
+ * (https://formsubmit.co/documentation); the rest appear as a table.
+ */
+export function inquiryEmail(values, { serviceLabel, contactName, estimate, page, language }) {
+  return {
+    _subject: `New inquiry: ${values.name} · ${serviceLabel}`,
+    _template: 'table',
+    _captcha: 'false',
+    ...(values.email && { _replyto: values.email }),
+    Name: values.name,
+    Email: values.email || '—',
+    Phone: values.phone || '—',
+    Service: serviceLabel,
+    'Preferred contact': contactName,
+    Message: values.message,
+    Estimate: estimate || '—',
+    Page: page,
+    Language: language.toUpperCase(),
+  }
+}

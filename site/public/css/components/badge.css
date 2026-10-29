@@ -1,0 +1,19 @@
+/* Badge section. */
+
+.badge {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-accent {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}

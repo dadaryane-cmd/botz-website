@@ -1,0 +1,239 @@
+/* Pricing tool and the home-page price overview. */
+
+.pricing-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  margin: 32px 0;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.segmented button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--text);
+  font: 600 0.95rem var(--font-body);
+  cursor: pointer;
+}
+
+.segmented button[aria-pressed='true'] {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.pricing-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.package-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+.package-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.package-card .badge-accent {
+  align-self: flex-start;
+}
+
+.package-card.is-recommended {
+  border-color: var(--accent);
+}
+
+.package-card.is-selected {
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+.package-card.is-unavailable {
+  opacity: 0.7;
+}
+
+.package-price {
+  margin: auto 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.package-price p {
+  margin-bottom: 4px;
+}
+
+.price {
+  font: 800 clamp(1.4rem, 2.6vw, 1.8rem) / 1.2 var(--font-display);
+}
+
+.price small {
+  font: 500 0.85rem var(--font-body);
+  color: var(--muted);
+}
+
+.price-unavailable {
+  color: var(--muted);
+}
+
+.price-small {
+  font-weight: 700;
+}
+
+.saving {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.addons {
+  margin-top: 40px;
+}
+
+.addon-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.addon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+}
+
+.addon > div:first-child {
+  display: grid;
+}
+
+.addon.is-selected {
+  border-color: var(--text);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.stepper output {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.estimate {
+  position: sticky;
+  top: 96px;
+}
+
+.estimate-rows {
+  margin: 0 0 16px;
+}
+
+.estimate-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.estimate-row dt {
+  min-width: 0;
+}
+
+.estimate-row dd {
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.estimate-row.subtotal {
+  color: var(--muted);
+}
+
+.estimate-row.total {
+  border-bottom: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.estimate-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.estimate-actions .btn-row {
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .pricing-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .estimate {
+    position: static;
+  }
+}
+
+.preview-group h3 {
+  font-size: 1.1rem;
+  color: var(--accent-text);
+}
+
+.preview-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview-list li {
+  display: grid;
+  gap: 2px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.preview-list .badge {
+  margin: 0;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+}

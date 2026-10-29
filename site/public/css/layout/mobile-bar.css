@@ -1,0 +1,37 @@
+/* Call / WhatsApp bar on small screens. */
+
+.mobile-bar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .mobile-bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--inverse-bg);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+  }
+
+  .mobile-bar a {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    border-radius: 999px;
+    color: var(--inverse-text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .mobile-bar a:last-child {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}

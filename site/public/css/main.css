@@ -1,0 +1,37 @@
+/*
+ * BOTZ website styles. Order matters: later files may refine earlier ones
+ * (e.g. the header hides the generic icon button on desktop).
+ */
+
+/* Foundations */
+@import url('base/tokens.css');
+@import url('base/reset.css');
+@import url('base/typography.css');
+@import url('layout/layout.css');
+
+/* Shared components */
+@import url('components/button.css');
+@import url('components/card.css');
+@import url('components/badge.css');
+@import url('components/form.css');
+
+/* Page frame */
+@import url('layout/header.css');
+@import url('layout/footer.css');
+@import url('layout/mobile-bar.css');
+
+/* Sections */
+@import url('components/hero.css');
+@import url('components/split.css');
+@import url('components/services.css');
+@import url('components/team.css');
+@import url('components/samples.css');
+@import url('components/process.css');
+@import url('components/faq.css');
+@import url('components/cta.css');
+@import url('components/pricing.css');
+@import url('components/finder.css');
+@import url('components/contact.css');
+
+/* Overrides */
+@import url('base/motion.css');

@@ -1,0 +1,50 @@
+/* Element defaults. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1rem/1.6 var(--font-body);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+  font-family: var(--font-display);
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+p {
+  margin: 0 0 1em;
+}

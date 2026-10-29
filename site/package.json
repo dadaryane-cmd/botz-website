@@ -1,0 +1,13 @@
+{
+  "name": "botz-static-site",
+  "private": true,
+  "description": "BOTZ Marketing Agency website — plain HTML, CSS and JavaScript, published from public/",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

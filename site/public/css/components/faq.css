@@ -1,0 +1,36 @@
+/* Faq section. */
+
+.faq details {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq summary {
+  position: relative;
+  padding: 20px 40px 20px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 16px;
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq details p {
+  padding-bottom: 12px;
+  color: var(--muted);
+}

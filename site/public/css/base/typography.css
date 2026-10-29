@@ -1,0 +1,59 @@
+/* Text styles and helpers. */
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 62ch;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.heading {
+  font-size: clamp(1.7rem, 4vw, 2.9rem);
+  max-width: 22ch;
+}
+
+h1.heading {
+  font-size: clamp(2.1rem, 6vw, 4.4rem);
+  max-width: 18ch;
+}
+
+.heading em {
+  font-style: normal;
+  color: var(--accent-text);
+}
+
+.check-list {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 8px;
+}
+
+.check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: var(--accent-text);
+}

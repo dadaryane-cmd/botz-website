@@ -1,0 +1,22 @@
+/* Process section. */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 20px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  padding-top: 20px;
+  border-top: 2px solid var(--text);
+}
+
+.step-number {
+  display: block;
+  margin-bottom: 12px;
+  font: 800 2rem var(--font-display);
+  color: var(--accent-text);
+}

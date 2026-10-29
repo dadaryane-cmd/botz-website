@@ -1,0 +1,174 @@
+/* Sticky header, navigation, language switch and mobile menu. */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 72px;
+}
+
+.logo img {
+  display: block;
+  width: 112px;
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.nav ul {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav ul a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav ul a:hover,
+.nav ul a[aria-current='page'] {
+  background: var(--surface);
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-switch {
+  display: flex;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.language-switch button {
+  min-width: 40px;
+  min-height: 36px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: 600 0.85rem var(--font-body);
+  cursor: pointer;
+}
+
+.language-switch button[aria-pressed='true'] {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s;
+}
+
+.burger {
+  position: relative;
+}
+
+.burger::before,
+.burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.burger::before {
+  top: -6px;
+}
+
+.burger::after {
+  top: 6px;
+}
+
+.is-open .burger {
+  background: transparent;
+}
+
+.is-open .burger::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.is-open .burger::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 1080px) {
+  .menu-toggle {
+    display: grid;
+  }
+
+  .header-tools {
+    margin-left: auto;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px var(--gutter) 24px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .is-open .nav {
+    display: flex;
+  }
+
+  .nav ul {
+    flex-direction: column;
+  }
+
+  .nav ul a {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .logo img {
+    width: 88px;
+  }
+
+  .language-switch button {
+    min-width: 34px;
+    padding: 4px 5px;
+  }
+}

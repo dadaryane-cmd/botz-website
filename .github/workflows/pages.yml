@@ -1,10 +1,10 @@
-# Publishes the static website in site/ to GitHub Pages on every push to main.
+# Publishes the static website in site/public/ to GitHub Pages on every push to main.
 name: Deploy website to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths: ['site/**', '.github/workflows/pages.yml']
+    paths: ['site/public/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
@@ -27,6 +27,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: site/public
       - id: deployment
         uses: actions/deploy-pages@v4

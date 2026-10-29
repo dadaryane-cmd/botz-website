@@ -1,0 +1,23 @@
+/* Founder cards (team and contact sections). */
+
+.person-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.person-card h3 {
+  margin-bottom: 4px;
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: 800 1.6rem var(--font-display);
+}

@@ -1,0 +1,108 @@
+import assert from 'node:assert/strict'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { describe, it } from 'node:test'
+import { fileURLToPath } from 'node:url'
+import { catalog } from '../public/js/content/catalog.js'
+import { finder } from '../public/js/content/finder.js'
+import { navigation } from '../public/js/content/navigation.js'
+import { pages } from '../public/js/content/pages/index.js'
+import { interpolate, t, ui } from '../public/js/lib/i18n.js'
+
+const publicDir = fileURLToPath(new URL('../public/', import.meta.url))
+const SECTION_TYPES = [
+  'contact',
+  'cta',
+  'faq',
+  'finder',
+  'hero',
+  'packagePreview',
+  'pricing',
+  'process',
+  'samples',
+  'services',
+  'split',
+  'team',
+]
+
+/** Every { en, hy, ru } value inside `value`. */
+function* translations(value) {
+  if (value && typeof value === 'object') {
+    if ('en' in value && 'hy' in value && 'ru' in value) yield value
+    else for (const child of Object.values(value)) yield* translations(child)
+  }
+}
+
+describe('content', () => {
+  it('has an HTML file for every page, and a page for every HTML file', () => {
+    const htmlFiles = readdirSync(publicDir).filter((f) => f.endsWith('.html') && f !== '404.html')
+    assert.deepEqual(
+      Object.values(pages)
+        .map((p) => p.file)
+        .sort(),
+      htmlFiles.sort(),
+    )
+  })
+
+  it('only uses known section types', () => {
+    for (const page of Object.values(pages)) {
+      for (const section of page.sections)
+        assert.ok(SECTION_TYPES.includes(section.type), `${page.file}: ${section.type}`)
+    }
+  })
+
+  it('links only to pages and files that exist', () => {
+    const links = [
+      ...navigation.header,
+      navigation.cta,
+      ...navigation.footerColumns.flatMap((c) => c.links),
+    ]
+    const hrefs = JSON.stringify(pages)
+      .match(/"(?:href|file)":"[^"#]+/g)
+      .map((m) => m.split(':"')[1])
+    for (const href of [...links.map((l) => l.href), ...hrefs]) {
+      if (/^(https?:|mailto:|tel:|#)/.test(href)) continue
+      assert.ok(existsSync(publicDir + href.split('#')[0]), `missing ${href}`)
+    }
+  })
+
+  it('loads only stylesheets and images that exist (url() is relative to each CSS file)', () => {
+    const visit = (cssFile) => {
+      for (const [, ref] of readFileSync(cssFile, 'utf8').matchAll(/url\('([^']+)'\)/g)) {
+        if (/^(https?:|data:)/.test(ref)) continue
+        const target = join(dirname(cssFile), ref)
+        assert.ok(existsSync(target), `${cssFile}: missing ${ref}`)
+        if (target.endsWith('.css')) visit(target)
+      }
+    }
+    visit(join(publicDir, 'css/main.css'))
+  })
+
+  it('refers only to packages in the catalog', () => {
+    const keys = new Set(catalog.packages.map((p) => p.key))
+    for (const rule of finder.rules) assert.ok(keys.has(rule.packageKey), rule.packageKey)
+    for (const pkg of catalog.packages)
+      for (const key of pkg.components ?? []) assert.ok(keys.has(key), key)
+  })
+
+  it('has every text in all three languages', () => {
+    for (const value of translations({ pages, catalog, finder, navigation })) {
+      for (const language of ['en', 'hy', 'ru'])
+        assert.ok(value[language]?.trim(), `${value.en} → ${language}`)
+    }
+  })
+})
+
+describe('i18n', () => {
+  it('fills placeholders and keeps unknown ones', () => {
+    assert.equal(interpolate('{a} and {b}', { a: 1 }), '1 and {b}')
+  })
+
+  it('picks the default language (Armenian)', () => {
+    assert.equal(t({ en: 'Yes', hy: 'Այո', ru: 'Да' }), 'Այո')
+  })
+
+  it('falls back to the key for missing interface text', () => {
+    assert.equal(ui('pricing', 'noSuchKey'), 'noSuchKey')
+  })
+})

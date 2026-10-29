@@ -1,0 +1,38 @@
+/* Contact section. */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 28px;
+  margin-top: 32px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.people {
+  display: grid;
+  gap: 16px;
+}
+
+.people .btn-row {
+  margin: 12px 0 0;
+}
+
+.direct-contacts {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.direct-contacts a {
+  font-weight: 700;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
