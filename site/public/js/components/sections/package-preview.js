@@ -4,6 +4,7 @@ import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
+import { reveal } from '../../lib/reveal.js'
 import { sectionHref } from '../../lib/page.js'
 import {
   availableLengths,
@@ -24,7 +25,7 @@ export function renderPackagePreview(config) {
     h(
       'div',
       { class: 'grid grid-4' },
-      categories.map((category) => categoryColumn(category, months)),
+      categories.map((category, index) => categoryColumn(category, months, index)),
     ),
     h(
       'div',
@@ -40,10 +41,10 @@ export function renderPackagePreview(config) {
   )
 }
 
-function categoryColumn(category, months) {
+function categoryColumn(category, months, index) {
   return h(
     'div',
-    { class: 'preview-group' },
+    { class: 'preview-group', ...reveal(index) },
     h('h3', null, categoryLabel(category)),
     h(
       'ul',

@@ -1,6 +1,7 @@
 import { navigation, site } from '../../content/index.js'
 import { h, richText } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
+import { reveal } from '../../lib/reveal.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
 
 export function renderFooter(footer) {
@@ -20,7 +21,7 @@ export function renderFooter(footer) {
     h(
       'div',
       { class: 'container container-wide' },
-      h('p', { class: 'footer-statement' }, richText(navigation.footerStatement)),
+      h('p', { class: 'footer-statement', ...reveal() }, richText(navigation.footerStatement)),
       h(
         'div',
         { class: 'footer-columns' },

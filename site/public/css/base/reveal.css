@@ -1,0 +1,37 @@
+/*
+ * Entrance motion (only without a reduced-motion preference). Prices, forms and controls are
+ * never hidden or moved by these rules.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveals (js/lib/reveal.js): short, staggered, and started before reaching the viewport. */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.25s ease-out;
+    transition-delay: calc(min(var(--reveal-order, 0), 4) * 50ms);
+  }
+
+  .reveal-ready [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Page titles enter word by word. */
+  .hero h1 .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.5em) rotate(3deg);
+    animation: word-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: calc(0.05s + var(--i) * 40ms);
+  }
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

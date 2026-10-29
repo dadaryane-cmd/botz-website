@@ -11,6 +11,7 @@ import { renderSection } from './components/sections/index.js'
 import { site } from './content/index.js'
 import { getLanguage, initLanguage, onLanguageChange, t, ui } from './lib/i18n.js'
 import { currentPage } from './lib/page.js'
+import { startReveals } from './lib/reveal.js'
 import { followSystemTheme } from './lib/theme.js'
 import { initSelection } from './pricing/selection.js'
 
@@ -49,13 +50,16 @@ initLanguage(location.search)
 initSelection(location.search)
 renderAll()
 closeMenuOnNavigate(elements.header)
+// Sections are created by script, so the browser could not jump to #anchors on load.
+if (location.hash)
+  document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' })
+// Reveals start after scrolling, so whatever is on screen is shown at once.
+startReveals()
 
 onLanguageChange(() => {
   const scrollPosition = window.scrollY
   renderAll()
   window.scrollTo(0, scrollPosition)
+  startReveals()
 })
 followSystemTheme()
-
-// Sections are created by script, so the browser could not jump to #anchors on load.
-if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView()

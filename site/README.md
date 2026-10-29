@@ -31,7 +31,8 @@ site/
 │   │   ├── theme-init.js       classic script, applies the saved theme before first paint
 │   │   ├── config.js           constants (languages, contract lengths, endpoints)
 │   │   ├── content/            loads the JSON from /content before the page renders
-│   │   ├── lib/                small helpers: DOM, i18n, formatting, storage, links, theme
+│   │   ├── lib/                small helpers: DOM, i18n, formatting, storage, links, theme,
+│   │   │                       animation (spring / tween) and scroll reveals
 │   │   ├── pricing/            price engine, package finder scoring, selection state
 │   │   ├── forms/              inquiry validation and email payload
 │   │   ├── services/           FormSubmit client

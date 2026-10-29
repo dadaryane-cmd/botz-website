@@ -1,5 +1,6 @@
 import { h } from '../../lib/dom.js'
 import { t } from '../../lib/i18n.js'
+import { reveal } from '../../lib/reveal.js'
 import { heading, section } from './section.js'
 
 export const renderServices = (config) =>
@@ -9,10 +10,10 @@ export const renderServices = (config) =>
     h('div', { class: 'grid services-grid' }, config.items.map(serviceCard)),
   )
 
-const serviceCard = (item) =>
+const serviceCard = (item, index) =>
   h(
     'article',
-    { class: 'card service-card' },
+    { class: 'card service-card', ...reveal(index) },
     h('span', { class: 'index' }, item.index),
     h('h3', null, t(item.title)),
     h('p', null, t(item.text)),

@@ -19,12 +19,26 @@ export function h(tag, attributes, ...children) {
   return element
 }
 
-/** Localized text where `*words*` are emphasised, as used in headings. */
-export function richText(value) {
+/**
+ * Localized text where `*words*` are emphasised, as used in headings.
+ * With `words: true` every word is wrapped in `<span class="word" style="--i: n">` for the
+ * word-by-word entrance animation (emphasised words stay together inside one `<em>`).
+ */
+export function richText(value, { words = false } = {}) {
   const fragment = document.createDocumentFragment()
+  let index = 0
+  const wordSpan = (word) => h('span', { class: 'word', style: `--i: ${index++}` }, word)
+  /** Text as a list of nodes: the text itself, or (with `words`) word spans and the spaces between. */
+  const nodes = (text) =>
+    words
+      ? text
+          .split(/(\s+)/)
+          .filter(Boolean)
+          .map((part) => (/^\s+$/.test(part) ? part : wordSpan(part)))
+      : [text]
   for (const part of t(value).split(/(\*[^*]+\*)/)) {
-    if (/^\*[^*]+\*$/.test(part)) fragment.append(h('em', null, part.slice(1, -1)))
-    else if (part) fragment.append(part)
+    if (/^\*[^*]+\*$/.test(part)) fragment.append(h('em', null, nodes(part.slice(1, -1))))
+    else if (part) fragment.append(...nodes(part))
   }
   return fragment
 }

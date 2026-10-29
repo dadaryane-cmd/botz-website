@@ -158,6 +158,7 @@
 
   .is-open .nav {
     display: flex;
+    animation: menu-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .nav ul {
@@ -178,5 +179,14 @@
   .language-switch button {
     min-width: 34px;
     padding: 4px 5px;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
   }
 }

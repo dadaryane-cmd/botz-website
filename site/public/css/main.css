@@ -35,5 +35,6 @@
 @import url('components/contact.css');
 
 /* Overrides */
+@import url('base/reveal.css');
 @import url('base/theme-transition.css');
 @import url('base/motion.css');

@@ -13,20 +13,55 @@
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+  /* The hover fill (::after) sits between the background and the label. */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   transition:
-    transform 0.15s,
-    background-color 0.15s,
-    color 0.15s;
+    color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.btn:hover {
-  transform: translateY(-1px);
+/* Hover: a fill in the text colour wipes up from the bottom. */
+.btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--text);
+  transform: translateY(101%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: translateY(0);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* On the orange background the fill is orange and the label dark. */
+.bg-accent .btn::after {
+  background: var(--accent);
+}
+
+.bg-accent .btn:hover,
+.bg-accent .btn:focus-visible {
+  color: var(--on-accent);
+  border-color: var(--on-accent);
 }
 
 .btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
-  transform: none;
+}
+
+.btn:disabled::after {
+  display: none;
 }
 
 .btn-primary {
@@ -40,17 +75,22 @@
   color: var(--text);
 }
 
-.btn-secondary:hover {
-  background: var(--text);
-  color: var(--bg);
-}
-
 .btn-link {
   min-height: 40px;
   padding: 8px 4px;
   background: none;
   color: var(--text);
   text-decoration: underline;
+}
+
+.btn-link::after {
+  display: none;
+}
+
+.btn-link:hover,
+.btn-link:focus-visible {
+  color: var(--accent-text);
+  border-color: transparent;
 }
 
 .btn-small {
@@ -74,7 +114,14 @@
 }
 
 .link-arrow::after {
-  content: ' →';
+  content: '→';
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: transform 0.25s ease;
+}
+
+.link-arrow:hover::after {
+  transform: translateX(4px);
 }
 
 .icon-button {

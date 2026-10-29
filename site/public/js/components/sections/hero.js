@@ -1,14 +1,18 @@
-import { h } from '../../lib/dom.js'
-import { t } from '../../lib/i18n.js'
+import { h, richText } from '../../lib/dom.js'
+import { hasText, t } from '../../lib/i18n.js'
 import { renderFlameBackground } from '../flame/flame-background.js'
-import { buttonRow, heading, lead } from './section.js'
+import { buttonRow, lead } from './section.js'
 
-/** Page title. The home variant fills the first screen with animated fire and adds the ticker. */
+/**
+ * Page title: the headline enters word by word. The home variant fills the first screen with the
+ * animated fire and adds the ticker.
+ */
 export function renderHero(config) {
   const text = h(
     'div',
     { class: 'hero-text' },
-    heading(config.heading, 'h1'),
+    hasText(config.heading) &&
+      h('h1', { class: 'heading' }, richText(config.heading, { words: true })),
     lead(config.subheading),
     buttonRow(config.buttons),
   )

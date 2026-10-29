@@ -1,5 +1,6 @@
 import { h } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
+import { reveal } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
 /** Example deliverables (PDFs in /downloads). */
@@ -12,10 +13,10 @@ export const renderSamples = (config) =>
     h('p', { class: 'muted small' }, ui('trust', 'sampleNote')),
   )
 
-const sampleCard = (item) =>
+const sampleCard = (item, index) =>
   h(
     'article',
-    { class: 'card sample-card' },
+    { class: 'card sample-card', ...reveal(index) },
     h('span', { class: 'badge' }, ui('trust', 'sampleLabel')),
     h('h3', null, t(item.title)),
     h('p', null, t(item.text)),

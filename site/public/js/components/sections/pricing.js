@@ -25,6 +25,7 @@ import {
   subscribe,
   updateSelection,
 } from '../../pricing/selection.js'
+import { animatedAmount } from '../animated-amount.js'
 import { heading, section } from './section.js'
 
 export function renderPricing(config) {
@@ -164,19 +165,28 @@ function priceDetails(pkg, price) {
   }
   const totalLabel =
     price.months === 1 ? ui('pricing', 'totalFor1') : ui('pricing', 'totalFor', { n: price.months })
+  // "You save {amount}" with a counting amount in place of the placeholder.
+  const [saveBefore, saveAfter] = ui('pricing', 'youSave', { amount: '{amount}' }).split('{amount}')
   return [
     h(
       'p',
       { class: 'price' },
-      formatAmd(price.monthly),
+      animatedAmount(`${pkg.key}-monthly`, price.monthly),
       h('small', null, ` ${ui('pricing', 'perMonth')}`),
     ),
-    h('p', { class: 'small' }, `${totalLabel}: `, h('strong', null, formatAmd(price.total))),
+    h(
+      'p',
+      { class: 'small' },
+      `${totalLabel}: `,
+      h('strong', null, animatedAmount(`${pkg.key}-total`, price.total)),
+    ),
     price.savings
       ? h(
           'p',
           { class: 'small saving' },
-          ui('pricing', 'youSave', { amount: formatAmd(price.savings) }),
+          saveBefore,
+          animatedAmount(`${pkg.key}-savings`, price.savings),
+          saveAfter,
         )
       : h('p', { class: 'small muted' }, ui('pricing', 'noSavings')),
   ]
@@ -282,19 +292,36 @@ function estimatePanel(selection) {
     )
   const rows = []
   if (q.recurring) {
-    rows.push(row(packageTitle(q.pkg), `${formatAmd(q.recurring.monthly)} × ${q.recurring.months}`))
-    rows.push(row(ui('pricing', 'recurringFees'), formatAmd(q.recurring.total), 'subtotal'))
+    rows.push(
+      row(packageTitle(q.pkg), [
+        animatedAmount('estimate-monthly', q.recurring.monthly),
+        ` × ${q.recurring.months}`,
+      ]),
+    )
+    rows.push(
+      row(
+        ui('pricing', 'recurringFees'),
+        animatedAmount('estimate-recurring', q.recurring.total),
+        'subtotal',
+      ),
+    )
   } else if (q.pkg) {
     rows.push(row(packageTitle(q.pkg), formatAmd(q.packageOneTime)))
   }
   for (const line of q.addons)
     rows.push(row(`${t(line.addon.name)} ×${line.quantity}`, formatAmd(line.total)))
   if (q.oneTimeTotal)
-    rows.push(row(ui('pricing', 'oneTimeFees'), formatAmd(q.oneTimeTotal), 'subtotal'))
+    rows.push(
+      row(
+        ui('pricing', 'oneTimeFees'),
+        animatedAmount('estimate-one-time', q.oneTimeTotal),
+        'subtotal',
+      ),
+    )
   rows.push(
     row(
       ui('pricing', 'combinedEstimate'),
-      `${q.isMinimum ? `${ui('pricing', 'from')} ` : ''}${formatAmd(q.total)}`,
+      [q.isMinimum && `${ui('pricing', 'from')} `, animatedAmount('estimate-total', q.total)],
       'total',
     ),
   )
