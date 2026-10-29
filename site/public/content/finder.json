@@ -1,0 +1,602 @@
+{
+  "questions": [
+    {
+      "key": "goal",
+      "role": "normal",
+      "label": {
+        "hy": "Ի՞նչն է հիմա ամենակարևորը",
+        "en": "What matters most right now?",
+        "ru": "Что сейчас важнее всего?"
+      },
+      "options": [
+        {
+          "value": "social",
+          "label": {
+            "hy": "Տեսանելի լինել սոցցանցերում",
+            "en": "Being seen on social media",
+            "ru": "Быть заметным в соцсетях"
+          }
+        },
+        {
+          "value": "search",
+          "label": {
+            "hy": "Գտնվել Google-ում",
+            "en": "Being found on Google",
+            "ru": "Находиться в Google"
+          }
+        },
+        {
+          "value": "both",
+          "label": {
+            "hy": "Եվ սոցցանցեր, և որոնում",
+            "en": "Both social and search",
+            "ru": "И соцсети, и поиск"
+          }
+        },
+        {
+          "value": "site",
+          "label": {
+            "hy": "Նոր կայք",
+            "en": "A new website",
+            "ru": "Новый сайт"
+          }
+        }
+      ]
+    },
+    {
+      "key": "website",
+      "role": "normal",
+      "label": {
+        "hy": "Այսօր կայք ունե՞ք",
+        "en": "Do you have a website today?",
+        "ru": "Есть ли у вас сайт?"
+      },
+      "options": [
+        {
+          "value": "yes",
+          "label": {
+            "hy": "Այո, և այն լավ է աշխատում",
+            "en": "Yes, and it works well",
+            "ru": "Да, и он работает хорошо"
+          }
+        },
+        {
+          "value": "outdated",
+          "label": {
+            "hy": "Այո, բայց հնացած է",
+            "en": "Yes, but it is outdated",
+            "ru": "Да, но он устарел"
+          }
+        },
+        {
+          "value": "no",
+          "label": {
+            "hy": "Դեռ ոչ",
+            "en": "Not yet",
+            "ru": "Пока нет"
+          }
+        }
+      ]
+    },
+    {
+      "key": "social",
+      "role": "normal",
+      "label": {
+        "hy": "Որքանո՞վ են ակտիվ ձեր սոցցանցերը",
+        "en": "How active are your social accounts?",
+        "ru": "Насколько активны ваши соцсети?"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "hy": "Նոր ենք սկսում",
+            "en": "We are just starting",
+            "ru": "Только начинаем"
+          }
+        },
+        {
+          "value": "irregular",
+          "label": {
+            "hy": "Հրապարակում ենք երբեմն",
+            "en": "We post now and then",
+            "ru": "Публикуем время от времени"
+          }
+        },
+        {
+          "value": "active",
+          "label": {
+            "hy": "Ակտիվ ենք, պատրաստ աճի",
+            "en": "Active, ready to grow",
+            "ru": "Активны и готовы расти"
+          }
+        }
+      ]
+    },
+    {
+      "key": "production",
+      "role": "normal",
+      "label": {
+        "hy": "Ֆոտո կամ վիդեո նկարահանում պե՞տք է",
+        "en": "Do you need photo or video production?",
+        "ru": "Нужна ли фото- или видеосъёмка?"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "hy": "Ոչ, ունենք մեր նյութերը",
+            "en": "No, we have our own material",
+            "ru": "Нет, есть свои материалы"
+          }
+        },
+        {
+          "value": "photo",
+          "label": {
+            "hy": "Կանոնավոր լուսանկարներ",
+            "en": "Regular photos",
+            "ru": "Регулярные фото"
+          }
+        },
+        {
+          "value": "video",
+          "label": {
+            "hy": "Նաև կարճ տեսանյութեր",
+            "en": "Short-form video too",
+            "ru": "И короткие видео"
+          }
+        }
+      ]
+    },
+    {
+      "key": "budget",
+      "role": "budget",
+      "label": {
+        "hy": "Ի՞նչ ամսական բյուջե ունեք մեր վճարի համար",
+        "en": "What monthly budget do you have for our fee?",
+        "ru": "Какой месячный бюджет на наши услуги?"
+      },
+      "help": {
+        "hy": "Գովազդային բյուջեն առանձին է։",
+        "en": "Advertising spend is separate.",
+        "ru": "Рекламный бюджет — отдельно."
+      },
+      "options": [
+        {
+          "value": "b100",
+          "label": {
+            "hy": "Մինչև 100,000 ֏",
+            "en": "Up to 100,000 ֏",
+            "ru": "До 100 000 ֏"
+          },
+          "budgetMax": 100000
+        },
+        {
+          "value": "b200",
+          "label": {
+            "hy": "Մինչև 200,000 ֏",
+            "en": "Up to 200,000 ֏",
+            "ru": "До 200 000 ֏"
+          },
+          "budgetMax": 200000
+        },
+        {
+          "value": "b400",
+          "label": {
+            "hy": "Մինչև 400,000 ֏",
+            "en": "Up to 400,000 ֏",
+            "ru": "До 400 000 ֏"
+          },
+          "budgetMax": 400000
+        },
+        {
+          "value": "b700",
+          "label": {
+            "hy": "Մինչև 700,000 ֏",
+            "en": "Up to 700,000 ֏",
+            "ru": "До 700 000 ֏"
+          },
+          "budgetMax": 700000
+        },
+        {
+          "value": "unsure",
+          "label": {
+            "hy": "Դեռ չգիտեմ",
+            "en": "Not sure yet",
+            "ru": "Пока не знаю"
+          }
+        }
+      ]
+    },
+    {
+      "key": "term",
+      "role": "duration",
+      "label": {
+        "hy": "Որքա՞ն ժամանակ կցանկանայիք համագործակցել",
+        "en": "How long would you like to work together?",
+        "ru": "Как долго вы хотели бы работать вместе?"
+      },
+      "options": [
+        {
+          "value": "m1",
+          "label": {
+            "hy": "1 ամիս",
+            "en": "1 month",
+            "ru": "1 месяц"
+          },
+          "months": 1
+        },
+        {
+          "value": "m3",
+          "label": {
+            "hy": "3 ամիս",
+            "en": "3 months",
+            "ru": "3 месяца"
+          },
+          "months": 3
+        },
+        {
+          "value": "m6",
+          "label": {
+            "hy": "6 ամիս",
+            "en": "6 months",
+            "ru": "6 месяцев"
+          },
+          "months": 6
+        },
+        {
+          "value": "m9",
+          "label": {
+            "hy": "9 ամիս",
+            "en": "9 months",
+            "ru": "9 месяцев"
+          },
+          "months": 9
+        },
+        {
+          "value": "m12",
+          "label": {
+            "hy": "12 ամիս",
+            "en": "12 months",
+            "ru": "12 месяцев"
+          },
+          "months": 12
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "key": "social-start",
+      "packageKey": "smm-start",
+      "points": 2,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "social"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Ցանկանում եք կայուն ներկայություն սոցցանցերում։",
+        "en": "You want a steady social presence.",
+        "ru": "Вам нужно стабильное присутствие в соцсетях."
+      }
+    },
+    {
+      "key": "social-dominance",
+      "packageKey": "smm-dominance",
+      "points": 3,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "social"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Ուժեղ կրեատիվ ուղղություն՝ սոցցանցերում կայուն աճի համար։",
+        "en": "Strong creative direction for steady social growth.",
+        "ru": "Сильная креативная концепция для стабильного роста в соцсетях."
+      }
+    },
+    {
+      "key": "social-gold",
+      "packageKey": "smm-gold",
+      "points": 2,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "social"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Սոցցանցերի ամբողջական սպասարկում մի քանի հարթակում։",
+        "en": "Full-service social media across several platforms.",
+        "ru": "Полный сервис в соцсетях на нескольких платформах."
+      }
+    },
+    {
+      "key": "new-start",
+      "packageKey": "smm-start",
+      "points": 2,
+      "when": [
+        {
+          "question": "social",
+          "values": [
+            "none",
+            "irregular"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Start-ը զրոյից ստեղծում է կայուն ռիթմ։",
+        "en": "Start builds a consistent rhythm from the ground up.",
+        "ru": "Start выстраивает стабильный ритм с нуля."
+      }
+    },
+    {
+      "key": "active-grow",
+      "packageKey": "smm-dominance",
+      "points": 1,
+      "when": [
+        {
+          "question": "social",
+          "values": [
+            "active"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Ձեր հաշիվներն ակտիվ են և պատրաստ են ավելիին։",
+        "en": "Your accounts are active and ready for more.",
+        "ru": "Ваши аккаунты активны и готовы к большему."
+      }
+    },
+    {
+      "key": "photo",
+      "packageKey": "smm-dominance",
+      "points": 2,
+      "when": [
+        {
+          "question": "production",
+          "values": [
+            "photo"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Նախատեսված է կանոնավոր արտադրական աջակցության կարիք ունեցող բրենդների համար։",
+        "en": "Built for brands that need regular production support.",
+        "ru": "Для брендов, которым нужен регулярный продакшн."
+      }
+    },
+    {
+      "key": "video",
+      "packageKey": "smm-gold",
+      "points": 3,
+      "when": [
+        {
+          "question": "production",
+          "values": [
+            "video"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Gold-ը մեր ամենաամբողջական SMM փաթեթն է։",
+        "en": "Gold is our most complete social media package.",
+        "ru": "Gold — наш самый полный SMM-пакет."
+      }
+    },
+    {
+      "key": "video-ultra",
+      "packageKey": "ultra",
+      "points": 1,
+      "when": [
+        {
+          "question": "production",
+          "values": [
+            "video"
+          ]
+        },
+        {
+          "question": "goal",
+          "values": [
+            "both"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Ամբողջական SMM և որոնում մեկ փաթեթում։",
+        "en": "Full-scale social and search in one plan.",
+        "ru": "Полный SMM и поиск в одном плане."
+      }
+    },
+    {
+      "key": "search-fundamental",
+      "packageKey": "seo-fundamental",
+      "points": 2,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "search"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Տեխնիկական հիմքը որոնման մեջ առաջին քայլն է։",
+        "en": "A technical foundation is the first step in search.",
+        "ru": "Технический фундамент — первый шаг в поиске."
+      }
+    },
+    {
+      "key": "search-vision",
+      "packageKey": "seo-vision",
+      "points": 3,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "search"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Կանոնավոր բովանդակությունն ընդլայնում է այն որոնումները, որտեղ հայտնվում եք։",
+        "en": "Regular content widens the searches you appear for.",
+        "ru": "Регулярный контент расширяет круг запросов, где вы появляетесь."
+      }
+    },
+    {
+      "key": "search-authority",
+      "packageKey": "seo-authority",
+      "points": 2,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "question": "website",
+          "values": [
+            "yes"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Կայացած կայքը կարող է մրցել ավելի բարդ որոնումներում։",
+        "en": "An established site can compete for tougher searches.",
+        "ru": "Сложившийся сайт может бороться за конкурентные запросы."
+      }
+    },
+    {
+      "key": "search-no-site",
+      "packageKey": "website-creation",
+      "points": 3,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "question": "website",
+          "values": [
+            "no"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "SEO-ին անհրաժեշտ է ձեր վերահսկած կայք․ կարող ենք այն ստեղծել նախապես կամ զուգահեռ։",
+        "en": "SEO needs a site you control — we can build it first or alongside.",
+        "ru": "Для SEO нужен ваш сайт — мы можем сделать его заранее или параллельно."
+      }
+    },
+    {
+      "key": "search-no-site-seo",
+      "packageKey": "seo-fundamental",
+      "points": 1,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "question": "website",
+          "values": [
+            "no"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "SEO-ն կարող է սկսվել նոր կայքի հետ զուգահեռ։",
+        "en": "SEO can start alongside a new website.",
+        "ru": "SEO можно начать параллельно с созданием сайта."
+      }
+    },
+    {
+      "key": "both-boost",
+      "packageKey": "business-boost",
+      "points": 4,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "both"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Մեկ համակարգված փաթեթ սոցցանցերի և որոնման համար։",
+        "en": "One coordinated plan for social and search.",
+        "ru": "Один согласованный план для соцсетей и поиска."
+      }
+    },
+    {
+      "key": "both-ultra",
+      "packageKey": "ultra",
+      "points": 3,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "both"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Ամբողջական SMM և SEO՝ առաջնահերթ աջակցությամբ։",
+        "en": "Full-scale social and search with priority support.",
+        "ru": "Максимальный SMM и SEO с приоритетной поддержкой."
+      }
+    },
+    {
+      "key": "site",
+      "packageKey": "website-creation",
+      "points": 5,
+      "when": [
+        {
+          "question": "goal",
+          "values": [
+            "site"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Ցանկանում եք նոր կայք։",
+        "en": "You want a new website.",
+        "ru": "Вам нужен новый сайт."
+      }
+    },
+    {
+      "key": "site-outdated",
+      "packageKey": "website-creation",
+      "points": 2,
+      "when": [
+        {
+          "question": "website",
+          "values": [
+            "outdated",
+            "no"
+          ]
+        }
+      ],
+      "reason": {
+        "hy": "Թարմացված կայքը յուրաքանչյուր ալիքի համար ավելի լավ վայր է՝ մարդկանց ուղղորդելու։",
+        "en": "A refreshed website gives every channel a better place to send people.",
+        "ru": "Обновлённый сайт — лучшее место, куда вести людей из любых каналов."
+      }
+    }
+  ]
+}

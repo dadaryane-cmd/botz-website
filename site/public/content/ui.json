@@ -1,0 +1,607 @@
+{
+  "common": {
+    "skipToContent": {
+      "hy": "Անցնել բովանդակությանը",
+      "en": "Skip to content",
+      "ru": "Перейти к содержанию"
+    },
+    "menu": {
+      "hy": "Մենյու",
+      "en": "Menu",
+      "ru": "Меню"
+    },
+    "language": {
+      "hy": "Լեզու",
+      "en": "Language",
+      "ru": "Язык"
+    },
+    "switchToLight": {
+      "hy": "Միացնել բաց թեման",
+      "en": "Switch to light mode",
+      "ru": "Включить светлую тему"
+    },
+    "switchToDark": {
+      "hy": "Միացնել մուգ թեման",
+      "en": "Switch to dark mode",
+      "ru": "Включить тёмную тему"
+    }
+  },
+  "services": {
+    "smm": {
+      "hy": "Սոցիալական մեդիա մարքեթինգ",
+      "en": "Social media marketing",
+      "ru": "Маркетинг в соцсетях"
+    },
+    "seo": {
+      "hy": "Որոնողական օպտիմալացում",
+      "en": "Search engine optimisation",
+      "ru": "Поисковая оптимизация"
+    },
+    "bundle": {
+      "hy": "SMM + SEO",
+      "en": "SMM + SEO",
+      "ru": "SMM + SEO"
+    },
+    "website": {
+      "hy": "Կայքի ստեղծում",
+      "en": "Website creation",
+      "ru": "Создание сайта"
+    },
+    "addon": {
+      "hy": "Լրացուցիչ ծառայություններ",
+      "en": "Add-ons",
+      "ru": "Дополнительные услуги"
+    },
+    "other": {
+      "hy": "Դեռ չեմ որոշել",
+      "en": "Not sure yet",
+      "ru": "Пока не определился"
+    }
+  },
+  "contact": {
+    "call": {
+      "hy": "Զանգել",
+      "en": "Call",
+      "ru": "Позвонить"
+    },
+    "whatsapp": {
+      "hy": "WhatsApp",
+      "en": "WhatsApp",
+      "ru": "WhatsApp"
+    },
+    "email": {
+      "hy": "Էլ. փոստ",
+      "en": "Email",
+      "ru": "Почта"
+    },
+    "phoneLabel": {
+      "hy": "Հեռախոս",
+      "en": "Phone",
+      "ru": "Телефон"
+    },
+    "sharedLine": {
+      "hy": "Ընդհանուր կապ․ հեռախոսը, WhatsApp-ը և էլ. փոստը հասնում են ամբողջ թիմին։",
+      "en": "Shared line: phone, WhatsApp and email reach the whole team.",
+      "ru": "Общие контакты: телефон, WhatsApp и почта доступны всей команде."
+    },
+    "handles": {
+      "hy": "Պատասխանատու է՝ {services}",
+      "en": "Handles: {services}",
+      "ru": "Отвечает за: {services}"
+    },
+    "eitherContact": {
+      "hy": "Համակցված փաթեթներ․ դիմեք ցանկացածին, մենք աշխատում ենք համատեղ։",
+      "en": "Combined plans: talk to either — we coordinate together.",
+      "ru": "Комплексные пакеты: обращайтесь к любому из нас — мы работаем вместе."
+    }
+  },
+  "pricing": {
+    "filterLabel": {
+      "hy": "Ծառայություն",
+      "en": "Service",
+      "ru": "Услуга"
+    },
+    "cat_smm": {
+      "hy": "SMM",
+      "en": "SMM",
+      "ru": "SMM"
+    },
+    "cat_seo": {
+      "hy": "SEO",
+      "en": "SEO",
+      "ru": "SEO"
+    },
+    "cat_bundle": {
+      "hy": "SMM + SEO",
+      "en": "SMM + SEO",
+      "ru": "SMM + SEO"
+    },
+    "cat_website": {
+      "hy": "Կայք",
+      "en": "Website",
+      "ru": "Сайт"
+    },
+    "durationLabel": {
+      "hy": "Պայմանագրի ժամկետ",
+      "en": "Contract length",
+      "ru": "Срок договора"
+    },
+    "month1": {
+      "hy": "1 ամիս",
+      "en": "1 month",
+      "ru": "1 месяц"
+    },
+    "monthsN": {
+      "hy": "{n} ամիս",
+      "en": "{n} months",
+      "ru": "{n} мес."
+    },
+    "perMonth": {
+      "hy": "ամսական",
+      "en": "per month",
+      "ru": "в месяц"
+    },
+    "oneTime": {
+      "hy": "միանվագ",
+      "en": "one-time",
+      "ru": "единоразово"
+    },
+    "totalFor": {
+      "hy": "Ընդհանուրը {n} ամսվա համար",
+      "en": "Total for {n} months",
+      "ru": "Итого за {n} мес."
+    },
+    "totalFor1": {
+      "hy": "Ընդհանուրը 1 ամսվա համար",
+      "en": "Total for 1 month",
+      "ru": "Итого за 1 месяц"
+    },
+    "youSave": {
+      "hy": "Խնայում եք {amount}",
+      "en": "You save {amount}",
+      "ru": "Экономия {amount}"
+    },
+    "noSavings": {
+      "hy": "Բազային ամսական արժեք",
+      "en": "Base monthly rate",
+      "ru": "Базовая месячная ставка"
+    },
+    "unavailableShort": {
+      "hy": "Անհասանելի",
+      "en": "Unavailable",
+      "ru": "Недоступно"
+    },
+    "availableFor": {
+      "hy": "Հասանելի է՝ {list}",
+      "en": "Available for {list}",
+      "ru": "Доступно: {list}"
+    },
+    "from": {
+      "hy": "սկսած",
+      "en": "from",
+      "ru": "от"
+    },
+    "recommended": {
+      "hy": "Առաջարկվող",
+      "en": "Recommended",
+      "ru": "Рекомендуем"
+    },
+    "bundleOf": {
+      "hy": "Միավորում է {list}-ը՝ իր առանձին գնով",
+      "en": "Combines {list} at its own price",
+      "ru": "Объединяет {list} по собственной цене"
+    },
+    "scopeInProposal": {
+      "hy": "Այս փաթեթի մանրամասն ծավալը հաստատվում է ձեր անհատական առաջարկում։",
+      "en": "The detailed scope for this package is confirmed in your personal proposal.",
+      "ru": "Детальный объём этого пакета подтверждается в вашем персональном предложении."
+    },
+    "select": {
+      "hy": "Ընտրել",
+      "en": "Select",
+      "ru": "Выбрать"
+    },
+    "selected": {
+      "hy": "Ընտրված է",
+      "en": "Selected",
+      "ru": "Выбрано"
+    },
+    "clear": {
+      "hy": "Մաքրել",
+      "en": "Clear",
+      "ru": "Очистить"
+    },
+    "addonsTitle": {
+      "hy": "Լրացուցիչ ծառայություններ",
+      "en": "Add-ons",
+      "ru": "Дополнительные услуги"
+    },
+    "addonsIntro": {
+      "hy": "Միանվագ լրացումներ, որոնք կարող եք ավելացնել ցանկացած փաթեթին։",
+      "en": "One-time extras you can add to any plan.",
+      "ru": "Разовые дополнения к любому пакету."
+    },
+    "bundleUnits": {
+      "hy": "{n}-ի փաթեթ",
+      "en": "Bundle of {n}",
+      "ru": "Набор из {n}"
+    },
+    "quantity": {
+      "hy": "Քանակ",
+      "en": "Quantity",
+      "ru": "Количество"
+    },
+    "add": {
+      "hy": "Ավելացնել",
+      "en": "Add",
+      "ru": "Добавить"
+    },
+    "remove": {
+      "hy": "Հեռացնել",
+      "en": "Remove",
+      "ru": "Убрать"
+    },
+    "estimateTitle": {
+      "hy": "Ձեր նախահաշիվը",
+      "en": "Your estimate",
+      "ru": "Ваш расчёт"
+    },
+    "recurringFees": {
+      "hy": "Պարբերական վճարներ",
+      "en": "Recurring fees",
+      "ru": "Регулярные платежи"
+    },
+    "oneTimeFees": {
+      "hy": "Միանվագ վճարներ",
+      "en": "One-time fees",
+      "ru": "Разовые платежи"
+    },
+    "combinedEstimate": {
+      "hy": "Ընդհանուր նախահաշիվ",
+      "en": "Combined estimate",
+      "ru": "Общая оценка"
+    },
+    "minimumNote": {
+      "hy": "«Սկսած» գները նվազագույն գնահատականներ են․ վերջնական գումարը հաստատվում է ծավալը համաձայնեցնելուց հետո։",
+      "en": "“From” prices are minimum estimates; the final amount is confirmed after we agree the scope.",
+      "ru": "Цены «от» — минимальная оценка; итоговая сумма подтверждается после согласования объёма."
+    },
+    "notContract": {
+      "hy": "Սա նախահաշիվ է՝ առաջարկ ստանալու համար, ոչ թե պայմանագիր կամ հաշիվ։",
+      "en": "This is an estimate to request a proposal — not a contract or an invoice.",
+      "ru": "Это оценка для запроса предложения — не договор и не счёт."
+    },
+    "requestProposal": {
+      "hy": "Ստանալ առաջարկ",
+      "en": "Request a proposal",
+      "ru": "Запросить предложение"
+    },
+    "discussWhatsapp": {
+      "hy": "Քննարկել WhatsApp-ով",
+      "en": "Discuss on WhatsApp",
+      "ru": "Обсудить в WhatsApp"
+    },
+    "shareEstimate": {
+      "hy": "Կիսվել նախահաշվով",
+      "en": "Share estimate",
+      "ru": "Поделиться расчётом"
+    },
+    "shareCopied": {
+      "hy": "Հղումը պատճենվեց։",
+      "en": "Link copied.",
+      "ru": "Ссылка скопирована."
+    },
+    "shareReady": {
+      "hy": "Հղում",
+      "en": "Share link",
+      "ru": "Ссылка"
+    },
+    "noSelection": {
+      "hy": "Ընտրեք փաթեթ կամ լրացուցիչ ծառայություն՝ նախահաշիվը տեսնելու համար։",
+      "en": "Choose a package or an add-on to see an estimate.",
+      "ru": "Выберите пакет или дополнение, чтобы увидеть расчёт."
+    }
+  },
+  "guide": {
+    "start": {
+      "hy": "Գտնել իմ փաթեթը",
+      "en": "Find my package",
+      "ru": "Подобрать пакет"
+    },
+    "next": {
+      "hy": "Հաջորդը",
+      "en": "Next",
+      "ru": "Далее"
+    },
+    "back": {
+      "hy": "Հետ",
+      "en": "Back",
+      "ru": "Назад"
+    },
+    "seeResult": {
+      "hy": "Տեսնել առաջարկը",
+      "en": "See my recommendation",
+      "ru": "Показать рекомендацию"
+    },
+    "restart": {
+      "hy": "Սկսել նորից",
+      "en": "Start again",
+      "ru": "Начать заново"
+    },
+    "progress": {
+      "hy": "Հարց {n}՝ {total}-ից",
+      "en": "Question {n} of {total}",
+      "ru": "Вопрос {n} из {total}"
+    },
+    "resultTitle": {
+      "hy": "Մեր առաջարկը",
+      "en": "Our suggestion",
+      "ru": "Наша рекомендация"
+    },
+    "why": {
+      "hy": "Ինչու է սա համապատասխանում",
+      "en": "Why this fits",
+      "ru": "Почему это подходит"
+    },
+    "alternatives": {
+      "hy": "Արժե դիտարկել նաև",
+      "en": "Also worth a look",
+      "ru": "Также стоит рассмотреть"
+    },
+    "overBudget": {
+      "hy": "Գերազանցում է ձեր նշած բյուջեն այս ժամկետի համար։",
+      "en": "Above your stated budget for this term.",
+      "ru": "Выше указанного бюджета на этот срок."
+    },
+    "custom": {
+      "hy": "Ոչինչ ճշգրիտ չի՞ համապատասխանում։ Կարող ենք միասին կազմել անհատական ծավալ։",
+      "en": "Nothing fits exactly? We can shape a custom scope with you.",
+      "ru": "Ничего не подходит точно? Подготовим индивидуальный объём вместе с вами."
+    },
+    "trueCost": {
+      "hy": "{monthly} ամսական × {n} = {total}",
+      "en": "{monthly} per month × {n} = {total}",
+      "ru": "{monthly} в месяц × {n} = {total}"
+    },
+    "discuss": {
+      "hy": "Քննարկել անհատական փաթեթ",
+      "en": "Discuss a custom plan",
+      "ru": "Обсудить индивидуальный план"
+    },
+    "usePackage": {
+      "hy": "Օգտագործել նախահաշվում",
+      "en": "Use this in my estimate",
+      "ru": "Использовать в расчёте"
+    },
+    "temporary": {
+      "hy": "Ձեր պատասխանները մնում են այս էջում և ոչ մի տեղ չեն ուղարկվում, քանի դեռ հարցում չեք ներկայացրել։",
+      "en": "Your answers stay in this browser tab and are not sent anywhere unless you submit an inquiry.",
+      "ru": "Ответы остаются в этой вкладке и никуда не отправляются, пока вы не отправите заявку."
+    },
+    "noMatch": {
+      "hy": "Ձեր պատասխանների հիման վրա կարճ զրույցն ավելի օգտակար կլինի, քան ֆիքսված փաթեթը։",
+      "en": "Based on your answers, a short conversation will help more than a fixed package.",
+      "ru": "По вашим ответам короткий разговор поможет больше, чем готовый пакет."
+    }
+  },
+  "form": {
+    "title": {
+      "hy": "Պատմեք ձեր նախագծի մասին",
+      "en": "Tell us about your project",
+      "ru": "Расскажите о проекте"
+    },
+    "name": {
+      "hy": "Ձեր անունը",
+      "en": "Your name",
+      "ru": "Ваше имя"
+    },
+    "email": {
+      "hy": "Էլ. փոստ",
+      "en": "Email",
+      "ru": "Эл. почта"
+    },
+    "phone": {
+      "hy": "Հեռախոս կամ WhatsApp",
+      "en": "Phone or WhatsApp",
+      "ru": "Телефон или WhatsApp"
+    },
+    "contactHint": {
+      "hy": "Նշեք էլ. փոստ կամ հեռախոսահամար՝ առնվազն մեկը։",
+      "en": "Give us an email or a phone number — at least one.",
+      "ru": "Укажите почту или телефон — хотя бы одно."
+    },
+    "service": {
+      "hy": "Ծառայություն",
+      "en": "Service",
+      "ru": "Услуга"
+    },
+    "choose": {
+      "hy": "Ընտրեք ծառայությունը",
+      "en": "Choose a service",
+      "ru": "Выберите услугу"
+    },
+    "message": {
+      "hy": "Հաղորդագրություն",
+      "en": "Message",
+      "ru": "Сообщение"
+    },
+    "messagePlaceholder": {
+      "hy": "Ձեր բիզնեսը, նպատակները, ժամկետները՝ այն ամենը, ինչը կօգնի մեզ նախապատրաստվել։",
+      "en": "Your business, goals, timing — whatever helps us prepare.",
+      "ru": "Ваш бизнес, цели, сроки — всё, что поможет нам подготовиться."
+    },
+    "preferredContact": {
+      "hy": "Ո՞վ կապվի ձեզ հետ",
+      "en": "Who should contact you?",
+      "ru": "Кто с вами свяжется?"
+    },
+    "either": {
+      "hy": "Ցանկացածը",
+      "en": "Either",
+      "ru": "Любой"
+    },
+    "selectedEstimate": {
+      "hy": "Կցված նախահաշիվ",
+      "en": "Attached estimate",
+      "ru": "Прикреплённый расчёт"
+    },
+    "removeEstimate": {
+      "hy": "Հեռացնել նախահաշիվը",
+      "en": "Remove estimate",
+      "ru": "Убрать расчёт"
+    },
+    "submit": {
+      "hy": "Ուղարկել հարցումը",
+      "en": "Send inquiry",
+      "ru": "Отправить заявку"
+    },
+    "sending": {
+      "hy": "Ուղարկվում է…",
+      "en": "Sending…",
+      "ru": "Отправка…"
+    },
+    "successTitle": {
+      "hy": "Շնորհակալություն, ձեր հաղորդագրությունն ուղարկված է։",
+      "en": "Thank you — your message has been sent.",
+      "ru": "Спасибо — сообщение отправлено."
+    },
+    "successText": {
+      "hy": "{name}-ը կկապվի ձեզ հետ աշխատանքային ժամերին։ Շտապ դեպքում զանգեք կամ գրեք WhatsApp-ով։",
+      "en": "{name} will get back to you during working hours. If it is urgent, call or message us on WhatsApp.",
+      "ru": "{name} свяжется с вами в рабочее время. Если срочно — позвоните или напишите в WhatsApp."
+    },
+    "teamName": {
+      "hy": "Մեր թիմը",
+      "en": "Our team",
+      "ru": "Наша команда"
+    },
+    "errorGeneric": {
+      "hy": "Ինչ-որ բան սխալ գնաց, և հաղորդագրությունը չուղարկվեց։ Փորձեք կրկին կամ կապվեք մեզ հետ ուղղակիորեն։",
+      "en": "Something went wrong and your message was not sent. Please try again or contact us directly.",
+      "ru": "Что-то пошло не так, сообщение не отправлено. Попробуйте ещё раз или свяжитесь с нами напрямую."
+    },
+    "errorValidation": {
+      "hy": "Խնդրում ենք ստուգել նշված դաշտերը։",
+      "en": "Please check the highlighted fields.",
+      "ru": "Проверьте отмеченные поля."
+    },
+    "required": {
+      "hy": "Պարտադիր է",
+      "en": "Required",
+      "ru": "Обязательно"
+    },
+    "invalidEmail": {
+      "hy": "Մուտքագրեք վավեր էլ. հասցե",
+      "en": "Enter a valid email address",
+      "ru": "Введите корректный адрес почты"
+    },
+    "invalidPhone": {
+      "hy": "Մուտքագրեք վավեր հեռախոսահամար",
+      "en": "Enter a valid phone number",
+      "ru": "Введите корректный номер телефона"
+    },
+    "needEmailOrPhone": {
+      "hy": "Ավելացրեք էլ. փոստ կամ հեռախոսահամար",
+      "en": "Add an email or a phone number",
+      "ru": "Добавьте почту или телефон"
+    },
+    "messageTooShort": {
+      "hy": "Խնդրում ենք գրել գոնե մի քանի բառ",
+      "en": "Please write at least a few words",
+      "ru": "Напишите хотя бы несколько слов"
+    },
+    "honeypot": {
+      "hy": "Թողեք այս դաշտը դատարկ",
+      "en": "Leave this field empty",
+      "ru": "Оставьте это поле пустым"
+    },
+    "privacy": {
+      "hy": "Ձեր տվյալներն օգտագործում ենք միայն այս հարցմանը պատասխանելու համար։",
+      "en": "We use your details only to reply to this inquiry.",
+      "ru": "Мы используем ваши данные только для ответа на эту заявку."
+    }
+  },
+  "footer": {
+    "rights": {
+      "hy": "Բոլոր իրավունքները պաշտպանված են։",
+      "en": "All rights reserved.",
+      "ru": "Все права защищены."
+    },
+    "contactTitle": {
+      "hy": "Կապ",
+      "en": "Contact",
+      "ru": "Контакты"
+    }
+  },
+  "errors": {
+    "notFoundTitle": {
+      "hy": "Էջը չի գտնվել",
+      "en": "Page not found",
+      "ru": "Страница не найдена"
+    },
+    "notFoundText": {
+      "hy": "Հնարավոր է՝ էջը տեղափոխվել է։ Սկսեք գլխավոր էջից։",
+      "en": "The page may have moved. Start from the home page.",
+      "ru": "Возможно, страница переехала. Начните с главной."
+    },
+    "backHome": {
+      "hy": "Վերադառնալ գլխավոր էջ",
+      "en": "Back to home",
+      "ru": "На главную"
+    }
+  },
+  "whatsapp": {
+    "greeting": {
+      "hy": "Բարև, {contact}։ Գտա BOTZ-ը ձեր կայքում։",
+      "en": "Hello {contact}! I found BOTZ on your website.",
+      "ru": "Здравствуйте, {contact}! Нашёл(ла) BOTZ на вашем сайте."
+    },
+    "closing": {
+      "hy": "Կարո՞ղ ենք քննարկել։",
+      "en": "Could we discuss it?",
+      "ru": "Можем обсудить?"
+    }
+  },
+  "trust": {
+    "sampleLabel": {
+      "hy": "Նմուշ",
+      "en": "Sample",
+      "ru": "Образец"
+    },
+    "preview": {
+      "hy": "Դիտել",
+      "en": "Preview",
+      "ru": "Посмотреть"
+    },
+    "download": {
+      "hy": "Ներբեռնել PDF",
+      "en": "Download PDF",
+      "ru": "Скачать PDF"
+    },
+    "sampleNote": {
+      "hy": "Օրինակ՝ պայմանական տվյալներով․ ցույց է տալիս այն ձևաչափը, որը կստանաք։",
+      "en": "Example with illustrative data — it shows the format you will receive.",
+      "ru": "Пример с условными данными — показывает формат, который вы получите."
+    },
+    "finderLink": {
+      "hy": "Չգիտե՞ք որտեղից սկսել։ Պատասխանեք վեց հարցի",
+      "en": "Not sure where to start? Answer six questions",
+      "ru": "Не знаете, с чего начать? Ответьте на шесть вопросов"
+    },
+    "replyTime": {
+      "hy": "Պատասխանում ենք 1 աշխատանքային օրվա ընթացքում։",
+      "en": "We reply within 1 working day.",
+      "ru": "Отвечаем в течение 1 рабочего дня."
+    },
+    "finderMessage": {
+      "hy": "Փաթեթների ընտրիչն առաջարկեց {package} ({service})։ Կցանկանայի քննարկել։",
+      "en": "The package finder suggested {package} ({service}). I would like to discuss it.",
+      "ru": "Подбор пакета предложил {package} ({service}). Хотел(а) бы обсудить."
+    },
+    "themeTooltip": {
+      "hy": "Բաց / մուգ թեմա",
+      "en": "Light / dark theme",
+      "ru": "Светлая / тёмная тема"
+    }
+  }
+}

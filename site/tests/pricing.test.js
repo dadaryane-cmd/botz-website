@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { catalog } from '../public/js/content/catalog.js'
+import { catalog } from '../public/js/content/index.js'
 import { findPackage, priceFor, quote } from '../public/js/pricing/engine.js'
 import { fromParams, toParams } from '../public/js/pricing/selection.js'
 

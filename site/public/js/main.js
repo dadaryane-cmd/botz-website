@@ -8,7 +8,7 @@ import { closeMenuOnNavigate, renderHeader } from './components/layout/header.js
 import { renderMobileBar } from './components/layout/mobile-bar.js'
 import { renderNotFound } from './components/not-found.js'
 import { renderSection } from './components/sections/index.js'
-import { site } from './content/site.js'
+import { site } from './content/index.js'
 import { getLanguage, initLanguage, onLanguageChange, t, ui } from './lib/i18n.js'
 import { currentPage } from './lib/page.js'
 import { onThemeChange } from './lib/theme.js'

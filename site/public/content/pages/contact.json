@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": {
+      "hy": "Կապ BOTZ-ի հետ — Մարիամ և Էդգար",
+      "en": "Contact BOTZ — Mariam and Edgar",
+      "ru": "Контакты BOTZ — Мариам и Эдгар"
+    },
+    "description": {
+      "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ էլ. փոստով, կամ ուղարկեք հարցում։ Մարիամը՝ սոցցանցեր, Էդգարը՝ SEO և կայքեր։",
+      "en": "Call, WhatsApp or email BOTZ Marketing Agency, or send an inquiry. Mariam handles social media, Edgar handles SEO and websites.",
+      "ru": "Позвоните, напишите в WhatsApp или на почту, или отправьте заявку. Мариам — соцсети, Эдгар — SEO и сайты."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "Ասեք *բարև։*",
+        "en": "Say *hello.*",
+        "ru": "Скажите *привет.*"
+      },
+      "subheading": {
+        "hy": "Զանգահարեք, գրեք կամ օգտագործեք ձևը, և ճիշտ մարդը կկապվի ձեզ հետ։",
+        "en": "Call, message or write — or use the form and the right person will get back to you.",
+        "ru": "Позвоните, напишите или заполните форму — вам ответит нужный человек."
+      }
+    },
+    {
+      "type": "contact",
+      "id": "contact"
+    }
+  ]
+}

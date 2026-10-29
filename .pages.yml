@@ -1,0 +1,1316 @@
+# Generated from site/cms/config.js by `npm run cms` — edit that file, not this one.
+media:
+  - name: images
+    label: Images
+    input: site/public/images
+    output: images
+  - name: downloads
+    label: Sample PDFs
+    input: site/public/downloads
+    output: downloads
+    categories: [document]
+components:
+  sections:
+    type: block
+    blockKey: type
+    list: true
+    blocks:
+      - name: hero
+        label: Page title
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: subheading
+            label: Subheading
+            component: paragraph
+          - name: buttons
+            label: Buttons
+            component: button
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label.en}"
+          - name: ticker
+            label: Scrolling words (home page)
+            component: line
+            list: true
+          - name: variant
+            label: Variant
+            type: string
+            hidden: true
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: split
+        label: Statement with key points
+        fields:
+          - name: statement
+            label: Statement
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: body
+            label: Text
+            component: paragraph
+          - name: points
+            label: Key points
+            type: object
+            fields:
+              - name: title
+                label: Title
+                component: line
+              - name: text
+                label: Text
+                component: paragraph
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: services
+        label: Services
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: items
+            label: Services
+            type: object
+            fields:
+              - name: index
+                label: Number
+                type: string
+              - name: title
+                label: Title
+                component: line
+              - name: text
+                label: Text
+                component: paragraph
+              - name: highlights
+                label: Highlights
+                component: line
+                list: true
+              - name: link
+                label: Link
+                component: link
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: team
+        label: Team
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: founders
+            label: People
+            type: object
+            fields:
+              - name: name
+                label: Name
+                component: line
+              - name: role
+                label: Role
+                component: line
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: samples
+        label: Sample PDFs
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: items
+            label: Samples
+            type: object
+            fields:
+              - name: title
+                label: Title
+                component: line
+              - name: text
+                label: Text
+                component: paragraph
+              - name: file
+                label: PDF
+                type: file
+                options:
+                  media: downloads
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: finder
+        label: Package finder
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: packagePreview
+        label: Price overview
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: categories
+            label: Package groups
+            type: select
+            options:
+              values: [smm, seo, bundle, website]
+              multiple: true
+          - name: duration
+            label: Contract length shown (months)
+            type: number
+            description: One of 1, 3, 6, 9, 12.
+          - name: link
+            label: Button
+            component: button
+          - name: showGuideLink
+            label: Show the package finder link
+            type: boolean
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: process
+        label: Process steps
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: steps
+            label: Steps
+            type: object
+            fields:
+              - name: title
+                label: Title
+                component: line
+              - name: text
+                label: Text
+                component: paragraph
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: faq
+        label: Questions & answers
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: items
+            label: Questions
+            type: object
+            fields:
+              - name: question
+                label: Question
+                component: line
+              - name: answer
+                label: Answer
+                component: paragraph
+              - name: openByDefault
+                label: Open by default
+                type: boolean
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{question.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: contact
+        label: Contact & inquiry form
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: service
+            label: Service preselected in the form
+            type: select
+            options:
+              values: [smm, seo, bundle, website, addon, other]
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: pricing
+        label: Pricing tool
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: defaultCategory
+            label: Package group shown first
+            type: select
+            options:
+              values: [smm, seo, bundle, website]
+          - name: defaultDuration
+            label: Contract length selected first (months)
+            type: number
+            description: One of 1, 3, 6, 9, 12.
+          - name: lockCategory
+            label: Show only this package group
+            type: boolean
+          - name: showAddons
+            label: Show add-ons
+            type: boolean
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: cta
+        label: Call to action
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: text
+            label: Text
+            component: paragraph
+          - name: buttons
+            label: Buttons
+            component: button
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+  line:
+    type: object
+    fields:
+      - name: hy
+        label: "Հայերեն"
+        type: string
+      - name: en
+        label: English
+        type: string
+      - name: ru
+        label: "Русский"
+        type: string
+  paragraph:
+    type: object
+    fields:
+      - name: hy
+        label: "Հայերեն"
+        type: text
+      - name: en
+        label: English
+        type: text
+      - name: ru
+        label: "Русский"
+        type: text
+  link:
+    type: object
+    fields:
+      - name: label
+        label: Label
+        component: line
+      - name: href
+        label: "Link (e.g. pricing.html or #contact)"
+        type: string
+  button:
+    type: object
+    fields:
+      - name: label
+        label: Label
+        component: line
+      - name: href
+        label: "Link (e.g. pricing.html or #contact)"
+        type: string
+      - name: style
+        label: Style
+        type: select
+        options:
+          values: [primary, secondary]
+content:
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: page-home
+        label: Home
+        type: file
+        path: site/public/content/pages/home.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-services
+        label: Services
+        type: file
+        path: site/public/content/pages/services.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-smm
+        label: Social media (SMM)
+        type: file
+        path: site/public/content/pages/smm.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-seo
+        label: SEO
+        type: file
+        path: site/public/content/pages/seo.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-website-creation
+        label: Website creation
+        type: file
+        path: site/public/content/pages/website-creation.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-pricing
+        label: Pricing
+        type: file
+        path: site/public/content/pages/pricing.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-about
+        label: About
+        type: file
+        path: site/public/content/pages/about.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-contact
+        label: Contact
+        type: file
+        path: site/public/content/pages/contact.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+  - name: catalog
+    label: Packages & prices
+    description: Prices in AMD. Leave a contract length empty if the package is not offered for it.
+    type: file
+    path: site/public/content/catalog.json
+    format: json
+    fields:
+      - name: packages
+        label: Packages
+        type: object
+        fields:
+          - name: key
+            label: Key
+            type: string
+            readonly: true
+          - name: category
+            label: Group
+            type: select
+            options:
+              values: [smm, seo, bundle, website]
+            readonly: true
+          - name: name
+            label: Name
+            component: line
+          - name: tagline
+            label: Tagline
+            component: line
+          - name: recommended
+            label: Recommended
+            type: boolean
+          - name: prices
+            label: Monthly price by contract length
+            type: object
+            fields:
+              - name: m1
+                label: "1 month"
+                type: number
+              - name: m3
+                label: "3 months"
+                type: number
+              - name: m6
+                label: "6 months"
+                type: number
+              - name: m9
+                label: "9 months"
+                type: number
+              - name: m12
+                label: "12 months"
+                type: number
+          - name: oneTimePrice
+            label: One-time price (website creation)
+            type: number
+          - name: components
+            label: Combines (bundles)
+            type: select
+            options:
+              values: [smm-start, smm-dominance, smm-gold, seo-fundamental, seo-vision, seo-authority, business-boost, ultra, website-creation]
+              multiple: true
+            readonly: true
+          - name: contact
+            label: Contact person
+            type: select
+            options:
+              values: [mariam, edgar, either]
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name.en}"
+      - name: addons
+        label: Add-ons
+        type: object
+        fields:
+          - name: key
+            label: Key
+            type: string
+            readonly: true
+          - name: name
+            label: Name
+            component: line
+          - name: price
+            label: Price
+            type: number
+          - name: priceIsFrom
+            label: "Price is a minimum (\"from\")"
+            type: boolean
+          - name: units
+            label: Items in the bundle
+            type: number
+          - name: contact
+            label: Contact person
+            type: select
+            options:
+              values: [mariam, edgar]
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name.en}"
+  - name: finder
+    label: Package finder
+    type: file
+    path: site/public/content/finder.json
+    format: json
+    fields:
+      - name: questions
+        label: Questions
+        type: object
+        fields:
+          - name: key
+            label: Key
+            type: string
+            readonly: true
+          - name: role
+            label: Role
+            type: string
+            readonly: true
+          - name: label
+            label: Question
+            component: line
+          - name: help
+            label: Help text
+            component: line
+          - name: options
+            label: Answers
+            type: object
+            fields:
+              - name: value
+                label: Value
+                type: string
+                readonly: true
+              - name: label
+                label: Answer
+                component: line
+              - name: budgetMax
+                label: Budget limit (AMD)
+                type: number
+              - name: months
+                label: Months
+                type: number
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label.en}"
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label.en}"
+      - name: rules
+        label: Scoring rules
+        type: object
+        fields:
+          - name: key
+            label: Key
+            type: string
+            readonly: true
+          - name: packageKey
+            label: Package
+            type: select
+            options:
+              values: [smm-start, smm-dominance, smm-gold, seo-fundamental, seo-vision, seo-authority, business-boost, ultra, website-creation]
+          - name: points
+            label: Points
+            type: number
+          - name: when
+            label: When the answers are
+            type: object
+            fields:
+              - name: question
+                label: Question key
+                type: string
+              - name: values
+                label: Answer values
+                type: string
+                list: true
+            list: true
+          - name: reason
+            label: Reason shown to the visitor
+            component: paragraph
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{key}"
+  - name: site
+    label: Contact details
+    type: file
+    path: site/public/content/site.json
+    format: json
+    fields:
+      - name: name
+        label: Agency name
+        component: line
+      - name: titleSuffix
+        label: Browser tab suffix
+        component: line
+      - name: description
+        label: Default description
+        component: paragraph
+      - name: phoneDisplay
+        label: Phone (as shown)
+        type: string
+      - name: phoneE164
+        label: Phone (international, no spaces)
+        type: string
+        pattern: "^\\+[0-9]{8,15}$"
+      - name: whatsapp
+        label: WhatsApp number (digits only)
+        type: string
+        pattern: "^[0-9]{8,15}$"
+      - name: email
+        label: Public email
+        type: string
+      - name: formEmail
+        label: Inquiry form sends to
+        type: string
+        description: Changing this needs a new FormSubmit activation (see site/README.md).
+  - name: people
+    label: Founders
+    type: file
+    path: site/public/content/people.json
+    format: json
+    fields:
+      - name: people
+        label: People
+        type: object
+        fields:
+          - name: key
+            label: Key
+            type: string
+            readonly: true
+          - name: name
+            label: Name
+            component: line
+          - name: role
+            label: Role
+            component: line
+          - name: services
+            label: Handles inquiries about
+            type: select
+            options:
+              values: [smm, seo, bundle, website, addon, other]
+              multiple: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name.en}"
+  - name: navigation
+    label: Menu & footer
+    type: file
+    path: site/public/content/navigation.json
+    format: json
+    fields:
+      - name: header
+        label: Menu links
+        component: link
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label.en}"
+      - name: cta
+        label: Menu button
+        component: button
+      - name: footerStatement
+        label: Footer statement
+        component: line
+        description: "Wrap words in *asterisks* to show them in the accent colour."
+      - name: footerColumns
+        label: Footer columns
+        type: object
+        fields:
+          - name: title
+            label: Title
+            component: line
+          - name: links
+            label: Links
+            component: link
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label.en}"
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title.en}"
+      - name: footerNote
+        label: Footer note
+        component: paragraph
+  - name: interface
+    label: Buttons & labels
+    description: "Short texts used across the site. {name}-style placeholders are filled in automatically: keep them."
+    type: file
+    path: site/public/content/ui.json
+    format: json
+    fields:
+      - name: common
+        label: Common
+        type: object
+        fields:
+          - name: skipToContent
+            label: Skip to content
+            component: line
+          - name: menu
+            label: Menu
+            component: line
+          - name: language
+            label: Language
+            component: line
+          - name: switchToLight
+            label: Switch to light
+            component: line
+          - name: switchToDark
+            label: Switch to dark
+            component: line
+      - name: services
+        label: Services
+        type: object
+        fields:
+          - name: smm
+            label: Smm
+            component: line
+          - name: seo
+            label: Seo
+            component: line
+          - name: bundle
+            label: Bundle
+            component: line
+          - name: website
+            label: Website
+            component: line
+          - name: addon
+            label: Addon
+            component: line
+          - name: other
+            label: Other
+            component: line
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - name: call
+            label: Call
+            component: line
+          - name: whatsapp
+            label: Whatsapp
+            component: line
+          - name: email
+            label: Email
+            component: line
+          - name: phoneLabel
+            label: Phone label
+            component: line
+          - name: sharedLine
+            label: Shared line
+            component: line
+          - name: handles
+            label: Handles
+            component: line
+          - name: eitherContact
+            label: Either contact
+            component: line
+      - name: pricing
+        label: Pricing
+        type: object
+        fields:
+          - name: filterLabel
+            label: Filter label
+            component: line
+          - name: cat_smm
+            label: Cat smm
+            component: line
+          - name: cat_seo
+            label: Cat seo
+            component: line
+          - name: cat_bundle
+            label: Cat bundle
+            component: line
+          - name: cat_website
+            label: Cat website
+            component: line
+          - name: durationLabel
+            label: Duration label
+            component: line
+          - name: month1
+            label: Month 1
+            component: line
+          - name: monthsN
+            label: Months n
+            component: line
+          - name: perMonth
+            label: Per month
+            component: line
+          - name: oneTime
+            label: One time
+            component: line
+          - name: totalFor
+            label: Total for
+            component: line
+          - name: totalFor1
+            label: Total for 1
+            component: line
+          - name: youSave
+            label: You save
+            component: line
+          - name: noSavings
+            label: No savings
+            component: line
+          - name: unavailableShort
+            label: Unavailable short
+            component: line
+          - name: availableFor
+            label: Available for
+            component: line
+          - name: from
+            label: From
+            component: line
+          - name: recommended
+            label: Recommended
+            component: line
+          - name: bundleOf
+            label: Bundle of
+            component: line
+          - name: scopeInProposal
+            label: Scope in proposal
+            component: line
+          - name: select
+            label: Select
+            component: line
+          - name: selected
+            label: Selected
+            component: line
+          - name: clear
+            label: Clear
+            component: line
+          - name: addonsTitle
+            label: Addons title
+            component: line
+          - name: addonsIntro
+            label: Addons intro
+            component: line
+          - name: bundleUnits
+            label: Bundle units
+            component: line
+          - name: quantity
+            label: Quantity
+            component: line
+          - name: add
+            label: Add
+            component: line
+          - name: remove
+            label: Remove
+            component: line
+          - name: estimateTitle
+            label: Estimate title
+            component: line
+          - name: recurringFees
+            label: Recurring fees
+            component: line
+          - name: oneTimeFees
+            label: One time fees
+            component: line
+          - name: combinedEstimate
+            label: Combined estimate
+            component: line
+          - name: minimumNote
+            label: Minimum note
+            component: line
+          - name: notContract
+            label: Not contract
+            component: line
+          - name: requestProposal
+            label: Request proposal
+            component: line
+          - name: discussWhatsapp
+            label: Discuss whatsapp
+            component: line
+          - name: shareEstimate
+            label: Share estimate
+            component: line
+          - name: shareCopied
+            label: Share copied
+            component: line
+          - name: shareReady
+            label: Share ready
+            component: line
+          - name: noSelection
+            label: No selection
+            component: line
+      - name: guide
+        label: Guide
+        type: object
+        fields:
+          - name: start
+            label: Start
+            component: line
+          - name: next
+            label: Next
+            component: line
+          - name: back
+            label: Back
+            component: line
+          - name: seeResult
+            label: See result
+            component: line
+          - name: restart
+            label: Restart
+            component: line
+          - name: progress
+            label: Progress
+            component: line
+          - name: resultTitle
+            label: Result title
+            component: line
+          - name: why
+            label: Why
+            component: line
+          - name: alternatives
+            label: Alternatives
+            component: line
+          - name: overBudget
+            label: Over budget
+            component: line
+          - name: custom
+            label: Custom
+            component: line
+          - name: trueCost
+            label: True cost
+            component: line
+          - name: discuss
+            label: Discuss
+            component: line
+          - name: usePackage
+            label: Use package
+            component: line
+          - name: temporary
+            label: Temporary
+            component: line
+          - name: noMatch
+            label: No match
+            component: line
+      - name: form
+        label: Form
+        type: object
+        fields:
+          - name: title
+            label: Title
+            component: line
+          - name: name
+            label: Name
+            component: line
+          - name: email
+            label: Email
+            component: line
+          - name: phone
+            label: Phone
+            component: line
+          - name: contactHint
+            label: Contact hint
+            component: line
+          - name: service
+            label: Service
+            component: line
+          - name: choose
+            label: Choose
+            component: line
+          - name: message
+            label: Message
+            component: line
+          - name: messagePlaceholder
+            label: Message placeholder
+            component: line
+          - name: preferredContact
+            label: Preferred contact
+            component: line
+          - name: either
+            label: Either
+            component: line
+          - name: selectedEstimate
+            label: Selected estimate
+            component: line
+          - name: removeEstimate
+            label: Remove estimate
+            component: line
+          - name: submit
+            label: Submit
+            component: line
+          - name: sending
+            label: Sending
+            component: line
+          - name: successTitle
+            label: Success title
+            component: line
+          - name: successText
+            label: Success text
+            component: line
+          - name: teamName
+            label: Team name
+            component: line
+          - name: errorGeneric
+            label: Error generic
+            component: line
+          - name: errorValidation
+            label: Error validation
+            component: line
+          - name: required
+            label: Required
+            component: line
+          - name: invalidEmail
+            label: Invalid email
+            component: line
+          - name: invalidPhone
+            label: Invalid phone
+            component: line
+          - name: needEmailOrPhone
+            label: Need email or phone
+            component: line
+          - name: messageTooShort
+            label: Message too short
+            component: line
+          - name: honeypot
+            label: Honeypot
+            component: line
+          - name: privacy
+            label: Privacy
+            component: line
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - name: rights
+            label: Rights
+            component: line
+          - name: contactTitle
+            label: Contact title
+            component: line
+      - name: errors
+        label: Errors
+        type: object
+        fields:
+          - name: notFoundTitle
+            label: Not found title
+            component: line
+          - name: notFoundText
+            label: Not found text
+            component: line
+          - name: backHome
+            label: Back home
+            component: line
+      - name: whatsapp
+        label: Whatsapp
+        type: object
+        fields:
+          - name: greeting
+            label: Greeting
+            component: line
+          - name: closing
+            label: Closing
+            component: line
+      - name: trust
+        label: Trust
+        type: object
+        fields:
+          - name: sampleLabel
+            label: Sample label
+            component: line
+          - name: preview
+            label: Preview
+            component: line
+          - name: download
+            label: Download
+            component: line
+          - name: sampleNote
+            label: Sample note
+            component: line
+          - name: finderLink
+            label: Finder link
+            component: line
+          - name: replyTime
+            label: Reply time
+            component: line
+          - name: finderMessage
+            label: Finder message
+            component: line
+          - name: themeTooltip
+            label: Theme tooltip
+            component: line

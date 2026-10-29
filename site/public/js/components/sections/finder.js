@@ -1,9 +1,8 @@
 /** Package finder: one question at a time, then a recommendation with reasons and real cost. */
-import { catalog } from '../../content/catalog.js'
-import { finder } from '../../content/finder.js'
+import { catalog, finder } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
-import { t, ui } from '../../lib/i18n.js'
+import { hasText, t, ui } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
 import { categoryLabel } from '../../pricing/estimate.js'
 import { recommend } from '../../pricing/finder.js'
@@ -47,7 +46,7 @@ export function renderFinder(config) {
         'fieldset',
         { class: 'finder-question' },
         h('legend', null, t(q.label)),
-        q.help && h('p', { class: 'muted small' }, t(q.help)),
+        hasText(q.help) && h('p', { class: 'muted small' }, t(q.help)),
         h(
           'div',
           { class: 'options' },

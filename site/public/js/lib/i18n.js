@@ -1,5 +1,5 @@
 import { DEFAULT_LANGUAGE, LANGUAGES } from '../config.js'
-import { ui as strings } from '../content/ui.js'
+import { ui as strings } from '../content/index.js'
 import { load, save } from './storage.js'
 
 let current = DEFAULT_LANGUAGE
@@ -38,6 +38,9 @@ export function t(value) {
   if (typeof value === 'string') return value
   return value[current] ?? value.en ?? ''
 }
+
+/** Whether a `{ en, hy, ru }` value has text in the current language. */
+export const hasText = (value) => t(value).trim() !== ''
 
 /** Replace `{name}` placeholders. Unknown names are left as they are. */
 export const interpolate = (template, vars = {}) =>

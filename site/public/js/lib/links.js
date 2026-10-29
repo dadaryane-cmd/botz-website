@@ -1,4 +1,4 @@
-import { site } from '../content/site.js'
+import { site } from '../content/index.js'
 
 export const phoneHref = `tel:${site.phoneE164}`
 export const emailHref = `mailto:${site.email}`

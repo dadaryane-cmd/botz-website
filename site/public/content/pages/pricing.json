@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": {
+      "hy": "Ինտերակտիվ գներ — SMM, SEO և կայքեր",
+      "en": "Interactive pricing — SMM, SEO and websites",
+      "ru": "Интерактивные цены — SMM, SEO и сайты"
+    },
+    "description": {
+      "hy": "Ընտրեք փաթեթ և ժամկետ՝ տեսնելու ամսական գինը, ընդհանուր գումարը և խնայողությունը։ Ավելացրեք լրացուցիչ ծառայություններ, համեմատեք և ստացեք առաջարկ։",
+      "en": "Choose a package and contract length to see the monthly price, the total and your savings. Add extras, compare packages and request a proposal.",
+      "ru": "Выберите пакет и срок, чтобы увидеть цену в месяц, итог и экономию. Добавьте опции, сравните пакеты и запросите предложение."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "Աշխատեք ավելի երկար, *վճարեք ավելի քիչ ամսական։*",
+        "en": "Work longer, *pay less per month.*",
+        "ru": "Дольше работаем — *меньше платите в месяц.*"
+      },
+      "subheading": {
+        "hy": "Ընտրեք ծառայություն և ժամկետ։ Գները, ընդհանուր գումարը և խնայողությունը թարմացվում են անմիջապես․ հետո ուղարկեք նախահաշիվը հարցման հետ կամ կիսվեք դրանով։",
+        "en": "Pick a service and a term. Prices, totals and savings update instantly — then send the estimate with your inquiry or share it.",
+        "ru": "Выберите услугу и срок. Цены, итог и экономия обновляются сразу — затем отправьте расчёт с заявкой или поделитесь им."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Գտնել իմ փաթեթը",
+            "en": "Find my package",
+            "ru": "Подобрать пакет"
+          },
+          "href": "#guide",
+          "style": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "pricing",
+      "id": "pricing",
+      "defaultCategory": "smm",
+      "defaultDuration": 6,
+      "lockCategory": false,
+      "showAddons": true
+    },
+    {
+      "type": "finder",
+      "id": "guide",
+      "background": "inverse",
+      "heading": {
+        "hy": "Չգիտե՞ք որտեղից սկսել։ *Պատասխանեք վեց հարցի։*",
+        "en": "Not sure where to start? *Answer six questions.*",
+        "ru": "Не знаете, с чего начать? *Ответьте на шесть вопросов.*"
+      },
+      "intro": {
+        "hy": "Կառաջարկենք փաթեթ, կբացատրենք ինչու և ցույց կտանք իրական արժեքը ձեր ընտրած ժամկետի համար։",
+        "en": "We will suggest a package, explain why, and show the real cost for the term you choose.",
+        "ru": "Мы предложим пакет, объясним почему и покажем реальную стоимость на выбранный срок."
+      }
+    },
+    {
+      "type": "faq",
+      "heading": {
+        "hy": "Գների մասին *հարցեր*",
+        "en": "Pricing *questions*",
+        "ru": "Вопросы о *ценах*"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Ինչպե՞ս է պայմանագրի ժամկետն ազդում գնի վրա",
+            "en": "How do contract lengths affect the price?",
+            "ru": "Как срок договора влияет на цену?"
+          },
+          "answer": {
+            "hy": "Ավելի երկար պայմանագրերի դեպքում ամսական վճարը նվազում է։ Գնային գործիքը ցույց է տալիս ամսական գինը, ամբողջ ժամկետի ընդհանուր գումարը և թե որքան եք խնայում ամսական վճարման համեմատ։",
+            "en": "Longer agreements lower the monthly fee. The pricing tool shows the monthly price, the total for the whole term and exactly how much you save compared with month-to-month.",
+            "ru": "Чем дольше договор, тем ниже ежемесячная оплата. Калькулятор показывает цену в месяц, сумму за весь срок и точную экономию по сравнению с помесячной оплатой."
+          }
+        },
+        {
+          "question": {
+            "hy": "Կարո՞ղ եմ համատեղել սոցցանցերը և SEO-ն",
+            "en": "Can I combine social media and SEO?",
+            "ru": "Можно ли совместить SMM и SEO?"
+          },
+          "answer": {
+            "hy": "Այո։ Business Boost-ը և Ultra-ն միավորում են երկուսը մեկ համակարգված փաթեթում՝ իրենց առանձին գնով, ոչ թե առանձին փաթեթների գումարով։",
+            "en": "Yes. Business Boost and Ultra combine both in one coordinated plan with their own bundle price — not the sum of the separate packages.",
+            "ru": "Да. Business Boost и Ultra объединяют оба направления в одном плане по собственной цене — это не сумма отдельных пакетов."
+          }
+        },
+        {
+          "question": {
+            "hy": "Առցանց նախահաշիվը պայմանագի՞ր է",
+            "en": "Is the online estimate a contract?",
+            "ru": "Онлайн-расчёт — это договор?"
+          },
+          "answer": {
+            "hy": "Ոչ։ Այն օգնում է ստանալ առաջարկ։ Նախ ծավալը համաձայնեցնում ենք ձեզ հետ, և կայքի միջոցով ոչինչ չի գանձվում։",
+            "en": "No. It helps you request a proposal. We confirm the scope with you first, and nothing is charged through the website.",
+            "ru": "Нет. Он помогает запросить предложение. Сначала мы согласуем с вами объём, а через сайт ничего не оплачивается."
+          },
+          "openByDefault": true
+        },
+        {
+          "question": {
+            "hy": "Երաշխավորո՞ւմ եք արդյունքները",
+            "en": "Do you guarantee results?",
+            "ru": "Вы гарантируете результат?"
+          },
+          "answer": {
+            "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
+            "en": "We commit to the work, its quality and clear reporting. Results depend on your market, competition, budget and implementation, so we never promise rankings, sales or follower numbers.",
+            "ru": "Мы отвечаем за работу, её качество и прозрачную отчётность. Результат зависит от рынка, конкуренции, бюджета и внедрения, поэтому мы не обещаем позиции, продажи или число подписчиков."
+          },
+          "openByDefault": true
+        }
+      ],
+      "width": "narrow"
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "background": "surface",
+      "heading": {
+        "hy": "Խոսենք ձեր *հաջորդ քայլի* մասին",
+        "en": "Let's talk about your *next step*",
+        "ru": "Обсудим ваш *следующий шаг*"
+      },
+      "intro": {
+        "hy": "Սոցցանցերի հարցերով դիմեք Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
+        "en": "Social media questions go to Mariam; SEO and websites to Edgar. Write, call or send the form — whichever is easiest.",
+        "ru": "Вопросы по соцсетям — к Мариам, по SEO и сайтам — к Эдгару. Пишите, звоните или отправьте форму — как удобнее."
+      }
+    }
+  ]
+}

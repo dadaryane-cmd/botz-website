@@ -1,0 +1,624 @@
+{
+  "meta": {
+    "title": {
+      "hy": "BOTZ — Սոցցանցեր, SEO և կայքեր",
+      "en": "BOTZ — Social media, SEO and websites",
+      "ru": "BOTZ — Соцсети, SEO и сайты"
+    },
+    "description": {
+      "hy": "BOTZ մարքեթինգային գործակալությունը վարում է սոցցանցեր, որոնողական օպտիմալացում և կայքեր՝ հստակ փաթեթներով և թափանցիկ գներով։",
+      "en": "BOTZ Marketing Agency runs social media, search optimisation and websites with clear packages and transparent prices. Explore packages or discuss your project.",
+      "ru": "Маркетинговое агентство BOTZ: соцсети, поисковая оптимизация и сайты — с понятными пакетами и прозрачными ценами."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "Դարձրեք ձեր բրենդը *անհնար անտեսել։*",
+        "en": "Make your brand *impossible to scroll past.*",
+        "ru": "Бренд, который *невозможно пролистать.*"
+      },
+      "subheading": {
+        "hy": "BOTZ-ը վարում է սոցցանցեր, որոնողական օպտիմալացում և կայքեր աճող բիզնեսների համար՝ հստակ փաթեթներով, բաց գներով և երկու մարդով, որոնց հետ կարող եք իսկապես խոսել։",
+        "en": "BOTZ runs social media, search optimisation and websites for growing businesses — with clear packages, prices in the open and two people you can actually talk to.",
+        "ru": "BOTZ ведёт соцсети, поисковую оптимизацию и сайты растущих компаний — с понятными пакетами, открытыми ценами и двумя людьми, с которыми действительно можно поговорить."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Ստանալ անվճար աուդիտ",
+            "en": "Get a free audit",
+            "ru": "Получить бесплатный аудит"
+          },
+          "href": "#contact",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Դիտել փաթեթները",
+            "en": "Explore packages",
+            "ru": "Смотреть пакеты"
+          },
+          "href": "pricing.html",
+          "style": "secondary"
+        }
+      ],
+      "ticker": [
+        {
+          "hy": "Սոցցանցեր",
+          "en": "Social media",
+          "ru": "Соцсети"
+        },
+        {
+          "hy": "Որոնողական օպտիմալացում",
+          "en": "Search optimisation",
+          "ru": "Поисковая оптимизация"
+        },
+        {
+          "hy": "Կայքեր",
+          "en": "Websites",
+          "ru": "Сайты"
+        },
+        {
+          "hy": "Բովանդակություն",
+          "en": "Content",
+          "ru": "Контент"
+        },
+        {
+          "hy": "Meta գովազդ",
+          "en": "Meta ads",
+          "ru": "Реклама в Meta"
+        },
+        {
+          "hy": "Reels",
+          "en": "Reels",
+          "ru": "Reels"
+        }
+      ],
+      "variant": "home"
+    },
+    {
+      "type": "split",
+      "statement": {
+        "hy": "Մեկ թիմ այն աշխատանքի համար, որը մարդկանց բերում է ձեզ մոտ՝ *սոցցանցեր, որոնում և կայք։*",
+        "en": "One team for the work that brings people to you: *social, search and site.*",
+        "ru": "Одна команда для всего, что приводит к вам людей: *соцсети, поиск и сайт.*"
+      },
+      "body": {
+        "hy": "BOTZ-ը մարքեթինգային գործակալություն է՝ կառուցված պարզ գաղափարի շուրջ․ դուք պետք է հստակ իմանաք, թե ինչի համար եք վճարում։ Յուրաքանչյուր փաթեթ ունի որոշված ծավալ, յուրաքանչյուր գին հրապարակային է, իսկ արդյունքները կանոնավոր ներկայացվում են պարզ լեզվով։",
+        "en": "BOTZ is a marketing agency built around a simple idea: you should know exactly what you are paying for. Every package has a defined scope, every price is public, and results are reported regularly in plain language.",
+        "ru": "BOTZ — маркетинговое агентство, построенное на простой идее: вы должны точно знать, за что платите. У каждого пакета есть определённый объём, все цены открыты, а результаты регулярно описываются простым языком."
+      },
+      "points": [
+        {
+          "title": {
+            "hy": "Որոշված ծավալ",
+            "en": "Defined scope",
+            "ru": "Чёткий объём"
+          },
+          "text": {
+            "hy": "Քանակներն ու սահմանները գրավոր են՝ առանց անորոշ խոստումների։",
+            "en": "Quantities and boundaries are written down — no vague promises.",
+            "ru": "Объёмы и границы зафиксированы — без размытых обещаний."
+          }
+        },
+        {
+          "title": {
+            "hy": "Բաց գներ",
+            "en": "Prices in the open",
+            "ru": "Открытые цены"
+          },
+          "text": {
+            "hy": "Տեսեք ամսական վճարը, ամբողջ ժամկետի գումարը և խնայողությունը՝ նախքան զանգելը։",
+            "en": "See the monthly fee, the full-term total and your savings before you call.",
+            "ru": "Цена в месяц, сумма за срок и экономия видны ещё до звонка."
+          }
+        },
+        {
+          "title": {
+            "hy": "Ուղիղ կապ",
+            "en": "Direct contacts",
+            "ru": "Прямой контакт"
+          },
+          "text": {
+            "hy": "Մարիամը՝ սոցցանցերի, Էդգարը՝ SEO-ի և կայքերի համար։",
+            "en": "Mariam for social media, Edgar for SEO and websites.",
+            "ru": "Мариам — по соцсетям, Эдгар — по SEO и сайтам."
+          }
+        }
+      ]
+    },
+    {
+      "type": "services",
+      "background": "surface",
+      "heading": {
+        "hy": "Ինչ ենք *անում*",
+        "en": "What we *do*",
+        "ru": "Что мы *делаем*"
+      },
+      "items": [
+        {
+          "title": {
+            "hy": "Սոցիալական մեդիա մարքեթինգ",
+            "en": "Social media marketing",
+            "ru": "Маркетинг в соцсетях"
+          },
+          "index": "01",
+          "text": {
+            "hy": "Instagram-ի, Facebook-ի և TikTok-ի բովանդակություն՝ պլանավորված ձեր նպատակների շուրջ․ ձևավորված, գրված, պլանավորված և չափված։",
+            "en": "Instagram, Facebook and TikTok content planned around your goals — designed, written, scheduled and measured.",
+            "ru": "Контент для Instagram, Facebook и TikTok вокруг ваших целей — с дизайном, текстами, расписанием и аналитикой."
+          },
+          "highlights": [
+            {
+              "hy": "Հրապարակումներ և սթորիներ",
+              "en": "Content & stories",
+              "ru": "Посты и сторис"
+            },
+            {
+              "hy": "Նկարահանումներ և տեսանյութեր",
+              "en": "Shoots & video",
+              "ru": "Съёмки и видео"
+            },
+            {
+              "hy": "Meta գովազդ",
+              "en": "Meta ads",
+              "ru": "Реклама в Meta"
+            }
+          ],
+          "link": {
+            "label": {
+              "hy": "Դիտել SMM-ը",
+              "en": "Explore SMM",
+              "ru": "Подробнее об SMM"
+            },
+            "href": "smm.html"
+          }
+        },
+        {
+          "title": {
+            "hy": "Որոնողական օպտիմալացում",
+            "en": "Search engine optimisation",
+            "ru": "Поисковая оптимизация"
+          },
+          "index": "02",
+          "text": {
+            "hy": "Տեխնիկական շտկումներ, բովանդակություն և հեղինակության ամրապնդում, որոնք օգնում են ճիշտ մարդկանց գտնել ձեզ Google-ում։",
+            "en": "Technical fixes, content and authority work that help the right people find you on Google.",
+            "ru": "Технические улучшения, контент и работа над авторитетом, чтобы нужные люди находили вас в Google."
+          },
+          "highlights": [
+            {
+              "hy": "Տեխնիկական SEO",
+              "en": "Technical SEO",
+              "ru": "Техническое SEO"
+            },
+            {
+              "hy": "Հոդվածներ",
+              "en": "Articles",
+              "ru": "Статьи"
+            },
+            {
+              "hy": "Հստակ հաշվետվություն",
+              "en": "Clear reporting",
+              "ru": "Понятные отчёты"
+            }
+          ],
+          "link": {
+            "label": {
+              "hy": "Դիտել SEO-ն",
+              "en": "Explore SEO",
+              "ru": "Подробнее об SEO"
+            },
+            "href": "seo.html"
+          }
+        },
+        {
+          "title": {
+            "hy": "Կայքի ստեղծում",
+            "en": "Website creation",
+            "ru": "Создание сайтов"
+          },
+          "index": "03",
+          "text": {
+            "hy": "Հստակ, արագ և ադապտիվ կայք ձեր բիզնեսի համար՝ գործարկված հիմնական SEO կարգավորումով։",
+            "en": "A clear, fast, responsive website for your business, launched with a basic SEO setup.",
+            "ru": "Понятный, быстрый, адаптивный сайт для вашего бизнеса с базовой SEO-настройкой."
+          },
+          "highlights": [
+            {
+              "hy": "Ադապտիվ դիզայն",
+              "en": "Responsive design",
+              "ru": "Адаптивный дизайн"
+            },
+            {
+              "hy": "Հիմնական SEO կարգավորում",
+              "en": "Basic SEO setup",
+              "ru": "Базовая SEO-настройка"
+            }
+          ],
+          "link": {
+            "label": {
+              "hy": "Դիտել կայքերը",
+              "en": "Explore websites",
+              "ru": "Подробнее о сайтах"
+            },
+            "href": "website-creation.html"
+          }
+        },
+        {
+          "title": {
+            "hy": "SMM + SEO փաթեթներ",
+            "en": "SMM + SEO plans",
+            "ru": "Планы SMM + SEO"
+          },
+          "index": "04",
+          "text": {
+            "hy": "Մեկ համակարգված փաթեթ սոցցանցերի և որոնման համար՝ մեկ թիմով։",
+            "en": "One coordinated plan for social and search, with one team behind both.",
+            "ru": "Один согласованный план для соцсетей и поиска — одна команда на оба направления."
+          },
+          "highlights": [
+            {
+              "hy": "Business Boost",
+              "en": "Business Boost",
+              "ru": "Business Boost"
+            },
+            {
+              "hy": "Ultra",
+              "en": "Ultra",
+              "ru": "Ultra"
+            }
+          ],
+          "link": {
+            "label": {
+              "hy": "Համեմատել փաթեթները",
+              "en": "Compare plans",
+              "ru": "Сравнить планы"
+            },
+            "href": "pricing.html"
+          }
+        }
+      ]
+    },
+    {
+      "type": "team",
+      "heading": {
+        "hy": "Ովքեր են *BOTZ*-ի հետևում",
+        "en": "Who’s behind *BOTZ*",
+        "ru": "Кто стоит за *BOTZ*"
+      },
+      "intro": {
+        "hy": "Երկու հիմնադիր՝ յուրաքանչյուրն իր ոլորտում։ Դուք աշխատում եք անմիջապես մեզ հետ՝ առանց միջնորդ մենեջերների։",
+        "en": "Two founders, one for each discipline. You work with us directly — no account managers in between.",
+        "ru": "Два основателя — по одному на каждое направление. Вы работаете напрямую с нами, без менеджеров-посредников."
+      },
+      "founders": [
+        {
+          "name": {
+            "hy": "Մարիամ",
+            "en": "Mariam",
+            "ru": "Мариам"
+          },
+          "role": {
+            "hy": "Սոցիալական մեդիա մարքեթինգ",
+            "en": "Social media marketing",
+            "ru": "Маркетинг в соцсетях"
+          }
+        },
+        {
+          "name": {
+            "hy": "Էդգար",
+            "en": "Edgar",
+            "ru": "Эдгар"
+          },
+          "role": {
+            "hy": "SEO և կայքերի ստեղծում",
+            "en": "SEO & website creation",
+            "ru": "SEO и создание сайтов"
+          }
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "background": "surface",
+      "statement": {
+        "hy": "Ինչու՞ աշխատել *նոր գործակալության* հետ",
+        "en": "Why work with a *new agency?*",
+        "ru": "Почему стоит работать с *новым агентством?*"
+      },
+      "body": {
+        "hy": "Նոր լինելը նշանակում է, որ յուրաքանչյուր հաճախորդ ստանում է մեր ամբողջ ուշադրությունը, իսկ աշխատանքը վաճառողները հենց այն կատարողներն են։",
+        "en": "Being new means every client gets our full attention — and the people who sell the work are the people who do it.",
+        "ru": "Мы новые, поэтому каждый клиент получает всё наше внимание, а те, кто обсуждает с вами работу, её и выполняют."
+      },
+      "points": [
+        {
+          "title": {
+            "hy": "Փորձառու մասնագետներ յուրաքանչյուր նախագծում",
+            "en": "Senior people on every project",
+            "ru": "Опытные специалисты в каждом проекте"
+          },
+          "text": {
+            "hy": "Աշխատանքը կատարում են հիմնադիրներն իրենք՝ առանց սկսնակներին փոխանցելու։",
+            "en": "The founders do the work themselves — no hand-offs to juniors.",
+            "ru": "Работу делают сами основатели — без передачи новичкам."
+          }
+        },
+        {
+          "title": {
+            "hy": "Դուք խոսում եք անմիջապես հիմնադիրների հետ",
+            "en": "You talk directly to the founders",
+            "ru": "Вы общаетесь напрямую с основателями"
+          },
+          "text": {
+            "hy": "Մարիամը՝ սոցցանցերի, Էդգարը՝ SEO-ի և կայքերի համար։",
+            "en": "Mariam for social media, Edgar for SEO and websites.",
+            "ru": "Мариам — по соцсетям, Эдгар — по SEO и сайтам."
+          }
+        },
+        {
+          "title": {
+            "hy": "Առաջին հաճախորդների գներ",
+            "en": "Founding-client pricing",
+            "ru": "Цены для первых клиентов"
+          },
+          "text": {
+            "hy": "Մեր առաջին հաճախորդները ստանում են զեղչ՝ նախագծի նկարագրության և անկեղծ կարծիքի դիմաց։",
+            "en": "Our first clients get a founding discount in exchange for a case study and an honest review.",
+            "ru": "Первые клиенты получают скидку в обмен на кейс и честный отзыв."
+          }
+        }
+      ]
+    },
+    {
+      "type": "samples",
+      "id": "samples",
+      "heading": {
+        "hy": "Տեսեք, թե *ինչ կստանաք*",
+        "en": "See exactly *what you’ll get*",
+        "ru": "Посмотрите, *что вы получите*"
+      },
+      "intro": {
+        "hy": "Մեր աշխատանքների իրական ձևաչափերը՝ պայմանական տվյալներով։",
+        "en": "The real formats of our deliverables, filled with illustrative data.",
+        "ru": "Реальные форматы наших материалов с условными данными."
+      },
+      "items": [
+        {
+          "title": {
+            "hy": "SEO աուդիտ",
+            "en": "SEO audit",
+            "ru": "SEO-аудит"
+          },
+          "text": {
+            "hy": "Տեխնիկական խնդիրներ, առաջնահերթություններ և հստակ անելիքների ցանկ։",
+            "en": "Technical issues, priorities and a clear action list.",
+            "ru": "Технические проблемы, приоритеты и понятный список действий."
+          },
+          "file": "downloads/sample-seo-audit.pdf"
+        },
+        {
+          "title": {
+            "hy": "Ամսական հաշվետվություն",
+            "en": "Monthly report",
+            "ru": "Ежемесячный отчёт"
+          },
+          "text": {
+            "hy": "Ինչ արեցինք, ինչ փոխվեց և ինչ է հաջորդը՝ պարզ լեզվով։",
+            "en": "What we did, what changed and what comes next — in plain language.",
+            "ru": "Что сделано, что изменилось и что дальше — простым языком."
+          },
+          "file": "downloads/sample-monthly-report.pdf"
+        },
+        {
+          "title": {
+            "hy": "Մեկ ամսվա SMM բովանդակային պլան",
+            "en": "One-month SMM content plan",
+            "ru": "Контент-план SMM на месяц"
+          },
+          "text": {
+            "hy": "Թեմաներ, ձևաչափեր և մեկ ամսվա հրապարակումների օրացույց։",
+            "en": "Topics, formats and a posting calendar for one month.",
+            "ru": "Темы, форматы и календарь публикаций на месяц."
+          },
+          "file": "downloads/sample-smm-content-plan.pdf"
+        }
+      ]
+    },
+    {
+      "type": "finder",
+      "id": "guide",
+      "background": "inverse",
+      "heading": {
+        "hy": "Չգիտե՞ք որտեղից սկսել։ *Պատասխանեք վեց հարցի։*",
+        "en": "Not sure where to start? *Answer six questions.*",
+        "ru": "Не знаете, с чего начать? *Ответьте на шесть вопросов.*"
+      },
+      "intro": {
+        "hy": "Կառաջարկենք փաթեթ, կբացատրենք ինչու և ցույց կտանք իրական արժեքը ձեր ընտրած ժամկետի համար։",
+        "en": "We will suggest a package, explain why, and show the real cost for the term you choose.",
+        "ru": "Мы предложим пакет, объясним почему и покажем реальную стоимость на выбранный срок."
+      }
+    },
+    {
+      "type": "packagePreview",
+      "heading": {
+        "hy": "Փաթեթներ՝ *բաց գներով*",
+        "en": "Packages, *priced in the open*",
+        "ru": "Пакеты *с открытыми ценами*"
+      },
+      "intro": {
+        "hy": "Ամսական գներ 12 ամսվա պայմանագրի դեպքում։ Հասանելի են նաև ավելի կարճ ժամկետներ՝ համեմատեք դրանք գնային գործիքում։",
+        "en": "Monthly prices for a 12-month agreement. Shorter terms are available — compare them in the pricing tool.",
+        "ru": "Цены в месяц при договоре на 12 месяцев. Есть и более короткие сроки — сравните их в калькуляторе."
+      },
+      "categories": [
+        "smm",
+        "seo",
+        "bundle",
+        "website"
+      ],
+      "duration": 12,
+      "link": {
+        "label": {
+          "hy": "Դիտել փաթեթները",
+          "en": "Explore packages",
+          "ru": "Смотреть пакеты"
+        },
+        "href": "pricing.html",
+        "style": "primary"
+      },
+      "showGuideLink": true
+    },
+    {
+      "type": "process",
+      "heading": {
+        "hy": "Չորս քայլ՝ *առանց ենթադրությունների*",
+        "en": "Four steps, *no guesswork*",
+        "ru": "Четыре шага *без догадок*"
+      },
+      "steps": [
+        {
+          "title": {
+            "hy": "Բրիֆ",
+            "en": "Brief",
+            "ru": "Бриф"
+          },
+          "text": {
+            "hy": "Ծանոթանում ենք ձեր բիզնեսին, լսարանին և նպատակներին, ուսումնասիրում ենք այն, ինչ արդեն ունեք։",
+            "en": "We learn your business, audience and goals, and look at what you already have.",
+            "ru": "Изучаем ваш бизнес, аудиторию и цели, смотрим, что у вас уже есть."
+          }
+        },
+        {
+          "title": {
+            "hy": "Առաջարկ",
+            "en": "Proposal",
+            "ru": "Предложение"
+          },
+          "text": {
+            "hy": "Ստանում եք հստակ ծավալ և գին՝ ինչն է ներառված, ինչը՝ ոչ, և որքան ժամանակով։",
+            "en": "You get a clear scope and price — what is included, what is not, and for how long.",
+            "ru": "Вы получаете понятный объём и цену — что входит, что нет и на какой срок."
+          }
+        },
+        {
+          "title": {
+            "hy": "Մեկնարկ",
+            "en": "Launch",
+            "ru": "Запуск"
+          },
+          "text": {
+            "hy": "Կարգավորում ենք, ստեղծում և հրապարակում՝ ձեր հաստատմամբ բոլոր կարևոր փուլերում։",
+            "en": "We set up, create and publish, with your approval at every important point.",
+            "ru": "Настраиваем, создаём и публикуем — с вашим согласованием на каждом важном этапе."
+          }
+        },
+        {
+          "title": {
+            "hy": "Հաշվետվություն և բարելավում",
+            "en": "Report & refine",
+            "ru": "Отчёт и улучшения"
+          },
+          "text": {
+            "hy": "Կանոնավոր հաշվետվությունները ցույց են տալիս, թե ինչ արվեց և ինչ ենք անելու հետո։",
+            "en": "Regular reports show what happened and what we will do next.",
+            "ru": "Регулярные отчёты показывают, что сделано и что мы будем делать дальше."
+          }
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "heading": {
+        "hy": "Լավ *հարցեր*",
+        "en": "Good *questions*",
+        "ru": "Хорошие *вопросы*"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Ինչպե՞ս է պայմանագրի ժամկետն ազդում գնի վրա",
+            "en": "How do contract lengths affect the price?",
+            "ru": "Как срок договора влияет на цену?"
+          },
+          "answer": {
+            "hy": "Ավելի երկար պայմանագրերի դեպքում ամսական վճարը նվազում է։ Գնային գործիքը ցույց է տալիս ամսական գինը, ամբողջ ժամկետի ընդհանուր գումարը և թե որքան եք խնայում ամսական վճարման համեմատ։",
+            "en": "Longer agreements lower the monthly fee. The pricing tool shows the monthly price, the total for the whole term and exactly how much you save compared with month-to-month.",
+            "ru": "Чем дольше договор, тем ниже ежемесячная оплата. Калькулятор показывает цену в месяц, сумму за весь срок и точную экономию по сравнению с помесячной оплатой."
+          }
+        },
+        {
+          "question": {
+            "hy": "Կարո՞ղ եմ համատեղել սոցցանցերը և SEO-ն",
+            "en": "Can I combine social media and SEO?",
+            "ru": "Можно ли совместить SMM и SEO?"
+          },
+          "answer": {
+            "hy": "Այո։ Business Boost-ը և Ultra-ն միավորում են երկուսը մեկ համակարգված փաթեթում՝ իրենց առանձին գնով, ոչ թե առանձին փաթեթների գումարով։",
+            "en": "Yes. Business Boost and Ultra combine both in one coordinated plan with their own bundle price — not the sum of the separate packages.",
+            "ru": "Да. Business Boost и Ultra объединяют оба направления в одном плане по собственной цене — это не сумма отдельных пакетов."
+          }
+        },
+        {
+          "question": {
+            "hy": "Առցանց նախահաշիվը պայմանագի՞ր է",
+            "en": "Is the online estimate a contract?",
+            "ru": "Онлайн-расчёт — это договор?"
+          },
+          "answer": {
+            "hy": "Ոչ։ Այն օգնում է ստանալ առաջարկ։ Նախ ծավալը համաձայնեցնում ենք ձեզ հետ, և կայքի միջոցով ոչինչ չի գանձվում։",
+            "en": "No. It helps you request a proposal. We confirm the scope with you first, and nothing is charged through the website.",
+            "ru": "Нет. Он помогает запросить предложение. Сначала мы согласуем с вами объём, а через сайт ничего не оплачивается."
+          },
+          "openByDefault": true
+        },
+        {
+          "question": {
+            "hy": "Երաշխավորո՞ւմ եք արդյունքները",
+            "en": "Do you guarantee results?",
+            "ru": "Вы гарантируете результат?"
+          },
+          "answer": {
+            "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
+            "en": "We commit to the work, its quality and clear reporting. Results depend on your market, competition, budget and implementation, so we never promise rankings, sales or follower numbers.",
+            "ru": "Мы отвечаем за работу, её качество и прозрачную отчётность. Результат зависит от рынка, конкуренции, бюджета и внедрения, поэтому мы не обещаем позиции, продажи или число подписчиков."
+          },
+          "openByDefault": true
+        },
+        {
+          "question": {
+            "hy": "Ու՞մ հետ եմ աշխատելու",
+            "en": "Who will I be working with?",
+            "ru": "С кем я буду работать?"
+          },
+          "answer": {
+            "hy": "Մարիամը ղեկավարում է սոցցանցերի ուղղությունը, Էդգարը՝ SEO-ն և կայքերը։ Համակցված փաթեթներում նրանք աշխատում են համատեղ, և դուք համաձայնեցնում եք մեկ հիմնական կոնտակտ։",
+            "en": "Mariam leads social media, Edgar leads SEO and website projects. On combined plans they coordinate together, and you agree one main contact.",
+            "ru": "Мариам ведёт соцсети, Эдгар — SEO и сайты. В комплексных планах они работают вместе, а вы выбираете один основной контакт."
+          },
+          "openByDefault": true
+        }
+      ],
+      "width": "narrow"
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "background": "surface",
+      "heading": {
+        "hy": "Խոսենք ձեր *հաջորդ քայլի* մասին",
+        "en": "Let's talk about your *next step*",
+        "ru": "Обсудим ваш *следующий шаг*"
+      },
+      "intro": {
+        "hy": "Սոցցանցերի հարցերով դիմեք Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
+        "en": "Social media questions go to Mariam; SEO and websites to Edgar. Write, call or send the form — whichever is easiest.",
+        "ru": "Вопросы по соцсетям — к Мариам, по SEO и сайтам — к Эдгару. Пишите, звоните или отправьте форму — как удобнее."
+      }
+    }
+  ]
+}

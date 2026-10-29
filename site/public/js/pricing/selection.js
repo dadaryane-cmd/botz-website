@@ -3,7 +3,7 @@
  * the package finder and the inquiry form, and kept across pages in localStorage.
  */
 import { CONTRACT_LENGTHS, DEFAULT_CONTRACT_LENGTH, MAX_ADDON_QUANTITY } from '../config.js'
-import { catalog } from '../content/catalog.js'
+import { catalog } from '../content/index.js'
 import { load, save } from '../lib/storage.js'
 import { findAddon, findPackage } from './engine.js'
 

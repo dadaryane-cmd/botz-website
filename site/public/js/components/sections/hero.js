@@ -25,7 +25,7 @@ export function renderHero(config) {
       renderFlameBackground(),
       h('div', { class: 'container container-wide hero-content' }, text),
     ),
-    config.ticker && ticker(config.ticker),
+    config.ticker?.length > 0 && ticker(config.ticker),
   )
 }
 

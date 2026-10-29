@@ -14,7 +14,7 @@ export const renderSplit = (config) =>
         'div',
         null,
         lead(config.body),
-        config.points &&
+        config.points?.length > 0 &&
           h(
             'ul',
             { class: 'points' },

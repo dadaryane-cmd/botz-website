@@ -1,6 +1,6 @@
 /** Pricing tool: category and contract-length filters, package cards, add-ons and a live estimate. */
 import { CONTRACT_LENGTHS, MAX_ADDON_QUANTITY, PACKAGE_CATEGORIES } from '../../config.js'
-import { catalog } from '../../content/catalog.js'
+import { catalog } from '../../content/index.js'
 import { h, renderInto } from '../../lib/dom.js'
 import { formatAmd, formatMonths } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
@@ -124,7 +124,7 @@ function packageCard(pkg, selection) {
     pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
     h('h3', null, t(pkg.name)),
     h('p', { class: 'muted' }, t(pkg.tagline)),
-    pkg.components &&
+    pkg.components?.length > 0 &&
       h(
         'p',
         { class: 'muted small' },

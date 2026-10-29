@@ -7,13 +7,12 @@ import { CONTRACT_LENGTHS } from '../config.js'
 export const findPackage = (catalog, key) => catalog.packages.find((pkg) => pkg.key === key) ?? null
 export const findAddon = (catalog, key) => catalog.addons.find((addon) => addon.key === key) ?? null
 
-/** Monthly packages have `prices`; website creation has a `oneTimePrice` instead. */
-export const isRecurring = (pkg) => pkg.prices != null
-
+/** Contract lengths with a monthly price; a missing price means "not offered". */
 export const availableLengths = (pkg) =>
-  isRecurring(pkg)
-    ? CONTRACT_LENGTHS.filter((months) => typeof pkg.prices[`m${months}`] === 'number')
-    : []
+  CONTRACT_LENGTHS.filter((months) => typeof pkg.prices?.[`m${months}`] === 'number')
+
+/** Monthly packages have prices per contract length; website creation has a `oneTimePrice` instead. */
+export const isRecurring = (pkg) => availableLengths(pkg).length > 0
 
 /**
  * Monthly fee, total and savings (against paying the 1-month rate) for a contract length,
@@ -41,7 +40,7 @@ export const lowestMonthlyPrice = (pkg) =>
 export function quote(catalog, selection) {
   const pkg = selection.packageKey ? findPackage(catalog, selection.packageKey) : null
   const recurring = pkg && isRecurring(pkg) ? priceFor(pkg, selection.months) : null
-  const packageOneTime = pkg && !isRecurring(pkg) ? pkg.oneTimePrice : 0
+  const packageOneTime = pkg && !isRecurring(pkg) ? (pkg.oneTimePrice ?? 0) : 0
 
   const addons = Object.entries(selection.addons ?? {})
     .map(([key, quantity]) => ({ addon: findAddon(catalog, key), quantity }))

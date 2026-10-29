@@ -1,5 +1,4 @@
-import { navigation } from '../../content/navigation.js'
-import { site } from '../../content/site.js'
+import { navigation, site } from '../../content/index.js'
 import { h, richText } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'

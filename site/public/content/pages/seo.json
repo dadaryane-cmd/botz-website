@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": {
+      "hy": "SEO փաթեթներ — Fundamental, Vision, Authority",
+      "en": "SEO packages — Fundamental, Vision, Authority",
+      "ru": "SEO-пакеты — Fundamental, Vision, Authority"
+    },
+    "description": {
+      "hy": "SEO փաթեթներ՝ տեխնիկական աուդիտով, էջերի օպտիմալացմամբ, հոդվածներով և PR-ով։ Համեմատեք ամսական գները, ընդհանուր գումարները և խնայողությունը։",
+      "en": "SEO packages with technical audits, page optimisation, articles and outreach. Compare monthly prices, totals and savings for 1–12 months.",
+      "ru": "SEO-пакеты: технический аудит, оптимизация страниц, статьи и аутрич. Сравните цены, итоги и экономию на 1–12 месяцев."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "Թող ձեզ գտնեն նրանք, *ովքեր արդեն փնտրում են։*",
+        "en": "Be found by people *already looking for you.*",
+        "ru": "Пусть вас найдут те, *кто уже ищет.*"
+      },
+      "subheading": {
+        "hy": "Տեխնիկական հիմք, օգտակար բովանդակություն և հեղինակության կայուն աճ՝ չափվող ամեն ամիս և բացատրվող պարզ լեզվով։",
+        "en": "Technical foundations, useful content and steady authority building — measured every month, explained in plain language.",
+        "ru": "Технический фундамент, полезный контент и стабильный рост авторитета — с ежемесячными замерами и объяснениями простым языком."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Տեսնել գները",
+            "en": "See prices",
+            "ru": "Посмотреть цены"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Կապվել Էդգարի հետ",
+            "en": "Contact Edgar",
+            "ru": "Написать Эдгару"
+          },
+          "href": "#contact",
+          "style": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "statement": {
+        "hy": "Որոնումը ձեր բրենդի *բարդ տոկոսն* է։",
+        "en": "Search is *compound interest* for your brand.",
+        "ru": "Поиск — это *сложный процент* для бренда."
+      },
+      "body": {
+        "hy": "SEO-ն կառուցվում է դանդաղ, բայց շարունակում է աշխատել։ Սկսում ենք նրանից, ինչը խանգարում է որոնողական համակարգերին հասկանալ ձեր կայքը, ապա զարգացնում ենք էջերն ու բովանդակությունը, որոնք պատասխանում են ձեր հաճախորդների հարցերին։",
+        "en": "SEO builds slowly and keeps working. We start with what stops search engines from understanding your site, then grow the pages and content that answer what your customers ask.",
+        "ru": "SEO растёт медленно, но продолжает работать. Мы начинаем с того, что мешает поисковикам понять ваш сайт, а затем развиваем страницы и контент, отвечающие на вопросы клиентов."
+      }
+    },
+    {
+      "type": "pricing",
+      "id": "pricing",
+      "background": "surface",
+      "heading": {
+        "hy": "Ընտրեք *խորությունը*",
+        "en": "Pick your *depth*",
+        "ru": "Выберите *глубину*"
+      },
+      "defaultCategory": "seo",
+      "defaultDuration": 6,
+      "lockCategory": true,
+      "showAddons": true
+    },
+    {
+      "type": "faq",
+      "heading": {
+        "hy": "SEO *հարցեր*",
+        "en": "SEO *questions*",
+        "ru": "Вопросы о *SEO*"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Նախ կա՞յք է պետք",
+            "en": "Do I need a website first?",
+            "ru": "Сначала нужен сайт?"
+          },
+          "answer": {
+            "hy": "SEO-ն աշխատում է ձեր վերահսկած կայքի վրա։ Եթե դեռ կայք չունեք, կարող ենք այն ստեղծել և SEO-ն սկսել զուգահեռ՝ պարզապես տեղեկացրեք մեզ։",
+            "en": "SEO works on a website you control. If you do not have one yet, we can build it and start SEO alongside — just tell us.",
+            "ru": "SEO работает на сайте, которым вы управляете. Если сайта ещё нет, мы можем сделать его и начать SEO параллельно — просто скажите."
+          }
+        },
+        {
+          "question": {
+            "hy": "Ինչո՞ւ Fundamental-ը հասանելի չէ 9 կամ 12 ամսով",
+            "en": "Why is Fundamental not available for 9 or 12 months?",
+            "ru": "Почему Fundamental нельзя взять на 9 или 12 месяцев?"
+          },
+          "answer": {
+            "hy": "Fundamental-ը հիմքային փաթեթ է։ Վեց ամսից հետո հետագա աճի համար սովորաբար անհրաժեշտ է Vision-ի կամ Authority-ի բովանդակային աշխատանքը։",
+            "en": "Fundamental is a foundation package. After six months, growing further usually needs the content work in Vision or Authority.",
+            "ru": "Fundamental — базовый пакет. После шести месяцев для дальнейшего роста обычно нужна контентная работа Vision или Authority."
+          }
+        },
+        {
+          "question": {
+            "hy": "Երաշխավորո՞ւմ եք արդյունքները",
+            "en": "Do you guarantee results?",
+            "ru": "Вы гарантируете результат?"
+          },
+          "answer": {
+            "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
+            "en": "We commit to the work, its quality and clear reporting. Results depend on your market, competition, budget and implementation, so we never promise rankings, sales or follower numbers.",
+            "ru": "Мы отвечаем за работу, её качество и прозрачную отчётность. Результат зависит от рынка, конкуренции, бюджета и внедрения, поэтому мы не обещаем позиции, продажи или число подписчиков."
+          },
+          "openByDefault": true
+        },
+        {
+          "question": {
+            "hy": "Ինչպե՞ս է պայմանագրի ժամկետն ազդում գնի վրա",
+            "en": "How do contract lengths affect the price?",
+            "ru": "Как срок договора влияет на цену?"
+          },
+          "answer": {
+            "hy": "Ավելի երկար պայմանագրերի դեպքում ամսական վճարը նվազում է։ Գնային գործիքը ցույց է տալիս ամսական գինը, ամբողջ ժամկետի ընդհանուր գումարը և թե որքան եք խնայում ամսական վճարման համեմատ։",
+            "en": "Longer agreements lower the monthly fee. The pricing tool shows the monthly price, the total for the whole term and exactly how much you save compared with month-to-month.",
+            "ru": "Чем дольше договор, тем ниже ежемесячная оплата. Калькулятор показывает цену в месяц, сумму за весь срок и точную экономию по сравнению с помесячной оплатой."
+          }
+        }
+      ],
+      "width": "narrow"
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "background": "surface",
+      "heading": {
+        "hy": "Խոսեք *Էդգարի* հետ",
+        "en": "Talk to *Edgar*",
+        "ru": "Поговорите с *Эдгаром*"
+      },
+      "intro": {
+        "hy": "Սոցցանցերի հարցերով դիմեք Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
+        "en": "Social media questions go to Mariam; SEO and websites to Edgar. Write, call or send the form — whichever is easiest.",
+        "ru": "Вопросы по соцсетям — к Мариам, по SEO и сайтам — к Эдгару. Пишите, звоните или отправьте форму — как удобнее."
+      },
+      "service": "seo"
+    }
+  ]
+}

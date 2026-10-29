@@ -1,6 +1,5 @@
 /** Contact section: the founders, direct contacts and the inquiry form. */
-import { people } from '../../content/people.js'
-import { site } from '../../content/site.js'
+import { people, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'

@@ -1,5 +1,5 @@
 /** Human-readable estimate: package titles, a plain-text summary and a shareable link. */
-import { catalog } from '../content/catalog.js'
+import { catalog } from '../content/index.js'
 import { formatAmd, formatMonths } from '../lib/format.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
 import { quote } from './engine.js'

@@ -3,9 +3,7 @@
  * everything to site.formEmail through FormSubmit.
  */
 import { INQUIRY_SERVICES } from '../config.js'
-import { catalog } from '../content/catalog.js'
-import { people } from '../content/people.js'
-import { site } from '../content/site.js'
+import { catalog, people, site } from '../content/index.js'
 import { inquiryEmail, validateInquiry } from '../forms/inquiry.js'
 import { h } from '../lib/dom.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'

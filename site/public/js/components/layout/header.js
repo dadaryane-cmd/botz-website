@@ -1,15 +1,13 @@
 import { LANGUAGE_LABELS, LANGUAGES } from '../../config.js'
-import { navigation } from '../../content/navigation.js'
-import { site } from '../../content/site.js'
+import { navigation, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { getLanguage, setLanguage, t, ui } from '../../lib/i18n.js'
-import { currentPage } from '../../lib/page.js'
+import { currentFile } from '../../lib/page.js'
 import { getTheme, setTheme } from '../../lib/theme.js'
 
 /** Logo, navigation, language switch, theme toggle and the mobile menu button. */
 export function renderHeader(header) {
   const isDark = getTheme() === 'dark'
-  const currentFile = currentPage()?.file
 
   const nav = h(
     'nav',
@@ -23,7 +21,7 @@ export function renderHeader(header) {
           null,
           h(
             'a',
-            { href: link.href, 'aria-current': link.href === currentFile ? 'page' : null },
+            { href: link.href, 'aria-current': link.href === currentFile() ? 'page' : null },
             t(link.label),
           ),
         ),

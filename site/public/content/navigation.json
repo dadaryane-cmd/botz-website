@@ -1,0 +1,139 @@
+{
+  "header": [
+    {
+      "label": {
+        "hy": "Ծառայություններ",
+        "en": "Services",
+        "ru": "Услуги"
+      },
+      "href": "services.html"
+    },
+    {
+      "label": {
+        "hy": "SMM",
+        "en": "SMM",
+        "ru": "SMM"
+      },
+      "href": "smm.html"
+    },
+    {
+      "label": {
+        "hy": "SEO",
+        "en": "SEO",
+        "ru": "SEO"
+      },
+      "href": "seo.html"
+    },
+    {
+      "label": {
+        "hy": "Կայքեր",
+        "en": "Websites",
+        "ru": "Сайты"
+      },
+      "href": "website-creation.html"
+    },
+    {
+      "label": {
+        "hy": "Գներ",
+        "en": "Pricing",
+        "ru": "Цены"
+      },
+      "href": "pricing.html"
+    },
+    {
+      "label": {
+        "hy": "Մեր մասին",
+        "en": "About",
+        "ru": "О нас"
+      },
+      "href": "about.html"
+    }
+  ],
+  "cta": {
+    "label": {
+      "hy": "Քննարկել իմ նախագիծը",
+      "en": "Discuss my project",
+      "ru": "Обсудить мой проект"
+    },
+    "href": "contact.html",
+    "style": "primary"
+  },
+  "footerStatement": {
+    "hy": "Պատրաստ ենք, երբ *դուք* պատրաստ եք։",
+    "en": "Ready when *you* are.",
+    "ru": "Готовы, когда готовы *вы*."
+  },
+  "footerColumns": [
+    {
+      "title": {
+        "hy": "Ծառայություններ",
+        "en": "Services",
+        "ru": "Услуги"
+      },
+      "links": [
+        {
+          "label": {
+            "hy": "Սոցիալական մեդիա մարքեթինգ",
+            "en": "Social media marketing",
+            "ru": "Маркетинг в соцсетях"
+          },
+          "href": "smm.html"
+        },
+        {
+          "label": {
+            "hy": "SEO",
+            "en": "SEO",
+            "ru": "SEO"
+          },
+          "href": "seo.html"
+        },
+        {
+          "label": {
+            "hy": "Կայքի ստեղծում",
+            "en": "Website creation",
+            "ru": "Создание сайтов"
+          },
+          "href": "website-creation.html"
+        },
+        {
+          "label": {
+            "hy": "Գներ",
+            "en": "Pricing",
+            "ru": "Цены"
+          },
+          "href": "pricing.html"
+        }
+      ]
+    },
+    {
+      "title": {
+        "hy": "Գործակալություն",
+        "en": "Agency",
+        "ru": "Агентство"
+      },
+      "links": [
+        {
+          "label": {
+            "hy": "Մեր մասին",
+            "en": "About",
+            "ru": "О нас"
+          },
+          "href": "about.html"
+        },
+        {
+          "label": {
+            "hy": "Կապ",
+            "en": "Contact",
+            "ru": "Контакты"
+          },
+          "href": "contact.html"
+        }
+      ]
+    }
+  ],
+  "footerNote": {
+    "hy": "Գները ՀՀ դրամով։ Կայքի նախահաշիվները պայմանագրեր չեն։",
+    "en": "Prices in AMD. Estimates on this website are not contracts.",
+    "ru": "Цены в драмах. Расчёты на сайте не являются договором."
+  }
+}

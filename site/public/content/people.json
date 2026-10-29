@@ -1,0 +1,41 @@
+{
+  "people": [
+    {
+      "key": "mariam",
+      "name": {
+        "hy": "Մարիամ",
+        "en": "Mariam",
+        "ru": "Мариам"
+      },
+      "role": {
+        "hy": "Սոցիալական մեդիա մարքեթինգ",
+        "en": "Social media marketing",
+        "ru": "Маркетинг в соцсетях"
+      },
+      "services": [
+        "smm",
+        "bundle",
+        "addon"
+      ]
+    },
+    {
+      "key": "edgar",
+      "name": {
+        "hy": "Էդգար",
+        "en": "Edgar",
+        "ru": "Эдгар"
+      },
+      "role": {
+        "hy": "SEO և կայքերի ստեղծում",
+        "en": "SEO & website creation",
+        "ru": "SEO и создание сайтов"
+      },
+      "services": [
+        "seo",
+        "website",
+        "bundle",
+        "addon"
+      ]
+    }
+  ]
+}

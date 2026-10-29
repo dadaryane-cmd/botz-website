@@ -1,6 +1,6 @@
 /** Home page overview: every package's monthly price for one contract length. */
 import { PACKAGE_CATEGORIES } from '../../config.js'
-import { catalog } from '../../content/catalog.js'
+import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
@@ -15,7 +15,8 @@ import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
 import { button, heading, lead, section } from './section.js'
 
 export function renderPackagePreview(config) {
-  const categories = config.categories ?? PACKAGE_CATEGORIES
+  const categories = config.categories?.length ? config.categories : PACKAGE_CATEGORIES
+  const months = config.duration ?? 12
   return section(
     config,
     heading(config.heading),
@@ -23,12 +24,12 @@ export function renderPackagePreview(config) {
     h(
       'div',
       { class: 'grid grid-4' },
-      categories.map((category) => categoryColumn(category, config.duration)),
+      categories.map((category) => categoryColumn(category, months)),
     ),
     h(
       'div',
       { class: 'btn-row' },
-      config.link && button(config.link),
+      config.link?.href && button(config.link),
       config.showGuideLink &&
         h(
           'a',

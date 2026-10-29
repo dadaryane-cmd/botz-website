@@ -3,13 +3,16 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { describe, it } from 'node:test'
 import { fileURLToPath } from 'node:url'
-import { catalog } from '../public/js/content/catalog.js'
-import { finder } from '../public/js/content/finder.js'
-import { navigation } from '../public/js/content/navigation.js'
-import { pages } from '../public/js/content/pages/index.js'
+import { PAGES } from '../public/js/config.js'
+import { catalog, finder, navigation } from '../public/js/content/index.js'
+import { loadJson } from '../public/js/content/load.js'
 import { interpolate, t, ui } from '../public/js/lib/i18n.js'
 
 const publicDir = fileURLToPath(new URL('../public/', import.meta.url))
+const htmlFile = (key) => (key === 'home' ? 'index.html' : `${key}.html`)
+const pages = Object.fromEntries(
+  await Promise.all(PAGES.map(async (key) => [key, await loadJson(`pages/${key}.json`)])),
+)
 const SECTION_TYPES = [
   'contact',
   'cta',
@@ -36,18 +39,20 @@ function* translations(value) {
 describe('content', () => {
   it('has an HTML file for every page, and a page for every HTML file', () => {
     const htmlFiles = readdirSync(publicDir).filter((f) => f.endsWith('.html') && f !== '404.html')
-    assert.deepEqual(
-      Object.values(pages)
-        .map((p) => p.file)
-        .sort(),
-      htmlFiles.sort(),
-    )
+    assert.deepEqual(PAGES.map(htmlFile).sort(), htmlFiles.sort())
+    for (const key of PAGES) {
+      const html = readFileSync(join(publicDir, htmlFile(key)), 'utf8')
+      assert.ok(
+        html.includes(`data-page="${key}"`),
+        `${htmlFile(key)} should have data-page="${key}"`,
+      )
+    }
   })
 
   it('only uses known section types', () => {
-    for (const page of Object.values(pages)) {
+    for (const [key, page] of Object.entries(pages)) {
       for (const section of page.sections)
-        assert.ok(SECTION_TYPES.includes(section.type), `${page.file}: ${section.type}`)
+        assert.ok(SECTION_TYPES.includes(section.type), `${key}: ${section.type}`)
     }
   })
 

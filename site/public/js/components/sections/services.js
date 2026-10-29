@@ -21,5 +21,5 @@ const serviceCard = (item) =>
       { class: 'chips' },
       item.highlights.map((text) => h('li', null, t(text))),
     ),
-    h('a', { class: 'link-arrow', href: item.link.href }, t(item.link.label)),
+    item.link?.href && h('a', { class: 'link-arrow', href: item.link.href }, t(item.link.label)),
   )

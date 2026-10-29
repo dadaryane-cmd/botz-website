@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { catalog } from '../public/js/content/catalog.js'
-import { finder } from '../public/js/content/finder.js'
+import { catalog, finder } from '../public/js/content/index.js'
 import { recommend } from '../public/js/pricing/finder.js'
 
 const answers = (overrides) => ({

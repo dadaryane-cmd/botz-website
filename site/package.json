@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.js",
-    "test": "node --test"
+    "test": "node --test",
+    "cms": "node scripts/build-cms-config.js"
   },
   "engines": {
     "node": ">=20"
