@@ -16,7 +16,6 @@ const serviceCard = (item, index) =>
     { class: 'card service-card', ...reveal(index) },
     h('span', { class: 'index' }, item.index),
     h('h3', null, t(item.title)),
-    h('p', null, t(item.text)),
     h(
       'ul',
       { class: 'chips' },

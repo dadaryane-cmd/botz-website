@@ -11,6 +11,10 @@
   color: var(--accent-text);
 }
 
+.service-card h3 {
+  margin-bottom: 16px;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;

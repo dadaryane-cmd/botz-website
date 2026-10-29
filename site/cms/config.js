@@ -100,7 +100,6 @@ const sectionBlocks = [
         object('items', 'Services', [
           string('index', 'Number'),
           text('title', 'Title'),
-          text('text', 'Text', { long: true }),
           list(text('highlights', 'Highlights')),
           link('link', 'Link'),
         ]),
