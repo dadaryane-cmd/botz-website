@@ -12,7 +12,7 @@ The owner's standing rule: **write clean JS code.** For `site/` that means:
   `js/services/`, `js/components/` (one render function per section / component),
   `css/base`, `css/layout`, `css/components` (one file per component).
 - **Readable over clever:** descriptive names, small functions, early returns, no comma
-  expressions or one-letter variables outside tiny loops. Comments explain *why*, briefly.
+  expressions or one-letter variables outside tiny loops. Comments explain _why_, briefly.
 - **Build DOM with `h()` from `js/lib/dom.js`** (text is never parsed as HTML). Markup strings
   only for static, trusted SVG.
 - **Keep logic pure and testable** (no DOM or storage access at import time) and add tests in
