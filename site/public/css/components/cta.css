@@ -1,4 +1,4 @@
-/* Cta section. */
+/* Call to action section. */
 
 .cta {
   text-align: center;
@@ -8,6 +8,11 @@
 .cta .lead {
   margin-left: auto;
   margin-right: auto;
+}
+
+/* The highlighted answer ("Let's hear it.") always starts its own line. */
+.cta .heading em {
+  display: block;
 }
 
 .cta .btn-row {
