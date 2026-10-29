@@ -1299,3 +1299,22 @@ content:
           - name: themeTooltip
             label: Theme tooltip
             component: line
+      - name: easterEgg
+        label: Easter egg
+        type: object
+        fields:
+          - name: title
+            label: Title
+            component: line
+          - name: text
+            label: Text
+            component: line
+          - name: cta
+            label: Cta
+            component: line
+          - name: close
+            label: Close
+            component: line
+          - name: message
+            label: Message
+            component: line

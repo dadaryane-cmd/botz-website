@@ -10,6 +10,8 @@ import { prefersReducedMotion, spring, tween } from '../../lib/animation.js'
 import { ui } from '../../lib/i18n.js'
 import { load, save } from '../../lib/storage.js'
 import { getTheme, setTheme } from '../../lib/theme.js'
+import { showEasterEgg } from './easter-egg.js'
+import { createPullStreak } from './pull-streak.js'
 
 const TUNING = {
   /** Max visual cord pull (px) and how far it must be pulled to switch. */
@@ -33,6 +35,8 @@ const TUNING = {
   /** First-visit "Pull the cord" hint. */
   hintDelayMs: 1500,
   hintVisibleMs: 8000,
+  /** Hidden message: this many switches in a row, each within `maxGapMs` of the last. */
+  easterEgg: { pulls: 3, maxGapMs: 3000, celebrateMs: 1200 },
 }
 
 /** Rubber band: follows the finger at first, then stiffens towards maxPull. */
@@ -109,6 +113,10 @@ export function renderBulbToggle() {
   )
 
   const state = { pull: 0, angle: 0, tilt: 0, busy: false }
+  const countPull = createPullStreak({
+    needed: TUNING.easterEgg.pulls,
+    maxGapMs: TUNING.easterEgg.maxGapMs,
+  })
   let cancels = []
   let drag = null
 
@@ -157,13 +165,23 @@ export function renderBulbToggle() {
 
   /* ---------- switching ---------- */
 
-  function switchTheme() {
+  /** Switch light ↔ dark; with `animate: false` (reduced motion) instantly, without light effects. */
+  function switchTheme({ animate = true } = {}) {
     const next = otherTheme()
-    button.classList.remove('is-turning-on', 'is-turning-off')
-    // Flicker when the light comes on, afterglow when it goes off.
-    replayClass(next === 'light' ? 'is-turning-on' : 'is-turning-off', TUNING.switchFxMs)
-    setTheme(next, { origin: bulbCentre() })
+    if (animate) {
+      button.classList.remove('is-turning-on', 'is-turning-off')
+      // Flicker when the light comes on, afterglow when it goes off.
+      replayClass(next === 'light' ? 'is-turning-on' : 'is-turning-off', TUNING.switchFxMs)
+      setTheme(next, { origin: bulbCentre() })
+    } else {
+      setTheme(next, { animate: false })
+    }
     updateLabel()
+
+    if (countPull()) {
+      if (animate) replayClass('is-celebrating', TUNING.easterEgg.celebrateMs)
+      showEasterEgg()
+    }
   }
 
   /** The bulb swings away from any sideways pull; without one, a click swings it right. */
@@ -199,10 +217,7 @@ export function renderBulbToggle() {
   /** Click / Enter / Space: switch at once while a short automatic pull plays. */
   function autoToggle() {
     if (state.busy) return
-    if (prefersReducedMotion()) {
-      setTheme(otherTheme(), { animate: false })
-      return updateLabel()
-    }
+    if (prefersReducedMotion()) return switchTheme({ animate: false })
     state.busy = true
     stopAll()
     switchTheme()
@@ -265,8 +280,8 @@ export function renderBulbToggle() {
     if (!moved) return autoToggle()
     if (prefersReducedMotion()) {
       // A long enough downward drag still switches, without animation.
-      if (event.clientY - y >= TUNING.threshold) setTheme(otherTheme(), { animate: false })
-      return updateLabel()
+      if (event.clientY - y >= TUNING.threshold) switchTheme({ animate: false })
+      return
     }
     release()
   }

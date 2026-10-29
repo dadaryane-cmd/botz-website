@@ -58,7 +58,14 @@ export function renderInquiryForm({ service: pageService }) {
     maxlength: 4000,
     placeholder: ui('form', 'messagePlaceholder'),
   })
-  if (selection.note) message.value = selection.note
+  // A suggested message (package finder, lamp surprise) fills the field unless the visitor wrote their own.
+  let suggestedNote = selection.note
+  if (suggestedNote) message.value = suggestedNote
+  const applyNote = ({ note }) => {
+    if (!note || note === suggestedNote) return
+    if (!message.value.trim() || message.value === suggestedNote) message.value = note
+    suggestedNote = note
+  }
 
   const contactOptions = [
     ...people.map((person) => ({ value: person.key, label: t(person.name) })),
@@ -160,7 +167,10 @@ export function renderInquiryForm({ service: pageService }) {
 
   suggestContact()
   renderEstimate()
-  subscribe(form, renderEstimate)
+  subscribe(form, (changed) => {
+    renderEstimate()
+    applyNote(changed)
+  })
 
   /* ---------- behaviour ---------- */
 

@@ -529,3 +529,85 @@
     transform: rotate(45deg);
   }
 }
+
+/* ---- easter egg: a streak of pulls makes the bulb flicker and shows a message ---- */
+
+.bulb-toggle.is-celebrating .bulb-glass-on,
+.bulb-toggle.is-celebrating .bulb-filament-hot {
+  animation: bulb-flicker var(--bulb-flicker-ms) steps(1, end) 4;
+}
+
+.bulb-toggle.is-celebrating .bulb-halo {
+  animation: bulb-halo-in var(--bulb-on-ms) ease-out 3;
+}
+
+.easter-egg {
+  position: fixed;
+  z-index: 60;
+  top: 84px;
+  right: var(--gutter);
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+  width: min(320px, calc(100vw - 2 * var(--gutter)));
+  padding: 18px 44px 18px 20px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.28);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.easter-egg.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.easter-egg p {
+  margin: 0;
+}
+
+.easter-egg-title {
+  font: 700 1.05rem var(--font-display);
+  color: var(--accent-text);
+}
+
+.easter-egg .btn {
+  margin-top: 12px;
+}
+
+.easter-egg-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.easter-egg-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Phones: centred near the bottom, above the call / WhatsApp bar. */
+@media (max-width: 720px) {
+  .easter-egg {
+    top: auto;
+    bottom: 84px;
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+    transform: translateY(12px);
+  }
+}
