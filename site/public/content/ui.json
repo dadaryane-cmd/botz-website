@@ -83,21 +83,6 @@
       "hy": "Հեռախոս",
       "en": "Phone",
       "ru": "Телефон"
-    },
-    "sharedLine": {
-      "hy": "Ընդհանուր կապ․ հեռախոսը, WhatsApp-ը և էլ. փոստը հասնում են ամբողջ թիմին։",
-      "en": "Shared line: phone, WhatsApp and email reach the whole team.",
-      "ru": "Общие контакты: телефон, WhatsApp и почта доступны всей команде."
-    },
-    "handles": {
-      "hy": "Պատասխանատու է՝ {services}",
-      "en": "Handles: {services}",
-      "ru": "Отвечает за: {services}"
-    },
-    "eitherContact": {
-      "hy": "Համակցված փաթեթներ․ դիմեք ցանկացածին, մենք աշխատում ենք համատեղ։",
-      "en": "Combined plans: talk to either — we coordinate together.",
-      "ru": "Комплексные пакеты: обращайтесь к любому из нас — мы работаем вместе."
     }
   },
   "pricing": {
@@ -378,11 +363,6 @@
       "en": "Use this in my estimate",
       "ru": "Использовать в расчёте"
     },
-    "temporary": {
-      "hy": "Ձեր պատասխանները մնում են այս էջում և ոչ մի տեղ չեն ուղարկվում, քանի դեռ հարցում չեք ներկայացրել։",
-      "en": "Your answers stay in this browser tab and are not sent anywhere unless you submit an inquiry.",
-      "ru": "Ответы остаются в этой вкладке и никуда не отправляются, пока вы не отправите заявку."
-    },
     "noMatch": {
       "hy": "Ձեր պատասխանների հիման վրա կարճ զրույցն ավելի օգտակար կլինի, քան ֆիքսված փաթեթը։",
       "en": "Based on your answers, a short conversation will help more than a fixed package.",
@@ -582,11 +562,6 @@
       "hy": "Ներբեռնել PDF",
       "en": "Download PDF",
       "ru": "Скачать PDF"
-    },
-    "sampleNote": {
-      "hy": "Օրինակ՝ պայմանական տվյալներով․ ցույց է տալիս այն ձևաչափը, որը կստանաք։",
-      "en": "Example with illustrative data — it shows the format you will receive.",
-      "ru": "Пример с условными данными — показывает формат, который вы получите."
     },
     "finderLink": {
       "hy": "Չգիտե՞ք որտեղից սկսել։ Պատասխանեք վեց հարցի",

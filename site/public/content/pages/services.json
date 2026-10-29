@@ -231,21 +231,6 @@
       ]
     },
     {
-      "type": "finder",
-      "id": "guide",
-      "background": "inverse",
-      "heading": {
-        "hy": "Չգիտե՞ք որտեղից սկսել։ *Պատասխանեք վեց հարցի։*",
-        "en": "Not sure where to start? *Answer six questions.*",
-        "ru": "Не знаете, с чего начать? *Ответьте на шесть вопросов.*"
-      },
-      "intro": {
-        "hy": "Կառաջարկենք փաթեթ, կբացատրենք ինչու և ցույց կտանք իրական արժեքը ձեր ընտրած ժամկետի համար։",
-        "en": "We will suggest a package, explain why, and show the real cost for the term you choose.",
-        "ru": "Мы предложим пакет, объясним почему и покажем реальную стоимость на выбранный срок."
-      }
-    },
-    {
       "type": "contact",
       "id": "contact",
       "background": "surface",
@@ -255,9 +240,9 @@
         "ru": "Обсудим ваш *следующий шаг*"
       },
       "intro": {
-        "hy": "Սոցցանցերի հարցերով դիմեք Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
-        "en": "Social media questions go to Mariam; SEO and websites to Edgar. Write, call or send the form — whichever is easiest.",
-        "ru": "Вопросы по соцсетям — к Мариам, по SEO и сайтам — к Эдгару. Пишите, звоните или отправьте форму — как удобнее."
+        "hy": "Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
+        "en": "Write, call or send the form — whichever is easiest.",
+        "ru": "Пишите, звоните или отправьте форму — как удобнее."
       }
     }
   ]

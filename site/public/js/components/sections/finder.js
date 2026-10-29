@@ -36,7 +36,6 @@ export function renderFinder(config) {
       { type: 'button', class: 'btn btn-primary', onclick: () => show(0) },
       ui('guide', 'start'),
     ),
-    h('p', { class: 'muted small' }, ui('guide', 'temporary')),
   ]
 
   function questionScreen(question) {

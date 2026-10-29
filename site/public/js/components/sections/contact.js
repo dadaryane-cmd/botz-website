@@ -1,7 +1,7 @@
 /** Contact section: the founders, direct contacts and the inquiry form. */
 import { people, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
-import { t, ui } from '../../lib/i18n.js'
+import { ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
 import { renderInquiryForm } from '../inquiry-form.js'
 import { heading, lead, section } from './section.js'
@@ -20,34 +20,15 @@ export const renderContact = (config) =>
     ),
   )
 
-function founders() {
-  return h(
+/** Who handles what: each founder's role says it, so the cards need nothing else. */
+const founders = () =>
+  h(
     'div',
     { class: 'people' },
-    people.map((person) => {
-      const services = person.services
-        .filter((service) => service !== 'addon' && service !== 'bundle')
-        .map((service) => ui('services', service))
-        .join(', ')
-      const greeting = ui('whatsapp', 'greeting', { contact: t(person.name) })
-      return personCard(person, [
-        h('p', { class: 'small' }, ui('contact', 'handles', { services })),
-        h(
-          'div',
-          { class: 'btn-row' },
-          h('a', { class: 'btn btn-secondary btn-small', href: phoneHref }, ui('contact', 'call')),
-          h(
-            'a',
-            { class: 'btn btn-secondary btn-small', href: whatsappHref(greeting), ...external },
-            ui('contact', 'whatsapp'),
-          ),
-        ),
-      ])
-    }),
-    h('p', { class: 'muted small' }, ui('contact', 'eitherContact')),
+    people.map((person) => personCard(person)),
   )
-}
 
+/** One shared phone, WhatsApp and email for the whole team. */
 function directContacts() {
   const item = (label, link) => h('li', null, h('span', { class: 'label' }, label), link)
   return h(
@@ -59,6 +40,5 @@ function directContacts() {
       h('a', { href: whatsappHref(), ...external }, site.phoneDisplay),
     ),
     item(ui('contact', 'email'), h('a', { href: emailHref }, site.email)),
-    h('li', { class: 'muted small' }, ui('contact', 'sharedLine')),
   )
 }

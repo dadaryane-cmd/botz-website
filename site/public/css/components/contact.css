@@ -19,10 +19,6 @@
   gap: 16px;
 }
 
-.people .btn-row {
-  margin: 12px 0 0;
-}
-
 .direct-contacts {
   display: grid;
   gap: 12px;

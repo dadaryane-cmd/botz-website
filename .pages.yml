@@ -980,15 +980,6 @@ content:
           - name: phoneLabel
             label: Phone label
             component: line
-          - name: sharedLine
-            label: Shared line
-            component: line
-          - name: handles
-            label: Handles
-            component: line
-          - name: eitherContact
-            label: Either contact
-            component: line
       - name: pricing
         label: Pricing
         type: object
@@ -1162,9 +1153,6 @@ content:
           - name: usePackage
             label: Use package
             component: line
-          - name: temporary
-            label: Temporary
-            component: line
           - name: noMatch
             label: No match
             component: line
@@ -1298,9 +1286,6 @@ content:
             component: line
           - name: download
             label: Download
-            component: line
-          - name: sampleNote
-            label: Sample note
             component: line
           - name: finderLink
             label: Finder link

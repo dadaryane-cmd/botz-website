@@ -11,7 +11,6 @@ export const renderSamples = (config) =>
     heading(config.heading),
     lead(config.intro),
     h('div', { class: 'grid grid-3' }, config.items.map(sampleCard)),
-    h('p', { class: 'muted small' }, ui('trust', 'sampleNote')),
   )
 
 const sampleCard = (item, index) =>

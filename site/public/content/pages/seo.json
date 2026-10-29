@@ -103,31 +103,6 @@
             "en": "Fundamental is a foundation package. After six months, growing further usually needs the content work in Vision or Authority.",
             "ru": "Fundamental — базовый пакет. После шести месяцев для дальнейшего роста обычно нужна контентная работа Vision или Authority."
           }
-        },
-        {
-          "question": {
-            "hy": "Երաշխավորո՞ւմ եք արդյունքները",
-            "en": "Do you guarantee results?",
-            "ru": "Вы гарантируете результат?"
-          },
-          "answer": {
-            "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
-            "en": "We commit to the work, its quality and clear reporting. Results depend on your market, competition, budget and implementation, so we never promise rankings, sales or follower numbers.",
-            "ru": "Мы отвечаем за работу, её качество и прозрачную отчётность. Результат зависит от рынка, конкуренции, бюджета и внедрения, поэтому мы не обещаем позиции, продажи или число подписчиков."
-          },
-          "openByDefault": true
-        },
-        {
-          "question": {
-            "hy": "Ինչպե՞ս է պայմանագրի ժամկետն ազդում գնի վրա",
-            "en": "How do contract lengths affect the price?",
-            "ru": "Как срок договора влияет на цену?"
-          },
-          "answer": {
-            "hy": "Ավելի երկար պայմանագրերի դեպքում ամսական վճարը նվազում է։ Գնային գործիքը ցույց է տալիս ամսական գինը, ամբողջ ժամկետի ընդհանուր գումարը և թե որքան եք խնայում ամսական վճարման համեմատ։",
-            "en": "Longer agreements lower the monthly fee. The pricing tool shows the monthly price, the total for the whole term and exactly how much you save compared with month-to-month.",
-            "ru": "Чем дольше договор, тем ниже ежемесячная оплата. Калькулятор показывает цену в месяц, сумму за весь срок и точную экономию по сравнению с помесячной оплатой."
-          }
         }
       ],
       "width": "narrow"
@@ -142,9 +117,9 @@
         "ru": "Поговорите с *Эдгаром*"
       },
       "intro": {
-        "hy": "Սոցցանցերի հարցերով դիմեք Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
-        "en": "Social media questions go to Mariam; SEO and websites to Edgar. Write, call or send the form — whichever is easiest.",
-        "ru": "Вопросы по соцсетям — к Мариам, по SEO и сайтам — к Эдгару. Пишите, звоните или отправьте форму — как удобнее."
+        "hy": "Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
+        "en": "Write, call or send the form — whichever is easiest.",
+        "ru": "Пишите, звоните или отправьте форму — как удобнее."
       },
       "service": "seo"
     }
