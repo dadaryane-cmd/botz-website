@@ -55,11 +55,11 @@ float fbm(vec2 p){
 }
 float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 
-// Heat → colour: #3A0A05 → #B3200E → #FF5A1F → #FF9F1C → #FFE7A8
+// Heat → colour, the site palette: #66200C coal → #CC3713 ember → #EB7814 flame → #FF9F1C → #FFE7A8
 vec3 ramp(float h){
-  vec3 c0 = vec3(0.227, 0.039, 0.020);
-  vec3 c1 = vec3(0.702, 0.125, 0.055);
-  vec3 c2 = vec3(1.000, 0.353, 0.122);
+  vec3 c0 = vec3(0.400, 0.125, 0.047);
+  vec3 c1 = vec3(0.800, 0.216, 0.075);
+  vec3 c2 = vec3(0.922, 0.471, 0.078);
   vec3 c3 = vec3(1.000, 0.624, 0.110);
   vec3 c4 = vec3(1.000, 0.906, 0.659);
   h = clamp(h, 0.0, 1.0) * 4.0;

@@ -15,7 +15,7 @@
     ellipse 85vmax 75vmax at var(--lamp-x, 100%) var(--lamp-y, 0),
     rgb(255 214 150 / 0.7) 0,
     rgb(255 236 205 / 0.35) 35%,
-    rgb(226 223 234 / 0.5) 100%
+    rgb(224 226 228 / 0.5) 100%
   );
   transition: opacity 500ms ease-out;
 }

@@ -1,20 +1,21 @@
 /*
  * Design tokens: colours (light and dark), fonts, radii, spacing.
- * "Night Pop": cool grey and plum-black with hot magenta; orange is kept for the fire and the logo.
+ * "Campfire" palette: #CC3713 ember, #EB7814 flame, #9B2C15 brick, #66200C coal (the fire),
+ * #16160E night and #394B4D slate sky, on a light grey page in light mode.
  */
 
 :root {
   --bg: #f2f2f4;
-  --surface: #e7e5ec;
-  --card: #fbfbfd;
-  --text: #140f1f;
-  --muted: #5e5869;
-  --border: #d9d6e0;
-  --accent: #ff2e88;
-  --accent-text: #c8146a;
-  --on-accent: #140f1f;
-  --inverse-bg: #140f1f;
-  --inverse-text: #f4f1f8;
+  --surface: #e6e8e9;
+  --card: #fbfbfc;
+  --text: #16160e;
+  --muted: #394b4d;
+  --border: #d5d9db;
+  --accent: #cc3713;
+  --accent-text: #9b2c15;
+  --on-accent: #ffffff;
+  --inverse-bg: #16160e;
+  --inverse-text: #f2f2f4;
   --ok: #1e7a3c;
   --error: #b42318;
 
@@ -24,23 +25,23 @@
   --radius: 28px;
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);
-  --shadow: 0 1px 2px rgb(20 15 31 / 0.05), 0 8px 24px rgb(20 15 31 / 0.08);
+  --shadow: 0 1px 2px rgb(22 22 14 / 0.05), 0 8px 24px rgb(22 22 14 / 0.08);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #140f1f;
-    --surface: #1d1730;
-    --card: #19132a;
-    --text: #f4f1f8;
-    --muted: #ada5ba;
-    --border: #2f2742;
-    --accent: #ff3d93;
-    --accent-text: #ff6fae;
-    --on-accent: #140f1f;
+    --bg: #16160e;
+    --surface: #1e2420;
+    --card: #1b1e17;
+    --text: #f2f1ea;
+    --muted: #a9b4b2;
+    --border: #2f3833;
+    --accent: #eb7814;
+    --accent-text: #eb7814;
+    --on-accent: #16160e;
     --inverse-bg: #f2f2f4;
-    --inverse-text: #140f1f;
+    --inverse-text: #16160e;
     --ok: #5bd18b;
     --error: #ff8a80;
     --shadow: none;
@@ -49,17 +50,17 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #140f1f;
-  --surface: #1d1730;
-  --card: #19132a;
-  --text: #f4f1f8;
-  --muted: #ada5ba;
-  --border: #2f2742;
-  --accent: #ff3d93;
-  --accent-text: #ff6fae;
-  --on-accent: #140f1f;
+  --bg: #16160e;
+  --surface: #1e2420;
+  --card: #1b1e17;
+  --text: #f2f1ea;
+  --muted: #a9b4b2;
+  --border: #2f3833;
+  --accent: #eb7814;
+  --accent-text: #eb7814;
+  --on-accent: #16160e;
   --inverse-bg: #f2f2f4;
-  --inverse-text: #140f1f;
+  --inverse-text: #16160e;
   --ok: #5bd18b;
   --error: #ff8a80;
   --shadow: none;
