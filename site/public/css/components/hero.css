@@ -20,7 +20,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  /* The first screen minus the header and the ticker below. */
+  /* The first screen minus the header and the top of the cinema sign below. */
   min-height: clamp(560px, calc(100svh - 72px - 64px), 940px);
 }
 
@@ -141,43 +141,4 @@
 
 .flame-background[data-mode='video'] .flame-video {
   display: block;
-}
-
-/* ---- ticker ---- */
-
-.ticker {
-  position: relative;
-  padding: 16px 0;
-  background: var(--inverse-bg);
-  color: var(--inverse-text);
-  overflow: hidden;
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker 32s linear infinite;
-}
-
-.ticker:hover .ticker-track,
-.ticker:focus-within .ticker-track {
-  animation-play-state: paused;
-}
-
-.ticker span {
-  padding: 0 28px;
-  font: 700 clamp(1rem, 2vw, 1.4rem) var(--font-display);
-  white-space: nowrap;
-}
-
-.ticker span::after {
-  content: '✦';
-  margin-left: 56px;
-  color: var(--accent);
-}
-
-@keyframes ticker {
-  to {
-    transform: translateX(-50%);
-  }
 }

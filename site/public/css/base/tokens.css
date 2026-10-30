@@ -22,6 +22,8 @@
   /* Dela Gothic One has Latin and Cyrillic in one weight; Armenian falls back to Noto. */
   --font-display: 'Dela Gothic One', 'Noto Sans Armenian', system-ui, sans-serif;
   --font-body: 'Golos Text', 'Noto Sans Armenian', system-ui, sans-serif;
+  /* Tall, narrow capitals of the cinema sign; Armenian uses Noto's condensed width. */
+  --font-sign: 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
   --radius: 28px;
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);

@@ -44,36 +44,41 @@
           "style": "secondary"
         }
       ],
-      "ticker": [
+      "signTitle": {
+        "hy": "ԻՆՉ ԵՆՔ ԱՌԱՋԱՐԿՈՒՄ",
+        "en": "WHAT WE OFFER",
+        "ru": "ЧТО МЫ ПРЕДЛАГАЕМ"
+      },
+      "signItems": [
         {
-          "hy": "Սոցցանցեր",
-          "en": "Social media",
-          "ru": "Соцсети"
+          "hy": "ՍՈՑՑԱՆՑԵՐ",
+          "en": "SOCIAL MEDIA",
+          "ru": "СОЦСЕТИ"
         },
         {
-          "hy": "Որոնողական օպտիմալացում",
-          "en": "Search optimisation",
-          "ru": "Поисковая оптимизация"
+          "hy": "ՈՐՈՆՈՂԱԿԱՆ ՕՊՏԻՄԱԼԱՑՈՒՄ",
+          "en": "SEARCH OPTIMISATION",
+          "ru": "ПОИСКОВАЯ ОПТИМИЗАЦИЯ"
         },
         {
-          "hy": "Կայքեր",
-          "en": "Websites",
-          "ru": "Сайты"
+          "hy": "ԿԱՅՔԵՐ",
+          "en": "WEBSITES",
+          "ru": "САЙТЫ"
         },
         {
-          "hy": "Բովանդակություն",
-          "en": "Content",
-          "ru": "Контент"
+          "hy": "ԲՈՎԱՆԴԱԿՈՒԹՅՈՒՆ",
+          "en": "CONTENT",
+          "ru": "КОНТЕНТ"
         },
         {
-          "hy": "Meta գովազդ",
-          "en": "Meta ads",
-          "ru": "Реклама в Meta"
+          "hy": "META ԳՈՎԱԶԴ",
+          "en": "META ADS",
+          "ru": "РЕКЛАМА В META"
         },
         {
-          "hy": "Reels",
-          "en": "Reels",
-          "ru": "Reels"
+          "hy": "REELS",
+          "en": "REELS",
+          "ru": "REELS"
         }
       ],
       "variant": "home"

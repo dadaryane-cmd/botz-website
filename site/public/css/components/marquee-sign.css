@@ -1,0 +1,210 @@
+/*
+ * Cinema marquee sign under the home hero (js/components/marquee-sign.js): a lit letter board
+ * between two rows of chasing bulbs. It stays unlit until `.is-lit`; then the bulbs flicker on,
+ * the board lights up and the letters are put up one by one.
+ */
+
+.marquee-sign {
+  --sign-casing: #1b1930;
+  --sign-row: clamp(2.2rem, 4.6vw, 3.6rem);
+  --sign-glow: rgb(255 196 110 / 0.22);
+  --bulb-gap: 28px;
+  --bulb-size: 16px;
+  display: grid;
+  gap: 10px;
+  padding: 12px var(--gutter);
+  background: var(--sign-casing);
+  box-shadow: 0 0 60px var(--sign-glow);
+}
+
+/* At night the sign is the brightest thing on the page. */
+[data-theme='dark'] .marquee-sign {
+  --sign-glow: rgb(255 196 110 / 0.4);
+}
+
+/* ---- bulbs: every third one burns brighter, and the bright ones run along ---- */
+
+.sign-bulbs {
+  position: relative;
+  height: var(--bulb-size);
+  background: radial-gradient(circle, #ffd88f 0 4px, rgb(255 196 110 / 0.4) 5px, transparent 7px) 0
+    center / var(--bulb-gap) var(--bulb-size) repeat-x;
+}
+
+/* The tile is three bulbs wide with its bulb in the middle, so it lands on every third bulb. */
+.sign-bulbs::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #fffaf0 0 4.5px, rgb(255 214 140 / 0.85) 6px, transparent 9px)
+    0 center / calc(var(--bulb-gap) * 3) var(--bulb-size) repeat-x;
+  filter: drop-shadow(0 0 4px rgb(255 200 120 / 0.9));
+}
+
+/* ---- the letter board ---- */
+
+.sign-board {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  border-radius: 6px;
+  color: #16141f;
+  text-align: center;
+  /* Rails at the bottom of every letter row, on a warm white lightbox. */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 calc(var(--sign-row) - 2px),
+      rgb(27 25 48 / 0.18) calc(var(--sign-row) - 2px) var(--sign-row)
+    ),
+    linear-gradient(#fffdf6, #fff0d8);
+  box-shadow:
+    0 0 0 3px #2d2a47,
+    0 0 40px var(--sign-glow);
+}
+
+.sign-title,
+.sign-items {
+  margin: 0;
+  font: 600 calc(var(--sign-row) * 0.6) / var(--sign-row) var(--font-sign);
+  font-stretch: condensed;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sign-title {
+  color: #9d282b;
+}
+
+/* Services are set apart by wide gaps, as on a real letter board. */
+.sign-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1.2em;
+  padding: 0;
+  list-style: none;
+}
+
+.sign-word,
+.sign-letter {
+  display: inline-block;
+}
+
+.sign-word {
+  white-space: nowrap;
+}
+
+/* ---- power on ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-sign:not(.is-lit) .sign-bulbs {
+    opacity: 0.25;
+  }
+
+  .marquee-sign:not(.is-lit) .sign-bulbs::after {
+    opacity: 0;
+  }
+
+  .marquee-sign:not(.is-lit) .sign-board {
+    filter: brightness(0.45);
+  }
+
+  .marquee-sign:not(.is-lit) .sign-letter {
+    opacity: 0;
+  }
+
+  .marquee-sign.is-lit .sign-bulbs::after {
+    animation: sign-chase 1.2s steps(3) infinite;
+  }
+
+  .marquee-sign.is-lit .sign-board {
+    animation: sign-board-on 600ms 450ms ease-out both;
+  }
+
+  .marquee-sign.is-lit .sign-letter {
+    animation: sign-letter-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(950ms + var(--i) * 22ms);
+  }
+
+  /*
+   * The bulbs flicker on when the sign lights up, and again whenever the lamp switches the
+   * theme: changing the animation's name restarts it, so each theme has its own (identical) one.
+   */
+  [data-theme='light'] .marquee-sign.is-lit .sign-bulbs {
+    animation: sign-flicker-light 700ms steps(1, end) both;
+  }
+
+  [data-theme='dark'] .marquee-sign.is-lit .sign-bulbs {
+    animation: sign-flicker-dark 700ms steps(1, end) both;
+  }
+}
+
+@keyframes sign-chase {
+  to {
+    background-position-x: calc(var(--bulb-gap) * 3);
+  }
+}
+
+@keyframes sign-board-on {
+  from {
+    filter: brightness(0.45);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+
+@keyframes sign-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35em) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sign-flicker-light {
+  0% {
+    opacity: 0.2;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  45% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 1;
+  }
+}
+
+@keyframes sign-flicker-dark {
+  0% {
+    opacity: 0.2;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  45% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 1;
+  }
+}

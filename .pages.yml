@@ -32,8 +32,11 @@ components:
               collapsible:
                 collapsed: true
                 summary: "{label.en}"
-          - name: ticker
-            label: Scrolling words (home page)
+          - name: signTitle
+            label: "Cinema sign: title (home page)"
+            component: line
+          - name: signItems
+            label: "Cinema sign: services (home page)"
             component: line
             list: true
           - name: variant
