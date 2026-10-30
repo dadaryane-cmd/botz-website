@@ -1,42 +1,46 @@
-/* Design tokens: colours (light and dark), fonts, radii, spacing. */
+/*
+ * Design tokens: colours (light and dark), fonts, radii, spacing.
+ * "Night Pop": cool grey and plum-black with hot magenta; orange is kept for the fire and the logo.
+ */
 
 :root {
-  --bg: #fdf6ec;
-  --surface: #f4eadb;
-  --card: #fffaf3;
-  --text: #141414;
-  --muted: #5c5650;
-  --border: #e0d3c0;
-  --accent: #ff4f0f;
-  --accent-text: #b83300;
-  --on-accent: #141414;
-  --inverse-bg: #0e0e0f;
-  --inverse-text: #fdf6ec;
+  --bg: #f2f2f4;
+  --surface: #e7e5ec;
+  --card: #fbfbfd;
+  --text: #140f1f;
+  --muted: #5e5869;
+  --border: #d9d6e0;
+  --accent: #ff2e88;
+  --accent-text: #c8146a;
+  --on-accent: #140f1f;
+  --inverse-bg: #140f1f;
+  --inverse-text: #f4f1f8;
   --ok: #1e7a3c;
   --error: #b42318;
 
-  --font-display: 'Unbounded', 'Noto Sans Armenian', system-ui, sans-serif;
-  --font-body: 'Manrope', 'Noto Sans Armenian', system-ui, sans-serif;
+  /* Dela Gothic One has Latin and Cyrillic in one weight; Armenian falls back to Noto. */
+  --font-display: 'Dela Gothic One', 'Noto Sans Armenian', system-ui, sans-serif;
+  --font-body: 'Golos Text', 'Noto Sans Armenian', system-ui, sans-serif;
   --radius: 28px;
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  --shadow: 0 1px 2px rgb(20 15 31 / 0.05), 0 8px 24px rgb(20 15 31 / 0.08);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0e0e0f;
-    --surface: #1a1a1c;
-    --card: #161618;
-    --text: #f7f2ea;
-    --muted: #aba49b;
-    --border: #2e2d2f;
-    --accent: #ff5a1f;
-    --accent-text: #ff7a45;
-    --on-accent: #0e0e0f;
-    --inverse-bg: #fdf6ec;
-    --inverse-text: #141414;
+    --bg: #140f1f;
+    --surface: #1d1730;
+    --card: #19132a;
+    --text: #f4f1f8;
+    --muted: #ada5ba;
+    --border: #2f2742;
+    --accent: #ff3d93;
+    --accent-text: #ff6fae;
+    --on-accent: #140f1f;
+    --inverse-bg: #f2f2f4;
+    --inverse-text: #140f1f;
     --ok: #5bd18b;
     --error: #ff8a80;
     --shadow: none;
@@ -45,17 +49,17 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0e0e0f;
-  --surface: #1a1a1c;
-  --card: #161618;
-  --text: #f7f2ea;
-  --muted: #aba49b;
-  --border: #2e2d2f;
-  --accent: #ff5a1f;
-  --accent-text: #ff7a45;
-  --on-accent: #0e0e0f;
-  --inverse-bg: #fdf6ec;
-  --inverse-text: #141414;
+  --bg: #140f1f;
+  --surface: #1d1730;
+  --card: #19132a;
+  --text: #f4f1f8;
+  --muted: #ada5ba;
+  --border: #2f2742;
+  --accent: #ff3d93;
+  --accent-text: #ff6fae;
+  --on-accent: #140f1f;
+  --inverse-bg: #f2f2f4;
+  --inverse-text: #140f1f;
   --ok: #5bd18b;
   --error: #ff8a80;
   --shadow: none;

@@ -7,6 +7,8 @@
 }
 
 html {
+  /* The display font has a single weight: never fake a bold or italic version of it. */
+  font-synthesis: none;
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
   -webkit-text-size-adjust: 100%;
