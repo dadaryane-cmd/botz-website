@@ -12,6 +12,7 @@ import {
   INQUIRY_SERVICES,
   PACKAGE_CATEGORIES,
   PAGES,
+  SOCIAL_NETWORKS,
 } from '../public/js/config.js'
 
 const CONTENT = 'site/public/content'
@@ -355,6 +356,15 @@ const siteEntry = {
     string('formEmail', 'Inquiry form sends to', {
       description: 'Changing this needs a new FormSubmit activation (see site/README.md).',
     }),
+    text('location', 'City'),
+    text('hours', 'Working hours'),
+    list(
+      object('social', 'Social media', [
+        select('network', 'Network', SOCIAL_NETWORKS),
+        string('url', 'Page link', { description: 'Leave empty until the page is open.' }),
+      ]),
+      '{network}',
+    ),
   ],
 }
 

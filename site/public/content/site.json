@@ -18,5 +18,29 @@
   "phoneE164": "+37491003099",
   "whatsapp": "37491003099",
   "email": "botz.marketingagency@gmail.com",
-  "formEmail": "dadaryane@gmail.com"
+  "formEmail": "dadaryane@gmail.com",
+  "location": {
+    "hy": "Երևան",
+    "en": "Yerevan",
+    "ru": "Ереван"
+  },
+  "hours": {
+    "hy": "Երկուշաբթի–ուրբաթ, 10:00–19:00",
+    "en": "Mon–Fri, 10:00–19:00",
+    "ru": "Пн–Пт, 10:00–19:00"
+  },
+  "social": [
+    {
+      "network": "instagram",
+      "url": ""
+    },
+    {
+      "network": "facebook",
+      "url": ""
+    },
+    {
+      "network": "tiktok",
+      "url": ""
+    }
+  ]
 }

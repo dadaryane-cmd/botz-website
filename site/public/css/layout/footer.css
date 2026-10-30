@@ -1,14 +1,43 @@
-/* Site footer. */
+/*
+ * Site footer (js/components/layout/footer.js). Always dark: navy on the light theme, and a
+ * shade darker than the page on the dark theme, so the page ends calmly instead of with a flash.
+ */
 
 .site-footer {
-  padding: clamp(56px, 8vw, 96px) 0 96px;
-  background: var(--inverse-bg);
-  color: var(--inverse-text);
-  --muted: color-mix(in srgb, var(--inverse-text) 70%, var(--inverse-bg));
+  --footer-bg: var(--inverse-bg);
+  --footer-text: var(--inverse-text);
+  --muted: color-mix(in srgb, var(--footer-text) 70%, var(--footer-bg));
+  --border: color-mix(in srgb, var(--footer-text) 18%, var(--footer-bg));
+  padding: clamp(56px, 8vw, 96px) 0 32px;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+[data-theme='dark'] .site-footer {
+  --footer-bg: #1b1930;
+  --footer-text: var(--text);
+}
+
+/* ---- logo, statement and call to action ---- */
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px 40px;
+  margin-bottom: 48px;
+}
+
+.footer-logo img {
+  display: block;
+  width: 112px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .footer-statement {
-  margin-bottom: 48px;
+  margin: 0;
   font: 800 clamp(2rem, 6vw, 4.5rem) / 1.05 var(--font-display);
 }
 
@@ -16,6 +45,8 @@
   font-style: normal;
   color: var(--accent);
 }
+
+/* ---- link columns ---- */
 
 .footer-columns {
   display: grid;
@@ -48,4 +79,90 @@
 
 .footer-columns a:hover {
   text-decoration: underline;
+}
+
+.footer-place {
+  margin: 16px 0 0;
+  color: var(--muted);
+}
+
+/* Phones: the two link columns side by side, contact underneath across the full width. */
+@media (max-width: 600px) {
+  .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
+
+  .footer-columns > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---- social media icons ---- */
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: inherit;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+a.social-link:hover,
+a.social-link:focus-visible {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* No page yet: dimmed, not clickable. */
+.social-link.is-soon {
+  opacity: 0.45;
+}
+
+/* ---- bottom row: legal notes and back to top ---- */
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-top-link {
+  color: var(--footer-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-top-link:hover {
+  text-decoration: underline;
+}
+
+/* Room for the call / WhatsApp bar pinned to the bottom of small screens. */
+@media (max-width: 760px) {
+  .site-footer {
+    padding-bottom: 104px;
+  }
 }

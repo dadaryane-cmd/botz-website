@@ -1,27 +1,20 @@
+/**
+ * Site footer: logo, closing statement and a call to action; link columns with the contact
+ * details, location, hours and social pages; and a bottom row with the legal notes.
+ */
 import { navigation, site } from '../../content/index.js'
 import { h, richText } from '../../lib/dom.js'
-import { t, ui } from '../../lib/i18n.js'
-import { reveal } from '../../lib/reveal.js'
+import { hasText, t, ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { reveal } from '../../lib/reveal.js'
+import { renderSocialLinks } from './social-links.js'
 
 export function renderFooter(footer) {
-  const column = (title, items) =>
-    h(
-      'div',
-      null,
-      h('h2', null, title),
-      h(
-        'ul',
-        null,
-        items.map((item) => h('li', null, item)),
-      ),
-    )
-
   footer.replaceChildren(
     h(
       'div',
       { class: 'container container-wide' },
-      h('p', { class: 'footer-statement', ...reveal() }, richText(navigation.footerStatement)),
+      footerTop(),
       h(
         'div',
         { class: 'footer-columns' },
@@ -31,18 +24,74 @@ export function renderFooter(footer) {
             group.links.map((link) => h('a', { href: link.href }, t(link.label))),
           ),
         ),
-        column(ui('footer', 'contactTitle'), [
-          h('a', { href: phoneHref }, site.phoneDisplay),
-          h('a', { href: whatsappHref(), ...external }, 'WhatsApp'),
-          h('a', { href: emailHref }, site.email),
-        ]),
+        contactColumn(),
       ),
-      h('p', { class: 'muted small' }, t(navigation.footerNote)),
-      h(
-        'p',
-        { class: 'muted small' },
-        `© ${new Date().getFullYear()} ${t(site.name)}. ${ui('footer', 'rights')}`,
-      ),
+      footerBottom(),
     ),
+  )
+}
+
+/** The footer is always dark, so it always shows the light-on-dark logo. */
+function footerTop() {
+  return h(
+    'div',
+    { class: 'footer-top' },
+    h(
+      'div',
+      null,
+      h(
+        'a',
+        { class: 'footer-logo', href: 'index.html' },
+        h('img', {
+          src: 'images/botz-logo-dark.webp',
+          alt: t(site.name),
+          width: 112,
+          height: 44,
+        }),
+      ),
+      h('p', { class: 'footer-statement', ...reveal() }, richText(navigation.footerStatement)),
+    ),
+    h('a', { class: 'btn btn-primary', href: navigation.cta.href }, t(navigation.cta.label)),
+  )
+}
+
+function column(title, items, extra) {
+  return h(
+    'div',
+    null,
+    h('h2', null, title),
+    h(
+      'ul',
+      null,
+      items.map((item) => h('li', null, item)),
+    ),
+    extra,
+  )
+}
+
+function contactColumn() {
+  const place = [site.location, site.hours].filter(hasText).map((value) => t(value))
+  return column(
+    ui('footer', 'contactTitle'),
+    [
+      h('a', { href: phoneHref }, site.phoneDisplay),
+      h('a', { href: whatsappHref(), ...external }, 'WhatsApp'),
+      h('a', { href: emailHref }, site.email),
+    ],
+    [
+      place.length > 0 && h('p', { class: 'footer-place' }, place.join(' · ')),
+      renderSocialLinks(site.social),
+    ],
+  )
+}
+
+function footerBottom() {
+  return h(
+    'div',
+    { class: 'footer-bottom' },
+    h('p', null, `© ${new Date().getFullYear()} ${t(site.name)}. ${ui('footer', 'rights')}`),
+    h('p', null, t(navigation.footerNote)),
+    // "#top" with no such id is the top of the page, by the HTML standard.
+    h('a', { class: 'footer-top-link', href: '#top' }, `${ui('footer', 'backToTop')} ↑`),
   )
 }

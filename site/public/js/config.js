@@ -24,5 +24,8 @@ export const MAX_ADDON_QUANTITY = 20
 export const PACKAGE_CATEGORIES = ['smm', 'seo', 'bundle', 'website']
 export const INQUIRY_SERVICES = ['smm', 'seo', 'bundle', 'website', 'addon', 'other']
 
+/** Social networks the footer has icons for (content/site.json → social). */
+export const SOCIAL_NETWORKS = ['instagram', 'facebook', 'tiktok']
+
 export const STORAGE_PREFIX = 'botz.'
 export const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/'

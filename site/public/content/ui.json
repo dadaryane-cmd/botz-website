@@ -526,6 +526,16 @@
       "hy": "Կապ",
       "en": "Contact",
       "ru": "Контакты"
+    },
+    "comingSoon": {
+      "hy": "շուտով",
+      "en": "coming soon",
+      "ru": "скоро"
+    },
+    "backToTop": {
+      "hy": "Վերև",
+      "en": "Back to top",
+      "ru": "Наверх"
     }
   },
   "errors": {

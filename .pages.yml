@@ -850,6 +850,29 @@ content:
         label: Inquiry form sends to
         type: string
         description: Changing this needs a new FormSubmit activation (see site/README.md).
+      - name: location
+        label: City
+        component: line
+      - name: hours
+        label: Working hours
+        component: line
+      - name: social
+        label: Social media
+        type: object
+        fields:
+          - name: network
+            label: Network
+            type: select
+            options:
+              values: [instagram, facebook, tiktok]
+          - name: url
+            label: Page link
+            type: string
+            description: Leave empty until the page is open.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{network}"
   - name: people
     label: Founders
     type: file
@@ -1264,6 +1287,12 @@ content:
             component: line
           - name: contactTitle
             label: Contact title
+            component: line
+          - name: comingSoon
+            label: Coming soon
+            component: line
+          - name: backToTop
+            label: Back to top
             component: line
       - name: errors
         label: Errors
