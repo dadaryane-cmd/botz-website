@@ -26,9 +26,9 @@
   box-shadow: 0 0 60px var(--sign-glow);
 }
 
-/* By day: a crimson casing with its bulbs switched off (no glow, no chase), like a cinema at noon. */
+/* By day: the navy casing with its bulbs switched off (no glow, no chase), like a cinema at noon. */
 [data-theme='light'] .marquee-sign {
-  --sign-casing: #9d282b;
+  --sign-casing: #24213b;
   --sign-glow: transparent;
 }
 
