@@ -78,7 +78,10 @@ const sectionBlocks = [
   {
     name: 'sign',
     label: 'Cinema banner',
-    fields: [text('title', 'Headline'), text('tagline', 'Tagline')],
+    fields: [
+      text('title', 'Headline', { long: true, description: 'Each line is one row of the board.' }),
+      text('tagline', 'Tagline', { long: true, description: 'Each line is one row of the board.' }),
+    ],
   },
   {
     name: 'split',

@@ -12,5 +12,12 @@ export function splitLetters(word) {
   return Array.from(graphemes.segment(word), (part) => part.segment)
 }
 
+/** The non-empty lines of a text, trimmed (a letter board shows one per row). */
+export const boardLines = (text = '') =>
+  text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+
 /** Words (separated by any whitespace), each as a list of letters. */
 export const splitWords = (text) => text.split(/\s+/).filter(Boolean).map(splitLetters)

@@ -53,10 +53,12 @@ components:
         fields:
           - name: title
             label: Headline
-            component: line
+            component: paragraph
+            description: Each line is one row of the board.
           - name: tagline
             label: Tagline
-            component: line
+            component: paragraph
+            description: Each line is one row of the board.
       - name: split
         label: Statement with key points
         fields:

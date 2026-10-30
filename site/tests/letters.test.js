@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { splitLetters, splitWords } from '../public/js/lib/letters.js'
+import { boardLines, splitLetters, splitWords } from '../public/js/lib/letters.js'
 
 describe('letters', () => {
   it('splits a word into letters', () => {
@@ -14,6 +14,15 @@ describe('letters', () => {
 
   it('keeps a letter with a combining accent as one letter', () => {
     assert.deepEqual(splitLetters('É'), ['É'])
+  })
+
+  it('splits text into board rows at line breaks, skipping empty lines', () => {
+    assert.deepEqual(boardLines('STRATEGY MEETS\n\n  CREATIVITY. '), [
+      'STRATEGY MEETS',
+      'CREATIVITY.',
+    ])
+    assert.deepEqual(boardLines('ONE ROW'), ['ONE ROW'])
+    assert.deepEqual(boardLines(''), [])
   })
 
   it('splits text into words of letters, ignoring extra spaces', () => {

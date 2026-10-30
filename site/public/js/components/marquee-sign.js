@@ -6,7 +6,7 @@
 import { prefersReducedMotion } from '../lib/animation.js'
 import { h } from '../lib/dom.js'
 import { hasText, t } from '../lib/i18n.js'
-import { splitWords } from '../lib/letters.js'
+import { boardLines, splitWords } from '../lib/letters.js'
 
 /** Shared, so a re-render (e.g. language change) replaces the previous sign's observer. */
 let observer = null
@@ -22,20 +22,23 @@ export function renderMarqueeSign({ title, tagline }) {
     h('span', { class: 'sign-letter', style: `--i: ${index++}` }, letter)
   const wordSpan = (letters) => h('span', { class: 'sign-word' }, letters.map(letterSpan))
   /** Words with plain spaces between them, so lines only break between words. */
-  const boardText = (text) =>
-    splitWords(text).map((letters, position) => [position > 0 && ' ', wordSpan(letters)])
+  const lineText = (line) =>
+    splitWords(line).map((letters, position) => [position > 0 && ' ', wordSpan(letters)])
+  /** Each line of the text (a line break in the editor) is its own row of the board. */
+  const boardRows = (text, className) =>
+    boardLines(text).map((line) => h('p', { class: className }, lineText(line)))
 
   const board = h(
     'div',
     { class: 'sign-board', 'aria-hidden': 'true' },
-    h('p', { class: 'sign-title' }, boardText(titleText)),
-    taglineText && h('p', { class: 'sign-tagline' }, boardText(taglineText)),
+    boardRows(titleText, 'sign-title'),
+    boardRows(taglineText, 'sign-tagline'),
   )
   const sign = h(
     'div',
     { class: 'marquee-sign' },
     // Screen readers get the words, not single letters.
-    h('p', { class: 'sr-only' }, [titleText, taglineText].filter(Boolean).join(' ')),
+    h('p', { class: 'sr-only' }, [...boardLines(titleText), ...boardLines(taglineText)].join(' ')),
     h(
       'div',
       { class: 'sign-frame' },
