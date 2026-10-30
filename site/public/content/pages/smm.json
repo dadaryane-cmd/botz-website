@@ -94,18 +94,29 @@
         },
         {
           "question": {
-            "hy": "Կարո՞ղ եմ ավելացնել լրացուցիչ տեսանյութեր",
-            "en": "Can I add extra videos?",
-            "ru": "Можно добавить видео?"
+            "hy": "Ո՞վ է նկարում լուսանկարներն ու տեսանյութերը",
+            "en": "Who makes the photos and videos?",
+            "ru": "Кто делает фото и видео?"
           },
           "answer": {
-            "hy": "Այո, ամբողջական սարքավորումով Reels-ը հասանելի է որպես լրացուցիչ ծառայություն՝ առանձին կամ չորսի փաթեթով։",
-            "en": "Yes. Reels shot with full equipment are available as extras, one at a time or as a set of four.",
-            "ru": "Да. Reels с полным оборудованием можно добавить по одному или набором из четырёх."
+            "hy": "Մենք։ Յուրաքանչյուր SMM փաթեթում նշված է, թե որ նկարահանումներն են ներառված, իսկ ամբողջական սարքավորումով լրացուցիչ Reels կարող եք ավելացնել։ Եթե արդեն ունեք լավ լուսանկարներ, դրանք էլ կօգտագործենք։",
+            "en": "We do. Each SMM package lists the shoots it includes, and you can add extra Reels shot with full equipment. If you already have good photos, we use them too.",
+            "ru": "Мы. В каждом SMM-пакете указано, какие съёмки входят, а дополнительные Reels с полным оборудованием можно добавить. Если у вас уже есть хорошие фотографии, используем и их."
+          }
+        },
+        {
+          "question": {
+            "hy": "Հրապարակումները նախապես ես եմ հաստատո՞ւմ",
+            "en": "Do I approve posts before they go out?",
+            "ru": "Я утверждаю публикации заранее?"
+          },
+          "answer": {
+            "hy": "Այո։ Ամսվա բովանդակային պլանը տեսնում եք նախապես և հաստատում եք, մինչև որևէ բան կհրապարակվի։",
+            "en": "Yes. You see the month's content plan in advance and approve it before anything is published.",
+            "ru": "Да. Вы заранее видите контент-план на месяц и утверждаете его до публикации."
           }
         }
-      ],
-      "width": "narrow"
+      ]
     },
     {
       "type": "contact",

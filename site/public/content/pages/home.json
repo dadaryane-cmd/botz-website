@@ -378,26 +378,38 @@
       "items": [
         {
           "question": {
-            "hy": "Կարո՞ղ եմ համատեղել սոցցանցերը և SEO-ն",
-            "en": "Can I combine social media and SEO?",
-            "ru": "Можно ли совместить SMM и SEO?"
+            "hy": "Ո՞ւմ հետ եմ շփվելու",
+            "en": "Who will I be talking to?",
+            "ru": "С кем я буду общаться?"
           },
           "answer": {
-            "hy": "Այո։ Business Boost-ը և Ultra-ն միավորում են երկուսը մեկ փաթեթում՝ իրենց առանձին գնով, ոչ թե առանձին փաթեթների գումարով։",
-            "en": "Yes. Business Boost and Ultra combine both in one plan with their own price, not the sum of the two separate packages.",
-            "ru": "Да. Business Boost и Ultra объединяют оба направления в одном плане по собственной цене, а не как сумма отдельных пакетов."
+            "hy": "Այն մարդու, ով կատարում է աշխատանքը՝ Մարիամի՝ սոցցանցերի հարցերով, Էդգարի՝ SEO-ի և կայքերի հարցերով։ Միջնորդ մենեջեր չկա։",
+            "en": "With the person doing the work: Mariam for social media, Edgar for SEO and websites. There is no account manager in between.",
+            "ru": "С тем, кто делает работу: с Мариам по соцсетям, с Эдгаром по SEO и сайтам. Менеджеров-посредников нет."
           }
         },
         {
           "question": {
-            "hy": "Առցանց նախահաշիվը պայմանագի՞ր է",
-            "en": "Is the online estimate a contract?",
-            "ru": "Онлайн-расчёт является договором?"
+            "hy": "Ի՞նչ է պետք ինձանից սկսելու համար",
+            "en": "What do you need from me to start?",
+            "ru": "Что от меня нужно, чтобы начать?"
           },
           "answer": {
-            "hy": "Ոչ։ Այն օգնում է ստանալ առաջարկ։ Նախ ծավալը համաձայնեցնում ենք ձեզ հետ, և կայքի միջոցով ոչինչ չի գանձվում։",
-            "en": "No. It helps you ask for a proposal. We agree the scope with you first, and nothing is charged through the website.",
-            "ru": "Нет. Он помогает запросить предложение. Сначала мы согласуем с вами объём, а через сайт ничего не оплачивается."
+            "hy": "Զրույց ձեր բիզնեսի և հաճախորդների մասին և մուտք այն էջերին կամ կայքին, որոնց վրա աշխատելու ենք։ Ձեր լոգոն և լուսանկարները նույնպես կօգնեն։ Բրիֆի ժամանակ կասենք, եթե այլ բան էլ է պետք։",
+            "en": "A conversation about your business and your customers, and access to the accounts or website we will work on. Your logo and photos help too. During the brief we tell you if anything else is missing.",
+            "ru": "Разговор о вашем бизнесе и клиентах и доступ к страницам или сайту, с которыми мы будем работать. Логотип и фотографии тоже пригодятся. На брифе мы скажем, если нужно что-то ещё."
+          }
+        },
+        {
+          "question": {
+            "hy": "Ե՞րբ կտեսնեմ արդյունքները",
+            "en": "When will I see results?",
+            "ru": "Когда я увижу результат?"
+          },
+          "answer": {
+            "hy": "Սոցցանցերում փոփոխությունը երևում է առաջին ամսում, երբ սկսում են հրապարակվել պլանավորված գրառումները, իսկ կայուն աճը պահանջում է մի քանի ամիս։ SEO-ն ավելի դանդաղ է․ առաջին ամիսները գնում են կայքը շտկելուն, իսկ այցելությունները սովորաբար աճում են դրանից հետո։ Ամեն ամսվա հաշվետվությունը ցույց է տալիս, թե որտեղ ենք։",
+            "en": "On social media you see the change in the first month, as the planned posts start going out; steady growth takes a few months. SEO is slower: the first months go into fixing the site, and visits usually grow after that. Each monthly report shows where things stand.",
+            "ru": "В соцсетях изменения видны уже в первый месяц, когда начинают выходить запланированные публикации, а стабильный рост занимает несколько месяцев. SEO медленнее: первые месяцы уходят на исправление сайта, а посещаемость обычно растёт после этого. Ежемесячный отчёт показывает, где мы находимся."
           }
         },
         {
@@ -412,8 +424,7 @@
             "ru": "Мы отвечаем за работу, её качество и честные отчёты. Результат зависит ещё и от рынка, конкурентов и бюджета, поэтому мы не обещаем позиции, продажи или число подписчиков."
           }
         }
-      ],
-      "width": "narrow"
+      ]
     },
     {
       "type": "contact",

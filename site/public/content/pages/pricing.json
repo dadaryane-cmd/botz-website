@@ -101,8 +101,7 @@
             "hy": "Ոչ։ Այն օգնում է ստանալ առաջարկ։ Նախ ծավալը համաձայնեցնում ենք ձեզ հետ, և կայքի միջոցով ոչինչ չի գանձվում։",
             "en": "No. It helps you ask for a proposal. We agree the scope with you first, and nothing is charged through the website.",
             "ru": "Нет. Он помогает запросить предложение. Сначала мы согласуем с вами объём, а через сайт ничего не оплачивается."
-          },
-          "openByDefault": true
+          }
         },
         {
           "question": {
@@ -114,11 +113,9 @@
             "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
             "en": "We are responsible for the work, its quality and honest reports. Results also depend on your market, your competitors and your budget, so we never promise rankings, sales or follower numbers.",
             "ru": "Мы отвечаем за работу, её качество и честные отчёты. Результат зависит ещё и от рынка, конкурентов и бюджета, поэтому мы не обещаем позиции, продажи или число подписчиков."
-          },
-          "openByDefault": true
+          }
         }
-      ],
-      "width": "narrow"
+      ]
     },
     {
       "type": "contact",

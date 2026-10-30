@@ -1332,3 +1332,13 @@ content:
           - name: message
             label: Message
             component: line
+      - name: faq
+        label: Faq
+        type: object
+        fields:
+          - name: notFound
+            label: Not found
+            component: line
+          - name: writeUs
+            label: Write us
+            component: line

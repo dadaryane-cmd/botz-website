@@ -620,5 +620,17 @@
       "en": "I found the lamp surprise on your website. I’d like a free audit.",
       "ru": "Нашёл(ла) сюрприз с лампой на вашем сайте. Хочу бесплатный аудит."
     }
+  },
+  "faq": {
+    "notFound": {
+      "hy": "Ձեր հարցը չգտա՞ք։",
+      "en": "Didn't find your question?",
+      "ru": "Не нашли свой вопрос?"
+    },
+    "writeUs": {
+      "hy": "Գրեք Մարիամին կամ Էդգարին",
+      "en": "Write to Mariam or Edgar",
+      "ru": "Напишите Мариам или Эдгару"
+    }
   }
 }

@@ -1,20 +1,43 @@
 import { h } from '../../lib/dom.js'
-import { t } from '../../lib/i18n.js'
+import { t, ui } from '../../lib/i18n.js'
+import { sectionHref } from '../../lib/page.js'
 import { heading, section } from './section.js'
 
+/**
+ * Questions and answers (native <details>, so they work without JavaScript). On wide screens the
+ * heading and a "write to us" link sit on the left, the questions on the right.
+ */
 export const renderFaq = (config) =>
   section(
     config,
-    heading(config.heading),
     h(
       'div',
-      { class: 'faq' },
-      config.items.map((item) =>
+      { class: 'faq-layout' },
+      h(
+        'div',
+        { class: 'faq-intro' },
+        heading(config.heading),
         h(
-          'details',
-          { open: Boolean(item.openByDefault) },
-          h('summary', null, t(item.question)),
-          h('p', null, t(item.answer)),
+          'p',
+          { class: 'faq-help' },
+          `${ui('faq', 'notFound')} `,
+          h(
+            'a',
+            { class: 'link-arrow', href: sectionHref('contact', 'contact.html') },
+            ui('faq', 'writeUs'),
+          ),
+        ),
+      ),
+      h(
+        'div',
+        { class: 'faq' },
+        config.items.map((item) =>
+          h(
+            'details',
+            { open: Boolean(item.openByDefault) },
+            h('summary', null, t(item.question)),
+            h('p', null, t(item.answer)),
+          ),
         ),
       ),
     ),
