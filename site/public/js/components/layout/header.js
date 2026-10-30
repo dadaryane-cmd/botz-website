@@ -5,6 +5,9 @@ import { getLanguage, setLanguage, t, ui } from '../../lib/i18n.js'
 import { currentFile } from '../../lib/page.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 
+/** From this width the full navigation shows and the phone menu is not used (header.css). */
+const WIDE_NAV_MIN_PX = 1081
+
 /** Logo, navigation, language switch, the bulb theme toggle and the mobile menu button. */
 export function renderHeader(header) {
   const nav = h(
@@ -57,15 +60,12 @@ export function renderHeader(header) {
       'aria-controls': 'site-nav',
       'aria-expanded': 'false',
       'aria-label': ui('common', 'menu'),
-      onclick: (event) => {
-        const open = header.classList.toggle('is-open')
-        event.currentTarget.setAttribute('aria-expanded', String(open))
-      },
+      onclick: () => setMenuOpen(header, !header.classList.contains('is-open')),
     },
     h('span', { class: 'burger', 'aria-hidden': 'true' }),
   )
 
-  header.classList.remove('is-open')
+  setMenuOpen(header, false)
   header.replaceChildren(
     h(
       'div',
@@ -88,9 +88,26 @@ const logoImage = (theme) =>
     height: 44,
   })
 
-/** Close the mobile menu once a link is chosen. Attached once, survives re-renders. */
-export function closeMenuOnNavigate(header) {
+/** Open or close the phone menu; while it is open the page behind it does not scroll. */
+function setMenuOpen(header, open) {
+  header.classList.toggle('is-open', open)
+  document.documentElement.classList.toggle('menu-open', open)
+  header.querySelector('.menu-toggle')?.setAttribute('aria-expanded', String(open))
+}
+
+/**
+ * Close the phone menu when a link is chosen, on Escape, and when the screen becomes wide
+ * enough for the full navigation. Attached once; survives re-renders of the header.
+ */
+export function setUpMobileMenu(header) {
+  const close = () => setMenuOpen(header, false)
   header.addEventListener('click', (event) => {
-    if (event.target.closest('#site-nav a')) header.classList.remove('is-open')
+    if (event.target.closest('#site-nav a')) close()
+  })
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && header.classList.contains('is-open')) close()
+  })
+  window.matchMedia(`(min-width: ${WIDE_NAV_MIN_PX}px)`).addEventListener('change', (event) => {
+    if (event.matches) close()
   })
 }

@@ -4,7 +4,7 @@
  * and re-renders when the language changes. The theme is pure CSS (<html data-theme>).
  */
 import { renderFooter } from './components/layout/footer.js'
-import { closeMenuOnNavigate, renderHeader } from './components/layout/header.js'
+import { renderHeader, setUpMobileMenu } from './components/layout/header.js'
 import { renderMobileBar } from './components/layout/mobile-bar.js'
 import { renderNotFound } from './components/not-found.js'
 import { renderSection } from './components/sections/index.js'
@@ -49,7 +49,7 @@ function renderAll() {
 initLanguage(location.search)
 initSelection(location.search)
 renderAll()
-closeMenuOnNavigate(elements.header)
+setUpMobileMenu(elements.header)
 // Sections are created by script, so the browser could not jump to #anchors on load.
 if (location.hash) {
   document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' })
