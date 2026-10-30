@@ -22,6 +22,11 @@
   /* Dela Gothic One has Latin and Cyrillic in one weight; Armenian falls back to Noto. */
   --font-display: 'Dela Gothic One', 'Noto Sans Armenian', system-ui, sans-serif;
   --font-body: 'Golos Text', 'Noto Sans Armenian', system-ui, sans-serif;
+  /*
+   * Page titles: ultra-condensed and heavy. Anton has no Cyrillic, so Russian falls back to
+   * Oswald letter by letter; Armenian uses Noto's extra-condensed width.
+   */
+  --font-hero: 'Anton', 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
   /* Tall, narrow capitals of the cinema sign; Armenian uses Noto's condensed width. */
   --font-sign: 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
   --radius: 28px;

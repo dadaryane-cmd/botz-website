@@ -5,6 +5,16 @@
   padding: clamp(56px, 10vw, 128px) 0 clamp(40px, 6vw, 72px);
 }
 
+/* Page titles in the tall, condensed hero font, set larger and tighter than other headings. */
+.hero h1.heading {
+  max-width: 22ch;
+  font-family: var(--font-hero);
+  font-size: clamp(2.9rem, 8vw, 6.5rem);
+  font-weight: 800;
+  font-stretch: extra-condensed;
+  line-height: 0.95;
+}
+
 /* A page title is followed directly by its content. */
 .hero:not(.hero-home) + .section {
   padding-top: clamp(16px, 3vw, 40px);
