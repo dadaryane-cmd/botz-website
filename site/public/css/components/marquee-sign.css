@@ -37,6 +37,11 @@
   display: none;
 }
 
+/* The sign is the title of the section after it, so that section starts close below. */
+.marquee-sign + .section {
+  padding-top: clamp(24px, 4vw, 48px);
+}
+
 /* ---- bulbs: every third one burns brighter, and the bright ones run along ---- */
 
 .sign-bulbs {
