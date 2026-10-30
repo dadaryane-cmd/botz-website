@@ -32,13 +32,6 @@ components:
               collapsible:
                 collapsed: true
                 summary: "{label.en}"
-          - name: signTitle
-            label: "Cinema sign: title (home page)"
-            component: line
-          - name: signItems
-            label: "Cinema sign: services (home page)"
-            component: line
-            list: true
           - name: variant
             label: Variant
             type: string
@@ -55,6 +48,16 @@ components:
             label: Width
             type: string
             hidden: true
+      - name: sign
+        label: Cinema sign
+        fields:
+          - name: title
+            label: Title
+            component: line
+          - name: items
+            label: Services
+            component: line
+            list: true
       - name: split
         label: Statement with key points
         fields:

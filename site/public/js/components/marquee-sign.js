@@ -1,5 +1,5 @@
 /**
- * Cinema marquee sign under the home hero: a lit letter board framed by chasing bulbs
+ * Cinema marquee sign (section type `sign`): a lit letter board framed by chasing bulbs
  * (css/components/marquee-sign.css). When it scrolls into view it powers on: the bulbs flicker,
  * the board lights up and the letters are put up one by one.
  */
@@ -12,6 +12,7 @@ import { splitWords } from '../lib/letters.js'
 let observer = null
 
 export function renderMarqueeSign({ title, items }) {
+  if (!items?.length) return null
   const titleText = t(title)
   const itemTexts = items.map((item) => t(item))
 

@@ -1,5 +1,5 @@
 /*
- * Cinema marquee sign under the home hero (js/components/marquee-sign.js): a lit letter board
+ * Cinema marquee sign section (js/components/marquee-sign.js): a lit letter board
  * between two rows of chasing bulbs. It stays unlit until `.is-lit`; then the bulbs flicker on,
  * the board lights up and the letters are put up one by one.
  */

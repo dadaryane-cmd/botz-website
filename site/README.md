@@ -43,7 +43,7 @@ site/
 │   │       ├── bulb/           hanging light bulb with a pull cord (light / dark switch),
 │   │       │                   the warm light it casts in light mode;
 │   │       │                   3 quick pulls show a hidden free-audit message
-│   │       ├── marquee-sign.js cinema sign under the home hero (chase lights, letter board)
+│   │       ├── marquee-sign.js cinema sign section (chase lights, letter board)
 │   │       └── inquiry-form.js
 │   ├── images/
 │   ├── media/                  fire video (fallback when WebGL is unavailable)

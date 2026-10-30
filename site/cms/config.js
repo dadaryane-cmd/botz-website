@@ -70,11 +70,14 @@ const sectionBlocks = [
       heading(),
       text('subheading', 'Subheading', { long: true }),
       list(button('buttons', 'Buttons'), '{label.en}'),
-      text('signTitle', 'Cinema sign: title (home page)'),
-      list(text('signItems', 'Cinema sign: services (home page)')),
       hidden(string('variant', 'Variant')),
       ...layout,
     ],
+  },
+  {
+    name: 'sign',
+    label: 'Cinema sign',
+    fields: [text('title', 'Title'), list(text('items', 'Services'))],
   },
   {
     name: 'split',

@@ -1,12 +1,11 @@
 import { h, richText } from '../../lib/dom.js'
 import { hasText } from '../../lib/i18n.js'
 import { renderFlameBackground } from '../flame/flame-background.js'
-import { renderMarqueeSign } from '../marquee-sign.js'
 import { buttonRow, lead } from './section.js'
 
 /**
  * Page title: the headline enters word by word. The home variant fills the first screen with the
- * animated fire and adds the cinema sign below it.
+ * animated fire.
  */
 export function renderHero(config) {
   const text = h(
@@ -30,7 +29,5 @@ export function renderHero(config) {
       renderFlameBackground(),
       h('div', { class: 'container container-wide hero-content' }, text),
     ),
-    config.signItems?.length > 0 &&
-      renderMarqueeSign({ title: config.signTitle, items: config.signItems }),
   )
 }

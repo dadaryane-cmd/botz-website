@@ -24,6 +24,7 @@ const SECTION_TYPES = [
   'process',
   'samples',
   'services',
+  'sign',
   'split',
   'team',
 ]

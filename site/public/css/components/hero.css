@@ -20,8 +20,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  /* The first screen minus the header and the top of the cinema sign below. */
-  min-height: clamp(560px, calc(100svh - 72px - 64px), 940px);
+  /* The first screen minus the header. */
+  min-height: clamp(560px, calc(100svh - 72px), 940px);
 }
 
 .hero-content {
