@@ -108,6 +108,11 @@ components:
               - name: title
                 label: Title
                 component: line
+              - name: service
+                label: Service
+                type: select
+                options:
+                  values: [smm, seo, bundle, website]
               - name: highlights
                 label: What it includes
                 component: line

@@ -103,6 +103,8 @@ const sectionBlocks = [
       list(
         object('items', 'Services', [
           text('title', 'Title'),
+          // Shows the founder(s) who handle this service (from Founders).
+          select('service', 'Service', PACKAGE_CATEGORIES),
           list(text('highlights', 'What it includes')),
           link('link', 'Link'),
         ]),

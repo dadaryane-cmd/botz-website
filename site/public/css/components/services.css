@@ -1,24 +1,38 @@
-/* Services section: one row per service, set apart by rules like a printed menu. */
+/*
+ * Services section: one row per service, set apart by rules like a printed menu. The rows share
+ * the list's columns (subgrid), so the middle column lines up however long each row's text is.
+ */
 
 .service-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+  column-gap: 32px;
   margin: 0;
   padding: 0;
   list-style: none;
   border-bottom: 1px solid var(--border);
 }
 
+.service-list > li,
 .service-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 12px 32px;
-  padding: clamp(20px, 3vw, 32px) 0;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+}
+
+.service-row {
+  align-items: center;
+  row-gap: 8px;
+  padding: clamp(20px, 3vw, 28px) 0;
   border-top: 1px solid var(--border);
+  color: inherit;
+  text-decoration: none;
 }
 
 .service-row h3 {
-  margin: 0;
+  margin: 0 0 6px;
   font-size: clamp(1.35rem, 2.6vw, 2rem);
+  transition: color 0.15s ease;
 }
 
 .service-includes {
@@ -26,8 +40,59 @@
   color: var(--muted);
 }
 
+/* Who does it: the founders' initials, in the same rounded squares as their contact cards. */
+.service-team {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.service-initial {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: 700 0.7rem var(--font-display);
+}
+
+.service-team > span:last-child {
+  margin-left: 2px;
+}
+
+.service-arrow {
+  font-size: 1.4rem;
+  color: var(--accent-text);
+  transition: transform 0.2s ease;
+}
+
+.service-row:hover h3,
+.service-row:focus-visible h3 {
+  color: var(--accent-text);
+}
+
+.service-row:hover .service-arrow,
+.service-row:focus-visible .service-arrow {
+  transform: translateX(6px);
+}
+
+/* Phones: name and "includes" stacked, the arrow beside them. */
 @media (max-width: 760px) {
-  .service-row {
-    grid-template-columns: 1fr;
+  .service-list {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .service-includes {
+    grid-column: 1;
+  }
+
+  .service-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 }

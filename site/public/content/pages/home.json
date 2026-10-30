@@ -96,6 +96,7 @@
             "en": "Social media marketing",
             "ru": "Маркетинг в соцсетях"
           },
+          "service": "smm",
           "highlights": [
             {
               "hy": "Հրապարակումներ և սթորիներ",
@@ -124,10 +125,11 @@
         },
         {
           "title": {
-            "hy": "Որոնողական օպտիմալացում",
-            "en": "Search engine optimisation",
-            "ru": "Поисковая оптимизация"
+            "hy": "SEO",
+            "en": "SEO",
+            "ru": "SEO"
           },
+          "service": "seo",
           "highlights": [
             {
               "hy": "Տեխնիկական SEO",
@@ -160,6 +162,7 @@
             "en": "Website creation",
             "ru": "Создание сайтов"
           },
+          "service": "website",
           "highlights": [
             {
               "hy": "Աշխատում է հեռախոսում",
@@ -187,16 +190,12 @@
             "en": "SMM + SEO plans",
             "ru": "Планы SMM + SEO"
           },
+          "service": "bundle",
           "highlights": [
             {
-              "hy": "Business Boost",
-              "en": "Business Boost",
-              "ru": "Business Boost"
-            },
-            {
-              "hy": "Ultra",
-              "en": "Ultra",
-              "ru": "Ultra"
+              "hy": "Սոցցանցեր և SEO մեկ փաթեթում",
+              "en": "Social media and SEO in one plan",
+              "ru": "Соцсети и SEO в одном плане"
             }
           ],
           "link": {

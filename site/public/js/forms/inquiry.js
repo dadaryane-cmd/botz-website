@@ -1,4 +1,5 @@
 /** Inquiry form rules and the email it produces. No DOM access, so it is unit-tested. */
+import { responsibleFor } from '../lib/people.js'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE = /^\+?[0-9 ()-]{6,20}$/
@@ -24,7 +25,7 @@ export function initialService({ packageCategory, hasAddons, pageService }) {
 
 /** The founder who handles `service`, or "either" when nobody or more than one does. */
 export function suggestedContact(people, service) {
-  const responsible = people.filter((person) => person.services.includes(service))
+  const responsible = responsibleFor(people, service)
   return responsible.length === 1 ? responsible[0].key : 'either'
 }
 
