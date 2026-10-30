@@ -6,31 +6,40 @@
         "en": "Services",
         "ru": "Услуги"
       },
-      "href": "services.html"
-    },
-    {
-      "label": {
-        "hy": "SMM",
-        "en": "SMM",
-        "ru": "SMM"
-      },
-      "href": "smm.html"
-    },
-    {
-      "label": {
-        "hy": "SEO",
-        "en": "SEO",
-        "ru": "SEO"
-      },
-      "href": "seo.html"
-    },
-    {
-      "label": {
-        "hy": "Կայքեր",
-        "en": "Websites",
-        "ru": "Сайты"
-      },
-      "href": "website-creation.html"
+      "children": [
+        {
+          "label": {
+            "hy": "SMM",
+            "en": "SMM",
+            "ru": "SMM"
+          },
+          "href": "smm.html"
+        },
+        {
+          "label": {
+            "hy": "SEO",
+            "en": "SEO",
+            "ru": "SEO"
+          },
+          "href": "seo.html"
+        },
+        {
+          "label": {
+            "hy": "Կայքեր",
+            "en": "Websites",
+            "ru": "Сайты"
+          },
+          "href": "website-creation.html"
+        },
+        {
+          "label": {
+            "hy": "Բոլոր ծառայությունները",
+            "en": "All services",
+            "ru": "Все услуги"
+          },
+          "href": "services.html"
+        }
+      ]
     },
     {
       "label": {

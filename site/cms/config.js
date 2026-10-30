@@ -396,7 +396,14 @@ const navigationEntry = {
   path: `${CONTENT}/navigation.json`,
   format: 'json',
   fields: [
-    list(link('header', 'Menu links'), '{label.en}'),
+    list(
+      object('header', 'Menu', [
+        text('label', 'Label'),
+        string('href', 'Link', { description: 'Leave empty for a group with a submenu.' }),
+        list(link('children', 'Submenu links'), '{label.en}'),
+      ]),
+      '{label.en}',
+    ),
     button('cta', 'Menu button'),
     heading('footerStatement', 'Footer statement'),
     list(

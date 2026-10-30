@@ -910,8 +910,23 @@ content:
     format: json
     fields:
       - name: header
-        label: Menu links
-        component: link
+        label: Menu
+        type: object
+        fields:
+          - name: label
+            label: Label
+            component: line
+          - name: href
+            label: Link
+            type: string
+            description: Leave empty for a group with a submenu.
+          - name: children
+            label: Submenu links
+            component: link
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label.en}"
         list:
           collapsible:
             collapsed: true

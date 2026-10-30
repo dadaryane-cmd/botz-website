@@ -62,7 +62,8 @@ describe('content', () => {
 
   it('links only to pages and files that exist', () => {
     const links = [
-      ...navigation.header,
+      // A menu group ("Services") holds its links in `children`.
+      ...navigation.header.flatMap((item) => item.children ?? [item]),
       navigation.cta,
       ...navigation.footerColumns.flatMap((group) => group.links),
     ]

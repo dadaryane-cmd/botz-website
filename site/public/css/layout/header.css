@@ -67,9 +67,102 @@
   text-decoration: none;
 }
 
+/* Menu items and the button stay on one line; the breakpoint below leaves them room. */
+.nav-links > li > a,
+.nav-group-toggle,
+.nav > .btn {
+  white-space: nowrap;
+}
+
 .nav ul a:hover,
 .nav ul a[aria-current='page'] {
   background: var(--surface);
+}
+
+/* ---- a group ("Services"): a small dropdown on wide screens ---- */
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* A small chevron that flips when the menu is open. */
+.nav-group-toggle::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.nav-group.is-open .nav-group-toggle::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.nav-group-toggle:hover,
+.nav-group-toggle.is-current {
+  background: var(--surface);
+}
+
+/* The phone menu shows the group's name as a label instead of a button. */
+.nav-group-label {
+  display: none;
+}
+
+.nav .nav-submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  min-width: 220px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.nav-group.is-open .nav-submenu {
+  display: flex;
+}
+
+/* With a mouse it also opens on hover; the invisible strip bridges the gap to the menu. */
+@media (hover: hover) and (min-width: 960px) {
+  .nav-group::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+
+  /* Escape dismisses it until the pointer leaves (header.js adds .is-dismissed). */
+  .nav-group:not(.is-dismissed):hover .nav-submenu {
+    display: flex;
+  }
+}
+
+/* Languages and call / WhatsApp inside the menu are for phones only. */
+.nav-extras {
+  display: none;
 }
 
 .header-tools {
@@ -148,13 +241,22 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
-@media (max-width: 1080px) {
+/*
+ * Below 960px (header.js WIDE_NAV_MIN_PX) a full-screen menu behind ☰. The full navigation
+ * needs about 945px in the longest language (Armenian) to stay on one line.
+ */
+@media (max-width: 959px) {
   .menu-toggle {
     display: grid;
   }
 
   .header-tools {
     margin-left: auto;
+  }
+
+  /* The header keeps logo, lamp and ☰; the languages move into the menu. */
+  .header-tools > .language-switch {
+    display: none;
   }
 
   /* The open menu fills the screen under the header, fixed to the viewport so nothing clips it. */
@@ -185,6 +287,54 @@
   .nav ul a {
     padding: 12px;
     font-size: 1.1rem;
+  }
+
+  .nav > .btn {
+    margin-top: 16px;
+  }
+
+  /* A group shows its name as a small label with all its links listed under it. */
+  .nav-group-toggle {
+    display: none;
+  }
+
+  .nav-group-label {
+    display: block;
+    padding: 12px 12px 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav .nav-submenu {
+    position: static;
+    display: flex;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Bottom of the menu: languages, then call and WhatsApp side by side. */
+  .nav-extras {
+    display: grid;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-extras .language-switch {
+    justify-self: start;
+  }
+
+  .nav-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 }
 

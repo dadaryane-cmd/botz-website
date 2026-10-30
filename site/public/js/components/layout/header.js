@@ -2,52 +2,42 @@ import { LANGUAGE_LABELS, LANGUAGES } from '../../config.js'
 import { navigation, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { getLanguage, setLanguage, t, ui } from '../../lib/i18n.js'
+import { external, phoneHref, whatsappHref } from '../../lib/links.js'
 import { currentFile } from '../../lib/page.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 
 /** From this width the full navigation shows and the phone menu is not used (header.css). */
-const WIDE_NAV_MIN_PX = 1081
+const WIDE_NAV_MIN_PX = 960
 
-/** Logo, navigation, language switch, the bulb theme toggle and the mobile menu button. */
+/**
+ * Logo, navigation (with a "Services" submenu), language switch, the bulb theme toggle and the
+ * phone menu button. On phones the menu fills the screen and also holds the languages and
+ * call / WhatsApp buttons.
+ */
 export function renderHeader(header) {
   const nav = h(
     'nav',
     { class: 'nav', id: 'site-nav', 'aria-label': ui('common', 'menu') },
-    h(
-      'ul',
-      null,
-      navigation.header.map((link) =>
-        h(
-          'li',
-          null,
-          h(
-            'a',
-            { href: link.href, 'aria-current': link.href === currentFile() ? 'page' : null },
-            t(link.label),
-          ),
-        ),
-      ),
-    ),
+    h('ul', { class: 'nav-links' }, navigation.header.map(navItem)),
     h(
       'a',
       { class: 'btn btn-primary btn-small', href: navigation.cta.href },
       t(navigation.cta.label),
     ),
-  )
-
-  const languageSwitch = h(
-    'div',
-    { class: 'language-switch', role: 'group', 'aria-label': ui('common', 'language') },
-    LANGUAGES.map((language) =>
+    // Phone menu only (header.css): languages and direct contact at the bottom.
+    h(
+      'div',
+      { class: 'nav-extras' },
+      languageSwitch(),
       h(
-        'button',
-        {
-          type: 'button',
-          lang: language,
-          'aria-pressed': String(language === getLanguage()),
-          onclick: () => setLanguage(language),
-        },
-        LANGUAGE_LABELS[language],
+        'div',
+        { class: 'nav-contact' },
+        h('a', { class: 'btn btn-secondary', href: phoneHref }, ui('contact', 'call')),
+        h(
+          'a',
+          { class: 'btn btn-secondary', href: whatsappHref(), ...external },
+          ui('contact', 'whatsapp'),
+        ),
       ),
     ),
   )
@@ -74,7 +64,7 @@ export function renderHeader(header) {
       // never re-renders the header (and never interrupts the bulb's animation).
       h('a', { class: 'logo', href: 'index.html' }, logoImage('light'), logoImage('dark')),
       nav,
-      h('div', { class: 'header-tools' }, languageSwitch, renderBulbToggle(), menuToggle),
+      h('div', { class: 'header-tools' }, languageSwitch(), renderBulbToggle(), menuToggle),
     ),
   )
 }
@@ -88,6 +78,77 @@ const logoImage = (theme) =>
     height: 44,
   })
 
+function languageSwitch() {
+  return h(
+    'div',
+    { class: 'language-switch', role: 'group', 'aria-label': ui('common', 'language') },
+    LANGUAGES.map((language) =>
+      h(
+        'button',
+        {
+          type: 'button',
+          lang: language,
+          'aria-pressed': String(language === getLanguage()),
+          onclick: () => setLanguage(language),
+        },
+        LANGUAGE_LABELS[language],
+      ),
+    ),
+  )
+}
+
+/* ---------- menu items ---------- */
+
+const navLink = (link) =>
+  h(
+    'a',
+    { href: link.href, 'aria-current': link.href === currentFile() ? 'page' : null },
+    t(link.label),
+  )
+
+/** A link, or a group with a submenu when the item has `children`. */
+function navItem(item, index) {
+  if (item.children?.length) return navGroup(item, `nav-group-${index}`)
+  return h('li', null, navLink(item))
+}
+
+/**
+ * Wide screens: a button that opens a small dropdown. Phone menu: the group's name as a label
+ * with its links always listed under it (header.css shows one or the other).
+ */
+function navGroup(item, id) {
+  const isCurrent = item.children.some((child) => child.href === currentFile())
+  const group = h(
+    'li',
+    { class: 'nav-group', onmouseleave: () => group.classList.remove('is-dismissed') },
+    h(
+      'button',
+      {
+        type: 'button',
+        class: isCurrent ? 'nav-group-toggle is-current' : 'nav-group-toggle',
+        'aria-expanded': 'false',
+        'aria-controls': id,
+        onclick: () => setGroupOpen(group, !group.classList.contains('is-open')),
+      },
+      t(item.label),
+    ),
+    h('span', { class: 'nav-group-label' }, t(item.label)),
+    h(
+      'ul',
+      { class: 'nav-submenu', id },
+      item.children.map((child) => h('li', null, navLink(child))),
+    ),
+  )
+  return group
+}
+
+function setGroupOpen(group, open) {
+  group.classList.toggle('is-open', open)
+  group.querySelector('.nav-group-toggle').setAttribute('aria-expanded', String(open))
+}
+
+/* ---------- open and close ---------- */
+
 /** Open or close the phone menu; while it is open the page behind it does not scroll. */
 function setMenuOpen(header, open) {
   header.classList.toggle('is-open', open)
@@ -95,19 +156,40 @@ function setMenuOpen(header, open) {
   header.querySelector('.menu-toggle')?.setAttribute('aria-expanded', String(open))
 }
 
+function closeGroups(header, except = null) {
+  for (const group of header.querySelectorAll('.nav-group.is-open')) {
+    if (group !== except) setGroupOpen(group, false)
+  }
+}
+
+/** Escape: close every submenu, also one held open by the mouse, and keep focus on its button. */
+function dismissGroups(header) {
+  for (const group of header.querySelectorAll('.nav-group')) {
+    group.classList.add('is-dismissed')
+    if (group.contains(document.activeElement)) group.querySelector('.nav-group-toggle').focus()
+  }
+  closeGroups(header)
+}
+
 /**
  * Close the phone menu when a link is chosen, on Escape, and when the screen becomes wide
- * enough for the full navigation. Attached once; survives re-renders of the header.
+ * enough for the full navigation; close open submenus on Escape or a click elsewhere.
+ * Attached once; survives re-renders of the header.
  */
 export function setUpMobileMenu(header) {
-  const close = () => setMenuOpen(header, false)
+  const closeMenu = () => setMenuOpen(header, false)
   header.addEventListener('click', (event) => {
-    if (event.target.closest('#site-nav a')) close()
+    if (event.target.closest('#site-nav a')) closeMenu()
+  })
+  document.addEventListener('click', (event) => {
+    closeGroups(header, event.target.closest('.nav-group'))
   })
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && header.classList.contains('is-open')) close()
+    if (event.key !== 'Escape') return
+    dismissGroups(header)
+    if (header.classList.contains('is-open')) closeMenu()
   })
   window.matchMedia(`(min-width: ${WIDE_NAV_MIN_PX}px)`).addEventListener('change', (event) => {
-    if (event.matches) close()
+    if (event.matches) closeMenu()
   })
 }
