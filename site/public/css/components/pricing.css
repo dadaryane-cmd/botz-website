@@ -216,34 +216,3 @@
     position: static;
   }
 }
-
-.preview-group h3 {
-  font-size: 1.1rem;
-  color: var(--accent-text);
-}
-
-.preview-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.preview-list li {
-  display: grid;
-  gap: 2px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.preview-list a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-.preview-list .badge {
-  margin: 0;
-  padding: 2px 8px;
-  font-size: 0.65rem;
-}

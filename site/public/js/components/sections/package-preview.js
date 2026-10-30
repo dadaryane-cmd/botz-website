@@ -1,32 +1,46 @@
-/** Home page overview: every package's monthly price for one contract length. */
+/**
+ * Home page overview: every package's monthly price for one contract length, as a table to scan
+ * (name left, price right), with the month-to-month rate crossed out to show the saving.
+ * One-time packages (website creation) get their own line below the table.
+ */
 import { PACKAGE_CATEGORIES } from '../../config.js'
 import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
-import { formatAmd } from '../../lib/format.js'
+import { formatAmd, formatMonths } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
 import { reveal } from '../../lib/reveal.js'
-import {
-  availableLengths,
-  isRecurring,
-  lowestMonthlyPrice,
-  priceFor,
-} from '../../pricing/engine.js'
+import { availableLengths, isRecurring, monthToMonthPrice, priceFor } from '../../pricing/engine.js'
 import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
 import { button, heading, lead, section } from './section.js'
 
 export function renderPackagePreview(config) {
   const categories = config.categories?.length ? config.categories : PACKAGE_CATEGORIES
   const months = config.duration ?? 12
+  const packages = catalog.packages.filter((pkg) => categories.includes(pkg.category))
+  const monthly = packages.filter(isRecurring)
+  const oneTime = packages.filter((pkg) => !isRecurring(pkg))
+  const tableCategories = categories.filter((category) =>
+    monthly.some((pkg) => pkg.category === category),
+  )
+
   return section(
     config,
     heading(config.heading),
     lead(config.intro),
     h(
       'div',
-      { class: 'grid grid-4' },
-      categories.map((category, index) => categoryColumn(category, months, index)),
+      { class: 'preview-grid' },
+      tableCategories.map((category, index) =>
+        categoryColumn(
+          category,
+          monthly.filter((pkg) => pkg.category === category),
+          months,
+          index,
+        ),
+      ),
     ),
+    oneTime.length > 0 && h('ul', { class: 'preview-one-time' }, oneTime.map(oneTimeRow)),
     h(
       'div',
       { class: 'btn-row' },
@@ -41,7 +55,7 @@ export function renderPackagePreview(config) {
   )
 }
 
-function categoryColumn(category, months, index) {
+function categoryColumn(category, packages, months, index) {
   return h(
     'div',
     { class: 'preview-group', ...reveal(index) },
@@ -49,34 +63,71 @@ function categoryColumn(category, months, index) {
     h(
       'ul',
       { class: 'preview-list' },
-      catalog.packages
-        .filter((pkg) => pkg.category === category)
-        .map((pkg) => previewRow(pkg, months)),
+      packages.map((pkg) => previewRow(pkg, months)),
     ),
   )
 }
 
-/** One-time price, the monthly price for `months`, or "from" the lowest monthly price. */
-function previewPrice(pkg, price) {
-  const perMonth = ui('pricing', 'perMonth')
-  if (!isRecurring(pkg)) return `${formatAmd(pkg.oneTimePrice)} · ${ui('pricing', 'oneTime')}`
-  if (price) return `${formatAmd(price.monthly)} / ${perMonth}`
-  return `${ui('pricing', 'from')} ${formatAmd(lowestMonthlyPrice(pkg))} / ${perMonth}`
-}
-
+/** One package: name (and notes) on the left, the monthly price on the right. */
 function previewRow(pkg, months) {
-  const price = isRecurring(pkg) ? priceFor(pkg, months) : null
-  // Link to the pricing tool at this length, or at the longest one offered.
-  const linkMonths = price ? months : (availableLengths(pkg).at(-1) ?? 1)
+  const offered = priceFor(pkg, months)
+  // Not sold for this long (e.g. SEO Fundamental): show the longest term it is sold for, and say so.
+  const term = offered ? months : availableLengths(pkg).at(-1)
+  const { monthly } = offered ?? priceFor(pkg, term)
+
   return h(
     'li',
     null,
     h(
       'a',
-      { href: estimateLink({ packageKey: pkg.key, months: linkMonths, addons: {} }) },
-      h('strong', null, t(pkg.name)),
-      pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
+      {
+        class: 'preview-row',
+        href: estimateLink({ packageKey: pkg.key, months: term, addons: {} }),
+      },
+      h(
+        'span',
+        { class: 'preview-name' },
+        h('strong', null, t(pkg.name)),
+        pkg.recommended && h('span', { class: 'preview-tag' }, ui('pricing', 'recommended')),
+        !offered &&
+          h(
+            'span',
+            { class: 'preview-note' },
+            ui('pricing', 'upToTerm', { term: formatMonths(term) }),
+          ),
+      ),
+      h('span', { class: 'preview-price' }, wasPrice(pkg, monthly), formatAmd(monthly)),
     ),
-    h('span', { class: 'price-small' }, previewPrice(pkg, price)),
+  )
+}
+
+/** The month-to-month rate, crossed out, when the longer term costs less. */
+function wasPrice(pkg, monthly) {
+  const rate = monthToMonthPrice(pkg)
+  if (!rate || rate <= monthly) return null
+  return h(
+    's',
+    { class: 'preview-was' },
+    h('span', { class: 'sr-only' }, `${ui('pricing', 'monthToMonth')}: `),
+    formatAmd(rate),
+  )
+}
+
+/** "Website Creation  299,000 ֏ · one-time" */
+function oneTimeRow(pkg) {
+  return h(
+    'li',
+    null,
+    h(
+      'a',
+      { class: 'preview-row', href: estimateLink({ packageKey: pkg.key, months: 1, addons: {} }) },
+      h('span', { class: 'preview-name' }, h('strong', null, t(pkg.name))),
+      h(
+        'span',
+        { class: 'preview-price' },
+        formatAmd(pkg.oneTimePrice),
+        h('small', null, ` · ${ui('pricing', 'oneTime')}`),
+      ),
+    ),
   )
 }

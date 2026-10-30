@@ -1041,6 +1041,12 @@ content:
           - name: recommended
             label: Recommended
             component: line
+          - name: upToTerm
+            label: Up to term
+            component: line
+          - name: monthToMonth
+            label: Month to month
+            component: line
           - name: bundleOf
             label: Bundle of
             component: line

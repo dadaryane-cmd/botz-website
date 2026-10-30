@@ -1,0 +1,100 @@
+/*
+ * Home page price overview (js/components/sections/package-preview.js): a table to scan, with
+ * names on the left and prices on the right, their digits lined up.
+ */
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 8px 40px;
+  margin-top: 24px;
+}
+
+.preview-group h3 {
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  color: var(--accent-text);
+}
+
+.preview-list,
+.preview-one-time {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  color: inherit;
+  text-decoration: none;
+}
+
+.preview-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+
+.preview-name strong {
+  font-weight: 600;
+}
+
+/* A quiet marker instead of a badge: a dot and a word in the accent colour. */
+.preview-tag,
+.preview-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.preview-tag {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.preview-tag::before {
+  content: '●';
+  margin-right: 4px;
+  font-size: 0.6em;
+  vertical-align: 0.2em;
+}
+
+.preview-price {
+  font: 700 1.2rem var(--font-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.preview-price small {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.preview-was {
+  margin-right: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* One-time packages sit under the table, one row across the full width. */
+.preview-one-time {
+  margin-top: 16px;
+}
+
+@media (hover: hover) {
+  .preview-row {
+    transition: color 0.15s ease;
+  }
+
+  .preview-row:hover strong,
+  .preview-row:focus-visible strong {
+    color: var(--accent-text);
+  }
+}

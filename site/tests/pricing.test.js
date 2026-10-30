@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { catalog } from '../public/js/content/index.js'
-import { findPackage, priceFor, quote } from '../public/js/pricing/engine.js'
+import { findPackage, monthToMonthPrice, priceFor, quote } from '../public/js/pricing/engine.js'
 import { fromParams, toParams } from '../public/js/pricing/selection.js'
 
 const pkg = (key) => findPackage(catalog, key)
@@ -22,6 +22,19 @@ describe('priceFor', () => {
 
   it('returns null for a contract length the package is not offered for', () => {
     assert.equal(priceFor(pkg('seo-fundamental'), 12), null)
+  })
+})
+
+describe('monthToMonthPrice', () => {
+  it('is the 1-month rate, the base for the savings', () => {
+    const start = pkg('smm-start')
+    const sixMonths = priceFor(start, 6)
+    assert.equal(monthToMonthPrice(start) - sixMonths.monthly, sixMonths.savings / 6)
+  })
+
+  it('is null for one-time packages', () => {
+    const website = catalog.packages.find((item) => item.category === 'website')
+    assert.equal(monthToMonthPrice(website), null)
   })
 })
 

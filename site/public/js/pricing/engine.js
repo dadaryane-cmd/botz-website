@@ -30,8 +30,9 @@ export function priceFor(pkg, months) {
   }
 }
 
-export const lowestMonthlyPrice = (pkg) =>
-  Math.min(...availableLengths(pkg).map((months) => pkg.prices[`m${months}`]))
+/** The 1-month rate, which longer contracts are compared with; null when not offered. */
+export const monthToMonthPrice = (pkg) =>
+  typeof pkg.prices?.m1 === 'number' ? pkg.prices.m1 : null
 
 /**
  * Totals for a selection `{ packageKey, months, addons: { key: quantity } }`.

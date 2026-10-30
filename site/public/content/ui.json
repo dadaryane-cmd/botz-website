@@ -176,6 +176,16 @@
       "en": "Recommended",
       "ru": "Рекомендуем"
     },
+    "upToTerm": {
+      "hy": "մինչև {term}",
+      "en": "up to {term}",
+      "ru": "до {term}"
+    },
+    "monthToMonth": {
+      "hy": "ամսական վճարմամբ",
+      "en": "month to month",
+      "ru": "при помесячной оплате"
+    },
     "bundleOf": {
       "hy": "Միավորում է {list}-ը՝ իր առանձին գնով",
       "en": "Combines {list} at its own price",
