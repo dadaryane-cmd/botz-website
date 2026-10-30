@@ -1,4 +1,4 @@
-/* Contact section. */
+/* Contact section (js/components/sections/contact.js). */
 
 .contact-layout {
   display: grid;
@@ -12,6 +12,12 @@
   .contact-layout {
     grid-template-columns: 1fr;
   }
+
+  /* On phones the form comes first: calling is already one tap away in the bottom bar. */
+  .contact-layout > .form,
+  .contact-layout > .form-success {
+    order: -1;
+  }
 }
 
 .people {
@@ -19,16 +25,56 @@
   gap: 16px;
 }
 
+/* ---- direct contacts: icon, label and value, then the actions ---- */
+
 .direct-contacts {
   display: grid;
-  gap: 12px;
-  margin: 28px 0 0;
+  gap: 4px;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.direct-contacts a {
+.contact-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--accent-text);
+}
+
+.contact-value {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contact-value .label {
+  margin: 0;
+}
+
+.contact-value strong,
+.contact-value a {
+  font-size: 1.05rem;
   font-weight: 700;
-  font-size: 1.1rem;
   overflow-wrap: anywhere;
+}
+
+/* The buttons sit under the value, lined up with it. */
+.contact-actions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }

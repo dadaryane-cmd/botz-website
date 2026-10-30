@@ -79,10 +79,20 @@
       "en": "Email",
       "ru": "Почта"
     },
-    "phoneLabel": {
-      "hy": "Հեռախոս",
-      "en": "Phone",
-      "ru": "Телефон"
+    "phoneAndWhatsapp": {
+      "hy": "Հեռախոս, WhatsApp",
+      "en": "Phone and WhatsApp",
+      "ru": "Телефон и WhatsApp"
+    },
+    "copy": {
+      "hy": "Պատճենել",
+      "en": "Copy",
+      "ru": "Копировать"
+    },
+    "copied": {
+      "hy": "Պատճենված է",
+      "en": "Copied",
+      "ru": "Скопировано"
     }
   },
   "pricing": {
@@ -380,11 +390,6 @@
     }
   },
   "form": {
-    "title": {
-      "hy": "Պատմեք ձեր նախագծի մասին",
-      "en": "Tell us about your project",
-      "ru": "Расскажите о проекте"
-    },
     "name": {
       "hy": "Ձեր անունը",
       "en": "Your name",
@@ -410,10 +415,15 @@
       "en": "Service",
       "ru": "Услуга"
     },
-    "choose": {
-      "hy": "Ընտրեք ծառայությունը",
-      "en": "Choose a service",
-      "ru": "Выберите услугу"
+    "replyBy": {
+      "hy": "Կպատասխանի՝ {name}։",
+      "en": "{name} will reply.",
+      "ru": "Ответит {name}."
+    },
+    "replyTeam": {
+      "hy": "Մեզանից մեկը կպատասխանի։",
+      "en": "One of us will reply.",
+      "ru": "Ответит один из нас."
     },
     "message": {
       "hy": "Հաղորդագրություն",
@@ -424,16 +434,6 @@
       "hy": "Ինչով է զբաղվում ձեր բիզնեսը, ինչ եք ուզում փոխել և մինչև երբ։",
       "en": "What your business does, what you want to change and by when.",
       "ru": "Чем занимается ваш бизнес, что хотите изменить и к какому сроку."
-    },
-    "preferredContact": {
-      "hy": "Ո՞վ կապվի ձեզ հետ",
-      "en": "Who should contact you?",
-      "ru": "Кто с вами свяжется?"
-    },
-    "either": {
-      "hy": "Ցանկացածը",
-      "en": "Either",
-      "ru": "Любой"
     },
     "selectedEstimate": {
       "hy": "Կցված նախահաշիվ",

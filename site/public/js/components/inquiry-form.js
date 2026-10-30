@@ -53,16 +53,17 @@ export function renderInquiryForm({ service: pageService }) {
   const control = (tag, name, attributes = {}, ...children) =>
     h(tag, { id: id(name), name, 'aria-describedby': id(`${name}-error`), ...attributes }, children)
 
-  const contactChoice = contactFieldset()
-  const serviceSelect = control(
-    'select',
-    'service',
-    { onchange: () => selectContact(contactChoice, serviceSelect.value) },
-    h('option', { value: '' }, ui('form', 'choose')),
-    INQUIRY_SERVICES.map((service) =>
-      h('option', { value: service, selected: service === preselected }, ui('services', service)),
-    ),
-  )
+  // Who will answer follows the chosen service, so the visitor does not have to pick a person.
+  const replyHint = h('p', { class: 'hint', 'aria-live': 'polite' }, replyText(preselected))
+  errorFor.service = h('span', { class: 'field-error', id: id('service-error') })
+  const serviceChoice = serviceFieldset({
+    preselected,
+    describedBy: id('service-error'),
+    onChange: (service) => {
+      replyHint.textContent = replyText(service)
+    },
+    extra: [replyHint, errorFor.service],
+  })
   const message = control('textarea', 'message', {
     rows: 5,
     maxlength: 4000,
@@ -81,7 +82,6 @@ export function renderInquiryForm({ service: pageService }) {
   const form = h(
     'form',
     { class: 'card form', novalidate: true },
-    h('h3', null, ui('form', 'title')),
     h(
       'div',
       { class: 'form-grid' },
@@ -102,8 +102,7 @@ export function renderInquiryForm({ service: pageService }) {
         control('input', 'phone', { type: 'tel', autocomplete: 'tel', maxlength: 40 }),
       ),
       h('p', { class: 'hint full' }, ui('form', 'contactHint')),
-      field('service', ui('form', 'service'), serviceSelect),
-      contactChoice,
+      serviceChoice,
       field('message', ui('form', 'message'), message, { full: true }),
     ),
     // Honeypot: hidden from people, but bots fill it in.
@@ -123,7 +122,6 @@ export function renderInquiryForm({ service: pageService }) {
     status,
   )
 
-  selectContact(contactChoice, serviceSelect.value)
   subscribe(form, (changed) => {
     estimate.update()
     fillSuggestedNote(changed.note)
@@ -151,7 +149,8 @@ export function renderInquiryForm({ service: pageService }) {
       return
     }
 
-    const contact = people.find((person) => person.key === values.preferredContact)
+    const contactKey = suggestedContact(people, values.service)
+    const contact = people.find((person) => person.key === contactKey)
     const contactName = t(contact?.name) || ui('form', 'teamName')
     // The honeypot was filled in, so this is a bot: pretend it worked and send nothing.
     if (values.website) {
@@ -207,31 +206,35 @@ export function renderInquiryForm({ service: pageService }) {
 
 /* ---------- parts of the form ---------- */
 
-/** "Who should contact you?": one radio button per founder, plus "either". */
-function contactFieldset() {
-  const options = [
-    ...people.map((person) => ({ value: person.key, label: t(person.name) })),
-    { value: 'either', label: ui('form', 'either') },
-  ]
+/** The services as a row of buttons (radio buttons underneath), so every option is visible. */
+function serviceFieldset({ preselected, describedBy, onChange, extra }) {
   return h(
     'fieldset',
-    { class: 'full radios' },
-    h('legend', null, ui('form', 'preferredContact')),
-    options.map((option) =>
+    { class: 'full radios', 'aria-describedby': describedBy },
+    h('legend', null, ui('form', 'service')),
+    INQUIRY_SERVICES.map((service) =>
       h(
         'label',
         { class: 'option' },
-        h('input', { type: 'radio', name: 'preferredContact', value: option.value }),
-        h('span', null, option.label),
+        h('input', {
+          type: 'radio',
+          name: 'service',
+          value: service,
+          checked: service === preselected,
+          onchange: () => onChange(service),
+        }),
+        h('span', null, ui('services', service)),
       ),
     ),
+    extra,
   )
 }
 
-/** Tick the founder who handles `service` (both for combined plans). */
-function selectContact(fieldset, service) {
-  const value = suggestedContact(people, service)
-  fieldset.querySelector(`input[value="${value}"]`).checked = true
+/** "Mariam will reply." for a service one founder handles, "One of us will reply." otherwise. */
+function replyText(service) {
+  const key = suggestedContact(people, service)
+  const person = people.find((candidate) => candidate.key === key)
+  return person ? ui('form', 'replyBy', { name: t(person.name) }) : ui('form', 'replyTeam')
 }
 
 /**

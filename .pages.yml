@@ -985,8 +985,14 @@ content:
           - name: email
             label: Email
             component: line
-          - name: phoneLabel
-            label: Phone label
+          - name: phoneAndWhatsapp
+            label: Phone and whatsapp
+            component: line
+          - name: copy
+            label: Copy
+            component: line
+          - name: copied
+            label: Copied
             component: line
       - name: pricing
         label: Pricing
@@ -1174,9 +1180,6 @@ content:
         label: Form
         type: object
         fields:
-          - name: title
-            label: Title
-            component: line
           - name: name
             label: Name
             component: line
@@ -1192,20 +1195,17 @@ content:
           - name: service
             label: Service
             component: line
-          - name: choose
-            label: Choose
+          - name: replyBy
+            label: Reply by
+            component: line
+          - name: replyTeam
+            label: Reply team
             component: line
           - name: message
             label: Message
             component: line
           - name: messagePlaceholder
             label: Message placeholder
-            component: line
-          - name: preferredContact
-            label: Preferred contact
-            component: line
-          - name: either
-            label: Either
             component: line
           - name: selectedEstimate
             label: Selected estimate

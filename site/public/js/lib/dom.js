@@ -43,6 +43,13 @@ export function richText(value, { words = false } = {}) {
   return fragment
 }
 
+/** An element from static, trusted markup (only for the site's own SVG drawings and icons). */
+export function fromMarkup(markup) {
+  const template = document.createElement('template')
+  template.innerHTML = markup.trim()
+  return template.content.firstElementChild
+}
+
 /**
  * Restart a CSS animation class even if it is already applied, and remove it again after
  * `duration` ms when given. Reading `offsetWidth` makes the browser apply the removal first.

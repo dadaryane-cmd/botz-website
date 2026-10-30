@@ -5,7 +5,7 @@
  * Idle sway, glow and flicker are CSS (css/components/bulb.css); the cord, the dip and the
  * pendulum swing are springs from lib/animation.js. Only transform and opacity are animated.
  */
-import { h, replayClass } from '../../lib/dom.js'
+import { fromMarkup, h, replayClass } from '../../lib/dom.js'
 import { prefersReducedMotion, spring, tween } from '../../lib/animation.js'
 import { ui } from '../../lib/i18n.js'
 import { load, save } from '../../lib/storage.js'
@@ -76,12 +76,6 @@ const BULB_SVG = `
 const HINT_ARROW = `
 <svg class="bulb-hint-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
   stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c7 0 12-5 13-13M13 7l5-1 1 5" /></svg>`
-
-const fromMarkup = (markup) => {
-  const template = document.createElement('template')
-  template.innerHTML = markup.trim()
-  return template.content.firstElementChild
-}
 
 export function renderBulbToggle() {
   const svg = fromMarkup(BULB_SVG)
