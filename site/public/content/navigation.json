@@ -42,10 +42,10 @@
     "href": "contact.html",
     "style": "primary"
   },
-  "footerStatement": {
-    "hy": "BOTZ-ը Մարիամն ու Էդգարն են։",
-    "en": "BOTZ is Mariam and Edgar.",
-    "ru": "BOTZ — это Мариам и Эдгар."
+  "footerTagline": {
+    "hy": "Թվային մարքեթինգի լուծումներ։ Երևան։",
+    "en": "Digital Marketing Solutions. Yerevan.",
+    "ru": "Решения в цифровом маркетинге. Ереван."
   },
   "footerColumns": [
     {

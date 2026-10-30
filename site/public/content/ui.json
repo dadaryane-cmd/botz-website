@@ -532,10 +532,10 @@
     }
   },
   "footer": {
-    "rights": {
-      "hy": "Բոլոր իրավունքները պաշտպանված են։",
-      "en": "All rights reserved.",
-      "ru": "Все права защищены."
+    "madeBy": {
+      "hy": "Ստեղծված է Երևանում՝ Մարիամի և Էդգարի կողմից",
+      "en": "Made in Yerevan by Mariam and Edgar",
+      "ru": "Сделано в Ереване Мариам и Эдгаром"
     },
     "contactTitle": {
       "hy": "Կապ",

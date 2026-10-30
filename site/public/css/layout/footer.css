@@ -18,32 +18,25 @@
   --footer-text: var(--text);
 }
 
-/* ---- logo, statement and call to action ---- */
+/* ---- logo and one line about the business ---- */
 
 .footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px 40px;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  display: inline-block;
 }
 
 .footer-logo img {
   display: block;
   width: 112px;
   height: auto;
-  margin-bottom: 20px;
 }
 
-.footer-statement {
-  margin: 0;
-  font: 800 clamp(2rem, 6vw, 4.5rem) / 1.05 var(--font-display);
-}
-
-.footer-statement em {
-  font-style: normal;
-  color: var(--accent);
+.footer-tagline {
+  margin: 12px 0 0;
+  color: var(--muted);
 }
 
 /* ---- link columns ---- */

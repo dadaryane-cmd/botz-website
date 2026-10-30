@@ -435,7 +435,7 @@ const navigationEntry = {
       '{label.en}',
     ),
     button('cta', 'Menu button'),
-    heading('footerStatement', 'Footer statement'),
+    text('footerTagline', 'Footer line under the logo'),
     list(
       object('footerColumns', 'Footer columns', [
         text('title', 'Title'),

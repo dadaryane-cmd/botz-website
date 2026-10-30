@@ -1,12 +1,12 @@
 /**
- * Site footer: logo, closing statement and a call to action; link columns with the contact
- * details, location, hours and social pages; and a bottom row with the legal notes.
+ * Site footer, the quiet end of every page: logo and one line about the business; link columns
+ * with the contact details, location, hours and social pages; and a bottom row with the notes.
+ * The call to action belongs to each page's last section, not here.
  */
 import { navigation, site } from '../../content/index.js'
-import { h, richText } from '../../lib/dom.js'
+import { h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
-import { reveal } from '../../lib/reveal.js'
 import { renderSocialLinks } from './social-links.js'
 
 export function renderFooter(footer) {
@@ -37,21 +37,17 @@ function footerTop() {
     'div',
     { class: 'footer-top' },
     h(
-      'div',
-      null,
-      h(
-        'a',
-        { class: 'footer-logo', href: 'index.html' },
-        h('img', {
-          src: 'images/botz-logo-dark.webp',
-          alt: t(site.name),
-          width: 112,
-          height: 44,
-        }),
-      ),
-      h('p', { class: 'footer-statement', ...reveal() }, richText(navigation.footerStatement)),
+      'a',
+      { class: 'footer-logo', href: 'index.html' },
+      h('img', {
+        src: 'images/botz-logo-dark.webp',
+        alt: t(site.name),
+        width: 112,
+        height: 44,
+      }),
     ),
-    h('a', { class: 'btn btn-primary', href: navigation.cta.href }, t(navigation.cta.label)),
+    hasText(navigation.footerTagline) &&
+      h('p', { class: 'footer-tagline' }, t(navigation.footerTagline)),
   )
 }
 
@@ -89,7 +85,7 @@ function footerBottom() {
   return h(
     'div',
     { class: 'footer-bottom' },
-    h('p', null, `© ${new Date().getFullYear()} ${t(site.name)}. ${ui('footer', 'rights')}`),
+    h('p', null, `© ${new Date().getFullYear()} ${t(site.name)} · ${ui('footer', 'madeBy')}`),
     h('p', null, t(navigation.footerNote)),
     // "#top" with no such id is the top of the page, by the HTML standard.
     h('a', { class: 'footer-top-link', href: '#top' }, `${ui('footer', 'backToTop')} ↑`),

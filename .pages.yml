@@ -1010,10 +1010,9 @@ content:
       - name: cta
         label: Menu button
         component: button
-      - name: footerStatement
-        label: Footer statement
+      - name: footerTagline
+        label: Footer line under the logo
         component: line
-        description: "Wrap words in *asterisks* to show them in the accent colour."
       - name: footerColumns
         label: Footer columns
         type: object
@@ -1382,8 +1381,8 @@ content:
         label: Footer
         type: object
         fields:
-          - name: rights
-            label: Rights
+          - name: madeBy
+            label: Made by
             component: line
           - name: contactTitle
             label: Contact title
