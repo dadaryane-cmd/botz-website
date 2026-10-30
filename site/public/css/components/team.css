@@ -20,7 +20,8 @@
   place-items: center;
   width: 64px;
   height: 64px;
-  border-radius: 50%;
+  /* A rounded square, like the cards around it; about a quarter of the size keeps it soft. */
+  border-radius: 16px;
   background: var(--accent);
   color: var(--on-accent);
   font: 800 1.6rem var(--font-display);
