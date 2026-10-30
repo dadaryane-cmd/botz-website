@@ -40,7 +40,8 @@ site/
 │   │       ├── layout/         header, footer, mobile bar
 │   │       ├── sections/       one render function per section type + index.js registry
 │   │       ├── flame/          animated WebGL fire behind the home hero
-│   │       ├── bulb/           hanging light bulb with a pull cord (light / dark switch);
+│   │       ├── bulb/           hanging light bulb with a pull cord (light / dark switch),
+│   │       │                   the warm light it casts in light mode;
 │   │       │                   3 quick pulls show a hidden free-audit message
 │   │       └── inquiry-form.js
 │   ├── images/

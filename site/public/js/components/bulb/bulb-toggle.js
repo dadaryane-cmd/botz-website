@@ -11,6 +11,7 @@ import { ui } from '../../lib/i18n.js'
 import { load, save } from '../../lib/storage.js'
 import { getTheme, setTheme } from '../../lib/theme.js'
 import { showEasterEgg } from './easter-egg.js'
+import { attachLampLight, swellLampLight } from './lamp-light.js'
 import { createPullStreak } from './pull-streak.js'
 
 const TUNING = {
@@ -172,6 +173,7 @@ export function renderBulbToggle() {
       button.classList.remove('is-turning-on', 'is-turning-off')
       // Flicker when the light comes on, afterglow when it goes off.
       replayClass(next === 'light' ? 'is-turning-on' : 'is-turning-off', TUNING.switchFxMs)
+      if (next === 'light') swellLampLight()
       setTheme(next, { origin: bulbCentre() })
     } else {
       setTheme(next, { animate: false })
@@ -296,5 +298,6 @@ export function renderBulbToggle() {
   })
 
   updateLabel()
+  attachLampLight(bulbCentre)
   return button
 }

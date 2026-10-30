@@ -18,6 +18,7 @@
 /* Page frame */
 @import url('layout/header.css');
 @import url('components/bulb.css');
+@import url('components/lamp-light.css');
 @import url('layout/footer.css');
 @import url('layout/mobile-bar.css');
 
