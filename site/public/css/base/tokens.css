@@ -1,21 +1,21 @@
 /*
  * Design tokens: colours (light and dark), fonts, radii, spacing.
- * "Campfire" palette: #CC3713 ember, #EB7814 flame, #9B2C15 brick, #66200C coal (the fire),
- * #16160E night and #394B4D slate sky, on a light grey page in light mode.
+ * "Sunset" palette: #24213B night navy, #EA4823 sunset red, #9D282B crimson, #602332 plum
+ * (the fire) and #F4EBEA blush. Labels on the red use a deeper navy so they stay readable.
  */
 
 :root {
-  --bg: #f2f2f4;
-  --surface: #e6e8e9;
-  --card: #fbfbfc;
-  --text: #16160e;
-  --muted: #394b4d;
-  --border: #d5d9db;
-  --accent: #cc3713;
-  --accent-text: #9b2c15;
-  --on-accent: #ffffff;
-  --inverse-bg: #16160e;
-  --inverse-text: #f2f2f4;
+  --bg: #f4ebea;
+  --surface: #ebdedd;
+  --card: #fbf6f5;
+  --text: #24213b;
+  --muted: #57536a;
+  --border: #dfcfcd;
+  --accent: #ea4823;
+  --accent-text: #9d282b;
+  --on-accent: #1b1930;
+  --inverse-bg: #24213b;
+  --inverse-text: #f4ebea;
   --ok: #1e7a3c;
   --error: #b42318;
 
@@ -25,23 +25,23 @@
   --radius: 28px;
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);
-  --shadow: 0 1px 2px rgb(22 22 14 / 0.05), 0 8px 24px rgb(22 22 14 / 0.08);
+  --shadow: 0 1px 2px rgb(36 33 59 / 0.05), 0 8px 24px rgb(36 33 59 / 0.08);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #16160e;
-    --surface: #1e2420;
-    --card: #1b1e17;
-    --text: #f2f1ea;
-    --muted: #a9b4b2;
-    --border: #2f3833;
-    --accent: #eb7814;
-    --accent-text: #eb7814;
-    --on-accent: #16160e;
-    --inverse-bg: #f2f2f4;
-    --inverse-text: #16160e;
+    --bg: #24213b;
+    --surface: #2d2a47;
+    --card: #29263f;
+    --text: #f4ebea;
+    --muted: #b9b1c0;
+    --border: #3d3958;
+    --accent: #ea4823;
+    --accent-text: #f26a48;
+    --on-accent: #1b1930;
+    --inverse-bg: #f4ebea;
+    --inverse-text: #24213b;
     --ok: #5bd18b;
     --error: #ff8a80;
     --shadow: none;
@@ -50,17 +50,17 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #16160e;
-  --surface: #1e2420;
-  --card: #1b1e17;
-  --text: #f2f1ea;
-  --muted: #a9b4b2;
-  --border: #2f3833;
-  --accent: #eb7814;
-  --accent-text: #eb7814;
-  --on-accent: #16160e;
-  --inverse-bg: #f2f2f4;
-  --inverse-text: #16160e;
+  --bg: #24213b;
+  --surface: #2d2a47;
+  --card: #29263f;
+  --text: #f4ebea;
+  --muted: #b9b1c0;
+  --border: #3d3958;
+  --accent: #ea4823;
+  --accent-text: #f26a48;
+  --on-accent: #1b1930;
+  --inverse-bg: #f4ebea;
+  --inverse-text: #24213b;
   --ok: #5bd18b;
   --error: #ff8a80;
   --shadow: none;
