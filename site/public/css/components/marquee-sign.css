@@ -17,10 +17,20 @@
   box-shadow: 0 0 60px var(--sign-glow);
 }
 
-/* By day the bulbs are off: no bulb rows and no glow, just the board in its frame. */
+/*
+ * By day the bulbs are off and there is no dark casing: just the board on the page, framed
+ * like the site's cards.
+ */
 [data-theme='light'] .marquee-sign {
+  --sign-casing: transparent;
   --sign-glow: transparent;
   padding-block: 24px;
+}
+
+[data-theme='light'] .sign-board {
+  box-shadow:
+    0 0 0 1px var(--border),
+    var(--shadow);
 }
 
 [data-theme='light'] .sign-bulbs {
