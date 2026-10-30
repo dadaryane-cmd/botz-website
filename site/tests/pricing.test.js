@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { catalog } from '../public/js/content/index.js'
 import { findPackage, monthToMonthPrice, priceFor, quote } from '../public/js/pricing/engine.js'
-import { fromParams, toParams } from '../public/js/pricing/selection.js'
+import { categoryFromSearch, fromParams, toParams } from '../public/js/pricing/selection.js'
 
 const pkg = (key) => findPackage(catalog, key)
 
@@ -85,5 +85,26 @@ describe('shareable selection links', () => {
     assert.equal(parsed.packageKey, null)
     assert.equal(parsed.months, 6)
     assert.deepEqual(parsed.addons, { reel: 20 })
+  })
+})
+
+describe('categoryFromSearch', () => {
+  it('reads a known package group from ?cat=', () => {
+    assert.equal(categoryFromSearch('?cat=seo'), 'seo')
+    assert.equal(categoryFromSearch('?lang=en&cat=bundle'), 'bundle')
+  })
+
+  it('ignores missing or unknown groups', () => {
+    assert.equal(categoryFromSearch(''), null)
+    assert.equal(categoryFromSearch('?cat=strategy'), null)
+  })
+})
+
+describe('catalog', () => {
+  it('lists what every SMM, SEO and combined package includes, in all three languages', () => {
+    for (const item of catalog.packages.filter((entry) => entry.category !== 'website')) {
+      assert.ok(item.includes?.length > 0, `${item.key} has no "includes"`)
+      for (const text of item.includes) assert.ok(text.hy && text.en && text.ru, item.key)
+    }
   })
 })

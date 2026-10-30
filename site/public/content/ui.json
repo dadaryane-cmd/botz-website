@@ -186,6 +186,21 @@
       "en": "Recommended",
       "ru": "Рекомендуем"
     },
+    "includedTitle": {
+      "hy": "Ինչ է ներառված",
+      "en": "What's included",
+      "ru": "Что входит"
+    },
+    "showAllIncluded": {
+      "hy": "Ցույց տալ բոլորը ({n})",
+      "en": "Show all ({n})",
+      "ru": "Показать всё ({n})"
+    },
+    "askAbout": {
+      "hy": "Հարցնել այս փաթեթի մասին",
+      "en": "Ask about this package",
+      "ru": "Спросить об этом пакете"
+    },
     "upToTerm": {
       "hy": "մինչև {term}",
       "en": "up to {term}",
@@ -629,6 +644,35 @@
       "hy": "Ձեր կայքում գտա լամպի անակնկալը։ Կցանկանայի անվճար աուդիտ։",
       "en": "I found the lamp surprise on your website. I’d like a free audit.",
       "ru": "Нашёл(ла) сюрприз с лампой на вашем сайте. Хочу бесплатный аудит."
+    }
+  },
+  "servicesPage": {
+    "includesLabel": {
+      "hy": "Ինչ ենք անում",
+      "en": "What we do",
+      "ru": "Что мы делаем"
+    },
+    "approachLabel": {
+      "hy": "Ինչպես ենք աշխատում",
+      "en": "How we work",
+      "ru": "Как мы работаем"
+    }
+  },
+  "comparison": {
+    "package": {
+      "hy": "Փաթեթ",
+      "en": "Package",
+      "ru": "Пакет"
+    },
+    "saving": {
+      "hy": "Խնայողություն՝ {term}",
+      "en": "Saving over {term}",
+      "ru": "Экономия за {term}"
+    },
+    "notOffered": {
+      "hy": "Չի առաջարկվում այս ժամկետով",
+      "en": "Not offered for this term",
+      "ru": "Не предлагается на этот срок"
     }
   },
   "faq": {

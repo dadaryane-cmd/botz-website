@@ -9,9 +9,61 @@
         "ru": "Start"
       },
       "tagline": {
-        "hy": "Փոքր բիզնեսի համար, որը սկսում է կանոնավոր հրապարակել",
-        "en": "For a small business that is starting to post regularly",
-        "ru": "Для небольшого бизнеса, который начинает регулярно публиковать"
+        "hy": "Կայուն, պրոֆեսիոնալ վարվող ներկայություն սոցցանցերում՝ աճող բրենդների համար",
+        "en": "A consistent, professionally managed social media presence for growing brands",
+        "ru": "Стабильное, профессионально управляемое присутствие в соцсетях для растущих брендов"
+      },
+      "includes": [
+        {
+          "hy": "Instagram-ի և Facebook-ի ամբողջական վարում",
+          "en": "Full Instagram and Facebook management",
+          "ru": "Полное ведение Instagram и Facebook"
+        },
+        {
+          "hy": "Ամսական 8 հրապարակում",
+          "en": "8 posts per month",
+          "ru": "8 публикаций в месяц"
+        },
+        {
+          "hy": "Ամսական 8 սթորի",
+          "en": "8 stories per month",
+          "ru": "8 сторис в месяц"
+        },
+        {
+          "hy": "Բարձրորակ վիզուալ բովանդակություն՝ ստեղծված AI-ով",
+          "en": "High-quality AI-generated visual content",
+          "ru": "Качественный визуальный контент, созданный с помощью ИИ"
+        },
+        {
+          "hy": "Տեքստերի գրում (քոփիրայթինգ)",
+          "en": "Copywriting",
+          "ru": "Копирайтинг"
+        },
+        {
+          "hy": "Հրապարակումների պլանավորում",
+          "en": "Content scheduling",
+          "ru": "Планирование публикаций"
+        },
+        {
+          "hy": "Գովազդի կառավարում սոցցանցերում (գովազդային բյուջեով)",
+          "en": "Social media ads management (with an ad budget)",
+          "ru": "Ведение рекламы в соцсетях (при рекламном бюджете)"
+        },
+        {
+          "hy": "Ամսական հաշվետվություն",
+          "en": "Monthly report",
+          "ru": "Ежемесячный отчёт"
+        },
+        {
+          "hy": "Լրացուցիչ բոնուսներ հանդիպումից հետո",
+          "en": "Additional bonuses after our meeting",
+          "ru": "Дополнительные бонусы после встречи"
+        }
+      ],
+      "note": {
+        "hy": "Լուսանկարներն ու տեսանյութերը կարող է տրամադրել հաճախորդը։",
+        "en": "Photo and video content may be supplied by the client.",
+        "ru": "Фото и видео может предоставить клиент."
       },
       "prices": {
         "m1": 79000,
@@ -32,10 +84,52 @@
         "ru": "Dominance"
       },
       "tagline": {
-        "hy": "Բրենդների համար, որոնք ուզում են աճել ամիս առ ամիս",
-        "en": "For brands that want to grow month by month",
-        "ru": "Для брендов, которые хотят расти из месяца в месяц"
+        "hy": "Ավելի շատ բովանդակություն, ուժեղ կրեատիվ ուղղություն և նկարահանման աջակցություն",
+        "en": "More content, stronger creative direction and hands-on production support",
+        "ru": "Больше контента, сильная креативная концепция и помощь с продакшном"
       },
+      "includes": [
+        {
+          "hy": "Start-ի ամբողջ ծավալը՝ ամսական 10 հրապարակում և 10 սթորի",
+          "en": "Everything in Start, upgraded to 10 posts and 10 stories per month",
+          "ru": "Всё из Start, но 10 публикаций и 10 сторис в месяц"
+        },
+        {
+          "hy": "Գրաֆիկական դիզայն",
+          "en": "Graphic design",
+          "ru": "Графический дизайн"
+        },
+        {
+          "hy": "Բովանդակային պլան և ռազմավարություն",
+          "en": "Content plan and strategy",
+          "ru": "Контент-план и стратегия"
+        },
+        {
+          "hy": "Սոցցանցերի հաշվետվություն 3 ամիսը մեկ",
+          "en": "Social media report every 3 months",
+          "ru": "Отчёт по соцсетям раз в 3 месяца"
+        },
+        {
+          "hy": "Story Highlights-ի ձևավորում",
+          "en": "Story Highlights design",
+          "ru": "Оформление актуальных сторис (Highlights)"
+        },
+        {
+          "hy": "Լուսանկարահանում և տեսանկարահանում",
+          "en": "Photo and video shooting",
+          "ru": "Фото- и видеосъёмка"
+        },
+        {
+          "hy": "Հրապարակումների շտապ խմբագրում",
+          "en": "Emergency post editing",
+          "ru": "Срочное редактирование публикаций"
+        },
+        {
+          "hy": "Լրացուցիչ բոնուսներ հանդիպումից հետո",
+          "en": "Additional bonuses after our meeting",
+          "ru": "Дополнительные бонусы после встречи"
+        }
+      ],
       "prices": {
         "m1": 119000,
         "m3": 115000,
@@ -55,10 +149,47 @@
         "ru": "Gold"
       },
       "tagline": {
-        "hy": "Բիզնեսների համար, որոնք ուզում են մեզ վստահել իրենց սոցցանցերն ամբողջությամբ",
-        "en": "For businesses that want us to handle all of their social media",
-        "ru": "Для бизнеса, который хочет полностью передать нам соцсети"
+        "hy": "Սոցցանցերի ամբողջական աճ՝ տեսանյութերով, համայնքի հետ աշխատանքով և արդյունքների օպտիմալացմամբ",
+        "en": "Full-scale social growth with video, community care and performance optimisation",
+        "ru": "Полноценный рост в соцсетях: видео, работа с сообществом и оптимизация результатов"
       },
+      "includes": [
+        {
+          "hy": "Dominance-ի ամբողջ ծավալը՝ ամսական 12–16 հրապարակում և 12–16 սթորի",
+          "en": "Everything in Dominance, upgraded to 12–16 posts and 12–16 stories per month",
+          "ru": "Всё из Dominance, но 12–16 публикаций и 12–16 сторис в месяц"
+        },
+        {
+          "hy": "Մի քանի հարթակների վարում՝ Instagram, Facebook և TikTok",
+          "en": "Management across Instagram, Facebook and TikTok",
+          "ru": "Ведение нескольких платформ: Instagram, Facebook и TikTok"
+        },
+        {
+          "hy": "Reels-ի կամ կարճ տեսանյութերի մոնտաժ",
+          "en": "Reels or short-form video editing",
+          "ru": "Монтаж Reels и коротких видео"
+        },
+        {
+          "hy": "Համայնքի կառավարում՝ պատասխաններ մեկնաբանություններին և հաղորդագրություններին",
+          "en": "Community management: replies to comments and messages",
+          "ru": "Работа с сообществом: ответы на комментарии и сообщения"
+        },
+        {
+          "hy": "Արդյունքների մոնիթորինգ և ամսական վերլուծություն",
+          "en": "Performance monitoring and monthly analytics",
+          "ru": "Мониторинг результатов и ежемесячная аналитика"
+        },
+        {
+          "hy": "Աճի օպտիմալացում և առաջարկություններ",
+          "en": "Growth optimisation and recommendations",
+          "ru": "Оптимизация роста и рекомендации"
+        },
+        {
+          "hy": "Պրոֆեսիոնալ լուսանկարահանում և տեսանյութերի արտադրություն",
+          "en": "Professional photography and video production",
+          "ru": "Профессиональная фотосъёмка и видеопродакшн"
+        }
+      ],
       "prices": {
         "m1": 149000,
         "m3": 145000,
@@ -78,10 +209,42 @@
         "ru": "Fundamental"
       },
       "tagline": {
-        "hy": "Ձեր կայքի տեխնիկական հիմքը կարգի բերելու համար",
-        "en": "Gets the technical basics of your site right",
-        "ru": "Приводим в порядок технические основы сайта"
+        "hy": "Անհրաժեշտ հիմքը՝ տեսանելիության, կայքի տեխնիկական առողջության և տեղական ներկայության համար",
+        "en": "The essentials for visibility, technical health and local presence",
+        "ru": "Основа для видимости, технического здоровья сайта и локального присутствия"
       },
+      "includes": [
+        {
+          "hy": "SEO աուդիտ",
+          "en": "SEO audit",
+          "ru": "SEO-аудит"
+        },
+        {
+          "hy": "Բանալի բառերի հետազոտություն՝ մինչև 50 բառ",
+          "en": "Keyword research, up to 50 keywords",
+          "ru": "Подбор ключевых слов: до 50 запросов"
+        },
+        {
+          "hy": "Տեխնիկական SEO շտկումներ",
+          "en": "Technical SEO fixes",
+          "ru": "Исправление технических ошибок SEO"
+        },
+        {
+          "hy": "Meta title-ի և description-ի օպտիմալացում",
+          "en": "Meta title and description optimisation",
+          "ru": "Оптимизация meta title и description"
+        },
+        {
+          "hy": "Google Business Profile-ի օպտիմալացում",
+          "en": "Google Business Profile optimisation",
+          "ru": "Оптимизация профиля Google Business"
+        },
+        {
+          "hy": "Ամսական հաշվետվություն",
+          "en": "Monthly reporting",
+          "ru": "Ежемесячная отчётность"
+        }
+      ],
       "prices": {
         "m1": 179000,
         "m3": 175000,
@@ -101,10 +264,47 @@
         "ru": "Vision"
       },
       "tagline": {
-        "hy": "Տեխնիկական աշխատանք և կանոնավոր բովանդակություն",
-        "en": "Technical work plus regular content",
-        "ru": "Техническая работа и регулярный контент"
+        "hy": "Բովանդակության վրա հիմնված SEO, որն ընդլայնում է դիրքերը և կառուցում տեղական հեղինակություն",
+        "en": "A content-led SEO system that expands rankings and builds local authority",
+        "ru": "SEO на основе контента, которое расширяет позиции и укрепляет локальный авторитет"
       },
+      "includes": [
+        {
+          "hy": "Fundamental-ի ամբողջ ծավալը և ընդլայնված հետազոտություն՝ 51+ բանալի բառ",
+          "en": "Everything in Fundamental, with expanded keyword research: 51+ keywords",
+          "ru": "Всё из Fundamental и расширенный подбор: 51+ ключевых слов"
+        },
+        {
+          "hy": "Բովանդակային ռազմավարություն",
+          "en": "Content strategy",
+          "ru": "Контент-стратегия"
+        },
+        {
+          "hy": "Ամսական 2 SEO հոդված",
+          "en": "2 SEO articles per month",
+          "ru": "2 SEO-статьи в месяц"
+        },
+        {
+          "hy": "Ներքին հղումների օպտիմալացում",
+          "en": "Internal linking optimisation",
+          "ru": "Оптимизация внутренней перелинковки"
+        },
+        {
+          "hy": "Տեղական SEO հիշատակումներ (citations)",
+          "en": "Local SEO citations",
+          "ru": "Локальные SEO-упоминания (ситации)"
+        },
+        {
+          "hy": "Մրցակիցների խորացված վերլուծություն",
+          "en": "Advanced competitor analysis",
+          "ru": "Углублённый анализ конкурентов"
+        },
+        {
+          "hy": "Ամսական SEO խորհրդատվություն",
+          "en": "Monthly SEO consultation",
+          "ru": "Ежемесячная SEO-консультация"
+        }
+      ],
       "prices": {
         "m1": 349000,
         "m3": 340000,
@@ -124,10 +324,52 @@
         "ru": "Authority"
       },
       "tagline": {
-        "hy": "Մեր ամենամեծ SEO փաթեթը՝ մրցակցային շուկաների համար",
-        "en": "Our largest SEO package, for competitive markets",
-        "ru": "Самый объёмный SEO-пакет, для конкурентных рынков"
+        "hy": "Հեղինակության ակտիվ կառուցման ծրագիր՝ հավակնոտ, մրցունակ բրենդների համար",
+        "en": "An intensive authority-building programme for ambitious, competitive brands",
+        "ru": "Активная программа роста авторитета для амбициозных брендов в конкурентных нишах"
       },
+      "includes": [
+        {
+          "hy": "Vision-ի ամբողջ ծավալը և խորացված տեխնիկական SEO",
+          "en": "Everything in Vision, plus advanced technical SEO",
+          "ru": "Всё из Vision и продвинутое техническое SEO"
+        },
+        {
+          "hy": "Ամսական 6 SEO հոդված",
+          "en": "6 SEO articles per month",
+          "ru": "6 SEO-статей в месяц"
+        },
+        {
+          "hy": "Հղումների ձեռքբերում և թվային PR",
+          "en": "Link building and digital PR",
+          "ru": "Наращивание ссылок и digital PR"
+        },
+        {
+          "hy": "Օպտիմալացում Google-ի AI Overview-ի համար",
+          "en": "AI Overview optimisation",
+          "ru": "Оптимизация под AI Overview в Google"
+        },
+        {
+          "hy": "Schema նշագրման ներդրում",
+          "en": "Schema markup implementation",
+          "ru": "Внедрение микроразметки Schema"
+        },
+        {
+          "hy": "Կոնվերսիայի օպտիմալացման առաջարկություններ",
+          "en": "Conversion optimisation recommendations",
+          "ru": "Рекомендации по оптимизации конверсии"
+        },
+        {
+          "hy": "Մրցակիցների խորացված մոնիթորինգ",
+          "en": "Advanced competitor tracking",
+          "ru": "Расширенное отслеживание конкурентов"
+        },
+        {
+          "hy": "Առաջնահերթ աջակցություն",
+          "en": "Priority support",
+          "ru": "Приоритетная поддержка"
+        }
+      ],
       "prices": {
         "m1": 499000,
         "m3": 480000,
@@ -147,10 +389,27 @@
         "ru": "Business Boost"
       },
       "tagline": {
-        "hy": "Սոցցանցեր և SEO մեկ փաթեթում",
-        "en": "Social media and SEO in one plan",
-        "ru": "Соцсети и SEO в одном плане"
+        "hy": "Բովանդակության աճ և ռազմավարական տեսանելիություն որոնման մեջ",
+        "en": "Content growth and strategic search visibility",
+        "ru": "Рост контента и стратегическая видимость в поиске"
       },
+      "includes": [
+        {
+          "hy": "SMM Dominance-ի ամբողջ ծավալը",
+          "en": "Everything in SMM Dominance",
+          "ru": "Всё из SMM Dominance"
+        },
+        {
+          "hy": "SEO Vision-ի ամբողջ ծավալը",
+          "en": "Everything in SEO Vision",
+          "ru": "Всё из SEO Vision"
+        },
+        {
+          "hy": "SMM-ը և SEO-ն աշխատում են որպես մեկ համակարգ",
+          "en": "SMM and SEO working as one system",
+          "ru": "SMM и SEO работают как единая система"
+        }
+      ],
       "prices": {
         "m1": 449000,
         "m3": 430000,
@@ -174,10 +433,27 @@
         "ru": "Ultra"
       },
       "tagline": {
-        "hy": "Մեր ամենամեծ փաթեթը՝ առավելագույն աշխատանք սոցցանցերում և SEO-ում",
-        "en": "Our largest plan, with the most social media and SEO work",
-        "ru": "Самый большой план: максимум работы в соцсетях и SEO"
+        "hy": "Պրեմիում բովանդակության արտադրություն և խորացված SEO",
+        "en": "Premium content production and advanced SEO",
+        "ru": "Премиальный продакшн контента и продвинутое SEO"
       },
+      "includes": [
+        {
+          "hy": "SMM Gold-ի ամբողջ ծավալը",
+          "en": "Everything in SMM Gold",
+          "ru": "Всё из SMM Gold"
+        },
+        {
+          "hy": "SEO Authority-ի ամբողջ ծավալը",
+          "en": "Everything in SEO Authority",
+          "ru": "Всё из SEO Authority"
+        },
+        {
+          "hy": "SMM-ը և SEO-ն աշխատում են որպես մեկ համակարգ",
+          "en": "SMM and SEO working as one system",
+          "ru": "SMM и SEO работают как единая система"
+        }
+      ],
       "prices": {
         "m1": 630000,
         "m3": 615000,

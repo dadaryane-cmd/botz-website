@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": {
-      "hy": "Ինտերակտիվ գներ — SMM, SEO և կայքեր",
-      "en": "Interactive pricing — SMM, SEO and websites",
-      "ru": "Интерактивные цены — SMM, SEO и сайты"
+      "hy": "Գներ — SMM, SEO և համակցված փաթեթներ",
+      "en": "Pricing — SMM, SEO and combined packages",
+      "ru": "Цены — пакеты SMM, SEO и комбинированные"
     },
     "description": {
       "hy": "Ընտրեք փաթեթ և ժամկետ՝ տեսնելու ամսական գինը, ընդհանուր գումարը և խնայողությունը։ Ավելացրեք լրացուցիչ ծառայություններ, համեմատեք և ստացեք առաջարկ։",
@@ -15,16 +15,25 @@
     {
       "type": "hero",
       "heading": {
-        "hy": "Գներ և նախահաշիվ",
-        "en": "Prices and estimate",
-        "ru": "Цены и расчёт"
+        "hy": "Թափանցիկ գներ։ *Իրական աճ։*",
+        "en": "Transparent Pricing. *Real Growth.*",
+        "ru": "Прозрачные цены. *Реальный рост.*"
       },
       "subheading": {
-        "hy": "Ընտրեք ծառայություն և ժամկետ։ Միանգամից տեսնում եք ամսական գինը, ընդհանուր գումարը և խնայողությունը, իսկ նախահաշիվը կարող եք ուղարկել ձեր հարցման հետ։",
-        "en": "Choose a service and a term. You see the monthly price, the total and the saving straight away, and you can send the estimate with your inquiry.",
-        "ru": "Выберите услугу и срок. Цена в месяц, итог и экономия видны сразу, а расчёт можно отправить вместе с заявкой."
+        "hy": "Ծանոթացեք թվային մարքեթինգի ճկուն փաթեթներին՝ ստեղծված ձեր նպատակներին, բյուջեին և աճի ծրագրերին համապատասխան։",
+        "en": "Explore flexible digital marketing packages designed to match your goals, budget and growth ambitions.",
+        "ru": "Гибкие пакеты цифрового маркетинга под ваши цели, бюджет и планы роста."
       },
       "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել փաթեթները",
+            "en": "See packages",
+            "ru": "Смотреть пакеты"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
         {
           "label": {
             "hy": "Գտնել իմ փաթեթը",
@@ -39,10 +48,35 @@
     {
       "type": "pricing",
       "id": "pricing",
+      "heading": {
+        "hy": "Ընտրեք ձեր փաթեթը",
+        "en": "Choose your package",
+        "ru": "Выберите пакет"
+      },
       "defaultCategory": "smm",
       "defaultDuration": 6,
       "lockCategory": false,
       "showAddons": true
+    },
+    {
+      "type": "comparison",
+      "id": "compare",
+      "background": "surface",
+      "heading": {
+        "hy": "Համեմատեք գները ըստ պայմանագրի ժամկետի",
+        "en": "Compare prices by contract length",
+        "ru": "Сравните цены по сроку договора"
+      },
+      "intro": {
+        "hy": "Ամսական գինը յուրաքանչյուր ժամկետի համար։ Ավելի երկար պայմանագրերն ամսական ավելի մատչելի են։",
+        "en": "The monthly price for each contract length. Longer agreements cost less per month.",
+        "ru": "Цена в месяц для каждого срока. Чем дольше договор, тем ниже ежемесячная оплата."
+      },
+      "categories": [
+        "smm",
+        "seo",
+        "bundle"
+      ]
     },
     {
       "type": "finder",
@@ -58,6 +92,31 @@
         "en": "We will suggest a package, explain why, and show the real cost for the term you choose.",
         "ru": "Мы предложим пакет, объясним почему и покажем реальную стоимость на выбранный срок."
       }
+    },
+    {
+      "type": "cta",
+      "background": "surface",
+      "heading": {
+        "hy": "Պե՞տք է այլ բան",
+        "en": "Need something different?",
+        "ru": "Нужно что-то другое?"
+      },
+      "text": {
+        "hy": "Եթե ոչ մի փաթեթ ճշգրիտ չի համապատասխանում, կկազմենք անհատական պլան՝ ձեր նպատակների և բյուջեի համաձայն։",
+        "en": "If no package fits exactly, we'll put together a tailored plan around your goals and budget.",
+        "ru": "Если ни один пакет не подходит точно, составим индивидуальный план под ваши цели и бюджет."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Պատվիրել անհատական պլան",
+            "en": "Request a custom plan",
+            "ru": "Запросить индивидуальный план"
+          },
+          "href": "#contact",
+          "style": "primary"
+        }
+      ]
     },
     {
       "type": "faq",
@@ -86,9 +145,9 @@
             "ru": "Что именно входит в пакет?"
           },
           "answer": {
-            "hy": "Փաթեթի քարտում կարճ նկարագրություն կա։ Ամբողջական ծավալը, օրինակ՝ քանի հրապարակում, նկարահանում կամ հոդված եք ստանում ամեն ամիս, գրված է ձեր անհատական առաջարկում՝ նախքան աշխատանքը սկսելը։",
-            "en": "Each package card gives a short description. The full scope, such as how many posts, shoots or articles you get each month, is written in your personal proposal before you start.",
-            "ru": "На карточке пакета есть краткое описание. Полный объём, например сколько публикаций, съёмок или статей вы получаете в месяц, прописан в вашем персональном предложении до начала работы."
+            "hy": "Յուրաքանչյուր փաթեթի քարտում նշված է, թե ինչ եք ստանում ամեն ամիս՝ հրապարակումների, սթորիների, հոդվածների քանակը և այլն։ Վերջնական ծավալը հաստատվում է ձեր անհատական առաջարկում՝ նախքան աշխատանքը սկսելը։",
+            "en": "Each package card lists what you get every month, such as the number of posts, stories or articles. The final scope is confirmed in your personal proposal before you start.",
+            "ru": "На карточке каждого пакета перечислено, что вы получаете в месяц: число публикаций, сторис, статей и так далее. Окончательный объём подтверждается в персональном предложении до начала работы."
           }
         },
         {
@@ -122,9 +181,9 @@
       "id": "contact",
       "background": "surface",
       "heading": {
-        "hy": "Ուղարկեք ձեր նախահաշիվը",
-        "en": "Send us your estimate",
-        "ru": "Отправьте нам свой расчёт"
+        "hy": "Պատվիրեք խորհրդատվություն",
+        "en": "Request a consultation",
+        "ru": "Запросите консультацию"
       },
       "intro": {
         "hy": "Եթե փաթեթ եք ընտրել, այն արդեն կցված է ձևին։ Ավելացրեք մի քանի բառ ձեր բիզնեսի մասին։",

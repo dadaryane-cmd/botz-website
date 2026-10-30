@@ -1,0 +1,30 @@
+/* One service explained (js/components/sections/service-detail.js), Services page. */
+
+.service-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 32px clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+.service-detail-story .heading {
+  margin-bottom: 12px;
+}
+
+.service-detail-story .service-team {
+  margin-bottom: 20px;
+}
+
+.service-detail-story .label {
+  margin-top: 24px;
+}
+
+.service-detail-includes .check-list {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 860px) {
+  .service-detail {
+    grid-template-columns: 1fr;
+  }
+}

@@ -14,6 +14,7 @@ const pages = Object.fromEntries(
   await Promise.all(PAGES.map(async (key) => [key, await loadJson(`pages/${key}.json`)])),
 )
 const SECTION_TYPES = [
+  'comparison',
   'contact',
   'cta',
   'faq',
@@ -23,6 +24,7 @@ const SECTION_TYPES = [
   'pricing',
   'process',
   'samples',
+  'serviceDetail',
   'services',
   'sign',
   'split',
@@ -73,7 +75,9 @@ describe('content', () => {
       .map((match) => match.split(':"')[1])
     for (const href of [...links.map((link) => link.href), ...pageLinks]) {
       if (/^(https?:|mailto:|tel:|#)/.test(href)) continue
-      assert.ok(existsSync(publicDir + href.split('#')[0]), `missing ${href}`)
+      // The file part only: without "?cat=…" and "#section".
+      const file = href.split(/[?#]/)[0]
+      assert.ok(existsSync(publicDir + file), `missing ${href}`)
     }
   })
 

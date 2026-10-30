@@ -102,6 +102,9 @@ components:
             label: Heading
             component: line
             description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
           - name: items
             label: Services
             type: object
@@ -113,7 +116,7 @@ components:
                 label: Service
                 type: select
                 options:
-                  values: [smm, seo, bundle, website]
+                  values: [smm, seo, bundle, website, addon, other, strategy]
               - name: highlights
                 label: What it includes
                 component: line
@@ -125,6 +128,71 @@ components:
               collapsible:
                 collapsed: true
                 summary: "{title.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: serviceDetail
+        label: Service explained
+        fields:
+          - name: title
+            label: Service name
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: service
+            label: Service (shows who handles it)
+            type: select
+            options:
+              values: [smm, seo, bundle, website, addon, other, strategy]
+          - name: problem
+            label: What it solves
+            component: paragraph
+          - name: approach
+            label: How we work
+            component: paragraph
+          - name: deliverables
+            label: What we do
+            component: line
+            list: true
+          - name: link
+            label: Link (e.g. to its prices)
+            component: link
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: comparison
+        label: Price comparison table
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: categories
+            label: Package groups
+            type: select
+            options:
+              values: [smm, seo, bundle, website]
+              multiple: true
           - name: id
             label: Anchor
             type: string
@@ -664,6 +732,13 @@ content:
           - name: tagline
             label: Tagline
             component: line
+          - name: includes
+            label: What's included
+            component: line
+            list: true
+          - name: note
+            label: Note under the list
+            component: paragraph
           - name: recommended
             label: Recommended
             type: boolean
@@ -898,7 +973,7 @@ content:
             label: Handles inquiries about
             type: select
             options:
-              values: [smm, seo, bundle, website, addon, other]
+              values: [smm, seo, bundle, website, addon, other, strategy]
               multiple: true
         list:
           collapsible:
@@ -1090,6 +1165,15 @@ content:
             component: line
           - name: recommended
             label: Recommended
+            component: line
+          - name: includedTitle
+            label: Included title
+            component: line
+          - name: showAllIncluded
+            label: Show all included
+            component: line
+          - name: askAbout
+            label: Ask about
             component: line
           - name: upToTerm
             label: Up to term
@@ -1376,6 +1460,29 @@ content:
             component: line
           - name: message
             label: Message
+            component: line
+      - name: servicesPage
+        label: Services page
+        type: object
+        fields:
+          - name: includesLabel
+            label: Includes label
+            component: line
+          - name: approachLabel
+            label: Approach label
+            component: line
+      - name: comparison
+        label: Comparison
+        type: object
+        fields:
+          - name: package
+            label: Package
+            component: line
+          - name: saving
+            label: Saving
+            component: line
+          - name: notOffered
+            label: Not offered
             component: line
       - name: faq
         label: Faq

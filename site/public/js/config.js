@@ -23,6 +23,8 @@ export const MAX_ADDON_QUANTITY = 20
 
 export const PACKAGE_CATEGORIES = ['smm', 'seo', 'bundle', 'website']
 export const INQUIRY_SERVICES = ['smm', 'seo', 'bundle', 'website', 'addon', 'other']
+/** Everything a founder can be responsible for: the inquiry services plus strategy work. */
+export const SERVICE_AREAS = [...INQUIRY_SERVICES, 'strategy']
 
 /** Social networks the footer has icons for (content/site.json → social). */
 export const SOCIAL_NETWORKS = ['instagram', 'facebook', 'tiktok']

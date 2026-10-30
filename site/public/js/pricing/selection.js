@@ -2,7 +2,12 @@
  * The visitor's chosen package, contract length and add-ons. Shared by the pricing tool,
  * the package finder and the inquiry form, and kept across pages in localStorage.
  */
-import { CONTRACT_LENGTHS, DEFAULT_CONTRACT_LENGTH, MAX_ADDON_QUANTITY } from '../config.js'
+import {
+  CONTRACT_LENGTHS,
+  DEFAULT_CONTRACT_LENGTH,
+  MAX_ADDON_QUANTITY,
+  PACKAGE_CATEGORIES,
+} from '../config.js'
 import { catalog } from '../content/index.js'
 import { load, save } from '../lib/storage.js'
 import { findAddon, findPackage } from './engine.js'
@@ -50,6 +55,12 @@ export function toParams(value) {
   const addons = Object.entries(value.addons ?? {}).map(([key, quantity]) => `${key}:${quantity}`)
   if (addons.length) params.set('addons', addons.join(','))
   return params
+}
+
+/** The package group a link asks the pricing tool to open on (`?cat=seo`), or null. */
+export function categoryFromSearch(search = '') {
+  const category = new URLSearchParams(search).get('cat')
+  return PACKAGE_CATEGORIES.includes(category) ? category : null
 }
 
 export function fromParams(params) {

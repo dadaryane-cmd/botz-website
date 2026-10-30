@@ -12,6 +12,7 @@ import {
   INQUIRY_SERVICES,
   PACKAGE_CATEGORIES,
   PAGES,
+  SERVICE_AREAS,
   SOCIAL_NETWORKS,
 } from '../public/js/config.js'
 
@@ -104,16 +105,40 @@ const sectionBlocks = [
     label: 'Services',
     fields: [
       heading(),
+      text('intro', 'Intro', { long: true }),
       list(
         object('items', 'Services', [
           text('title', 'Title'),
           // Shows the founder(s) who handle this service (from Founders).
-          select('service', 'Service', PACKAGE_CATEGORIES),
+          select('service', 'Service', SERVICE_AREAS),
           list(text('highlights', 'What it includes')),
           link('link', 'Link'),
         ]),
         '{title.en}',
       ),
+      ...layout,
+    ],
+  },
+  {
+    name: 'serviceDetail',
+    label: 'Service explained',
+    fields: [
+      heading('title', 'Service name'),
+      select('service', 'Service (shows who handles it)', SERVICE_AREAS),
+      text('problem', 'What it solves', { long: true }),
+      text('approach', 'How we work', { long: true }),
+      list(text('deliverables', 'What we do')),
+      link('link', 'Link (e.g. to its prices)'),
+      ...layout,
+    ],
+  },
+  {
+    name: 'comparison',
+    label: 'Price comparison table',
+    fields: [
+      heading(),
+      text('intro', 'Intro', { long: true }),
+      select('categories', 'Package groups', PACKAGE_CATEGORIES, { options: { multiple: true } }),
       ...layout,
     ],
   },
@@ -269,6 +294,8 @@ const catalogEntry = {
         readonly(select('category', 'Group', PACKAGE_CATEGORIES)),
         text('name', 'Name'),
         text('tagline', 'Tagline'),
+        list(text('includes', "What's included")),
+        text('note', 'Note under the list', { long: true }),
         boolean('recommended', 'Recommended'),
         object(
           'prices',
@@ -383,7 +410,7 @@ const peopleEntry = {
         readonly(string('key', 'Key')),
         text('name', 'Name'),
         text('role', 'Role'),
-        select('services', 'Handles inquiries about', INQUIRY_SERVICES, {
+        select('services', 'Handles inquiries about', SERVICE_AREAS, {
           options: { multiple: true },
         }),
       ]),

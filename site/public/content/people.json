@@ -15,7 +15,8 @@
       "services": [
         "smm",
         "bundle",
-        "addon"
+        "addon",
+        "strategy"
       ]
     },
     {
@@ -34,7 +35,8 @@
         "seo",
         "website",
         "bundle",
-        "addon"
+        "addon",
+        "strategy"
       ]
     }
   ]

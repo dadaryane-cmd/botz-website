@@ -3,7 +3,12 @@ import { catalog } from '../../content/index.js'
 import { h, renderInto } from '../../lib/dom.js'
 import { ui } from '../../lib/i18n.js'
 import { findPackage } from '../../pricing/engine.js'
-import { getSelection, subscribe, updateSelection } from '../../pricing/selection.js'
+import {
+  categoryFromSearch,
+  getSelection,
+  subscribe,
+  updateSelection,
+} from '../../pricing/selection.js'
 import { addonList } from '../pricing/addon-list.js'
 import { estimatePanel } from '../pricing/estimate-panel.js'
 import { pricingFilters } from '../pricing/filters.js'
@@ -12,8 +17,7 @@ import { heading, section } from './section.js'
 
 export function renderPricing(config) {
   const selected = findPackage(catalog, getSelection().packageKey)
-  // Open on the selected package's group, unless this page shows one group only.
-  let category = !config.lockCategory && selected ? selected.category : config.defaultCategory
+  let category = startCategory(config, selected)
   // Nothing chosen yet: start at the contract length this page suggests.
   if (!selected && config.defaultDuration > 1) {
     updateSelection({ months: config.defaultDuration })
@@ -57,4 +61,13 @@ export function renderPricing(config) {
   render()
   subscribe(body, render)
   return section(config, heading(config.heading), body)
+}
+
+/**
+ * The group shown first: the page's own when it shows one group only; otherwise the one a link
+ * asks for (`?cat=seo`), then the selected package's, then the page's default.
+ */
+function startCategory(config, selected) {
+  if (config.lockCategory) return config.defaultCategory
+  return categoryFromSearch(location.search) ?? selected?.category ?? config.defaultCategory
 }

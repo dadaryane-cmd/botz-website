@@ -27,6 +27,7 @@
 @import url('components/marquee-sign.css');
 @import url('components/split.css');
 @import url('components/services.css');
+@import url('components/service-detail.css');
 @import url('components/team.css');
 @import url('components/samples.css');
 @import url('components/process.css');
@@ -34,6 +35,7 @@
 @import url('components/cta.css');
 @import url('components/pricing.css');
 @import url('components/package-preview.css');
+@import url('components/comparison.css');
 @import url('components/finder.css');
 @import url('components/contact.css');
 

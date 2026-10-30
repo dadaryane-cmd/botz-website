@@ -74,6 +74,36 @@
   opacity: 0.7;
 }
 
+/* What's included: a compact check-list between the tagline and the price. */
+.package-includes {
+  margin-top: 8px;
+}
+
+.package-includes .check-list {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.package-includes .check-list li {
+  margin-bottom: 6px;
+}
+
+/* "Show all (9)": the rest of the list, opened in place. */
+.package-more summary {
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+/* "Ask about this package": under the select button, centred. */
+.package-ask {
+  align-self: center;
+  margin-top: 14px;
+  font-size: 0.9rem;
+}
+
 .package-price {
   margin: auto 0 16px;
   padding-top: 16px;

@@ -1,52 +1,63 @@
 {
   "meta": {
     "title": {
-      "hy": "Ծառայություններ — SMM, SEO և կայքերի ստեղծում",
-      "en": "Services — SMM, SEO and website creation",
-      "ru": "Услуги — SMM, SEO и создание сайтов"
+      "hy": "Ծառայություններ — Սոցցանցեր, SEO, կայքեր և ռազմավարություն",
+      "en": "Services — Social media, SEO, websites and strategy",
+      "ru": "Услуги — Соцсети, SEO, сайты и стратегия"
     },
     "description": {
-      "hy": "Սոցիալական մեդիա մարքեթինգ, որոնողական օպտիմալացում, կայքերի ստեղծում և համակցված SMM + SEO փաթեթներ BOTZ-ից։",
-      "en": "Social media marketing, search engine optimisation, website creation and combined SMM + SEO plans from BOTZ Marketing Agency.",
-      "ru": "Маркетинг в соцсетях, поисковая оптимизация, создание сайтов и комплексные планы SMM + SEO от BOTZ."
+      "hy": "Սոցիալական մեդիա մարքեթինգ, SEO և կայքի օպտիմալացում, կայքերի ստեղծում և թվային մարքեթինգի ռազմավարություն BOTZ-ից։",
+      "en": "Social media marketing, SEO and website optimisation, website creation and digital marketing strategy from BOTZ Marketing Agency.",
+      "ru": "Маркетинг в соцсетях, SEO и оптимизация сайтов, создание сайтов и стратегия цифрового маркетинга от BOTZ."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Սոցցանցեր, SEO և կայքեր",
-        "en": "Social media, SEO and websites",
-        "ru": "Соцсети, SEO и сайты"
+        "hy": "Թվային մարքեթինգի *ամբողջական ծառայություններ*",
+        "en": "Full-Service *Digital Marketing Agency*",
+        "ru": "Агентство цифрового маркетинга *полного цикла*"
       },
       "subheading": {
-        "hy": "Վերցրեք մեկ ծառայություն կամ համատեղեք դրանք։ Յուրաքանչյուր փաթեթ ունի որոշված ծավալ, հրապարակված գին և մեկ պատասխանատու մարդ։",
-        "en": "Take one service or combine them. Every package has a fixed scope, a published price and one person responsible for it.",
-        "ru": "Возьмите одну услугу или объедините несколько. У каждого пакета есть определённый объём, опубликованная цена и один ответственный человек."
+        "hy": "Կրեատիվ արշավներից մինչև ռազմավարական աճ՝ օգնում ենք բրենդներին կառուցել թվային ներկայություն և առաջ տանել իրենց բիզնեսը։",
+        "en": "From creative campaigns to strategic growth, we help brands build their digital presence and move their business forward.",
+        "ru": "От креативных кампаний до стратегического роста: помогаем брендам строить цифровое присутствие и развивать бизнес."
       },
       "buttons": [
         {
           "label": {
-            "hy": "Դիտել փաթեթները",
-            "en": "Explore packages",
-            "ru": "Смотреть пакеты"
+            "hy": "Դիտել ծառայությունները",
+            "en": "Explore our services",
+            "ru": "Смотреть услуги"
           },
-          "href": "pricing.html",
+          "href": "#overview",
           "style": "primary"
         },
         {
           "label": {
-            "hy": "Քննարկել իմ նախագիծը",
-            "en": "Discuss my project",
-            "ru": "Обсудить мой проект"
+            "hy": "Քննարկել ձեր նախագիծը",
+            "en": "Discuss your project",
+            "ru": "Обсудить проект"
           },
-          "href": "#contact",
+          "href": "contact.html",
           "style": "secondary"
         }
       ]
     },
     {
       "type": "services",
+      "id": "overview",
+      "heading": {
+        "hy": "Չորս ծառայություն, մեկ թիմ",
+        "en": "Four services, one team",
+        "ru": "Четыре услуги, одна команда"
+      },
+      "intro": {
+        "hy": "Ընտրեք մեկը կամ համատեղեք։ Յուրաքանչյուրով անմիջականորեն զբաղվում են Մարիամը կամ Էդգարը։",
+        "en": "Choose one or combine them. Each is handled directly by Mariam or Edgar.",
+        "ru": "Выберите одну или объедините несколько. Каждой занимаются лично Мариам или Эдгар."
+      },
       "items": [
         {
           "title": {
@@ -57,35 +68,35 @@
           "service": "smm",
           "highlights": [
             {
-              "hy": "Հրապարակումներ և սթորիներ",
-              "en": "Posts and stories",
-              "ru": "Посты и сторис"
+              "hy": "Ռազմավարություն",
+              "en": "Strategy",
+              "ru": "Стратегия"
             },
             {
-              "hy": "Նկարահանումներ և տեսանյութեր",
-              "en": "Shoots and video",
-              "ru": "Съёмки и видео"
+              "hy": "Բովանդակություն",
+              "en": "Content",
+              "ru": "Контент"
             },
             {
-              "hy": "Meta գովազդ",
-              "en": "Meta ads",
-              "ru": "Реклама в Meta"
+              "hy": "Առաջխաղացում",
+              "en": "Promotion",
+              "ru": "Продвижение"
             }
           ],
           "link": {
             "label": {
-              "hy": "Դիտել SMM-ը",
-              "en": "Explore SMM",
-              "ru": "Подробнее об SMM"
+              "hy": "Սոցիալական մեդիա մարքեթինգ",
+              "en": "Social media marketing",
+              "ru": "Маркетинг в соцсетях"
             },
-            "href": "smm.html"
+            "href": "#smm"
           }
         },
         {
           "title": {
-            "hy": "SEO",
-            "en": "SEO",
-            "ru": "SEO"
+            "hy": "SEO և կայքի օպտիմալացում",
+            "en": "SEO and website optimisation",
+            "ru": "SEO и оптимизация сайта"
           },
           "service": "seo",
           "highlights": [
@@ -95,23 +106,23 @@
               "ru": "Техническое SEO"
             },
             {
-              "hy": "Հոդվածներ",
-              "en": "Articles",
-              "ru": "Статьи"
+              "hy": "Բանալի բառեր",
+              "en": "Keywords",
+              "ru": "Ключевые слова"
             },
             {
-              "hy": "Ամսական հաշվետվություն",
-              "en": "Monthly reports",
-              "ru": "Ежемесячные отчёты"
+              "hy": "Տեղական SEO",
+              "en": "Local SEO",
+              "ru": "Локальное SEO"
             }
           ],
           "link": {
             "label": {
-              "hy": "Դիտել SEO-ն",
-              "en": "Explore SEO",
-              "ru": "Подробнее об SEO"
+              "hy": "SEO և կայքի օպտիմալացում",
+              "en": "SEO and website optimisation",
+              "ru": "SEO и оптимизация сайта"
             },
-            "href": "seo.html"
+            "href": "#seo"
           }
         },
         {
@@ -123,64 +134,436 @@
           "service": "website",
           "highlights": [
             {
-              "hy": "Աշխատում է հեռախոսում",
-              "en": "Works on phones",
-              "ru": "Удобен на телефоне"
+              "hy": "Դիզայն",
+              "en": "Design",
+              "ru": "Дизайн"
             },
             {
-              "hy": "Հիմնական SEO կարգավորում",
-              "en": "Basic SEO setup",
-              "ru": "Базовая SEO-настройка"
+              "hy": "Աշխատում է բոլոր էկրաններին",
+              "en": "Works on every screen",
+              "ru": "Удобен на любом экране"
+            },
+            {
+              "hy": "Կոնվերսիա",
+              "en": "Conversion",
+              "ru": "Конверсия"
             }
           ],
           "link": {
             "label": {
-              "hy": "Դիտել կայքերը",
-              "en": "Explore websites",
-              "ru": "Подробнее о сайтах"
+              "hy": "Կայքի ստեղծում",
+              "en": "Website creation",
+              "ru": "Создание сайтов"
             },
-            "href": "website-creation.html"
+            "href": "#website"
           }
         },
         {
           "title": {
-            "hy": "SMM + SEO փաթեթներ",
-            "en": "SMM + SEO plans",
-            "ru": "Планы SMM + SEO"
+            "hy": "Թվային մարքեթինգի ռազմավարություն",
+            "en": "Digital marketing strategy",
+            "ru": "Стратегия цифрового маркетинга"
           },
-          "service": "bundle",
+          "service": "strategy",
           "highlights": [
             {
-              "hy": "Սոցցանցեր և SEO մեկ փաթեթում",
-              "en": "Social media and SEO in one plan",
-              "ru": "Соцсети и SEO в одном плане"
+              "hy": "Հետազոտություն",
+              "en": "Research",
+              "ru": "Исследования"
+            },
+            {
+              "hy": "Դիրքավորում",
+              "en": "Positioning",
+              "ru": "Позиционирование"
+            },
+            {
+              "hy": "Աճի պլանավորում",
+              "en": "Growth planning",
+              "ru": "План роста"
             }
           ],
           "link": {
             "label": {
-              "hy": "Համեմատել փաթեթները",
-              "en": "Compare plans",
-              "ru": "Сравнить планы"
+              "hy": "Թվային մարքեթինգի ռազմավարություն",
+              "en": "Digital marketing strategy",
+              "ru": "Стратегия цифрового маркетинга"
             },
-            "href": "pricing.html"
+            "href": "#strategy"
           }
         }
       ]
     },
     {
-      "type": "contact",
-      "id": "contact",
+      "type": "serviceDetail",
+      "id": "smm",
+      "background": "surface",
+      "title": {
+        "hy": "Սոցիալական մեդիա մարքեթինգ",
+        "en": "Social media marketing",
+        "ru": "Маркетинг в соцсетях"
+      },
+      "service": "smm",
+      "problem": {
+        "hy": "Ժամանակ առ ժամանակ հրապարակելը հազվադեպ է լսարան կառուցում։ Մենք ձեր էջերը դարձնում ենք կայուն և ճանաչելի ներկայություն, որին մարդիկ հետևում և վստահում են։",
+        "en": "Posting now and then rarely builds an audience. We turn your accounts into a steady, recognisable presence that people follow and trust.",
+        "ru": "Редкие публикации почти никогда не собирают аудиторию. Мы превращаем ваши страницы в стабильное, узнаваемое присутствие, за которым люди следят и которому доверяют."
+      },
+      "approach": {
+        "hy": "Մարիամը ձեզ հետ պլանավորում է ամեն ամիսը, ստեղծում բովանդակությունը և վարում առաջխաղացումը, հետո վերլուծում է թվերը և ճշգրտում պլանը։",
+        "en": "Mariam plans each month with you, creates the content and runs the promotion, then reviews the numbers and adjusts the plan.",
+        "ru": "Мариам вместе с вами планирует каждый месяц, создаёт контент и ведёт продвижение, затем анализирует цифры и корректирует план."
+      },
+      "deliverables": [
+        {
+          "hy": "Սոցցանցերի ռազմավարություն",
+          "en": "Social media strategy",
+          "ru": "Стратегия в соцсетях"
+        },
+        {
+          "hy": "Բովանդակության պլանավորում և կառավարում",
+          "en": "Content planning and management",
+          "ru": "Планирование и ведение контента"
+        },
+        {
+          "hy": "Կրեատիվ բովանդակություն և գրաֆիկական դիզայն",
+          "en": "Creative content and graphic design",
+          "ru": "Креативный контент и графический дизайн"
+        },
+        {
+          "hy": "Առաջխաղացում սոցցանցերում",
+          "en": "Social media promotion",
+          "ru": "Продвижение в соцсетях"
+        },
+        {
+          "hy": "Լսարանի ներգրավում և աճ",
+          "en": "Audience engagement and growth",
+          "ru": "Вовлечение и рост аудитории"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Դիտել SMM փաթեթներն ու գները",
+          "en": "See SMM packages and prices",
+          "ru": "Пакеты и цены SMM"
+        },
+        "href": "pricing.html?cat=smm#pricing"
+      }
+    },
+    {
+      "type": "serviceDetail",
+      "id": "seo",
+      "title": {
+        "hy": "SEO և կայքի օպտիմալացում",
+        "en": "SEO and website optimisation",
+        "ru": "SEO и оптимизация сайта"
+      },
+      "service": "seo",
+      "problem": {
+        "hy": "Հաճախորդներն ամեն օր փնտրում են այն, ինչ դուք վաճառում եք։ Եթե ձեր կայքը չի երևում, նրանք գտնում են ուրիշին։ Մենք օգնում ենք ձեզ երևալ ճիշտ պահին։",
+        "en": "Customers search for what you sell every day. If your site doesn't appear, they find someone else. We help you show up when it matters.",
+        "ru": "Клиенты каждый день ищут то, что вы продаёте. Если вашего сайта нет в выдаче, они находят кого-то другого. Мы помогаем вам появляться в нужный момент."
+      },
+      "approach": {
+        "hy": "Էդգարը սկսում է այն շտկելուց, ինչը հետ է պահում ձեր կայքը, ապա զարգացնում է էջերն ու բովանդակությունը, որոնք պատասխանում են ձեր հաճախորդների որոնումներին։",
+        "en": "Edgar starts by fixing what holds your site back, then grows the pages and content that answer what your customers search for.",
+        "ru": "Эдгар начинает с исправления того, что тормозит ваш сайт, а затем развивает страницы и контент, которые отвечают на запросы ваших клиентов."
+      },
+      "deliverables": [
+        {
+          "hy": "Տեխնիկական SEO",
+          "en": "Technical SEO",
+          "ru": "Техническое SEO"
+        },
+        {
+          "hy": "Բանալի բառերի հետազոտություն և խմբավորում",
+          "en": "Keyword research and clustering",
+          "ru": "Подбор и кластеризация ключевых слов"
+        },
+        {
+          "hy": "Էջերի SEO օպտիմալացում",
+          "en": "On-page SEO",
+          "ru": "Внутренняя оптимизация страниц"
+        },
+        {
+          "hy": "Տեղական SEO",
+          "en": "Local SEO",
+          "ru": "Локальное SEO"
+        },
+        {
+          "hy": "Բովանդակության օպտիմալացում",
+          "en": "Content optimisation",
+          "ru": "Оптимизация контента"
+        },
+        {
+          "hy": "Օրգանիկ որոնման աճ",
+          "en": "Organic search growth",
+          "ru": "Рост органического трафика"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Դիտել SEO փաթեթներն ու գները",
+          "en": "See SEO packages and prices",
+          "ru": "Пакеты и цены SEO"
+        },
+        "href": "pricing.html?cat=seo#pricing"
+      }
+    },
+    {
+      "type": "serviceDetail",
+      "id": "website",
+      "background": "surface",
+      "title": {
+        "hy": "Կայքի ստեղծում",
+        "en": "Website creation",
+        "ru": "Создание сайтов"
+      },
+      "service": "website",
+      "problem": {
+        "hy": "Դանդաղ կամ շփոթեցնող կայքը կորցնում է այցելուներին, նախքան նրանք կկապվեն ձեզ հետ։ Մենք ստեղծում ենք հստակ, արագ կայքեր, որոնք այցելությունները վերածում են հարցումների։",
+        "en": "A slow or confusing website loses visitors before they contact you. We build clear, fast websites that turn visits into inquiries.",
+        "ru": "Медленный или запутанный сайт теряет посетителей до того, как они с вами свяжутся. Мы делаем понятные, быстрые сайты, которые превращают посещения в заявки."
+      },
+      "approach": {
+        "hy": "Նախ համաձայնեցնում ենք կառուցվածքը, ապա ստեղծում ենք դիզայնն ու կայքը և գործարկումից առաջ ստուգում ենք յուրաքանչյուր էջը հեռախոսում և համակարգչում։",
+        "en": "We agree the structure first, then design and build the site, and check every page on a phone and a computer before launch.",
+        "ru": "Сначала согласуем структуру, затем делаем дизайн и сайт и перед запуском проверяем каждую страницу на телефоне и компьютере."
+      },
+      "deliverables": [
+        {
+          "hy": "Կայքի դիզայն և մշակում",
+          "en": "Website design and development",
+          "ru": "Дизайн и разработка сайта"
+        },
+        {
+          "hy": "Ադապտիվ կայքեր բոլոր էկրանների համար",
+          "en": "Responsive websites for every screen",
+          "ru": "Адаптивные сайты для любых экранов"
+        },
+        {
+          "hy": "Օգտատիրոջ փորձի օպտիմալացում",
+          "en": "User experience optimisation",
+          "ru": "Оптимизация пользовательского опыта"
+        },
+        {
+          "hy": "Կոնվերսիայի վրա կենտրոնացած դիզայն",
+          "en": "Conversion-focused design",
+          "ru": "Дизайн, ориентированный на конверсию"
+        },
+        {
+          "hy": "Կայքի կառուցվածք և օպտիմալացում",
+          "en": "Website structure and optimisation",
+          "ru": "Структура и оптимизация сайта"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Դիտել կայքի գները",
+          "en": "See website prices",
+          "ru": "Цены на сайты"
+        },
+        "href": "pricing.html?cat=website#pricing"
+      }
+    },
+    {
+      "type": "serviceDetail",
+      "id": "strategy",
+      "title": {
+        "hy": "Թվային մարքեթինգի ռազմավարություն",
+        "en": "Digital marketing strategy",
+        "ru": "Стратегия цифрового маркетинга"
+      },
+      "service": "strategy",
+      "problem": {
+        "hy": "Առանց պլանի մարքեթինգը վերածվում է ցրված գրառումների և գովազդների։ Ռազմավարությունը որոշում է, թե ում հետ եք խոսում, ինչ եք ասում և որ ալիքներն են արժանի ձեր բյուջեին։",
+        "en": "Without a plan, marketing turns into scattered posts and ads. Strategy decides who you speak to, what you say and which channels deserve your budget.",
+        "ru": "Без плана маркетинг превращается в разрозненные посты и рекламу. Стратегия определяет, с кем вы говорите, что говорите и какие каналы заслуживают вашего бюджета."
+      },
+      "approach": {
+        "hy": "Մարիամն ու Էդգարը միասին ուսումնասիրում են ձեր շուկան և մրցակիցներին, ապա կազմում մեկ պլան սոցցանցերի, որոնման և ձեր կայքի համար։",
+        "en": "Mariam and Edgar study your market and competitors together, then build one plan for social media, search and your website.",
+        "ru": "Мариам и Эдгар вместе изучают ваш рынок и конкурентов, а затем составляют единый план для соцсетей, поиска и сайта."
+      },
+      "deliverables": [
+        {
+          "hy": "Շուկայի և մրցակիցների հետազոտություն",
+          "en": "Market and competitor research",
+          "ru": "Исследование рынка и конкурентов"
+        },
+        {
+          "hy": "Բրենդի դիրքավորում",
+          "en": "Brand positioning",
+          "ru": "Позиционирование бренда"
+        },
+        {
+          "hy": "Մարքեթինգային ռազմավարության մշակում",
+          "en": "Marketing strategy development",
+          "ru": "Разработка маркетинговой стратегии"
+        },
+        {
+          "hy": "Թվային աճի պլանավորում",
+          "en": "Digital growth planning",
+          "ru": "Планирование цифрового роста"
+        },
+        {
+          "hy": "Ալիքների և արշավների ռազմավարություն",
+          "en": "Channel and campaign strategy",
+          "ru": "Стратегия каналов и кампаний"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Քննարկել ձեր ռազմավարությունը",
+          "en": "Discuss your strategy",
+          "ru": "Обсудить стратегию"
+        },
+        "href": "contact.html"
+      }
+    },
+    {
+      "type": "process",
+      "id": "approach",
       "background": "surface",
       "heading": {
-        "hy": "Հարցրեք ձեր նախագծի մասին",
-        "en": "Ask us about your project",
-        "ru": "Спросите о своём проекте"
+        "hy": "Ռազմավարություն, կրեատիվ և արդյունք",
+        "en": "Strategy, creativity and performance",
+        "ru": "Стратегия, креатив и результат"
       },
-      "intro": {
-        "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ ուղարկեք ձևը։",
-        "en": "Call, send a WhatsApp message or use the form.",
-        "ru": "Позвоните, напишите в WhatsApp или отправьте форму."
-      }
+      "steps": [
+        {
+          "title": {
+            "hy": "Ռազմավարություն",
+            "en": "Strategy",
+            "ru": "Стратегия"
+          },
+          "text": {
+            "hy": "Յուրաքանչյուր նախագիծ սկսվում է հետազոտությունից և հստակ պլանից՝ ովքեր են ձեր հաճախորդները, ինչ է նրանց պետք և որտեղ գտնել նրանց։",
+            "en": "Every project starts with research and a clear plan: who your customers are, what they need and where to reach them.",
+            "ru": "Каждый проект начинается с исследования и чёткого плана: кто ваши клиенты, что им нужно и где их найти."
+          }
+        },
+        {
+          "title": {
+            "hy": "Կրեատիվ",
+            "en": "Creativity",
+            "ru": "Креатив"
+          },
+          "text": {
+            "hy": "Պլանը վերածում ենք բովանդակության, դիզայնի և կայքերի, որոնք նման են ձեր բրենդին և մարդկանց կանգ առնելու պատճառ են տալիս։",
+            "en": "We turn the plan into content, design and websites that look like your brand and give people a reason to stop.",
+            "ru": "Превращаем план в контент, дизайн и сайты, которые выглядят как ваш бренд и дают людям повод остановиться."
+          }
+        },
+        {
+          "title": {
+            "hy": "Արդյունք",
+            "en": "Performance",
+            "ru": "Результат"
+          },
+          "text": {
+            "hy": "Չափում ենք արդյունքները, պարզ լեզվով զեկուցում և ճշգրտում, որպեսզի աշխատանքն ամիս առ ամիս լավանա։",
+            "en": "We measure what happens, report it in plain language and adjust, so the work keeps improving month by month.",
+            "ru": "Измеряем результаты, понятно отчитываемся и корректируем, чтобы работа становилась лучше из месяца в месяц."
+          }
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "statement": {
+        "hy": "Ինչու BOTZ",
+        "en": "Why BOTZ",
+        "ru": "Почему BOTZ"
+      },
+      "body": {
+        "hy": "Մենք դիտավորյալ փոքր գործակալություն ենք։ Դուք աշխատում եք անմիջապես հիմնադիրների հետ, և այն ամենը, ինչ խոստանում ենք, գրված է։",
+        "en": "We are a small agency on purpose. You work directly with the founders, and everything we promise is written down.",
+        "ru": "Мы небольшое агентство намеренно. Вы работаете напрямую с основателями, и всё, что мы обещаем, записано."
+      },
+      "points": [
+        {
+          "title": {
+            "hy": "Ուղիղ կապ",
+            "en": "Direct contact",
+            "ru": "Прямой контакт"
+          },
+          "text": {
+            "hy": "Դուք խոսում եք Մարիամի կամ Էդգարի հետ՝ նրանց, ովքեր կատարում են ձեր աշխատանքը։",
+            "en": "You talk to Mariam or Edgar, the people doing your work.",
+            "ru": "Вы общаетесь с Мариам или Эдгаром, теми, кто делает вашу работу."
+          }
+        },
+        {
+          "title": {
+            "hy": "Հստակ ծավալ",
+            "en": "Clear scope",
+            "ru": "Понятный объём"
+          },
+          "text": {
+            "hy": "Յուրաքանչյուր փաթեթում նշված է, թե ինչ է ներառված։",
+            "en": "Every package lists what is included.",
+            "ru": "В каждом пакете перечислено, что входит."
+          }
+        },
+        {
+          "title": {
+            "hy": "Բաց գներ",
+            "en": "Open prices",
+            "ru": "Открытые цены"
+          },
+          "text": {
+            "hy": "Բոլոր գները հրապարակված են կայքում։",
+            "en": "All prices are published on the website.",
+            "ru": "Все цены опубликованы на сайте."
+          }
+        },
+        {
+          "title": {
+            "hy": "Ազնիվ հաշվետվություններ",
+            "en": "Honest reports",
+            "ru": "Честные отчёты"
+          },
+          "text": {
+            "hy": "Կանոնավոր հաշվետվություններ պարզ լեզվով և պատասխան մեկ աշխատանքային օրվա ընթացքում։",
+            "en": "Regular reports in plain language, and a reply within one working day.",
+            "ru": "Регулярные отчёты простым языком и ответ в течение одного рабочего дня."
+          }
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "background": "accent",
+      "heading": {
+        "hy": "Եկեք աճեցնենք ձեր բիզնեսը",
+        "en": "Let's grow your business",
+        "ru": "Давайте развивать ваш бизнес"
+      },
+      "text": {
+        "hy": "Պատմեք, թե որտեղ եք հիմա և ուր եք ուզում հասնել։ Կառաջարկենք ճիշտ ծառայությունը։",
+        "en": "Tell us where you are now and where you want to be. We'll suggest the right service.",
+        "ru": "Расскажите, где вы сейчас и куда хотите прийти. Мы предложим подходящую услугу."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Քննարկել ձեր նախագիծը",
+            "en": "Discuss your project",
+            "ru": "Обсудить проект"
+          },
+          "href": "contact.html",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Դիտել գները",
+            "en": "View pricing",
+            "ru": "Смотреть цены"
+          },
+          "href": "pricing.html",
+          "style": "secondary"
+        }
+      ]
     }
   ]
 }

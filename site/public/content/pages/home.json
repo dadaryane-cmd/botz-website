@@ -93,7 +93,7 @@
               "en": "Explore SMM",
               "ru": "Подробнее об SMM"
             },
-            "href": "smm.html"
+            "href": "services.html#smm"
           }
         },
         {
@@ -126,7 +126,7 @@
               "en": "Explore SEO",
               "ru": "Подробнее об SEO"
             },
-            "href": "seo.html"
+            "href": "services.html#seo"
           }
         },
         {
@@ -154,7 +154,7 @@
               "en": "Explore websites",
               "ru": "Подробнее о сайтах"
             },
-            "href": "website-creation.html"
+            "href": "services.html#website"
           }
         },
         {
@@ -177,7 +177,7 @@
               "en": "Compare plans",
               "ru": "Сравнить планы"
             },
-            "href": "pricing.html"
+            "href": "pricing.html?cat=bundle#pricing"
           }
         }
       ]

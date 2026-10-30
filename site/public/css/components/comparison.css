@@ -1,0 +1,70 @@
+/* Package comparison tables (js/components/sections/comparison.js), Pricing page. */
+
+/* Wide tables scroll inside their box on phones, never the whole page. */
+.comparison-scroll {
+  margin-top: 28px;
+  overflow-x: auto;
+}
+
+.comparison {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparison caption {
+  padding-bottom: 8px;
+  text-align: left;
+  font: 700 1.1rem var(--font-display);
+  color: var(--accent-text);
+}
+
+.comparison th,
+.comparison td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.comparison thead th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.comparison th:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.comparison tbody th {
+  font-weight: 600;
+}
+
+.comparison tbody th a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.comparison tbody th a:hover {
+  color: var(--accent-text);
+}
+
+.comparison tbody th .preview-tag {
+  margin-left: 8px;
+}
+
+.comparison .is-unavailable {
+  color: var(--muted);
+}
+
+.comparison-saving {
+  font-weight: 700;
+  color: var(--ok);
+}
+
+.comparison .is-recommended {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}

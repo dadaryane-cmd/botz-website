@@ -2,44 +2,19 @@
   "header": [
     {
       "label": {
+        "hy": "Գլխավոր",
+        "en": "Home",
+        "ru": "Главная"
+      },
+      "href": "index.html"
+    },
+    {
+      "label": {
         "hy": "Ծառայություններ",
         "en": "Services",
         "ru": "Услуги"
       },
-      "children": [
-        {
-          "label": {
-            "hy": "SMM",
-            "en": "SMM",
-            "ru": "SMM"
-          },
-          "href": "smm.html"
-        },
-        {
-          "label": {
-            "hy": "SEO",
-            "en": "SEO",
-            "ru": "SEO"
-          },
-          "href": "seo.html"
-        },
-        {
-          "label": {
-            "hy": "Կայքեր",
-            "en": "Websites",
-            "ru": "Сайты"
-          },
-          "href": "website-creation.html"
-        },
-        {
-          "label": {
-            "hy": "Բոլոր ծառայությունները",
-            "en": "All services",
-            "ru": "Все услуги"
-          },
-          "href": "services.html"
-        }
-      ]
+      "href": "services.html"
     },
     {
       "label": {
@@ -60,9 +35,9 @@
   ],
   "cta": {
     "label": {
-      "hy": "Քննարկել իմ նախագիծը",
-      "en": "Discuss my project",
-      "ru": "Обсудить мой проект"
+      "hy": "Կապ",
+      "en": "Contact",
+      "ru": "Контакты"
     },
     "href": "contact.html",
     "style": "primary"
