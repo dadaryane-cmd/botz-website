@@ -7,22 +7,22 @@
     },
     "description": {
       "hy": "SMM փաթեթներ Start, Dominance և Gold՝ բովանդակություն, սթորիներ, նկարահանումներ և Meta գովազդ՝ ամսական հաշվետվություններով։",
-      "en": "SMM packages Start, Dominance and Gold: content, stories, production and Meta ads, with monthly reports. Compare prices for 1–12 months.",
-      "ru": "Пакеты SMM Start, Dominance и Gold: контент, сторис, продакшн и реклама в Meta с ежемесячными отчётами."
+      "en": "SMM packages Start, Dominance and Gold: content, stories, shoots and Meta ads, with monthly reports. Compare prices for 1 to 12 months.",
+      "ru": "Пакеты SMM Start, Dominance и Gold: контент, сторис, съёмки и реклама в Meta с ежемесячными отчётами."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Սոցցանցեր, որոնց համար մարդիկ *դադարում են թերթել։*",
-        "en": "Social media people *stop scrolling for.*",
-        "ru": "Соцсети, ради которых *перестают листать.*"
+        "hy": "Instagram, Facebook և TikTok՝ *պլանավորված և հրապարակված ձեր փոխարեն։*",
+        "en": "Instagram, Facebook and TikTok, *planned and posted for you.*",
+        "ru": "Instagram, Facebook и TikTok: *планируем и публикуем за вас.*"
       },
       "subheading": {
-        "hy": "Պլանավորված բովանդակություն, ուժեղ վիզուալներ և կայուն հրապարակումներ Instagram-ում, Facebook-ում և TikTok-ում՝ հաշվետվություններով, որոնք ցույց են տալիս, թե ինչն աշխատեց։",
-        "en": "Planned content, strong visuals and steady publishing on Instagram, Facebook and TikTok — with reports that show what worked.",
-        "ru": "Продуманный контент, сильные визуалы и стабильные публикации в Instagram, Facebook и TikTok — с отчётами о том, что сработало."
+        "hy": "Մարիամը ձեզ հետ պլանավորում է ամսվա հրապարակումներն ու սթորիները, կազմակերպում նկարահանումները և վարում Meta գովազդը։ Ամեն ամիս ստանում եք կարճ հաշվետվություն այն մասին, թե ինչն աշխատեց։",
+        "en": "Mariam plans the month's posts and stories with you, organises the shoots and runs your Meta ads. Every month you get a short report on what worked.",
+        "ru": "Мариам вместе с вами планирует посты и сторис на месяц, организует съёмки и ведёт рекламу в Meta. Каждый месяц вы получаете короткий отчёт о том, что сработало."
       },
       "buttons": [
         {
@@ -48,14 +48,14 @@
     {
       "type": "split",
       "statement": {
-        "hy": "Կայունությունը հաղթում է *պոռթկումներին։*",
-        "en": "Consistency beats *bursts.*",
-        "ru": "Постоянство сильнее *всплесков.*"
+        "hy": "Կանոնավոր հրապարակելն ավելի կարևոր է, քան շատ հրապարակելը։",
+        "en": "Posting regularly matters more than posting a lot.",
+        "ru": "Регулярность важнее количества."
       },
       "body": {
-        "hy": "Լսարանը վստահում է այն բրենդներին, որոնք կանոնավոր հանդես են գալիս արժեքավոր բովանդակությամբ։ Մեր SMM փաթեթները տալիս են բովանդակության կայուն ռիթմ, դրա հետևում կանգնած պլան և կանոնավոր թվեր՝ ուղղություն պահելու համար։",
-        "en": "Audiences trust brands that show up regularly with something worth seeing. Our SMM packages give you a dependable rhythm of content, a plan behind it, and regular numbers to steer by.",
-        "ru": "Аудитория доверяет брендам, которые регулярно показывают что-то стоящее. Наши SMM-пакеты дают стабильный ритм контента, план за ним и регулярные цифры для управления."
+        "hy": "Մարդիկ վստահում են այն էջերին, որոնք ամեն շաբաթ ինչ-որ օգտակար բան են կիսում։ Փաթեթը տալիս է հրապարակումների որոշված քանակ ամեն ամիս, նախապես համաձայնեցված պլան և թվեր, որոնք ցույց են տալիս, թե ինչ փոխել։",
+        "en": "People trust accounts that share something useful every week. A package gives you a set number of posts each month, a plan agreed in advance and numbers that show what to change.",
+        "ru": "Люди доверяют аккаунтам, которые каждую неделю публикуют что-то полезное. Пакет даёт определённое число публикаций в месяц, заранее согласованный план и цифры, которые показывают, что менять."
       }
     },
     {
@@ -63,9 +63,9 @@
       "id": "pricing",
       "background": "surface",
       "heading": {
-        "hy": "Ընտրեք ձեր *ռիթմը*",
-        "en": "Choose your *rhythm*",
-        "ru": "Выберите свой *ритм*"
+        "hy": "SMM փաթեթներ",
+        "en": "SMM packages",
+        "ru": "Пакеты SMM"
       },
       "defaultCategory": "smm",
       "defaultDuration": 6,
@@ -75,9 +75,9 @@
     {
       "type": "faq",
       "heading": {
-        "hy": "SMM *հարցեր*",
-        "en": "SMM *questions*",
-        "ru": "Вопросы о *SMM*"
+        "hy": "SMM-ի մասին",
+        "en": "About SMM",
+        "ru": "Об SMM"
       },
       "items": [
         {
@@ -88,8 +88,8 @@
           },
           "answer": {
             "hy": "Աշխատում ենք Instagram-ի, Facebook-ի և TikTok-ի հետ։ Յուրաքանչյուր փաթեթում ներառված հարթակները նշված են դրա ծավալում․ եթե այլ հարթակ է պետք, գրեք մեզ։",
-            "en": "We work with Instagram, Facebook and TikTok. The platforms included in each package are listed in its scope; ask us if you need another one.",
-            "ru": "Мы работаем с Instagram, Facebook и TikTok. Платформы каждого пакета указаны в его объёме; если нужна другая — напишите нам."
+            "en": "We work with Instagram, Facebook and TikTok. The platforms in each package are listed in its scope. If you need another one, ask us.",
+            "ru": "Мы работаем с Instagram, Facebook и TikTok. Платформы каждого пакета указаны в его объёме. Если нужна другая, напишите нам."
           }
         },
         {
@@ -100,8 +100,8 @@
           },
           "answer": {
             "hy": "Այո, ամբողջական սարքավորումով Reels-ը հասանելի է որպես լրացուցիչ ծառայություն՝ առանձին կամ չորսի փաթեթով։",
-            "en": "Yes — Reels with full equipment are available as add-ons, individually or as a bundle of four.",
-            "ru": "Да — Reels с полным оборудованием доступны как дополнение, по одному или набором из четырёх."
+            "en": "Yes. Reels shot with full equipment are available as extras, one at a time or as a set of four.",
+            "ru": "Да. Reels с полным оборудованием можно добавить по одному или набором из четырёх."
           }
         }
       ],
@@ -112,14 +112,14 @@
       "id": "contact",
       "background": "surface",
       "heading": {
-        "hy": "Խոսեք *Մարիամի* հետ",
-        "en": "Talk to *Mariam*",
-        "ru": "Поговорите с *Мариам*"
+        "hy": "Գրեք Մարիամին",
+        "en": "Write to Mariam",
+        "ru": "Напишите Мариам"
       },
       "intro": {
-        "hy": "Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
-        "en": "Write, call or send the form — whichever is easiest.",
-        "ru": "Пишите, звоните или отправьте форму — как удобнее."
+        "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ ուղարկեք ձևը։",
+        "en": "Call, send a WhatsApp message or use the form.",
+        "ru": "Позвоните, напишите в WhatsApp или отправьте форму."
       },
       "service": "smm"
     }

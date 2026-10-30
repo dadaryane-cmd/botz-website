@@ -84,7 +84,3 @@
   background: var(--on-accent);
   color: var(--accent);
 }
-
-.bg-surface .chips li {
-  background: var(--bg);
-}

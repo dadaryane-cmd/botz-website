@@ -1,33 +1,33 @@
-/* Services section. */
+/* Services section: one row per service, set apart by rules like a printed menu. */
 
-.services-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-}
-
-.service-card .index {
-  display: block;
-  margin-bottom: 12px;
-  font: 700 0.9rem var(--font-display);
-  color: var(--accent-text);
-}
-
-.service-card h3 {
-  margin-bottom: 16px;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 20px;
+.service-list {
+  margin: 0;
   padding: 0;
   list-style: none;
+  border-bottom: 1px solid var(--border);
 }
 
-.chips li {
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: 0.85rem;
-  font-weight: 600;
+.service-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 12px 32px;
+  padding: clamp(20px, 3vw, 32px) 0;
+  border-top: 1px solid var(--border);
+}
+
+.service-row h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+}
+
+.service-includes {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .service-row {
+    grid-template-columns: 1fr;
+  }
 }

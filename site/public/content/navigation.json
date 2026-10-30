@@ -59,9 +59,9 @@
     "style": "primary"
   },
   "footerStatement": {
-    "hy": "Պատրաստ ենք, երբ *դուք* պատրաստ եք։",
-    "en": "Ready when *you* are.",
-    "ru": "Готовы, когда готовы *вы*."
+    "hy": "BOTZ-ը Մարիամն ու Էդգարն են։",
+    "en": "BOTZ is Mariam and Edgar.",
+    "ru": "BOTZ — это Мариам и Эдгар."
   },
   "footerColumns": [
     {

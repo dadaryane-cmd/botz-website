@@ -9,9 +9,9 @@
         "ru": "Start"
       },
       "tagline": {
-        "hy": "Փոքր բիզնեսների համար, որոնք կառուցում են կայուն ներկայություն սոցցանցերում",
-        "en": "For small businesses building a consistent social presence",
-        "ru": "Для малого бизнеса, который выстраивает стабильное присутствие в соцсетях"
+        "hy": "Փոքր բիզնեսի համար, որը սկսում է կանոնավոր հրապարակել",
+        "en": "For a small business that is starting to post regularly",
+        "ru": "Для небольшого бизнеса, который начинает регулярно публиковать"
       },
       "prices": {
         "m1": 79000,
@@ -32,9 +32,9 @@
         "ru": "Dominance"
       },
       "tagline": {
-        "hy": "Բրենդների համար, որոնք ձգտում են կայուն ամսական աճի",
-        "en": "For brands focused on steady monthly growth",
-        "ru": "Для брендов, нацеленных на стабильный ежемесячный рост"
+        "hy": "Բրենդների համար, որոնք ուզում են աճել ամիս առ ամիս",
+        "en": "For brands that want to grow month by month",
+        "ru": "Для брендов, которые хотят расти из месяца в месяц"
       },
       "prices": {
         "m1": 119000,
@@ -55,9 +55,9 @@
         "ru": "Gold"
       },
       "tagline": {
-        "hy": "Բիզնեսների համար, որոնք ցանկանում են սոցցանցերի ամբողջական սպասարկում",
-        "en": "For businesses that want full-service social media support",
-        "ru": "Для бизнеса, которому нужен полный сервис в соцсетях"
+        "hy": "Բիզնեսների համար, որոնք ուզում են մեզ վստահել իրենց սոցցանցերն ամբողջությամբ",
+        "en": "For businesses that want us to handle all of their social media",
+        "ru": "Для бизнеса, который хочет полностью передать нам соцсети"
       },
       "prices": {
         "m1": 149000,
@@ -78,9 +78,9 @@
         "ru": "Fundamental"
       },
       "tagline": {
-        "hy": "Կայքերի համար, որոնց անհրաժեշտ է ամուր SEO հիմք",
-        "en": "For websites that need a strong SEO foundation",
-        "ru": "Для сайтов, которым нужен прочный SEO-фундамент"
+        "hy": "Ձեր կայքի տեխնիկական հիմքը կարգի բերելու համար",
+        "en": "Gets the technical basics of your site right",
+        "ru": "Приводим в порядок технические основы сайта"
       },
       "prices": {
         "m1": 179000,
@@ -101,9 +101,9 @@
         "ru": "Vision"
       },
       "tagline": {
-        "hy": "Բիզնեսների համար, որոնք ձգտում են օրգանիկ աճի",
-        "en": "For businesses targeting organic growth",
-        "ru": "Для бизнеса, нацеленного на органический рост"
+        "hy": "Տեխնիկական աշխատանք և կանոնավոր բովանդակություն",
+        "en": "Technical work plus regular content",
+        "ru": "Техническая работа и регулярный контент"
       },
       "prices": {
         "m1": 349000,
@@ -124,9 +124,9 @@
         "ru": "Authority"
       },
       "tagline": {
-        "hy": "Մրցունակ բրենդների համար, որոնք ձգտում են շուկայում առաջատար լինել",
-        "en": "For competitive brands aiming for market leadership",
-        "ru": "Для конкурентных брендов, стремящихся к лидерству"
+        "hy": "Մեր ամենամեծ SEO փաթեթը՝ մրցակցային շուկաների համար",
+        "en": "Our largest SEO package, for competitive markets",
+        "ru": "Самый объёмный SEO-пакет, для конкурентных рынков"
       },
       "prices": {
         "m1": 499000,
@@ -147,9 +147,9 @@
         "ru": "Business Boost"
       },
       "tagline": {
-        "hy": "Մեկ թիմ՝ սոցցանցերի և SEO աճի համար",
-        "en": "One team for social media and SEO growth",
-        "ru": "Одна команда для роста в соцсетях и поиске"
+        "hy": "Սոցցանցեր և SEO մեկ փաթեթում",
+        "en": "Social media and SEO in one plan",
+        "ru": "Соцсети и SEO в одном плане"
       },
       "prices": {
         "m1": 449000,
@@ -174,9 +174,9 @@
         "ru": "Ultra"
       },
       "tagline": {
-        "hy": "Ամբողջական արդյունավետություն՝ պրեմիում աջակցությամբ",
-        "en": "Full-scale performance with premium support",
-        "ru": "Максимальный масштаб и премиальная поддержка"
+        "hy": "Մեր ամենամեծ փաթեթը՝ առավելագույն աշխատանք սոցցանցերում և SEO-ում",
+        "en": "Our largest plan, with the most social media and SEO work",
+        "ru": "Самый большой план: максимум работы в соцсетях и SEO"
       },
       "prices": {
         "m1": 630000,

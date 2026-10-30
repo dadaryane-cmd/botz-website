@@ -6,23 +6,23 @@
       "ru": "О маркетинговом агентстве BOTZ"
     },
     "description": {
-      "hy": "BOTZ-ը մարքեթինգային գործակալություն է սոցցանցերի, SEO-ի և կայքերի համար՝ հիմնված հստակ ծավալի, բաց գների և ուղիղ կապի վրա։",
-      "en": "BOTZ is a marketing agency for social media, SEO and websites, built on defined scopes, public prices and direct contact.",
-      "ru": "BOTZ — маркетинговое агентство по соцсетям, SEO и сайтам: чёткий объём, открытые цены и прямой контакт."
+      "hy": "BOTZ-ը Մարիամն ու Էդգարն են։ Սոցցանցեր, SEO և կայքեր՝ հստակ ծավալով, հրապարակված գներով և ուղիղ կապով։",
+      "en": "BOTZ is Mariam and Edgar: social media, SEO and websites with a clear scope, published prices and direct contact.",
+      "ru": "BOTZ — это Мариам и Эдгар: соцсети, SEO и сайты с понятным объёмом, опубликованными ценами и прямой связью."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Փոքր թիմ։ *Հստակ խոստումներ։* Իրական աշխատանք։",
-        "en": "Small team. *Clear promises.* Real work.",
-        "ru": "Небольшая команда. *Чёткие обещания.* Настоящая работа."
+        "hy": "Մենք Մարիամն ու Էդգարն ենք։",
+        "en": "We are Mariam and Edgar.",
+        "ru": "Мы Мариам и Эдгар."
       },
       "subheading": {
-        "hy": "Մենք ստեղծեցինք BOTZ-ը, որպեսզի մարքեթինգային ծառայություններն ավելի հասկանալի և վստահելի դարձնենք։",
-        "en": "We started BOTZ to make marketing services easier to understand and easier to trust.",
-        "ru": "Мы создали BOTZ, чтобы маркетинговые услуги стали понятнее и вызывали больше доверия."
+        "hy": "Մենք ստեղծեցինք BOTZ-ը, որովհետև մարքեթինգ գնելը հաճախ շփոթեցնող է՝ անորոշ փաթեթներ, թաքնված գներ, անհասկանալի հաշվետվություններ։ Մենք աշխատում ենք այլ կերպ։",
+        "en": "We started BOTZ because buying marketing is often confusing: vague packages, hidden prices, reports that are hard to read. We work differently.",
+        "ru": "Мы создали BOTZ, потому что покупать маркетинг часто сложно: размытые пакеты, скрытые цены, непонятные отчёты. Мы работаем иначе."
       },
       "buttons": [
         {
@@ -31,7 +31,7 @@
             "en": "Discuss my project",
             "ru": "Обсудить мой проект"
           },
-          "href": "#contact",
+          "href": "contact.html",
           "style": "primary"
         }
       ]
@@ -39,14 +39,14 @@
     {
       "type": "split",
       "statement": {
-        "hy": "Լավ մարքեթինգը պետք է լինի *հեշտ ձեռք բերվող* և *հեշտ չափելի։*",
-        "en": "Good marketing should be *easy to buy* and *easy to measure.*",
-        "ru": "Хороший маркетинг должно быть *легко купить* и *легко измерить.*"
+        "hy": "Ինչ կարող եք սպասել մեզանից",
+        "en": "What you can expect from us",
+        "ru": "Чего от нас ожидать"
       },
       "body": {
-        "hy": "Հաճախ գործակալությունները վաճառում են անորոշ փաթեթներ և թաքցնում մանրամասները։ Մենք անում ենք հակառակը․ յուրաքանչյուր փաթեթում նշված է, թե ինչն է ներառված և ինչը՝ ոչ, գները հրապարակային են, իսկ արդյունքները ներկայացվում են պարզ լեզվով։",
-        "en": "Too often, agencies sell vague packages and hide the details. We do the opposite: every package lists what is included and what is not, prices are public, and results are reported in plain language.",
-        "ru": "Слишком часто агентства продают размытые пакеты и скрывают детали. Мы делаем наоборот: в каждом пакете указано, что входит и что нет, цены открыты, а результаты описаны простым языком."
+        "hy": "Յուրաքանչյուր փաթեթում գրված է, թե ինչն է ներառված և ինչը՝ ոչ։ Գները հրապարակված են կայքում։ Ամեն ամիս պարզ լեզվով պատմում ենք, թե ինչ արեցինք, ինչ փոխվեց և ինչ ենք անելու հետո։",
+        "en": "Every package says what is included and what is not. The prices are on the website. Every month we tell you in plain words what we did, what changed and what we will do next.",
+        "ru": "В каждом пакете написано, что входит, а что нет. Цены есть на сайте. Каждый месяц простыми словами рассказываем, что сделали, что изменилось и что будем делать дальше."
       },
       "points": [
         {
@@ -57,8 +57,8 @@
           },
           "text": {
             "hy": "Ղեկավարում է սոցիալական մեդիա մարքեթինգը։",
-            "en": "Leads social media marketing.",
-            "ru": "Руководит направлением SMM."
+            "en": "Runs social media marketing.",
+            "ru": "Ведёт направление SMM."
           }
         },
         {
@@ -69,66 +69,8 @@
           },
           "text": {
             "hy": "Ղեկավարում է SEO-ն և կայքերի ստեղծումը։",
-            "en": "Leads SEO and website creation.",
-            "ru": "Руководит SEO и созданием сайтов."
-          }
-        }
-      ]
-    },
-    {
-      "type": "process",
-      "heading": {
-        "hy": "Չորս քայլ՝ *առանց ենթադրությունների*",
-        "en": "Four steps, *no guesswork*",
-        "ru": "Четыре шага *без догадок*"
-      },
-      "steps": [
-        {
-          "title": {
-            "hy": "Բրիֆ",
-            "en": "Brief",
-            "ru": "Бриф"
-          },
-          "text": {
-            "hy": "Ծանոթանում ենք ձեր բիզնեսին, լսարանին և նպատակներին, ուսումնասիրում ենք այն, ինչ արդեն ունեք։",
-            "en": "We learn your business, audience and goals, and look at what you already have.",
-            "ru": "Изучаем ваш бизнес, аудиторию и цели, смотрим, что у вас уже есть."
-          }
-        },
-        {
-          "title": {
-            "hy": "Առաջարկ",
-            "en": "Proposal",
-            "ru": "Предложение"
-          },
-          "text": {
-            "hy": "Ստանում եք հստակ ծավալ և գին՝ ինչն է ներառված, ինչը՝ ոչ, և որքան ժամանակով։",
-            "en": "You get a clear scope and price — what is included, what is not, and for how long.",
-            "ru": "Вы получаете понятный объём и цену — что входит, что нет и на какой срок."
-          }
-        },
-        {
-          "title": {
-            "hy": "Մեկնարկ",
-            "en": "Launch",
-            "ru": "Запуск"
-          },
-          "text": {
-            "hy": "Կարգավորում ենք, ստեղծում և հրապարակում՝ ձեր հաստատմամբ բոլոր կարևոր փուլերում։",
-            "en": "We set up, create and publish, with your approval at every important point.",
-            "ru": "Настраиваем, создаём и публикуем — с вашим согласованием на каждом важном этапе."
-          }
-        },
-        {
-          "title": {
-            "hy": "Հաշվետվություն և բարելավում",
-            "en": "Report & refine",
-            "ru": "Отчёт и улучшения"
-          },
-          "text": {
-            "hy": "Կանոնավոր հաշվետվությունները ցույց են տալիս, թե ինչ արվեց և ինչ ենք անելու հետո։",
-            "en": "Regular reports show what happened and what we will do next.",
-            "ru": "Регулярные отчёты показывают, что сделано и что мы будем делать дальше."
+            "en": "Runs SEO and website creation.",
+            "ru": "Ведёт SEO и создание сайтов."
           }
         }
       ]
@@ -137,14 +79,14 @@
       "type": "cta",
       "background": "accent",
       "heading": {
-        "hy": "Նախագիծ ունե՞ք։ *Պատմեք մեզ։*",
-        "en": "Have a project in mind? *Let’s hear it.*",
-        "ru": "Есть идея проекта? *Расскажите.*"
+        "hy": "Պատմեք ձեր բիզնեսի մասին",
+        "en": "Tell us about your business",
+        "ru": "Расскажите о своём бизнесе"
       },
       "text": {
-        "hy": "Պատմեք, թե որտեղ եք հիմա և ուր եք ուզում հասնել։",
-        "en": "Tell us where you are now and where you want to be.",
-        "ru": "Расскажите, где вы сейчас и куда хотите прийти."
+        "hy": "Որտեղ եք հիմա, ուր եք ուզում հասնել և ինչ եք արդեն փորձել։ Ազնվորեն կասենք՝ կարող ենք օգնել, թե ոչ։",
+        "en": "Where you are now, where you want to be and what you have already tried. We will tell you honestly whether we can help.",
+        "ru": "Где вы сейчас, куда хотите прийти и что уже пробовали. Мы честно скажем, сможем ли помочь."
       },
       "buttons": [
         {

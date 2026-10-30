@@ -14,7 +14,7 @@ export const renderProcess = (config) =>
         h(
           'li',
           { class: 'step', ...reveal(index) },
-          h('span', { class: 'step-number' }, String(index + 1).padStart(2, '0')),
+          h('span', { class: 'step-number' }, String(index + 1)),
           h('h3', null, t(step.title)),
           h('p', null, t(step.text)),
         ),

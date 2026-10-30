@@ -7,22 +7,22 @@
     },
     "description": {
       "hy": "SEO փաթեթներ՝ տեխնիկական աուդիտով, էջերի օպտիմալացմամբ, հոդվածներով և PR-ով։ Համեմատեք ամսական գները, ընդհանուր գումարները և խնայողությունը։",
-      "en": "SEO packages with technical audits, page optimisation, articles and outreach. Compare monthly prices, totals and savings for 1–12 months.",
-      "ru": "SEO-пакеты: технический аудит, оптимизация страниц, статьи и аутрич. Сравните цены, итоги и экономию на 1–12 месяцев."
+      "en": "SEO packages with technical audits, page optimisation, articles and outreach. Compare monthly prices, totals and savings for 1 to 12 months.",
+      "ru": "SEO-пакеты: технический аудит, оптимизация страниц, статьи и аутрич. Сравните цены, итоги и экономию на срок от 1 до 12 месяцев."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Թող ձեզ գտնեն նրանք, *ովքեր արդեն փնտրում են։*",
-        "en": "Be found by people *already looking for you.*",
-        "ru": "Пусть вас найдут те, *кто уже ищет.*"
+        "hy": "Երևացեք Google-ում, *երբ հաճախորդները փնտրում են ձեզ։*",
+        "en": "Show up on Google *when customers search for you.*",
+        "ru": "Появляйтесь в Google, *когда вас ищут клиенты.*"
       },
       "subheading": {
-        "hy": "Տեխնիկական հիմք, օգտակար բովանդակություն և հեղինակության կայուն աճ՝ չափվող ամեն ամիս և բացատրվող պարզ լեզվով։",
-        "en": "Technical foundations, useful content and steady authority building — measured every month, explained in plain language.",
-        "ru": "Технический фундамент, полезный контент и стабильный рост авторитета — с ежемесячными замерами и объяснениями простым языком."
+        "hy": "Էդգարը շտկում է ձեր կայքի տեխնիկական խնդիրները, բարելավում էջերը և գրում հոդվածներ, որոնք պատասխանում են ձեր հաճախորդների հարցերին։ Ամեն ամիս տեսնում եք, թե ինչ փոխվեց։",
+        "en": "Edgar fixes the technical problems on your site, improves the pages and writes articles that answer what your customers search for. Every month you see what changed.",
+        "ru": "Эдгар исправляет технические проблемы сайта, улучшает страницы и пишет статьи, которые отвечают на вопросы ваших клиентов. Каждый месяц вы видите, что изменилось."
       },
       "buttons": [
         {
@@ -48,14 +48,14 @@
     {
       "type": "split",
       "statement": {
-        "hy": "Որոնումը ձեր բրենդի *բարդ տոկոսն* է։",
-        "en": "Search is *compound interest* for your brand.",
-        "ru": "Поиск — это *сложный процент* для бренда."
+        "hy": "SEO-ն սկզբում դանդաղ է։",
+        "en": "SEO is slow at first.",
+        "ru": "SEO поначалу медленное."
       },
       "body": {
-        "hy": "SEO-ն կառուցվում է դանդաղ, բայց շարունակում է աշխատել։ Սկսում ենք նրանից, ինչը խանգարում է որոնողական համակարգերին հասկանալ ձեր կայքը, ապա զարգացնում ենք էջերն ու բովանդակությունը, որոնք պատասխանում են ձեր հաճախորդների հարցերին։",
-        "en": "SEO builds slowly and keeps working. We start with what stops search engines from understanding your site, then grow the pages and content that answer what your customers ask.",
-        "ru": "SEO растёт медленно, но продолжает работать. Мы начинаем с того, что мешает поисковикам понять ваш сайт, а затем развиваем страницы и контент, отвечающие на вопросы клиентов."
+        "hy": "Առաջին ամիսները գնում են այն շտկելուն, ինչը խանգարում է որոնողական համակարգերին հասկանալ ձեր կայքը։ Դրանից հետո նոր էջերն ու հոդվածները շարունակում են այցելուներ բերել՝ առանց յուրաքանչյուր սեղմման համար վճարելու։",
+        "en": "The first months go into fixing what stops search engines from understanding your site. After that, new pages and articles keep bringing visitors without you paying for every click.",
+        "ru": "Первые месяцы уходят на то, чтобы исправить всё, что мешает поисковикам понять ваш сайт. Дальше новые страницы и статьи приводят посетителей без оплаты за каждый клик."
       }
     },
     {
@@ -63,9 +63,9 @@
       "id": "pricing",
       "background": "surface",
       "heading": {
-        "hy": "Ընտրեք *խորությունը*",
-        "en": "Pick your *depth*",
-        "ru": "Выберите *глубину*"
+        "hy": "SEO փաթեթներ",
+        "en": "SEO packages",
+        "ru": "SEO-пакеты"
       },
       "defaultCategory": "seo",
       "defaultDuration": 6,
@@ -75,9 +75,9 @@
     {
       "type": "faq",
       "heading": {
-        "hy": "SEO *հարցեր*",
-        "en": "SEO *questions*",
-        "ru": "Вопросы о *SEO*"
+        "hy": "SEO-ի մասին",
+        "en": "About SEO",
+        "ru": "Об SEO"
       },
       "items": [
         {
@@ -88,8 +88,8 @@
           },
           "answer": {
             "hy": "SEO-ն աշխատում է ձեր վերահսկած կայքի վրա։ Եթե դեռ կայք չունեք, կարող ենք այն ստեղծել և SEO-ն սկսել զուգահեռ՝ պարզապես տեղեկացրեք մեզ։",
-            "en": "SEO works on a website you control. If you do not have one yet, we can build it and start SEO alongside — just tell us.",
-            "ru": "SEO работает на сайте, которым вы управляете. Если сайта ещё нет, мы можем сделать его и начать SEO параллельно — просто скажите."
+            "en": "SEO works on a website you control. If you do not have one yet, we can build it and start SEO at the same time. Just tell us.",
+            "ru": "SEO работает на сайте, которым вы управляете. Если сайта ещё нет, мы можем сделать его и начать SEO параллельно. Просто скажите."
           }
         },
         {
@@ -100,8 +100,8 @@
           },
           "answer": {
             "hy": "Fundamental-ը հիմքային փաթեթ է։ Վեց ամսից հետո հետագա աճի համար սովորաբար անհրաժեշտ է Vision-ի կամ Authority-ի բովանդակային աշխատանքը։",
-            "en": "Fundamental is a foundation package. After six months, growing further usually needs the content work in Vision or Authority.",
-            "ru": "Fundamental — базовый пакет. После шести месяцев для дальнейшего роста обычно нужна контентная работа Vision или Authority."
+            "en": "Fundamental is a starting package. After six months, growing further usually needs the content work in Vision or Authority.",
+            "ru": "Fundamental является базовым пакетом. После шести месяцев для дальнейшего роста обычно нужна контентная работа из Vision или Authority."
           }
         }
       ],
@@ -112,14 +112,14 @@
       "id": "contact",
       "background": "surface",
       "heading": {
-        "hy": "Խոսեք *Էդգարի* հետ",
-        "en": "Talk to *Edgar*",
-        "ru": "Поговорите с *Эдгаром*"
+        "hy": "Գրեք Էդգարին",
+        "en": "Write to Edgar",
+        "ru": "Напишите Эдгару"
       },
       "intro": {
-        "hy": "Գրեք, զանգահարեք կամ ուղարկեք ձևը՝ ինչպես ձեզ հարմար է։",
-        "en": "Write, call or send the form — whichever is easiest.",
-        "ru": "Пишите, звоните или отправьте форму — как удобнее."
+        "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ ուղարկեք ձևը։",
+        "en": "Call, send a WhatsApp message or use the form.",
+        "ru": "Позвоните, напишите в WhatsApp или отправьте форму."
       },
       "service": "seo"
     }

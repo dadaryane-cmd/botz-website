@@ -8,21 +8,21 @@
     "description": {
       "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ էլ. փոստով, կամ ուղարկեք հարցում։ Մարիամը՝ սոցցանցեր, Էդգարը՝ SEO և կայքեր։",
       "en": "Call, WhatsApp or email BOTZ Marketing Agency, or send an inquiry. Mariam handles social media, Edgar handles SEO and websites.",
-      "ru": "Позвоните, напишите в WhatsApp или на почту, или отправьте заявку. Мариам — соцсети, Эдгар — SEO и сайты."
+      "ru": "Позвоните, напишите в WhatsApp или на почту, или отправьте заявку. Мариам отвечает за соцсети, Эдгар за SEO и сайты."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Ասեք *բարև։*",
-        "en": "Say *hello.*",
-        "ru": "Скажите *привет.*"
+        "hy": "Գրեք Մարիամին կամ Էդգարին",
+        "en": "Write to Mariam or Edgar",
+        "ru": "Напишите Мариам или Эдгару"
       },
       "subheading": {
-        "hy": "Զանգահարեք, գրեք կամ օգտագործեք ձևը, և ճիշտ մարդը կկապվի ձեզ հետ։",
-        "en": "Call, message or write — or use the form and the right person will get back to you.",
-        "ru": "Позвоните, напишите или заполните форму — вам ответит нужный человек."
+        "hy": "Սոցցանցերի հարցերով՝ Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Չգիտե՞ք ում։ Ուղարկեք ձևը, և ճիշտ մարդը կպատասխանի։",
+        "en": "Social media questions go to Mariam, SEO and websites to Edgar. Not sure? Send the form and the right one of us will answer.",
+        "ru": "С вопросами о соцсетях к Мариам, о SEO и сайтах к Эдгару. Не уверены? Отправьте форму, и ответит тот, кто нужен."
       }
     },
     {

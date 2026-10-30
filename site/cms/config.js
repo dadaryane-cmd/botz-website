@@ -102,9 +102,8 @@ const sectionBlocks = [
       heading(),
       list(
         object('items', 'Services', [
-          string('index', 'Number'),
           text('title', 'Title'),
-          list(text('highlights', 'Highlights')),
+          list(text('highlights', 'What it includes')),
           link('link', 'Link'),
         ]),
         '{title.en}',

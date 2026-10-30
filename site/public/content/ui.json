@@ -258,8 +258,8 @@
     },
     "notContract": {
       "hy": "Սա նախահաշիվ է՝ առաջարկ ստանալու համար, ոչ թե պայմանագիր կամ հաշիվ։",
-      "en": "This is an estimate to request a proposal — not a contract or an invoice.",
-      "ru": "Это оценка для запроса предложения — не договор и не счёт."
+      "en": "This estimate helps you ask for a proposal. It is not a contract or an invoice.",
+      "ru": "Это расчёт для запроса предложения, а не договор и не счёт."
     },
     "requestProposal": {
       "hy": "Ստանալ առաջարկ",
@@ -392,8 +392,8 @@
     },
     "contactHint": {
       "hy": "Նշեք էլ. փոստ կամ հեռախոսահամար՝ առնվազն մեկը։",
-      "en": "Give us an email or a phone number — at least one.",
-      "ru": "Укажите почту или телефон — хотя бы одно."
+      "en": "Give us at least an email or a phone number.",
+      "ru": "Укажите хотя бы почту или телефон."
     },
     "service": {
       "hy": "Ծառայություն",
@@ -411,9 +411,9 @@
       "ru": "Сообщение"
     },
     "messagePlaceholder": {
-      "hy": "Ձեր բիզնեսը, նպատակները, ժամկետները՝ այն ամենը, ինչը կօգնի մեզ նախապատրաստվել։",
-      "en": "Your business, goals, timing — whatever helps us prepare.",
-      "ru": "Ваш бизнес, цели, сроки — всё, что поможет нам подготовиться."
+      "hy": "Ինչով է զբաղվում ձեր բիզնեսը, ինչ եք ուզում փոխել և մինչև երբ։",
+      "en": "What your business does, what you want to change and by when.",
+      "ru": "Чем занимается ваш бизнес, что хотите изменить и к какому сроку."
     },
     "preferredContact": {
       "hy": "Ո՞վ կապվի ձեզ հետ",
@@ -447,8 +447,8 @@
     },
     "successTitle": {
       "hy": "Շնորհակալություն, ձեր հաղորդագրությունն ուղարկված է։",
-      "en": "Thank you — your message has been sent.",
-      "ru": "Спасибо — сообщение отправлено."
+      "en": "Thank you, your message has been sent.",
+      "ru": "Спасибо, сообщение отправлено."
     },
     "successText": {
       "hy": "{name}-ը կկապվի ձեզ հետ աշխատանքային ժամերին։ Շտապ դեպքում զանգեք կամ գրեք WhatsApp-ով։",
@@ -607,8 +607,8 @@
     },
     "message": {
       "hy": "Ձեր կայքում գտա լամպի անակնկալը։ Կցանկանայի անվճար աուդիտ։",
-      "en": "I found the lamp surprise on your website — I’d like a free audit.",
-      "ru": "Нашёл(ла) сюрприз с лампой на вашем сайте — хочу бесплатный аудит."
+      "en": "I found the lamp surprise on your website. I’d like a free audit.",
+      "ru": "Нашёл(ла) сюрприз с лампой на вашем сайте. Хочу бесплатный аудит."
     }
   }
 }

@@ -105,14 +105,11 @@ components:
             label: Services
             type: object
             fields:
-              - name: index
-                label: Number
-                type: string
               - name: title
                 label: Title
                 component: line
               - name: highlights
-                label: Highlights
+                label: What it includes
                 component: line
                 list: true
               - name: link
