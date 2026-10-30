@@ -1,5 +1,5 @@
 /*
- * Cinema marquee sign section (js/components/marquee-sign.js): a lit letter board
+ * Cinema marquee sign section (js/components/marquee-sign.js): a lit letter board in a frame
  * between two rows of chasing bulbs. It stays unlit until `.is-lit`; then the bulbs flicker on,
  * the board lights up and the letters are put up one by one.
  */
@@ -10,9 +10,18 @@
   --sign-glow: rgb(255 196 110 / 0.4);
   --bulb-gap: 28px;
   --bulb-size: 16px;
+  /* Room above to breathe after the hero; the section below starts close (it is our title). */
+  padding: clamp(56px, 8vw, 104px) var(--gutter) 0;
+}
+
+/* The sign stands on the page as one object, as wide as the content below (.container). */
+.sign-frame {
   display: grid;
   gap: 10px;
-  padding: 12px var(--gutter);
+  max-width: calc(1160px - 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 12px clamp(10px, 2vw, 24px);
+  border-radius: 18px;
   background: var(--sign-casing);
   box-shadow: 0 0 60px var(--sign-glow);
 }
@@ -24,7 +33,10 @@
 [data-theme='light'] .marquee-sign {
   --sign-casing: transparent;
   --sign-glow: transparent;
-  padding-block: 24px;
+}
+
+[data-theme='light'] .sign-frame {
+  padding: 0;
 }
 
 [data-theme='light'] .sign-board {
@@ -42,13 +54,24 @@
   padding-top: clamp(24px, 4vw, 48px);
 }
 
-/* ---- bulbs: every third one burns brighter, and the bright ones run along ---- */
+/*
+ * ---- bulbs: every third one burns brighter, and the bright ones run along ----
+ * Both layers are centred, so their bulbs line up and the row is symmetric; the ends fade out
+ * instead of showing a cut bulb.
+ */
 
 .sign-bulbs {
   position: relative;
   height: var(--bulb-size);
-  background: radial-gradient(circle, #ffd88f 0 4px, rgb(255 196 110 / 0.4) 5px, transparent 7px) 0
+  background: radial-gradient(circle, #ffd88f 0 4px, rgb(255 196 110 / 0.4) 5px, transparent 7px)
     center / var(--bulb-gap) var(--bulb-size) repeat-x;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--bulb-gap),
+    #000 calc(100% - var(--bulb-gap)),
+    transparent
+  );
 }
 
 /* The tile is three bulbs wide with its bulb in the middle, so it lands on every third bulb. */
@@ -57,16 +80,13 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle, #fffaf0 0 4.5px, rgb(255 214 140 / 0.85) 6px, transparent 9px)
-    0 center / calc(var(--bulb-gap) * 3) var(--bulb-size) repeat-x;
+    center / calc(var(--bulb-gap) * 3) var(--bulb-size) repeat-x;
   filter: drop-shadow(0 0 4px rgb(255 200 120 / 0.9));
 }
 
 /* ---- the letter board ---- */
 
 .sign-board {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
   padding: 0 24px;
   border-radius: 6px;
   color: #16141f;
@@ -161,9 +181,10 @@
   }
 }
 
+/* From the centred start, one bright bulb steps three places along. */
 @keyframes sign-chase {
   to {
-    background-position-x: calc(var(--bulb-gap) * 3);
+    background-position-x: calc(50% + var(--bulb-gap) * 3);
   }
 }
 

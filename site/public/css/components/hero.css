@@ -93,11 +93,13 @@
 
 /* ---- fire layers: poster (first paint) → WebGL canvas, or looping video ---- */
 
+/* The fire fades out at the bottom, so the hero melts into the page instead of ending on a line. */
 .flame-background {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  mask-image: linear-gradient(to top, transparent 0, #000 28%);
 }
 
 .flame-background::before {

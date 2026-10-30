@@ -40,9 +40,13 @@ export function renderMarqueeSign({ title, items }) {
     { class: 'marquee-sign' },
     // Screen readers get the words, not single letters.
     h('p', { class: 'sr-only' }, `${titleText}: ${itemTexts.join(', ')}`),
-    h('span', { class: 'sign-bulbs', 'aria-hidden': 'true' }),
-    board,
-    h('span', { class: 'sign-bulbs', 'aria-hidden': 'true' }),
+    h(
+      'div',
+      { class: 'sign-frame' },
+      h('span', { class: 'sign-bulbs', 'aria-hidden': 'true' }),
+      board,
+      h('span', { class: 'sign-bulbs', 'aria-hidden': 'true' }),
+    ),
   )
   powerOnWhenSeen(sign)
   return sign
