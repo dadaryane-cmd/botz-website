@@ -49,15 +49,14 @@ components:
             type: string
             hidden: true
       - name: sign
-        label: Cinema sign
+        label: Cinema banner
         fields:
           - name: title
-            label: Title
+            label: Headline
             component: line
-          - name: items
-            label: Services
+          - name: tagline
+            label: Tagline
             component: line
-            list: true
       - name: split
         label: Statement with key points
         fields:

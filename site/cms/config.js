@@ -77,8 +77,8 @@ const sectionBlocks = [
   },
   {
     name: 'sign',
-    label: 'Cinema sign',
-    fields: [text('title', 'Title'), list(text('items', 'Services'))],
+    label: 'Cinema banner',
+    fields: [text('title', 'Headline'), text('tagline', 'Tagline')],
   },
   {
     name: 'split',

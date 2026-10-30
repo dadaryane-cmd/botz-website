@@ -1,12 +1,12 @@
 /*
- * Cinema marquee sign section (js/components/marquee-sign.js): a lit letter board in a frame
- * between two rows of chasing bulbs. It stays unlit until `.is-lit`; then the bulbs flicker on,
- * the board lights up and the letters are put up one by one.
+ * Cinema announcement banner (js/components/marquee-sign.js): a compact lit letter board with a
+ * headline and a tagline, in a frame between two rows of chasing bulbs. It stays unlit until
+ * `.is-lit`; then the bulbs flicker on, the board lights up and the letters are put up one by one.
  */
 
 .marquee-sign {
   --sign-casing: #1b1930;
-  --sign-row: clamp(2.2rem, 4.6vw, 3.6rem);
+  --sign-row: clamp(2.1rem, 4.4vw, 3.4rem);
   --sign-glow: rgb(255 196 110 / 0.4);
   --bulb-gap: 28px;
   --bulb-size: 16px;
@@ -14,11 +14,11 @@
   padding: clamp(40px, 5vw, 64px) var(--gutter) 0;
 }
 
-/* The sign stands on the page as one object, as wide as the content below (.container). */
+/* A compact sign standing on the page as one object, centred. */
 .sign-frame {
   display: grid;
   gap: 10px;
-  max-width: calc(1160px - 2 * var(--gutter));
+  max-width: 760px;
   margin: 0 auto;
   padding: 12px clamp(10px, 2vw, 24px);
   border-radius: 18px;
@@ -109,7 +109,7 @@
 }
 
 .sign-title,
-.sign-items {
+.sign-tagline {
   margin: 0;
   font: 600 calc(var(--sign-row) * 0.6) / var(--sign-row) var(--font-sign);
   font-stretch: condensed;
@@ -117,18 +117,11 @@
   text-transform: uppercase;
 }
 
-.sign-title {
+/* The tagline: smaller, widely spaced letters in crimson, on its own row of the board. */
+.sign-tagline {
+  font-size: calc(var(--sign-row) * 0.4);
+  letter-spacing: 0.24em;
   color: #9d282b;
-}
-
-/* Services are set apart by wide gaps, as on a real letter board. */
-.sign-items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 1.2em;
-  padding: 0;
-  list-style: none;
 }
 
 .sign-word,

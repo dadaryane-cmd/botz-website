@@ -49,42 +49,15 @@
     {
       "type": "sign",
       "title": {
-        "hy": "ԻՆՉ ԵՆՔ ԱՌԱՋԱՐԿՈՒՄ",
-        "en": "WHAT WE OFFER",
-        "ru": "ЧТО МЫ ПРЕДЛАГАЕМ"
+        "hy": "ՌԱԶՄԱՎԱՐՈՒԹՅՈՒՆ ԵՎ ԿՐԵԱՏԻՎ։",
+        "en": "STRATEGY MEETS CREATIVITY.",
+        "ru": "СТРАТЕГИЯ ВСТРЕЧАЕТ КРЕАТИВ."
       },
-      "items": [
-        {
-          "hy": "ՍՈՑՑԱՆՑԵՐ",
-          "en": "SOCIAL MEDIA",
-          "ru": "СОЦСЕТИ"
-        },
-        {
-          "hy": "ՈՐՈՆՈՂԱԿԱՆ ՕՊՏԻՄԱԼԱՑՈՒՄ",
-          "en": "SEARCH OPTIMISATION",
-          "ru": "ПОИСКОВАЯ ОПТИМИЗАЦИЯ"
-        },
-        {
-          "hy": "ԿԱՅՔԵՐ",
-          "en": "WEBSITES",
-          "ru": "САЙТЫ"
-        },
-        {
-          "hy": "ԲՈՎԱՆԴԱԿՈՒԹՅՈՒՆ",
-          "en": "CONTENT",
-          "ru": "КОНТЕНТ"
-        },
-        {
-          "hy": "META ԳՈՎԱԶԴ",
-          "en": "META ADS",
-          "ru": "РЕКЛАМА В META"
-        },
-        {
-          "hy": "REELS",
-          "en": "REELS",
-          "ru": "REELS"
-        }
-      ]
+      "tagline": {
+        "hy": "ԳԱՂԱՓԱՐ։ ՍՏԵՂԾՈՒՄ։ ԱՃ։",
+        "en": "GENERATING. CREATING. GROWING.",
+        "ru": "ГЕНЕРИРУЕМ. СОЗДАЁМ. РАСТЁМ."
+      }
     },
     {
       "type": "services",
