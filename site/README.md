@@ -39,6 +39,7 @@ site/
 │   │   └── components/
 │   │       ├── layout/         header, footer, mobile bar
 │   │       ├── sections/       one render function per section type + index.js registry
+│   │       ├── pricing/        parts of the pricing tool: filters, package card, add-ons, estimate
 │   │       ├── flame/          animated WebGL fire behind the home hero
 │   │       ├── bulb/           hanging light bulb with a pull cord (light / dark switch),
 │   │       │                   the warm light it casts in light mode;

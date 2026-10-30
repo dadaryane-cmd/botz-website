@@ -44,6 +44,17 @@ export function richText(value, { words = false } = {}) {
 }
 
 /**
+ * Restart a CSS animation class even if it is already applied, and remove it again after
+ * `duration` ms when given. Reading `offsetWidth` makes the browser apply the removal first.
+ */
+export function replayClass(element, className, duration) {
+  element.classList.remove(className)
+  void element.offsetWidth
+  element.classList.add(className)
+  if (duration) setTimeout(() => element.classList.remove(className), duration)
+}
+
+/**
  * Replace a container's content and keep keyboard focus on the control with the same
  * `data-key`, so re-rendering after a click does not lose the user's place.
  */

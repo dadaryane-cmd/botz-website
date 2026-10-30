@@ -33,8 +33,9 @@ async function resolve(urlPath) {
 
 createServer(async (request, response) => {
   const { pathname } = new URL(request.url, 'http://localhost')
-  const file = (await resolve(pathname)) ?? join(root, '404.html')
-  response.writeHead(file.endsWith('404.html') && !pathname.endsWith('404.html') ? 404 : 200, {
+  const found = await resolve(pathname)
+  const file = found ?? join(root, '404.html')
+  response.writeHead(found ? 200 : 404, {
     'Content-Type': types[extname(file)] ?? 'application/octet-stream',
   })
   createReadStream(file).pipe(response)

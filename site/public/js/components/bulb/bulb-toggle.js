@@ -5,7 +5,7 @@
  * Idle sway, glow and flicker are CSS (css/components/bulb.css); the cord, the dip and the
  * pendulum swing are springs from lib/animation.js. Only transform and opacity are animated.
  */
-import { h } from '../../lib/dom.js'
+import { h, replayClass } from '../../lib/dom.js'
 import { prefersReducedMotion, spring, tween } from '../../lib/animation.js'
 import { ui } from '../../lib/i18n.js'
 import { load, save } from '../../lib/storage.js'
@@ -150,14 +150,6 @@ export function renderBulbToggle() {
     cancels = []
   }
 
-  /** Restart a CSS effect class (e.g. the flicker) even if it is already applied. */
-  function replayClass(className, duration) {
-    button.classList.remove(className)
-    void button.offsetWidth
-    button.classList.add(className)
-    if (duration) setTimeout(() => button.classList.remove(className), duration)
-  }
-
   /** Centre of the glass: where the new theme starts spreading from. */
   function bulbCentre() {
     const box = glass.getBoundingClientRect()
@@ -172,7 +164,8 @@ export function renderBulbToggle() {
     if (animate) {
       button.classList.remove('is-turning-on', 'is-turning-off')
       // Flicker when the light comes on, afterglow when it goes off.
-      replayClass(next === 'light' ? 'is-turning-on' : 'is-turning-off', TUNING.switchFxMs)
+      const effect = next === 'light' ? 'is-turning-on' : 'is-turning-off'
+      replayClass(button, effect, TUNING.switchFxMs)
       if (next === 'light') swellLampLight()
       setTheme(next, { origin: bulbCentre() })
     } else {
@@ -181,7 +174,7 @@ export function renderBulbToggle() {
     updateLabel()
 
     if (countPull()) {
-      if (animate) replayClass('is-celebrating', TUNING.easterEgg.celebrateMs)
+      if (animate) replayClass(button, 'is-celebrating', TUNING.easterEgg.celebrateMs)
       showEasterEgg()
     }
   }
@@ -206,7 +199,7 @@ export function renderBulbToggle() {
     })
     if (!shouldSwitch) return
 
-    replayClass('is-click')
+    replayClass(button, 'is-click')
     state.angle = TUNING.swing.startDeg * swingDirection(fromClick)
     animateValue('angle', {
       to: 0,
@@ -219,7 +212,10 @@ export function renderBulbToggle() {
   /** Click / Enter / Space: switch at once while a short automatic pull plays. */
   function autoToggle() {
     if (state.busy) return
-    if (prefersReducedMotion()) return switchTheme({ animate: false })
+    if (prefersReducedMotion()) {
+      switchTheme({ animate: false })
+      return
+    }
     state.busy = true
     stopAll()
     switchTheme()
@@ -278,8 +274,15 @@ export function renderBulbToggle() {
     const { moved, y } = drag
     drag = null
     button.classList.remove('is-dragging')
-    if (cancelled) return release()
-    if (!moved) return autoToggle()
+    if (cancelled) {
+      release()
+      return
+    }
+    // A press without a drag is a click.
+    if (!moved) {
+      autoToggle()
+      return
+    }
     if (prefersReducedMotion()) {
       // A long enough downward drag still switches, without animation.
       if (event.clientY - y >= TUNING.threshold) switchTheme({ animate: false })

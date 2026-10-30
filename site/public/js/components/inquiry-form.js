@@ -4,7 +4,12 @@
  */
 import { INQUIRY_SERVICES } from '../config.js'
 import { catalog, people, site } from '../content/index.js'
-import { inquiryEmail, validateInquiry } from '../forms/inquiry.js'
+import {
+  initialService,
+  inquiryEmail,
+  suggestedContact,
+  validateInquiry,
+} from '../forms/inquiry.js'
 import { h } from '../lib/dom.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
 import { external, mailtoHref, whatsappHref } from '../lib/links.js'
@@ -13,16 +18,24 @@ import { estimateSummary } from '../pricing/estimate.js'
 import { getSelection, subscribe, updateSelection } from '../pricing/selection.js'
 import { sendForm } from '../services/formsubmit.js'
 
+/** Email and phone are validated together (one of them is needed). */
+const LINKED_FIELDS = ['email', 'phone']
+const TEXT_FIELDS = ['name', 'email', 'phone', 'message']
+
+/** Numbers each form, so two forms on one page never share element ids. */
 let formCount = 0
 
 export function renderInquiryForm({ service: pageService }) {
-  const id = (name) => `inquiry${formCount}-${name}`
+  const prefix = `inquiry${formCount}`
   formCount += 1
+  const id = (name) => `${prefix}-${name}`
 
   const selection = getSelection()
-  const selectedPackage = findPackage(catalog, selection.packageKey)
-  const hasAddons = Object.keys(selection.addons).length > 0
-  const initialService = selectedPackage?.category ?? (hasAddons ? 'addon' : pageService) ?? ''
+  const preselected = initialService({
+    packageCategory: findPackage(catalog, selection.packageKey)?.category,
+    hasAddons: Object.keys(selection.addons).length > 0,
+    pageService,
+  })
 
   /* ---------- fields ---------- */
 
@@ -40,17 +53,14 @@ export function renderInquiryForm({ service: pageService }) {
   const control = (tag, name, attributes = {}, ...children) =>
     h(tag, { id: id(name), name, 'aria-describedby': id(`${name}-error`), ...attributes }, children)
 
+  const contactChoice = contactFieldset()
   const serviceSelect = control(
     'select',
     'service',
-    { onchange: () => suggestContact() },
+    { onchange: () => selectContact(contactChoice, serviceSelect.value) },
     h('option', { value: '' }, ui('form', 'choose')),
     INQUIRY_SERVICES.map((service) =>
-      h(
-        'option',
-        { value: service, selected: service === initialService },
-        ui('services', service),
-      ),
+      h('option', { value: service, selected: service === preselected }, ui('services', service)),
     ),
   )
   const message = control('textarea', 'message', {
@@ -58,60 +68,8 @@ export function renderInquiryForm({ service: pageService }) {
     maxlength: 4000,
     placeholder: ui('form', 'messagePlaceholder'),
   })
-  // A suggested message (package finder, lamp surprise) fills the field unless the visitor wrote their own.
-  let suggestedNote = selection.note
-  if (suggestedNote) message.value = suggestedNote
-  const applyNote = ({ note }) => {
-    if (!note || note === suggestedNote) return
-    if (!message.value.trim() || message.value === suggestedNote) message.value = note
-    suggestedNote = note
-  }
-
-  const contactOptions = [
-    ...people.map((person) => ({ value: person.key, label: t(person.name) })),
-    { value: 'either', label: ui('form', 'either') },
-  ]
-  const contactChoice = h(
-    'fieldset',
-    { class: 'full radios' },
-    h('legend', null, ui('form', 'preferredContact')),
-    contactOptions.map((option) =>
-      h(
-        'label',
-        { class: 'option' },
-        h('input', { type: 'radio', name: 'preferredContact', value: option.value }),
-        h('span', null, option.label),
-      ),
-    ),
-  )
-  // Suggest the founder who handles the chosen service; combined plans go to either.
-  function suggestContact() {
-    const responsible = people.filter((person) => person.services.includes(serviceSelect.value))
-    const value = responsible.length === 1 ? responsible[0].key : 'either'
-    contactChoice.querySelector(`input[value="${value}"]`).checked = true
-  }
-
-  const attachedEstimate = h('div', { class: 'attached-estimate' })
-  const renderEstimate = () => {
-    const summary = estimateSummary()
-    attachedEstimate.replaceChildren(
-      ...(summary
-        ? [
-            h('span', { class: 'label' }, ui('form', 'selectedEstimate')),
-            h('pre', null, summary),
-            h(
-              'button',
-              {
-                type: 'button',
-                class: 'btn btn-link btn-small',
-                onclick: () => updateSelection({ packageKey: null, addons: {} }),
-              },
-              ui('form', 'removeEstimate'),
-            ),
-          ]
-        : []),
-    )
-  }
+  const fillSuggestedNote = noteFiller(message, selection.note)
+  const estimate = attachedEstimate()
 
   const status = h('div', { class: 'form-status', role: 'status', tabindex: '-1' })
   const submitButton = h(
@@ -159,26 +117,25 @@ export function renderInquiryForm({ service: pageService }) {
         h('input', { name: 'website', tabindex: '-1', autocomplete: 'off' }),
       ),
     ),
-    attachedEstimate,
+    estimate.element,
     h('p', { class: 'muted small' }, `${ui('form', 'privacy')} ${ui('trust', 'replyTime')}`),
     submitButton,
     status,
   )
 
-  suggestContact()
-  renderEstimate()
+  selectContact(contactChoice, serviceSelect.value)
   subscribe(form, (changed) => {
-    renderEstimate()
-    applyNote(changed)
+    estimate.update()
+    fillSuggestedNote(changed.note)
   })
 
   /* ---------- behaviour ---------- */
 
-  // Email and phone are validated together, so editing either clears both messages.
   form.addEventListener('input', ({ target }) => {
-    const names =
-      target.name === 'email' || target.name === 'phone' ? ['email', 'phone'] : [target.name]
-    for (const name of names) if (errorFor[name]) errorFor[name].textContent = ''
+    const names = LINKED_FIELDS.includes(target.name) ? LINKED_FIELDS : [target.name]
+    for (const name of names) {
+      if (errorFor[name]) errorFor[name].textContent = ''
+    }
     target.removeAttribute('aria-invalid')
   })
 
@@ -187,16 +144,20 @@ export function renderInquiryForm({ service: pageService }) {
     const values = readValues(form)
     const errors = validateInquiry(values)
     showFieldErrors(form, errorFor, errors)
-    if (Object.keys(errors).length) {
-      showStatus(ui('form', 'errorValidation'))
-      form.querySelector(`[name="${Object.keys(errors)[0]}"]`)?.focus()
+    const firstInvalid = Object.keys(errors)[0]
+    if (firstInvalid) {
+      showError(ui('form', 'errorValidation'))
+      form.querySelector(`[name="${firstInvalid}"]`)?.focus()
       return
     }
 
     const contact = people.find((person) => person.key === values.preferredContact)
     const contactName = t(contact?.name) || ui('form', 'teamName')
     // The honeypot was filled in, so this is a bot: pretend it worked and send nothing.
-    if (values.website) return showSuccess(contactName)
+    if (values.website) {
+      showSuccess(contactName)
+      return
+    }
 
     setSending(true)
     try {
@@ -213,7 +174,7 @@ export function renderInquiryForm({ service: pageService }) {
       showSuccess(contactName)
     } catch {
       setSending(false)
-      showStatus(ui('form', 'errorGeneric'), fallbackLinks(values))
+      showError(ui('form', 'errorGeneric'), fallbackLinks(values))
     }
   })
 
@@ -223,9 +184,9 @@ export function renderInquiryForm({ service: pageService }) {
     if (sending) status.replaceChildren()
   }
 
-  function showStatus(text, extra) {
+  function showError(text, extra = '') {
     status.className = 'form-status is-error'
-    status.replaceChildren(h('p', null, text), extra ?? '')
+    status.replaceChildren(h('p', null, text), extra)
     status.focus()
   }
 
@@ -244,9 +205,83 @@ export function renderInquiryForm({ service: pageService }) {
   return form
 }
 
+/* ---------- parts of the form ---------- */
+
+/** "Who should contact you?": one radio button per founder, plus "either". */
+function contactFieldset() {
+  const options = [
+    ...people.map((person) => ({ value: person.key, label: t(person.name) })),
+    { value: 'either', label: ui('form', 'either') },
+  ]
+  return h(
+    'fieldset',
+    { class: 'full radios' },
+    h('legend', null, ui('form', 'preferredContact')),
+    options.map((option) =>
+      h(
+        'label',
+        { class: 'option' },
+        h('input', { type: 'radio', name: 'preferredContact', value: option.value }),
+        h('span', null, option.label),
+      ),
+    ),
+  )
+}
+
+/** Tick the founder who handles `service` (both for combined plans). */
+function selectContact(fieldset, service) {
+  const value = suggestedContact(people, service)
+  fieldset.querySelector(`input[value="${value}"]`).checked = true
+}
+
+/**
+ * A suggested message (package finder, lamp surprise) fills the message field, unless the
+ * visitor has written their own. Returns the function that applies a newly suggested note.
+ */
+function noteFiller(message, initialNote) {
+  let suggested = initialNote
+  if (suggested) message.value = suggested
+
+  return (note) => {
+    if (!note || note === suggested) return
+    const untouched = !message.value.trim() || message.value === suggested
+    if (untouched) message.value = note
+    suggested = note
+  }
+}
+
+/** The visitor's current estimate, sent with the inquiry, with a button to remove it. */
+function attachedEstimate() {
+  const element = h('div', { class: 'attached-estimate' })
+  const update = () => {
+    const summary = estimateSummary()
+    if (!summary) {
+      element.replaceChildren()
+      return
+    }
+    element.replaceChildren(
+      h('span', { class: 'label' }, ui('form', 'selectedEstimate')),
+      h('pre', null, summary),
+      h(
+        'button',
+        {
+          type: 'button',
+          class: 'btn btn-link btn-small',
+          onclick: () => updateSelection({ packageKey: null, addons: {} }),
+        },
+        ui('form', 'removeEstimate'),
+      ),
+    )
+  }
+  update()
+  return { element, update }
+}
+
+/* ---------- submitting ---------- */
+
 function readValues(form) {
   const values = Object.fromEntries(new FormData(form))
-  for (const key of ['name', 'email', 'phone', 'message']) {
+  for (const key of TEXT_FIELDS) {
     values[key] = String(values[key] ?? '').trim()
   }
   return values

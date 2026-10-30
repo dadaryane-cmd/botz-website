@@ -15,6 +15,19 @@ export function validateInquiry({ name, email, phone, service, message }) {
   return errors
 }
 
+/** The service to preselect: the chosen package's, "addon" for add-ons alone, else the page's. */
+export function initialService({ packageCategory, hasAddons, pageService }) {
+  if (packageCategory) return packageCategory
+  if (hasAddons) return 'addon'
+  return pageService ?? ''
+}
+
+/** The founder who handles `service`, or "either" when nobody or more than one does. */
+export function suggestedContact(people, service) {
+  const responsible = people.filter((person) => person.services.includes(service))
+  return responsible.length === 1 ? responsible[0].key : 'either'
+}
+
 /**
  * FormSubmit fields. Keys starting with `_` configure the email
  * (https://formsubmit.co/documentation); the rest appear as a table.

@@ -1,31 +1,13 @@
 /** Pricing tool: category and contract-length filters, package cards, add-ons and a live estimate. */
-import { CONTRACT_LENGTHS, MAX_ADDON_QUANTITY, PACKAGE_CATEGORIES } from '../../config.js'
 import { catalog } from '../../content/index.js'
 import { h, renderInto } from '../../lib/dom.js'
-import { formatAmd, formatMonths } from '../../lib/format.js'
-import { t, ui } from '../../lib/i18n.js'
-import { external, whatsappHref } from '../../lib/links.js'
-import { sectionHref } from '../../lib/page.js'
-import {
-  availableLengths,
-  findPackage,
-  isRecurring,
-  priceFor,
-  quote,
-} from '../../pricing/engine.js'
-import {
-  categoryLabel,
-  estimateLink,
-  estimateSummary,
-  packageTitle,
-} from '../../pricing/estimate.js'
-import {
-  clearSelection,
-  getSelection,
-  subscribe,
-  updateSelection,
-} from '../../pricing/selection.js'
-import { animatedAmount } from '../animated-amount.js'
+import { ui } from '../../lib/i18n.js'
+import { findPackage } from '../../pricing/engine.js'
+import { getSelection, subscribe, updateSelection } from '../../pricing/selection.js'
+import { addonList } from '../pricing/addon-list.js'
+import { estimatePanel } from '../pricing/estimate-panel.js'
+import { pricingFilters } from '../pricing/filters.js'
+import { packageCard } from '../pricing/package-card.js'
 import { heading, section } from './section.js'
 
 export function renderPricing(config) {
@@ -38,12 +20,20 @@ export function renderPricing(config) {
   }
 
   const body = h('div', { class: 'pricing' })
-  const render = () => {
+  const showCategory = (next) => {
+    category = next
+    render()
+  }
+
+  function render() {
     const selection = getSelection()
+    const packages = catalog.packages.filter((pkg) => pkg.category === category)
     renderInto(body, [
-      filters(config, category, selection, (next) => {
-        category = next
-        render()
+      pricingFilters({
+        lockCategory: config.lockCategory,
+        category,
+        months: selection.months,
+        onCategory: showCategory,
       }),
       h(
         'div',
@@ -54,9 +44,7 @@ export function renderPricing(config) {
           h(
             'div',
             { class: 'grid package-grid' },
-            catalog.packages
-              .filter((pkg) => pkg.category === category)
-              .map((pkg) => packageCard(pkg, selection)),
+            packages.map((pkg) => packageCard(pkg, selection)),
           ),
           h('p', { class: 'muted small' }, ui('pricing', 'scopeInProposal')),
           config.showAddons && addonList(selection),
@@ -65,323 +53,8 @@ export function renderPricing(config) {
       ),
     ])
   }
+
   render()
   subscribe(body, render)
   return section(config, heading(config.heading), body)
-}
-
-/* ---------- filters ---------- */
-
-function filters(config, category, selection, onCategory) {
-  const group = (label, buttons) =>
-    h(
-      'div',
-      null,
-      h('span', { class: 'label' }, label),
-      h('div', { class: 'segmented', role: 'group', 'aria-label': label }, buttons),
-    )
-  const toggle = (key, pressed, label, onclick) =>
-    h(
-      'button',
-      { type: 'button', 'data-key': key, 'aria-pressed': String(pressed), onclick },
-      label,
-    )
-
-  return h(
-    'div',
-    { class: 'pricing-filters' },
-    !config.lockCategory &&
-      group(
-        ui('pricing', 'filterLabel'),
-        PACKAGE_CATEGORIES.map((option) =>
-          toggle(`category-${option}`, option === category, categoryLabel(option), () =>
-            onCategory(option),
-          ),
-        ),
-      ),
-    category !== 'website' &&
-      group(
-        ui('pricing', 'durationLabel'),
-        CONTRACT_LENGTHS.map((months) =>
-          toggle(`months-${months}`, months === selection.months, formatMonths(months), () =>
-            updateSelection({ months }),
-          ),
-        ),
-      ),
-  )
-}
-
-/* ---------- package cards ---------- */
-
-function packageCard(pkg, selection) {
-  const isSelected = selection.packageKey === pkg.key
-  const price = isRecurring(pkg) ? priceFor(pkg, selection.months) : null
-  const unavailable = isRecurring(pkg) && !price
-  const classes = [
-    'card',
-    'package-card',
-    isSelected && 'is-selected',
-    pkg.recommended && 'is-recommended',
-    unavailable && 'is-unavailable',
-  ]
-
-  return h(
-    'article',
-    { class: classes.filter(Boolean).join(' ') },
-    pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
-    h('h3', null, t(pkg.name)),
-    h('p', { class: 'muted' }, t(pkg.tagline)),
-    pkg.components?.length > 0 &&
-      h(
-        'p',
-        { class: 'muted small' },
-        ui('pricing', 'bundleOf', {
-          list: pkg.components.map((key) => packageTitle(findPackage(catalog, key))).join(' + '),
-        }),
-      ),
-    h('div', { class: 'package-price' }, priceDetails(pkg, price)),
-    h(
-      'button',
-      {
-        type: 'button',
-        class: isSelected ? 'btn btn-primary' : 'btn btn-secondary',
-        'data-key': `package-${pkg.key}`,
-        'aria-pressed': String(isSelected),
-        disabled: unavailable,
-        onclick: () => updateSelection({ packageKey: isSelected ? null : pkg.key }),
-      },
-      isSelected ? `✓ ${ui('pricing', 'selected')}` : ui('pricing', 'select'),
-    ),
-  )
-}
-
-function priceDetails(pkg, price) {
-  if (!isRecurring(pkg)) {
-    return [
-      h('p', { class: 'price' }, formatAmd(pkg.oneTimePrice)),
-      h('p', { class: 'muted small' }, ui('pricing', 'oneTime')),
-    ]
-  }
-  if (!price) {
-    const list = availableLengths(pkg).map(formatMonths).join(', ')
-    return [
-      h('p', { class: 'price price-unavailable' }, ui('pricing', 'unavailableShort')),
-      h('p', { class: 'muted small' }, ui('pricing', 'availableFor', { list })),
-    ]
-  }
-  const totalLabel =
-    price.months === 1 ? ui('pricing', 'totalFor1') : ui('pricing', 'totalFor', { n: price.months })
-  // "You save {amount}" with a counting amount in place of the placeholder.
-  const [saveBefore, saveAfter] = ui('pricing', 'youSave', { amount: '{amount}' }).split('{amount}')
-  return [
-    h(
-      'p',
-      { class: 'price' },
-      animatedAmount(`${pkg.key}-monthly`, price.monthly),
-      h('small', null, ` ${ui('pricing', 'perMonth')}`),
-    ),
-    h(
-      'p',
-      { class: 'small' },
-      `${totalLabel}: `,
-      h('strong', null, animatedAmount(`${pkg.key}-total`, price.total)),
-    ),
-    price.savings
-      ? h(
-          'p',
-          { class: 'small saving' },
-          saveBefore,
-          animatedAmount(`${pkg.key}-savings`, price.savings),
-          saveAfter,
-        )
-      : h('p', { class: 'small muted' }, ui('pricing', 'noSavings')),
-  ]
-}
-
-/* ---------- add-ons ---------- */
-
-function addonList(selection) {
-  return h(
-    'div',
-    { class: 'addons' },
-    h('h3', null, ui('pricing', 'addonsTitle')),
-    h('p', { class: 'muted' }, ui('pricing', 'addonsIntro')),
-    h(
-      'ul',
-      { class: 'addon-list' },
-      catalog.addons.map((addon) => addonRow(addon, selection.addons[addon.key] ?? 0)),
-    ),
-  )
-}
-
-function addonRow(addon, quantity) {
-  const setQuantity = (next) => {
-    const addons = { ...getSelection().addons }
-    if (next > 0) addons[addon.key] = Math.min(MAX_ADDON_QUANTITY, next)
-    else delete addons[addon.key]
-    updateSelection({ addons })
-  }
-  const from = addon.priceIsFrom ? `${ui('pricing', 'from')} ` : ''
-  const units = addon.units ? ` · ${ui('pricing', 'bundleUnits', { n: addon.units })}` : ''
-
-  return h(
-    'li',
-    { class: quantity ? 'addon is-selected' : 'addon' },
-    h(
-      'div',
-      null,
-      h('strong', null, t(addon.name)),
-      h('span', { class: 'muted small' }, from, formatAmd(addon.price), units),
-    ),
-    quantity
-      ? h(
-          'div',
-          {
-            class: 'stepper',
-            role: 'group',
-            'aria-label': `${ui('pricing', 'quantity')}: ${t(addon.name)}`,
-          },
-          h(
-            'button',
-            {
-              type: 'button',
-              'data-key': `less-${addon.key}`,
-              'aria-label': ui('pricing', 'remove'),
-              onclick: () => setQuantity(quantity - 1),
-            },
-            '−',
-          ),
-          h('output', null, String(quantity)),
-          h(
-            'button',
-            {
-              type: 'button',
-              'data-key': `more-${addon.key}`,
-              'aria-label': ui('pricing', 'add'),
-              onclick: () => setQuantity(quantity + 1),
-            },
-            '+',
-          ),
-        )
-      : h(
-          'button',
-          {
-            type: 'button',
-            class: 'btn btn-secondary btn-small',
-            'data-key': `add-${addon.key}`,
-            onclick: () => setQuantity(1),
-          },
-          ui('pricing', 'add'),
-        ),
-  )
-}
-
-/* ---------- estimate ---------- */
-
-/** Package, add-ons, subtotals and the combined total, as `<dt>` / `<dd>` rows. */
-function estimateRows(totals) {
-  const row = (label, value, kind) =>
-    h(
-      'div',
-      { class: kind ? `estimate-row ${kind}` : 'estimate-row' },
-      h('dt', null, label),
-      h('dd', null, value),
-    )
-  const rows = []
-
-  if (totals.recurring) {
-    const { monthly, months, total } = totals.recurring
-    const perMonth = [animatedAmount('estimate-monthly', monthly), ` × ${months}`]
-    rows.push(row(packageTitle(totals.pkg), perMonth))
-    rows.push(
-      row(ui('pricing', 'recurringFees'), animatedAmount('estimate-recurring', total), 'subtotal'),
-    )
-  } else if (totals.pkg) {
-    rows.push(row(packageTitle(totals.pkg), formatAmd(totals.packageOneTime)))
-  }
-
-  for (const line of totals.addons) {
-    rows.push(row(`${t(line.addon.name)} ×${line.quantity}`, formatAmd(line.total)))
-  }
-  if (totals.oneTimeTotal) {
-    const oneTime = animatedAmount('estimate-one-time', totals.oneTimeTotal)
-    rows.push(row(ui('pricing', 'oneTimeFees'), oneTime, 'subtotal'))
-  }
-
-  const from = totals.isMinimum && `${ui('pricing', 'from')} `
-  rows.push(
-    row(
-      ui('pricing', 'combinedEstimate'),
-      [from, animatedAmount('estimate-total', totals.total)],
-      'total',
-    ),
-  )
-  return rows
-}
-
-function estimatePanel(selection) {
-  const totals = quote(catalog, selection)
-  const title = h('h3', null, ui('pricing', 'estimateTitle'))
-  if (totals.isEmpty) {
-    return h(
-      'aside',
-      { class: 'card estimate' },
-      title,
-      h('p', { class: 'muted' }, ui('pricing', 'noSelection')),
-    )
-  }
-
-  const status = h('p', { class: 'small', role: 'status' })
-  const share = async () => {
-    const link = estimateLink(selection)
-    try {
-      await navigator.clipboard.writeText(link)
-      status.textContent = ui('pricing', 'shareCopied')
-    } catch {
-      window.prompt(ui('pricing', 'shareReady'), link)
-    }
-  }
-  const whatsappMessage = [
-    ui('whatsapp', 'greeting', { contact: 'BOTZ' }),
-    estimateSummary(totals),
-    ui('whatsapp', 'closing'),
-  ].join('\n')
-
-  return h(
-    'aside',
-    { class: 'card estimate', 'aria-live': 'polite' },
-    title,
-    h('dl', { class: 'estimate-rows' }, estimateRows(totals)),
-    totals.isMinimum && h('p', { class: 'muted small' }, ui('pricing', 'minimumNote')),
-    h('p', { class: 'muted small' }, ui('pricing', 'notContract')),
-    h(
-      'div',
-      { class: 'estimate-actions' },
-      h(
-        'a',
-        { class: 'btn btn-primary', href: sectionHref('contact', 'contact.html') },
-        ui('pricing', 'requestProposal'),
-      ),
-      h(
-        'a',
-        { class: 'btn btn-secondary', href: whatsappHref(whatsappMessage), ...external },
-        ui('pricing', 'discussWhatsapp'),
-      ),
-      h(
-        'div',
-        { class: 'btn-row' },
-        h(
-          'button',
-          { type: 'button', class: 'btn btn-link btn-small', onclick: share },
-          ui('pricing', 'shareEstimate'),
-        ),
-        h(
-          'button',
-          { type: 'button', class: 'btn btn-link btn-small', onclick: clearSelection },
-          ui('pricing', 'clear'),
-        ),
-      ),
-    ),
-    status,
-  )
 }

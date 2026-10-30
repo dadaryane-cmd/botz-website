@@ -8,6 +8,8 @@ import { h } from '../lib/dom.js'
 import { formatAmd } from '../lib/format.js'
 
 const DURATION_MS = 520
+/** Extra time before the final value is forced, in case animation frames were paused. */
+const SETTLE_MARGIN_MS = 80
 const lastShown = new Map()
 
 export function animatedAmount(key, value, format = formatAmd) {
@@ -35,6 +37,6 @@ export function animatedAmount(key, value, format = formatAmd) {
   setTimeout(() => {
     cancel()
     show(value)
-  }, DURATION_MS + 80)
+  }, DURATION_MS + SETTLE_MARGIN_MS)
   return amount
 }

@@ -6,6 +6,7 @@
  * off-screen or the tab is hidden, calms and fades as the visitor scrolls, leans slightly
  * toward the mouse, and shows a single still frame when reduced motion is preferred.
  */
+import { prefersReducedMotion } from '../../lib/animation.js'
 import { h } from '../../lib/dom.js'
 import { getTheme } from '../../lib/theme.js'
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './shaders.js'
@@ -13,9 +14,10 @@ import { FRAGMENT_SHADER, VERTEX_SHADER } from './shaders.js'
 const TUNING = {
   /** Animation speed (1 = calm and hypnotic). */
   speed: 1,
-  /** Flame height as a fraction of the hero; phones get a lower strip. */
+  /** Flame height as a fraction of the hero; heroes narrower than `narrowWidth` get a lower strip. */
   height: 0.62,
-  mobileHeight: 0.5,
+  narrowHeight: 0.5,
+  narrowWidth: 760,
   /** How much the tongues curl (0.5 calm – 1.6 wild). */
   turbulence: 1,
   intensity: 1,
@@ -28,9 +30,13 @@ const TUNING = {
   maxRenderWidth: 1280,
   /** Shader time used for the poster image and the reduced-motion still frame. */
   stillTime: 14,
+  /** Scrolling this share of the hero's height fades the fire out completely… */
+  fadeDistance: 0.85,
+  /** …and slows it down by up to this share, so it calms as it fades. */
+  scrollCalm: 0.6,
+  /** Longest step between frames (s), so a paused tab does not make the fire jump. */
+  maxFrameStep: 0.05,
 }
-
-const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export function renderFlameBackground() {
   const canvas = h('canvas', { class: 'flame-canvas' })
@@ -130,6 +136,7 @@ function animate(gl, program, canvas, layer) {
     fade: 1,
     visible: true,
     mounted: false,
+    destroyed: false,
     last: 0,
     frame: 0,
   }
@@ -137,7 +144,10 @@ function animate(gl, program, canvas, layer) {
   const isRemoved = () => state.mounted && !layer.isConnected
   /** Event listener that tears everything down once the hero has been removed from the page. */
   const listen = (target, type, handler, options) => {
-    const guarded = (event) => (isRemoved() ? destroy() : handler(event))
+    const guarded = (event) => {
+      if (isRemoved()) destroy()
+      else handler(event)
+    }
     target.addEventListener(type, guarded, options)
     cleanups.push(() => target.removeEventListener(type, guarded, options))
   }
@@ -159,7 +169,10 @@ function animate(gl, program, canvas, layer) {
 
   /** 0 at the top of the page, 1 once the hero has mostly scrolled away. */
   const scrollProgress = () =>
-    Math.min(1, Math.max(0, window.scrollY / ((layer.offsetHeight || 1) * 0.85)))
+    Math.min(1, Math.max(0, window.scrollY / ((layer.offsetHeight || 1) * TUNING.fadeDistance)))
+
+  const flameHeight = () =>
+    layer.offsetWidth < TUNING.narrowWidth ? TUNING.narrowHeight : TUNING.height
 
   function draw() {
     gl.uniform2f(uniform.uRes, canvas.width, canvas.height)
@@ -167,7 +180,7 @@ function animate(gl, program, canvas, layer) {
     gl.uniform1f(uniform.uLean, state.lean)
     gl.uniform1f(uniform.uFade, state.fade)
     gl.uniform1f(uniform.uIntensity, TUNING.intensity)
-    gl.uniform1f(uniform.uHeight, layer.offsetWidth < 760 ? TUNING.mobileHeight : TUNING.height)
+    gl.uniform1f(uniform.uHeight, flameHeight())
     gl.uniform1f(uniform.uTurb, TUNING.turbulence)
     gl.uniform1f(uniform.uEmbers, TUNING.embers)
     gl.uniform1f(uniform.uLight, getTheme() === 'light' ? 1 : 0)
@@ -178,16 +191,19 @@ function animate(gl, program, canvas, layer) {
 
   function tick(now) {
     // The hero is rebuilt when the language changes: stop and free the old canvas.
-    if (isRemoved()) return destroy()
+    if (isRemoved()) {
+      destroy()
+      return
+    }
     if (layer.isConnected && !state.mounted) {
       state.mounted = true
       resize()
     }
-    const elapsed = Math.min(0.05, (now - state.last) / 1000)
+    const elapsed = Math.min(TUNING.maxFrameStep, (now - state.last) / 1000)
     state.last = now
     const scrolled = scrollProgress()
     state.fade = 1 - scrolled
-    state.time += elapsed * TUNING.speed * (1 - 0.6 * scrolled) // scrolling calms the fire
+    state.time += elapsed * TUNING.speed * (1 - TUNING.scrollCalm * scrolled)
     state.lean += (state.leanTarget - state.lean) * TUNING.leanEase
     draw()
     if (state.visible) state.frame = requestAnimationFrame(tick)
@@ -213,7 +229,10 @@ function animate(gl, program, canvas, layer) {
   }
 
   function setVisible(visible) {
-    if (isRemoved()) return destroy()
+    if (isRemoved()) {
+      destroy()
+      return
+    }
     state.visible = visible
     if (visible) start()
     else cancelAnimationFrame(state.frame)
@@ -241,7 +260,11 @@ function animate(gl, program, canvas, layer) {
   cleanups.push(() => intersectionObserver.disconnect())
 
   listen(document, 'visibilitychange', () => setVisible(!document.hidden))
-  listen(window, 'scroll', () => prefersReducedMotion() && stillFrame(), { passive: true })
+  // With reduced motion the still frame is redrawn as scrolling fades it.
+  const redrawStill = () => {
+    if (prefersReducedMotion()) stillFrame()
+  }
+  listen(window, 'scroll', redrawStill, { passive: true })
   if (window.matchMedia('(pointer: fine)').matches) {
     listen(
       window,

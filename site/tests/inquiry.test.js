@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { inquiryEmail, validateInquiry } from '../public/js/forms/inquiry.js'
+import {
+  initialService,
+  inquiryEmail,
+  suggestedContact,
+  validateInquiry,
+} from '../public/js/forms/inquiry.js'
 
 const valid = {
   name: 'Ani',
@@ -27,6 +32,33 @@ describe('validateInquiry', () => {
       phone: 'invalidPhone',
       message: 'messageTooShort',
     })
+  })
+})
+
+describe('initialService', () => {
+  it('prefers the chosen package, then add-ons, then the page', () => {
+    const base = { packageCategory: null, hasAddons: false, pageService: 'seo' }
+    assert.equal(initialService({ ...base, packageCategory: 'smm', hasAddons: true }), 'smm')
+    assert.equal(initialService({ ...base, hasAddons: true }), 'addon')
+    assert.equal(initialService(base), 'seo')
+    assert.equal(initialService({ ...base, pageService: undefined }), '')
+  })
+})
+
+describe('suggestedContact', () => {
+  const people = [
+    { key: 'mariam', services: ['smm', 'bundle'] },
+    { key: 'edgar', services: ['seo', 'website', 'bundle'] },
+  ]
+
+  it('suggests the one founder who handles the service', () => {
+    assert.equal(suggestedContact(people, 'smm'), 'mariam')
+    assert.equal(suggestedContact(people, 'website'), 'edgar')
+  })
+
+  it('suggests either founder when both or nobody handle it', () => {
+    assert.equal(suggestedContact(people, 'bundle'), 'either')
+    assert.equal(suggestedContact(people, 'other'), 'either')
   })
 })
 

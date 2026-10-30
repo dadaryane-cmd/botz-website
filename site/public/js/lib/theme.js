@@ -36,9 +36,13 @@ export function setTheme(theme, { origin, animate = true } = {}) {
     root.dataset.theme = theme
     save('theme', theme)
   }
-  if (!animate) return commit()
-  if (!document.startViewTransition || !origin) return crossfade(commit)
-  revealFrom(origin, theme === 'light', commit)
+  if (!animate) {
+    commit()
+  } else if (document.startViewTransition && origin) {
+    revealFrom(origin, theme === 'light', commit)
+  } else {
+    crossfade(commit)
+  }
 }
 
 function crossfade(commit) {
@@ -82,6 +86,8 @@ function revealFrom({ x, y }, turningOn, commit) {
   transition.finished.finally(() => {
     delete root.dataset.vt
     delete root.dataset.vtSoft
-    for (const property of ['--vt-x', '--vt-y', '--vt-feather']) root.style.removeProperty(property)
+    for (const property of ['--vt-x', '--vt-y', '--vt-feather']) {
+      root.style.removeProperty(property)
+    }
   })
 }

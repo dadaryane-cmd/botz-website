@@ -72,29 +72,21 @@ export function renderHeader(header) {
       { class: 'container container-wide header-bar' },
       // Both logos are rendered; CSS shows the one for the current theme, so a theme change
       // never re-renders the header (and never interrupts the bulb's animation).
-      h(
-        'a',
-        { class: 'logo', href: 'index.html' },
-        h('img', {
-          class: 'logo-light',
-          src: 'images/botz-logo-light.webp',
-          alt: t(site.name),
-          width: 112,
-          height: 44,
-        }),
-        h('img', {
-          class: 'logo-dark',
-          src: 'images/botz-logo-dark.webp',
-          alt: t(site.name),
-          width: 112,
-          height: 44,
-        }),
-      ),
+      h('a', { class: 'logo', href: 'index.html' }, logoImage('light'), logoImage('dark')),
       nav,
       h('div', { class: 'header-tools' }, languageSwitch, renderBulbToggle(), menuToggle),
     ),
   )
 }
+
+const logoImage = (theme) =>
+  h('img', {
+    class: `logo-${theme}`,
+    src: `images/botz-logo-${theme}.webp`,
+    alt: t(site.name),
+    width: 112,
+    height: 44,
+  })
 
 /** Close the mobile menu once a link is chosen. Attached once, survives re-renders. */
 export function closeMenuOnNavigate(header) {

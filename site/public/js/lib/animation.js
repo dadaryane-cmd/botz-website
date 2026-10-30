@@ -1,5 +1,14 @@
 /** Frame-based animation helpers. Each returns a function that cancels it. */
 
+const SPRING = {
+  /** Longest time (s) simulated per frame, so a background tab does not make it jump. */
+  maxFrame: 0.064,
+  /** Small fixed sub-steps keep the simulation stable. */
+  subStep: 1 / 240,
+  /** Close enough and slow enough to count as settled. */
+  rest: 0.02,
+}
+
 /**
  * Damped spring from `from` to `to`, integrated every animation frame.
  * Low damping relative to stiffness gives a few bounces before it settles.
@@ -11,17 +20,16 @@ export function spring({ from, to, velocity = 0, stiffness, damping, mass = 1, o
   let frame = 0
 
   const step = (now) => {
-    // Small fixed sub-steps keep the spring stable; long frames (background tabs) are capped.
-    let remaining = Math.min(0.064, (now - last) / 1000)
+    let remaining = Math.min(SPRING.maxFrame, (now - last) / 1000)
     last = now
     while (remaining > 0) {
-      const dt = Math.min(remaining, 1 / 240)
+      const dt = Math.min(remaining, SPRING.subStep)
       const acceleration = (-stiffness * (position - to) - damping * speed) / mass
       speed += acceleration * dt
       position += speed * dt
       remaining -= dt
     }
-    if (Math.abs(position - to) < 0.02 && Math.abs(speed) < 0.02) {
+    if (Math.abs(position - to) < SPRING.rest && Math.abs(speed) < SPRING.rest) {
       onUpdate(to)
       onDone?.()
       return

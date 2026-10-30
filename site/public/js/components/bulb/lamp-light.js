@@ -3,7 +3,7 @@
  * ignores the pointer; CSS (css/components/lamp-light.css) draws it and hides it in dark mode.
  * The header, and with it the bulb, is re-rendered on language change, so the layer is shared.
  */
-import { h } from '../../lib/dom.js'
+import { h, replayClass } from '../../lib/dom.js'
 
 const SWELL_MS = 1100
 
@@ -38,9 +38,5 @@ export function attachLampLight(getCentre) {
 
 /** The light flares up and settles, as when the cord is pulled. */
 export function swellLampLight() {
-  if (!layer) return
-  layer.classList.remove('is-swelling')
-  void layer.offsetWidth
-  layer.classList.add('is-swelling')
-  setTimeout(() => layer.classList.remove('is-swelling'), SWELL_MS)
+  if (layer) replayClass(layer, 'is-swelling', SWELL_MS)
 }
