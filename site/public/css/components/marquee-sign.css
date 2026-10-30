@@ -7,7 +7,7 @@
 .marquee-sign {
   --sign-casing: #1b1930;
   --sign-row: clamp(2.2rem, 4.6vw, 3.6rem);
-  --sign-glow: rgb(255 196 110 / 0.22);
+  --sign-glow: rgb(255 196 110 / 0.4);
   --bulb-gap: 28px;
   --bulb-size: 16px;
   display: grid;
@@ -17,9 +17,14 @@
   box-shadow: 0 0 60px var(--sign-glow);
 }
 
-/* At night the sign is the brightest thing on the page. */
-[data-theme='dark'] .marquee-sign {
-  --sign-glow: rgb(255 196 110 / 0.4);
+/* By day the bulbs are off: no bulb rows and no glow, just the board in its frame. */
+[data-theme='light'] .marquee-sign {
+  --sign-glow: transparent;
+  padding-block: 24px;
+}
+
+[data-theme='light'] .sign-bulbs {
+  display: none;
 }
 
 /* ---- bulbs: every third one burns brighter, and the bright ones run along ---- */
