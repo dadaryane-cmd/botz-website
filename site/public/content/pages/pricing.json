@@ -62,45 +62,45 @@
     {
       "type": "faq",
       "heading": {
-        "hy": "Գների մասին",
-        "en": "About prices",
-        "ru": "О ценах"
+        "hy": "Մինչ ընտրելը",
+        "en": "Before you choose",
+        "ru": "Прежде чем выбрать"
       },
       "items": [
         {
           "question": {
-            "hy": "Ինչպե՞ս է պայմանագրի ժամկետն ազդում գնի վրա",
-            "en": "How does the contract length change the price?",
-            "ru": "Как срок договора влияет на цену?"
+            "hy": "Ո՞ր փաթեթն ընտրեմ",
+            "en": "Which package should I choose?",
+            "ru": "Какой пакет выбрать?"
           },
           "answer": {
-            "hy": "Ավելի երկար պայմանագրերի դեպքում ամսական վճարը նվազում է։ Գնային գործիքը ցույց է տալիս ամսական գինը, ամբողջ ժամկետի ընդհանուր գումարը և թե որքան եք խնայում ամսական վճարման համեմատ։",
-            "en": "The longer the agreement, the lower the monthly fee. The pricing tool shows the monthly price, the total for the whole term and how much you save compared with paying month to month.",
-            "ru": "Чем дольше договор, тем ниже ежемесячная оплата. Калькулятор показывает цену в месяц, сумму за весь срок и экономию по сравнению с помесячной оплатой."
+            "hy": "Պատասխանեք վերևի վեց հարցին, և փաթեթի ընտրիչը կառաջարկի մեկը՝ բացատրելով ինչու։ Կամ գրեք մեզ, և կարճ զրույցից հետո խորհուրդ կտանք։",
+            "en": "Answer the six questions above and the package finder suggests one, with the reasons. Or write to us and we will recommend one after a short conversation.",
+            "ru": "Ответьте на шесть вопросов выше, и подбор предложит пакет с объяснением. Или напишите нам, и после короткого разговора мы посоветуем."
           }
         },
         {
           "question": {
-            "hy": "Կարո՞ղ եմ համատեղել սոցցանցերը և SEO-ն",
-            "en": "Can I combine social media and SEO?",
-            "ru": "Можно ли совместить SMM и SEO?"
+            "hy": "Ի՞նչ է ներառված փաթեթում",
+            "en": "What exactly is included in a package?",
+            "ru": "Что именно входит в пакет?"
           },
           "answer": {
-            "hy": "Այո։ Business Boost-ը և Ultra-ն միավորում են երկուսը մեկ փաթեթում՝ իրենց առանձին գնով, ոչ թե առանձին փաթեթների գումարով։",
-            "en": "Yes. Business Boost and Ultra combine both in one plan with their own price, not the sum of the two separate packages.",
-            "ru": "Да. Business Boost и Ultra объединяют оба направления в одном плане по собственной цене, а не как сумма отдельных пакетов."
+            "hy": "Փաթեթի քարտում կարճ նկարագրություն կա։ Ամբողջական ծավալը, օրինակ՝ քանի հրապարակում, նկարահանում կամ հոդված եք ստանում ամեն ամիս, գրված է ձեր անհատական առաջարկում՝ նախքան աշխատանքը սկսելը։",
+            "en": "Each package card gives a short description. The full scope, such as how many posts, shoots or articles you get each month, is written in your personal proposal before you start.",
+            "ru": "На карточке пакета есть краткое описание. Полный объём, например сколько публикаций, съёмок или статей вы получаете в месяц, прописан в вашем персональном предложении до начала работы."
           }
         },
         {
           "question": {
-            "hy": "Առցանց նախահաշիվը պայմանագի՞ր է",
-            "en": "Is the online estimate a contract?",
-            "ru": "Онлайн-расчёт является договором?"
+            "hy": "Ի՞նչ է լինում նախահաշիվն ուղարկելուց հետո",
+            "en": "What happens after I send my estimate?",
+            "ru": "Что происходит после отправки расчёта?"
           },
           "answer": {
-            "hy": "Ոչ։ Այն օգնում է ստանալ առաջարկ։ Նախ ծավալը համաձայնեցնում ենք ձեզ հետ, և կայքի միջոցով ոչինչ չի գանձվում։",
-            "en": "No. It helps you ask for a proposal. We agree the scope with you first, and nothing is charged through the website.",
-            "ru": "Нет. Он помогает запросить предложение. Сначала мы согласуем с вами объём, а через сайт ничего не оплачивается."
+            "hy": "Մարիամը կամ Էդգարը պատասխանում են մեկ աշխատանքային օրվա ընթացքում։ Հետո խոսում ենք ձեր բիզնեսի մասին, և ստանում եք առաջարկ՝ հստակ ծավալով և գնով։ Կայքի միջոցով ոչինչ չի գանձվում։",
+            "en": "Mariam or Edgar replies within one working day. Then we talk about your business, and you get a proposal with the exact scope and price. Nothing is charged through the website.",
+            "ru": "Мариам или Эдгар отвечают в течение одного рабочего дня. Затем мы обсуждаем ваш бизнес, и вы получаете предложение с точным объёмом и ценой. Через сайт ничего не оплачивается."
           }
         },
         {
