@@ -143,7 +143,10 @@
   display: flex;
 }
 
-/* With a mouse it also opens on hover; the invisible strip bridges the gap to the menu. */
+/*
+ * With a mouse it also opens on hover (header.js, so the chevron and aria-expanded always match
+ * what is shown); this invisible strip keeps the pointer "inside" on its way to the menu.
+ */
 @media (hover: hover) and (min-width: 960px) {
   .nav-group::after {
     content: '';
@@ -152,11 +155,6 @@
     left: 0;
     right: 0;
     height: 10px;
-  }
-
-  /* Escape dismisses it until the pointer leaves (header.js adds .is-dismissed). */
-  .nav-group:not(.is-dismissed):hover .nav-submenu {
-    display: flex;
   }
 }
 

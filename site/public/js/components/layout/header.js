@@ -9,6 +9,8 @@ import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 /** From this width the full navigation shows and the phone menu is not used (header.css). */
 const WIDE_NAV_MIN_PX = 960
 
+const isWideScreen = () => window.matchMedia(`(min-width: ${WIDE_NAV_MIN_PX}px)`).matches
+
 /**
  * Logo, navigation (with a "Services" submenu), language switch, the bulb theme toggle and the
  * phone menu button. On phones the menu fills the screen and also holds the languages and
@@ -118,9 +120,25 @@ function navItem(item, index) {
  */
 function navGroup(item, id) {
   const isCurrent = item.children.some((child) => child.href === currentFile())
+
+  // A mouse opens it on hover; touch and keyboard use the button. One state for both.
+  let openedByHover = false
+  const hover = (open) => (event) => {
+    if (event.pointerType !== 'mouse' || !isWideScreen()) return
+    openedByHover = open
+    setGroupOpen(group, open)
+  }
+  // The click that usually follows a hover-open keeps it open instead of closing it.
+  const toggle = () => {
+    const isOpen = group.classList.contains('is-open')
+    const keepOpen = openedByHover && isOpen
+    openedByHover = false
+    if (!keepOpen) setGroupOpen(group, !isOpen)
+  }
+
   const group = h(
     'li',
-    { class: 'nav-group', onmouseleave: () => group.classList.remove('is-dismissed') },
+    { class: 'nav-group', onpointerenter: hover(true), onpointerleave: hover(false) },
     h(
       'button',
       {
@@ -128,7 +146,7 @@ function navGroup(item, id) {
         class: isCurrent ? 'nav-group-toggle is-current' : 'nav-group-toggle',
         'aria-expanded': 'false',
         'aria-controls': id,
-        onclick: () => setGroupOpen(group, !group.classList.contains('is-open')),
+        onclick: toggle,
       },
       t(item.label),
     ),
@@ -162,10 +180,9 @@ function closeGroups(header, except = null) {
   }
 }
 
-/** Escape: close every submenu, also one held open by the mouse, and keep focus on its button. */
+/** Escape: close every submenu and keep keyboard focus on its button. */
 function dismissGroups(header) {
-  for (const group of header.querySelectorAll('.nav-group')) {
-    group.classList.add('is-dismissed')
+  for (const group of header.querySelectorAll('.nav-group.is-open')) {
     if (group.contains(document.activeElement)) group.querySelector('.nav-group-toggle').focus()
   }
   closeGroups(header)
