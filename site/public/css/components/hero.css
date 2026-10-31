@@ -59,15 +59,13 @@
 }
 
 /*
- * Letters after the logo, drawn as tall as its "OTZ": those fill 57.5% of the image (0.60em)
- * and sit 0.033em above the baseline. Round letters (e, a) dip slightly below the line, so the
- * values are tuned to the drawn letters: 0.59 and 0.05em. font-size-adjust sets the lowercase
- * height directly, so this holds in every font (Anton, Noto Sans Armenian…).
+ * Letters after the logo stand on the same line as the capital before them, and reach the top
+ * of the logo's "OTZ": from the baseline (the bottom of the B) up to the top of OTZ is
+ * (0.89 − 0.28) × 1.05em ≈ 0.63em. font-size-adjust sets the lowercase height directly, so this
+ * holds in every font (Anton, Noto Sans Armenian…).
  */
 .logo-letters {
-  position: relative;
-  bottom: 0.05em;
-  font-size-adjust: ex-height 0.59;
+  font-size-adjust: ex-height 0.63;
 }
 
 /* On every page title, the highlighted phrase starts its own line. */
