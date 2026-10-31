@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path'
 import { describe, it } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { PAGES } from '../public/js/config.js'
-import { catalog, finder, navigation } from '../public/js/content/index.js'
+import { catalog, finder, navigation, people } from '../public/js/content/index.js'
 import { loadJson } from '../public/js/content/load.js'
 import { interpolate, t, ui } from '../public/js/lib/i18n.js'
 
@@ -63,6 +63,12 @@ describe('content', () => {
       const html = readFileSync(join(publicDir, file), 'utf8')
       const target = html.match(/url=services\.html#([\w-]+)/)?.[1]
       assert.ok(services.includes(target), `${file} should redirect to a Services section`)
+    }
+  })
+
+  it('has a file for every founder photo', () => {
+    for (const person of people.filter((entry) => entry.photo)) {
+      assert.ok(existsSync(publicDir + person.photo), `missing ${person.photo}`)
     }
   })
 
