@@ -7,17 +7,23 @@ import { save } from './storage.js'
 const root = document.documentElement
 
 const REVEAL = {
-  onMs: 460,
-  offMs: 400,
-  easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  /** Soft edge of the reveal circle, as a share of its radius, capped in px. */
-  feather: 0.22,
-  featherMax: 240,
+  onMs: 640,
+  offMs: 560,
+  /** Light spreads quickly and settles gently; darkness gathers, then closes into the bulb. */
+  onEasing: 'cubic-bezier(0.33, 1, 0.68, 1)',
+  offEasing: 'cubic-bezier(0.45, 0, 0.55, 1)',
+  /** Soft edge of the reveal circle, as a share of its radius, capped in px. A narrow edge
+   * keeps the two themes from mixing into a grey band. */
+  feather: 0.1,
+  featherMax: 120,
   /** Crossfade used where View Transitions are not supported. */
   fadeMs: 300,
 }
 
 export const getTheme = () => (root.dataset.theme === 'dark' ? 'dark' : 'light')
+
+/** True while the new theme is spreading from the bulb (a view transition is running). */
+export const isThemeChanging = () => 'vt' in root.dataset
 
 /**
  * Switch to `theme`. With `origin` ({ x, y } in viewport px) the new theme spreads from that point
@@ -63,7 +69,7 @@ function revealFrom({ x, y }, turningOn, commit) {
     .then(() => {
       const options = {
         duration: turningOn ? REVEAL.onMs : REVEAL.offMs,
-        easing: REVEAL.easing,
+        easing: turningOn ? REVEAL.onEasing : REVEAL.offEasing,
         fill: 'both',
         pseudoElement: turningOn ? '::view-transition-new(root)' : '::view-transition-old(root)',
       }

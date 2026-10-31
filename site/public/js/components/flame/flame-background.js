@@ -8,7 +8,7 @@
  */
 import { prefersReducedMotion } from '../../lib/animation.js'
 import { h } from '../../lib/dom.js'
-import { getTheme } from '../../lib/theme.js'
+import { getTheme, isThemeChanging } from '../../lib/theme.js'
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './shaders.js'
 
 const TUNING = {
@@ -139,6 +139,8 @@ function animate(gl, program, canvas, layer) {
     destroyed: false,
     last: 0,
     frame: 0,
+    /** The theme of the last frame drawn (the fire is a little different in each). */
+    drawnTheme: null,
   }
   const cleanups = []
   const isRemoved = () => state.mounted && !layer.isConnected
@@ -183,7 +185,8 @@ function animate(gl, program, canvas, layer) {
     gl.uniform1f(uniform.uHeight, flameHeight())
     gl.uniform1f(uniform.uTurb, TUNING.turbulence)
     gl.uniform1f(uniform.uEmbers, TUNING.embers)
-    gl.uniform1f(uniform.uLight, getTheme() === 'light' ? 1 : 0)
+    state.drawnTheme = getTheme()
+    gl.uniform1f(uniform.uLight, state.drawnTheme === 'light' ? 1 : 0)
     gl.clearColor(0, 0, 0, 0)
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.drawArrays(gl.TRIANGLES, 0, 3)
@@ -201,6 +204,12 @@ function animate(gl, program, canvas, layer) {
     }
     const elapsed = Math.min(TUNING.maxFrameStep, (now - state.last) / 1000)
     state.last = now
+    // While the theme changes, one frame in the new theme is enough: the fire holds still so the
+    // light spreading from the bulb has the graphics card to itself.
+    if (holdForThemeChange()) {
+      state.frame = requestAnimationFrame(tick)
+      return
+    }
     const scrolled = scrollProgress()
     state.fade = 1 - scrolled
     state.time += elapsed * TUNING.speed * (1 - TUNING.scrollCalm * scrolled)
@@ -208,6 +217,8 @@ function animate(gl, program, canvas, layer) {
     draw()
     if (state.visible) state.frame = requestAnimationFrame(tick)
   }
+
+  const holdForThemeChange = () => isThemeChanging() && state.drawnTheme === getTheme()
 
   function stillFrame() {
     state.time = TUNING.stillTime
