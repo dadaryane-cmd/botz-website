@@ -17,6 +17,9 @@ const REVEAL = {
   fadeMs: 300,
 }
 
+/** The most recent reveal; only it may clean up after itself. */
+let latestTransition = null
+
 export const getTheme = () => (root.dataset.theme === 'dark' ? 'dark' : 'light')
 
 /** True while the new theme is spreading from the bulb (a view transition is running). */
@@ -62,6 +65,7 @@ function revealFrom({ x, y }, turningOn, commit) {
   }
 
   const transition = document.startViewTransition(commit)
+  latestTransition = transition
   transition.ready
     .then(() => {
       const options = {
@@ -79,6 +83,8 @@ function revealFrom({ x, y }, turningOn, commit) {
     // The browser may skip the transition (e.g. the tab is hidden); the theme still changes.
     .catch(() => {})
   transition.finished.finally(() => {
+    // A quick second pull starts a new transition and cuts this one short: leave its state be.
+    if (transition !== latestTransition) return
     delete root.dataset.vt
     delete root.dataset.vtSoft
     for (const property of ['--vt-x', '--vt-y', '--vt-feather']) {

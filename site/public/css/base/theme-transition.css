@@ -65,13 +65,13 @@ html[data-vt='on'] .bulb-halo {
 }
 
 /*
- * The same for the cord and wire: in the new theme's colour they would vanish against the old
- * page and leave the bead floating on its own. Until the page has changed they keep the old
- * theme's colour, which is the new theme's inverse text colour.
+ * The cord and wire are drawn over both themes at once while the circle spreads from the bulb:
+ * in either theme's text colour they would vanish against the other and leave the bead floating
+ * on its own. Halfway between navy and blush, they show on both.
  */
 html[data-vt] .bulb-toggle {
-  --bulb-wire: color-mix(in srgb, var(--inverse-text) 55%, transparent);
-  --bulb-cord: color-mix(in srgb, var(--inverse-text) 70%, transparent);
+  --bulb-wire: color-mix(in srgb, var(--bg) 50%, var(--inverse-bg));
+  --bulb-cord: color-mix(in srgb, var(--bg) 50%, var(--inverse-bg));
 }
 
 /* Snapshots must show final colours, not mid-transition ones (the live bulb keeps its own). */
