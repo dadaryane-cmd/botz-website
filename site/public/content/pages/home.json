@@ -65,6 +65,21 @@
       }
     },
     {
+      "type": "split",
+      "id": "who-we-are",
+      "background": "surface",
+      "statement": {
+        "hy": "Մեկ թիմ այն աշխատանքի համար, որը մարդկանց բերում է ձեզ մոտ՝ *սոցցանցեր, որոնում և կայք։*",
+        "en": "One team for the work that brings people to you: *social, search and site.*",
+        "ru": "Одна команда для всего, что приводит к вам людей: *соцсети, поиск и сайт.*"
+      },
+      "body": {
+        "hy": "BOTZ-ը մարքեթինգային գործակալություն է՝ կառուցված պարզ գաղափարի շուրջ․ դուք պետք է հստակ իմանաք, թե ինչի համար եք վճարում։ Յուրաքանչյուր փաթեթ ունի որոշված ծավալ, յուրաքանչյուր գին հրապարակային է, իսկ արդյունքները կանոնավոր ներկայացվում են պարզ լեզվով։",
+        "en": "BOTZ is a marketing agency built around a simple idea: you should know exactly what you are paying for. Every package has a defined scope, every price is public, and results are reported regularly in plain language.",
+        "ru": "BOTZ — маркетинговое агентство, построенное на простой идее: вы должны точно знать, за что платите. У каждого пакета есть определённый объём, все цены открыты, а результаты регулярно описываются простым языком."
+      }
+    },
+    {
       "type": "services",
       "id": "services",
       "items": [
