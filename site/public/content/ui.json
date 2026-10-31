@@ -38,19 +38,24 @@
       "ru": "Маркетинг в соцсетях"
     },
     "seo": {
-      "hy": "Որոնողական օպտիմալացում",
-      "en": "Search engine optimisation",
-      "ru": "Поисковая оптимизация"
+      "hy": "SEO և կայքի օպտիմալացում",
+      "en": "SEO and website optimisation",
+      "ru": "SEO и оптимизация сайта"
+    },
+    "website": {
+      "hy": "Կայքի ստեղծում",
+      "en": "Website creation",
+      "ru": "Создание сайтов"
+    },
+    "strategy": {
+      "hy": "Թվային մարքեթինգի ռազմավարություն",
+      "en": "Digital marketing strategy",
+      "ru": "Стратегия цифрового маркетинга"
     },
     "bundle": {
       "hy": "SMM + SEO",
       "en": "SMM + SEO",
       "ru": "SMM + SEO"
-    },
-    "website": {
-      "hy": "Կայքի ստեղծում",
-      "en": "Website creation",
-      "ru": "Создание сайта"
     },
     "addon": {
       "hy": "Լրացուցիչ ծառայություններ",
@@ -93,6 +98,31 @@
       "hy": "Պատճենված է",
       "en": "Copied",
       "ru": "Скопировано"
+    },
+    "hoursLabel": {
+      "hy": "Աշխատանքային ժամեր",
+      "en": "Opening hours",
+      "ru": "Часы работы"
+    },
+    "nextTitle": {
+      "hy": "Ինչ է լինում հետո",
+      "en": "What happens next",
+      "ru": "Что будет дальше"
+    },
+    "nextReply": {
+      "hy": "Պատասխանում ենք մեկ աշխատանքային օրվա ընթացքում։",
+      "en": "We reply within one working day.",
+      "ru": "Отвечаем в течение одного рабочего дня."
+    },
+    "nextCall": {
+      "hy": "Կարճ խոսում ենք ձեր բիզնեսի և նպատակների մասին։",
+      "en": "We talk briefly about your business and goals.",
+      "ru": "Коротко обсуждаем ваш бизнес и цели."
+    },
+    "nextProposal": {
+      "hy": "Ստանում եք գրավոր առաջարկ՝ ծավալով և գնով։",
+      "en": "You get a written proposal with the scope and price.",
+      "ru": "Вы получаете письменное предложение с объёмом и ценой."
     }
   },
   "pricing": {

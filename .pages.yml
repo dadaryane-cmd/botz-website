@@ -116,7 +116,7 @@ components:
                 label: Service
                 type: select
                 options:
-                  values: [smm, seo, bundle, website, addon, other, strategy]
+                  values: [smm, seo, website, strategy, bundle, addon, other]
               - name: highlights
                 label: What it includes
                 component: line
@@ -151,7 +151,7 @@ components:
             label: Service (shows who handles it)
             type: select
             options:
-              values: [smm, seo, bundle, website, addon, other, strategy]
+              values: [smm, seo, website, strategy, bundle, addon, other]
           - name: problem
             label: What it solves
             component: paragraph
@@ -411,7 +411,7 @@ components:
             label: Service preselected in the form
             type: select
             options:
-              values: [smm, seo, bundle, website, addon, other]
+              values: [smm, seo, website, strategy, bundle, addon, other]
           - name: id
             label: Anchor
             type: string
@@ -913,7 +913,7 @@ content:
             label: Handles inquiries about
             type: select
             options:
-              values: [smm, seo, bundle, website, addon, other, strategy]
+              values: [smm, seo, website, strategy, bundle, addon, other]
               multiple: true
         list:
           collapsible:
@@ -1013,11 +1013,14 @@ content:
           - name: seo
             label: Seo
             component: line
-          - name: bundle
-            label: Bundle
-            component: line
           - name: website
             label: Website
+            component: line
+          - name: strategy
+            label: Strategy
+            component: line
+          - name: bundle
+            label: Bundle
             component: line
           - name: addon
             label: Addon
@@ -1046,6 +1049,21 @@ content:
             component: line
           - name: copied
             label: Copied
+            component: line
+          - name: hoursLabel
+            label: Hours label
+            component: line
+          - name: nextTitle
+            label: Next title
+            component: line
+          - name: nextReply
+            label: Next reply
+            component: line
+          - name: nextCall
+            label: Next call
+            component: line
+          - name: nextProposal
+            label: Next proposal
             component: line
       - name: pricing
         label: Pricing

@@ -1,7 +1,7 @@
-/** Contact section: the inquiry form, the founders and the direct contacts. */
+/** Contact section: the inquiry form; beside it the founders, direct contacts and next steps. */
 import { people, site } from '../../content/index.js'
 import { fromMarkup, h } from '../../lib/dom.js'
-import { ui } from '../../lib/i18n.js'
+import { hasText, t, ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
 import { renderInquiryForm } from '../inquiry-form.js'
 import { heading, lead, section } from './section.js'
@@ -17,6 +17,9 @@ const ICON = {
   email: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18"
     height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>`,
+  clock: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12"
+    r="9" /><path d="M12 7v5l3 2" /></svg>`,
 }
 
 export const renderContact = (config) =>
@@ -28,7 +31,7 @@ export const renderContact = (config) =>
       'div',
       { class: 'contact-layout' },
       // On phones the form comes first (css/components/contact.css); the bottom bar already calls.
-      h('div', { class: 'contact-details' }, founders(), directContacts()),
+      h('div', { class: 'contact-details' }, founders(), directContacts(), nextSteps()),
       renderInquiryForm({ service: config.service }),
     ),
   )
@@ -62,18 +65,37 @@ function directContacts() {
     contactRow(ICON.email, ui('contact', 'email'), h('a', { href: emailHref }, site.email), [
       copyButton(site.email),
     ]),
+    hasText(site.hours) &&
+      contactRow(
+        ICON.clock,
+        ui('contact', 'hoursLabel'),
+        h('span', null, [site.location, site.hours].filter(hasText).map(t).join(' · ')),
+      ),
   )
 }
 
-function contactRow(icon, label, value, actions) {
+function contactRow(icon, label, value, actions = []) {
   return h(
     'li',
     { class: 'contact-row' },
     h('span', { class: 'contact-icon', 'aria-hidden': 'true' }, fromMarkup(icon)),
     h('span', { class: 'contact-value' }, h('span', { class: 'label' }, label), value),
-    h('span', { class: 'contact-actions' }, actions),
+    actions.length > 0 && h('span', { class: 'contact-actions' }, actions),
   )
 }
+
+/** What happens after sending: knowing the next steps makes it easier to send. */
+const nextSteps = () =>
+  h(
+    'div',
+    { class: 'next-steps' },
+    h('p', { class: 'label' }, ui('contact', 'nextTitle')),
+    h(
+      'ol',
+      null,
+      ['nextReply', 'nextCall', 'nextProposal'].map((key) => h('li', null, ui('contact', key))),
+    ),
+  )
 
 /** Copies the text and says so for a moment; where copying is blocked, shows it to copy by hand. */
 function copyButton(text) {

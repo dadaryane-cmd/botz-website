@@ -18,7 +18,9 @@ export function renderHero(config) {
   )
 
   if (config.variant !== 'home') {
-    return h('section', { class: 'hero' }, h('div', { class: 'container' }, text))
+    // "compact": a smaller title, so the content (e.g. the contact form) starts near the top.
+    const classes = config.variant === 'compact' ? 'hero hero-compact' : 'hero'
+    return h('section', { class: classes }, h('div', { class: 'container' }, text))
   }
   return h(
     'section',

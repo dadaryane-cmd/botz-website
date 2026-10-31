@@ -15,15 +15,16 @@
     {
       "type": "hero",
       "heading": {
-        "hy": "Գրեք Մարիամին կամ Էդգարին",
-        "en": "Write to Mariam or Edgar",
-        "ru": "Напишите Мариам или Эдгару"
+        "hy": "Խոսենք *ձեր բիզնեսի մասին։*",
+        "en": "Let's talk *about your business.*",
+        "ru": "Давайте поговорим *о вашем бизнесе.*"
       },
       "subheading": {
-        "hy": "Սոցցանցերի հարցերով՝ Մարիամին, SEO-ի և կայքերի հարցերով՝ Էդգարին։ Չգիտե՞ք ում։ Ուղարկեք ձևը, և ճիշտ մարդը կպատասխանի։",
-        "en": "Social media questions go to Mariam, SEO and websites to Edgar. Not sure? Send the form and the right one of us will answer.",
-        "ru": "С вопросами о соцсетях к Мариам, о SEO и сайтах к Эдгару. Не уверены? Отправьте форму, и ответит тот, кто нужен."
-      }
+        "hy": "Գրեք, զանգահարեք կամ օգտագործեք ձևը։ Պատասխանում ենք մեկ աշխատանքային օրվա ընթացքում։",
+        "en": "Write, call or use the form. We reply within one working day.",
+        "ru": "Напишите, позвоните или заполните форму. Отвечаем в течение одного рабочего дня."
+      },
+      "variant": "compact"
     },
     {
       "type": "contact",

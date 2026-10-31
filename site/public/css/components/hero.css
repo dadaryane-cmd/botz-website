@@ -15,6 +15,15 @@
   line-height: 0.95;
 }
 
+/* Compact title (Contact page): less space and a smaller size, so the form starts near the top. */
+.hero-compact {
+  padding: clamp(40px, 6vw, 72px) 0 clamp(16px, 3vw, 32px);
+}
+
+.hero-compact h1.heading {
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+}
+
 /* A page title is followed directly by its content. */
 .hero:not(.hero-home) + .section {
   padding-top: clamp(16px, 3vw, 40px);

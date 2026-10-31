@@ -71,6 +71,35 @@
   overflow-wrap: anywhere;
 }
 
+/* ---- what happens next: three numbered steps ---- */
+
+.next-steps {
+  margin-top: 28px;
+}
+
+.next-steps ol {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.next-steps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  counter-increment: step;
+}
+
+.next-steps li::before {
+  content: counter(step);
+  font: 700 1.2rem var(--font-display);
+  color: var(--accent-text);
+}
+
 /* The buttons sit under the value, lined up with it. */
 .contact-actions {
   grid-column: 2;

@@ -12,7 +12,6 @@ import {
   INQUIRY_SERVICES,
   PACKAGE_CATEGORIES,
   PAGES,
-  SERVICE_AREAS,
   SOCIAL_NETWORKS,
 } from '../public/js/config.js'
 
@@ -111,7 +110,7 @@ const sectionBlocks = [
         object('items', 'Services', [
           text('title', 'Title'),
           // Shows the founder(s) who handle this service (from Founders).
-          select('service', 'Service', SERVICE_AREAS),
+          select('service', 'Service', INQUIRY_SERVICES),
           list(text('highlights', 'What it includes')),
           link('link', 'Link'),
         ]),
@@ -125,7 +124,7 @@ const sectionBlocks = [
     label: 'Service explained',
     fields: [
       heading('title', 'Service name'),
-      select('service', 'Service (shows who handles it)', SERVICE_AREAS),
+      select('service', 'Service (shows who handles it)', INQUIRY_SERVICES),
       text('problem', 'What it solves', { long: true }),
       text('approach', 'How we work', { long: true }),
       list(text('deliverables', 'What we do')),
@@ -416,7 +415,7 @@ const peopleEntry = {
           options: { media: 'images' },
         },
         text('contactLabel', 'Link text, e.g. "Write to Mariam"'),
-        select('services', 'Handles inquiries about', SERVICE_AREAS, {
+        select('services', 'Handles inquiries about', INQUIRY_SERVICES, {
           options: { multiple: true },
         }),
       ]),
