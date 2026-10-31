@@ -8,6 +8,8 @@
   position: fixed;
   inset: 0;
   z-index: 45;
+  /* The glow below is larger than the screen; it must not make the page scroll. */
+  overflow: hidden;
   pointer-events: none;
   mix-blend-mode: multiply;
   opacity: 0;
@@ -24,18 +26,22 @@
   opacity: 1;
 }
 
-/* A brighter glow that spreads from the bulb and fades when the cord is pulled. */
+/*
+ * A brighter glow that spreads from the bulb and fades when the cord is pulled. It is a round
+ * patch centred on the bulb that fades to nothing at its own edge: a screen-sized box would show
+ * its edge as a hard orange line while it grows.
+ */
 .lamp-light::after {
   content: '';
   position: absolute;
-  inset: 0;
+  left: var(--lamp-x, 100%);
+  top: var(--lamp-y, 0);
+  width: 110vmax;
+  height: 110vmax;
+  margin: -55vmax 0 0 -55vmax;
+  border-radius: 50%;
   opacity: 0;
-  transform-origin: var(--lamp-x, 100%) var(--lamp-y, 0);
-  background: radial-gradient(
-    circle 55vmax at var(--lamp-x, 100%) var(--lamp-y, 0),
-    rgb(255 190 110 / 0.6) 0,
-    transparent 100%
-  );
+  background: radial-gradient(closest-side, rgb(255 190 110 / 0.6), transparent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
