@@ -94,11 +94,11 @@ saves can never drop data. Empty editor fields arrive as `""`; the loader turns 
 
 ## Contact form
 
-Messages are emailed to `formEmail` in `content/site.json` (dadaryane@gmail.com) through
-[FormSubmit](https://formsubmit.co), a free form-to-email service.
+Messages are emailed to `formEmail` in `content/site.json` (botz.marketingagency@gmail.com)
+through [FormSubmit](https://formsubmit.co), a free form-to-email service.
 
 **One-time setup:** once the site is online, send one test message. FormSubmit emails an
-**Activate Form** link to dadaryane@gmail.com — click it. Until then the form shows an error
+**Activate Form** link to botz.marketingagency@gmail.com — click it. Until then the form shows an error
 and offers email or WhatsApp instead. After activation FormSubmit also offers a random alias
 you can use as `formEmail` so the address is not visible in the page source.
 
