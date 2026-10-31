@@ -1,6 +1,7 @@
 import { h, richText } from '../../lib/dom.js'
 import { hasText } from '../../lib/i18n.js'
 import { renderFlameBackground } from '../flame/flame-background.js'
+import { inlineLogo } from '../logo.js'
 import { buttonRow, lead } from './section.js'
 
 /**
@@ -12,7 +13,11 @@ export function renderHero(config) {
     'div',
     { class: 'hero-text' },
     hasText(config.heading) &&
-      h('h1', { class: 'heading' }, richText(config.heading, { words: true })),
+      h(
+        'h1',
+        { class: 'heading' },
+        richText(config.heading, { words: true, tokens: { logo: inlineLogo } }),
+      ),
     lead(config.subheading),
     buttonRow(config.buttons),
   )

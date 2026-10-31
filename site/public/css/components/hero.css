@@ -46,6 +46,16 @@
   position: relative;
 }
 
+/*
+ * The logo inside a title (`{logo}`). Its letters fill about 60% of the image, so 1.2em tall
+ * matches the capitals; it sits on the baseline (the "Marketing agency" line hangs below).
+ */
+.inline-logo img {
+  height: 1.2em;
+  width: auto;
+  vertical-align: -0.14em;
+}
+
 /* On every page title, the highlighted phrase starts its own line. */
 .hero .heading em {
   display: block;

@@ -23,19 +23,28 @@ export function h(tag, attributes, ...children) {
  * Localized text where `*words*` are emphasised, as used in headings.
  * With `words: true` every word is wrapped in `<span class="word" style="--i: n">` for the
  * word-by-word entrance animation (emphasised words stay together inside one `<em>`).
+ * `tokens` replaces placeholders such as `{logo}` with an element: `{ logo: () => node }`.
  */
-export function richText(value, { words = false } = {}) {
+export function richText(value, { words = false, tokens = {} } = {}) {
   const fragment = document.createDocumentFragment()
   let index = 0
   const wordSpan = (word) => h('span', { class: 'word', style: `--i: ${index++}` }, word)
+  /** A placeholder's element, or the text itself when there is no such placeholder. */
+  const resolve = (part) => {
+    const name = part.match(/^\{(\w+)\}$/)?.[1]
+    return name && tokens[name] ? tokens[name]() : part
+  }
   /** Text as a list of nodes: the text itself, or (with `words`) word spans and the spaces between. */
   const nodes = (text) =>
     words
       ? text
-          .split(/(\s+)/)
+          .split(/(\s+|\{\w+\})/)
           .filter(Boolean)
-          .map((part) => (/^\s+$/.test(part) ? part : wordSpan(part)))
-      : [text]
+          .map((part) => (/^\s+$/.test(part) ? part : wordSpan(resolve(part))))
+      : text
+          .split(/(\{\w+\})/)
+          .filter(Boolean)
+          .map(resolve)
   for (const part of t(value).split(/(\*[^*]+\*)/)) {
     if (/^\*[^*]+\*$/.test(part)) fragment.append(h('em', null, nodes(part.slice(1, -1))))
     else if (part) fragment.append(...nodes(part))

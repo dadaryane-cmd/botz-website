@@ -21,7 +21,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: subheading
             label: Subheading
             component: paragraph
@@ -65,7 +65,7 @@ components:
           - name: statement
             label: Statement
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: body
             label: Text
             component: paragraph
@@ -101,7 +101,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -146,7 +146,7 @@ components:
           - name: title
             label: Service name
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: service
             label: Service (shows who handles it)
             type: select
@@ -183,7 +183,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -211,7 +211,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -247,7 +247,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -288,7 +288,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -310,7 +310,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -348,7 +348,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: steps
             label: Steps
             type: object
@@ -381,7 +381,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: items
             label: Questions
             type: object
@@ -417,7 +417,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: intro
             label: Intro
             component: paragraph
@@ -444,7 +444,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: defaultCategory
             label: Package group shown first
             type: select
@@ -478,7 +478,7 @@ components:
           - name: heading
             label: Heading
             component: line
-            description: "Wrap words in *asterisks* to show them in the accent colour."
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
           - name: text
             label: Text
             component: paragraph

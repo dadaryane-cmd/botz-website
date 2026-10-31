@@ -49,7 +49,8 @@ const list = (field, summary) => ({
 const readonly = (field) => ({ ...field, readonly: true })
 const hidden = (field) => ({ ...field, hidden: true })
 
-const HIGHLIGHT_HINT = 'Wrap words in *asterisks* to show them in the accent colour.'
+const HIGHLIGHT_HINT =
+  'Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo.'
 const heading = (name = 'heading', label = 'Heading') =>
   text(name, label, { description: HIGHLIGHT_HINT })
 const link = (name, label) => ({ name, label, component: 'link' })

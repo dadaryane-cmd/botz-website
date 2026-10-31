@@ -1,10 +1,11 @@
 import { LANGUAGE_LABELS, LANGUAGES } from '../../config.js'
-import { navigation, site } from '../../content/index.js'
+import { navigation } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { getLanguage, setLanguage, t, ui } from '../../lib/i18n.js'
 import { external, phoneHref, whatsappHref } from '../../lib/links.js'
 import { currentFile } from '../../lib/page.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
+import { logoImages } from '../logo.js'
 
 /** From this width the full navigation shows and the phone menu is not used (header.css). */
 const WIDE_NAV_MIN_PX = 960
@@ -64,21 +65,12 @@ export function renderHeader(header) {
       { class: 'container container-wide header-bar' },
       // Both logos are rendered; CSS shows the one for the current theme, so a theme change
       // never re-renders the header (and never interrupts the bulb's animation).
-      h('a', { class: 'logo', href: 'index.html' }, logoImage('light'), logoImage('dark')),
+      h('a', { class: 'logo', href: 'index.html' }, logoImages()),
       nav,
       h('div', { class: 'header-tools' }, languageSwitch(), renderBulbToggle(), menuToggle),
     ),
   )
 }
-
-const logoImage = (theme) =>
-  h('img', {
-    class: `logo-${theme}`,
-    src: `images/botz-logo-${theme}.webp`,
-    alt: t(site.name),
-    width: 112,
-    height: 44,
-  })
 
 function languageSwitch() {
   return h(
