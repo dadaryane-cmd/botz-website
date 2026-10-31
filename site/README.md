@@ -17,7 +17,8 @@ npm run cms   # regenerate /.pages.yml after changing cms/config.js
 ```
 site/
 ├── public/                     everything that is published
-│   ├── *.html                  one empty shell per page: <html data-page="smm">
+│   ├── *.html                  one empty shell per page: <html data-page="pricing">
+│   │                           (smm, seo, website-creation.html only redirect to Services)
 │   ├── content/                ALL TEXTS AND PRICES as JSON (edited in Pages CMS)
 │   │   ├── pages/<page>.json   one file per page: its meta data and list of sections
 │   │   └── *.json              prices, finder, contact details, founders, menu, labels

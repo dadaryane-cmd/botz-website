@@ -1,16 +1,7 @@
 /** Site-wide constants. */
 
 /** Pages with a content file in /content/pages, by their <html data-page> value. */
-export const PAGES = [
-  'home',
-  'services',
-  'smm',
-  'seo',
-  'website-creation',
-  'pricing',
-  'about',
-  'contact',
-]
+export const PAGES = ['home', 'services', 'pricing', 'about', 'contact']
 
 export const LANGUAGES = ['hy', 'en', 'ru']
 export const DEFAULT_LANGUAGE = 'hy'

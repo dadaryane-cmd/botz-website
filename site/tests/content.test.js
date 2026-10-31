@@ -41,8 +41,11 @@ function* translations(value) {
 
 describe('content', () => {
   it('has an HTML file for every page, and a page for every HTML file', () => {
+    // Retired pages stay as redirects, so old links still lead somewhere.
+    const isRedirect = (file) =>
+      readFileSync(join(publicDir, file), 'utf8').includes('http-equiv="refresh"')
     const htmlFiles = readdirSync(publicDir).filter(
-      (file) => file.endsWith('.html') && file !== '404.html',
+      (file) => file.endsWith('.html') && file !== '404.html' && !isRedirect(file),
     )
     assert.deepEqual(PAGES.map(htmlFile).sort(), htmlFiles.sort())
     for (const key of PAGES) {
@@ -51,6 +54,15 @@ describe('content', () => {
         html.includes(`data-page="${key}"`),
         `${htmlFile(key)} should have data-page="${key}"`,
       )
+    }
+  })
+
+  it('redirects every retired page to a section that exists on the Services page', () => {
+    const services = pages.services.sections.map((section) => section.id).filter(Boolean)
+    for (const file of ['smm.html', 'seo.html', 'website-creation.html']) {
+      const html = readFileSync(join(publicDir, file), 'utf8')
+      const target = html.match(/url=services\.html#([\w-]+)/)?.[1]
+      assert.ok(services.includes(target), `${file} should redirect to a Services section`)
     }
   })
 

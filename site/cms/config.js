@@ -252,9 +252,6 @@ const sectionBlocks = [
 const PAGE_LABELS = {
   home: 'Home',
   services: 'Services',
-  smm: 'Social media (SMM)',
-  seo: 'SEO',
-  'website-creation': 'Website creation',
   pricing: 'Pricing',
   about: 'About',
   contact: 'Contact',
