@@ -46,8 +46,8 @@
   position: relative;
 }
 
-/* The highlighted phrase of the headline always starts its own line. */
-.hero-home .heading em {
+/* On every page title, the highlighted phrase starts its own line. */
+.hero .heading em {
   display: block;
 }
 
