@@ -6,7 +6,6 @@
 import { h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
 import { reveal } from '../../lib/reveal.js'
-import { teamLine } from '../team-line.js'
 import { heading, lead, section } from './section.js'
 
 export const renderServiceDetail = (config) =>
@@ -19,7 +18,6 @@ export const renderServiceDetail = (config) =>
         'div',
         { class: 'service-detail-story' },
         heading(config.title),
-        teamLine(config.service),
         lead(config.problem),
         hasText(config.approach) && [
           h('p', { class: 'label' }, ui('servicesPage', 'approachLabel')),

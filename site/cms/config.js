@@ -423,7 +423,6 @@ const peopleEntry = {
           type: 'image',
           options: { media: 'images' },
         },
-        text('contactLabel', 'Link text, e.g. "Write to Mariam"'),
         select('services', 'Handles inquiries about', INQUIRY_SERVICES, {
           options: { multiple: true },
         }),

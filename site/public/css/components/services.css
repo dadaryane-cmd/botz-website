@@ -40,31 +40,6 @@
   color: var(--muted);
 }
 
-/* Who does it: the founders' initials, in the same rounded squares as their contact cards. */
-.service-team {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.service-initial {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--accent);
-  color: var(--on-accent);
-  font: 700 0.7rem var(--font-display);
-}
-
-.service-team > span:last-child {
-  margin-left: 2px;
-}
-
 .service-arrow {
   font-size: 1.4rem;
   color: var(--accent-text);

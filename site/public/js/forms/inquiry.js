@@ -24,7 +24,7 @@ export function serviceFromSearch(search = '') {
 }
 
 /**
- * The service to preselect: the one a link asked for (e.g. "Write to Mariam"), the chosen
+ * The service to preselect: the one a link asked for (`?service=seo`), the chosen
  * package's, "addon" for add-ons alone, else the page's.
  */
 export function initialService({ requested, packageCategory, hasAddons, pageService }) {

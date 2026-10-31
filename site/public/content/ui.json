@@ -460,16 +460,6 @@
       "en": "Service",
       "ru": "Услуга"
     },
-    "replyBy": {
-      "hy": "Կպատասխանի՝ {name}։",
-      "en": "{name} will reply.",
-      "ru": "Ответит {name}."
-    },
-    "replyTeam": {
-      "hy": "Մեզանից մեկը կպատասխանի։",
-      "en": "One of us will reply.",
-      "ru": "Ответит один из нас."
-    },
     "message": {
       "hy": "Հաղորդագրություն",
       "en": "Message",
@@ -506,9 +496,9 @@
       "ru": "Спасибо, сообщение отправлено."
     },
     "successText": {
-      "hy": "{name}-ը կկապվի ձեզ հետ աշխատանքային ժամերին։ Շտապ դեպքում զանգեք կամ գրեք WhatsApp-ով։",
-      "en": "{name} will get back to you during working hours. If it is urgent, call or message us on WhatsApp.",
-      "ru": "{name} свяжется с вами в рабочее время. Если срочно — позвоните или напишите в WhatsApp."
+      "hy": "Մենք կկապվենք ձեզ հետ աշխատանքային ժամերին։ Շտապ դեպքում զանգեք կամ գրեք WhatsApp-ով։",
+      "en": "We will get back to you during working hours. If it is urgent, call or message us on WhatsApp.",
+      "ru": "Мы свяжемся с вами в рабочее время. Если срочно — позвоните или напишите в WhatsApp."
     },
     "teamName": {
       "hy": "Մեր թիմը",
@@ -563,9 +553,9 @@
   },
   "footer": {
     "madeBy": {
-      "hy": "Ստեղծված է Երևանում՝ Մարիամի և Էդգարի կողմից",
-      "en": "Made in Yerevan by Mariam and Edgar",
-      "ru": "Сделано в Ереване Мариам и Эдгаром"
+      "hy": "Ստեղծված է Երևանում",
+      "en": "Made in Yerevan",
+      "ru": "Сделано в Ереване"
     },
     "contactTitle": {
       "hy": "Կապ",
@@ -712,9 +702,9 @@
       "ru": "Не нашли свой вопрос?"
     },
     "writeUs": {
-      "hy": "Գրեք Մարիամին կամ Էդգարին",
-      "en": "Write to Mariam or Edgar",
-      "ru": "Напишите Мариам или Эдгару"
+      "hy": "Գրեք մեզ",
+      "en": "Write to us",
+      "ru": "Напишите нам"
     }
   }
 }

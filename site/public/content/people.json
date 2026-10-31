@@ -19,11 +19,6 @@
       },
       "photo": "images/team-mariam.webp",
       "photoAvif": "images/team-mariam.avif",
-      "contactLabel": {
-        "hy": "Գրել Մարիամին",
-        "en": "Write to Mariam",
-        "ru": "Написать Мариам"
-      },
       "services": [
         "smm",
         "bundle",
@@ -49,11 +44,6 @@
         "ru": "Эдгар отвечает за поиск и сайты. Он исправляет то, что тормозит сайт, пишет статьи, отвечающие на запросы клиентов, и делает понятные и быстрые сайты."
       },
       "photo": "images/team-edgar.webp",
-      "contactLabel": {
-        "hy": "Գրել Էդգարին",
-        "en": "Write to Edgar",
-        "ru": "Написать Эдгару"
-      },
       "services": [
         "seo",
         "website",

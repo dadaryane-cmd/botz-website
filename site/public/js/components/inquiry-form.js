@@ -55,16 +55,11 @@ export function renderInquiryForm({ service: pageService }) {
   const control = (tag, name, attributes = {}, ...children) =>
     h(tag, { id: id(name), name, 'aria-describedby': id(`${name}-error`), ...attributes }, children)
 
-  // Who will answer follows the chosen service, so the visitor does not have to pick a person.
-  const replyHint = h('p', { class: 'hint', 'aria-live': 'polite' }, replyText(preselected))
   errorFor.service = h('span', { class: 'field-error', id: id('service-error') })
   const serviceChoice = serviceFieldset({
     preselected,
     describedBy: id('service-error'),
-    onChange: (service) => {
-      replyHint.textContent = replyText(service)
-    },
-    extra: [replyHint, errorFor.service],
+    extra: errorFor.service,
   })
   const message = control('textarea', 'message', {
     rows: 5,
@@ -151,12 +146,13 @@ export function renderInquiryForm({ service: pageService }) {
       return
     }
 
+    // Only the email to the team names who should answer; the visitor just hears from "us".
     const contactKey = suggestedContact(people, values.service)
     const contact = people.find((person) => person.key === contactKey)
     const contactName = t(contact?.name) || ui('form', 'teamName')
     // The honeypot was filled in, so this is a bot: pretend it worked and send nothing.
     if (values.website) {
-      showSuccess(contactName)
+      showSuccess()
       return
     }
 
@@ -172,7 +168,7 @@ export function renderInquiryForm({ service: pageService }) {
           language: getLanguage(),
         }),
       )
-      showSuccess(contactName)
+      showSuccess()
     } catch {
       setSending(false)
       showError(ui('form', 'errorGeneric'), fallbackLinks(values))
@@ -191,13 +187,13 @@ export function renderInquiryForm({ service: pageService }) {
     status.focus()
   }
 
-  function showSuccess(contactName) {
+  function showSuccess() {
     updateSelection({ packageKey: null, addons: {}, note: null })
     const done = h(
       'div',
       { class: 'card form form-success', role: 'status', tabindex: '-1' },
       h('p', { class: 'form-success-title' }, ui('form', 'successTitle')),
-      h('p', { class: 'muted' }, ui('form', 'successText', { name: contactName })),
+      h('p', { class: 'muted' }, ui('form', 'successText')),
     )
     form.replaceWith(done)
     done.focus()
@@ -209,7 +205,7 @@ export function renderInquiryForm({ service: pageService }) {
 /* ---------- parts of the form ---------- */
 
 /** The services as a row of buttons (radio buttons underneath), so every option is visible. */
-function serviceFieldset({ preselected, describedBy, onChange, extra }) {
+function serviceFieldset({ preselected, describedBy, extra }) {
   return h(
     'fieldset',
     { class: 'full radios', 'aria-describedby': describedBy },
@@ -223,20 +219,12 @@ function serviceFieldset({ preselected, describedBy, onChange, extra }) {
           name: 'service',
           value: service,
           checked: service === preselected,
-          onchange: () => onChange(service),
         }),
         h('span', null, ui('services', service)),
       ),
     ),
     extra,
   )
-}
-
-/** "Mariam will reply." for a service one founder handles, "One of us will reply." otherwise. */
-function replyText(service) {
-  const key = suggestedContact(people, service)
-  const person = people.find((candidate) => candidate.key === key)
-  return person ? ui('form', 'replyBy', { name: t(person.name) }) : ui('form', 'replyTeam')
 }
 
 /**

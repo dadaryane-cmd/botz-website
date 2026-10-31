@@ -1,7 +1,6 @@
 /**
  * The founders, from content/people.json: on the About page a large card each (photo or
- * initial, name, role, bio and a link that opens the form on their service); in the contact
- * section a compact card.
+ * initial, name, role and bio); in the contact section a compact card.
  */
 import { people } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
@@ -41,8 +40,6 @@ const portrait = (person, className) =>
     : h('span', { class: className, 'aria-hidden': 'true' }, t(person.name).charAt(0))
 
 function founderCard(person, index) {
-  // The form opens on the first service this founder handles (Mariam: SMM, Edgar: SEO).
-  const contactHref = `contact.html?service=${person.services[0]}`
   return h(
     'article',
     { class: 'card founder-card', ...reveal(index) },
@@ -50,8 +47,6 @@ function founderCard(person, index) {
     h('h3', null, t(person.name)),
     h('p', { class: 'founder-role' }, t(person.role)),
     hasText(person.bio) && h('p', { class: 'muted' }, t(person.bio)),
-    hasText(person.contactLabel) &&
-      h('a', { class: 'link-arrow', href: contactHref }, t(person.contactLabel)),
   )
 }
 
