@@ -1,5 +1,11 @@
+/**
+ * The founders, from content/people.json: on the About page a large card each (photo or
+ * initial, name, role, bio and a link that opens the form on their service); in the contact
+ * section a compact card.
+ */
+import { people } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
-import { t } from '../../lib/i18n.js'
+import { hasText, t } from '../../lib/i18n.js'
 import { reveal } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
@@ -10,16 +16,37 @@ export const renderTeam = (config) =>
     lead(config.intro),
     h(
       'div',
-      { class: 'grid grid-2' },
-      config.founders.map((founder, index) => personCard(founder, reveal(index))),
+      { class: 'grid grid-2 founders' },
+      people.map((person, index) => founderCard(person, index)),
     ),
   )
 
-/** Avatar initial, name and role (also used by the contact section). */
+/** The photo when there is one, otherwise the first letter of the name. */
+const portrait = (person, className) =>
+  person.photo
+    ? h('img', { class: `${className} has-photo`, src: person.photo, alt: '' })
+    : h('span', { class: className, 'aria-hidden': 'true' }, t(person.name).charAt(0))
+
+function founderCard(person, index) {
+  // The form opens on the first service this founder handles (Mariam: SMM, Edgar: SEO).
+  const contactHref = `contact.html?service=${person.services[0]}`
+  return h(
+    'article',
+    { class: 'card founder-card', ...reveal(index) },
+    portrait(person, 'avatar avatar-large'),
+    h('h3', null, t(person.name)),
+    h('p', { class: 'founder-role' }, t(person.role)),
+    hasText(person.bio) && h('p', { class: 'muted' }, t(person.bio)),
+    hasText(person.contactLabel) &&
+      h('a', { class: 'link-arrow', href: contactHref }, t(person.contactLabel)),
+  )
+}
+
+/** Avatar, name and role (contact section). */
 export const personCard = (person, attributes = {}) =>
   h(
     'article',
     { class: 'card person-card', ...attributes },
-    h('span', { class: 'avatar', 'aria-hidden': 'true' }, t(person.name).charAt(0)),
+    portrait(person, 'avatar'),
     h('div', null, h('h3', null, t(person.name)), h('p', { class: 'muted' }, t(person.role))),
   )

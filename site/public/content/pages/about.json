@@ -27,50 +27,89 @@
       "buttons": [
         {
           "label": {
-            "hy": "Քննարկել իմ նախագիծը",
-            "en": "Discuss my project",
-            "ru": "Обсудить мой проект"
+            "hy": "Ծանոթացեք թիմին ↓",
+            "en": "Meet the team ↓",
+            "ru": "Знакомьтесь с командой ↓"
           },
-          "href": "contact.html",
-          "style": "primary"
+          "href": "#team",
+          "style": "secondary"
         }
       ]
     },
     {
+      "type": "team",
+      "id": "team",
+      "heading": {
+        "hy": "Ծանոթացեք թիմին",
+        "en": "Meet the team",
+        "ru": "Знакомьтесь с командой"
+      },
+      "intro": {
+        "hy": "Երկու հիմնադիր, յուրաքանչյուրը պատասխանատու է իր ոլորտի համար։ Դուք միշտ խոսում եք այն մարդու հետ, ով կատարում է աշխատանքը։",
+        "en": "Two founders, each responsible for their own field. You always talk to the person doing the work.",
+        "ru": "Два основателя, каждый отвечает за своё направление. Вы всегда общаетесь с тем, кто делает работу."
+      }
+    },
+    {
       "type": "split",
+      "background": "surface",
       "statement": {
-        "hy": "Ինչ կարող եք սպասել մեզանից",
-        "en": "What you can expect from us",
-        "ru": "Чего от нас ожидать"
+        "hy": "Ինչպես ենք աշխատում ձեզ հետ",
+        "en": "Working with us",
+        "ru": "Как мы работаем с вами"
       },
       "body": {
-        "hy": "Յուրաքանչյուր փաթեթում գրված է, թե ինչն է ներառված և ինչը՝ ոչ։ Գները հրապարակված են կայքում։ Ամեն ամիս պարզ լեզվով պատմում ենք, թե ինչ արեցինք, ինչ փոխվեց և ինչ ենք անելու հետո։",
-        "en": "Every package says what is included and what is not. The prices are on the website. Every month we tell you in plain words what we did, what changed and what we will do next.",
-        "ru": "В каждом пакете написано, что входит, а что нет. Цены есть на сайте. Каждый месяц простыми словами рассказываем, что сделали, что изменилось и что будем делать дальше."
+        "hy": "Գործնական մանրամասներ, որպեսզի առաջին օրվանից իմանաք՝ ինչ սպասել։",
+        "en": "The practical side, so you know what to expect from day one.",
+        "ru": "Практические детали, чтобы с первого дня было понятно, чего ожидать."
       },
       "points": [
         {
           "title": {
-            "hy": "Մարիամ",
-            "en": "Mariam",
-            "ru": "Мариам"
+            "hy": "Երևանում, երկուշաբթիից ուրբաթ",
+            "en": "In Yerevan, Monday to Friday",
+            "ru": "В Ереване, с понедельника по пятницу"
           },
           "text": {
-            "hy": "Ղեկավարում է սոցիալական մեդիա մարքեթինգը։",
-            "en": "Runs social media marketing.",
-            "ru": "Ведёт направление SMM."
+            "hy": "10:00–19:00։ WhatsApp, հեռախոս կամ էլ. փոստ՝ ինչպես ձեզ հարմար է։",
+            "en": "10:00–19:00. WhatsApp, phone or email, whichever suits you.",
+            "ru": "10:00–19:00. WhatsApp, телефон или почта, как вам удобнее."
           }
         },
         {
           "title": {
-            "hy": "Էդգար",
-            "en": "Edgar",
-            "ru": "Эдгар"
+            "hy": "Պատասխան մեկ աշխատանքային օրվա ընթացքում",
+            "en": "A reply within one working day",
+            "ru": "Ответ в течение одного рабочего дня"
           },
           "text": {
-            "hy": "Ղեկավարում է SEO-ն և կայքերի ստեղծումը։",
-            "en": "Runs SEO and website creation.",
-            "ru": "Ведёт SEO и создание сайтов."
+            "hy": "Յուրաքանչյուր հաղորդագրության պատասխանում են անձամբ Մարիամը կամ Էդգարը։",
+            "en": "Every message is answered by Mariam or Edgar themselves.",
+            "ru": "На каждое сообщение отвечают лично Мариам или Эдгар."
+          }
+        },
+        {
+          "title": {
+            "hy": "Ոչինչ չի հրապարակվում առանց ձեր հաստատման",
+            "en": "Nothing goes out without your approval",
+            "ru": "Ничего не публикуется без вашего согласия"
+          },
+          "text": {
+            "hy": "Ամսվա պլանը տեսնում եք նախապես և հաստատում եք այն։",
+            "en": "You see the month's plan in advance and approve it.",
+            "ru": "План на месяц вы видите заранее и утверждаете его."
+          }
+        },
+        {
+          "title": {
+            "hy": "Կանոնավոր հաշվետվություններ",
+            "en": "Regular reports",
+            "ru": "Регулярные отчёты"
+          },
+          "text": {
+            "hy": "Ինչ արեցինք, ինչ փոխվեց և ինչ է հաջորդը՝ պարզ բառերով։",
+            "en": "What we did, what changed and what comes next, in plain words.",
+            "ru": "Что сделано, что изменилось и что дальше, простыми словами."
           }
         }
       ]

@@ -3,6 +3,7 @@ import { describe, it } from 'node:test'
 import {
   initialService,
   inquiryEmail,
+  serviceFromSearch,
   suggestedContact,
   validateInquiry,
 } from '../public/js/forms/inquiry.js'
@@ -42,6 +43,23 @@ describe('initialService', () => {
     assert.equal(initialService({ ...base, hasAddons: true }), 'addon')
     assert.equal(initialService(base), 'seo')
     assert.equal(initialService({ ...base, pageService: undefined }), '')
+  })
+
+  it('puts the service a link asked for first', () => {
+    const base = { packageCategory: 'seo', hasAddons: true, pageService: 'seo' }
+    assert.equal(initialService({ ...base, requested: 'smm' }), 'smm')
+  })
+})
+
+describe('serviceFromSearch', () => {
+  it('reads a known service from ?service=', () => {
+    assert.equal(serviceFromSearch('?service=smm'), 'smm')
+    assert.equal(serviceFromSearch('?lang=hy&service=website'), 'website')
+  })
+
+  it('ignores missing or unknown services', () => {
+    assert.equal(serviceFromSearch(''), null)
+    assert.equal(serviceFromSearch('?service=coffee'), null)
   })
 })
 

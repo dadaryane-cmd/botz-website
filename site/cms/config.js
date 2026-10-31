@@ -147,9 +147,9 @@ const sectionBlocks = [
     name: 'team',
     label: 'Team',
     fields: [
+      // The people themselves come from Founders (people.json).
       heading(),
       text('intro', 'Intro', { long: true }),
-      list(object('founders', 'People', [text('name', 'Name'), text('role', 'Role')]), '{name.en}'),
       ...layout,
     ],
   },
@@ -408,6 +408,14 @@ const peopleEntry = {
         readonly(string('key', 'Key')),
         text('name', 'Name'),
         text('role', 'Role'),
+        text('bio', 'Short bio (About page)', { long: true }),
+        {
+          name: 'photo',
+          label: 'Photo (square works best)',
+          type: 'image',
+          options: { media: 'images' },
+        },
+        text('contactLabel', 'Link text, e.g. "Write to Mariam"'),
         select('services', 'Handles inquiries about', SERVICE_AREAS, {
           options: { multiple: true },
         }),

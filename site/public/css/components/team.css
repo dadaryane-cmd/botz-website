@@ -26,3 +26,41 @@
   color: var(--on-accent);
   font: 800 1.6rem var(--font-display);
 }
+
+/* A real photo fills the same rounded square. */
+.avatar.has-photo {
+  object-fit: cover;
+  background: var(--surface);
+}
+
+/* ---- About page: one large card per founder ---- */
+
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.avatar-large {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 20px;
+  border-radius: 24px;
+  font-size: 2.4rem;
+}
+
+.founder-card h3 {
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+}
+
+.founder-role {
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+/* The link sits at the bottom, so both cards end level. */
+.founder-card .link-arrow {
+  margin-top: auto;
+}

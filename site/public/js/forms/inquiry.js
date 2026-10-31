@@ -1,4 +1,5 @@
 /** Inquiry form rules and the email it produces. No DOM access, so it is unit-tested. */
+import { INQUIRY_SERVICES } from '../config.js'
 import { responsibleFor } from '../lib/people.js'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -16,8 +17,18 @@ export function validateInquiry({ name, email, phone, service, message }) {
   return errors
 }
 
-/** The service to preselect: the chosen package's, "addon" for add-ons alone, else the page's. */
-export function initialService({ packageCategory, hasAddons, pageService }) {
+/** The service a link asks the form to preselect (`?service=seo`), or null. */
+export function serviceFromSearch(search = '') {
+  const service = new URLSearchParams(search).get('service')
+  return INQUIRY_SERVICES.includes(service) ? service : null
+}
+
+/**
+ * The service to preselect: the one a link asked for (e.g. "Write to Mariam"), the chosen
+ * package's, "addon" for add-ons alone, else the page's.
+ */
+export function initialService({ requested, packageCategory, hasAddons, pageService }) {
+  if (requested) return requested
   if (packageCategory) return packageCategory
   if (hasAddons) return 'addon'
   return pageService ?? ''

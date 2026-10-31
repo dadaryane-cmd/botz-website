@@ -215,20 +215,6 @@ components:
           - name: intro
             label: Intro
             component: paragraph
-          - name: founders
-            label: People
-            type: object
-            fields:
-              - name: name
-                label: Name
-                component: line
-              - name: role
-                label: Role
-                component: line
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{name.en}"
           - name: id
             label: Anchor
             type: string
@@ -911,6 +897,17 @@ content:
             component: line
           - name: role
             label: Role
+            component: line
+          - name: bio
+            label: Short bio (About page)
+            component: paragraph
+          - name: photo
+            label: Photo (square works best)
+            type: image
+            options:
+              media: images
+          - name: contactLabel
+            label: "Link text, e.g. \"Write to Mariam\""
             component: line
           - name: services
             label: Handles inquiries about

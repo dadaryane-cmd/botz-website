@@ -7,6 +7,7 @@ import { catalog, people, site } from '../content/index.js'
 import {
   initialService,
   inquiryEmail,
+  serviceFromSearch,
   suggestedContact,
   validateInquiry,
 } from '../forms/inquiry.js'
@@ -32,6 +33,7 @@ export function renderInquiryForm({ service: pageService }) {
 
   const selection = getSelection()
   const preselected = initialService({
+    requested: serviceFromSearch(location.search),
     packageCategory: findPackage(catalog, selection.packageKey)?.category,
     hasAddons: Object.keys(selection.addons).length > 0,
     pageService,

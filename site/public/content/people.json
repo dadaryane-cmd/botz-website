@@ -12,6 +12,16 @@
         "en": "Social media marketing",
         "ru": "Маркетинг в соцсетях"
       },
+      "bio": {
+        "hy": "Մարիամը վարում է մեր հաճախորդների սոցցանցերը։ Նա ձեզ հետ պլանավորում է ամսվա հրապարակումներն ու սթորիները, կազմակերպում նկարահանումները և կառավարում Meta գովազդը, ապա ներկայացնում, թե ինչն աշխատեց։",
+        "en": "Mariam runs social media for our clients. She plans each month's posts and stories with you, organises the shoots and manages Meta ads, then shows you what worked.",
+        "ru": "Мариам ведёт соцсети наших клиентов. Она вместе с вами планирует посты и сторис на месяц, организует съёмки и ведёт рекламу в Meta, а затем показывает, что сработало."
+      },
+      "contactLabel": {
+        "hy": "Գրել Մարիամին",
+        "en": "Write to Mariam",
+        "ru": "Написать Мариам"
+      },
       "services": [
         "smm",
         "bundle",
@@ -30,6 +40,16 @@
         "hy": "SEO և կայքերի ստեղծում",
         "en": "SEO & website creation",
         "ru": "SEO и создание сайтов"
+      },
+      "bio": {
+        "hy": "Էդգարը զբաղվում է որոնմամբ և կայքերով։ Նա շտկում է այն, ինչը հետ է պահում կայքը, գրում է հոդվածներ, որոնք պատասխանում են հաճախորդների որոնումներին, և ստեղծում է հստակ ու արագ կայքեր։",
+        "en": "Edgar looks after search and websites. He fixes what holds a site back, writes articles that answer what customers search for, and builds clear, fast websites.",
+        "ru": "Эдгар отвечает за поиск и сайты. Он исправляет то, что тормозит сайт, пишет статьи, отвечающие на запросы клиентов, и делает понятные и быстрые сайты."
+      },
+      "contactLabel": {
+        "hy": "Գրել Էդգարին",
+        "en": "Write to Edgar",
+        "ru": "Написать Эдгару"
       },
       "services": [
         "seo",
