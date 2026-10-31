@@ -1,11 +1,10 @@
 /**
  * Light/dark theme on <html data-theme>. theme-init.js sets it before first paint (the saved
- * choice, else the system setting); a choice made on the site is saved and wins from then on.
+ * choice, else dark); a choice made with the lamp is saved and wins from then on.
  */
-import { load, save } from './storage.js'
+import { save } from './storage.js'
 
 const root = document.documentElement
-const systemDark = window.matchMedia('(prefers-color-scheme: dark)')
 
 const REVEAL = {
   onMs: 460,
@@ -19,13 +18,6 @@ const REVEAL = {
 }
 
 export const getTheme = () => (root.dataset.theme === 'dark' ? 'dark' : 'light')
-
-/** Until the visitor picks a theme, follow changes of the system setting. */
-export function followSystemTheme() {
-  systemDark.addEventListener('change', (event) => {
-    if (!load('theme')) root.dataset.theme = event.matches ? 'dark' : 'light'
-  })
-}
 
 /**
  * Switch to `theme`. With `origin` ({ x, y } in viewport px) the new theme spreads from that point

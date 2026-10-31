@@ -12,7 +12,6 @@ import { site } from './content/index.js'
 import { getLanguage, initLanguage, onLanguageChange, t, ui } from './lib/i18n.js'
 import { currentPage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
-import { followSystemTheme } from './lib/theme.js'
 import { initSelection } from './pricing/selection.js'
 
 const elements = {
@@ -63,4 +62,3 @@ onLanguageChange(() => {
   window.scrollTo(0, scrollPosition)
   startReveals()
 })
-followSystemTheme()

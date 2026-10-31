@@ -29,7 +29,8 @@ site/
 │   │   └── components/         one file per UI component / section type
 │   ├── js/
 │   │   ├── main.js             entry point: renders header, sections and footer
-│   │   ├── theme-init.js       classic script, applies the saved theme before first paint
+│   │   ├── theme-init.js       classic script, applies the theme before first paint (dark,
+│   │   │                       unless the visitor chose light with the lamp)
 │   │   ├── config.js           constants (languages, contract lengths, endpoints)
 │   │   ├── content/            loads the JSON from /content before the page renders
 │   │   ├── lib/                small helpers: DOM, i18n, formatting, storage, links, theme,
