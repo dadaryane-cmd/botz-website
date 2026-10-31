@@ -6,15 +6,18 @@ import { site } from '../content/index.js'
 import { h } from '../lib/dom.js'
 import { t } from '../lib/i18n.js'
 import { splitLetters } from '../lib/letters.js'
+import { picture } from './picture.js'
 
-const logoImage = (theme) =>
-  h('img', {
+/** One theme's logo, as AVIF with a WebP fallback; `theme` is the page theme it is drawn for. */
+export const logoPicture = (theme, attributes = {}) =>
+  picture({
     class: `logo-${theme}`,
     src: `images/botz-logo-${theme}.webp`,
-    alt: t(site.name),
-    width: 112,
-    height: 44,
+    avif: `images/botz-logo-${theme}.avif`,
+    ...attributes,
   })
+
+const logoImage = (theme) => logoPicture(theme, { alt: t(site.name), width: 112, height: 44 })
 
 export const logoImages = () => [logoImage('light'), logoImage('dark')]
 
@@ -44,7 +47,5 @@ export const inlineLogo = () =>
   h(
     'span',
     { class: 'inline-logo' },
-    ['light', 'dark'].map((theme) =>
-      h('img', { class: `logo-${theme}`, src: `images/botz-logo-${theme}.webp`, alt: 'BOTZ' }),
-    ),
+    ['light', 'dark'].map((theme) => logoPicture(theme, { alt: 'BOTZ' })),
   )

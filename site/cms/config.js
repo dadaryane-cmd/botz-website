@@ -413,7 +413,13 @@ const peopleEntry = {
         text('bio', 'Short bio (About page)', { long: true }),
         {
           name: 'photo',
-          label: 'Photo (square works best)',
+          label: 'Photo (square works best; WebP or JPEG)',
+          type: 'image',
+          options: { media: 'images' },
+        },
+        {
+          name: 'photoAvif',
+          label: 'Same photo as AVIF (optional, smaller)',
           type: 'image',
           options: { media: 'images' },
         },

@@ -915,7 +915,12 @@ content:
             label: Short bio (About page)
             component: paragraph
           - name: photo
-            label: Photo (square works best)
+            label: "Photo (square works best; WebP or JPEG)"
+            type: image
+            options:
+              media: images
+          - name: photoAvif
+            label: Same photo as AVIF (optional, smaller)
             type: image
             options:
               media: images

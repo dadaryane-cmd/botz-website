@@ -7,6 +7,7 @@ import { people } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { hasText, t } from '../../lib/i18n.js'
 import { reveal } from '../../lib/reveal.js'
+import { picture } from '../picture.js'
 import { heading, lead, section } from './section.js'
 
 /**
@@ -28,10 +29,15 @@ export function renderTeam(config) {
   )
 }
 
-/** The photo when there is one, otherwise the first letter of the name. */
+/** The photo (AVIF when there is one, else WebP/JPEG) or, without a photo, the first letter. */
 const portrait = (person, className) =>
   person.photo
-    ? h('img', { class: `${className} has-photo`, src: person.photo, alt: '' })
+    ? picture({
+        class: `${className} has-photo`,
+        src: person.photo,
+        avif: person.photoAvif,
+        alt: '',
+      })
     : h('span', { class: className, 'aria-hidden': 'true' }, t(person.name).charAt(0))
 
 function founderCard(person, index) {

@@ -67,8 +67,16 @@ describe('content', () => {
   })
 
   it('has a file for every founder photo', () => {
-    for (const person of people.filter((entry) => entry.photo)) {
-      assert.ok(existsSync(publicDir + person.photo), `missing ${person.photo}`)
+    for (const file of people.flatMap((person) => [person.photo, person.photoAvif])) {
+      if (file) assert.ok(existsSync(publicDir + file), `missing ${file}`)
+    }
+  })
+
+  it('has a WebP fallback next to every AVIF image', () => {
+    const images = join(publicDir, 'images')
+    for (const file of readdirSync(images).filter((name) => name.endsWith('.avif'))) {
+      const webp = file.replace(/\.avif$/, '.webp')
+      assert.ok(existsSync(join(images, webp)), `images/${file} has no images/${webp}`)
     }
   })
 

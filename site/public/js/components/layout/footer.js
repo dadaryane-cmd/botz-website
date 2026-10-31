@@ -7,6 +7,7 @@ import { navigation, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
 import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { picture } from '../picture.js'
 import { renderSocialLinks } from './social-links.js'
 
 export function renderFooter(footer) {
@@ -39,8 +40,10 @@ function footerTop() {
     h(
       'a',
       { class: 'footer-logo', href: 'index.html' },
-      h('img', {
+      // No theme class: the footer is dark in both themes (logo-dark would be hidden by day).
+      picture({
         src: 'images/botz-logo-dark.webp',
+        avif: 'images/botz-logo-dark.avif',
         alt: t(site.name),
         width: 112,
         height: 44,

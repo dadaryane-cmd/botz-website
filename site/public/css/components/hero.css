@@ -138,17 +138,20 @@
   position: absolute;
   inset: 0;
   background: url('../../images/hero-flame-poster-light.webp') center bottom / 100% 100% no-repeat;
+  /* AVIF where the browser has it (a fraction of the size); older browsers keep the WebP above. */
+  background-image: image-set(
+    url('../../images/hero-flame-poster-light.avif') type('image/avif'),
+    url('../../images/hero-flame-poster-light.webp') type('image/webp')
+  );
   transition: opacity 0.6s ease;
 }
 
 :root[data-theme='dark'] .flame-background::before {
   background-image: url('../../images/hero-flame-poster-dark.webp');
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .flame-background::before {
-    background-image: url('../../images/hero-flame-poster-dark.webp');
-  }
+  background-image: image-set(
+    url('../../images/hero-flame-poster-dark.avif') type('image/avif'),
+    url('../../images/hero-flame-poster-dark.webp') type('image/webp')
+  );
 }
 
 .flame-background[data-mode='webgl']::before,

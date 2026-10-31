@@ -27,6 +27,11 @@ img {
   height: auto;
 }
 
+/* A <picture> only chooses the file (AVIF or WebP); the <img> inside is what gets laid out. */
+picture {
+  display: contents;
+}
+
 a {
   color: inherit;
   text-underline-offset: 3px;
