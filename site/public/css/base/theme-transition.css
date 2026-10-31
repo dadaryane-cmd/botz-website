@@ -64,6 +64,16 @@ html[data-vt='on'] .bulb-halo {
   animation: none !important;
 }
 
+/*
+ * The same for the cord and wire: in the new theme's colour they would vanish against the old
+ * page and leave the bead floating on its own. Until the page has changed they keep the old
+ * theme's colour, which is the new theme's inverse text colour.
+ */
+html[data-vt] .bulb-toggle {
+  --bulb-wire: color-mix(in srgb, var(--inverse-text) 55%, transparent);
+  --bulb-cord: color-mix(in srgb, var(--inverse-text) 70%, transparent);
+}
+
 /* Snapshots must show final colours, not mid-transition ones (the live bulb keeps its own). */
 html[data-vt],
 html[data-vt] *:not(.bulb-toggle, .bulb-toggle *) {
