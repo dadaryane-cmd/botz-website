@@ -47,13 +47,15 @@
 }
 
 /*
- * The logo inside a title (`{logo}`). Its letters fill about 60% of the image, so 1.2em tall
- * matches the capitals; it sits on the baseline (the "Marketing agency" line hangs below).
+ * The logo inside a title (`{logo}`), sized so its "B" (with the flame) is exactly as tall as
+ * a capital letter of the title font. Measured: the B fills 84% of the image height and ends
+ * 11% above its bottom edge; Anton's capitals are 0.88em tall. So 0.88 / 0.84 = 1.05em, and
+ * the image drops 0.11 × 1.05 = 0.115em below the baseline to stand the B on it.
  */
 .inline-logo img {
-  height: 1.2em;
+  height: 1.05em;
   width: auto;
-  vertical-align: -0.14em;
+  vertical-align: -0.115em;
 }
 
 /* On every page title, the highlighted phrase starts its own line. */
