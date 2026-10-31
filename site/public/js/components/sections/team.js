@@ -9,17 +9,24 @@ import { hasText, t } from '../../lib/i18n.js'
 import { reveal } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
-export const renderTeam = (config) =>
-  section(
+/**
+ * The founders. Variant "compact" (home page): photo, name and role only, with a link to the
+ * full cards on the About page.
+ */
+export function renderTeam(config) {
+  const compact = config.variant === 'compact'
+  const card = compact
+    ? (person, index) => personCard(person, reveal(index))
+    : (person, index) => founderCard(person, index)
+  return section(
     config,
     heading(config.heading),
     lead(config.intro),
-    h(
-      'div',
-      { class: 'grid grid-2 founders' },
-      people.map((person, index) => founderCard(person, index)),
-    ),
+    h('div', { class: 'grid grid-2 founders' }, people.map(card)),
+    config.link?.href &&
+      h('a', { class: 'link-arrow founders-link', href: config.link.href }, t(config.link.label)),
   )
+}
 
 /** The photo when there is one, otherwise the first letter of the name. */
 const portrait = (person, className) =>

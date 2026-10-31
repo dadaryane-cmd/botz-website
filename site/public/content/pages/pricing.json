@@ -120,6 +120,7 @@
     },
     {
       "type": "faq",
+      "id": "faq",
       "heading": {
         "hy": "Մինչ ընտրելը",
         "en": "Before you choose",

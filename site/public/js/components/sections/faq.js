@@ -39,6 +39,9 @@ export const renderFaq = (config) =>
             h('p', null, t(item.answer)),
           ),
         ),
+        // A short list can point to the full one on another page.
+        config.link?.href &&
+          h('a', { class: 'link-arrow faq-more', href: config.link.href }, t(config.link.label)),
       ),
     ),
   )

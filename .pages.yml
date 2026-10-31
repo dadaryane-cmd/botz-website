@@ -215,6 +215,13 @@ components:
           - name: intro
             label: Intro
             component: paragraph
+          - name: link
+            label: Link under the cards
+            component: link
+          - name: variant
+            label: Variant
+            type: string
+            hidden: true
           - name: id
             label: Anchor
             type: string
@@ -385,6 +392,9 @@ components:
               collapsible:
                 collapsed: true
                 summary: "{question.en}"
+          - name: link
+            label: Link to more questions
+            component: link
           - name: id
             label: Anchor
             type: string

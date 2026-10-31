@@ -159,6 +159,39 @@
         },
         {
           "title": {
+            "hy": "Թվային մարքեթինգի ռազմավարություն",
+            "en": "Digital marketing strategy",
+            "ru": "Стратегия цифрового маркетинга"
+          },
+          "service": "strategy",
+          "highlights": [
+            {
+              "hy": "Հետազոտություն",
+              "en": "Research",
+              "ru": "Исследования"
+            },
+            {
+              "hy": "Դիրքավորում",
+              "en": "Positioning",
+              "ru": "Позиционирование"
+            },
+            {
+              "hy": "Աճի պլանավորում",
+              "en": "Growth planning",
+              "ru": "План роста"
+            }
+          ],
+          "link": {
+            "label": {
+              "hy": "Դիտել ռազմավարությունը",
+              "en": "Explore strategy",
+              "ru": "Подробнее о стратегии"
+            },
+            "href": "services.html#strategy"
+          }
+        },
+        {
+          "title": {
             "hy": "SMM + SEO փաթեթներ",
             "en": "SMM + SEO plans",
             "ru": "Планы SMM + SEO"
@@ -183,17 +216,26 @@
       ]
     },
     {
-      "type": "split",
+      "type": "team",
+      "variant": "compact",
       "background": "surface",
-      "statement": {
+      "heading": {
         "hy": "Դուք խոսում եք այն մարդու հետ, ով կատարում է աշխատանքը։",
         "en": "You talk to the person who does the work.",
         "ru": "Вы говорите с тем, кто делает работу."
       },
-      "body": {
-        "hy": "Մեր միջև միջնորդ մենեջեր չկա։ Մարիամը պլանավորում և վարում է սոցցանցերը, Էդգարը զբաղվում է SEO-ով և ստեղծում կայքեր։ Յուրաքանչյուր փաթեթում գրված է, թե ինչն է ներառված և ինչը՝ ոչ, այնպես որ գիտեք, թե ինչի համար եք վճարում։",
-        "en": "There is no account manager in between. Mariam plans and runs social media, Edgar does SEO and builds websites. Each package says what is included and what is not, so you know what you are paying for.",
-        "ru": "Между нами нет менеджера-посредника. Мариам планирует и ведёт соцсети, Эдгар занимается SEO и делает сайты. В каждом пакете написано, что входит, а что нет, поэтому вы знаете, за что платите."
+      "intro": {
+        "hy": "Մեր միջև միջնորդ մենեջեր չկա։ Մարիամը պլանավորում և վարում է սոցցանցերը, Էդգարը զբաղվում է SEO-ով և ստեղծում կայքեր։",
+        "en": "There is no account manager in between. Mariam plans and runs social media, Edgar does SEO and builds websites.",
+        "ru": "Между нами нет менеджера-посредника. Мариам планирует и ведёт соцсети, Эдгар занимается SEO и делает сайты."
+      },
+      "link": {
+        "label": {
+          "hy": "Ծանոթացեք թիմին",
+          "en": "Meet the team",
+          "ru": "Знакомьтесь с командой"
+        },
+        "href": "about.html#team"
       }
     },
     {
@@ -252,65 +294,6 @@
       ]
     },
     {
-      "type": "process",
-      "background": "surface",
-      "heading": {
-        "hy": "Ինչպես ենք սկսում",
-        "en": "How we start",
-        "ru": "Как мы начинаем"
-      },
-      "steps": [
-        {
-          "title": {
-            "hy": "Բրիֆ",
-            "en": "Brief",
-            "ru": "Бриф"
-          },
-          "text": {
-            "hy": "Ծանոթանում ենք ձեր բիզնեսին, լսարանին և նպատակներին, ուսումնասիրում ենք այն, ինչ արդեն ունեք։",
-            "en": "We learn about your business, your customers and your goals, and look at what you already have.",
-            "ru": "Изучаем ваш бизнес, клиентов и цели, смотрим, что у вас уже есть."
-          }
-        },
-        {
-          "title": {
-            "hy": "Առաջարկ",
-            "en": "Proposal",
-            "ru": "Предложение"
-          },
-          "text": {
-            "hy": "Ստանում եք հստակ ծավալ և գին՝ ինչն է ներառված, ինչը՝ ոչ, և որքան ժամանակով։",
-            "en": "You get a scope and a price: what is included, what is not, and for how long.",
-            "ru": "Вы получаете объём и цену: что входит, что нет и на какой срок."
-          }
-        },
-        {
-          "title": {
-            "hy": "Մեկնարկ",
-            "en": "Launch",
-            "ru": "Запуск"
-          },
-          "text": {
-            "hy": "Կարգավորում ենք, ստեղծում և հրապարակում՝ ձեր հաստատմամբ բոլոր կարևոր փուլերում։",
-            "en": "We set things up, create and publish, and you approve every important step.",
-            "ru": "Настраиваем, создаём и публикуем, а каждый важный шаг согласуем с вами."
-          }
-        },
-        {
-          "title": {
-            "hy": "Հաշվետվություն",
-            "en": "Report",
-            "ru": "Отчёт"
-          },
-          "text": {
-            "hy": "Ամեն ամիս պատմում ենք, թե ինչ արեցինք, ինչ փոխվեց և ինչ ենք անելու հետո։",
-            "en": "Every month we tell you what we did, what changed and what we will do next.",
-            "ru": "Каждый месяц рассказываем, что сделали, что изменилось и что будем делать дальше."
-          }
-        }
-      ]
-    },
-    {
       "type": "packagePreview",
       "heading": {
         "hy": "Ամսական գներ",
@@ -348,19 +331,15 @@
         "en": "Questions people ask us",
         "ru": "Что нас часто спрашивают"
       },
-      "items": [
-        {
-          "question": {
-            "hy": "Ո՞ւմ հետ եմ շփվելու",
-            "en": "Who will I be talking to?",
-            "ru": "С кем я буду общаться?"
-          },
-          "answer": {
-            "hy": "Այն մարդու, ով կատարում է աշխատանքը՝ Մարիամի՝ սոցցանցերի հարցերով, Էդգարի՝ SEO-ի և կայքերի հարցերով։ Միջնորդ մենեջեր չկա։",
-            "en": "With the person doing the work: Mariam for social media, Edgar for SEO and websites. There is no account manager in between.",
-            "ru": "С тем, кто делает работу: с Мариам по соцсетям, с Эдгаром по SEO и сайтам. Менеджеров-посредников нет."
-          }
+      "link": {
+        "label": {
+          "hy": "Այլ հարցեր",
+          "en": "More questions",
+          "ru": "Другие вопросы"
         },
+        "href": "pricing.html#faq"
+      },
+      "items": [
         {
           "question": {
             "hy": "Ի՞նչ է պետք ինձանից սկսելու համար",

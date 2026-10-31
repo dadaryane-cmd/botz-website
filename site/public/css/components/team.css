@@ -60,6 +60,12 @@
   color: var(--accent-text);
 }
 
+/* "Meet the team →" under the compact cards (home page). */
+.founders-link {
+  display: inline-block;
+  margin-top: 24px;
+}
+
 /* The link sits at the bottom, so both cards end level. */
 .founder-card .link-arrow {
   margin-top: auto;

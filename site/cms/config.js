@@ -149,6 +149,8 @@ const sectionBlocks = [
       // The people themselves come from Founders (people.json).
       heading(),
       text('intro', 'Intro', { long: true }),
+      link('link', 'Link under the cards'),
+      hidden(string('variant', 'Variant')),
       ...layout,
     ],
   },
@@ -212,6 +214,7 @@ const sectionBlocks = [
         ]),
         '{question.en}',
       ),
+      link('link', 'Link to more questions'),
       ...layout,
     ],
   },
