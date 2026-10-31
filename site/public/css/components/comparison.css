@@ -6,11 +6,21 @@
   overflow-x: auto;
 }
 
+/* Fixed column widths, so the price columns line up from one table to the next. */
 .comparison {
   width: 100%;
   min-width: 680px;
+  table-layout: fixed;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
+}
+
+.comparison th:first-child {
+  width: 26%;
+}
+
+.comparison th:last-child {
+  width: 16%;
 }
 
 .comparison caption {
@@ -28,7 +38,10 @@
   white-space: nowrap;
 }
 
+/* Column titles may wrap (long in Armenian); prices never do. */
 .comparison thead th {
+  vertical-align: bottom;
+  white-space: normal;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--muted);

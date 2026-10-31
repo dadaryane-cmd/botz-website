@@ -35,7 +35,8 @@ function comparisonTable(packages) {
         h(
           'tr',
           null,
-          h('th', { scope: 'col' }, ui('comparison', 'package')),
+          // The names speak for themselves; only screen readers hear the column's title.
+          h('th', { scope: 'col' }, h('span', { class: 'sr-only' }, ui('comparison', 'package'))),
           CONTRACT_LENGTHS.map((months) => h('th', { scope: 'col' }, formatMonths(months))),
           h('th', { scope: 'col' }, ui('comparison', 'saving', { term: formatMonths(longest) })),
         ),
