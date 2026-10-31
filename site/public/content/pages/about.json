@@ -113,40 +113,6 @@
           }
         }
       ]
-    },
-    {
-      "type": "cta",
-      "background": "accent",
-      "heading": {
-        "hy": "Պատմեք ձեր բիզնեսի մասին",
-        "en": "Tell us about your business",
-        "ru": "Расскажите о своём бизнесе"
-      },
-      "text": {
-        "hy": "Որտեղ եք հիմա, ուր եք ուզում հասնել և ինչ եք արդեն փորձել։ Ազնվորեն կասենք՝ կարող ենք օգնել, թե ոչ։",
-        "en": "Where you are now, where you want to be and what you have already tried. We will tell you honestly whether we can help.",
-        "ru": "Где вы сейчас, куда хотите прийти и что уже пробовали. Мы честно скажем, сможем ли помочь."
-      },
-      "buttons": [
-        {
-          "label": {
-            "hy": "Քննարկել իմ նախագիծը",
-            "en": "Discuss my project",
-            "ru": "Обсудить мой проект"
-          },
-          "href": "contact.html",
-          "style": "primary"
-        },
-        {
-          "label": {
-            "hy": "Դիտել փաթեթները",
-            "en": "Explore packages",
-            "ru": "Смотреть пакеты"
-          },
-          "href": "pricing.html",
-          "style": "secondary"
-        }
-      ]
     }
   ]
 }

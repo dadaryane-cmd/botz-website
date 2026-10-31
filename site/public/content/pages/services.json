@@ -530,40 +530,6 @@
           }
         }
       ]
-    },
-    {
-      "type": "cta",
-      "background": "accent",
-      "heading": {
-        "hy": "Եկեք աճեցնենք ձեր բիզնեսը",
-        "en": "Let's grow your business",
-        "ru": "Давайте развивать ваш бизнес"
-      },
-      "text": {
-        "hy": "Պատմեք, թե որտեղ եք հիմա և ուր եք ուզում հասնել։ Կառաջարկենք ճիշտ ծառայությունը։",
-        "en": "Tell us where you are now and where you want to be. We'll suggest the right service.",
-        "ru": "Расскажите, где вы сейчас и куда хотите прийти. Мы предложим подходящую услугу."
-      },
-      "buttons": [
-        {
-          "label": {
-            "hy": "Քննարկել ձեր նախագիծը",
-            "en": "Discuss your project",
-            "ru": "Обсудить проект"
-          },
-          "href": "contact.html",
-          "style": "primary"
-        },
-        {
-          "label": {
-            "hy": "Դիտել գները",
-            "en": "View pricing",
-            "ru": "Смотреть цены"
-          },
-          "href": "pricing.html",
-          "style": "secondary"
-        }
-      ]
     }
   ]
 }
