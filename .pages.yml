@@ -924,9 +924,6 @@ content:
             type: image
             options:
               media: images
-          - name: contactLabel
-            label: "Link text, e.g. \"Write to Mariam\""
-            component: line
           - name: services
             label: Handles inquiries about
             type: select
@@ -1292,12 +1289,6 @@ content:
             component: line
           - name: service
             label: Service
-            component: line
-          - name: replyBy
-            label: Reply by
-            component: line
-          - name: replyTeam
-            label: Reply team
             component: line
           - name: message
             label: Message
