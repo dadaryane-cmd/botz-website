@@ -45,7 +45,7 @@ function renderAll() {
   renderMobileBar(elements.mobileBar)
 }
 
-initLanguage(location.search)
+initLanguage(location.search, navigator.languages ?? [navigator.language])
 initSelection(location.search)
 renderAll()
 setUpMobileMenu(elements.header)

@@ -544,6 +544,9 @@ components:
         type: select
         options:
           values: [primary, secondary]
+      - name: note
+        label: Message to prefill in the contact form (optional)
+        component: paragraph
 content:
   - name: pages
     label: Pages

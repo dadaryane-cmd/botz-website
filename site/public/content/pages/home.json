@@ -32,7 +32,12 @@
             "ru": "Получить бесплатный аудит"
           },
           "href": "#contact",
-          "style": "primary"
+          "style": "primary",
+          "note": {
+            "hy": "Կցանկանայի անվճար աուդիտ իմ բիզնեսի համար։ Մեր կայքը / էջը՝ ",
+            "en": "I'd like a free audit for my business. Our website / page: ",
+            "ru": "Хочу бесплатный аудит для своего бизнеса. Наш сайт / страница: "
+          }
         },
         {
           "label": {

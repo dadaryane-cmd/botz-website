@@ -2,6 +2,7 @@
 import { h, richText } from '../../lib/dom.js'
 import { hasText, t } from '../../lib/i18n.js'
 import { reveal } from '../../lib/reveal.js'
+import { updateSelection } from '../../pricing/selection.js'
 
 /** `<section>` with the background, anchor id and width set in the page content. */
 export const section = ({ id, background, width }, ...children) =>
@@ -17,8 +18,17 @@ export const heading = (text, level = 'h2') =>
 export const lead = (text) =>
   hasText(text) ? h('p', { class: 'lead', ...reveal(1) }, t(text)) : null
 
-export const button = ({ label, href, style }) =>
-  h('a', { class: `btn btn-${style || 'primary'}`, href }, t(label))
+/** A link styled as a button; with a `note`, clicking it also prefills the contact form's message. */
+export const button = ({ label, href, style, note }) =>
+  h(
+    'a',
+    {
+      class: `btn btn-${style || 'primary'}`,
+      href,
+      onclick: hasText(note) ? () => updateSelection({ note: t(note) }) : null,
+    },
+    t(label),
+  )
 
 export const buttonRow = (links) =>
   links?.length

@@ -18,6 +18,20 @@
     border-radius: 999px;
     background: var(--inverse-bg);
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+    transition:
+      transform 0.25s ease,
+      visibility 0.25s;
+  }
+
+  /*
+   * Out of the way where it would only repeat or cover something: near the contact section and
+   * footer (mobile-bar.js), while typing in a form, and when the pricing tool shows its own bar.
+   */
+  .mobile-bar.is-hidden,
+  body:has(form:focus-within) .mobile-bar,
+  body:has(.estimate-bar) .mobile-bar {
+    visibility: hidden;
+    transform: translateY(calc(100% + 24px));
   }
 
   .mobile-bar a {

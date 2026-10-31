@@ -10,6 +10,7 @@ import {
   updateSelection,
 } from '../../pricing/selection.js'
 import { addonList } from '../pricing/addon-list.js'
+import { estimateBar } from '../pricing/estimate-bar.js'
 import { estimatePanel } from '../pricing/estimate-panel.js'
 import { pricingFilters } from '../pricing/filters.js'
 import { packageCard } from '../pricing/package-card.js'
@@ -55,6 +56,7 @@ export function renderPricing(config) {
         ),
         estimatePanel(selection),
       ),
+      estimateBar(selection),
     ])
   }
 

@@ -515,6 +515,7 @@ export const pagesConfig = {
         text('label', 'Label'),
         string('href', 'Link (e.g. pricing.html or #contact)'),
         select('style', 'Style', ['primary', 'secondary']),
+        text('note', 'Message to prefill in the contact form (optional)', { long: true }),
       ],
     },
   },

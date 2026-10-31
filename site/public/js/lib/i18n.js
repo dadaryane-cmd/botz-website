@@ -7,16 +7,25 @@ const listeners = new Set()
 
 export const getLanguage = () => current
 
-/** Language from ?lang=, then the saved choice, then the default. */
-export function initLanguage(search = '') {
+/**
+ * The language to open in: one asked for in the link (?lang=), then the visitor's saved choice,
+ * then the first of the browser's preferred languages the site has ("ru-RU" → "ru"), then the
+ * default.
+ */
+export function pickLanguage({ fromUrl, saved, browser = [] }) {
+  if (LANGUAGES.includes(fromUrl)) return fromUrl
+  if (LANGUAGES.includes(saved)) return saved
+  const preferred = browser
+    .map((tag) => String(tag).toLowerCase().split('-')[0])
+    .find((code) => LANGUAGES.includes(code))
+  return preferred ?? DEFAULT_LANGUAGE
+}
+
+/** Set the starting language; a language asked for in the link is remembered as a choice. */
+export function initLanguage(search = '', browser = []) {
   const fromUrl = new URLSearchParams(search).get('lang')
-  if (LANGUAGES.includes(fromUrl)) {
-    current = fromUrl
-    save('lang', current)
-    return current
-  }
-  const saved = load('lang')
-  current = LANGUAGES.includes(saved) ? saved : DEFAULT_LANGUAGE
+  current = pickLanguage({ fromUrl, saved: load('lang'), browser })
+  if (current === fromUrl) save('lang', current)
   return current
 }
 
