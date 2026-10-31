@@ -7,15 +7,12 @@ import { save } from './storage.js'
 const root = document.documentElement
 
 const REVEAL = {
-  onMs: 640,
-  offMs: 560,
-  /** Light spreads quickly and settles gently; darkness gathers, then closes into the bulb. */
-  onEasing: 'cubic-bezier(0.33, 1, 0.68, 1)',
-  offEasing: 'cubic-bezier(0.45, 0, 0.55, 1)',
-  /** Soft edge of the reveal circle, as a share of its radius, capped in px. A narrow edge
-   * keeps the two themes from mixing into a grey band. */
-  feather: 0.1,
-  featherMax: 120,
+  onMs: 460,
+  offMs: 400,
+  easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  /** Soft edge of the reveal circle, as a share of its radius, capped in px. */
+  feather: 0.22,
+  featherMax: 240,
   /** Crossfade used where View Transitions are not supported. */
   fadeMs: 300,
 }
@@ -69,7 +66,7 @@ function revealFrom({ x, y }, turningOn, commit) {
     .then(() => {
       const options = {
         duration: turningOn ? REVEAL.onMs : REVEAL.offMs,
-        easing: turningOn ? REVEAL.onEasing : REVEAL.offEasing,
+        easing: REVEAL.easing,
         fill: 'both',
         pseudoElement: turningOn ? '::view-transition-new(root)' : '::view-transition-old(root)',
       }

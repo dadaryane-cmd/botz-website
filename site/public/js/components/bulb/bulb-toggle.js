@@ -125,8 +125,14 @@ export function renderBulbToggle() {
     button.setAttribute('aria-pressed', String(isLight))
   }
 
+  // Measured when a pull starts, not on every frame: reading layout while animating forces the
+  // browser to lay out the page again on each frame.
+  let cordLength = 16
+  const measureCord = () => {
+    cordLength = cord.offsetHeight || cordLength
+  }
+
   function paint() {
-    const cordLength = cord.offsetHeight || 16
     swing.style.transform = `translateY(${state.pull * TUNING.dipRatio}px) rotate(${state.angle + state.tilt}deg)`
     cord.style.transform = `scaleY(${1 + state.pull / cordLength})`
     bead.style.transform = `translateY(${state.pull}px)`
@@ -231,6 +237,7 @@ export function renderBulbToggle() {
       return
     }
     state.busy = true
+    measureCord()
     stopAll()
     switchTheme()
     const releaseAfterPull = () => release({ fromClick: true, alreadySwitched: true })
@@ -263,6 +270,7 @@ export function renderBulbToggle() {
   button.addEventListener('pointerdown', (event) => {
     if (event.button !== 0) return
     markUsed()
+    measureCord()
     drag = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false }
     button.setPointerCapture(event.pointerId)
   })

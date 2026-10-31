@@ -30,6 +30,7 @@ html[data-vt='off'][data-vt-soft]::view-transition-old(root) {
   --vt-mask: radial-gradient(
     circle at var(--vt-x) var(--vt-y),
     #000 calc(var(--vt-r) - var(--vt-feather)),
+    rgb(0 0 0 / 0.55) calc(var(--vt-r) - var(--vt-feather) * 0.45),
     transparent var(--vt-r)
   );
   mask-image: var(--vt-mask);
@@ -58,6 +59,18 @@ html[data-vt] .bulb-toggle {
 html[data-vt],
 html[data-vt] *:not(.bulb-toggle, .bulb-toggle *) {
   transition: none !important;
+}
+
+/*
+ * Frame rate: the new page is drawn live under the spreading circle, and anything still moving
+ * on it (the lamp's glow, the sign's bulbs…) makes the browser redraw the whole screen on every
+ * frame. Holding those animations for the moment of the reveal lets it reuse one picture; only
+ * the bulb keeps moving.
+ */
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *),
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *)::before,
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *)::after {
+  animation-play-state: paused !important;
 }
 
 /* No View Transitions: crossfade every colour together. */
