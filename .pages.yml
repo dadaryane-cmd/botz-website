@@ -1408,24 +1408,33 @@ content:
           - name: themeTooltip
             label: Theme tooltip
             component: line
-      - name: easterEgg
-        label: Easter egg
+      - name: lamp
+        label: Lamp
         type: object
         fields:
-          - name: title
-            label: Title
+          - name: oneMore
+            label: One more
             component: line
-          - name: text
-            label: Text
+          - name: likePlaying
+            label: Like playing
             component: line
-          - name: cta
-            label: Cta
+          - name: tipTitle
+            label: Tip title
+            component: line
+          - name: tipNumber
+            label: Tip number
+            component: line
+          - name: anotherTip
+            label: Another tip
+            component: line
+          - name: audit
+            label: Audit
             component: line
           - name: close
             label: Close
             component: line
-          - name: message
-            label: Message
+          - name: auditMessage
+            label: Audit message
             component: line
       - name: servicesPage
         label: Services page
@@ -1460,3 +1469,17 @@ content:
           - name: writeUs
             label: Write us
             component: line
+  - name: lampTips
+    label: Lamp tips
+    description: Marketing tips shown one by one when a visitor keeps pulling the lamp cord (10 pulls and more).
+    type: file
+    path: site/public/content/lamp-tips.json
+    format: json
+    fields:
+      - name: tips
+        label: Tip
+        component: paragraph
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{en}"

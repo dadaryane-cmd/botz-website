@@ -530,7 +530,16 @@
   }
 }
 
-/* ---- easter egg: a streak of pulls makes the bulb flicker and shows a message ---- */
+/* ---- playing with the lamp: its lines, then a flicker and a card with marketing tips ---- */
+
+/* A line can be longer than the hint; it may wrap instead of running off a phone screen. */
+.bulb-saying {
+  /* Sized by its text, not by the narrow lamp button it hangs from. */
+  width: max-content;
+  max-width: min(240px, 60vw);
+  white-space: normal;
+  text-align: center;
+}
 
 .bulb-toggle.is-celebrating .bulb-glass-on,
 .bulb-toggle.is-celebrating .bulb-filament-hot {
@@ -541,15 +550,15 @@
   animation: bulb-halo-in var(--bulb-on-ms) ease-out 3;
 }
 
-.easter-egg {
+.lamp-tip {
   position: fixed;
   z-index: 60;
   top: 84px;
   right: var(--gutter);
   display: grid;
-  gap: 4px;
+  gap: 8px;
   justify-items: start;
-  width: min(320px, calc(100vw - 2 * var(--gutter)));
+  width: min(340px, calc(100vw - 2 * var(--gutter)));
   padding: 18px 44px 18px 20px;
   border: 1px solid var(--accent);
   border-radius: var(--radius-small);
@@ -563,25 +572,55 @@
     transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.easter-egg.is-visible {
+.lamp-tip.is-visible {
   opacity: 1;
   transform: none;
 }
 
-.easter-egg p {
+.lamp-tip p {
   margin: 0;
 }
 
-.easter-egg-title {
+.lamp-tip-title {
   font: 700 1.05rem var(--font-display);
   color: var(--accent-text);
 }
 
-.easter-egg .btn {
-  margin-top: 12px;
+.lamp-tip-number {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.easter-egg-close {
+.lamp-tip-text {
+  line-height: 1.5;
+}
+
+/* A new tip fades in, so it is clear the text changed. */
+@media (prefers-reduced-motion: no-preference) {
+  .lamp-tip-body.is-new {
+    animation: lamp-tip-in 0.4s ease-out;
+  }
+}
+
+@keyframes lamp-tip-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.lamp-tip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+
+.lamp-tip-close {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -595,14 +634,14 @@
   cursor: pointer;
 }
 
-.easter-egg-close:hover {
+.lamp-tip-close:hover {
   background: var(--surface);
   color: var(--text);
 }
 
 /* Phones: centred near the bottom, above the call / WhatsApp bar. */
 @media (max-width: 720px) {
-  .easter-egg {
+  .lamp-tip {
     top: auto;
     bottom: 84px;
     left: var(--gutter);

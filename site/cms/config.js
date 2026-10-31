@@ -486,6 +486,17 @@ const interfaceEntry = {
   ),
 }
 
+const lampTipsEntry = {
+  name: 'lampTips',
+  label: 'Lamp tips',
+  description:
+    'Marketing tips shown one by one when a visitor keeps pulling the lamp cord (10 pulls and more).',
+  type: 'file',
+  path: `${CONTENT}/lamp-tips.json`,
+  format: 'json',
+  fields: [list(text('tips', 'Tip', { long: true }), '{en}')],
+}
+
 /* ---------- configuration ---------- */
 
 const languageFields = (type) => [
@@ -532,5 +543,6 @@ export const pagesConfig = {
     peopleEntry,
     navigationEntry,
     interfaceEntry,
+    lampTipsEntry,
   ],
 }

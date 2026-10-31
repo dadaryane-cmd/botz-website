@@ -639,31 +639,46 @@
       "ru": "Светлая / тёмная тема"
     }
   },
-  "easterEgg": {
-    "title": {
+  "lamp": {
+    "oneMore": {
+      "hy": "Եվս մեկ անգա՞մ",
+      "en": "One more time?",
+      "ru": "Ещё разок?"
+    },
+    "likePlaying": {
       "hy": "Լավ, դուք սիրում եք խաղալ։",
       "en": "OK, you like playing.",
       "ru": "Окей, вы любите играть."
     },
-    "text": {
-      "hy": "Եկեք խաղանք ձեր բրենդի հետ։",
-      "en": "Let’s play with your brand.",
-      "ru": "Давайте поиграем с вашим брендом."
+    "tipTitle": {
+      "hy": "Գաղափար ձեր բրենդի համար",
+      "en": "A bright idea for your brand",
+      "ru": "Идея для вашего бренда"
     },
-    "cta": {
-      "hy": "Բացահայտեք Ձեր Ներուժը →",
-      "en": "Unlock Your Potential →",
-      "ru": "Раскройте Возможности Бизнеса →"
+    "tipNumber": {
+      "hy": "Խորհուրդ №{number}",
+      "en": "Tip #{number}",
+      "ru": "Совет №{number}"
+    },
+    "anotherTip": {
+      "hy": "Եվս մեկ խորհուրդ",
+      "en": "Another tip",
+      "ru": "Ещё совет"
+    },
+    "audit": {
+      "hy": "Անվճար մարքեթինգային աուդիտ →",
+      "en": "Free marketing audit →",
+      "ru": "Бесплатный маркетинговый аудит →"
     },
     "close": {
       "hy": "Փակել",
       "en": "Close",
       "ru": "Закрыть"
     },
-    "message": {
-      "hy": "Ձեր կայքում գտա լամպի անակնկալը։ Կցանկանայի անվճար աուդիտ։",
-      "en": "I found the lamp surprise on your website. I’d like a free audit.",
-      "ru": "Нашёл(ла) сюрприз с лампой на вашем сайте. Хочу бесплатный аудит."
+    "auditMessage": {
+      "hy": "Ձեր կայքում գտա լամպի խորհուրդները։ Կցանկանայի անվճար մարքեթինգային աուդիտ։",
+      "en": "I found the lamp tips on your website. I’d like a free marketing audit.",
+      "ru": "Нашёл(ла) советы лампы на вашем сайте. Хочу бесплатный маркетинговый аудит."
     }
   },
   "servicesPage": {

@@ -127,8 +127,10 @@ describe('content', () => {
     }
   })
 
-  it('has every text in all three languages', () => {
-    for (const value of translations({ pages, catalog, finder, navigation })) {
+  it('has every text in all three languages', async () => {
+    const lampTips = await loadJson('lamp-tips.json')
+    assert.ok(lampTips.tips.length > 0, 'lamp-tips.json has no tips')
+    for (const value of translations({ pages, catalog, finder, navigation, lampTips })) {
       for (const language of ['en', 'hy', 'ru']) {
         assert.ok(value[language]?.trim(), `${value.en} → ${language}`)
       }

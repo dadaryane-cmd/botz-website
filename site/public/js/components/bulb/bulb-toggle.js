@@ -10,9 +10,9 @@ import { prefersReducedMotion, spring, tween } from '../../lib/animation.js'
 import { ui } from '../../lib/i18n.js'
 import { load, save } from '../../lib/storage.js'
 import { getTheme, setTheme } from '../../lib/theme.js'
-import { showEasterEgg } from './easter-egg.js'
 import { attachLampLight, swellLampLight } from './lamp-light.js'
-import { createPullStreak } from './pull-streak.js'
+import { FIRST_TIP_PULL, lampReaction } from './lamp-play.js'
+import { showNextTip } from './tip-card.js'
 
 const TUNING = {
   /** Max visual cord pull (px) and how far it must be pulled to switch. */
@@ -36,8 +36,9 @@ const TUNING = {
   /** First-visit "Pull the cord" hint. */
   hintDelayMs: 1500,
   hintVisibleMs: 8000,
-  /** Hidden message: this many switches in a row, each within `maxGapMs` of the last. */
-  easterEgg: { pulls: 3, maxGapMs: 3000, celebrateMs: 1200 },
+  /** How long the lamp's lines ("One more time?") stay; the flicker when the first tip shows. */
+  sayingMs: 2600,
+  celebrateMs: 1200,
 }
 
 /** Rubber band: follows the finger at first, then stiffens towards maxPull. */
@@ -99,19 +100,20 @@ export function renderBulbToggle() {
     ui('common', 'pullHint'),
     fromMarkup(HINT_ARROW),
   )
+  // The lamp's lines while someone keeps pulling; same bubble as the hint.
+  const saying = h('span', { class: 'bulb-hint bulb-saying', 'aria-hidden': 'true' })
   const button = h(
     'button',
     { type: 'button', class: 'bulb-toggle' },
     h('span', { class: 'bulb-sway', 'aria-hidden': 'true' }, swing),
     tip,
     hint,
+    saying,
   )
 
   const state = { pull: 0, angle: 0, tilt: 0, busy: false }
-  const countPull = createPullStreak({
-    needed: TUNING.easterEgg.pulls,
-    maxGapMs: TUNING.easterEgg.maxGapMs,
-  })
+  let pulls = 0
+  let sayingTimer = null
   let cancels = []
   let drag = null
 
@@ -167,10 +169,28 @@ export function renderBulbToggle() {
     }
     updateLabel()
 
-    if (countPull()) {
-      if (animate) replayClass(button, 'is-celebrating', TUNING.easterEgg.celebrateMs)
-      showEasterEgg()
+    pulls += 1
+    const reaction = lampReaction(pulls)
+    if (reaction === 'tip') {
+      if (animate && pulls === FIRST_TIP_PULL) {
+        replayClass(button, 'is-celebrating', TUNING.celebrateMs)
+      }
+      showNextTip()
+    } else if (reaction) {
+      say(ui('lamp', reaction))
     }
+  }
+
+  /** Show one of the lamp's lines for a moment (the hover tooltip steps aside meanwhile). */
+  function say(text) {
+    saying.textContent = text
+    saying.classList.add('is-visible')
+    tip.classList.add('is-suppressed')
+    clearTimeout(sayingTimer)
+    sayingTimer = setTimeout(() => {
+      saying.classList.remove('is-visible')
+      tip.classList.remove('is-suppressed')
+    }, TUNING.sayingMs)
   }
 
   /** The bulb swings away from any sideways pull; without one, a click swings it right. */
