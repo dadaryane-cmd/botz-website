@@ -5,6 +5,7 @@
 import { site } from '../content/index.js'
 import { h } from '../lib/dom.js'
 import { t } from '../lib/i18n.js'
+import { splitLetters } from '../lib/letters.js'
 
 const logoImage = (theme) =>
   h('img', {
@@ -16,6 +17,24 @@ const logoImage = (theme) =>
   })
 
 export const logoImages = () => [logoImage('light'), logoImage('dark')]
+
+/**
+ * Words right after the logo in a heading take the logo's proportions: a capital first letter
+ * stays as tall as the logo's B, and the other letters are drawn as tall as its "OTZ"
+ * (`.logo-letters` in hero.css). "We are {logo} Team." → T as tall as B, "eam." as tall as OTZ.
+ */
+export function matchLogoLetters(heading) {
+  const logo = heading.querySelector('.inline-logo')
+  if (!logo) return
+  let word = (logo.closest('.word') ?? logo).nextElementSibling
+  while (word?.classList.contains('word')) {
+    const [first = '', ...others] = splitLetters(word.textContent)
+    const isCapital = first !== first.toLowerCase()
+    const rest = isCapital ? others.join('') : first + others.join('')
+    word.replaceChildren(isCapital ? first : '', h('span', { class: 'logo-letters' }, rest))
+    word = word.nextElementSibling
+  }
+}
 
 /**
  * The logo inside a headline (`{logo}` in content), read as "BOTZ". The image hidden by the

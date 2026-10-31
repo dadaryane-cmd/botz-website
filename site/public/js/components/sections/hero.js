@@ -1,7 +1,7 @@
 import { h, richText } from '../../lib/dom.js'
 import { hasText } from '../../lib/i18n.js'
 import { renderFlameBackground } from '../flame/flame-background.js'
-import { inlineLogo } from '../logo.js'
+import { inlineLogo, matchLogoLetters } from '../logo.js'
 import { buttonRow, lead } from './section.js'
 
 /**
@@ -12,12 +12,7 @@ export function renderHero(config) {
   const text = h(
     'div',
     { class: 'hero-text' },
-    hasText(config.heading) &&
-      h(
-        'h1',
-        { class: 'heading' },
-        richText(config.heading, { words: true, tokens: { logo: inlineLogo } }),
-      ),
+    hasText(config.heading) && title(config.heading),
     lead(config.subheading),
     buttonRow(config.buttons),
   )
@@ -35,4 +30,15 @@ export function renderHero(config) {
       h('div', { class: 'container container-wide hero-content' }, text),
     ),
   )
+}
+
+/** The page title, word by word; `{logo}` shows the logo, and the words after it match it. */
+function title(heading) {
+  const element = h(
+    'h1',
+    { class: 'heading' },
+    richText(heading, { words: true, tokens: { logo: inlineLogo } }),
+  )
+  matchLogoLetters(element)
+  return element
 }
