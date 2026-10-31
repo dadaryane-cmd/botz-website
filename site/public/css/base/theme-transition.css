@@ -55,6 +55,15 @@ html[data-vt] .bulb-toggle {
   display: none;
 }
 
+/*
+ * Being above the reveal, the bulb's warm halo would glow over the still-dark page as an orange
+ * spot. It waits until the light has spread, then fades in (its own transition).
+ */
+html[data-vt='on'] .bulb-halo {
+  opacity: 0 !important;
+  animation: none !important;
+}
+
 /* Snapshots must show final colours, not mid-transition ones (the live bulb keeps its own). */
 html[data-vt],
 html[data-vt] *:not(.bulb-toggle, .bulb-toggle *) {
