@@ -15,24 +15,28 @@ export const availableLengths = (pkg) =>
 export const isRecurring = (pkg) => availableLengths(pkg).length > 0
 
 /**
- * Monthly fee, total and savings (against paying the 1-month rate) for a contract length,
+ * The monthly rate on the shortest contract the package is offered for, which longer contracts
+ * are compared with; null for one-time packages.
+ */
+export function baseMonthlyPrice(pkg) {
+  const [shortest] = availableLengths(pkg)
+  return shortest ? pkg.prices[`m${shortest}`] : null
+}
+
+/**
+ * Monthly fee, total and savings (against the shortest contract's rate) for a contract length,
  * or null when the package is not offered for that length.
  */
 export function priceFor(pkg, months) {
   const monthly = pkg.prices?.[`m${months}`]
-  const monthToMonth = pkg.prices?.m1
-  if (typeof monthly !== 'number' || typeof monthToMonth !== 'number') return null
+  if (typeof monthly !== 'number') return null
   return {
     months,
     monthly,
     total: monthly * months,
-    savings: Math.max(0, (monthToMonth - monthly) * months),
+    savings: Math.max(0, (baseMonthlyPrice(pkg) - monthly) * months),
   }
 }
-
-/** The 1-month rate, which longer contracts are compared with; null when not offered. */
-export const monthToMonthPrice = (pkg) =>
-  typeof pkg.prices?.m1 === 'number' ? pkg.prices.m1 : null
 
 /**
  * Totals for a selection `{ packageKey, months, addons: { key: quantity } }`.

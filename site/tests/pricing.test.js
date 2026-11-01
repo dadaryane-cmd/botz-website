@@ -1,49 +1,70 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { catalog } from '../public/js/content/index.js'
-import { findPackage, monthToMonthPrice, priceFor, quote } from '../public/js/pricing/engine.js'
+import { CONTRACT_LENGTHS } from '../public/js/config.js'
+import { baseMonthlyPrice, findPackage, priceFor, quote } from '../public/js/pricing/engine.js'
 import { categoryFromSearch, fromParams, toParams } from '../public/js/pricing/selection.js'
 
 const pkg = (key) => findPackage(catalog, key)
 
+describe('contract lengths', () => {
+  it('start at 3 months: there is no 1-month contract', () => {
+    assert.equal(CONTRACT_LENGTHS[0], 3)
+    for (const item of catalog.packages) {
+      assert.equal(item.prices?.m1, undefined, `${item.key} still has a 1-month price`)
+    }
+  })
+
+  it('cost less per month the longer they are', () => {
+    for (const item of catalog.packages) {
+      const rates = CONTRACT_LENGTHS.map((months) => item.prices?.[`m${months}`]).filter(
+        (rate) => typeof rate === 'number',
+      )
+      rates.slice(1).forEach((rate, index) => assert.ok(rate < rates[index], item.key))
+    }
+  })
+})
+
 describe('priceFor', () => {
-  it('returns monthly fee, total and savings against the 1-month rate', () => {
+  it('returns monthly fee, total and savings against the 3-month rate', () => {
     assert.deepEqual(priceFor(pkg('smm-start'), 6), {
       months: 6,
-      monthly: 73000,
-      total: 438000,
-      savings: 36000,
+      monthly: 75000,
+      total: 450000,
+      savings: 24000,
     })
   })
 
-  it('has no savings on the 1-month rate', () => {
-    assert.equal(priceFor(pkg('smm-gold'), 1).savings, 0)
+  it('has no savings on the shortest contract', () => {
+    assert.equal(priceFor(pkg('smm-gold'), 3).savings, 0)
   })
 
   it('returns null for a contract length the package is not offered for', () => {
     assert.equal(priceFor(pkg('seo-fundamental'), 12), null)
+    assert.equal(priceFor(pkg('smm-start'), 1), null)
   })
 })
 
-describe('monthToMonthPrice', () => {
-  it('is the 1-month rate, the base for the savings', () => {
+describe('baseMonthlyPrice', () => {
+  it('is the shortest contract’s rate, the base for the savings', () => {
     const start = pkg('smm-start')
     const sixMonths = priceFor(start, 6)
-    assert.equal(monthToMonthPrice(start) - sixMonths.monthly, sixMonths.savings / 6)
+    assert.equal(baseMonthlyPrice(start), 79000)
+    assert.equal(baseMonthlyPrice(start) - sixMonths.monthly, sixMonths.savings / 6)
   })
 
   it('is null for one-time packages', () => {
     const website = catalog.packages.find((item) => item.category === 'website')
-    assert.equal(monthToMonthPrice(website), null)
+    assert.equal(baseMonthlyPrice(website), null)
   })
 })
 
 describe('quote', () => {
   it('adds recurring fees and one-time add-ons', () => {
     const totals = quote(catalog, { packageKey: 'seo-vision', months: 12, addons: { reel: 2 } })
-    assert.equal(totals.recurring.total, 299000 * 12)
+    assert.equal(totals.recurring.total, 320000 * 12)
     assert.equal(totals.oneTimeTotal, 50000)
-    assert.equal(totals.total, 299000 * 12 + 50000)
+    assert.equal(totals.total, 320000 * 12 + 50000)
     assert.equal(totals.isMinimum, false)
   })
 

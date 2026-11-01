@@ -117,8 +117,7 @@ function priceDetails(pkg, price) {
       h('p', { class: 'muted small' }, ui('pricing', 'availableFor', { list })),
     ]
   }
-  const totalLabel =
-    price.months === 1 ? ui('pricing', 'totalFor1') : ui('pricing', 'totalFor', { n: price.months })
+  const totalLabel = ui('pricing', 'totalFor', { n: price.months })
   return [
     h(
       'p',

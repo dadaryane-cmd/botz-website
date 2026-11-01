@@ -1,16 +1,16 @@
 /**
  * Home page overview: every package's monthly price for one contract length, as a table to scan
- * (name left, price right), with the month-to-month rate crossed out to show the saving.
+ * (name left, price right), with the shortest contract's rate crossed out to show the saving.
  * One-time packages (website creation) get their own line below the table.
  */
-import { PACKAGE_CATEGORIES } from '../../config.js'
+import { DEFAULT_CONTRACT_LENGTH, PACKAGE_CATEGORIES } from '../../config.js'
 import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd, formatMonths } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
 import { reveal } from '../../lib/reveal.js'
-import { availableLengths, isRecurring, monthToMonthPrice, priceFor } from '../../pricing/engine.js'
+import { availableLengths, baseMonthlyPrice, isRecurring, priceFor } from '../../pricing/engine.js'
 import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
 import { button, heading, lead, section } from './section.js'
 
@@ -101,14 +101,14 @@ function previewRow(pkg, months) {
   )
 }
 
-/** The month-to-month rate, crossed out, when the longer term costs less. */
+/** The shortest contract's rate, crossed out, when the longer term costs less. */
 function wasPrice(pkg, monthly) {
-  const rate = monthToMonthPrice(pkg)
+  const rate = baseMonthlyPrice(pkg)
   if (!rate || rate <= monthly) return null
   return h(
     's',
     { class: 'preview-was' },
-    h('span', { class: 'sr-only' }, `${ui('pricing', 'monthToMonth')}: `),
+    h('span', { class: 'sr-only' }, `${ui('pricing', 'baseRate')}: `),
     formatAmd(rate),
   )
 }
@@ -120,7 +120,11 @@ function oneTimeRow(pkg) {
     null,
     h(
       'a',
-      { class: 'preview-row', href: estimateLink({ packageKey: pkg.key, months: 1, addons: {} }) },
+      {
+        class: 'preview-row',
+        // A one-time package has no contract length; the link keeps the usual one selected.
+        href: estimateLink({ packageKey: pkg.key, months: DEFAULT_CONTRACT_LENGTH, addons: {} }),
+      },
       h('span', { class: 'preview-name' }, h('strong', null, t(pkg.name))),
       h(
         'span',

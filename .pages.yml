@@ -316,7 +316,7 @@ components:
           - name: duration
             label: Contract length shown (months)
             type: number
-            description: One of 1, 3, 6, 9, 12.
+            description: One of 3, 6, 9, 12.
           - name: link
             label: Button
             component: button
@@ -449,7 +449,7 @@ components:
           - name: defaultDuration
             label: Contract length selected first (months)
             type: number
-            description: One of 1, 3, 6, 9, 12.
+            description: One of 3, 6, 9, 12.
           - name: lockCategory
             label: Show only this package group
             type: boolean
@@ -688,9 +688,6 @@ content:
             label: Monthly price by contract length
             type: object
             fields:
-              - name: m1
-                label: "1 month"
-                type: number
               - name: m3
                 label: "3 months"
                 type: number
@@ -1117,9 +1114,6 @@ content:
           - name: totalFor
             label: Total for
             component: line
-          - name: totalFor1
-            label: Total for 1
-            component: line
           - name: youSave
             label: You save
             component: line
@@ -1150,8 +1144,8 @@ content:
           - name: upToTerm
             label: Up to term
             component: line
-          - name: monthToMonth
-            label: Month to month
+          - name: baseRate
+            label: Base rate
             component: line
           - name: bundleOf
             label: Bundle of

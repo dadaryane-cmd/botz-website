@@ -152,9 +152,9 @@
       "ru": "Сайт"
     },
     "durationLabel": {
-      "hy": "Պայմանագրի ժամկետ",
-      "en": "Contract length",
-      "ru": "Срок договора"
+      "hy": "Պայմանագրի ժամկետ (նվազագույնը 3 ամիս)",
+      "en": "Contract length (minimum 3 months)",
+      "ru": "Срок договора (минимум 3 месяца)"
     },
     "month1": {
       "hy": "1 ամիս",
@@ -180,11 +180,6 @@
       "hy": "Ընդհանուրը {n} ամսվա համար",
       "en": "Total for {n} months",
       "ru": "Итого за {n} мес."
-    },
-    "totalFor1": {
-      "hy": "Ընդհանուրը 1 ամսվա համար",
-      "en": "Total for 1 month",
-      "ru": "Итого за 1 месяц"
     },
     "youSave": {
       "hy": "Խնայում եք {amount}",
@@ -236,10 +231,10 @@
       "en": "up to {term}",
       "ru": "до {term}"
     },
-    "monthToMonth": {
-      "hy": "ամսական վճարմամբ",
-      "en": "month to month",
-      "ru": "при помесячной оплате"
+    "baseRate": {
+      "hy": "3 ամսվա պայմանագրով",
+      "en": "with a 3-month contract",
+      "ru": "при договоре на 3 месяца"
     },
     "bundleOf": {
       "hy": "Միավորում է {list}-ը՝ իր առանձին գնով",

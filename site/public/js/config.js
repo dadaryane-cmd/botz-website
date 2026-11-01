@@ -7,8 +7,11 @@ export const LANGUAGES = ['hy', 'en', 'ru']
 export const DEFAULT_LANGUAGE = 'hy'
 export const LANGUAGE_LABELS = { hy: 'Հայ', en: 'Eng', ru: 'Рус' }
 
-/** Contract lengths in months, as offered in the price list. */
-export const CONTRACT_LENGTHS = [1, 3, 6, 9, 12]
+/**
+ * Contract lengths in months, as offered in the price list. There is no 1-month contract:
+ * social media and search take a few months to show results.
+ */
+export const CONTRACT_LENGTHS = [3, 6, 9, 12]
 export const DEFAULT_CONTRACT_LENGTH = 6
 export const MAX_ADDON_QUANTITY = 20
 

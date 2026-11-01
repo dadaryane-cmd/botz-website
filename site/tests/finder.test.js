@@ -24,7 +24,7 @@ describe('recommend', () => {
   it('suggests a combined plan for social and search', () => {
     const result = recommend(finder, catalog, answers({ goal: 'both', budget: 'b700' }))
     assert.equal(result.best.pkg.key, 'business-boost')
-    assert.equal(result.best.total, 420000 * 6)
+    assert.equal(result.best.total, 430000 * 6)
   })
 
   it('prefers packages within budget', () => {
@@ -49,6 +49,6 @@ describe('recommend', () => {
       (option) => option?.pkg.key === 'seo-fundamental',
     )
     assert.equal(fundamental.lengthAvailable, false)
-    assert.equal(fundamental.months, 6)
+    assert.equal(fundamental.months, 9)
   })
 })

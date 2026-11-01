@@ -306,9 +306,9 @@
         "ru": "Цены в месяц"
       },
       "intro": {
-        "hy": "12 ամսվա պայմանագրով։ Ջնջված գինը ամսական վճարման դեպքում է։",
-        "en": "With a 12-month agreement. The crossed-out price is what you would pay month to month.",
-        "ru": "При договоре на 12 месяцев. Зачёркнутая цена указана для помесячной оплаты."
+        "hy": "12 ամսվա պայմանագրով։ Ջնջված գինը 3 ամսվա պայմանագրի դեպքում է՝ նվազագույն ժամկետով։",
+        "en": "With a 12-month contract. The crossed-out price is for the shortest contract, 3 months.",
+        "ru": "При договоре на 12 месяцев. Зачёркнутая цена — для самого короткого договора, на 3 месяца."
       },
       "categories": [
         "smm",

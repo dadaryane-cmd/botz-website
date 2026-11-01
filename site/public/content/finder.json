@@ -218,15 +218,6 @@
       },
       "options": [
         {
-          "value": "m1",
-          "label": {
-            "hy": "1 ամիս",
-            "en": "1 month",
-            "ru": "1 месяц"
-          },
-          "months": 1
-        },
-        {
           "value": "m3",
           "label": {
             "hy": "3 ամիս",

@@ -153,6 +153,18 @@
         },
         {
           "question": {
+            "hy": "Ինչո՞ւ է նվազագույն ժամկետը 3 ամիս",
+            "en": "Why is the minimum contract 3 months?",
+            "ru": "Почему минимальный срок договора — 3 месяца?"
+          },
+          "answer": {
+            "hy": "Սոցցանցերը և որոնումը ժամանակ են պահանջում։ Առաջին ամիսը գնում է ձեր բիզնեսին ծանոթանալուն, կարգավորումներին և առաջին բովանդակությանը, իսկ արդյունքները սովորաբար երևում են երկրորդ-երրորդ ամսից։ Երեք ամիսը ամենակարճ ժամկետն է, որում կարող ենք ցույց տալ իրական արդյունք։ Դեռ վստա՞հ չեք։ Սկսեք անվճար մարքեթինգային աուդիտից։",
+            "en": "Social media and search take time. The first month goes into getting to know your business, setting things up and the first content, and results usually show from the second or third month. Three months is the shortest time in which we can show you real results. Not sure yet? Start with a free marketing audit.",
+            "ru": "Соцсети и поиск требуют времени. Первый месяц уходит на знакомство с вашим бизнесом, настройку и первый контент, а результаты обычно видны со второго-третьего месяца. Три месяца — самый короткий срок, за который мы можем показать реальный результат. Пока не уверены? Начните с бесплатного маркетингового аудита."
+          }
+        },
+        {
+          "question": {
             "hy": "Ի՞նչ է լինում նախահաշիվն ուղարկելուց հետո",
             "en": "What happens after I send my estimate?",
             "ru": "Что происходит после отправки расчёта?"
