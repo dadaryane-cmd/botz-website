@@ -245,7 +245,7 @@
       "prices": {
         "m3": 179000,
         "m6": 175000,
-        "m9": 165000,
+        "m9": null,
         "m12": null
       },
       "recommended": false,

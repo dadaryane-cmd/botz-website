@@ -49,6 +49,6 @@ describe('recommend', () => {
       (option) => option?.pkg.key === 'seo-fundamental',
     )
     assert.equal(fundamental.lengthAvailable, false)
-    assert.equal(fundamental.months, 9)
+    assert.equal(fundamental.months, 6)
   })
 })
