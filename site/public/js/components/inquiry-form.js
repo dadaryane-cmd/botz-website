@@ -169,7 +169,10 @@ export function renderInquiryForm({ service: pageService }) {
         }),
       )
       showSuccess()
-    } catch {
+    } catch (error) {
+      // Visitors see a friendly message; the console keeps FormSubmit's reason (e.g. "This form
+      // needs Activation") for whoever looks after the site.
+      console.warn('Inquiry not sent:', error.message)
       setSending(false)
       showError(ui('form', 'errorGeneric'), fallbackLinks(values))
     }
