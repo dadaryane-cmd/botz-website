@@ -34,9 +34,19 @@
 
 /* ---- the button: a 44px touch target; the drawing hangs from the header's top edge ---- */
 
-.bulb-toggle {
+/*
+ * The button and, beside it, its tooltip, hint and lines. Those texts are decoration and stay
+ * outside the button, so its accessible name is just "Switch to light/dark theme".
+ */
+.bulb {
   position: relative;
   flex: none;
+  width: 44px;
+  height: 44px;
+}
+
+.bulb-toggle {
+  position: relative;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -444,13 +454,13 @@
 }
 
 @media (hover: hover) {
-  .bulb-toggle:hover .bulb-tip {
+  .bulb-toggle:hover ~ .bulb-tip {
     opacity: 1;
     transform: translate(0, -50%);
   }
 }
 
-.bulb-toggle:focus-visible .bulb-tip {
+.bulb-toggle:focus-visible ~ .bulb-tip {
   opacity: 1;
   transform: translate(0, -50%);
 }

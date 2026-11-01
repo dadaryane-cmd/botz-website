@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node scripts/serve.js",
     "test": "node --test",
-    "cms": "node scripts/build-cms-config.js"
+    "cms": "node scripts/build-cms-config.js",
+    "preload": "node scripts/build-preloads.js"
   },
   "engines": {
     "node": ">=20"

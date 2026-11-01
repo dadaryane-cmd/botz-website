@@ -18,6 +18,14 @@
   --footer-text: var(--text);
 }
 
+/*
+ * Until the script fills it, the footer would be a dark band at the top of the empty page, then
+ * jump down below the content (a layout shift): it only appears once it has content.
+ */
+.site-footer:empty {
+  display: none;
+}
+
 /* ---- logo and one line about the business ---- */
 
 .footer-top {

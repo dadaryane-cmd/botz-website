@@ -37,8 +37,9 @@ export function renderMarqueeSign({ title, tagline }) {
   const sign = h(
     'div',
     { class: 'marquee-sign' },
-    // Screen readers get the words, not single letters.
-    h('p', { class: 'sr-only' }, [...boardLines(titleText), ...boardLines(taglineText)].join(' ')),
+    // Screen readers get the words, not single letters, as the heading of what follows (the
+    // services list), so the page's headings go h1 → h2 → h3.
+    h('h2', { class: 'sr-only' }, [...boardLines(titleText), ...boardLines(taglineText)].join(' ')),
     h(
       'div',
       { class: 'sign-frame' },

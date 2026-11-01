@@ -13,7 +13,7 @@
   --border: #dfcfcd;
   --accent: #ea4823;
   --accent-text: #9d282b;
-  --on-accent: #1b1930;
+  --on-accent: #15132a;
   --inverse-bg: #24213b;
   --inverse-text: #f4ebea;
   /* The same light blush in both themes (button hover on the red). */
@@ -48,7 +48,7 @@
     --border: #3d3958;
     --accent: #ea4823;
     --accent-text: #f26a48;
-    --on-accent: #1b1930;
+    --on-accent: #15132a;
     --inverse-bg: #f4ebea;
     --inverse-text: #24213b;
     --ok: #5bd18b;
@@ -67,7 +67,7 @@
   --border: #3d3958;
   --accent: #ea4823;
   --accent-text: #f26a48;
-  --on-accent: #1b1930;
+  --on-accent: #15132a;
   --inverse-bg: #f4ebea;
   --inverse-text: #24213b;
   --ok: #5bd18b;

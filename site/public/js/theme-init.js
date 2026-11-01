@@ -8,5 +8,18 @@
   } catch {
     // Storage unavailable: keep the default.
   }
-  document.documentElement.dataset.theme = theme
+  const root = document.documentElement
+  root.dataset.theme = theme
+
+  // The home page's first screen is the fire picture (a CSS background for this theme, which the
+  // browser would only find late): fetch it now. Browsers without AVIF skip it (`type`).
+  if (root.dataset.page === 'home') {
+    const poster = document.createElement('link')
+    poster.rel = 'preload'
+    poster.as = 'image'
+    poster.type = 'image/avif'
+    poster.href = `images/hero-flame-poster-${theme}.avif`
+    poster.fetchPriority = 'high'
+    document.head.append(poster)
+  }
 }

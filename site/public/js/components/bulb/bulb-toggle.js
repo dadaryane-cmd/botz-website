@@ -108,9 +108,6 @@ export function renderBulbToggle() {
     'button',
     { type: 'button', class: 'bulb-toggle' },
     h('span', { class: 'bulb-sway', 'aria-hidden': 'true' }, swing),
-    tip,
-    hint,
-    saying,
   )
 
   const state = { pull: 0, angle: 0, tilt: 0, busy: false }
@@ -327,5 +324,6 @@ export function renderBulbToggle() {
 
   updateLabel()
   attachLampLight(bulbCentre)
-  return button
+  // The texts sit beside the button, not in it, so they are not read as part of its name.
+  return h('span', { class: 'bulb' }, button, tip, hint, saying)
 }

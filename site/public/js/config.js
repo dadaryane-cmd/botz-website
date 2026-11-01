@@ -3,6 +3,9 @@
 /** Pages with a content file in /content/pages, by their <html data-page> value. */
 export const PAGES = ['home', 'services', 'pricing', 'about', 'contact']
 
+/** Site-wide content files in /content, loaded on every page (and preloaded in its HTML). */
+export const SITE_CONTENT = ['site', 'people', 'navigation', 'catalog', 'finder', 'ui']
+
 export const LANGUAGES = ['hy', 'en', 'ru']
 export const DEFAULT_LANGUAGE = 'hy'
 export const LANGUAGE_LABELS = { hy: 'Հայ', en: 'Eng', ru: 'Рус' }

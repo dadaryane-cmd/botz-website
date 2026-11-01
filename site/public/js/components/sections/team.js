@@ -56,5 +56,11 @@ export const personCard = (person, attributes = {}) =>
     'article',
     { class: 'card person-card', ...attributes },
     portrait(person, 'avatar'),
-    h('div', null, h('h3', null, t(person.name)), h('p', { class: 'muted' }, t(person.role))),
+    // Name and role, not a heading: the small card sits under different headings (or none).
+    h(
+      'div',
+      null,
+      h('p', { class: 'person-name' }, t(person.name)),
+      h('p', { class: 'muted' }, t(person.role)),
+    ),
   )

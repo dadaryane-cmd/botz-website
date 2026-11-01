@@ -6,12 +6,14 @@
   align-items: center;
 }
 
-.person-card h3 {
-  margin-bottom: 4px;
-}
-
 .person-card p {
   margin: 0;
+}
+
+/* Set like a small heading (it is a name, not a heading: see team.js). */
+.person-card .person-name {
+  margin-bottom: 4px;
+  font: 700 1.17em / 1.15 var(--font-display);
 }
 
 .avatar {

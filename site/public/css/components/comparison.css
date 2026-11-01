@@ -69,6 +69,11 @@
   margin-left: 8px;
 }
 
+/* At night the highlighted row is lighter than the page: a lighter orange keeps the tag legible. */
+:root[data-theme='dark'] .comparison .is-recommended .preview-tag {
+  color: #f47a5a;
+}
+
 .comparison .is-unavailable {
   color: var(--muted);
 }

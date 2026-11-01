@@ -19,23 +19,23 @@ export function startReveals() {
     return
   }
 
+  // Positions come from the observer, measured with the browser's own layout: reading them here
+  // would force an extra layout of the whole page before the first paint. Until its first report
+  // nothing is hidden (no `reveal-ready`), so what is on screen never fades in or blinks.
+  root.classList.remove('reveal-ready')
   observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue
+        // In view, nearly (rootMargin), or already scrolled past (e.g. opened at #contact).
+        const show = entry.isIntersecting || entry.boundingClientRect.top < 0
+        if (!show) continue
         entry.target.classList.add('is-in')
         observer.unobserve(entry.target)
       }
+      root.classList.add('reveal-ready')
     },
     // Start a little before the element scrolls into view.
     { rootMargin: '0px 0px 15% 0px' },
   )
-
-  // On screen, nearly on screen, or already scrolled past (e.g. opened at #contact): show at once.
-  const nearlyVisible = window.innerHeight * 1.15
-  for (const element of pending) {
-    if (element.getBoundingClientRect().top < nearlyVisible) element.classList.add('is-in')
-    else observer.observe(element)
-  }
-  root.classList.add('reveal-ready')
+  pending.forEach((element) => observer.observe(element))
 }

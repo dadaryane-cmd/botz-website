@@ -55,7 +55,14 @@ export function renderFlameBackground() {
   )
   video.muted = true // the attribute alone does not allow autoplay in every browser
 
-  const flame = createWebGlFlame(canvas, layer)
+  const gl = webGlContext(canvas)
+  // Without a graphics card the processor would draw every frame and slow the whole page down
+  // (also in speed tests such as PageSpeed Insights): keep the still picture instead.
+  if (gl && drawsWithoutGraphicsCard(gl)) {
+    gl.getExtension('WEBGL_lose_context')?.loseContext()
+    return layer
+  }
+  const flame = gl ? createWebGlFlame(gl, canvas, layer) : null
   if (flame) {
     layer.dataset.mode = 'webgl'
     flame.start()
@@ -63,6 +70,28 @@ export function renderFlameBackground() {
     playVideoFallback(layer, video)
   }
   return layer
+}
+
+function webGlContext(canvas) {
+  try {
+    return canvas.getContext('webgl', {
+      premultipliedAlpha: true,
+      alpha: true,
+      antialias: false,
+      powerPreference: 'low-power',
+    })
+  } catch {
+    return null
+  }
+}
+
+/** True when WebGL is rendered in software (SwiftShader, llvmpipe…), not by a graphics card. */
+function drawsWithoutGraphicsCard(gl) {
+  const info = gl.getExtension('WEBGL_debug_renderer_info')
+  const renderer = info
+    ? gl.getParameter(info.UNMASKED_RENDERER_WEBGL)
+    : gl.getParameter(gl.RENDERER)
+  return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(String(renderer))
 }
 
 /** Pre-rendered loop on a black background, so it only suits the dark theme. */
@@ -78,17 +107,9 @@ function playVideoFallback(layer, video) {
   video.play().catch(showPoster)
 }
 
-/** Compile the shaders and return `{ start }`, or null when WebGL is unavailable. */
-function createWebGlFlame(canvas, layer) {
-  let gl
+/** Compile the shaders and return `{ start }`, or null when they do not compile. */
+function createWebGlFlame(gl, canvas, layer) {
   try {
-    gl = canvas.getContext('webgl', {
-      premultipliedAlpha: true,
-      alpha: true,
-      antialias: false,
-      powerPreference: 'low-power',
-    })
-    if (!gl) return null
     const program = linkProgram(gl)
     gl.useProgram(program)
     // One oversized triangle covers the whole canvas.
