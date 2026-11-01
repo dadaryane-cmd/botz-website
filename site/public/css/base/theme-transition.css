@@ -56,15 +56,6 @@ html[data-vt] .bulb-toggle {
 }
 
 /*
- * Being above the reveal, the bulb's warm halo would glow over the still-dark page as an orange
- * spot. It waits until the light has spread, then fades in (its own transition).
- */
-html[data-vt='on'] .bulb-halo {
-  opacity: 0 !important;
-  animation: none !important;
-}
-
-/*
  * The cord and wire are drawn over both themes at once while the circle spreads from the bulb:
  * in either theme's text colour they would vanish against the other and leave the bead floating
  * on its own. Halfway between navy and blush, they show on both.
