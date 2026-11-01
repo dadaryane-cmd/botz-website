@@ -82,7 +82,7 @@ html[data-vt] *:not(.bulb-toggle, .bulb-toggle *) {
 
 /*
  * Frame rate: the new page is drawn live under the spreading circle, and anything still moving
- * on it (the lamp's glow, the sign's bulbs…) makes the browser redraw the whole screen on every
+ * on it (the sign's bulbs, headings sliding in…) makes the browser redraw the whole screen on every
  * frame. Holding those animations for the moment of the reveal lets it reuse one picture; only
  * the bulb keeps moving.
  */

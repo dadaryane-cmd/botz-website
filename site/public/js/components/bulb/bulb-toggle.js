@@ -10,7 +10,7 @@ import { prefersReducedMotion, spring, tween } from '../../lib/animation.js'
 import { ui } from '../../lib/i18n.js'
 import { load, save } from '../../lib/storage.js'
 import { getTheme, setTheme } from '../../lib/theme.js'
-import { attachLampLight, swellLampLight } from './lamp-light.js'
+import { attachLampLight } from './lamp-light.js'
 import { FIRST_TIP_PULL, lampReaction } from './lamp-play.js'
 import { showNextTip } from './tip-card.js'
 
@@ -168,7 +168,6 @@ export function renderBulbToggle() {
       // Flicker when the light comes on, afterglow when it goes off.
       const effect = next === 'light' ? 'is-turning-on' : 'is-turning-off'
       replayClass(button, effect, TUNING.switchFxMs)
-      if (next === 'light') swellLampLight()
       setTheme(next, { origin: bulbCentre() })
     } else {
       setTheme(next, { animate: false })

@@ -8,8 +8,6 @@
   position: fixed;
   inset: 0;
   z-index: 45;
-  /* The glow below is larger than the screen; it must not make the page scroll. */
-  overflow: hidden;
   pointer-events: none;
   mix-blend-mode: multiply;
   opacity: 0;
@@ -24,42 +22,4 @@
 
 [data-theme='light'] .lamp-light {
   opacity: 1;
-}
-
-/*
- * A brighter glow that spreads from the bulb and fades when the cord is pulled. It is a round
- * patch centred on the bulb that fades to nothing at its own edge: a screen-sized box would show
- * its edge as a hard orange line while it grows.
- */
-.lamp-light::after {
-  content: '';
-  position: absolute;
-  left: var(--lamp-x, 100%);
-  top: var(--lamp-y, 0);
-  width: 110vmax;
-  height: 110vmax;
-  margin: -55vmax 0 0 -55vmax;
-  border-radius: 50%;
-  opacity: 0;
-  background: radial-gradient(closest-side, rgb(255 190 110 / 0.6), transparent);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .lamp-light.is-swelling::after {
-    animation: lamp-light-swell 1100ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-}
-
-@keyframes lamp-light-swell {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  35% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.15);
-  }
 }
