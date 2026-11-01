@@ -45,6 +45,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  /* The price is sized to the card (cqi), so it fits however narrow the columns get. */
+  container-type: inline-size;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;
@@ -123,7 +125,14 @@
   color: var(--muted);
 }
 
-.price-unavailable {
+.package-card .price {
+  font-size: clamp(1.2rem, 12cqi, 1.8rem);
+}
+
+/* A word, not a number: smaller, and it may wrap ("Անհասանելի" is long in the display font). */
+.package-card .price-unavailable {
+  font-size: clamp(1rem, 8cqi, 1.25rem);
+  overflow-wrap: anywhere;
   color: var(--muted);
 }
 
