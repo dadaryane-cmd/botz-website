@@ -57,3 +57,21 @@ export const interpolate = (template, vars = {}) =>
 
 /** Interface text from content/ui.json, e.g. `ui('pricing', 'totalFor', { n: 6 })`. */
 export const ui = (group, key, vars) => interpolate(t(strings[group]?.[key]) || key, vars)
+
+/**
+ * The same interface text in every language, as `{ hy, en, ru }`, for text that must survive a
+ * language change (a message prefilled in the contact form). Placeholder values may be
+ * `{ hy, en, ru }` too.
+ */
+export function uiInEveryLanguage(group, key, vars = {}) {
+  const entries = LANGUAGES.map((language) => {
+    const localVars = Object.fromEntries(
+      Object.entries(vars).map(([name, value]) => [name, inLanguage(value, language)]),
+    )
+    return [language, interpolate(inLanguage(strings[group]?.[key], language) || key, localVars)]
+  })
+  return Object.fromEntries(entries)
+}
+
+const inLanguage = (value, language) =>
+  value && typeof value === 'object' ? (value[language] ?? value.en ?? '') : (value ?? '')

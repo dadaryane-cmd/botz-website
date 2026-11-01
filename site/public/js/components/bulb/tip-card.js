@@ -6,7 +6,7 @@
  */
 import { loadJson } from '../../content/load.js'
 import { h, replayClass } from '../../lib/dom.js'
-import { t, ui } from '../../lib/i18n.js'
+import { t, ui, uiInEveryLanguage } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
 import { load, save } from '../../lib/storage.js'
 import { updateSelection } from '../../pricing/selection.js'
@@ -50,7 +50,7 @@ function renderCard() {
     if (event.key === 'Escape') close()
   }
   const askForAudit = () => {
-    updateSelection({ note: ui('lamp', 'auditMessage') })
+    updateSelection({ note: uiInEveryLanguage('lamp', 'auditMessage') })
     close()
   }
 

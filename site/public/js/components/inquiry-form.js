@@ -229,13 +229,15 @@ function serviceFieldset({ preselected, describedBy, extra }) {
 
 /**
  * A suggested message (package finder, lamp surprise) fills the message field, unless the
- * visitor has written their own. Returns the function that applies a newly suggested note.
+ * visitor has written their own. Notes are `{ hy, en, ru }` (older saved ones plain text) and
+ * show in the page's language. Returns the function that applies a newly suggested note.
  */
 function noteFiller(message, initialNote) {
-  let suggested = initialNote
+  let suggested = t(initialNote)
   if (suggested) message.value = suggested
 
-  return (note) => {
+  return (newNote) => {
+    const note = t(newNote)
     if (!note || note === suggested) return
     const untouched = !message.value.trim() || message.value === suggested
     if (untouched) message.value = note

@@ -25,7 +25,8 @@ export const button = ({ label, href, style, note }) =>
     {
       class: `btn btn-${style || 'primary'}`,
       href,
-      onclick: hasText(note) ? () => updateSelection({ note: t(note) }) : null,
+      // The note is kept in every language, so it follows a later language change.
+      onclick: hasText(note) ? () => updateSelection({ note }) : null,
     },
     t(label),
   )

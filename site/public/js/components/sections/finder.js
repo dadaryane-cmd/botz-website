@@ -2,7 +2,7 @@
 import { catalog, finder } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
-import { hasText, t, ui } from '../../lib/i18n.js'
+import { hasText, t, ui, uiInEveryLanguage } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
 import { categoryLabel } from '../../pricing/estimate.js'
 import { recommend } from '../../pricing/finder.js'
@@ -124,7 +124,10 @@ export function renderFinder(config) {
       updateSelection({
         packageKey: pkg.key,
         months: candidate.months ?? getSelection().months,
-        note: ui('trust', 'finderMessage', { package: t(pkg.name), service }),
+        note: uiInEveryLanguage('trust', 'finderMessage', {
+          package: pkg.name,
+          service: uiInEveryLanguage('services', pkg.category),
+        }),
       })
     return h(
       'div',
