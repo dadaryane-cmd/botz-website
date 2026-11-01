@@ -51,7 +51,7 @@ export function renderMarqueeSign({ title, tagline }) {
   return sign
 }
 
-/** Light the sign once most of it is on screen. */
+/** Light the sign once about a third of it is on screen. */
 function powerOnWhenSeen(sign) {
   observer?.disconnect()
   if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
@@ -64,7 +64,7 @@ function powerOnWhenSeen(sign) {
       sign.classList.add('is-lit')
       observer.disconnect()
     },
-    { threshold: 0.6 },
+    { threshold: 0.35 },
   )
   observer.observe(sign)
 }

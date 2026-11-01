@@ -157,12 +157,12 @@
   }
 
   .marquee-sign.is-lit .sign-board {
-    animation: sign-board-on 600ms 450ms ease-out both;
+    animation: sign-board-on 300ms 150ms ease-out both;
   }
 
   .marquee-sign.is-lit .sign-letter {
-    animation: sign-letter-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-    animation-delay: calc(950ms + var(--i) * 22ms);
+    animation: sign-letter-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(350ms + var(--i) * 9ms);
   }
 
   /*
@@ -170,7 +170,7 @@
    * animation is applied afresh, and plays again, each time the lamp switches to dark.
    */
   [data-theme='dark'] .marquee-sign.is-lit .sign-bulbs {
-    animation: sign-flicker 700ms steps(1, end) both;
+    animation: sign-flicker 450ms steps(1, end) both;
   }
 }
 
