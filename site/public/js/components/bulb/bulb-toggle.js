@@ -8,7 +8,6 @@
 import { fromMarkup, h, replayClass } from '../../lib/dom.js'
 import { prefersReducedMotion, spring, tween } from '../../lib/animation.js'
 import { ui } from '../../lib/i18n.js'
-import { load, save } from '../../lib/storage.js'
 import { getTheme, setTheme } from '../../lib/theme.js'
 import { attachLampLight } from './lamp-light.js'
 import { FIRST_TIP_PULL, lampReaction } from './lamp-play.js'
@@ -33,13 +32,16 @@ const TUNING = {
   swing: { startDeg: 8, stiffness: 60, damping: 3.2 },
   /** How long the switching light effects stay applied (ms). */
   switchFxMs: 700,
-  /** First-visit "Pull the cord" hint. */
+  /** "Pull the cord" hint: shown on every page load until the cord is used. */
   hintDelayMs: 1500,
   hintVisibleMs: 8000,
   /** How long the lamp's lines ("One more time?") stay; the flicker when the first tip shows. */
   sayingMs: 2600,
   celebrateMs: 1200,
 }
+
+/** Once per page load: a new header after a language change does not show the hint again. */
+let hintShownOnThisPage = false
 
 /** Rubber band: follows the finger at first, then stiffens towards maxPull. */
 const rubber = (distance) =>
@@ -245,20 +247,22 @@ export function renderBulbToggle() {
     )
   }
 
-  /* ---------- first-visit hint ---------- */
+  /* ---------- "Pull the cord" hint, on every page load ---------- */
 
   // The hover tooltip stays out of the way while the hint is showing.
   const showHint = (visible) => {
     hint.classList.toggle('is-visible', visible)
     tip.classList.toggle('is-suppressed', visible)
   }
+  let used = false
   const markUsed = () => {
+    used = true
     showHint(false)
-    save('bulbUsed', true)
   }
-  if (!load('bulbUsed')) {
+  if (!hintShownOnThisPage) {
+    hintShownOnThisPage = true
     setTimeout(() => {
-      if (!button.isConnected || load('bulbUsed')) return
+      if (!button.isConnected || used) return
       showHint(true)
       setTimeout(() => showHint(false), TUNING.hintVisibleMs)
     }, TUNING.hintDelayMs)
