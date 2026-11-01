@@ -15,7 +15,7 @@ const TUNING = {
   /** Animation speed (1 = calm and hypnotic). */
   speed: 1,
   /** Flame height as a fraction of the hero; heroes narrower than `narrowWidth` get a lower strip. */
-  height: 0.62,
+  height: 0.72,
   narrowHeight: 0.5,
   narrowWidth: 760,
   /** How much the tongues curl (0.5 calm – 1.6 wild). */
