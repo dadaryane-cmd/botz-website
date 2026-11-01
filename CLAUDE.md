@@ -36,6 +36,11 @@ npx eslint site
 Also check the change in a real browser (Playwright is preinstalled in cloud sessions):
 no console errors, no horizontal overflow at 390px and 1280px, all three languages.
 
+After adding, removing or renaming a JavaScript module, a stylesheet in `css/main.css` or a
+site-wide content file, run `npm run preload`: every page's `<head>` announces them up front
+(the generated `preload:start … preload:end` block) so they load in parallel; tests fail when
+it is out of date. Fonts are self-hosted in `site/public/fonts` (`css/base/fonts.css`).
+
 ## Content and the admin (Pages CMS)
 
 All texts and prices live in `site/public/content/*.json` (`{ hy, en, ru }` for every text).
