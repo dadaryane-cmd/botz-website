@@ -1,28 +1,28 @@
 {
   "meta": {
     "title": {
-      "hy": "BOTZ — Սոցցանցեր, SEO և կայքեր",
-      "en": "BOTZ — Social media, SEO and websites",
-      "ru": "BOTZ — Соцсети, SEO и сайты"
+      "hy": "BOTZ։ SEO, SMM ծառայություններ, Կոնտենտ Մարքեթինգ",
+      "en": "BOTZ: SMM, SEO and Website Creation Services",
+      "ru": "BOTZ: Продвижение в соцсетях, SEO и создание сайтов"
     },
     "description": {
-      "hy": "BOTZ-ը երկու հոգուց բաղկացած մարքեթինգային գործակալություն է։ Վարում ենք սոցցանցեր, զբաղվում ենք SEO-ով և ստեղծում կայքեր, իսկ բոլոր գները հրապարակված են։",
-      "en": "BOTZ is a two-person marketing agency. We run social media, do SEO and build websites, and every price is published on the site.",
-      "ru": "BOTZ — маркетинговое агентство из двух человек. Ведём соцсети, занимаемся SEO и делаем сайты, а все цены опубликованы на сайте."
+      "hy": "BOTZ-ը մարքեթինգային գործակալություն է, որն առաջարկում է SMM ծառայություններ, կայքերի ստեղծում և SEO ծառայություններ՝ օգնելով բիզնեսներին զարգանալ թվային միջավայրում։",
+      "en": "BOTZ is a digital marketing agency offering SMM services, website development, and SEO services to help businesses grow their online presence.",
+      "ru": "BOTZ является маркетинговым агентством, предлагающим услуги SMM, создание сайтов и услуги SEO, чтобы помочь бизнесу укрепить своё присутствие в интернете и развиваться онлайн."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Կրեատիվ *թվային մարքեթինգի ծառայություններ*",
+        "hy": "Կրեատիվ *թվային մարքեթինգի գործակալություն*",
         "en": "Creative *Digital Marketing Agency*",
         "ru": "Креативное *агентство цифрового маркетинга*"
       },
       "subheading": {
-        "hy": "BOTZ-ը երկու հոգուց բաղկացած մարքեթինգային գործակալություն է։ Վարում ենք Instagram, Facebook և TikTok, զբաղվում ենք SEO-ով և ստեղծում ենք կայքեր, իսկ բոլոր գները հրապարակված են այս կայքում։",
-        "en": "BOTZ is a two-person marketing agency. We run Instagram, Facebook and TikTok, do SEO and build websites, and every price is published on this site.",
-        "ru": "BOTZ — маркетинговое агентство из двух человек. Мы ведём Instagram, Facebook и TikTok, занимаемся SEO и делаем сайты, а все цены опубликованы на этом сайте."
+        "hy": "BOTZ-ը մարքեթինգային գործակալություն է։ Մենք զբաղվում ենք սոցցանցերի ստրատեգիկ առաջխաղացմամբ, ստեղծում կայքեր՝ զբաղվում դրանց SEO առաջխաղացմամբ։",
+        "en": "BOTZ is a digital marketing agency specializing in strategic social media marketing, website creation, and SEO optimization to help businesses grow online.",
+        "ru": "BOTZ это маркетинговое агентство, специализирующееся на стратегическом продвижении в социальных сетях, создании сайтов и их SEO-продвижении. Мы помогаем бизнесу развиваться и привлекать клиентов онлайн."
       },
       "buttons": [
         {
@@ -59,18 +59,17 @@
         "ru": "СТРАТЕГИЯ\nВСТРЕЧАЕТ КРЕАТИВ."
       },
       "tagline": {
-        "hy": "ԳԱՂԱՓԱՐ։ ՍՏԵՂԾՈՒՄ։ ԱՃ։",
-        "en": "GENERATING. CREATING. GROWING.",
-        "ru": "ГЕНЕРИРУЕМ. СОЗДАЁМ. РАСТЁМ."
+        "hy": "ԳԱՂԱՓԱՐ, ԻՐԱԳՈՐԾՈՒՄ, ԱՃ։",
+        "en": "GENERATING IDEAS. CREATING. GROWING.",
+        "ru": "ИДЕЯ, РЕАЛИЗАЦИЯ, РОСТ."
       }
     },
     {
       "type": "services",
-      "id": "services",
       "items": [
         {
           "title": {
-            "hy": "Սոցիալական մեդիա մարքեթինգ",
+            "hy": "Սոցիալական մեդիայի մարքեթինգ",
             "en": "Social media marketing",
             "ru": "Маркетинг в соцсетях"
           },
@@ -84,12 +83,12 @@
             {
               "hy": "Նկարահանումներ և տեսանյութեր",
               "en": "Shoots and video",
-              "ru": "Съёмки и видео"
+              "ru": "Съёмка и видеопроизводство"
             },
             {
               "hy": "Meta գովազդ",
               "en": "Meta ads",
-              "ru": "Реклама в Meta"
+              "ru": "Meta Рекламы"
             }
           ],
           "link": {
@@ -115,19 +114,19 @@
               "ru": "Техническое SEO"
             },
             {
-              "hy": "Հոդվածներ",
-              "en": "Articles",
-              "ru": "Статьи"
+              "hy": "Ներքին SEO",
+              "en": "On-Page SEO",
+              "ru": "Внутренняя SEO"
             },
             {
-              "hy": "Ամսական հաշվետվություն",
-              "en": "Monthly reports",
-              "ru": "Ежемесячные отчёты"
+              "hy": "Լոկալ SEO",
+              "en": "Local SEO",
+              "ru": "Локальное SEO"
             }
           ],
           "link": {
             "label": {
-              "hy": "Դիտել SEO-ն",
+              "hy": "Ավելին SEO-ի մասին",
               "en": "Explore SEO",
               "ru": "Подробнее об SEO"
             },
@@ -143,12 +142,12 @@
           "service": "website",
           "highlights": [
             {
-              "hy": "Աշխատում է հեռախոսում",
-              "en": "Works on phones",
-              "ru": "Удобен на телефоне"
+              "hy": "Հարմարեցում բջջային սարքերին",
+              "en": "Mobile Responsiveness",
+              "ru": "Адаптация под мобильные устройства"
             },
             {
-              "hy": "Հիմնական SEO կարգավորում",
+              "hy": "SEO-ի հիմքային կարգավորում",
               "en": "Basic SEO setup",
               "ru": "Базовая SEO-настройка"
             }
@@ -160,39 +159,6 @@
               "ru": "Подробнее о сайтах"
             },
             "href": "services.html#website"
-          }
-        },
-        {
-          "title": {
-            "hy": "Թվային մարքեթինգի ռազմավարություն",
-            "en": "Digital marketing strategy",
-            "ru": "Стратегия цифрового маркетинга"
-          },
-          "service": "strategy",
-          "highlights": [
-            {
-              "hy": "Հետազոտություն",
-              "en": "Research",
-              "ru": "Исследования"
-            },
-            {
-              "hy": "Դիրքավորում",
-              "en": "Positioning",
-              "ru": "Позиционирование"
-            },
-            {
-              "hy": "Աճի պլանավորում",
-              "en": "Growth planning",
-              "ru": "План роста"
-            }
-          ],
-          "link": {
-            "label": {
-              "hy": "Դիտել ռազմավարությունը",
-              "en": "Explore strategy",
-              "ru": "Подробнее о стратегии"
-            },
-            "href": "services.html#strategy"
           }
         },
         {
@@ -218,21 +184,20 @@
             "href": "pricing.html?cat=bundle#pricing"
           }
         }
-      ]
+      ],
+      "id": "services"
     },
     {
       "type": "team",
-      "variant": "compact",
-      "background": "surface",
       "heading": {
-        "hy": "Դուք խոսում եք այն մարդու հետ, ով կատարում է աշխատանքը։",
-        "en": "You talk to the person who does the work.",
-        "ru": "Вы говорите с тем, кто делает работу."
+        "hy": "Անմիջական քննարկում այն մարդու հետ, ով կատարում է աշխատանքը։",
+        "en": "Talk directly with the person responsible for your project.",
+        "ru": "Вы общаетесь напрямую со специалистом, который работает над вашим проектом."
       },
       "intro": {
-        "hy": "Մեր միջև միջնորդ մենեջեր չկա։ Մարիամը պլանավորում և վարում է սոցցանցերը, Էդգարը զբաղվում է SEO-ով և ստեղծում կայքեր։",
-        "en": "There is no account manager in between. Mariam plans and runs social media, Edgar does SEO and builds websites.",
-        "ru": "Между нами нет менеджера-посредника. Мариам планирует и ведёт соцсети, Эдгар занимается SEO и делает сайты."
+        "hy": "*Համագործակցություն առանց միջանկյալ մարդկանց։*",
+        "en": "*We work directly with you, with no middlemen.*",
+        "ru": "*Работаем с вами напрямую, без посредников.*"
       },
       "link": {
         "label": {
@@ -241,62 +206,9 @@
           "ru": "Знакомьтесь с командой"
         },
         "href": "about.html#team"
-      }
-    },
-    {
-      "type": "samples",
-      "id": "samples",
-      "heading": {
-        "hy": "Ինչ տեսք ունեն մեր հաշվետվություններն ու պլանները",
-        "en": "What our reports and plans look like",
-        "ru": "Как выглядят наши отчёты и планы"
       },
-      "intro": {
-        "hy": "Օրինակ ֆայլեր՝ պայմանական թվերով, որպեսզի ձևաչափը տեսնեք նախքան աշխատանքը սկսելը։",
-        "en": "Example files with made-up numbers, so you can see the format before we start.",
-        "ru": "Примеры файлов с условными цифрами, чтобы вы увидели формат до начала работы."
-      },
-      "items": [
-        {
-          "title": {
-            "hy": "SEO աուդիտ",
-            "en": "SEO audit",
-            "ru": "SEO-аудит"
-          },
-          "text": {
-            "hy": "Տեխնիկական խնդիրներ, առաջնահերթություններ և հստակ անելիքների ցանկ։",
-            "en": "Technical issues, priorities and a clear action list.",
-            "ru": "Технические проблемы, приоритеты и понятный список действий."
-          },
-          "file": "downloads/sample-seo-audit.pdf"
-        },
-        {
-          "title": {
-            "hy": "Ամսական հաշվետվություն",
-            "en": "Monthly report",
-            "ru": "Ежемесячный отчёт"
-          },
-          "text": {
-            "hy": "Ինչ արեցինք, ինչ փոխվեց և ինչ է հաջորդը՝ պարզ լեզվով։",
-            "en": "What we did, what changed and what comes next, in plain language.",
-            "ru": "Что сделано, что изменилось и что дальше, простым языком."
-          },
-          "file": "downloads/sample-monthly-report.pdf"
-        },
-        {
-          "title": {
-            "hy": "Մեկ ամսվա SMM բովանդակային պլան",
-            "en": "One-month SMM content plan",
-            "ru": "Контент-план SMM на месяц"
-          },
-          "text": {
-            "hy": "Թեմաներ, ձևաչափեր և մեկ ամսվա հրապարակումների օրացույց։",
-            "en": "Topics, formats and a posting calendar for one month.",
-            "ru": "Темы, форматы и календарь публикаций на месяц."
-          },
-          "file": "downloads/sample-smm-content-plan.pdf"
-        }
-      ]
+      "variant": "compact",
+      "background": "surface"
     },
     {
       "type": "packagePreview",
@@ -316,7 +228,7 @@
         "bundle",
         "website"
       ],
-      "duration": 12,
+      "duration": 11,
       "link": {
         "label": {
           "hy": "Դիտել փաթեթները",
@@ -330,19 +242,10 @@
     },
     {
       "type": "faq",
-      "background": "surface",
       "heading": {
-        "hy": "Հարցեր, որ մեզ հաճախ են տալիս",
-        "en": "Questions people ask us",
-        "ru": "Что нас часто спрашивают"
-      },
-      "link": {
-        "label": {
-          "hy": "Այլ հարցեր",
-          "en": "More questions",
-          "ru": "Другие вопросы"
-        },
-        "href": "pricing.html#faq"
+        "hy": "Հաճախ մեզ հարցնում են",
+        "en": "People often ask us",
+        "ru": "Нас часто спрашивают"
       },
       "items": [
         {
@@ -355,7 +258,8 @@
             "hy": "Զրույց ձեր բիզնեսի և հաճախորդների մասին և մուտք այն էջերին կամ կայքին, որոնց վրա աշխատելու ենք։ Ձեր լոգոն և լուսանկարները նույնպես կօգնեն։ Բրիֆի ժամանակ կասենք, եթե այլ բան էլ է պետք։",
             "en": "A conversation about your business and your customers, and access to the accounts or website we will work on. Your logo and photos help too. During the brief we tell you if anything else is missing.",
             "ru": "Разговор о вашем бизнесе и клиентах и доступ к страницам или сайту, с которыми мы будем работать. Логотип и фотографии тоже пригодятся. На брифе мы скажем, если нужно что-то ещё."
-          }
+          },
+          "openByDefault": false
         },
         {
           "question": {
@@ -367,7 +271,8 @@
             "hy": "Սոցցանցերում փոփոխությունը երևում է առաջին ամսում, երբ սկսում են հրապարակվել պլանավորված գրառումները, իսկ կայուն աճը պահանջում է մի քանի ամիս։ SEO-ն ավելի դանդաղ է․ առաջին ամիսները գնում են կայքը շտկելուն, իսկ այցելությունները սովորաբար աճում են դրանից հետո։ Ամեն ամսվա հաշվետվությունը ցույց է տալիս, թե որտեղ ենք։",
             "en": "On social media you see the change in the first month, as the planned posts start going out; steady growth takes a few months. SEO is slower: the first months go into fixing the site, and visits usually grow after that. Each monthly report shows where things stand.",
             "ru": "В соцсетях изменения видны уже в первый месяц, когда начинают выходить запланированные публикации, а стабильный рост занимает несколько месяцев. SEO медленнее: первые месяцы уходят на исправление сайта, а посещаемость обычно растёт после этого. Ежемесячный отчёт показывает, где мы находимся."
-          }
+          },
+          "openByDefault": false
         },
         {
           "question": {
@@ -379,13 +284,22 @@
             "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
             "en": "We are responsible for the work, its quality and honest reports. Results also depend on your market, your competitors and your budget, so we never promise rankings, sales or follower numbers.",
             "ru": "Мы отвечаем за работу, её качество и честные отчёты. Результат зависит ещё и от рынка, конкурентов и бюджета, поэтому мы не обещаем позиции, продажи или число подписчиков."
-          }
+          },
+          "openByDefault": false
         }
-      ]
+      ],
+      "link": {
+        "label": {
+          "hy": "Այլ հարցեր",
+          "en": "More questions",
+          "ru": "Другие вопросы"
+        },
+        "href": "pricing.html#faq"
+      },
+      "background": "surface"
     },
     {
       "type": "contact",
-      "id": "contact",
       "heading": {
         "hy": "Գրեք մեզ",
         "en": "Write to us",
@@ -395,7 +309,8 @@
         "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ ուղարկեք ձևը։",
         "en": "Call, send a WhatsApp message or use the form.",
         "ru": "Позвоните, напишите в WhatsApp или отправьте форму."
-      }
+      },
+      "id": "contact"
     }
   ]
 }
