@@ -26,7 +26,8 @@ export function renderFinder(config) {
 
   const show = (next) => {
     step = next
-    panel.replaceChildren(...screen().filter(Boolean))
+    // .flat(): a part of a screen can be several elements (the list of alternatives).
+    panel.replaceChildren(...screen().flat().filter(Boolean))
     panel.querySelector('input:checked, input, .btn-primary')?.focus()
   }
 
