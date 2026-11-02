@@ -55,6 +55,10 @@
 @media (hover: hover) {
   .package-card:not(.is-unavailable):hover {
     transform: translateY(-4px);
+  }
+
+  /* The chosen card keeps its own ring: an orange border inside it would look like a fault. */
+  .package-card:not(.is-unavailable, .is-selected):hover {
     border-color: var(--accent);
   }
 }
