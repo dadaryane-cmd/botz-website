@@ -7,19 +7,25 @@ import { h } from '../../lib/dom.js'
 
 let layer = null
 let findCentre = null
-let frame = 0
+let pending = false
 
 function placeLight() {
-  frame = 0
+  pending = false
   if (!findCentre) return
   const { x, y } = findCentre()
   layer.style.setProperty('--lamp-x', `${Math.round(x)}px`)
   layer.style.setProperty('--lamp-y', `${Math.round(y)}px`)
 }
 
-/** At most one measurement per frame, however often the window resizes. */
+/**
+ * At most one measurement per frame, however often the window resizes, and only after the frame
+ * is painted: then the layout is already done and reading the bulb's position costs nothing.
+ * (Measured before, it made the browser lay out the whole new page early, inside the script.)
+ */
 function schedulePlacement() {
-  if (!frame) frame = requestAnimationFrame(placeLight)
+  if (pending) return
+  pending = true
+  requestAnimationFrame(() => setTimeout(placeLight))
 }
 
 /** Centre the light on the bulb; `getCentre` returns the bulb's centre in viewport px. */
