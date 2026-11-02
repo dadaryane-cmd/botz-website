@@ -1,0 +1,21 @@
+# A push to the `preview` branch republishes the site (pages.yml, run from main), which builds
+# that branch into /preview/. Pages may only be deployed from main, so this only starts it.
+name: Publish the preview
+
+on:
+  push:
+    branches: [preview]
+  delete:
+
+permissions:
+  actions: write
+
+jobs:
+  publish:
+    # A deleted preview branch republishes without it (the delete event fires for any branch).
+    if: github.event_name == 'push' || github.event.ref == 'preview'
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow run pages.yml --ref main --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}

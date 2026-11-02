@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
-import { articlePage } from '../scripts/build-site.js'
+import { articlePage, withNoindex } from '../scripts/build-site.js'
 import { LANGUAGES } from '../public/js/config.js'
 import { people } from '../public/js/content/index.js'
 import { formatDate } from '../public/js/lib/format.js'
@@ -186,5 +186,14 @@ describe('publishing', () => {
     assert.ok(html.indexOf(preload) < html.indexOf('<link rel="modulepreload"'))
     assert.ok(html.indexOf(preload) < html.indexOf('<!-- preload:end -->'))
     assert.equal(html.replace(`${preload}\n    `, ''), template)
+  })
+
+  it('keeps preview pages out of search results, once', () => {
+    const noindex = '<meta name="robots" content="noindex" />'
+    const page = readFileSync(new URL('index.html', publicDir), 'utf8')
+    const preview = withNoindex(page)
+    assert.equal(preview.split(noindex).length, 2)
+    assert.ok(preview.indexOf(noindex) < preview.indexOf('</head>'))
+    assert.equal(withNoindex(preview), preview)
   })
 })

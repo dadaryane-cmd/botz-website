@@ -7,8 +7,10 @@
  *   article's file up front. post.html itself is not published.
  *
  * Articles dated in the future are left out until a later publish (the workflow also runs daily).
+ * With --preview every page is also marked noindex (the workflow publishes the `preview` branch
+ * built this way at /preview/).
  */
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { postFile } from '../public/js/blog/posts.js'
@@ -18,6 +20,17 @@ import { INDEX_FILE, postsFolder, readPostIndex, toJson } from './read-posts.js'
 export const DIST_DIR = fileURLToPath(new URL('../dist/', import.meta.url))
 const ARTICLE_TEMPLATE = 'post.html'
 
+const NOINDEX = '<meta name="robots" content="noindex" />'
+
+/**
+ * A preview page (`npm run build -- --preview`, published at /preview/ to try changes before
+ * they go live) is kept out of search results, so it never competes with the real page.
+ */
+export function withNoindex(html) {
+  if (html.includes('name="robots"')) return html
+  return html.replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${NOINDEX}`)
+}
+
 /** An article's page: the template, with the article's file fetched alongside the others. */
 export function articlePage(template, slug) {
   const firstModule = template.indexOf('<link rel="modulepreload"')
@@ -26,7 +39,15 @@ export function articlePage(template, slug) {
   return `${template.slice(0, firstModule)}${preload}\n    ${template.slice(firstModule)}`
 }
 
-function build(today) {
+/** Every HTML page in the built site gets `transform` applied. */
+function rewritePages(transform) {
+  for (const file of readdirSync(DIST_DIR).filter((name) => name.endsWith('.html'))) {
+    const path = join(DIST_DIR, file)
+    writeFileSync(path, transform(readFileSync(path, 'utf8')))
+  }
+}
+
+function build({ preview = false, today } = {}) {
   rmSync(DIST_DIR, { recursive: true, force: true })
   cpSync(PUBLIC_DIR, DIST_DIR, {
     recursive: true,
@@ -42,7 +63,10 @@ function build(today) {
   for (const post of index) {
     writeFileSync(join(DIST_DIR, postFile(post.slug)), articlePage(template, post.slug))
   }
-  console.log(`Built dist/ with ${index.length} articles`)
+  if (preview) rewritePages(withNoindex)
+  console.log(`Built dist/ with ${index.length} articles${preview ? ' (preview)' : ''}`)
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) build()
+if (import.meta.url === `file://${process.argv[1]}`) {
+  build({ preview: process.argv.includes('--preview') })
+}

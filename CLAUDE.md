@@ -63,4 +63,9 @@ Pushing to `main` publishes the site to GitHub Pages
 `npm run build` in `site/`: it copies `public/` to `dist/` (git-ignored), writes the blog list and
 a `post-<slug>.html` page (from `post.html`) for each published article. It also runs daily, so
 articles dated in the future appear on their day.
+
+**Preview before going live:** when the owner wants to try a change first, make it on the
+`preview` branch (branched from `main`), not on `main`. Pushing it publishes the site from that
+branch at https://dadaryane-cmd.github.io/botz-website/preview/ (pages marked noindex), and the live
+site stays as it is. When the owner approves, merge `preview` into `main` and delete the branch.
 The Next.js app at the repository root is the original CMS version and is not deployed.

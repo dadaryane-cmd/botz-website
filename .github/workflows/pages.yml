@@ -1,6 +1,9 @@
 # Publishes the website to GitHub Pages on every push to main: site/public/ plus the blog's
 # article pages and list, built by `npm run build` into site/dist/ (no dependencies to install).
 # It also runs daily, so an article dated in the future appears on its day.
+#
+# While a `preview` branch exists, it is published too, at /preview/ (hidden from search engines),
+# to try changes before they go live; preview.yml starts this workflow when that branch changes.
 name: Deploy website to GitHub Pages
 
 on:
@@ -28,12 +31,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - name: Build the site
         working-directory: site
         run: npm run build
+
+      - name: Look for a preview branch
+        id: preview
+        run: |
+          if git ls-remote --exit-code --heads origin preview > /dev/null; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.preview.outputs.exists == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: preview
+          path: preview-branch
+      - name: Build the preview into /preview/
+        if: steps.preview.outputs.exists == 'true'
+        working-directory: preview-branch/site
+        run: |
+          npm run build -- --preview
+          cp -r dist "$GITHUB_WORKSPACE/site/dist/preview"
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
