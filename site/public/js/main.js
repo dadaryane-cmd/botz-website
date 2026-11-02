@@ -14,6 +14,11 @@ import { currentPage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
 import { initSelection } from './pricing/selection.js'
 
+/** The longest the first drawing waits for the first screen's fonts (usually they are there). */
+const FONT_WAIT_MS = 400
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
 const elements = {
   header: document.getElementById('site-header'),
   main: document.getElementById('main'),
@@ -47,6 +52,9 @@ function renderAll() {
 
 initLanguage(location.search, navigator.languages ?? [navigator.language])
 initSelection(location.search)
+// head.js started loading the first screen's fonts. Drawn before they arrive, the text would
+// re-wrap when they do and the page below would jump; so wait for them, but never long.
+await Promise.race([document.fonts.ready, wait(FONT_WAIT_MS)])
 renderAll()
 setUpMobileMenu(elements.header)
 // Sections are created by script, so the browser could not jump to #anchors on load.

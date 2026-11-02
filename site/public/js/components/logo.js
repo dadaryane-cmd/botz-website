@@ -59,5 +59,9 @@ export const inlineLogo = () =>
   h(
     'span',
     { class: 'inline-logo' },
-    ['light', 'dark'].map((theme) => logoPicture(theme, { alt: 'BOTZ', sizes: INLINE_LOGO_SIZES })),
+    // width/height give the proportions, so its space is kept before the file arrives (CSS sets
+    // the size); otherwise the words after it would move when it loads.
+    ['light', 'dark'].map((theme) =>
+      logoPicture(theme, { alt: 'BOTZ', sizes: INLINE_LOGO_SIZES, width: 600, height: 235 }),
+    ),
   )

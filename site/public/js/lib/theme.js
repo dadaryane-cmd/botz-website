@@ -1,5 +1,5 @@
 /**
- * Light/dark theme on <html data-theme>. theme-init.js sets it before first paint (the saved
+ * Light/dark theme on <html data-theme>. head.js sets it before first paint (the saved
  * choice, else dark); a choice made with the lamp is saved and wins from then on.
  */
 import { save } from './storage.js'

@@ -61,6 +61,10 @@ function packageRow(pkg, longest) {
       h(
         'a',
         { href: estimateLink({ packageKey: pkg.key, months: longest, addons: {} }) },
+        // The table's group shows the service on screen; read out of context, "Start" alone
+        // says little, so screen readers and search engines get "SMM Start".
+        pkg.category !== 'website' &&
+          h('span', { class: 'sr-only' }, `${categoryLabel(pkg.category)} `),
         t(pkg.name),
       ),
       pkg.recommended && h('span', { class: 'preview-tag' }, ui('pricing', 'recommended')),
