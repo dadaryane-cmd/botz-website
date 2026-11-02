@@ -104,6 +104,9 @@ describe('blog articles', () => {
     assert.equal(slugFromPath('/post-google-maps-ru.html'), 'google-maps')
     assert.equal(slugFromPath('/pricing.html'), null)
     assert.equal(isSlug('Google Maps'), false)
+    // post-tips-en.html would be the English page of "tips".
+    assert.equal(isSlug('tips-en'), false)
+    assert.equal(isSlug('seo-for-russian-speakers'), true)
   })
 
   it('show at least one minute of reading, about 200 words a minute', () => {

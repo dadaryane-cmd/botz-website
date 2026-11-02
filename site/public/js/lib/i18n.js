@@ -1,44 +1,27 @@
 import { DEFAULT_LANGUAGE, LANGUAGES } from '../config.js'
 import { ui as strings } from '../content/index.js'
-import { load, save } from './storage.js'
+import { save } from './storage.js'
+import { languageFromPath } from './urls.js'
 
 let current = DEFAULT_LANGUAGE
-const listeners = new Set()
 
 export const getLanguage = () => current
 
 /**
- * The language to open in: one asked for in the link (?lang=), then the visitor's saved choice,
- * then the first of the browser's preferred languages the site has ("ru-RU" → "ru"), then the
- * default.
+ * The page's language comes from its address (about-en.html is English; js/lib/urls.js).
+ * head.js has already sent a visitor who chose another language to that language's address.
  */
-export function pickLanguage({ fromUrl, saved, browser = [] }) {
-  if (LANGUAGES.includes(fromUrl)) return fromUrl
-  if (LANGUAGES.includes(saved)) return saved
-  const preferred = browser
-    .map((tag) => String(tag).toLowerCase().split('-')[0])
-    .find((code) => LANGUAGES.includes(code))
-  return preferred ?? DEFAULT_LANGUAGE
-}
-
-/** Set the starting language; a language asked for in the link is remembered as a choice. */
-export function initLanguage(search = '', browser = []) {
-  const fromUrl = new URLSearchParams(search).get('lang')
-  current = pickLanguage({ fromUrl, saved: load('lang'), browser })
-  if (current === fromUrl) save('lang', current)
+export function initLanguage(pathname) {
+  current = languageFromPath(pathname)
   return current
 }
 
-export function setLanguage(language) {
-  if (!LANGUAGES.includes(language) || language === current) return
-  current = language
-  save('lang', current)
-  listeners.forEach((listener) => listener(current))
-}
-
-export function onLanguageChange(listener) {
-  listeners.add(listener)
-  return () => listeners.delete(listener)
+/**
+ * Remember a language the visitor picked with the language switch: the default address
+ * (about.html) then opens in it on later visits (head.js).
+ */
+export function rememberLanguage(language) {
+  if (LANGUAGES.includes(language)) save('lang', language)
 }
 
 /** Pick the current language from a `{ en, hy, ru }` value (plain strings pass through). */

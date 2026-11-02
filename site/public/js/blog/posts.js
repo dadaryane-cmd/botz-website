@@ -6,22 +6,29 @@
  * (a key in people.json), an optional `cover` and `title`, `description` and `body` (Markdown)
  * in every language.
  */
-import { LANGUAGES } from '../config.js'
+import { DEFAULT_LANGUAGE, LANGUAGES } from '../config.js'
+import { fileFromPath, fileInLanguage, languageFromPath } from '../lib/urls.js'
 import { plainText } from './markdown.js'
 
 /** Average reading speed; articles show at least one minute. */
 const WORDS_PER_MINUTE = 200
 
-/** A slug is lowercase Latin letters, digits and hyphens: "google-business-profile". */
-export const isSlug = (slug) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(slug))
+/**
+ * A slug is lowercase Latin letters, digits and hyphens: "google-business-profile". It may not end
+ * in a language ("-en", "-ru"): post-<slug>-en.html is the article's English address.
+ */
+export const isSlug = (slug) =>
+  /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(slug)) &&
+  languageFromPath(`${slug}.html`) === DEFAULT_LANGUAGE
 
 /** The article's page: post-<slug>.html (written for every article when the site is published). */
 export const postFile = (slug) => `post-${slug}.html`
 
-/** The slug in an article's address ("…/post-google-business-profile.html"), or null. */
+/** The slug in an article's address, in any language ("…/post-google-business-profile-en.html"). */
 export function slugFromPath(pathname) {
-  const match = String(pathname).match(/(?:^|\/)post-([a-z0-9-]+?)(?:-(?:en|ru))?\.html$/)
-  return match && isSlug(match[1]) ? match[1] : null
+  const file = fileInLanguage(fileFromPath(pathname), DEFAULT_LANGUAGE)
+  const slug = file.match(/^post-(.+)\.html$/)?.[1]
+  return slug && isSlug(slug) ? slug : null
 }
 
 /** Minutes to read a Markdown text. */

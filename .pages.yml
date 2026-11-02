@@ -709,8 +709,8 @@ content:
         required: true
         description: "The article is published at post-<address>.html: lowercase Latin letters, digits and hyphens, e.g. google-business-profile. Do not change it once published."
         pattern:
-          regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
-          message: Lowercase Latin letters, digits and hyphens only.
+          regex: "^(?!.*-(en|ru)$)[a-z0-9]+(-[a-z0-9]+)*$"
+          message: Lowercase Latin letters, digits and hyphens only, not ending in -en or -ru.
       - name: date
         label: Date
         type: date
@@ -929,6 +929,11 @@ content:
     path: site/public/content/site.json
     format: json
     fields:
+      - name: url
+        label: Website address
+        type: string
+        description: "The address the site is published at, ending with \"/\". Search engines are given this address (sitemap, canonical links); change it when the site moves to its own domain."
+        pattern: "^https://[^\\s]+/$"
       - name: name
         label: Agency name
         component: line
@@ -962,6 +967,10 @@ content:
       - name: hours
         label: Working hours
         component: line
+      - name: openingHours
+        label: Working hours for search engines
+        type: string
+        description: "The same hours in the format Google reads: days Mo Tu We Th Fr Sa Su, e.g. \"Mo-Fr 10:00-19:00\" or \"Mo-Fr 10:00-19:00, Sa 11:00-16:00\"."
       - name: social
         label: Social media
         type: object

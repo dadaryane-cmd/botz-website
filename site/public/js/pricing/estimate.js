@@ -2,6 +2,7 @@
 import { catalog } from '../content/index.js'
 import { formatAmd, formatMonths } from '../lib/format.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
+import { localizeHref } from '../lib/urls.js'
 import { quote } from './engine.js'
 import { getSelection, toParams } from './selection.js'
 
@@ -37,9 +38,8 @@ export function estimateSummary(totals = currentQuote()) {
 
 /** Absolute link that reopens the pricing tool with this selection. */
 export function estimateLink(selection = getSelection()) {
-  const url = new URL('pricing.html', location.href)
+  const url = new URL(localizeHref('pricing.html', getLanguage()), location.href)
   url.search = toParams(selection)
-  url.searchParams.set('lang', getLanguage())
   url.hash = 'pricing'
   return url.href
 }

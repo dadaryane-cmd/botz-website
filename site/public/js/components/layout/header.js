@@ -1,9 +1,10 @@
 import { LANGUAGE_LABELS, LANGUAGES } from '../../config.js'
 import { navigation } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
-import { getLanguage, setLanguage, t, ui } from '../../lib/i18n.js'
+import { getLanguage, rememberLanguage, t, ui } from '../../lib/i18n.js'
 import { external, phoneHref, whatsappHref } from '../../lib/links.js'
 import { currentFile } from '../../lib/page.js'
+import { fileFromPath, fileInLanguage } from '../../lib/urls.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 import { logoImages } from '../logo.js'
 
@@ -72,18 +73,24 @@ export function renderHeader(header) {
   )
 }
 
+/**
+ * Links to this page in each language (about.html, about-en.html, about-ru.html): real links, so
+ * search engines find every language too. The choice is remembered for the next visit.
+ */
 function languageSwitch() {
+  const file = fileFromPath(location.pathname)
   return h(
     'div',
     { class: 'language-switch', role: 'group', 'aria-label': ui('common', 'language') },
     LANGUAGES.map((language) =>
       h(
-        'button',
+        'a',
         {
-          type: 'button',
+          href: fileInLanguage(file, language) + location.search + location.hash,
+          hreflang: language,
           lang: language,
-          'aria-pressed': String(language === getLanguage()),
-          onclick: () => setLanguage(language),
+          'aria-current': language === getLanguage() ? 'true' : null,
+          onclick: () => rememberLanguage(language),
         },
         LANGUAGE_LABELS[language],
       ),

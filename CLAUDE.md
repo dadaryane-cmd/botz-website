@@ -47,6 +47,12 @@ Fonts are self-hosted in `site/public/fonts` (`css/base/fonts.css`).
 ## Content and the admin (Pages CMS)
 
 All texts and prices live in `site/public/content/*.json` (`{ hy, en, ru }` for every text).
+
+**Languages have their own addresses:** `about.html` (Armenian), `about-en.html`, `about-ru.html`
+(`js/lib/urls.js`). The address sets the language; `h()` points every link to a site page at the
+same language, so content keeps plain `about.html` links. The language switch is links
+(`hreflang`), and `js/head.js` sends the Armenian address to a language the visitor chose
+earlier. Never pick the language from the browser: search engines must see the Armenian pages.
 Pages CMS keeps only fields declared in `site/cms/config.js`: when adding a content key or a
 section type, declare it there and run `npm run cms` (tests fail otherwise).
 
@@ -60,9 +66,12 @@ title, description and Markdown body in all three languages. The Markdown is par
 
 Pushing to `main` publishes the site to GitHub Pages
 (https://dadaryane-cmd.github.io/botz-website/) via `.github/workflows/pages.yml`, which runs
-`npm run build` in `site/`: it copies `public/` to `dist/` (git-ignored), writes the blog list and
-a `post-<slug>.html` page (from `post.html`) for each published article. It also runs daily, so
-articles dated in the future appear on their day.
+`npm run build` in `site/`: it copies `public/` to `dist/` (git-ignored) and writes every page and
+published article (`post-<slug>.html`, from `post.html`) in each language, with the search-engine
+tags (title, description, canonical, hreflang, Open Graph, schema.org JSON-LD;
+`site/scripts/seo/`) between each page's `seo:start` and `seo:end` markers, plus the blog list,
+`sitemap.xml` and `robots.txt`. Full addresses start from `url` in `content/site.json`. It also
+runs daily, so articles dated in the future appear on their day.
 
 **Preview before going live:** when the owner wants to try a change first, make it on the
 `preview` branch (branched from `main`), not on `main`. Pushing it publishes the site from that

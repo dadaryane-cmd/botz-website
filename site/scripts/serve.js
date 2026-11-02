@@ -1,9 +1,9 @@
 /**
  * Minimal static server for local development: `npm start` → http://localhost:8080
  * (ES modules do not load from file:// URLs, so the site needs to be served.)
- * It also stands in for the publishing step (scripts/build-site.js): every article address
- * (post-<slug>.html) gets the article page, and the blog's list of articles is made on request,
- * so a new or edited article shows up on reload.
+ * It also stands in for the publishing step (scripts/build-site.js): every language's address
+ * (about-en.html) gets the page, every article address (post-<slug>.html) the article page, and
+ * the blog's list of articles is made on request, so a new or edited article shows up on reload.
  */
 import { createReadStream } from 'node:fs'
 import { stat } from 'node:fs/promises'
@@ -11,6 +11,8 @@ import { createServer } from 'node:http'
 import { extname, join, normalize } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { slugFromPath } from '../public/js/blog/posts.js'
+import { DEFAULT_LANGUAGE } from '../public/js/config.js'
+import { fileFromPath, fileInLanguage } from '../public/js/lib/urls.js'
 import { readPostIndex, toJson } from './read-posts.js'
 
 const root = fileURLToPath(new URL('../public/', import.meta.url))
@@ -31,6 +33,13 @@ const types = {
   '.mp4': 'video/mp4',
 }
 
+/** "/about-en.html" → "/about.html": every language has the same page shell (main.js reads the address). */
+function inDefaultLanguage(urlPath) {
+  if (!urlPath.endsWith('.html')) return urlPath
+  const file = fileFromPath(urlPath)
+  return urlPath.slice(0, -file.length) + fileInLanguage(file, DEFAULT_LANGUAGE)
+}
+
 async function resolve(urlPath) {
   const path = normalize(join(root, decodeURIComponent(urlPath)))
   if (!path.startsWith(root)) return null
@@ -46,7 +55,9 @@ createServer(async (request, response) => {
     response.end(toJson(readPostIndex(root)))
     return
   }
-  const found = slugFromPath(pathname) ? join(root, 'post.html') : await resolve(pathname)
+  const found = slugFromPath(pathname)
+    ? join(root, 'post.html')
+    : await resolve(inDefaultLanguage(pathname))
   const file = found ?? join(root, '404.html')
   response.writeHead(found ? 200 : 404, {
     'Content-Type': types[extname(file)] ?? 'application/octet-stream',

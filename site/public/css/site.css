@@ -968,19 +968,19 @@ h1.heading {
   border-radius: 999px;
 }
 
-.language-switch button {
+.language-switch a {
+  display: grid;
+  place-items: center;
   min-width: 40px;
   min-height: 36px;
   padding: 4px 8px;
-  border: 0;
   border-radius: 999px;
-  background: none;
   color: var(--text);
   font: 600 0.85rem var(--font-body);
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.language-switch button[aria-pressed='true'] {
+.language-switch a[aria-current='true'] {
   background: var(--text);
   color: var(--bg);
 }
@@ -1133,7 +1133,7 @@ h1.heading {
     width: 88px;
   }
 
-  .language-switch button {
+  .language-switch a {
     min-width: 34px;
     padding: 4px 5px;
   }

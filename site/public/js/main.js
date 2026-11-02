@@ -1,7 +1,8 @@
 /**
  * Entry point. Every HTML page has the same empty shell and names its content with
- * <html data-page="…">; this module renders the header, the page's sections and the footer,
- * and re-renders when the language changes. The theme is pure CSS (<html data-theme>).
+ * <html data-page="…">; this module renders the header, the page's sections and the footer in
+ * the language of the page's address (about-en.html is English). The theme is pure CSS
+ * (<html data-theme>).
  */
 import { renderArticle } from './components/blog/article.js'
 import { renderFooter } from './components/layout/footer.js'
@@ -10,7 +11,7 @@ import { renderMobileBar } from './components/layout/mobile-bar.js'
 import { renderNotFound } from './components/not-found.js'
 import { renderSection } from './components/sections/index.js'
 import { site } from './content/index.js'
-import { getLanguage, initLanguage, onLanguageChange, t, ui } from './lib/i18n.js'
+import { getLanguage, initLanguage, t, ui } from './lib/i18n.js'
 import { currentArticle, currentPage, isArticlePage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
 import { initSelection } from './pricing/selection.js'
@@ -63,7 +64,7 @@ function renderAll() {
   renderMobileBar(elements.mobileBar)
 }
 
-initLanguage(location.search, navigator.languages ?? [navigator.language])
+initLanguage(location.pathname)
 initSelection(location.search)
 // head.js started loading the first screen's fonts. Drawn before they arrive, the text would
 // re-wrap when they do and the page below would jump; so wait for them, but never long.
@@ -76,10 +77,3 @@ if (location.hash) {
 }
 // Reveals start after scrolling, so whatever is on screen is shown at once.
 startReveals()
-
-onLanguageChange(() => {
-  const scrollPosition = window.scrollY
-  renderAll()
-  window.scrollTo(0, scrollPosition)
-  startReveals()
-})

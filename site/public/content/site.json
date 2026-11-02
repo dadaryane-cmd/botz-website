@@ -1,4 +1,5 @@
 {
+  "url": "https://dadaryane-cmd.github.io/botz-website/",
   "name": {
     "hy": "BOTZ մարքեթինգային գործակալություն",
     "en": "BOTZ Marketing Agency",
@@ -29,6 +30,7 @@
     "en": "Mon–Fri, 10:00–19:00",
     "ru": "Пн–Пт, 10:00–19:00"
   },
+  "openingHours": "Mo-Fr 10:00-19:00",
   "social": [
     {
       "network": "instagram",

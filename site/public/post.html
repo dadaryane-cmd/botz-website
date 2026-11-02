@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The page for every article: published as post-<slug>.html (scripts/build-site.js). -->
+    <!-- seo:start (written when publishing, per language: scripts/build-site.js) -->
     <title>Blog — BOTZ Marketing Agency</title>
     <meta
       name="description"
@@ -11,6 +12,7 @@
     />
     <meta property="og:title" content="Blog — BOTZ Marketing Agency" />
     <meta property="og:image" content="images/og-default.png" />
+    <!-- seo:end -->
     <meta name="theme-color" content="#24213b" />
 
     <link rel="icon" href="favicon.ico" sizes="any" />
@@ -85,6 +87,7 @@
     <link rel="modulepreload" href="js/lib/reveal.js" />
     <link rel="modulepreload" href="js/lib/storage.js" />
     <link rel="modulepreload" href="js/lib/theme.js" />
+    <link rel="modulepreload" href="js/lib/urls.js" />
     <link rel="modulepreload" href="js/pricing/engine.js" />
     <link rel="modulepreload" href="js/pricing/estimate.js" />
     <link rel="modulepreload" href="js/pricing/finder.js" />
@@ -116,15 +119,24 @@
         const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark'
         root.dataset.theme = theme
 
-        // The same choice as pickLanguage() in js/lib/i18n.js: the link (?lang=), the saved choice,
-        // the browser's languages, else Armenian.
+        // The language is the address's (js/lib/urls.js): about-en.html English, about-ru.html Russian,
+        // about.html Armenian. The Armenian address opens in the language the visitor chose earlier
+        // with the language switch, and an old link with ?lang=en goes to the English address. (Never
+        // by the browser's language: search engines must be able to read the Armenian pages.)
         const LANGUAGES = ['hy', 'en', 'ru']
-        const browserLanguages = (navigator.languages ?? [navigator.language]).map(
-          (tag) => String(tag).toLowerCase().split('-')[0],
+        const params = new URLSearchParams(location.search)
+        const file = location.pathname.split('/').pop() || 'index.html'
+        const language = file.match(/-(en|ru)\.html$/)?.[1] ?? 'hy'
+        const wanted = [params.get('lang'), language === 'hy' ? readSaved('lang') : null].find((code) =>
+          LANGUAGES.includes(code),
         )
-        const candidates = [new URLSearchParams(location.search).get('lang'), readSaved('lang')]
-        const language =
-          [...candidates, ...browserLanguages].find((code) => LANGUAGES.includes(code)) ?? 'hy'
+        if (wanted && wanted !== language) {
+          const defaultFile = file.replace(/-(en|ru)\.html$/, '.html')
+          const target = wanted === 'hy' ? defaultFile : defaultFile.replace(/\.html$/, `-${wanted}.html`)
+          params.delete('lang')
+          const search = params.toString() ? `?${params}` : ''
+          location.replace(target + search + location.hash)
+        }
 
         // The header and first section in each language (css/base/fonts.css): page titles (Anton;
         // Russian falls back to Oswald, Armenian to Noto) and body text (Golos Text). Each font with a

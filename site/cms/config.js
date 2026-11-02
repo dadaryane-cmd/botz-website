@@ -383,6 +383,12 @@ const siteEntry = {
   path: `${CONTENT}/site.json`,
   format: 'json',
   fields: [
+    string('url', 'Website address', {
+      description:
+        'The address the site is published at, ending with "/". Search engines are given this ' +
+        'address (sitemap, canonical links); change it when the site moves to its own domain.',
+      pattern: '^https://[^\\s]+/$',
+    }),
     text('name', 'Agency name'),
     text('titleSuffix', 'Browser tab suffix'),
     text('description', 'Default description', { long: true }),
@@ -395,6 +401,11 @@ const siteEntry = {
     }),
     text('location', 'City'),
     text('hours', 'Working hours'),
+    string('openingHours', 'Working hours for search engines', {
+      description:
+        'The same hours in the format Google reads: days Mo Tu We Th Fr Sa Su, e.g. ' +
+        '"Mo-Fr 10:00-19:00" or "Mo-Fr 10:00-19:00, Sa 11:00-16:00".',
+    }),
     list(
       object('social', 'Social media', [
         select('network', 'Network', SOCIAL_NETWORKS),
@@ -533,8 +544,9 @@ const postsEntry = {
         'The article is published at post-<address>.html: lowercase Latin letters, digits and ' +
         'hyphens, e.g. google-business-profile. Do not change it once published.',
       pattern: {
-        regex: '^[a-z0-9]+(-[a-z0-9]+)*$',
-        message: 'Lowercase Latin letters, digits and hyphens only.',
+        // Not ending in -en or -ru: post-<address>-en.html is the article's English page.
+        regex: '^(?!.*-(en|ru)$)[a-z0-9]+(-[a-z0-9]+)*$',
+        message: 'Lowercase Latin letters, digits and hyphens only, not ending in -en or -ru.',
       },
     }),
     { name: 'date', label: 'Date', type: 'date', required: true },

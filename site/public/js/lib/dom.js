@@ -1,16 +1,26 @@
-import { t } from './i18n.js'
+import { getLanguage, t } from './i18n.js'
+import { localizeHref } from './urls.js'
 
 /**
  * Create an element: `h('a', { href: '#', class: 'btn', onclick }, 'Label', childNode)`.
  * Strings become text nodes (never parsed as HTML); null, false and nested arrays are flattened away.
+ * Links to the site's pages lead to the same language ("pricing.html" on an English page →
+ * "pricing-en.html"); a link that names its language with `hreflang` (the language switch) is
+ * left as it is.
  */
 export function h(tag, attributes, ...children) {
   const element = document.createElement(tag)
   for (const [name, value] of Object.entries(attributes ?? {})) {
     if (value == null || value === false) continue
-    if (name === 'class') element.className = value
-    else if (name.startsWith('on')) element.addEventListener(name.slice(2), value)
-    else element.setAttribute(name, value === true ? '' : value)
+    if (name === 'class') {
+      element.className = value
+    } else if (name.startsWith('on')) {
+      element.addEventListener(name.slice(2), value)
+    } else if (name === 'href' && !attributes.hreflang) {
+      element.setAttribute(name, localizeHref(value, getLanguage()))
+    } else {
+      element.setAttribute(name, value === true ? '' : value)
+    }
   }
   for (const child of children.flat(Infinity)) {
     if (child == null || child === false) continue
