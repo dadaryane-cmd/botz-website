@@ -91,6 +91,6 @@ function footerBottom() {
     h('p', null, `© ${new Date().getFullYear()} ${t(site.name)} · ${ui('footer', 'madeBy')}`),
     h('p', null, t(navigation.footerNote)),
     // "#top" with no such id is the top of the page, by the HTML standard.
-    h('a', { class: 'footer-top-link', href: '#top' }, `${ui('footer', 'backToTop')} ↑`),
+    h('a', { class: 'footer-top-link', href: '#top' }, ui('footer', 'backToTop')),
   )
 }

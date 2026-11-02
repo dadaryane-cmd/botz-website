@@ -81,7 +81,7 @@ export function renderFinder(config) {
           h(
             'button',
             { type: 'button', class: 'btn btn-link', onclick: () => show(step - 1) },
-            `← ${ui('guide', 'back')}`,
+            ui('guide', 'back'),
           ),
         answers[question.key] &&
           h(

@@ -51,7 +51,7 @@ export function packageCard(pkg, selection) {
       h(
         'a',
         {
-          class: 'link-arrow package-ask',
+          class: 'text-link package-ask',
           href: sectionHref('contact', 'contact.html'),
           // The inquiry form then says which package it is about.
           onclick: () => updateSelection({ packageKey: pkg.key }),

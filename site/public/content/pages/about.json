@@ -27,9 +27,9 @@
       "buttons": [
         {
           "label": {
-            "hy": "Ծանոթացեք թիմին ↓",
-            "en": "Meet the team ↓",
-            "ru": "Знакомьтесь с командой ↓"
+            "hy": "Ծանոթացեք թիմին",
+            "en": "Meet the team",
+            "ru": "Знакомьтесь с командой"
           },
           "href": "#team",
           "style": "secondary"

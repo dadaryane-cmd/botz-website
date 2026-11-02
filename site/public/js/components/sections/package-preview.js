@@ -49,7 +49,7 @@ export function renderPackagePreview(config) {
         h(
           'a',
           { class: 'btn btn-link', href: sectionHref('guide', 'pricing.html') },
-          `${ui('trust', 'finderLink')} →`,
+          ui('trust', 'finderLink'),
         ),
     ),
   )

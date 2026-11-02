@@ -19,8 +19,8 @@
   color: var(--muted);
 }
 
-/* The link wraps as a whole, never leaving its arrow alone on a line. */
-.faq-help .link-arrow {
+/* The link wraps as a whole, never split across two lines. */
+.faq-help .text-link {
   white-space: nowrap;
 }
 

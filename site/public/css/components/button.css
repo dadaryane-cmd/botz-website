@@ -107,21 +107,15 @@
   margin: 24px 0;
 }
 
-.link-arrow {
+/* A link that reads as an action ("Write to us"): bold, in the accent colour. */
+.text-link {
   font-weight: 700;
   color: var(--accent-text);
   text-decoration: none;
 }
 
-.link-arrow::after {
-  content: '→';
-  display: inline-block;
-  margin-left: 0.3em;
-  transition: transform 0.25s ease;
-}
-
-.link-arrow:hover::after {
-  transform: translateX(4px);
+.text-link:hover {
+  text-decoration: underline;
 }
 
 .icon-button {

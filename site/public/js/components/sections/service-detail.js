@@ -34,7 +34,7 @@ export const renderServiceDetail = (config) =>
           (config.deliverables ?? []).map((text) => h('li', null, t(text))),
         ),
         config.link?.href &&
-          h('a', { class: 'link-arrow', href: config.link.href }, t(config.link.label)),
+          h('a', { class: 'text-link', href: config.link.href }, t(config.link.label)),
       ),
     ),
   )

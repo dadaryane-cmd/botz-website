@@ -23,7 +23,7 @@ export const renderFaq = (config) =>
           `${ui('faq', 'notFound')} `,
           h(
             'a',
-            { class: 'link-arrow', href: sectionHref('contact', 'contact.html') },
+            { class: 'text-link', href: sectionHref('contact', 'contact.html') },
             ui('faq', 'writeUs'),
           ),
         ),
@@ -41,7 +41,7 @@ export const renderFaq = (config) =>
         ),
         // A short list can point to the full one on another page.
         config.link?.href &&
-          h('a', { class: 'link-arrow faq-more', href: config.link.href }, t(config.link.label)),
+          h('a', { class: 'text-link faq-more', href: config.link.href }, t(config.link.label)),
       ),
     ),
   )

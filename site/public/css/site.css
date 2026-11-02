@@ -569,21 +569,15 @@ h1.heading {
   margin: 24px 0;
 }
 
-.link-arrow {
+/* A link that reads as an action ("Write to us"): bold, in the accent colour. */
+.text-link {
   font-weight: 700;
   color: var(--accent-text);
   text-decoration: none;
 }
 
-.link-arrow::after {
-  content: '→';
-  display: inline-block;
-  margin-left: 0.3em;
-  transition: transform 0.25s ease;
-}
-
-.link-arrow:hover::after {
-  transform: translateX(4px);
+.text-link:hover {
+  text-decoration: underline;
 }
 
 .icon-button {
@@ -2702,14 +2696,14 @@ a.social-link:focus-visible {
   color: var(--accent-text);
 }
 
-/* "Meet the team →" under the compact cards (home page). */
+/* "Meet the team" under the compact cards (home page). */
 .founders-link {
   display: inline-block;
   margin-top: 24px;
 }
 
 /* The link sits at the bottom, so both cards end level. */
-.founder-card .link-arrow {
+.founder-card .text-link {
   margin-top: auto;
 }
 
@@ -2769,8 +2763,8 @@ a.social-link:focus-visible {
   color: var(--muted);
 }
 
-/* The link wraps as a whole, never leaving its arrow alone on a line. */
-.faq-help .link-arrow {
+/* The link wraps as a whole, never split across two lines. */
+.faq-help .text-link {
   white-space: nowrap;
 }
 

@@ -24,7 +24,7 @@ export function renderTeam(config) {
     lead(config.intro),
     h('div', { class: 'grid grid-2 founders' }, people.map(card)),
     config.link?.href &&
-      h('a', { class: 'link-arrow founders-link', href: config.link.href }, t(config.link.label)),
+      h('a', { class: 'text-link founders-link', href: config.link.href }, t(config.link.label)),
   )
 }
 
