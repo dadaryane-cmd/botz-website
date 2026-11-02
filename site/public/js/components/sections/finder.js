@@ -15,20 +15,23 @@ export function renderFinder(config) {
   const { questions } = finder
   const answers = {}
   let step = INTRO
+  // Before the guide starts, its button sits under the invitation to use it; the questions and
+  // the result then fill the panel beside it.
+  const start = h('div', { class: 'finder-start' })
   const panel = h('div', { class: 'finder-panel' })
 
-  /** The intro, one of the questions, or the result after the last question. */
-  const screen = () => {
-    if (step === INTRO) return intro()
-    if (step < questions.length) return questionScreen(questions[step])
-    return result()
-  }
+  /** One of the questions, or the result after the last question. */
+  const screen = () => (step < questions.length ? questionScreen(questions[step]) : result())
 
   const show = (next) => {
     step = next
+    const isIntro = step === INTRO
+    start.replaceChildren(...(isIntro ? intro() : []))
     // .flat(): a part of a screen can be several elements (the list of alternatives).
-    panel.replaceChildren(...screen().flat().filter(Boolean))
-    panel.querySelector('input:checked, input, .btn-primary')?.focus()
+    panel.replaceChildren(...(isIntro ? [] : screen().flat().filter(Boolean)))
+    panel.hidden = isIntro
+    const shown = isIntro ? start : panel
+    shown.querySelector('input:checked, input, .btn-primary')?.focus()
   }
 
   const intro = () => [
@@ -161,7 +164,7 @@ export function renderFinder(config) {
     h(
       'div',
       { class: 'finder' },
-      h('div', null, heading(config.heading), lead(config.intro)),
+      h('div', null, heading(config.heading), lead(config.intro), start),
       panel,
     ),
   )

@@ -48,7 +48,9 @@ export function tween(from, to, duration, onUpdate, onDone) {
   let frame = 0
 
   const step = (now) => {
-    const progress = Math.min(1, (now - start) / duration)
+    // A frame's time is when the frame began, which can be just before `start`: below zero the
+    // ease would run backwards, past `from`.
+    const progress = Math.min(1, Math.max(0, (now - start) / duration))
     onUpdate(from + (to - from) * (1 - (1 - progress) ** 3))
     if (progress < 1) frame = requestAnimationFrame(step)
     else onDone?.()

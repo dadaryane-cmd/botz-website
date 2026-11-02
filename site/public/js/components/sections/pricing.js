@@ -51,7 +51,7 @@ export function renderPricing(config) {
             { class: 'grid package-grid' },
             packages.map((pkg) => packageCard(pkg, selection)),
           ),
-          h('p', { class: 'muted small' }, ui('pricing', 'scopeInProposal')),
+          h('p', { class: 'muted small pricing-scope' }, ui('pricing', 'scopeInProposal')),
           config.showAddons && addonList(selection),
         ),
         estimatePanel(selection),

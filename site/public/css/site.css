@@ -2933,6 +2933,11 @@ a.social-link:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
 }
 
+/* "The detailed scope … is confirmed in your proposal": a little apart from the cards above. */
+.pricing-scope {
+  margin-top: 20px;
+}
+
 .package-card {
   display: flex;
   flex-direction: column;
@@ -2955,8 +2960,18 @@ a.social-link:focus-visible {
   }
 }
 
+/*
+ * "Recommended" sits on the card's top edge, half above it, in line with the card's text (the
+ * card's padding, card.css); the names of all cards in a row then line up. It shines now and
+ * then (badge-shine.css).
+ */
 .package-card .badge-accent {
-  align-self: flex-start;
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 3vw, 32px);
+  margin: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
 }
 
 .package-card.is-recommended {
@@ -3208,6 +3223,56 @@ a.social-link:focus-visible {
 
   .estimate-bar .btn {
     flex: none;
+  }
+}
+
+/* ---- components/badge-shine.css ---- */
+
+/*
+ * The "Recommended" badge on the price cards shines every 3 seconds: a light stripe crosses it
+ * and comes straight back, then rests. Wide screens with a mouse only; never with a reduced-motion
+ * preference. (The badge is placed on the card's edge in pricing.css, which also anchors this.)
+ */
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (min-width: 721px) {
+  .package-card .badge-accent {
+    overflow: hidden;
+  }
+
+  .package-card .badge-accent::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgb(255 255 255 / 0.55) 50%,
+      transparent 65%
+    );
+    transform: translateX(-72%);
+    animation: badge-shine 3s 0.8s infinite;
+  }
+}
+
+/*
+ * Across in 0.6 s and straight back in 0.6 s, then 1.8 s of rest. ±72% is just past the edges
+ * (the stripe is 30% wide and slanted), so it turns the moment it has left the badge; it speeds
+ * up into the turn and leaves it fast, so the return follows at once.
+ */
+@keyframes badge-shine {
+  0% {
+    transform: translateX(-72%);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.6);
+  }
+
+  20% {
+    transform: translateX(72%);
+    animation-timing-function: cubic-bezier(0.1, 0.4, 0.5, 1);
+  }
+
+  40%,
+  100% {
+    transform: translateX(-72%);
   }
 }
 

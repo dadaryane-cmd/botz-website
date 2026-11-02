@@ -41,6 +41,11 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
 }
 
+/* "The detailed scope … is confirmed in your proposal": a little apart from the cards above. */
+.pricing-scope {
+  margin-top: 20px;
+}
+
 .package-card {
   display: flex;
   flex-direction: column;
@@ -63,8 +68,18 @@
   }
 }
 
+/*
+ * "Recommended" sits on the card's top edge, half above it, in line with the card's text (the
+ * card's padding, card.css); the names of all cards in a row then line up. It shines now and
+ * then (badge-shine.css).
+ */
 .package-card .badge-accent {
-  align-self: flex-start;
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 3vw, 32px);
+  margin: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
 }
 
 .package-card.is-recommended {
