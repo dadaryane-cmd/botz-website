@@ -1,28 +1,28 @@
 {
   "meta": {
     "title": {
-      "hy": "Գներ — SMM, SEO և համակցված փաթեթներ",
-      "en": "Pricing — SMM, SEO and combined packages",
-      "ru": "Цены — пакеты SMM, SEO и комбинированные"
+      "hy": "Գներ | SMM, SEO և Ընդհանուր փաթեթներ | BOTZ",
+      "en": "Pricing | SMM, SEO & Digital Marketing Packages | BOTZ",
+      "ru": "Цены | Пакеты SMM, SEO и комплексные решения | BOTZ"
     },
     "description": {
-      "hy": "Ընտրեք փաթեթ և ժամկետ՝ տեսնելու ամսական գինը, ընդհանուր գումարը և խնայողությունը։ Ավելացրեք լրացուցիչ ծառայություններ, համեմատեք և ստացեք առաջարկ։",
-      "en": "Choose a package and contract length to see the monthly price, the total and your savings. Add extras, compare packages and request a proposal.",
-      "ru": "Выберите пакет и срок, чтобы увидеть цену в месяц, итог и экономию. Добавьте опции, сравните пакеты и запросите предложение."
+      "hy": "Երկարաժամկետ հաճախորդների համար նախատեսված հատուկ գնային համակարգ։ Համեմատեք փաթեթները, ավելացրեք լրացուցիչ ծառայություններ և ընտրեք ձեր բիզնեսին համապատասխան տարբերակը։",
+      "en": "Special pricing for long-term clients. Compare packages, add extra services, and choose the plan that best fits your business.",
+      "ru": "Специальные цены для долгосрочных клиентов. Сравнивайте пакеты, добавляйте дополнительные услуги и выбирайте оптимальный вариант для вашего бизнеса."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Թափանցիկ գներ։ *Իրական աճ։*",
-        "en": "Transparent Pricing. *Real Growth.*",
-        "ru": "Прозрачные цены. *Реальный рост.*"
+        "hy": "Թափանցիկ գներ՝ *Իրական աճ։*",
+        "en": "Transparent Pricing, *Real Growth.*",
+        "ru": "Прозрачные цены, *Реальный рост.*"
       },
       "subheading": {
-        "hy": "Ծանոթացեք թվային մարքեթինգի ճկուն փաթեթներին՝ ստեղծված ձեր նպատակներին, բյուջեին և աճի ծրագրերին համապատասխան։",
-        "en": "Explore flexible digital marketing packages designed to match your goals, budget and growth ambitions.",
-        "ru": "Гибкие пакеты цифрового маркетинга под ваши цели, бюджет и планы роста."
+        "hy": "Երկարաժամկետ հաճախորդների համար ստեղծել ենք յուրահատուկ գնային համակարգ։ Ավելացրեք լրացուցիչ ծառայություններ, համեմատեք և ամրագրեք Ձեր փաթեթը։",
+        "en": "We’ve created a special pricing system for long-term clients. Add extra services, compare packages, and choose the plan that works best for you.",
+        "ru": "Для наших долгосрочных клиентов разработана специальная система ценообразования. Добавляйте дополнительные услуги, сравнивайте пакеты и выбирайте подходящий вариант для вашего бизнеса."
       },
       "buttons": [
         {
@@ -47,7 +47,6 @@
     },
     {
       "type": "pricing",
-      "id": "pricing",
       "heading": {
         "hy": "Ընտրեք ձեր փաթեթը",
         "en": "Choose your package",
@@ -56,12 +55,11 @@
       "defaultCategory": "smm",
       "defaultDuration": 6,
       "lockCategory": false,
-      "showAddons": true
+      "showAddons": true,
+      "id": "pricing"
     },
     {
       "type": "comparison",
-      "id": "compare",
-      "background": "surface",
       "heading": {
         "hy": "Համեմատեք գները ըստ պայմանագրի ժամկետի",
         "en": "Compare prices by contract length",
@@ -76,35 +74,36 @@
         "smm",
         "seo",
         "bundle"
-      ]
+      ],
+      "id": "compare",
+      "background": "surface"
     },
     {
       "type": "finder",
-      "id": "guide",
-      "background": "inverse",
       "heading": {
-        "hy": "Չգիտե՞ք, որ փաթեթն է ձեզ հարմար։ Պատասխանեք վեց հարցի։",
-        "en": "Not sure which package fits? Answer six questions.",
-        "ru": "Не знаете, какой пакет подойдёт? Ответьте на шесть вопросов."
+        "hy": "Չգիտե՞ք՝ որ փաթեթն է ձեզ հարմար։ Պատասխանեք այս վեց հարցերին՝ Ձեր բիզնեսի համար լավագույն տարբերակը գտնելու համար։",
+        "en": "Not sure which package is right for you? Answer these six questions to find the best fit for your business.",
+        "ru": "Не знаете, какой пакет вам подходит? Ответьте на шесть вопросов, чтобы подобрать нужный вам вариант."
       },
       "intro": {
-        "hy": "Կառաջարկենք փաթեթ, կբացատրենք ինչու և ցույց կտանք իրական արժեքը ձեր ընտրած ժամկետի համար։",
-        "en": "We will suggest a package, explain why, and show the real cost for the term you choose.",
-        "ru": "Мы предложим пакет, объясним почему и покажем реальную стоимость на выбранный срок."
-      }
+        "hy": "Կառաջարկենք Ձեզ փաթեթ, կբացատրենք ինչու՞ ընտրել այն և ցույց կտանք իրական արժեքը Ձեր ընտրած ժամկետին համապատասխան։",
+        "en": "We’ll recommend a package, explain why it’s the right fit, and show you the actual cost based on your selected contract duration.",
+        "ru": "Порекомендуем вам подходящий пакет, объясним почему стоит выбрать именно его, и покажем итоговую стоимость с учётом выбранного срока сотрудничества."
+      },
+      "id": "guide",
+      "background": "inverse"
     },
     {
       "type": "cta",
-      "background": "surface",
       "heading": {
-        "hy": "Պե՞տք է այլ բան",
+        "hy": "Այլ բան եք ցանկանու՞մ։",
         "en": "Need something different?",
         "ru": "Нужно что-то другое?"
       },
       "text": {
-        "hy": "Եթե ոչ մի փաթեթ ճշգրիտ չի համապատասխանում, կկազմենք անհատական պլան՝ ձեր նպատակների և բյուջեի համաձայն։",
-        "en": "If no package fits exactly, we'll put together a tailored plan around your goals and budget.",
-        "ru": "Если ни один пакет не подходит точно, составим индивидуальный план под ваши цели и бюджет."
+        "hy": "Եթե ոչ մի փաթեթ չի համապատասխանում Ձեր ցանկությանը, կկազմենք անհատական պլան՝ ձեր նպատակների և բյուջեի համաձայն։",
+        "en": "If none of our packages meet your needs, we’ll create a custom plan tailored to your goals and budget.",
+        "ru": "Если ни один из наших пакетов вам не подходит, мы разработаем индивидуальный план с учётом ваших целей и бюджета."
       },
       "buttons": [
         {
@@ -116,11 +115,11 @@
           "href": "#contact",
           "style": "primary"
         }
-      ]
+      ],
+      "background": "surface"
     },
     {
       "type": "faq",
-      "id": "faq",
       "heading": {
         "hy": "Մինչ ընտրելը",
         "en": "Before you choose",
@@ -137,7 +136,8 @@
             "hy": "Պատասխանեք վերևի վեց հարցին, և փաթեթի ընտրիչը կառաջարկի մեկը՝ բացատրելով ինչու։ Կամ գրեք մեզ, և կարճ զրույցից հետո խորհուրդ կտանք։",
             "en": "Answer the six questions above and the package finder suggests one, with the reasons. Or write to us and we will recommend one after a short conversation.",
             "ru": "Ответьте на шесть вопросов выше, и подбор предложит пакет с объяснением. Или напишите нам, и после короткого разговора мы посоветуем."
-          }
+          },
+          "openByDefault": false
         },
         {
           "question": {
@@ -149,7 +149,8 @@
             "hy": "Յուրաքանչյուր փաթեթի քարտում նշված է, թե ինչ եք ստանում ամեն ամիս՝ հրապարակումների, սթորիների, հոդվածների քանակը և այլն։ Վերջնական ծավալը հաստատվում է ձեր անհատական առաջարկում՝ նախքան աշխատանքը սկսելը։",
             "en": "Each package card lists what you get every month, such as the number of posts, stories or articles. The final scope is confirmed in your personal proposal before you start.",
             "ru": "На карточке каждого пакета перечислено, что вы получаете в месяц: число публикаций, сторис, статей и так далее. Окончательный объём подтверждается в персональном предложении до начала работы."
-          }
+          },
+          "openByDefault": false
         },
         {
           "question": {
@@ -161,7 +162,8 @@
             "hy": "Սոցցանցերը և որոնումը ժամանակ են պահանջում։ Առաջին ամիսը գնում է ձեր բիզնեսին ծանոթանալուն, կարգավորումներին և առաջին բովանդակությանը, իսկ արդյունքները սովորաբար երևում են երկրորդ-երրորդ ամսից։ Երեք ամիսը ամենակարճ ժամկետն է, որում կարող ենք ցույց տալ իրական արդյունք։ Դեռ վստա՞հ չեք։ Սկսեք անվճար մարքեթինգային աուդիտից։",
             "en": "Social media and search take time. The first month goes into getting to know your business, setting things up and the first content, and results usually show from the second or third month. Three months is the shortest time in which we can show you real results. Not sure yet? Start with a free marketing audit.",
             "ru": "Соцсети и поиск требуют времени. Первый месяц уходит на знакомство с вашим бизнесом, настройку и первый контент, а результаты обычно видны со второго-третьего месяца. Три месяца — самый короткий срок, за который мы можем показать реальный результат. Пока не уверены? Начните с бесплатного маркетингового аудита."
-          }
+          },
+          "openByDefault": false
         },
         {
           "question": {
@@ -173,7 +175,8 @@
             "hy": "Մենք պատասխանում ենք մեկ աշխատանքային օրվա ընթացքում։ Հետո խոսում ենք ձեր բիզնեսի մասին, և ստանում եք առաջարկ՝ հստակ ծավալով և գնով։ Կայքի միջոցով ոչինչ չի գանձվում։",
             "en": "We reply within one working day. Then we talk about your business, and you get a proposal with the exact scope and price. Nothing is charged through the website.",
             "ru": "Мы отвечаем в течение одного рабочего дня. Затем мы обсуждаем ваш бизнес, и вы получаете предложение с точным объёмом и ценой. Через сайт ничего не оплачивается."
-          }
+          },
+          "openByDefault": false
         },
         {
           "question": {
@@ -185,16 +188,16 @@
             "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
             "en": "We are responsible for the work, its quality and honest reports. Results also depend on your market, your competitors and your budget, so we never promise rankings, sales or follower numbers.",
             "ru": "Мы отвечаем за работу, её качество и честные отчёты. Результат зависит ещё и от рынка, конкурентов и бюджета, поэтому мы не обещаем позиции, продажи или число подписчиков."
-          }
+          },
+          "openByDefault": false
         }
-      ]
+      ],
+      "id": "faq"
     },
     {
       "type": "contact",
-      "id": "contact",
-      "background": "surface",
       "heading": {
-        "hy": "Պատվիրեք խորհրդատվություն",
+        "hy": "Ստանալ խորհրդատվություն",
         "en": "Request a consultation",
         "ru": "Запросите консультацию"
       },
@@ -202,7 +205,9 @@
         "hy": "Եթե փաթեթ եք ընտրել, այն արդեն կցված է ձևին։ Ավելացրեք մի քանի բառ ձեր բիզնեսի մասին։",
         "en": "If you have chosen a package, it is already attached to the form. Add a few words about your business.",
         "ru": "Если вы выбрали пакет, он уже прикреплён к форме. Добавьте пару слов о своём бизнесе."
-      }
+      },
+      "id": "contact",
+      "background": "surface"
     }
   ]
 }
