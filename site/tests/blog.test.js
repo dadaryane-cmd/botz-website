@@ -3,6 +3,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
 import {
   articlePage,
+  checkIndexing,
   earlierAddresses,
   redirectPage,
   withBase,
@@ -234,6 +235,22 @@ describe('publishing', () => {
     )
     // A new address with its own anchor keeps it.
     assert.match(redirectPage('https://example.com/a/#seo'), /\+ location\.search \+ ''\)/)
+  })
+
+  it('never publishes a live page marked noindex, nor a preview page without it', () => {
+    const page = readFileSync(new URL('about.html', publicDir), 'utf8')
+    const redirect = redirectPage('https://example.com/about/')
+    // Live: pages without noindex pass; redirects always carry it.
+    assert.doesNotThrow(() =>
+      checkIndexing({ 'a.html': page, 'b.html': redirect }, { preview: false }),
+    )
+    assert.throws(
+      () => checkIndexing({ 'ru/o-nas/index.html': withNoindex(page) }, { preview: false }),
+      /live pages marked noindex: ru\/o-nas\/index.html/,
+    )
+    // Preview: every page needs it.
+    assert.doesNotThrow(() => checkIndexing({ 'a.html': withNoindex(page) }, { preview: true }))
+    assert.throws(() => checkIndexing({ 'a.html': page }, { preview: true }), /may index: a.html/)
   })
 
   it('keeps preview pages out of search results, once', () => {

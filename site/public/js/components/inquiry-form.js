@@ -17,6 +17,7 @@ import { external, mailtoHref, whatsappHref } from '../lib/links.js'
 import { findPackage } from '../pricing/engine.js'
 import { estimateSummary } from '../pricing/estimate.js'
 import { getSelection, subscribe, updateSelection } from '../pricing/selection.js'
+import { trackEvent } from '../services/analytics.js'
 import { sendForm } from '../services/formsubmit.js'
 
 /** Email and phone are validated together (one of them is needed). */
@@ -168,6 +169,7 @@ export function renderInquiryForm({ service: pageService }) {
           language: getLanguage(),
         }),
       )
+      trackEvent('generate_lead', { service: values.service || 'other' })
       showSuccess()
     } catch (error) {
       // Visitors see a friendly message; the console keeps FormSubmit's reason (e.g. "This form

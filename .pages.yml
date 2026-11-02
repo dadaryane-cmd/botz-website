@@ -1102,6 +1102,13 @@ content:
       - name: location
         label: City
         component: line
+      - name: streetAddress
+        label: Street address (optional)
+        component: line
+        description: "Street and building, e.g. \"Abovyan 10\". Shown to search engines, not on the page; it should match your Google Business Profile exactly."
+      - name: postalCode
+        label: Postal code (optional)
+        type: string
       - name: hours
         label: Working hours
         component: line
@@ -1126,6 +1133,25 @@ content:
           collapsible:
             collapsed: true
             summary: "{network}"
+      - name: ga4Id
+        label: Google Analytics 4 measurement id (optional)
+        type: string
+        description: "From GA4 → Admin → Data streams, like G-ABC123XYZ. Counts visits, form inquiries (generate_lead) and WhatsApp, phone and email taps (contact). Empty: no analytics."
+        pattern:
+          regex: "^G-[A-Z0-9]+$"
+          message: Starts with G-, then capital letters or digits.
+      - name: googleVerification
+        label: Google Search Console verification code (optional)
+        type: string
+        description: "Search Console → Add property → URL prefix → HTML tag: only the content=\"…\" part."
+      - name: yandexVerification
+        label: Yandex Webmaster verification code (optional)
+        type: string
+        description: "Yandex Webmaster → Add site → Meta tag: only the content=\"…\" part."
+      - name: bingVerification
+        label: Bing Webmaster Tools verification code (optional)
+        type: string
+        description: "Bing Webmaster Tools → Add site → HTML meta tag: only the content=\"…\" part."
   - name: people
     label: Founders
     type: file
@@ -1165,6 +1191,11 @@ content:
             options:
               values: [smm, seo, website, strategy, bundle, addon, other]
               multiple: true
+          - name: profiles
+            label: Profile links
+            type: string
+            description: LinkedIn and other professional profiles. Tell search engines who stands behind the work (not shown on the page).
+            list: true
         list:
           collapsible:
             collapsed: true

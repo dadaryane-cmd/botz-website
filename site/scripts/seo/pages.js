@@ -11,6 +11,7 @@ import {
   faqPage,
   organization,
   schemaDocument,
+  service,
   website,
 } from './schema.js'
 
@@ -43,12 +44,27 @@ const fullFaqItems = (page) =>
     .filter((section) => section.type === 'faq' && !section.link?.href)
     .flatMap((section) => section.items)
 
+/** The page's services (serviceDetail sections), each with its packages from the price list. */
+function services({ page, catalog, language, url, siteUrl }) {
+  return page.sections
+    .filter((section) => section.type === 'serviceDetail')
+    .map((section) =>
+      service({
+        section,
+        packages: catalog.packages.filter((pkg) => pkg.category === section.service),
+        language,
+        url: section.id ? `${url}#${section.id}` : url,
+        siteUrl,
+      }),
+    )
+}
+
 /**
  * The tags' content for one page in one language (see seoTags in head-tags.js).
- * `content`: { site, people, navigation, routes }.
+ * `content`: { site, people, navigation, catalog, routes }.
  */
 export function pageDescription(entry, language, content) {
-  const { site, people, navigation, routes } = content
+  const { site, people, navigation, catalog, routes } = content
   const siteUrl = site.url
   const url = pageUrl(siteUrl, routes, entry, language)
   const crumb = (key, name) => ({ name, url: pageUrl(siteUrl, routes, { key }, language) })
@@ -59,6 +75,11 @@ export function pageDescription(entry, language, content) {
     url,
     alternates: alternates(siteUrl, routes, entry),
     siteName: inLanguage(site.name, language),
+    verification: {
+      google: site.googleVerification,
+      yandex: site.yandexVerification,
+      bing: site.bingVerification,
+    },
   }
 
   if (entry.post) {
@@ -98,6 +119,7 @@ export function pageDescription(entry, language, content) {
       agency,
       isHome && website({ site, language, siteUrl }),
       !isHome && breadcrumbs([home, { name: menuName(navigation, key, language) || heading, url }]),
+      ...services({ page, catalog, language, url, siteUrl }),
       faqItems.length > 0 && faqPage(faqItems, language),
     ]),
   }

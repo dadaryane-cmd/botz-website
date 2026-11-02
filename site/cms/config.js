@@ -425,6 +425,12 @@ const siteEntry = {
       description: 'Changing this needs a new FormSubmit activation (see site/README.md).',
     }),
     text('location', 'City'),
+    text('streetAddress', 'Street address (optional)', {
+      description:
+        'Street and building, e.g. "Abovyan 10". Shown to search engines, not on the page; ' +
+        'it should match your Google Business Profile exactly.',
+    }),
+    string('postalCode', 'Postal code (optional)'),
     text('hours', 'Working hours'),
     string('openingHours', 'Working hours for search engines', {
       description:
@@ -438,6 +444,25 @@ const siteEntry = {
       ]),
       '{network}',
     ),
+    string('ga4Id', 'Google Analytics 4 measurement id (optional)', {
+      description:
+        'From GA4 → Admin → Data streams, like G-ABC123XYZ. Counts visits, form inquiries ' +
+        '(generate_lead) and WhatsApp, phone and email taps (contact). Empty: no analytics.',
+      pattern: {
+        regex: '^G-[A-Z0-9]+$',
+        message: 'Starts with G-, then capital letters or digits.',
+      },
+    }),
+    string('googleVerification', 'Google Search Console verification code (optional)', {
+      description:
+        'Search Console → Add property → URL prefix → HTML tag: only the content="…" part.',
+    }),
+    string('yandexVerification', 'Yandex Webmaster verification code (optional)', {
+      description: 'Yandex Webmaster → Add site → Meta tag: only the content="…" part.',
+    }),
+    string('bingVerification', 'Bing Webmaster Tools verification code (optional)', {
+      description: 'Bing Webmaster Tools → Add site → HTML meta tag: only the content="…" part.',
+    }),
   ],
 }
 
@@ -469,6 +494,13 @@ const peopleEntry = {
         select('services', 'Handles inquiries about', INQUIRY_SERVICES, {
           options: { multiple: true },
         }),
+        list(
+          string('profiles', 'Profile links', {
+            description:
+              'LinkedIn and other professional profiles. Tell search engines who stands ' +
+              'behind the work (not shown on the page).',
+          }),
+        ),
       ]),
       '{name.en}',
     ),

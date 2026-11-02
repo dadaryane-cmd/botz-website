@@ -52,6 +52,24 @@ export function withNoindex(html) {
   return html.replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${NOINDEX}`)
 }
 
+/** A page that keeps search engines away: noindex, and not one of the redirect pages. */
+export const blocksSearchEngines = (html) =>
+  html.includes(NOINDEX) && !html.includes('http-equiv="refresh"')
+
+/**
+ * The classic launch mistake, made impossible: the live site must not keep a noindex left over
+ * from testing, and every preview page must have one. Stops the publish with the pages named.
+ */
+export function checkIndexing(pages, { preview }) {
+  const wrong = Object.entries(pages)
+    .filter(([, html]) => !html.includes('http-equiv="refresh"'))
+    .filter(([, html]) => blocksSearchEngines(html) !== preview)
+    .map(([file]) => file)
+  if (wrong.length === 0) return
+  const problem = preview ? 'preview pages search engines may index' : 'live pages marked noindex'
+  throw new Error(`Not published, ${problem}: ${wrong.join(', ')}`)
+}
+
 /** The page with the site's root as its base, so its files load from any folder. */
 export function withBase(html, rootPath) {
   if (!html.includes(SOURCE_BASE)) throw new Error(`no ${SOURCE_BASE}`)
@@ -129,12 +147,18 @@ function writeFile(relativePath, text) {
   writeFileSync(path, text)
 }
 
+/** Every HTML page of the built site, by its path: { 'ru/o-nas/index.html': html, … }. */
+const builtPages = () =>
+  Object.fromEntries(
+    readdirSync(DIST_DIR, { recursive: true })
+      .filter((name) => name.endsWith('.html'))
+      .map((file) => [file, readFileSync(join(DIST_DIR, file), 'utf8')]),
+  )
+
 /** Every HTML page in the built site gets `transform` applied (all folders). */
 function rewritePages(transform) {
-  const pages = readdirSync(DIST_DIR, { recursive: true }).filter((name) => name.endsWith('.html'))
-  for (const file of pages) {
-    const path = join(DIST_DIR, file)
-    writeFileSync(path, transform(readFileSync(path, 'utf8')))
+  for (const [file, html] of Object.entries(builtPages())) {
+    writeFileSync(join(DIST_DIR, file), transform(html))
   }
 }
 
@@ -193,6 +217,7 @@ function build({ preview = false, today } = {}) {
   writeFile('robots.txt', robotsTxt(siteUrl))
 
   if (preview) rewritePages(withNoindex)
+  checkIndexing(builtPages(), { preview })
   console.log(
     `Built dist/ for ${siteUrl}: ${pages.length} pages in ${LANGUAGES.length} languages ` +
       `(${posts.length} articles)`,

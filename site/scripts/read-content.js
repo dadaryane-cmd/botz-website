@@ -13,11 +13,12 @@ export const ROUTES_FILE = 'content/routes.json'
 
 const readJson = (publicDir, path) => JSON.parse(readFileSync(join(publicDir, path), 'utf8'))
 
-/** The site-wide content and every page's content: { site, people, navigation, pages }. */
+/** The site-wide content and every page's content: { site, people, navigation, catalog, pages }. */
 export const readContent = (publicDir) => ({
   site: readJson(publicDir, 'content/site.json'),
   people: readJson(publicDir, 'content/people.json').people,
   navigation: readJson(publicDir, 'content/navigation.json'),
+  catalog: readJson(publicDir, 'content/catalog.json'),
   pages: Object.fromEntries(
     PAGES.map((key) => [key, readJson(publicDir, `content/pages/${key}.json`)]),
   ),

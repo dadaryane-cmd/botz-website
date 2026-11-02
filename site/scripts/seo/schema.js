@@ -1,22 +1,26 @@
 /**
  * schema.org descriptions (JSON-LD) that tell search engines what the site is: the agency
  * (a local professional service in Yerevan, with its founders), the website, where each page
- * sits (breadcrumbs), each article, and the questions and answers of the full FAQ.
+ * sits (breadcrumbs), each service with its prices, each article, and the questions and answers
+ * of the full FAQ.
  */
 import { fileUrl, inLanguage } from './addresses.js'
 
 /** The agency's id: every page refers to the same agency. */
 const organizationId = (siteUrl) => `${siteUrl}#organization`
 
+/** A founder; profile links (LinkedIn …) tell search engines who stands behind the work. */
 const person = (member, language) => ({
   '@type': 'Person',
   name: inLanguage(member.name, language),
   jobTitle: inLanguage(member.role, language),
+  ...(member.profiles?.length > 0 && { sameAs: member.profiles }),
 })
 
-/** The agency, on every page. */
+/** The agency, on every page. Street and postal code once they are filled in (site.json). */
 export function organization({ site, people, language, siteUrl }) {
   const sameAs = site.social.map((profile) => profile.url).filter(Boolean)
+  const street = inLanguage(site.streetAddress, language)
   return {
     '@type': 'ProfessionalService',
     '@id': organizationId(siteUrl),
@@ -30,7 +34,9 @@ export function organization({ site, people, language, siteUrl }) {
     email: site.email,
     address: {
       '@type': 'PostalAddress',
+      ...(street && { streetAddress: street }),
       addressLocality: inLanguage(site.location, language),
+      ...(site.postalCode && { postalCode: site.postalCode }),
       addressCountry: 'AM',
     },
     areaServed: { '@type': 'Country', name: 'Armenia' },
@@ -74,6 +80,50 @@ export function blogPosting({ post, author, language, url, image, siteUrl }) {
     image,
     ...(author && { author: person(author, language) }),
     publisher: { '@id': organizationId(siteUrl) },
+  }
+}
+
+/**
+ * A package's price in AMD: a monthly range over the contract lengths (the longest is the
+ * cheapest), or the one-time starting price (websites).
+ */
+function packageOffer(pkg, language) {
+  const monthly = Object.values(pkg.prices ?? {}).filter(Number.isFinite)
+  const priceSpecification =
+    monthly.length > 0
+      ? {
+          '@type': 'UnitPriceSpecification',
+          minPrice: Math.min(...monthly),
+          maxPrice: Math.max(...monthly),
+          priceCurrency: 'AMD',
+          unitCode: 'MON',
+        }
+      : { '@type': 'PriceSpecification', minPrice: pkg.oneTimePrice, priceCurrency: 'AMD' }
+  return { '@type': 'Offer', name: inLanguage(pkg.name, language), priceSpecification }
+}
+
+/**
+ * A service the agency offers (a serviceDetail section: title, the problem it solves and what it
+ * includes), with its packages from the price list when it has any. `url` is the section's
+ * full address.
+ */
+export function service({ section, packages, language, url, siteUrl }) {
+  const name = inLanguage(section.title, language)
+  return {
+    '@type': 'Service',
+    name,
+    serviceType: name,
+    description: inLanguage(section.problem, language),
+    url,
+    provider: { '@id': organizationId(siteUrl) },
+    areaServed: { '@type': 'Country', name: 'Armenia' },
+    ...(packages.length > 0 && {
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name,
+        itemListElement: packages.map((pkg) => packageOffer(pkg, language)),
+      },
+    }),
   }
 }
 

@@ -15,6 +15,7 @@ import { getLanguage, initLanguage, t, ui } from './lib/i18n.js'
 import { currentArticle, currentPage, currentSitePath, isArticlePage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
 import { initSelection } from './pricing/selection.js'
+import { startAnalytics } from './services/analytics.js'
 
 /** The longest the first drawing waits for the first screen's fonts (usually they are there). */
 const FONT_WAIT_MS = 400
@@ -79,3 +80,5 @@ if (location.hash) {
 }
 // Reveals start after scrolling, so whatever is on screen is shown at once.
 startReveals()
+// Only with a measurement id set in Pages CMS; Google's script loads once the page is idle.
+startAnalytics(site.ga4Id)

@@ -28,6 +28,7 @@ const content = {
   site,
   people: readJson('content/people.json').people,
   navigation: readJson('content/navigation.json'),
+  catalog: readJson('content/catalog.json'),
   routes,
 }
 const entries = publishedPages({ pages, posts: [post] })
@@ -88,6 +89,17 @@ describe('head tags', () => {
     }
   })
 
+  it('give no two pages the same title or description, in any language', () => {
+    const real = publishedPages({ pages, posts: [] })
+    for (const field of ['title', 'description']) {
+      const values = LANGUAGES.flatMap((language) =>
+        real.map((entry) => pageDescription(entry, language, content)[field]),
+      )
+      const repeated = values.filter((value, index) => values.indexOf(value) !== index)
+      assert.deepEqual(repeated, [], `the same ${field} twice`)
+    }
+  })
+
   it('are written into the page between the markers, with the page language', () => {
     for (const key of [...PAGES, ARTICLE_PAGE]) {
       const file = key === 'home' ? 'index.html' : `${key}.html`
@@ -139,6 +151,28 @@ describe('schema.org', () => {
       crumbs.itemListElement.map((step) => step.name),
       ['Home', 'Blog', 'A "title" <b>'],
     )
+  })
+
+  it('describes each service on the Services page, with its prices in AMD', () => {
+    const offered = schemaOf('services', 'ru').filter((node) => node['@type'] === 'Service')
+    assert.deepEqual(
+      offered.map((node) => node.url),
+      ['smm', 'seo', 'website', 'strategy'].map((id) => `${site.url}ru/uslugi/#${id}`),
+    )
+    const smm = offered[0]
+    assert.equal(smm.provider['@id'], `${site.url}#organization`)
+    const start = smm.hasOfferCatalog.itemListElement[0]
+    assert.deepEqual(start.priceSpecification, {
+      '@type': 'UnitPriceSpecification',
+      minPrice: 70000,
+      maxPrice: 79000,
+      priceCurrency: 'AMD',
+      unitCode: 'MON',
+    })
+    const website = offered[2].hasOfferCatalog.itemListElement[0]
+    assert.equal(website.priceSpecification.minPrice, 299000)
+    // Strategy has no packages: no prices to show.
+    assert.equal(offered[3].hasOfferCatalog, undefined)
   })
 
   it('lists questions and answers only where the full list is (not a short list linking to it)', () => {

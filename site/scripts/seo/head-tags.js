@@ -25,17 +25,32 @@ export const scriptJson = (value) => JSON.stringify(value).replaceAll('<', '\\u0
 const meta = (attribute, name, content) =>
   `<meta ${attribute}="${name}" content="${escapeHtml(content)}" />`
 
+/** The meta tag name each search engine's site verification uses. */
+const VERIFICATION_TAGS = {
+  google: 'google-site-verification',
+  yandex: 'yandex-verification',
+  bing: 'msvalidate.01',
+}
+
+/** The verification tags for the codes that are set ({ google, yandex, bing }). */
+export const verificationTags = (codes = {}) =>
+  Object.entries(VERIFICATION_TAGS)
+    .filter(([engine]) => codes[engine])
+    .map(([engine, name]) => meta('name', name, codes[engine]))
+
 /**
  * The tags for one page in one language.
  * `page`: { language, title (the full tab title), heading (without the agency name),
  * description, url, alternates [{ hreflang, href }], image, siteName, type ('website' or
- * 'article'), published (articles), schema }.
+ * 'article'), published (articles), schema, verification ({ google, yandex, bing } codes) }.
  */
 export function seoTags(page) {
   const otherLocales = Object.entries(LOCALES).filter(([language]) => language !== page.language)
   return [
     `<title>${escapeHtml(page.title)}</title>`,
     meta('name', 'description', page.description),
+    // On every page: each language's folder can be verified on its own (Search Console, Yandex).
+    ...verificationTags(page.verification),
     `<link rel="canonical" href="${escapeHtml(page.url)}" />`,
     ...page.alternates.map(
       ({ hreflang, href }) =>
