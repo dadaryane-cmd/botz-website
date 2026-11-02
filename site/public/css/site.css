@@ -2980,6 +2980,17 @@ a.social-link:focus-visible {
 .package-includes .check-list {
   margin-bottom: 8px;
   font-size: 0.9rem;
+  /* Long Armenian words ("հաղորդագրություններին") wrap inside the card instead of past it. */
+  overflow-wrap: anywhere;
+}
+
+/*
+ * "✓ Ընտրված է" and the other button labels stay on one line; the cards can be narrow, so the
+ * buttons in them keep less space at their ends.
+ */
+.package-card .btn {
+  padding-inline: 12px;
+  white-space: nowrap;
 }
 
 .package-includes .check-list li {
