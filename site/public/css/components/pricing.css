@@ -133,6 +133,11 @@
   font-size: clamp(1.2rem, 12cqi, 1.8rem);
 }
 
+/* "per month" on its own line under the price, never split between the two lines. */
+.package-card .price small {
+  display: block;
+}
+
 /* A word, not a number: smaller, and it may wrap ("Անհասանելի" is long in the display font). */
 .package-card .price-unavailable {
   font-size: clamp(1rem, 8cqi, 1.25rem);
