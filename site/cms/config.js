@@ -10,10 +10,14 @@ import { readFileSync } from 'node:fs'
 import {
   CONTRACT_LENGTHS,
   INQUIRY_SERVICES,
+  LANGUAGES,
   PACKAGE_CATEGORIES,
   PAGES,
   SOCIAL_NETWORKS,
 } from '../public/js/config.js'
+
+/** Each language as the editor shows it. */
+const LANGUAGE_NAMES = { hy: 'Հայերեն', en: 'English', ru: 'Русский' }
 
 const CONTENT = 'site/public/content'
 const readContent = (file) =>
@@ -54,6 +58,24 @@ const heading = (name = 'heading', label = 'Heading') =>
   text(name, label, { description: HIGHLIGHT_HINT })
 const link = (name, label) => ({ name, label, component: 'link' })
 const button = (name, label) => ({ name, label, component: 'button' })
+
+const SLUG_PATTERN = {
+  regex: '^[a-z0-9]+(-[a-z0-9]+)*$',
+  message: 'Lowercase Latin letters, digits and hyphens only.',
+}
+
+/** A page's or article's address in each language (js/lib/urls.js), e.g. ru/uslugi/. */
+const address = (description) => ({
+  name: 'path',
+  label: 'Address in each language',
+  description:
+    `${description} Lowercase Latin letters, digits and hyphens, written the way people search ` +
+    '(Armenian and Russian in Latin letters). Changing a published address breaks links to it.',
+  type: 'object',
+  fields: LANGUAGES.map((language) =>
+    string(language, LANGUAGE_NAMES[language], { pattern: SLUG_PATTERN }),
+  ),
+})
 
 /** Section placement decided by the developer (anchor, background, width): kept, not shown. */
 const layout = [
@@ -274,12 +296,15 @@ const pageEntry = (key) => ({
   path: `${CONTENT}/pages/${key}.json`,
   format: 'json',
   fields: [
+    // The home page is the site's own address in each language.
+    key !== 'home' &&
+      address('The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/.'),
     object('meta', 'Search engines & browser tab', [
       text('title', 'Page title'),
       text('description', 'Description', { long: true }),
     ]),
     { name: 'sections', label: 'Sections', component: 'sections' },
-  ],
+  ].filter(Boolean),
 })
 
 /* ---------- site-wide content ---------- */
@@ -538,17 +563,14 @@ const postsEntry = {
     default: { sort: 'date', order: 'desc' },
   },
   fields: [
-    string('slug', 'Address', {
+    string('slug', 'Article id', {
       required: true,
       description:
-        'The article is published at post-<address>.html: lowercase Latin letters, digits and ' +
-        'hyphens, e.g. google-business-profile. Do not change it once published.',
-      pattern: {
-        // Not ending in -en or -ru: post-<address>-en.html is the article's English page.
-        regex: '^(?!.*-(en|ru)$)[a-z0-9]+(-[a-z0-9]+)*$',
-        message: 'Lowercase Latin letters, digits and hyphens only, not ending in -en or -ru.',
-      },
+        'Names the article file; lowercase Latin letters, digits and hyphens, e.g. ' +
+        'google-business-profile. Do not change it once published.',
+      pattern: SLUG_PATTERN,
     }),
+    address('The article is at blog/<address>/ in Armenian, ru/blog/<address>/ and en/blog/…'),
     { name: 'date', label: 'Date', type: 'date', required: true },
     select('author', 'Author', peopleKeys),
     {
@@ -566,11 +588,8 @@ const postsEntry = {
 
 /* ---------- configuration ---------- */
 
-const languageFields = (type) => [
-  { name: 'hy', label: 'Հայերեն', type },
-  { name: 'en', label: 'English', type },
-  { name: 'ru', label: 'Русский', type },
-]
+const languageFields = (type) =>
+  LANGUAGES.map((language) => ({ name: language, label: LANGUAGE_NAMES[language], type }))
 
 export const pagesConfig = {
   media: [

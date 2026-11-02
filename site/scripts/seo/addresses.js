@@ -1,24 +1,27 @@
 /**
- * Full addresses of the published pages, from the site's address (content/site.json → url):
- * what canonical links, hreflang links, the sitemap and the schema point to.
+ * Full addresses of the published pages, from the site's address (content/site.json → url) and
+ * the route table (js/lib/urls.js): what canonical links, hreflang links, the sitemap and the
+ * schema point to. `entry` is a published page: { key, page } or { post } (seo/pages.js).
  */
 import { DEFAULT_LANGUAGE, LANGUAGES } from '../../public/js/config.js'
-import { fileInLanguage } from '../../public/js/lib/urls.js'
+import { pagePath, postPath } from '../../public/js/lib/urls.js'
 
-/** A page in `language`; the Armenian home page is the site's own address (no index.html). */
-export function pageUrl(siteUrl, file, language) {
-  const localFile = fileInLanguage(file, language)
-  if (localFile === 'index.html') return siteUrl
-  return new URL(localFile, siteUrl).href
-}
+/** The page's address in `language`, relative to the site's root ("ru/uslugi/"). */
+export const entryPath = (routes, entry, language) =>
+  entry.post ? postPath(routes, entry.post.slug, language) : pagePath(routes, entry.key, language)
+
+/** A page in `language` as a full address; the Armenian home page is the site's own address. */
+export const pageUrl = (siteUrl, routes, entry, language) =>
+  new URL(entryPath(routes, entry, language), siteUrl).href
 
 /** The page in every language, plus x-default (the Armenian page) for everyone else. */
-export function alternates(siteUrl, file) {
+export function alternates(siteUrl, routes, entry) {
   const languages = LANGUAGES.map((language) => ({
     hreflang: language,
-    href: pageUrl(siteUrl, file, language),
+    href: pageUrl(siteUrl, routes, entry, language),
   }))
-  return [...languages, { hreflang: 'x-default', href: pageUrl(siteUrl, file, DEFAULT_LANGUAGE) }]
+  const fallback = pageUrl(siteUrl, routes, entry, DEFAULT_LANGUAGE)
+  return [...languages, { hreflang: 'x-default', href: fallback }]
 }
 
 /** A file of the site (an image) as a full address. */

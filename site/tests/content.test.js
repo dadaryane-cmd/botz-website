@@ -7,6 +7,7 @@ import { ARTICLE_PAGE, PAGES } from '../public/js/config.js'
 import { catalog, finder, navigation, people } from '../public/js/content/index.js'
 import { loadJson } from '../public/js/content/load.js'
 import { interpolate, t, ui } from '../public/js/lib/i18n.js'
+import { RETIRED_PAGES } from '../scripts/build-site.js'
 
 const publicDir = fileURLToPath(new URL('../public/', import.meta.url))
 const htmlFile = (key) => (key === 'home' ? 'index.html' : `${key}.html`)
@@ -61,10 +62,10 @@ describe('content', () => {
 
   it('redirects every retired page to a section that exists on the Services page', () => {
     const services = pages.services.sections.map((section) => section.id).filter(Boolean)
-    for (const file of ['smm.html', 'seo.html', 'website-creation.html']) {
-      const html = readFileSync(join(publicDir, file), 'utf8')
-      const target = html.match(/url=services\.html#([\w-]+)/)?.[1]
-      assert.ok(services.includes(target), `${file} should redirect to a Services section`)
+    for (const [file, target] of Object.entries(RETIRED_PAGES)) {
+      const [page, section] = target.split('#')
+      assert.equal(page, 'services.html', file)
+      assert.ok(services.includes(section), `${file} should redirect to a Services section`)
     }
   })
 

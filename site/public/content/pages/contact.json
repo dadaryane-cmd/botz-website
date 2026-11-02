@@ -1,14 +1,19 @@
 {
+  "path": {
+    "hy": "kap",
+    "en": "contact",
+    "ru": "kontakty"
+  },
   "meta": {
     "title": {
-      "hy": "Կապ BOTZ-ի հետ",
-      "en": "Contact BOTZ",
-      "ru": "Контакты BOTZ"
+      "hy": "Կապ՝ մարքեթինգային գործակալություն Երևանում",
+      "en": "Contact BOTZ, a Marketing Agency in Yerevan",
+      "ru": "Контакты маркетингового агентства BOTZ в Ереване"
     },
     "description": {
-      "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ էլ. փոստով, կամ ուղարկեք հարցում։ Սոցցանցեր, SEO և կայքեր։",
-      "en": "Call, WhatsApp or email BOTZ Marketing Agency, or send an inquiry about social media, SEO or websites.",
-      "ru": "Позвоните, напишите в WhatsApp или на почту, или отправьте заявку по соцсетям, SEO или сайтам."
+      "hy": "Զանգահարեք, գրեք WhatsApp-ով կամ ուղարկեք հայտ՝ SMM, SEO և կայքերի պատրաստում Երևանում։ Պատասխանում ենք մեկ աշխատանքային օրվա ընթացքում։",
+      "en": "Call, WhatsApp or send an inquiry about SMM, SEO or website development in Yerevan. We reply within one working day.",
+      "ru": "Позвоните, напишите в WhatsApp или отправьте заявку на SMM, SEO или создание сайта в Ереване. Отвечаем в течение рабочего дня."
     }
   },
   "sections": [

@@ -599,6 +599,29 @@ content:
         path: site/public/content/pages/services.json
         format: json
         fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
           - name: meta
             label: Search engines & browser tab
             type: object
@@ -618,6 +641,29 @@ content:
         path: site/public/content/pages/pricing.json
         format: json
         fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
           - name: meta
             label: Search engines & browser tab
             type: object
@@ -637,6 +683,29 @@ content:
         path: site/public/content/pages/about.json
         format: json
         fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
           - name: meta
             label: Search engines & browser tab
             type: object
@@ -656,6 +725,29 @@ content:
         path: site/public/content/pages/blog.json
         format: json
         fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
           - name: meta
             label: Search engines & browser tab
             type: object
@@ -675,6 +767,29 @@ content:
         path: site/public/content/pages/contact.json
         format: json
         fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
           - name: meta
             label: Search engines & browser tab
             type: object
@@ -704,13 +819,36 @@ content:
         order: desc
     fields:
       - name: slug
-        label: Address
+        label: Article id
         type: string
         required: true
-        description: "The article is published at post-<address>.html: lowercase Latin letters, digits and hyphens, e.g. google-business-profile. Do not change it once published."
+        description: "Names the article file; lowercase Latin letters, digits and hyphens, e.g. google-business-profile. Do not change it once published."
         pattern:
-          regex: "^(?!.*-(en|ru)$)[a-z0-9]+(-[a-z0-9]+)*$"
-          message: Lowercase Latin letters, digits and hyphens only, not ending in -en or -ru.
+          regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+          message: Lowercase Latin letters, digits and hyphens only.
+      - name: path
+        label: Address in each language
+        description: "The article is at blog/<address>/ in Armenian, ru/blog/<address>/ and en/blog/… Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+        type: object
+        fields:
+          - name: hy
+            label: "Հայերեն"
+            type: string
+            pattern:
+              regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+              message: Lowercase Latin letters, digits and hyphens only.
+          - name: en
+            label: English
+            type: string
+            pattern:
+              regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+              message: Lowercase Latin letters, digits and hyphens only.
+          - name: ru
+            label: "Русский"
+            type: string
+            pattern:
+              regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+              message: Lowercase Latin letters, digits and hyphens only.
       - name: date
         label: Date
         type: date

@@ -1,7 +1,13 @@
 import assert from 'node:assert/strict'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
-import { articlePage, withNoindex } from '../scripts/build-site.js'
+import {
+  articlePage,
+  earlierAddresses,
+  redirectPage,
+  withBase,
+  withNoindex,
+} from '../scripts/build-site.js'
 import { LANGUAGES } from '../public/js/config.js'
 import { people } from '../public/js/content/index.js'
 import { formatDate } from '../public/js/lib/format.js'
@@ -12,7 +18,6 @@ import {
   postIndex,
   publishedNewestFirst,
   readingMinutes,
-  slugFromPath,
 } from '../public/js/blog/posts.js'
 
 const publicDir = new URL('../public/', import.meta.url)
@@ -97,15 +102,11 @@ describe('markdown', () => {
 })
 
 describe('blog articles', () => {
-  it('have addresses that are read back to the same slug', () => {
+  const path = { hy: 'hodvac', en: 'article', ru: 'statya' }
+
+  it('are linked to as post-<id>.html, with ids of lowercase Latin letters', () => {
     assert.equal(postFile('google-maps'), 'post-google-maps.html')
-    assert.equal(slugFromPath('/botz-website/post-google-maps.html'), 'google-maps')
-    assert.equal(slugFromPath('/post-google-maps-en.html'), 'google-maps')
-    assert.equal(slugFromPath('/post-google-maps-ru.html'), 'google-maps')
-    assert.equal(slugFromPath('/pricing.html'), null)
     assert.equal(isSlug('Google Maps'), false)
-    // post-tips-en.html would be the English page of "tips".
-    assert.equal(isSlug('tips-en'), false)
     assert.equal(isSlug('seo-for-russian-speakers'), true)
   })
 
@@ -114,13 +115,15 @@ describe('blog articles', () => {
     assert.equal(readingMinutes('word '.repeat(1000)), 5)
   })
 
-  it('are listed newest first, without future or broken ones', () => {
+  it('are listed newest first, without future, broken or unaddressed ones', () => {
     const list = publishedNewestFirst(
       [
-        { slug: 'old', date: '2026-01-01' },
-        { slug: 'new', date: '2026-03-01' },
-        { slug: 'later', date: '2099-01-01' },
-        { slug: 'Bad Slug', date: '2026-02-01' },
+        { slug: 'old', path, date: '2026-01-01' },
+        { slug: 'new', path, date: '2026-03-01' },
+        { slug: 'later', path, date: '2099-01-01' },
+        { slug: 'Bad Slug', path, date: '2026-02-01' },
+        { slug: 'no-address', date: '2026-02-01' },
+        { slug: 'half-address', path: { ...path, ru: null }, date: '2026-02-01' },
       ],
       '2026-06-01',
     )
@@ -131,10 +134,8 @@ describe('blog articles', () => {
   })
 
   it('leave the text out of the list, with reading times per language', () => {
-    const [entry] = postIndex(
-      [{ slug: 'a', date: '2026-01-01', body: { hy: 'x', en: 'word '.repeat(400), ru: 'y' } }],
-      '2026-06-01',
-    )
+    const body = { hy: 'x', en: 'word '.repeat(400), ru: 'y' }
+    const [entry] = postIndex([{ slug: 'a', path, date: '2026-01-01', body }], '2026-06-01')
     assert.equal(entry.body, undefined)
     assert.deepEqual(entry.minutes, { hy: 1, en: 2, ru: 1 })
   })
@@ -179,16 +180,60 @@ describe('article dates', () => {
 })
 
 describe('publishing', () => {
-  it("writes each article's page from post.html, fetching the article up front", () => {
+  it("writes each article's page from post.html, naming it and fetching it up front", () => {
     const template = readFileSync(new URL('post.html', publicDir), 'utf8')
     const html = articlePage(template, 'google-business-profile')
     const preload =
       '<link rel="preload" href="content/posts/google-business-profile.json" as="fetch" crossorigin />'
+    const named = 'data-page="post" data-post="google-business-profile"'
     assert.ok(html.includes(preload))
+    assert.ok(html.includes(named))
     // Before the modules, inside the generated block, and the rest of the page unchanged.
     assert.ok(html.indexOf(preload) < html.indexOf('<link rel="modulepreload"'))
     assert.ok(html.indexOf(preload) < html.indexOf('<!-- preload:end -->'))
-    assert.equal(html.replace(`${preload}\n    `, ''), template)
+    assert.equal(html.replace(`${preload}\n    `, '').replace(named, 'data-page="post"'), template)
+  })
+
+  it('gives every page the site’s root as its base', () => {
+    const page = readFileSync(new URL('about.html', publicDir), 'utf8')
+    const published = withBase(page, '/botz-website/')
+    assert.ok(published.includes('<base href="/botz-website/" />'))
+    // Before anything the page loads.
+    assert.ok(published.indexOf('<base') < published.indexOf('<link'))
+  })
+
+  it('redirects every earlier address to the page’s address now', () => {
+    const routes = {
+      pages: {
+        home: {},
+        about: { hy: 'mer-masin', en: 'about', ru: 'o-nas' },
+        services: { hy: 'tsarayutyunner', en: 'services', ru: 'uslugi' },
+        blog: { hy: 'blog', en: 'blog', ru: 'blog' },
+      },
+      posts: { maps: { hy: 'qartez', en: 'maps', ru: 'karty' } },
+    }
+    const redirects = Object.fromEntries(
+      earlierAddresses(routes).map(({ file, path }) => [file, path]),
+    )
+    assert.equal(redirects['about.html'], 'mer-masin/')
+    assert.equal(redirects['about-ru.html'], 'ru/o-nas/')
+    assert.equal(redirects['index-en.html'], 'en/')
+    assert.equal(redirects['index.html'], undefined, 'index.html is the home page itself')
+    assert.equal(redirects['post-maps-en.html'], 'en/blog/maps/')
+    assert.equal(redirects['seo.html'], 'tsarayutyunner/#seo')
+  })
+
+  it('writes redirect pages that keep search engines, ?queries and #anchors on the new address', () => {
+    const html = redirectPage('https://example.com/ru/o-nas/')
+    assert.match(html, /<meta name="robots" content="noindex" \/>/)
+    assert.match(html, /<link rel="canonical" href="https:\/\/example.com\/ru\/o-nas\/" \/>/)
+    assert.match(html, /http-equiv="refresh" content="0; url=https:\/\/example.com\/ru\/o-nas\/"/)
+    assert.match(
+      html,
+      /location\.replace\("https:\/\/example.com\/ru\/o-nas\/" \+ location\.search \+ location\.hash\)/,
+    )
+    // A new address with its own anchor keeps it.
+    assert.match(redirectPage('https://example.com/a/#seo'), /\+ location\.search \+ ''\)/)
   })
 
   it('keeps preview pages out of search results, once', () => {

@@ -7,19 +7,19 @@ import { alternates, pageUrl } from './addresses.js'
 import { escapeHtml } from './head-tags.js'
 
 /**
- * `pages`: [{ file, lastModified? }] with `file` in the default language ("about.html").
- * Each language's address is listed with links to all of them, as search engines ask.
+ * `pages`: the published pages (seo/pages.js), with `lastModified` for articles. Each
+ * language's address is listed with links to all of them, as search engines ask.
  */
-export function sitemapXml(siteUrl, pages) {
+export function sitemapXml(siteUrl, routes, pages) {
   const entries = pages.flatMap((page) =>
     LANGUAGES.map((language) => {
-      const links = alternates(siteUrl, page.file).map(
+      const links = alternates(siteUrl, routes, page).map(
         ({ hreflang, href }) =>
           `    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${escapeHtml(href)}" />`,
       )
       return [
         '  <url>',
-        `    <loc>${escapeHtml(pageUrl(siteUrl, page.file, language))}</loc>`,
+        `    <loc>${escapeHtml(pageUrl(siteUrl, routes, page, language))}</loc>`,
         page.lastModified && `    <lastmod>${page.lastModified}</lastmod>`,
         ...links,
         '  </url>',

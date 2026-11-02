@@ -56,6 +56,7 @@ node_modules/
 /playwright/.cache/
 public/brand/.flame-frames.rgb
 
-# Published site, written by `npm run build` in site/ (and the generated blog list).
+# Published site, written by `npm run build` in site/ (and the generated blog list and routes).
 /site/dist/
 /site/public/content/posts/index.json
+/site/public/content/routes.json

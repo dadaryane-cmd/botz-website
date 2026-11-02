@@ -1,23 +1,28 @@
 {
+  "path": {
+    "hy": "gner",
+    "en": "pricing",
+    "ru": "ceny"
+  },
   "meta": {
     "title": {
-      "hy": "Գներ | SMM, SEO և Ընդհանուր փաթեթներ | BOTZ",
-      "en": "Pricing | SMM, SEO & Digital Marketing Packages | BOTZ",
-      "ru": "Цены | Пакеты SMM, SEO и комплексные решения | BOTZ"
+      "hy": "SMM-ի, SEO-ի և կայքերի գներ Երևանում",
+      "en": "SMM, SEO & Website Prices in Yerevan",
+      "ru": "Цены на SMM, SEO-продвижение и сайты в Ереване"
     },
     "description": {
-      "hy": "Երկարաժամկետ հաճախորդների համար նախատեսված հատուկ գնային համակարգ։ Համեմատեք փաթեթները, ավելացրեք լրացուցիչ ծառայություններ և ընտրեք ձեր բիզնեսին համապատասխան տարբերակը։",
-      "en": "Special pricing for long-term clients. Compare packages, add extra services, and choose the plan that best fits your business.",
-      "ru": "Специальные цены для долгосрочных клиентов. Сравнивайте пакеты, добавляйте дополнительные услуги и выбирайте оптимальный вариант для вашего бизнеса."
+      "hy": "SMM-ի, SEO-ի և կայքերի պատրաստման հրապարակված գներ՝ ՀՀ դրամով։ Համեմատեք փաթեթները, ավելացրեք ծառայություններ և հաշվարկեք ամսական արժեքը։",
+      "en": "Published prices for SMM, SEO and website development in AMD. Compare packages, add services and see your monthly cost at once.",
+      "ru": "Открытые цены на SMM, SEO-продвижение и создание сайтов в драмах. Сравните пакеты, добавьте услуги и сразу увидите стоимость в месяц."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Թափանցիկ գներ՝ *Իրական աճ։*",
-        "en": "Transparent Pricing, *Real Growth.*",
-        "ru": "Прозрачные цены, *Реальный рост.*"
+        "hy": "SMM-ի, SEO-ի և կայքերի *թափանցիկ գներ*",
+        "en": "Transparent prices for *SMM, SEO and websites*",
+        "ru": "Прозрачные цены на *SMM, SEO и сайты*"
       },
       "subheading": {
         "hy": "Երկարաժամկետ հաճախորդների համար ստեղծել ենք յուրահատուկ գնային համակարգ։ Ավելացրեք լրացուցիչ ծառայություններ, համեմատեք և ամրագրեք Ձեր փաթեթը։",

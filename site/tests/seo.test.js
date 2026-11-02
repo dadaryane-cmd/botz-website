@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
 import { ARTICLE_PAGE, LANGUAGES, PAGES } from '../public/js/config.js'
+import { routeTable } from '../public/js/lib/urls.js'
 import { alternates, pageUrl } from '../scripts/seo/addresses.js'
 import { escapeHtml, scriptJson, seoTags, withSeoTags } from '../scripts/seo/head-tags.js'
 import { pageDescription, publishedPages } from '../scripts/seo/pages.js'
@@ -12,36 +13,41 @@ const readJson = (path) => JSON.parse(readFileSync(new URL(path, publicDir), 'ut
 const readHtml = (file) => readFileSync(new URL(file, publicDir), 'utf8')
 
 const site = readJson('content/site.json')
-const content = {
-  site,
-  people: readJson('content/people.json').people,
-  navigation: readJson('content/navigation.json'),
-}
 const pages = Object.fromEntries(PAGES.map((key) => [key, readJson(`content/pages/${key}.json`)]))
 const post = {
   slug: 'google-business-profile',
+  path: { hy: 'google-qartez', en: 'google-maps', ru: 'google-karty' },
   date: '2026-11-02',
   author: 'edgar',
   cover: null,
   title: { hy: 'Վերնագիր', en: 'A "title" <b>', ru: 'Заголовок' },
   description: { hy: 'Նկարագիր', en: 'About it', ru: 'Описание' },
 }
+const routes = routeTable(pages, [post])
+const content = {
+  site,
+  people: readJson('content/people.json').people,
+  navigation: readJson('content/navigation.json'),
+  routes,
+}
 const entries = publishedPages({ pages, posts: [post] })
+const entryOf = (key) => entries.find((entry) => (key === 'post' ? entry.post : entry.key === key))
 const SITE = 'https://example.com/botz/'
 
 describe('addresses for search engines', () => {
   it('are full addresses, the Armenian home page being the site itself', () => {
-    assert.equal(pageUrl(SITE, 'index.html', 'hy'), SITE)
-    assert.equal(pageUrl(SITE, 'index.html', 'en'), `${SITE}index-en.html`)
-    assert.equal(pageUrl(SITE, 'about.html', 'ru'), `${SITE}about-ru.html`)
+    assert.equal(pageUrl(SITE, routes, entryOf('home'), 'hy'), SITE)
+    assert.equal(pageUrl(SITE, routes, entryOf('home'), 'en'), `${SITE}en/`)
+    assert.equal(pageUrl(SITE, routes, entryOf('about'), 'ru'), `${SITE}ru/o-nas/`)
+    assert.equal(pageUrl(SITE, routes, entryOf('post'), 'ru'), `${SITE}ru/blog/google-karty/`)
   })
 
   it('name every language and an x-default (Armenian)', () => {
-    assert.deepEqual(alternates(SITE, 'about.html'), [
-      { hreflang: 'hy', href: `${SITE}about.html` },
-      { hreflang: 'en', href: `${SITE}about-en.html` },
-      { hreflang: 'ru', href: `${SITE}about-ru.html` },
-      { hreflang: 'x-default', href: `${SITE}about.html` },
+    assert.deepEqual(alternates(SITE, routes, entryOf('about')), [
+      { hreflang: 'hy', href: `${SITE}mer-masin/` },
+      { hreflang: 'en', href: `${SITE}en/about/` },
+      { hreflang: 'ru', href: `${SITE}ru/o-nas/` },
+      { hreflang: 'x-default', href: `${SITE}mer-masin/` },
     ])
   })
 
@@ -60,8 +66,9 @@ describe('head tags', () => {
     for (const entry of entries) {
       for (const language of LANGUAGES) {
         const page = pageDescription(entry, language, content)
-        assert.ok(page.title.trim() && page.description.trim(), `${entry.file} ${language}`)
-        assert.equal(page.url, pageUrl(site.url, entry.file, language))
+        const name = `${entry.key ?? entry.post.slug} ${language}`
+        assert.ok(page.title.trim() && page.description.trim(), name)
+        assert.equal(page.url, pageUrl(site.url, routes, entry, language))
         assert.equal(page.alternates.length, LANGUAGES.length + 1)
         const tags = seoTags(page).join('\n')
         assert.match(tags, /<link rel="canonical" href="https:/)
@@ -71,15 +78,21 @@ describe('head tags', () => {
     }
   })
 
+  it('give each page a title of at most 60 characters and a description of at most 160', () => {
+    for (const entry of entries.filter((candidate) => candidate.page)) {
+      for (const language of LANGUAGES) {
+        const page = pageDescription(entry, language, content)
+        assert.ok(page.title.length <= 60, `${entry.key} ${language}: "${page.title}"`)
+        assert.ok(page.description.length <= 160, `${entry.key} ${language}: description`)
+      }
+    }
+  })
+
   it('are written into the page between the markers, with the page language', () => {
-    for (const file of [
-      ...PAGES.map((key) => (key === 'home' ? 'index.html' : `${key}.html`)),
-      `${ARTICLE_PAGE}.html`,
-    ]) {
-      const html = readHtml(file)
-      const entry = entries.find((candidate) => candidate.file === file) ?? entries.at(-1)
-      const page = pageDescription(entry, 'ru', content)
-      const published = withSeoTags(html, page)
+    for (const key of [...PAGES, ARTICLE_PAGE]) {
+      const file = key === 'home' ? 'index.html' : `${key}.html`
+      const page = pageDescription(entryOf(key), 'ru', content)
+      const published = withSeoTags(readHtml(file), page)
       assert.match(published, /^<!doctype html>\n<html lang="ru"/, file)
       assert.equal(published.split('<title>').length, 2, `${file}: one title`)
       assert.equal(published.split('og:image').length, 2, `${file}: one og:image`)
@@ -88,12 +101,8 @@ describe('head tags', () => {
 })
 
 describe('schema.org', () => {
-  const schemaOf = (file, language = 'en') =>
-    pageDescription(
-      entries.find((entry) => entry.file === file),
-      language,
-      content,
-    ).schema['@graph']
+  const schemaOf = (key, language = 'en') =>
+    pageDescription(entryOf(key), language, content).schema['@graph']
   const types = (graph) => graph.map((node) => node['@type'])
 
   it('describes the agency on every page, with its contact details', () => {
@@ -107,20 +116,24 @@ describe('schema.org', () => {
   })
 
   it('adds the website on the home page, breadcrumbs elsewhere', () => {
-    assert.deepEqual(types(schemaOf('index.html')).slice(0, 2), ['ProfessionalService', 'WebSite'])
-    const crumbs = schemaOf('about.html').find((node) => node['@type'] === 'BreadcrumbList')
+    assert.deepEqual(types(schemaOf('home')).slice(0, 2), ['ProfessionalService', 'WebSite'])
+    const crumbs = schemaOf('about').find((node) => node['@type'] === 'BreadcrumbList')
     assert.deepEqual(
-      crumbs.itemListElement.map((step) => step.name),
-      ['Home', 'About'],
+      crumbs.itemListElement.map((step) => [step.name, step.item]),
+      [
+        ['Home', `${site.url}en/`],
+        ['About', `${site.url}en/about/`],
+      ],
     )
   })
 
   it('describes each article with its author and date', () => {
-    const graph = schemaOf('post-google-business-profile.html')
+    const graph = schemaOf('post')
     const article = graph.find((node) => node['@type'] === 'BlogPosting')
     assert.equal(article.headline, 'A "title" <b>')
     assert.equal(article.author.name, 'Edgar')
     assert.equal(article.datePublished, '2026-11-02')
+    assert.equal(article.mainEntityOfPage, `${site.url}en/blog/google-maps/`)
     const crumbs = graph.find((node) => node['@type'] === 'BreadcrumbList')
     assert.deepEqual(
       crumbs.itemListElement.map((step) => step.name),
@@ -129,26 +142,18 @@ describe('schema.org', () => {
   })
 
   it('lists questions and answers only where the full list is (not a short list linking to it)', () => {
-    const pagesWithFaq = entries
-      .filter((entry) => entry.page)
-      .filter((entry) => types(schemaOf(entry.file)).includes('FAQPage'))
-      .map((entry) => entry.file)
-    assert.deepEqual(pagesWithFaq, ['pricing.html'])
+    const pagesWithFaq = PAGES.filter((key) => types(schemaOf(key)).includes('FAQPage'))
+    assert.deepEqual(pagesWithFaq, ['pricing'])
   })
 })
 
 describe('sitemap.xml and robots.txt', () => {
   it('list every page in every language, each with its other languages', () => {
-    const xml = sitemapXml(SITE, [
-      { file: 'index.html' },
-      { file: 'about.html', lastModified: '2026-11-02' },
-    ])
+    const listed = [entryOf('home'), { ...entryOf('about'), lastModified: '2026-11-02' }]
+    const xml = sitemapXml(SITE, routes, listed)
     assert.equal(xml.split('<url>').length - 1, 2 * LANGUAGES.length)
     assert.equal(xml.split('<xhtml:link').length - 1, 2 * LANGUAGES.length * (LANGUAGES.length + 1))
-    assert.match(
-      xml,
-      new RegExp(`<loc>${SITE}about-ru.html</loc>\\n    <lastmod>2026-11-02</lastmod>`),
-    )
+    assert.match(xml, new RegExp(`<loc>${SITE}ru/o-nas/</loc>\\n    <lastmod>2026-11-02</lastmod>`))
     assert.match(xml, new RegExp(`<loc>${SITE}</loc>`))
   })
 

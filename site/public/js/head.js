@@ -23,23 +23,27 @@
   const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark'
   root.dataset.theme = theme
 
-  // The language is the address's (js/lib/urls.js): about-en.html English, about-ru.html Russian,
-  // about.html Armenian. The Armenian address opens in the language the visitor chose earlier
-  // with the language switch, and an old link with ?lang=en goes to the English address. (Never
-  // by the browser's language: search engines must be able to read the Armenian pages.)
+  // The language is the address's (js/lib/urls.js): the en/ and ru/ folders under the site's
+  // root (<base href>), Armenian elsewhere. An Armenian address opens in the language the visitor
+  // chose earlier with the language switch, and an old link with ?lang=en in English: the page
+  // names its other languages' addresses (hreflang links, written when publishing). (Never by
+  // the browser's language: search engines must be able to read the Armenian pages.)
   const LANGUAGES = ['hy', 'en', 'ru']
   const params = new URLSearchParams(location.search)
-  const file = location.pathname.split('/').pop() || 'index.html'
-  const language = file.match(/-(en|ru)\.html$/)?.[1] ?? 'hy'
+  const sitePath = location.pathname.slice(new URL(document.baseURI).pathname.length)
+  const folder = sitePath.split('/')[0]
+  const language = folder !== 'hy' && LANGUAGES.includes(folder) ? folder : 'hy'
   const wanted = [params.get('lang'), language === 'hy' ? readSaved('lang') : null].find((code) =>
     LANGUAGES.includes(code),
   )
-  if (wanted && wanted !== language) {
-    const defaultFile = file.replace(/-(en|ru)\.html$/, '.html')
-    const target = wanted === 'hy' ? defaultFile : defaultFile.replace(/\.html$/, `-${wanted}.html`)
+  const alternate =
+    wanted && wanted !== language
+      ? document.querySelector(`link[rel="alternate"][hreflang="${wanted}"]`)
+      : null
+  if (alternate) {
     params.delete('lang')
     const search = params.toString() ? `?${params}` : ''
-    location.replace(target + search + location.hash)
+    location.replace(alternate.href + search + location.hash)
   }
 
   // The header and first section in each language (css/base/fonts.css): page titles (Anton;

@@ -164,7 +164,7 @@ export function renderInquiryForm({ service: pageService }) {
           serviceLabel: ui('services', values.service),
           contactName,
           estimate: estimateSummary(),
-          page: location.pathname.split('/').pop() || 'index.html',
+          page: location.pathname,
           language: getLanguage(),
         }),
       )

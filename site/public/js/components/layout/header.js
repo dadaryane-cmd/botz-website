@@ -3,8 +3,7 @@ import { navigation } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { getLanguage, rememberLanguage, t, ui } from '../../lib/i18n.js'
 import { external, phoneHref, whatsappHref } from '../../lib/links.js'
-import { currentFile } from '../../lib/page.js'
-import { fileFromPath, fileInLanguage } from '../../lib/urls.js'
+import { currentFile, currentPageIn } from '../../lib/page.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 import { logoImages } from '../logo.js'
 
@@ -74,11 +73,10 @@ export function renderHeader(header) {
 }
 
 /**
- * Links to this page in each language (about.html, about-en.html, about-ru.html): real links, so
- * search engines find every language too. The choice is remembered for the next visit.
+ * Links to this page in each language (mer-masin/, en/about/, ru/o-nas/): real links, so search
+ * engines find every language too. The choice is remembered for the next visit.
  */
 function languageSwitch() {
-  const file = fileFromPath(location.pathname)
   return h(
     'div',
     { class: 'language-switch', role: 'group', 'aria-label': ui('common', 'language') },
@@ -86,7 +84,7 @@ function languageSwitch() {
       h(
         'a',
         {
-          href: fileInLanguage(file, language) + location.search + location.hash,
+          href: currentPageIn(language) + location.search + location.hash,
           hreflang: language,
           lang: language,
           'aria-current': language === getLanguage() ? 'true' : null,

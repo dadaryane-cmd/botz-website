@@ -1,5 +1,10 @@
 {
   "slug": "google-business-profile",
+  "path": {
+    "hy": "inchpes-avelacnel-biznesy-google-qartezum",
+    "en": "add-your-business-to-google-maps",
+    "ru": "kak-dobavit-biznes-v-google-karty"
+  },
   "date": "2026-11-02",
   "author": "edgar",
   "cover": null,

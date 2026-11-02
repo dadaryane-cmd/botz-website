@@ -2,31 +2,44 @@
  * The publishing step (`npm run build`, run by .github/workflows/pages.yml): copies public/ to
  * dist/ and adds what is written from the content:
  *
- * - every page and published article in each language (about.html, about-en.html,
- *   about-ru.html), with its title, description, canonical and hreflang links, link-preview tags
+ * - every page and published article at its address in each language (js/lib/urls.js:
+ *   mer-masin/index.html, ru/o-nas/index.html, en/blog/<slug>/index.html …), with the site's root
+ *   as <base href> and its title, description, canonical and hreflang links, link-preview tags
  *   and schema.org description in the <head> (scripts/seo), so search engines read them without
- *   running the page's script. Articles are copies of post.html (not published itself) that also
- *   fetch the article's file up front;
- * - content/posts/index.json, the list the blog page shows (published articles, newest first);
- * - sitemap.xml and robots.txt.
+ *   running the page's script. Articles are copies of post.html that name the article and fetch
+ *   its file up front;
+ * - content/routes.json (every address) and content/posts/index.json (the blog's list);
+ * - sitemap.xml and robots.txt;
+ * - a redirect at every earlier address (about.html, about-en.html, smm.html …), so old links and
+ *   bookmarks still lead to the page. The page shells themselves are not published.
  *
  * Articles dated in the future are left out until a later publish (the workflow also runs daily).
- * With --preview every page is also marked noindex (the workflow publishes the `preview` branch
- * built this way at /preview/).
+ * With --preview the site is built for /preview/ under the site's address, with every page marked
+ * noindex (the workflow publishes the `preview` branch built this way).
  */
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { LANGUAGES, PAGES } from '../public/js/config.js'
-import { fileInLanguage } from '../public/js/lib/urls.js'
+import { ARTICLE_PAGE, DEFAULT_LANGUAGE, LANGUAGES } from '../public/js/config.js'
+import { HOME_PAGE, localizeHref, pagePath, postPath, routeTable } from '../public/js/lib/urls.js'
 import { PUBLIC_DIR } from './build-preloads.js'
+import { readContent, ROUTES_FILE } from './read-content.js'
 import { INDEX_FILE, postsFolder, readPostIndex, toJson } from './read-posts.js'
-import { withSeoTags } from './seo/head-tags.js'
+import { escapeHtml, scriptJson, withSeoTags } from './seo/head-tags.js'
 import { pageDescription, publishedPages } from './seo/pages.js'
 import { robotsTxt, sitemapXml } from './seo/sitemap.js'
 
 export const DIST_DIR = fileURLToPath(new URL('../dist/', import.meta.url))
-const ARTICLE_TEMPLATE = 'post.html'
+const ARTICLE_TEMPLATE = `${ARTICLE_PAGE}.html`
+/** The <base href> of the page shells, for the dev server at the root of localhost. */
+const SOURCE_BASE = '<base href="/" />'
+
+/** Pages that were merged into the Services page, and where they went. */
+export const RETIRED_PAGES = {
+  'smm.html': 'services.html#smm',
+  'seo.html': 'services.html#seo',
+  'website-creation.html': 'services.html#website',
+}
 
 const NOINDEX = '<meta name="robots" content="noindex" />'
 
@@ -39,68 +52,150 @@ export function withNoindex(html) {
   return html.replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${NOINDEX}`)
 }
 
-/** An article's page: the template, with the article's file fetched alongside the others. */
+/** The page with the site's root as its base, so its files load from any folder. */
+export function withBase(html, rootPath) {
+  if (!html.includes(SOURCE_BASE)) throw new Error(`no ${SOURCE_BASE}`)
+  return html.replace(SOURCE_BASE, `<base href="${escapeHtml(rootPath)}" />`)
+}
+
+/** An article's page: the template, naming the article and fetching its file up front. */
 export function articlePage(template, slug) {
   const firstModule = template.indexOf('<link rel="modulepreload"')
   if (firstModule === -1) throw new Error(`${ARTICLE_TEMPLATE} has no preload block`)
   const preload = `<link rel="preload" href="content/posts/${slug}.json" as="fetch" crossorigin />`
-  return `${template.slice(0, firstModule)}${preload}\n    ${template.slice(firstModule)}`
+  const withPreload = `${template.slice(0, firstModule)}${preload}\n    ${template.slice(firstModule)}`
+  return withPreload.replace(
+    `data-page="${ARTICLE_PAGE}"`,
+    `data-page="${ARTICLE_PAGE}" data-post="${escapeHtml(slug)}"`,
+  )
 }
 
-const readJson = (path) => JSON.parse(readFileSync(join(PUBLIC_DIR, path), 'utf8'))
+/**
+ * A page that sends the visitor on at once (and tells search engines where the page is now). The
+ * old address's ?query and #anchor go along (pricing.html?cat=seo, a ?lang=ru link), unless the
+ * new address has its own.
+ */
+export function redirectPage(target) {
+  const href = escapeHtml(target)
+  const search = target.includes('?') ? "''" : 'location.search'
+  const hash = target.includes('#') ? "''" : 'location.hash'
+  return [
+    '<!doctype html>',
+    '<html>',
+    '  <head>',
+    '    <meta charset="utf-8" />',
+    `    ${NOINDEX}`,
+    '    <title>BOTZ</title>',
+    `    <link rel="canonical" href="${href}" />`,
+    `    <meta http-equiv="refresh" content="0; url=${href}" />`,
+    `    <script>location.replace(${scriptJson(target)} + ${search} + ${hash})</script>`,
+    '  </head>',
+    `  <body><a href="${href}">${href}</a></body>`,
+    '</html>',
+    '',
+  ].join('\n')
+}
 
-/** What the search-engine tags are written from. */
-const readContent = () => ({
-  site: readJson('content/site.json'),
-  people: readJson('content/people.json').people,
-  navigation: readJson('content/navigation.json'),
-  pages: Object.fromEntries(PAGES.map((key) => [key, readJson(`content/pages/${key}.json`)])),
-})
+/**
+ * Every earlier address and the address it now redirects to (relative to the root): the page
+ * files of each language (about.html, about-en.html, about-ru.html, post-<slug>-en.html …) and
+ * the retired pages. The Armenian index.html is the home page itself.
+ */
+export function earlierAddresses(routes) {
+  const named = (name, pathIn) =>
+    LANGUAGES.map((language) => ({
+      file: language === DEFAULT_LANGUAGE ? `${name}.html` : `${name}-${language}.html`,
+      path: pathIn(language),
+    }))
+  const pages = Object.keys(routes.pages).flatMap((key) =>
+    named(key === HOME_PAGE ? 'index' : key, (language) => pagePath(routes, key, language)),
+  )
+  const posts = Object.keys(routes.posts).flatMap((id) =>
+    named(`post-${id}`, (language) => postPath(routes, id, language)),
+  )
+  const retired = Object.entries(RETIRED_PAGES).map(([file, target]) => ({
+    file,
+    path: localizeHref(target, DEFAULT_LANGUAGE, routes),
+  }))
+  return [...pages, ...posts, ...retired].filter((entry) => entry.file !== 'index.html')
+}
 
-/** Every HTML page in the built site gets `transform` applied. */
+/** The file a page is written to: "ru/uslugi/" → ru/uslugi/index.html, "./" → index.html. */
+const pageFile = (path) => (path === './' ? 'index.html' : `${path}index.html`)
+
+function writeFile(relativePath, text) {
+  const path = join(DIST_DIR, relativePath)
+  mkdirSync(dirname(path), { recursive: true })
+  writeFileSync(path, text)
+}
+
+/** Every HTML page in the built site gets `transform` applied (all folders). */
 function rewritePages(transform) {
-  for (const file of readdirSync(DIST_DIR).filter((name) => name.endsWith('.html'))) {
+  const pages = readdirSync(DIST_DIR, { recursive: true }).filter((name) => name.endsWith('.html'))
+  for (const file of pages) {
     const path = join(DIST_DIR, file)
     writeFileSync(path, transform(readFileSync(path, 'utf8')))
   }
 }
 
-/** Each page in each language, with its search-engine tags. */
-function writePages(pages, content) {
+/** Each page in each language at its address, with its base and search-engine tags. */
+function writePages({ pages, routes, content, rootPath }) {
   const template = readFileSync(join(PUBLIC_DIR, ARTICLE_TEMPLATE), 'utf8')
   for (const entry of pages) {
     const source = entry.post
       ? articlePage(template, entry.post.slug)
       : readFileSync(join(PUBLIC_DIR, entry.file), 'utf8')
     for (const language of LANGUAGES) {
-      const html = withSeoTags(source, pageDescription(entry, language, content))
-      writeFileSync(join(DIST_DIR, fileInLanguage(entry.file, language)), html)
+      const description = pageDescription(entry, language, { ...content, routes })
+      const path = entry.post
+        ? postPath(routes, entry.post.slug, language)
+        : pagePath(routes, entry.key, language)
+      writeFile(pageFile(path), withSeoTags(withBase(source, rootPath), description))
     }
   }
 }
 
+/** The 404 page: GitHub Pages shows it at any missing address, in any folder. */
+function writeNotFound(rootPath) {
+  writeFile('404.html', withBase(readFileSync(join(PUBLIC_DIR, '404.html'), 'utf8'), rootPath))
+}
+
 function build({ preview = false, today } = {}) {
+  const content = readContent(PUBLIC_DIR)
+  // The preview is a whole copy of the site in /preview/: its addresses point there.
+  const siteUrl = preview ? new URL('preview/', content.site.url).href : content.site.url
+  const rootPath = new URL(siteUrl).pathname
+  const site = { ...content.site, url: siteUrl }
+
   rmSync(DIST_DIR, { recursive: true, force: true })
+  // The page shells become the pages below and redirects; content files are copied as they are.
+  const shells = new Set(readdirSync(PUBLIC_DIR).filter((file) => file.endsWith('.html')))
   cpSync(PUBLIC_DIR, DIST_DIR, {
     recursive: true,
-    filter: (source) => !source.endsWith(join('content/posts', INDEX_FILE)),
+    filter: (source) =>
+      !shells.has(source.slice(PUBLIC_DIR.length)) &&
+      !source.endsWith(join('content/posts', INDEX_FILE)),
   })
-  rmSync(join(DIST_DIR, ARTICLE_TEMPLATE))
 
   const posts = readPostIndex(PUBLIC_DIR, today)
+  const routes = routeTable(content.pages, posts)
   mkdirSync(postsFolder(DIST_DIR), { recursive: true })
   writeFileSync(join(postsFolder(DIST_DIR), INDEX_FILE), toJson(posts))
+  writeFile(ROUTES_FILE, toJson(routes))
 
-  const content = readContent()
   const pages = publishedPages({ pages: content.pages, posts })
-  writePages(pages, content)
-  writeFileSync(join(DIST_DIR, 'sitemap.xml'), sitemapXml(content.site.url, pages))
-  writeFileSync(join(DIST_DIR, 'robots.txt'), robotsTxt(content.site.url))
+  writePages({ pages, routes, content: { ...content, site }, rootPath })
+  writeNotFound(rootPath)
+  for (const { file, path } of earlierAddresses(routes)) {
+    writeFile(file, redirectPage(new URL(path, siteUrl).href))
+  }
+  writeFile('sitemap.xml', sitemapXml(siteUrl, routes, pages))
+  writeFile('robots.txt', robotsTxt(siteUrl))
 
   if (preview) rewritePages(withNoindex)
   console.log(
-    `Built dist/: ${pages.length} pages in ${LANGUAGES.length} languages, ${posts.length} of ` +
-      `them articles${preview ? ' (preview)' : ''}`,
+    `Built dist/ for ${siteUrl}: ${pages.length} pages in ${LANGUAGES.length} languages ` +
+      `(${posts.length} articles)`,
   )
 }
 

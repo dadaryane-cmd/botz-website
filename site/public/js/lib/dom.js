@@ -1,12 +1,22 @@
+import { routes } from '../content/routes.js'
 import { getLanguage, t } from './i18n.js'
 import { localizeHref } from './urls.js'
 
 /**
+ * A link's address: a site page named by its file goes to that page's address in this page's
+ * language ("pricing.html" → "ru/ceny/", js/lib/urls.js); a link that names its language with
+ * `hreflang` (the language switch) is already one. Addresses are relative to the site's root
+ * (<base href>), so "#contact" is written out as this page's address plus the anchor.
+ */
+function linkHref(href, attributes) {
+  if (attributes.hreflang) return href
+  if (String(href).startsWith('#')) return location.pathname + location.search + href
+  return localizeHref(href, getLanguage(), routes)
+}
+
+/**
  * Create an element: `h('a', { href: '#', class: 'btn', onclick }, 'Label', childNode)`.
  * Strings become text nodes (never parsed as HTML); null, false and nested arrays are flattened away.
- * Links to the site's pages lead to the same language ("pricing.html" on an English page →
- * "pricing-en.html"); a link that names its language with `hreflang` (the language switch) is
- * left as it is.
  */
 export function h(tag, attributes, ...children) {
   const element = document.createElement(tag)
@@ -16,8 +26,8 @@ export function h(tag, attributes, ...children) {
       element.className = value
     } else if (name.startsWith('on')) {
       element.addEventListener(name.slice(2), value)
-    } else if (name === 'href' && !attributes.hreflang) {
-      element.setAttribute(name, localizeHref(value, getLanguage()))
+    } else if (name === 'href' && tag === 'a') {
+      element.setAttribute(name, linkHref(value, attributes))
     } else {
       element.setAttribute(name, value === true ? '' : value)
     }

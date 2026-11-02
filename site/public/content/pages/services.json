@@ -1,23 +1,28 @@
 {
+  "path": {
+    "hy": "tsarayutyunner",
+    "en": "services",
+    "ru": "uslugi"
+  },
   "meta": {
     "title": {
-      "hy": "Ծառայություններ — Սոցցանցեր, SEO, կայքեր և ռազմավարություն",
-      "en": "Services — Social media, SEO, websites and strategy",
-      "ru": "Услуги — Соцсети, SEO, сайты и стратегия"
+      "hy": "Ծառայություններ՝ SMM, SEO և կայքերի պատրաստում",
+      "en": "Services: Social Media Marketing, SEO & Websites",
+      "ru": "Услуги: SMM, SEO-продвижение и создание сайтов"
     },
     "description": {
-      "hy": "Սոցիալական մեդիա մարքեթինգ, SEO և կայքի օպտիմալացում, կայքերի ստեղծում և թվային մարքեթինգի ռազմավարություն BOTZ-ից։",
-      "en": "Social media marketing, SEO and website optimisation, website creation and digital marketing strategy from BOTZ Marketing Agency.",
-      "ru": "Маркетинг в соцсетях, SEO и оптимизация сайтов, создание сайтов и стратегия цифрового маркетинга от BOTZ."
+      "hy": "Սոցցանցերի վարում և գովազդ, SEO՝ Google-ում առաջխաղացման համար, կայքերի պատրաստում և մարքեթինգային ռազմավարություն Երևանում։",
+      "en": "Social media management and ads, SEO to rank on Google, website development and marketing strategy for businesses in Yerevan, Armenia.",
+      "ru": "Ведение соцсетей и таргетированная реклама, SEO-продвижение сайтов в Google, создание сайтов и маркетинговая стратегия для бизнеса в Ереване."
     }
   },
   "sections": [
     {
       "type": "hero",
       "heading": {
-        "hy": "Թվային մարքեթինգի *ամբողջական ծառայություններ*",
-        "en": "Full-Service *Digital Marketing Agency*",
-        "ru": "Агентство цифрового маркетинга *полного цикла*"
+        "hy": "SMM, SEO և *կայքերի պատրաստում*",
+        "en": "Social media, SEO and *website development*",
+        "ru": "SMM, SEO-продвижение и *создание сайтов*"
       },
       "subheading": {
         "hy": "Կրեատիվ արշավներից մինչև ռազմավարական աճ՝ օգնում ենք բրենդներին կառուցել թվային ներկայություն և առաջ տանել իրենց բիզնեսը։",

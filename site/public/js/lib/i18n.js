@@ -1,24 +1,25 @@
 import { DEFAULT_LANGUAGE, LANGUAGES } from '../config.js'
 import { ui as strings } from '../content/index.js'
 import { save } from './storage.js'
-import { languageFromPath } from './urls.js'
+import { languageOfPath } from './urls.js'
 
 let current = DEFAULT_LANGUAGE
 
 export const getLanguage = () => current
 
 /**
- * The page's language comes from its address (about-en.html is English; js/lib/urls.js).
- * head.js has already sent a visitor who chose another language to that language's address.
+ * The page's language comes from its address relative to the site's root: "ru/uslugi/" is
+ * Russian, "mer-masin/" Armenian (js/lib/urls.js). head.js has already sent a visitor who chose
+ * another language to that language's address.
  */
-export function initLanguage(pathname) {
-  current = languageFromPath(pathname)
+export function initLanguage(sitePath) {
+  current = languageOfPath(sitePath)
   return current
 }
 
 /**
- * Remember a language the visitor picked with the language switch: the default address
- * (about.html) then opens in it on later visits (head.js).
+ * Remember a language the visitor picked with the language switch: Armenian addresses then
+ * open in it on later visits (head.js).
  */
 export function rememberLanguage(language) {
   if (LANGUAGES.includes(language)) save('lang', language)

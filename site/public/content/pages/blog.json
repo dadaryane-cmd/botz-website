@@ -1,14 +1,19 @@
 {
+  "path": {
+    "hy": "blog",
+    "en": "blog",
+    "ru": "blog"
+  },
   "meta": {
     "title": {
-      "hy": "Բլոգ՝ սոցցանցեր, SEO և կայքեր",
-      "en": "Blog: social media, SEO and websites",
-      "ru": "Блог: соцсети, SEO и сайты"
+      "hy": "Բլոգ՝ SMM, SEO և կայքեր բիզնեսի համար",
+      "en": "Blog: SMM, SEO and Website Tips for Business",
+      "ru": "Блог о SMM, SEO и сайтах для бизнеса"
     },
     "description": {
-      "hy": "Գործնական խորհուրդներ սոցցանցերի, Google-ում որոնման և կայքերի մասին՝ Հայաստանի բիզնեսների համար։",
-      "en": "Practical advice on social media, Google search and websites for businesses in Armenia.",
-      "ru": "Практические советы о соцсетях, поиске в Google и сайтах для бизнеса в Армении."
+      "hy": "Գործնական խորհուրդներ սոցցանցերի վարման, Google-ում առաջխաղացման և կայքերի մասին՝ Հայաստանի բիզնեսների համար։",
+      "en": "Practical advice on social media, ranking on Google and websites for businesses in Armenia, from a Yerevan marketing agency.",
+      "ru": "Практические советы по ведению соцсетей, продвижению в Google и сайтам для бизнеса в Армении от маркетингового агентства из Еревана."
     }
   },
   "sections": [

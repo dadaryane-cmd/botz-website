@@ -12,7 +12,7 @@ import { renderNotFound } from './components/not-found.js'
 import { renderSection } from './components/sections/index.js'
 import { site } from './content/index.js'
 import { getLanguage, initLanguage, t, ui } from './lib/i18n.js'
-import { currentArticle, currentPage, isArticlePage } from './lib/page.js'
+import { currentArticle, currentPage, currentSitePath, isArticlePage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
 import { initSelection } from './pricing/selection.js'
 
@@ -64,7 +64,9 @@ function renderAll() {
   renderMobileBar(elements.mobileBar)
 }
 
-initLanguage(location.pathname)
+initLanguage(currentSitePath())
+// With <base href> at the site's root, the shell's "#main" would lead to the home page.
+elements.skipLink.setAttribute('href', `${location.pathname}#main`)
 initSelection(location.search)
 // head.js started loading the first screen's fonts. Drawn before they arrive, the text would
 // re-wrap when they do and the page below would jump; so wait for them, but never long.

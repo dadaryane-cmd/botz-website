@@ -1,5 +1,6 @@
 /** Human-readable estimate: package titles, a plain-text summary and a shareable link. */
 import { catalog } from '../content/index.js'
+import { routes } from '../content/routes.js'
 import { formatAmd, formatMonths } from '../lib/format.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
 import { localizeHref } from '../lib/urls.js'
@@ -38,7 +39,7 @@ export function estimateSummary(totals = currentQuote()) {
 
 /** Absolute link that reopens the pricing tool with this selection. */
 export function estimateLink(selection = getSelection()) {
-  const url = new URL(localizeHref('pricing.html', getLanguage()), location.href)
+  const url = new URL(localizeHref('pricing.html', getLanguage(), routes), document.baseURI)
   url.search = toParams(selection)
   url.hash = 'pricing'
   return url.href
