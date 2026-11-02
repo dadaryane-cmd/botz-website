@@ -270,6 +270,14 @@ picture {
   display: contents;
 }
 
+/*
+ * Its <source> only names a file. Browsers do not hide it, and with the <picture> out of the way
+ * it would become an item of its own in a flex row or grid (an extra gap before the photo).
+ */
+picture > source {
+  display: none;
+}
+
 a {
   color: inherit;
   text-underline-offset: 3px;
