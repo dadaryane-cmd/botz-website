@@ -146,10 +146,12 @@
 
         // The header and first section in each language (css/base/fonts.css): page titles (Anton;
         // Russian falls back to Oswald, Armenian to Noto) and body text (Golos Text). Each font with a
-        // sample letter, which picks the right piece of it (Latin, Cyrillic or Armenian).
+        // sample letter, which picks the right piece of it (Latin, Cyrillic or Armenian). Armenian and
+        // Russian titles also have Latin words ("SMM, SEO"), drawn in Anton.
         const FIRST_SCREEN_FONTS = {
           hy: [
             ['Noto Sans Armenian', 'Ա'],
+            ['Anton', 'A'],
             ['Golos Text', 'A'],
           ],
           en: [
@@ -158,6 +160,7 @@
           ],
           ru: [
             ['Oswald', 'Б'],
+            ['Anton', 'A'],
             ['Golos Text', 'Б'],
             ['Golos Text', 'A'],
           ],
