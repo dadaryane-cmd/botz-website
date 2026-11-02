@@ -241,6 +241,12 @@ const sectionBlocks = [
     ],
   },
   {
+    name: 'blogList',
+    label: 'Blog articles',
+    // The articles themselves are edited under Blog articles.
+    fields: [heading(), text('intro', 'Intro', { long: true }), ...layout],
+  },
+  {
     name: 'cta',
     label: 'Call to action',
     fields: [
@@ -257,6 +263,7 @@ const PAGE_LABELS = {
   services: 'Services',
   pricing: 'Pricing',
   about: 'About',
+  blog: 'Blog',
   contact: 'Contact',
 }
 
@@ -497,6 +504,54 @@ const lampTipsEntry = {
   fields: [list(text('tips', 'Tip', { long: true }), '{en}')],
 }
 
+const MARKDOWN_HINT =
+  'New paragraph: an empty line. ## Subheading, **bold**, *italic*, [link text](https://…), ' +
+  'lines starting with "- " or "1. " for lists, "> " for a highlighted quote, ' +
+  '![description](images/picture.webp) for a picture.'
+
+/** One file per article in content/posts, named after its address. */
+const postsEntry = {
+  name: 'posts',
+  label: 'Blog articles',
+  description:
+    'Every article needs its title, description and text in all three languages. An article ' +
+    'dated in the future appears on that day.',
+  type: 'collection',
+  path: `${CONTENT}/posts`,
+  format: 'json',
+  filename: '{fields.slug}.json',
+  view: {
+    fields: ['title.en', 'date', 'author'],
+    primary: 'title.en',
+    sort: ['date'],
+    default: { sort: 'date', order: 'desc' },
+  },
+  fields: [
+    string('slug', 'Address', {
+      required: true,
+      description:
+        'The article is published at post-<address>.html: lowercase Latin letters, digits and ' +
+        'hyphens, e.g. google-business-profile. Do not change it once published.',
+      pattern: {
+        regex: '^[a-z0-9]+(-[a-z0-9]+)*$',
+        message: 'Lowercase Latin letters, digits and hyphens only.',
+      },
+    }),
+    { name: 'date', label: 'Date', type: 'date', required: true },
+    select('author', 'Author', peopleKeys),
+    {
+      name: 'cover',
+      label: 'Cover (16:9, e.g. 1600×900; WebP or JPEG)',
+      type: 'image',
+      options: { media: 'images' },
+    },
+    text('coverAlt', 'Cover description (for screen readers and search engines)'),
+    text('title', 'Title'),
+    text('description', 'Short description (blog list and search results)', { long: true }),
+    text('body', 'Text', { long: true, description: MARKDOWN_HINT }),
+  ],
+}
+
 /* ---------- configuration ---------- */
 
 const languageFields = (type) => [
@@ -537,6 +592,7 @@ export const pagesConfig = {
   },
   content: [
     { name: 'pages', label: 'Pages', type: 'group', items: PAGES.map(pageEntry) },
+    postsEntry,
     catalogEntry,
     finderEntry,
     siteEntry,

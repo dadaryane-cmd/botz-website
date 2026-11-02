@@ -2,7 +2,7 @@
  * BOTZ website styles: the list of stylesheets, in order. Order matters: later files may refine
  * earlier ones (e.g. the header hides the generic icon button on desktop).
  * Pages load css/site.css, these files joined into one by `npm run preload` (one request instead
- * of 33): run it after changing any of them.
+ * of one per file): run it after changing any of them.
  */
 
 /* Foundations */
@@ -41,6 +41,7 @@
 @import url('components/comparison.css');
 @import url('components/finder.css');
 @import url('components/contact.css');
+@import url('components/blog.css');
 
 /* Overrides */
 @import url('base/reveal.css');

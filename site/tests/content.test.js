@@ -3,7 +3,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { describe, it } from 'node:test'
 import { fileURLToPath } from 'node:url'
-import { PAGES } from '../public/js/config.js'
+import { ARTICLE_PAGE, PAGES } from '../public/js/config.js'
 import { catalog, finder, navigation, people } from '../public/js/content/index.js'
 import { loadJson } from '../public/js/content/load.js'
 import { interpolate, t, ui } from '../public/js/lib/i18n.js'
@@ -14,6 +14,7 @@ const pages = Object.fromEntries(
   await Promise.all(PAGES.map(async (key) => [key, await loadJson(`pages/${key}.json`)])),
 )
 const SECTION_TYPES = [
+  'blogList',
   'comparison',
   'contact',
   'cta',
@@ -47,8 +48,9 @@ describe('content', () => {
     const htmlFiles = readdirSync(publicDir).filter(
       (file) => file.endsWith('.html') && file !== '404.html' && !isRedirect(file),
     )
-    assert.deepEqual(PAGES.map(htmlFile).sort(), htmlFiles.sort())
-    for (const key of PAGES) {
+    const keys = [...PAGES, ARTICLE_PAGE]
+    assert.deepEqual(keys.map(htmlFile).sort(), htmlFiles.sort())
+    for (const key of keys) {
       const html = readFileSync(join(publicDir, htmlFile(key)), 'utf8')
       assert.ok(
         html.includes(`data-page="${key}"`),

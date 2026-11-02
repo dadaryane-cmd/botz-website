@@ -29,7 +29,7 @@ export function renderTeam(config) {
 }
 
 /** The photo (AVIF when there is one, else WebP/JPEG) or, without a photo, the first letter. */
-const portrait = (person, className) =>
+export const portrait = (person, className) =>
   person.photo
     ? picture({
         class: `${className} has-photo`,

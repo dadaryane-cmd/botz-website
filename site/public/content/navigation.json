@@ -31,6 +31,14 @@
         "ru": "О нас"
       },
       "href": "about.html"
+    },
+    {
+      "label": {
+        "hy": "Բլոգ",
+        "en": "Blog",
+        "ru": "Блог"
+      },
+      "href": "blog.html"
     }
   ],
   "cta": {
@@ -103,6 +111,14 @@
             "ru": "О нас"
           },
           "href": "about.html"
+        },
+        {
+          "label": {
+            "hy": "Բլոգ",
+            "en": "Blog",
+            "ru": "Блог"
+          },
+          "href": "blog.html"
         },
         {
           "label": {

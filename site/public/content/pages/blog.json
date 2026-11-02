@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "title": {
+      "hy": "Բլոգ՝ սոցցանցեր, SEO և կայքեր",
+      "en": "Blog: social media, SEO and websites",
+      "ru": "Блог: соцсети, SEO и сайты"
+    },
+    "description": {
+      "hy": "Գործնական խորհուրդներ սոցցանցերի, Google-ում որոնման և կայքերի մասին՝ Հայաստանի բիզնեսների համար։",
+      "en": "Practical advice on social media, Google search and websites for businesses in Armenia.",
+      "ru": "Практические советы о соцсетях, поиске в Google и сайтах для бизнеса в Армении."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "variant": "compact",
+      "heading": {
+        "hy": "Բլոգ",
+        "en": "Blog",
+        "ru": "Блог"
+      },
+      "subheading": {
+        "hy": "Գործնական խորհուրդներ սոցցանցերի, որոնման և կայքերի մասին՝ մեր ամենօրյա աշխատանքից։",
+        "en": "Practical advice on social media, search and websites, from our everyday work.",
+        "ru": "Практические советы о соцсетях, поиске и сайтах — из нашей ежедневной работы."
+      }
+    },
+    {
+      "type": "blogList",
+      "id": "articles"
+    }
+  ]
+}

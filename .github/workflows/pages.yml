@@ -1,10 +1,14 @@
-# Publishes the static website in site/public/ to GitHub Pages on every push to main.
+# Publishes the website to GitHub Pages on every push to main: site/public/ plus the blog's
+# article pages and list, built by `npm run build` into site/dist/ (no dependencies to install).
+# It also runs daily, so an article dated in the future appears on its day.
 name: Deploy website to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths: ['site/public/**', '.github/workflows/pages.yml']
+    paths: ['site/public/**', 'site/scripts/**', '.github/workflows/pages.yml']
+  schedule:
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,9 +28,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the site
+        working-directory: site
+        run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site/public
+          path: site/dist
       - id: deployment
         uses: actions/deploy-pages@v4

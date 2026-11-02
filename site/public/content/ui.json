@@ -716,5 +716,52 @@
       "en": "Write to us",
       "ru": "Напишите нам"
     }
+  },
+  "blog": {
+    "readingTime": {
+      "hy": "{n} րոպե ընթերցանություն",
+      "en": "{n} min read",
+      "ru": "{n} мин чтения"
+    },
+    "empty": {
+      "hy": "Առաջին հոդվածները շուտով կհայտնվեն այստեղ։",
+      "en": "The first articles will appear here soon.",
+      "ru": "Первые статьи скоро появятся здесь."
+    },
+    "backToBlog": {
+      "hy": "← Բոլոր հոդվածները",
+      "en": "← All articles",
+      "ru": "← Все статьи"
+    },
+    "ctaTitle": {
+      "hy": "Ուզո՞ւմ եք իմանալ, թե ինչ կաշխատի ձեր բիզնեսի համար",
+      "en": "Want to know what would work for your business?",
+      "ru": "Хотите узнать, что сработает для вашего бизнеса?"
+    },
+    "ctaText": {
+      "hy": "Մենք կնայենք ձեր սոցցանցերը, կայքը և Google-ում ձեր տեսանելիությունը և կասենք, թե որտեղից սկսել։ Անվճար և առանց պարտավորության։",
+      "en": "We will look at your social media, website and how you show up on Google, and tell you where to start. Free, with no obligation.",
+      "ru": "Мы посмотрим ваши соцсети, сайт и то, как вас видно в Google, и подскажем, с чего начать. Бесплатно и без обязательств."
+    },
+    "ctaButton": {
+      "hy": "Անվճար մարքեթինգային աուդիտ →",
+      "en": "Free marketing audit →",
+      "ru": "Бесплатный маркетинговый аудит →"
+    },
+    "ctaMessage": {
+      "hy": "Բարև։ Կարդացի ձեր բլոգը և կցանկանայի անվճար մարքեթինգային աուդիտ։",
+      "en": "Hello! I read your blog and would like a free marketing audit.",
+      "ru": "Здравствуйте! Я прочитал(а) ваш блог и хотел(а) бы бесплатный маркетинговый аудит."
+    },
+    "missingTitle": {
+      "hy": "Հոդվածը չի գտնվել",
+      "en": "Article not found",
+      "ru": "Статья не найдена"
+    },
+    "missingText": {
+      "hy": "Հնարավոր է՝ հասցեն սխալ է կամ հոդվածը հեռացվել է։",
+      "en": "The address may be wrong, or the article has been removed.",
+      "ru": "Возможно, адрес неверный или статья была удалена."
+    }
   }
 }

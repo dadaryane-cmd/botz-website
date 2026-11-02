@@ -468,6 +468,28 @@ components:
             label: Width
             type: string
             hidden: true
+      - name: blogList
+        label: Blog articles
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
       - name: cta
         label: Call to action
         fields:
@@ -628,6 +650,25 @@ content:
           - name: sections
             label: Sections
             component: sections
+      - name: page-blog
+        label: Blog
+        type: file
+        path: site/public/content/pages/blog.json
+        format: json
+        fields:
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
       - name: page-contact
         label: Contact
         type: file
@@ -647,6 +688,56 @@ content:
           - name: sections
             label: Sections
             component: sections
+  - name: posts
+    label: Blog articles
+    description: Every article needs its title, description and text in all three languages. An article dated in the future appears on that day.
+    type: collection
+    path: site/public/content/posts
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      fields: [title.en, date, author]
+      primary: title.en
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: slug
+        label: Address
+        type: string
+        required: true
+        description: "The article is published at post-<address>.html: lowercase Latin letters, digits and hyphens, e.g. google-business-profile. Do not change it once published."
+        pattern:
+          regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+          message: Lowercase Latin letters, digits and hyphens only.
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: author
+        label: Author
+        type: select
+        options:
+          values: [mariam, edgar]
+      - name: cover
+        label: "Cover (16:9, e.g. 1600×900; WebP or JPEG)"
+        type: image
+        options:
+          media: images
+      - name: coverAlt
+        label: Cover description (for screen readers and search engines)
+        component: line
+      - name: title
+        label: Title
+        component: line
+      - name: description
+        label: Short description (blog list and search results)
+        component: paragraph
+      - name: body
+        label: Text
+        component: paragraph
+        description: "New paragraph: an empty line. ## Subheading, **bold**, *italic*, [link text](https://…), lines starting with \"- \" or \"1. \" for lists, \"> \" for a highlighted quote, ![description](images/picture.webp) for a picture."
   - name: catalog
     label: Packages & prices
     description: Prices in AMD. Leave a contract length empty if the package is not offered for it.
@@ -1462,6 +1553,37 @@ content:
             component: line
           - name: writeUs
             label: Write us
+            component: line
+      - name: blog
+        label: Blog
+        type: object
+        fields:
+          - name: readingTime
+            label: Reading time
+            component: line
+          - name: empty
+            label: Empty
+            component: line
+          - name: backToBlog
+            label: Back to blog
+            component: line
+          - name: ctaTitle
+            label: Cta title
+            component: line
+          - name: ctaText
+            label: Cta text
+            component: line
+          - name: ctaButton
+            label: Cta button
+            component: line
+          - name: ctaMessage
+            label: Cta message
+            component: line
+          - name: missingTitle
+            label: Missing title
+            component: line
+          - name: missingText
+            label: Missing text
             component: line
   - name: lampTips
     label: Lamp tips

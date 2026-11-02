@@ -3,6 +3,7 @@
  * <html data-page="…">; this module renders the header, the page's sections and the footer,
  * and re-renders when the language changes. The theme is pure CSS (<html data-theme>).
  */
+import { renderArticle } from './components/blog/article.js'
 import { renderFooter } from './components/layout/footer.js'
 import { renderHeader, setUpMobileMenu } from './components/layout/header.js'
 import { renderMobileBar } from './components/layout/mobile-bar.js'
@@ -10,7 +11,7 @@ import { renderNotFound } from './components/not-found.js'
 import { renderSection } from './components/sections/index.js'
 import { site } from './content/index.js'
 import { getLanguage, initLanguage, onLanguageChange, t, ui } from './lib/i18n.js'
-import { currentPage } from './lib/page.js'
+import { currentArticle, currentPage, isArticlePage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
 import { initSelection } from './pricing/selection.js'
 
@@ -28,11 +29,23 @@ const elements = {
   description: document.querySelector('meta[name="description"]'),
 }
 
+function renderArticlePage() {
+  const post = currentArticle()
+  const title = post ? t(post.title) : ui('blog', 'missingTitle')
+  document.title = title + t(site.titleSuffix)
+  if (post) elements.description.content = t(post.description)
+  elements.main.replaceChildren(renderArticle(post))
+}
+
 function renderPage() {
   const page = currentPage()
   document.documentElement.lang = getLanguage()
   elements.skipLink.textContent = ui('common', 'skipToContent')
 
+  if (isArticlePage()) {
+    renderArticlePage()
+    return
+  }
   if (!page) {
     document.title = ui('errors', 'notFoundTitle') + t(site.titleSuffix)
     elements.main.replaceChildren(renderNotFound())

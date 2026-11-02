@@ -4,9 +4,10 @@
 
 The owner's standing rule: **write clean JS code.** For `site/` that means:
 
-- **Plain HTML, CSS and JavaScript (ES modules).** No frameworks, no libraries, no build step,
-  no npm dependencies in the published site. Node is used only for `npm start` (dev server),
-  `npm test` (built-in `node:test`), `npm run cms` and `npm run preload`.
+- **Plain HTML, CSS and JavaScript (ES modules).** No frameworks, no libraries, no npm
+  dependencies. `site/public/` runs as it is (no bundling or transpiling); Node is used only for
+  `npm start` (dev server), `npm test` (built-in `node:test`), `npm run cms`, `npm run preload`
+  and `npm run build` (the publishing step, which adds the blog's pages; see Deployment).
 - **One job per file**, in the existing folders: `content/` (JSON, edited in Pages CMS),
   `js/lib/` (small helpers), `js/pricing/` and `js/forms/` (pure logic, unit-tested),
   `js/services/`, `js/components/` (one render function per section / component),
@@ -49,8 +50,17 @@ All texts and prices live in `site/public/content/*.json` (`{ hy, en, ru }` for 
 Pages CMS keeps only fields declared in `site/cms/config.js`: when adding a content key or a
 section type, declare it there and run `npm run cms` (tests fail otherwise).
 
+Blog articles are one file each in `site/public/content/posts/<slug>.json` (Pages CMS
+collection "Blog articles"): slug, date, author (a key in `people.json`), optional cover, and
+title, description and Markdown body in all three languages. The Markdown is parsed by
+`js/blog/markdown.js` and drawn with `h()`. The list `content/posts/index.json` is generated
+(git-ignored): by `npm start` on request and by `npm run build` when publishing.
+
 ## Deployment
 
-Pushing to `main` publishes `site/public/` to GitHub Pages
-(https://dadaryane-cmd.github.io/botz-website/) via `.github/workflows/pages.yml`.
+Pushing to `main` publishes the site to GitHub Pages
+(https://dadaryane-cmd.github.io/botz-website/) via `.github/workflows/pages.yml`, which runs
+`npm run build` in `site/`: it copies `public/` to `dist/` (git-ignored), writes the blog list and
+a `post-<slug>.html` page (from `post.html`) for each published article. It also runs daily, so
+articles dated in the future appear on their day.
 The Next.js app at the repository root is the original CMS version and is not deployed.

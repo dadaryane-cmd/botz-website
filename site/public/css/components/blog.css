@@ -1,0 +1,214 @@
+/* Blog: the list of articles (blog page) and the article page. */
+
+/* ---- Shared: cover, date and reading time, author ---- */
+
+/* 16:9 in the list and the article, so the space is kept while the picture loads. */
+.post-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--surface);
+}
+
+/* An article without a cover: the logo on the fire colours, night navy in both themes. */
+.post-cover-empty {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 24% 130%, #ea4823 0, #9d282b 28%, #602332 52%, transparent 80%),
+    #24213b;
+}
+
+.post-cover-logo {
+  width: 38%;
+  max-width: 200px;
+  height: auto;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.post-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.avatar-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  font-size: 0.95rem;
+}
+
+/* ---- Blog page: a card per article ---- */
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.post-card-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.post-card-title {
+  margin-bottom: 0.5em;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.post-card:hover .post-card-title {
+  color: var(--accent-text);
+}
+
+/* The author sits at the bottom, so the cards in a row line up. */
+.post-card-text > .post-meta:last-child {
+  margin: auto 0 0;
+  padding-top: 8px;
+}
+
+/* ---- Article page ---- */
+
+.article {
+  padding-top: clamp(32px, 5vw, 64px);
+}
+
+.link-back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-weight: 700;
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+.link-back:hover {
+  text-decoration: underline;
+}
+
+/* Like the page titles, a little smaller: article titles are longer. */
+.article-title {
+  font-family: var(--font-hero);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  font-stretch: extra-condensed;
+  line-height: 1;
+}
+
+.article-meta {
+  margin-bottom: clamp(24px, 4vw, 36px);
+}
+
+.article > .container > .post-cover {
+  margin-bottom: clamp(28px, 4vw, 44px);
+  border-radius: var(--radius);
+}
+
+.article-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.article-body h2 {
+  margin: 1.8em 0 0.6em;
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+}
+
+.article-body h3,
+.article-body h4 {
+  margin: 1.5em 0 0.5em;
+  font-size: 1.2rem;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.2em;
+  padding-left: 1.4em;
+}
+
+.article-body li {
+  margin-bottom: 0.5em;
+}
+
+.article-body li::marker {
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.article-body a {
+  color: var(--accent-text);
+}
+
+.article-body blockquote {
+  margin: 1.8em 0;
+  padding: 20px 24px;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.article-body blockquote p {
+  margin: 0;
+}
+
+.article-body img {
+  display: block;
+  margin: 1.5em 0;
+  border-radius: var(--radius-small);
+}
+
+.article-body code {
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.article-cta {
+  margin-top: clamp(40px, 6vw, 64px);
+}
+
+.article-cta-title {
+  margin-bottom: 0.5em;
+  font: 700 clamp(1.2rem, 2.4vw, 1.5rem) / 1.25 var(--font-display);
+}

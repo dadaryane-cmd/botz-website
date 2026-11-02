@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { describe, it } from 'node:test'
 import { pagesConfig } from '../cms/config.js'
 import { CONFIG_FILE, renderConfig } from '../scripts/build-cms-config.js'
+import { INDEX_FILE } from '../scripts/read-posts.js'
 
 const repoRoot = new URL('../../', import.meta.url)
 
@@ -37,15 +38,25 @@ function assertDeclared(data, fields, path) {
 const entries = (items) =>
   items.flatMap((item) => (item.type === 'group' ? entries(item.items) : [item]))
 
+/** A file entry's file, or every file of a collection (not the generated blog list). */
+function entryFiles(entry) {
+  if (entry.type !== 'collection') return [entry.path]
+  return readdirSync(new URL(entry.path, repoRoot))
+    .filter((file) => file.endsWith(`.${entry.format}`) && file !== INDEX_FILE)
+    .map((file) => `${entry.path}/${file}`)
+}
+
 describe('Pages CMS configuration', () => {
   it('.pages.yml matches cms/config.js (run `npm run cms` after changing it)', () => {
     assert.equal(readFileSync(CONFIG_FILE, 'utf8'), renderConfig())
   })
 
   for (const entry of entries(pagesConfig.content)) {
-    it(`declares every field of ${entry.path}`, () => {
-      const data = JSON.parse(readFileSync(new URL(entry.path, repoRoot), 'utf8'))
-      assertDeclared(data, entry.fields, entry.name)
-    })
+    for (const path of entryFiles(entry)) {
+      it(`declares every field of ${path}`, () => {
+        const data = JSON.parse(readFileSync(new URL(path, repoRoot), 'utf8'))
+        assertDeclared(data, entry.fields, entry.name)
+      })
+    }
   }
 })

@@ -1,7 +1,10 @@
 /** Site-wide constants. */
 
 /** Pages with a content file in /content/pages, by their <html data-page> value. */
-export const PAGES = ['home', 'services', 'pricing', 'about', 'contact']
+export const PAGES = ['home', 'services', 'pricing', 'about', 'blog', 'contact']
+
+/** The article page (post.html, written as post-<slug>.html for each article when publishing). */
+export const ARTICLE_PAGE = 'post'
 
 /** Site-wide content files in /content, loaded on every page (and preloaded in its HTML). */
 export const SITE_CONTENT = ['site', 'people', 'navigation', 'catalog', 'finder', 'ui']
