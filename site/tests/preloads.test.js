@@ -3,7 +3,14 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, it } from 'node:test'
 import { LANGUAGES } from '../public/js/config.js'
-import { moduleGraph, PUBLIC_DIR, sitePages, withPreloads } from '../scripts/build-preloads.js'
+import {
+  bundleStylesheets,
+  moduleGraph,
+  PUBLIC_DIR,
+  sitePages,
+  STYLESHEET,
+  withPreloads,
+} from '../scripts/build-preloads.js'
 
 describe('preloads', () => {
   const modules = moduleGraph()
@@ -20,6 +27,25 @@ describe('preloads', () => {
       assert.equal(html, withPreloads(html, modules))
     })
   }
+})
+
+describe('css/site.css (all stylesheets in one)', () => {
+  const bundle = readFileSync(join(PUBLIC_DIR, STYLESHEET), 'utf8')
+
+  it('matches the stylesheets css/main.css lists (run `npm run preload` after CSS changes)', () => {
+    assert.equal(bundle, bundleStylesheets())
+  })
+
+  it('points only to files that exist (paths rewritten from each file to css/)', () => {
+    for (const [, ref] of bundle.matchAll(/url\('([^']+)'\)/g)) {
+      if (ref.startsWith('data:')) continue
+      assert.ok(existsSync(join(PUBLIC_DIR, 'css', ref)), `missing ${ref}`)
+    }
+  })
+
+  it('rewrites a path one folder up, as for the fonts', () => {
+    assert.ok(bundle.includes("url('../fonts/anton-latin.woff2')"))
+  })
 })
 
 describe('head.js (runs before the page paints)', () => {

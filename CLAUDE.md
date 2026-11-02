@@ -6,7 +6,7 @@ The owner's standing rule: **write clean JS code.** For `site/` that means:
 
 - **Plain HTML, CSS and JavaScript (ES modules).** No frameworks, no libraries, no build step,
   no npm dependencies in the published site. Node is used only for `npm start` (dev server),
-  `npm test` (built-in `node:test`) and `npm run cms`.
+  `npm test` (built-in `node:test`), `npm run cms` and `npm run preload`.
 - **One job per file**, in the existing folders: `content/` (JSON, edited in Pages CMS),
   `js/lib/` (small helpers), `js/pricing/` and `js/forms/` (pure logic, unit-tested),
   `js/services/`, `js/components/` (one render function per section / component),
@@ -36,10 +36,12 @@ npx eslint site
 Also check the change in a real browser (Playwright is preinstalled in cloud sessions):
 no console errors, no horizontal overflow at 390px and 1280px, all three languages.
 
-After adding, removing or renaming a JavaScript module, a stylesheet in `css/main.css` or a
-site-wide content file, run `npm run preload`: every page's `<head>` announces them up front
-(the generated `preload:start … preload:end` block) so they load in parallel; tests fail when
-it is out of date. Fonts are self-hosted in `site/public/fonts` (`css/base/fonts.css`).
+After changing any stylesheet or `js/head.js`, or adding, removing or renaming a JavaScript
+module or a site-wide content file, run `npm run preload` (tests fail when its output is out of
+date). It writes `css/site.css` (the stylesheets `css/main.css` lists, joined into one file —
+pages load that; edit the sources, never `site.css`) and each page's `preload:start … preload:end`
+block (the stylesheet, content and modules to fetch up front, and a copy of `js/head.js`).
+Fonts are self-hosted in `site/public/fonts` (`css/base/fonts.css`).
 
 ## Content and the admin (Pages CMS)
 

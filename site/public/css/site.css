@@ -1,0 +1,3682 @@
+/* Generated from css/main.css by `npm run preload`: edit the files it lists, not this one. */
+/* ---- base/fonts.css ---- */
+
+/*
+ * The site's fonts, served from /fonts (copied from Google Fonts; all SIL Open Font License).
+ * Only the Latin, Cyrillic and Armenian pieces are kept; a browser downloads a piece only when the
+ * page has characters in its unicode-range. Noto Sans Armenian is used for Armenian letters only.
+ */
+
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/anton-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/anton-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Dela Gothic One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dela-gothic-one-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Dela Gothic One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dela-gothic-one-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Dela Gothic One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/dela-gothic-one-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/golos-text-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/golos-text-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/golos-text-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/golos-text-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Noto Sans Armenian';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 62.5% 100%;
+  font-display: swap;
+  src: url('../fonts/noto-sans-armenian-armenian.woff2') format('woff2');
+  unicode-range: U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('../fonts/oswald-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('../fonts/oswald-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('../fonts/oswald-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('../fonts/oswald-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---- base/tokens.css ---- */
+
+/*
+ * Design tokens: colours (light and dark), fonts, radii, spacing.
+ * "Sunset" palette: #24213B night navy, #EA4823 sunset red, #9D282B crimson, #602332 plum
+ * (the fire) and #F4EBEA blush. Labels on the red use a deeper navy so they stay readable.
+ */
+
+:root {
+  --bg: #f4ebea;
+  --surface: #ebdedd;
+  --card: #fbf6f5;
+  --text: #24213b;
+  --muted: #57536a;
+  --border: #dfcfcd;
+  --accent: #ea4823;
+  --accent-text: #9d282b;
+  --on-accent: #15132a;
+  --inverse-bg: #24213b;
+  --inverse-text: #f4ebea;
+  /* The same light blush in both themes (button hover on the red). */
+  --blush: #f4ebea;
+  --ok: #1e7a3c;
+  --error: #b42318;
+
+  /* Dela Gothic One has Latin and Cyrillic in one weight; Armenian falls back to Noto. */
+  --font-display: 'Dela Gothic One', 'Noto Sans Armenian', system-ui, sans-serif;
+  --font-body: 'Golos Text', 'Noto Sans Armenian', system-ui, sans-serif;
+  /*
+   * Page titles: ultra-condensed and heavy. Anton has no Cyrillic, so Russian falls back to
+   * Oswald letter by letter; Armenian uses Noto's extra-condensed width.
+   */
+  --font-hero: 'Anton', 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
+  /* Tall, narrow capitals of the cinema sign; Armenian uses Noto's condensed width. */
+  --font-sign: 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
+  --radius: 28px;
+  --radius-small: 14px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --shadow: 0 1px 2px rgb(36 33 59 / 0.05), 0 8px 24px rgb(36 33 59 / 0.08);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #24213b;
+    --surface: #2d2a47;
+    --card: #29263f;
+    --text: #f4ebea;
+    --muted: #b9b1c0;
+    --border: #3d3958;
+    --accent: #ea4823;
+    --accent-text: #f26a48;
+    --on-accent: #15132a;
+    --inverse-bg: #f4ebea;
+    --inverse-text: #24213b;
+    --ok: #5bd18b;
+    --error: #ff8a80;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #24213b;
+  --surface: #2d2a47;
+  --card: #29263f;
+  --text: #f4ebea;
+  --muted: #b9b1c0;
+  --border: #3d3958;
+  --accent: #ea4823;
+  --accent-text: #f26a48;
+  --on-accent: #15132a;
+  --inverse-bg: #f4ebea;
+  --inverse-text: #24213b;
+  --ok: #5bd18b;
+  --error: #ff8a80;
+  --shadow: none;
+  color-scheme: dark;
+}
+
+/* ---- base/reset.css ---- */
+
+/* Element defaults. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* The display font has a single weight: never fake a bold or italic version of it. */
+  font-synthesis: none;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1rem/1.6 var(--font-body);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* A <picture> only chooses the file (AVIF or WebP); the <img> inside is what gets laid out. */
+picture {
+  display: contents;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+  font-family: var(--font-display);
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* ---- base/typography.css ---- */
+
+/* Text styles and helpers. */
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 62ch;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.heading {
+  font-size: clamp(1.7rem, 4vw, 2.9rem);
+  max-width: 22ch;
+}
+
+h1.heading {
+  font-size: clamp(2.1rem, 6vw, 4.4rem);
+  max-width: 18ch;
+}
+
+.heading em {
+  font-style: normal;
+  color: var(--accent-text);
+}
+
+.check-list {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 8px;
+}
+
+.check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: var(--accent-text);
+}
+
+/* Read by screen readers, not shown. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- layout/layout.css ---- */
+
+/* Containers, sections, section backgrounds and grids. */
+
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.container-wide {
+  max-width: 1320px;
+}
+
+.container-narrow {
+  max-width: 820px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 999px;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.section {
+  padding: clamp(56px, 9vw, 112px) 0;
+}
+
+.bg-surface {
+  background: var(--surface);
+}
+
+.bg-inverse {
+  --text: var(--inverse-text);
+  --bg: var(--inverse-bg);
+  --muted: color-mix(in srgb, var(--inverse-text) 72%, var(--inverse-bg));
+  --border: color-mix(in srgb, var(--inverse-text) 20%, var(--inverse-bg));
+  --surface: color-mix(in srgb, var(--inverse-text) 8%, var(--inverse-bg));
+  --card: color-mix(in srgb, var(--inverse-text) 6%, var(--inverse-bg));
+  --accent-text: var(--accent);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.bg-accent {
+  --text: var(--on-accent);
+  --muted: var(--on-accent);
+  --accent-text: var(--on-accent);
+  background: var(--accent);
+  color: var(--text);
+}
+
+.bg-accent .heading em {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.bg-accent .btn-primary {
+  background: var(--on-accent);
+  color: var(--accent);
+}
+
+/* ---- components/button.css ---- */
+
+/* Button section. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: 700 1rem/1.2 var(--font-body);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  /* The hover fill (::after) sits between the background and the label. */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Hover: a fill in the text colour wipes up from the bottom. */
+.btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--text);
+  transform: translateY(101%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: translateY(0);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* On the orange background the fill is light blush in both themes, like everywhere else in dark mode. */
+.bg-accent .btn::after {
+  background: var(--blush);
+}
+
+.bg-accent .btn:hover,
+.bg-accent .btn:focus-visible {
+  color: var(--on-accent);
+  border-color: var(--blush);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn:disabled::after {
+  display: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.btn-link {
+  min-height: 40px;
+  padding: 8px 4px;
+  background: none;
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.btn-link::after {
+  display: none;
+}
+
+.btn-link:hover,
+.btn-link:focus-visible {
+  color: var(--accent-text);
+  border-color: transparent;
+}
+
+.btn-small {
+  min-height: 40px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.link-arrow {
+  font-weight: 700;
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+.link-arrow::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: transform 0.25s ease;
+}
+
+.link-arrow:hover::after {
+  transform: translateX(4px);
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ---- components/card.css ---- */
+
+/* Card section. */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: var(--shadow);
+}
+
+/* ---- components/badge.css ---- */
+
+/* Badge section. */
+
+.badge {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-accent {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ---- components/form.css ---- */
+
+/* Form fields, radio options and form status messages. */
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  cursor: pointer;
+}
+
+.option:has(input:checked) {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.option input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 560px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field label,
+.radios legend {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field [aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.field-error {
+  color: var(--error);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.hint {
+  margin: -4px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.radios {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.radios legend {
+  margin-bottom: 8px;
+}
+
+.radios .option {
+  display: inline-flex;
+  margin: 0 8px 8px 0;
+  padding: 10px 16px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.attached-estimate {
+  margin: 20px 0 0;
+}
+
+.attached-estimate:empty {
+  display: none;
+}
+
+.attached-estimate pre {
+  margin: 0;
+  padding: 14px;
+  border-radius: var(--radius-small);
+  background: var(--surface);
+  font: 500 0.9rem/1.5 var(--font-body);
+  white-space: pre-wrap;
+}
+
+.form > .muted {
+  margin-top: 20px;
+}
+
+.form-status {
+  margin-top: 16px;
+}
+
+.form-status.is-error {
+  padding: 14px 16px;
+  border-radius: var(--radius-small);
+  border: 1px solid var(--error);
+  color: var(--error);
+}
+
+.form-status .btn-row {
+  margin: 8px 0 0;
+}
+
+.form-success-title {
+  font: 700 1.5rem/1.3 var(--font-display);
+}
+
+/* ---- layout/header.css ---- */
+
+/* Sticky header, navigation, language switch and mobile menu. */
+
+.site-header {
+  --header-height: 73px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  /* The bulb's glow must not widen the page; vertically it may hang below the header. */
+  overflow-x: clip;
+}
+
+/*
+ * The frosted background lives on a layer behind the header, not on the header itself:
+ * Safari (and every iPhone browser) cuts off children that stick out of an element with
+ * backdrop-filter, which hid the phone menu.
+ */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 72px;
+}
+
+.logo img {
+  display: block;
+  width: 112px;
+  height: auto;
+}
+
+/* One logo per theme; switching themes is pure CSS. */
+[data-theme='dark'] .logo-light,
+[data-theme='light'] .logo-dark {
+  display: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.nav ul {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav ul a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Menu items and the button stay on one line; the breakpoint below leaves them room. */
+.nav-links > li > a,
+.nav-group-toggle,
+.nav > .btn {
+  white-space: nowrap;
+}
+
+.nav ul a:hover,
+.nav ul a[aria-current='page'] {
+  background: var(--surface);
+}
+
+/* ---- a group ("Services"): a small dropdown on wide screens ---- */
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* A small chevron that flips when the menu is open. */
+.nav-group-toggle::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.nav-group.is-open .nav-group-toggle::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.nav-group-toggle:hover,
+.nav-group-toggle.is-current {
+  background: var(--surface);
+}
+
+/* The phone menu shows the group's name as a label instead of a button. */
+.nav-group-label {
+  display: none;
+}
+
+.nav .nav-submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  min-width: 220px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.nav-group.is-open .nav-submenu {
+  display: flex;
+}
+
+/*
+ * With a mouse it also opens on hover (header.js, so the chevron and aria-expanded always match
+ * what is shown); this invisible strip keeps the pointer "inside" on its way to the menu.
+ */
+@media (hover: hover) and (min-width: 960px) {
+  .nav-group::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+}
+
+/* Languages and call / WhatsApp inside the menu are for phones only. */
+.nav-extras {
+  display: none;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-switch {
+  display: flex;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.language-switch button {
+  min-width: 40px;
+  min-height: 36px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: 600 0.85rem var(--font-body);
+  cursor: pointer;
+}
+
+.language-switch button[aria-pressed='true'] {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s;
+}
+
+.burger {
+  position: relative;
+}
+
+.burger::before,
+.burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.burger::before {
+  top: -6px;
+}
+
+.burger::after {
+  top: 6px;
+}
+
+.is-open .burger {
+  background: transparent;
+}
+
+.is-open .burger::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.is-open .burger::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/*
+ * Below 960px (header.js WIDE_NAV_MIN_PX) a full-screen menu behind ☰. The full navigation
+ * needs about 945px in the longest language (Armenian) to stay on one line.
+ */
+@media (max-width: 959px) {
+  .menu-toggle {
+    display: grid;
+  }
+
+  .header-tools {
+    margin-left: auto;
+  }
+
+  /* The header keeps logo, lamp and ☰; the languages move into the menu. */
+  .header-tools > .language-switch {
+    display: none;
+  }
+
+  /* The open menu fills the screen under the header, fixed to the viewport so nothing clips it. */
+  .nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px var(--gutter) 32px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--bg);
+  }
+
+  .is-open .nav {
+    display: flex;
+    animation: menu-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .nav ul {
+    flex-direction: column;
+  }
+
+  .nav ul a {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+
+  .nav > .btn {
+    margin-top: 16px;
+  }
+
+  /* A group shows its name as a small label with all its links listed under it. */
+  .nav-group-toggle {
+    display: none;
+  }
+
+  .nav-group-label {
+    display: block;
+    padding: 12px 12px 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav .nav-submenu {
+    position: static;
+    display: flex;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Bottom of the menu: languages, then call and WhatsApp side by side. */
+  .nav-extras {
+    display: grid;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-extras .language-switch {
+    justify-self: start;
+  }
+
+  .nav-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .logo img {
+    width: 88px;
+  }
+
+  .language-switch button {
+    min-width: 34px;
+    padding: 4px 5px;
+  }
+}
+
+/* While the phone menu is open the page behind it stays still. */
+.menu-open,
+.menu-open body {
+  overflow: hidden;
+}
+
+@keyframes menu-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+/* ---- components/bulb.css ---- */
+
+/* Hanging light bulb theme toggle (js/components/bulb/bulb-toggle.js). */
+
+:root {
+  --bulb-width: 40px;
+  --bulb-cord-length: 16px;
+  --bulb-bead-size: 10px;
+  /* Header row 72px, tools 44px and centred: 14px up to the header's top edge. */
+  --bulb-drop: -14px;
+  --bulb-wire: color-mix(in srgb, var(--text) 55%, transparent);
+  --bulb-cord: color-mix(in srgb, var(--text) 70%, transparent);
+  --bulb-bead-color: var(--accent);
+  --bulb-cap-light: #d9d4cc;
+  --bulb-cap-dark: #7b746b;
+  --bulb-glass-off: rgb(170 182 196 / 0.22);
+  --bulb-glass-stroke: rgb(170 182 196 / 0.65);
+  --bulb-glass-on-core: rgb(255 236 190 / 0.95);
+  --bulb-glass-on-edge: rgb(255 201 77 / 0.35);
+  --bulb-filament-dim: #8a4a20;
+  --bulb-filament-hot: #ff9f1c;
+  --bulb-glow: rgb(255 190 80 / 0.55);
+  --bulb-flicker-ms: 250ms;
+  --bulb-on-ms: 400ms;
+  --bulb-off-ms: 150ms;
+  --bulb-afterglow-ms: 300ms;
+}
+
+@media (max-width: 759px) {
+  :root {
+    --bulb-width: 34px;
+    --bulb-cord-length: 13px;
+    --bulb-bead-size: 9px;
+  }
+}
+
+/* ---- the button: a 44px touch target; the drawing hangs from the header's top edge ---- */
+
+/*
+ * The button and, beside it, its tooltip, hint and lines. Those texts are decoration and stay
+ * outside the button, so its accessible name is just "Switch to light/dark theme".
+ */
+.bulb {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+}
+
+.bulb-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: none;
+  color: inherit;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bulb-toggle.is-dragging {
+  cursor: grabbing;
+}
+
+.bulb-sway,
+.bulb-swing,
+.bulb-cord,
+.bulb-bead,
+.bulb-bead-lift,
+.bulb-bead-shape,
+.bulb-halo,
+.bulb-mote {
+  display: block;
+}
+
+.bulb-sway {
+  position: absolute;
+  top: var(--bulb-drop);
+  left: 50%;
+  width: var(--bulb-width);
+  margin-left: calc(var(--bulb-width) / -2);
+  transform-origin: 50% 0;
+}
+
+.bulb-swing {
+  position: relative;
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+/* ---- drawing ---- */
+
+.bulb-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--bulb-width);
+  height: calc(var(--bulb-width) * 1.5);
+  overflow: visible;
+}
+
+.bulb-wire {
+  stroke: var(--bulb-wire);
+  stroke-width: 1.5;
+}
+
+.bulb-ridges {
+  stroke: rgb(0 0 0 / 0.28);
+  stroke-width: 1;
+}
+
+.bulb-glass {
+  fill: var(--bulb-glass-off);
+  stroke: var(--bulb-glass-stroke);
+  stroke-width: 1;
+}
+
+.bulb-glass-on {
+  opacity: 0;
+  transition: opacity var(--bulb-on-ms) ease;
+}
+
+.bulb-filament-dim {
+  fill: none;
+  stroke: var(--bulb-filament-dim);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  opacity: 0.35;
+}
+
+.bulb-filament-hot {
+  opacity: 0;
+  transition: opacity var(--bulb-off-ms) ease-out;
+}
+
+.bulb-filament-core {
+  fill: none;
+  stroke: #fff4d6;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.bulb-filament-glow {
+  fill: none;
+  stroke: var(--bulb-filament-hot);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.bulb-shine {
+  fill: rgb(255 255 255 / 0.45);
+}
+
+.bulb-halo {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: calc(var(--bulb-width) * 1.075);
+  width: calc(var(--bulb-width) * 3);
+  height: calc(var(--bulb-width) * 3);
+  margin: calc(var(--bulb-width) * -1.5) 0 0 calc(var(--bulb-width) * -1.5);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bulb-glow) 0%, transparent 68%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  pointer-events: none;
+}
+
+.bulb-mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffe2a0;
+  opacity: 0;
+}
+
+.bulb-mote:nth-child(1) {
+  left: 30%;
+  top: 55%;
+}
+
+.bulb-mote:nth-child(2) {
+  left: 62%;
+  top: 62%;
+  animation-delay: -0.9s;
+}
+
+.bulb-mote:nth-child(3) {
+  left: 45%;
+  top: 70%;
+  animation-delay: -1.8s;
+}
+
+.bulb-mote:nth-child(4) {
+  left: 70%;
+  top: 45%;
+  animation-delay: -2.7s;
+}
+
+.bulb-cord {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(var(--bulb-width) * 1.375 - 1px);
+  width: 1.75px;
+  height: var(--bulb-cord-length);
+  margin-left: -0.875px;
+  border-radius: 2px;
+  background: var(--bulb-cord);
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+.bulb-bead {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(var(--bulb-width) * 1.375 + var(--bulb-cord-length) - 2px);
+  width: var(--bulb-bead-size);
+  margin-left: calc(var(--bulb-bead-size) / -2);
+  will-change: transform;
+}
+
+/* Invisible, finger-sized grab area around the small bead. */
+.bulb-bead::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36px;
+  height: 40px;
+  margin: -16px 0 0 -18px;
+  border-radius: 50%;
+}
+
+.bulb-bead-lift {
+  transition: transform 0.25s ease;
+}
+
+.bulb-bead-shape {
+  width: var(--bulb-bead-size);
+  height: var(--bulb-bead-size);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.75) 0 18%, transparent 42%),
+    radial-gradient(
+      circle at 50% 55%,
+      var(--bulb-bead-color),
+      color-mix(in srgb, var(--bulb-bead-color) 55%, #000) 100%
+    );
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+  transform-origin: 50% 0;
+}
+
+/* ---- on (light theme): warm glass, glowing filament, halo ---- */
+
+[data-theme='light'] .bulb-glass-on {
+  opacity: 1;
+}
+
+[data-theme='light'] .bulb-filament-hot {
+  opacity: 1;
+  transition-duration: var(--bulb-on-ms);
+}
+
+[data-theme='light'] .bulb-filament-dim {
+  opacity: 0;
+}
+
+[data-theme='light'] .bulb-halo {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--bulb-on-ms);
+}
+
+/* A faint shadow of the bulb on the header. */
+[data-theme='light'] .bulb-svg {
+  filter: drop-shadow(2px 5px 3px rgb(80 40 0 / 0.16));
+}
+
+/* ---- switching: flicker when warming up, afterglow when switched off ---- */
+
+.bulb-toggle.is-turning-on .bulb-filament-hot {
+  animation: bulb-flicker var(--bulb-flicker-ms) steps(1, end);
+}
+
+.bulb-toggle.is-turning-on .bulb-halo {
+  animation: bulb-halo-in var(--bulb-on-ms) ease-out;
+}
+
+.bulb-toggle.is-turning-off .bulb-filament-dim {
+  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) ease-out;
+}
+
+.bulb-toggle.is-click .bulb-bead-shape {
+  animation: bulb-squash 80ms ease-out;
+}
+
+@keyframes bulb-flicker {
+  0% {
+    opacity: 0.25;
+  }
+  18% {
+    opacity: 0.9;
+  }
+  34% {
+    opacity: 0.15;
+  }
+  52% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 0.4;
+  }
+  84% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulb-halo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bulb-afterglow {
+  0% {
+    opacity: 0.95;
+  }
+  35% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes bulb-squash {
+  50% {
+    transform: scale(1.1, 0.85);
+  }
+}
+
+/* ---- idle and hover motion ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .bulb-sway {
+    animation: bulb-sway 5s ease-in-out infinite;
+  }
+
+  [data-theme='light'] .bulb-toggle:not(.is-turning-on) .bulb-halo {
+    animation: bulb-breathe 3s ease-in-out infinite;
+  }
+
+  [data-theme='light'] .bulb-mote {
+    animation: bulb-mote 3.6s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .bulb-toggle:hover .bulb-sway {
+    animation: bulb-sway-hover 1.6s ease-in-out infinite;
+  }
+}
+
+@media (hover: hover) {
+  .bulb-toggle:hover .bulb-bead-lift {
+    transform: translateY(-3px);
+  }
+
+  .bulb-toggle.is-dragging .bulb-bead-lift {
+    transform: none;
+  }
+}
+
+@keyframes bulb-sway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+@keyframes bulb-sway-hover {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes bulb-breathe {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulb-mote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 4px);
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(4px, -10px);
+  }
+}
+
+/* ---- tooltip (hover / keyboard focus) ---- */
+
+.bulb-tip {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: calc(100% + 8px);
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.16);
+  opacity: 0;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .bulb-toggle:hover ~ .bulb-tip {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+.bulb-toggle:focus-visible ~ .bulb-tip {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.bulb-tip.is-suppressed {
+  display: none;
+}
+
+/* ---- first-visit "Pull the cord" hint, just below the bead ---- */
+
+.bulb-hint {
+  position: absolute;
+  z-index: 3;
+  top: 74px;
+  right: calc(50% - 10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  pointer-events: none;
+}
+
+.bulb-hint.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.bulb-hint-arrow {
+  flex: none;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bulb-hint.is-visible {
+    animation: bulb-hint-bob 1.8s ease-in-out 0.4s infinite;
+  }
+}
+
+/*
+ * The bob moves `translate`, not `transform` (which slides the hint in): animating one property
+ * twice would keep the browser from running it on the graphics card.
+ */
+@keyframes bulb-hint-bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -4px;
+  }
+}
+
+/* Phones: beside the bulb inside the header row, so it never covers the hero headline. */
+@media (max-width: 759px) {
+  .bulb-hint {
+    top: 50%;
+    right: calc(100% + 6px);
+    transform: translate(6px, -50%);
+  }
+
+  .bulb-hint.is-visible {
+    transform: translate(0, -50%);
+    animation: none;
+  }
+
+  .bulb-hint-arrow {
+    order: 1;
+    transform: rotate(45deg);
+  }
+}
+
+/* ---- playing with the lamp: its lines, then a flicker and a card with marketing tips ---- */
+
+/* A line can be longer than the hint; it may wrap instead of running off a phone screen. */
+.bulb-saying {
+  /* Sized by its text, not by the narrow lamp button it hangs from. */
+  width: max-content;
+  max-width: min(240px, 60vw);
+  white-space: normal;
+  text-align: center;
+}
+
+.bulb-toggle.is-celebrating .bulb-glass-on,
+.bulb-toggle.is-celebrating .bulb-filament-hot {
+  animation: bulb-flicker var(--bulb-flicker-ms) steps(1, end) 4;
+}
+
+.bulb-toggle.is-celebrating .bulb-halo {
+  animation: bulb-halo-in var(--bulb-on-ms) ease-out 3;
+}
+
+.lamp-tip {
+  position: fixed;
+  z-index: 60;
+  top: 84px;
+  right: var(--gutter);
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  width: min(340px, calc(100vw - 2 * var(--gutter)));
+  padding: 18px 44px 18px 20px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.28);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lamp-tip.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.lamp-tip p {
+  margin: 0;
+}
+
+.lamp-tip-title {
+  font: 700 1.05rem var(--font-display);
+  color: var(--accent-text);
+}
+
+.lamp-tip-number {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lamp-tip-text {
+  line-height: 1.5;
+}
+
+/* A new tip fades in, so it is clear the text changed. */
+@media (prefers-reduced-motion: no-preference) {
+  .lamp-tip-body.is-new {
+    animation: lamp-tip-in 0.4s ease-out;
+  }
+}
+
+@keyframes lamp-tip-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.lamp-tip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+
+.lamp-tip-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.lamp-tip-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Phones: centred near the bottom, above the call / WhatsApp bar. */
+@media (max-width: 720px) {
+  .lamp-tip {
+    top: auto;
+    bottom: 84px;
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+    transform: translateY(12px);
+  }
+}
+
+/* ---- components/lamp-light.css ---- */
+
+/*
+ * The lamp's warm pool of light over the page in light mode (js/components/bulb/lamp-light.js).
+ * Multiply tints like real light and keeps text crisp: warm near the bulb, a little dimmer far
+ * from it, as in a room lit by one lamp. It sits under the header, as under a ceiling.
+ */
+
+.lamp-light {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse 85vmax 75vmax at var(--lamp-x, 100%) var(--lamp-y, 0),
+    rgb(255 214 150 / 0.7) 0,
+    rgb(255 236 205 / 0.35) 35%,
+    rgb(236 224 224 / 0.5) 100%
+  );
+  transition: opacity 500ms ease-out;
+}
+
+[data-theme='light'] .lamp-light {
+  opacity: 1;
+}
+
+/* ---- layout/footer.css ---- */
+
+/*
+ * Site footer (js/components/layout/footer.js). Always dark: navy on the light theme, and a
+ * shade darker than the page on the dark theme, so the page ends calmly instead of with a flash.
+ */
+
+.site-footer {
+  --footer-bg: var(--inverse-bg);
+  --footer-text: var(--inverse-text);
+  --muted: color-mix(in srgb, var(--footer-text) 70%, var(--footer-bg));
+  --border: color-mix(in srgb, var(--footer-text) 18%, var(--footer-bg));
+  padding: clamp(56px, 8vw, 96px) 0 32px;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+[data-theme='dark'] .site-footer {
+  --footer-bg: #1b1930;
+  --footer-text: var(--text);
+}
+
+/*
+ * Until the script fills it, the footer would be a dark band at the top of the empty page, then
+ * jump down below the content (a layout shift): it only appears once it has content.
+ */
+.site-footer:empty {
+  display: none;
+}
+
+/* ---- logo and one line about the business ---- */
+
+.footer-top {
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  display: inline-block;
+}
+
+.footer-logo img {
+  display: block;
+  width: 112px;
+  height: auto;
+}
+
+.footer-tagline {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+/* ---- link columns ---- */
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.footer-columns h2 {
+  font: 700 0.8rem var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer-columns ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-columns li {
+  margin-bottom: 8px;
+}
+
+.footer-columns a {
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.footer-columns a:hover {
+  text-decoration: underline;
+}
+
+.footer-place {
+  margin: 16px 0 0;
+  color: var(--muted);
+}
+
+/* Phones: the two link columns side by side, contact underneath across the full width. */
+@media (max-width: 600px) {
+  .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
+
+  .footer-columns > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---- social media icons ---- */
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: inherit;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+a.social-link:hover,
+a.social-link:focus-visible {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* No page yet: dimmed, not clickable. */
+.social-link.is-soon {
+  opacity: 0.45;
+}
+
+/* ---- bottom row: legal notes and back to top ---- */
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-top-link {
+  color: var(--footer-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-top-link:hover {
+  text-decoration: underline;
+}
+
+/* Room for the call / WhatsApp bar pinned to the bottom of small screens. */
+@media (max-width: 760px) {
+  .site-footer {
+    padding-bottom: 104px;
+  }
+}
+
+/* ---- layout/mobile-bar.css ---- */
+
+/* Call / WhatsApp bar on small screens. */
+
+.mobile-bar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .mobile-bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--inverse-bg);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+    transition:
+      transform 0.25s ease,
+      visibility 0.25s;
+  }
+
+  /*
+   * Out of the way where it would only repeat or cover something: near the contact section and
+   * footer (mobile-bar.js), while typing in a form, and when the pricing tool shows its own bar.
+   */
+  .mobile-bar.is-hidden,
+  body:has(form:focus-within) .mobile-bar,
+  body:has(.estimate-bar) .mobile-bar {
+    visibility: hidden;
+    transform: translateY(calc(100% + 24px));
+  }
+
+  .mobile-bar a {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    border-radius: 999px;
+    color: var(--inverse-text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .mobile-bar a:last-child {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+/* ---- components/hero.css ---- */
+
+/* Hero section. The home variant fills the first screen with animated fire. */
+
+.hero {
+  position: relative;
+  padding: clamp(56px, 10vw, 128px) 0 clamp(40px, 6vw, 72px);
+}
+
+/* Page titles in the tall, condensed hero font, set larger and tighter than other headings. */
+.hero h1.heading {
+  max-width: 22ch;
+  font-family: var(--font-hero);
+  font-size: clamp(2.9rem, 8vw, 6.5rem);
+  font-weight: 800;
+  font-stretch: extra-condensed;
+  line-height: 0.95;
+}
+
+/* Compact title (Contact page): less space and a smaller size, so the form starts near the top. */
+.hero-compact {
+  padding: clamp(40px, 6vw, 72px) 0 clamp(16px, 3vw, 32px);
+}
+
+.hero-compact h1.heading {
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+}
+
+/* A page title is followed directly by its content. */
+.hero:not(.hero-home) + .section {
+  padding-top: clamp(16px, 3vw, 40px);
+}
+
+/* ---- home: fire stage ---- */
+
+.hero-home {
+  padding: 0;
+}
+
+.hero-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* The first screen minus the header. */
+  min-height: clamp(560px, calc(100svh - 72px), 940px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(40px, 9vh, 112px);
+  /* The copy stays in the calm upper area; the flames own the bottom. */
+  padding-bottom: clamp(160px, 30vh, 320px);
+}
+
+.hero-home .hero-text {
+  position: relative;
+}
+
+/*
+ * The logo inside a title (`{logo}`), sized so its "B" (with the flame) is exactly as tall as
+ * a capital letter of the title font. Measured: the B fills 84% of the image height and ends
+ * 11% above its bottom edge; Anton's capitals are 0.88em tall. So 0.88 / 0.84 = 1.05em, and
+ * the image drops 0.11 × 1.05 = 0.115em below the baseline to stand the B on it.
+ */
+.inline-logo img {
+  height: 1.05em;
+  width: auto;
+  vertical-align: -0.115em;
+}
+
+/*
+ * Letters after the logo stand on the same line as the capital before them, and reach the top
+ * of the logo's "OTZ": from the baseline (the bottom of the B) up to the top of OTZ is
+ * (0.89 − 0.28) × 1.05em ≈ 0.63em. font-size-adjust sets the lowercase height directly, so this
+ * holds in every font (Anton, Noto Sans Armenian…).
+ */
+.logo-letters {
+  font-size-adjust: ex-height 0.63;
+}
+
+/* On every page title, the highlighted phrase starts its own line. */
+.hero .heading em {
+  display: block;
+}
+
+/*
+ * Soft scrim in the page colour keeps the copy readable over the fire. Its top and left are fixed
+ * offsets: as percentages of the text block they moved when the web fonts re-wrapped the text,
+ * and the browser counted that screen-sized box as a large layout shift.
+ */
+.hero-home .hero-text::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -48px -18% -18% -84px;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--bg) 78%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 45%, transparent) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.hero-home .btn {
+  box-shadow: 0 10px 30px color-mix(in srgb, #000 28%, transparent);
+}
+
+.hero-home .btn-secondary {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 759px) {
+  /* Phones: copy and buttons first, the fire as a strip below them. */
+  .hero-stage {
+    min-height: 0;
+  }
+
+  .hero-content {
+    padding-top: 24px;
+    padding-bottom: 150px;
+  }
+
+  .hero-home .hero-text::before {
+    inset: -24px -10% -8% -36px;
+  }
+}
+
+/* ---- fire layers: poster (first paint) → WebGL canvas, or looping video ---- */
+
+/* The fire fades out at the bottom, so the hero melts into the page instead of ending on a line. */
+.flame-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to top, transparent 0, #000 28%);
+}
+
+.flame-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/hero-flame-poster-light.webp') center bottom / 100% 100% no-repeat;
+  /* AVIF where the browser has it (a fraction of the size); older browsers keep the WebP above. */
+  background-image: image-set(
+    url('../images/hero-flame-poster-light.avif') type('image/avif'),
+    url('../images/hero-flame-poster-light.webp') type('image/webp')
+  );
+  transition: opacity 0.6s ease;
+}
+
+:root[data-theme='dark'] .flame-background::before {
+  background-image: url('../images/hero-flame-poster-dark.webp');
+  background-image: image-set(
+    url('../images/hero-flame-poster-dark.avif') type('image/avif'),
+    url('../images/hero-flame-poster-dark.webp') type('image/webp')
+  );
+}
+
+.flame-background[data-mode='webgl']::before,
+.flame-background[data-mode='video']::before {
+  opacity: 0;
+}
+
+.flame-canvas,
+.flame-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.flame-canvas {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.flame-background[data-mode='webgl'] .flame-canvas {
+  opacity: 1;
+}
+
+.flame-video {
+  display: none;
+  object-fit: cover;
+  object-position: center bottom;
+  /* The loop is rendered on black; screen blending removes the black. */
+  mix-blend-mode: screen;
+}
+
+.flame-background[data-mode='video'] .flame-video {
+  display: block;
+}
+
+/* ---- components/marquee-sign.css ---- */
+
+/*
+ * Cinema announcement banner (js/components/marquee-sign.js): a compact lit letter board with a
+ * headline and a tagline, in a frame between two rows of chasing bulbs. It stays unlit until
+ * `.is-lit`; then the bulbs flicker on, the board lights up and the letters are put up one by one.
+ */
+
+.marquee-sign {
+  --sign-casing: #1b1930;
+  --sign-row: clamp(2.1rem, 4.4vw, 3.4rem);
+  --sign-glow: rgb(255 196 110 / 0.4);
+  --bulb-gap: 28px;
+  --bulb-size: 16px;
+  /* Room above to breathe after the hero; the section below starts close (it is our title). */
+  padding: clamp(40px, 5vw, 64px) var(--gutter) 0;
+}
+
+/* A compact sign standing on the page as one object, centred. */
+.sign-frame {
+  display: grid;
+  gap: 10px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px clamp(10px, 2vw, 24px);
+  border-radius: 18px;
+  background: var(--sign-casing);
+  box-shadow: 0 0 60px var(--sign-glow);
+}
+
+/* By day: the navy casing with its bulbs switched off (no glow, no chase), like a cinema at noon. */
+[data-theme='light'] .marquee-sign {
+  --sign-casing: #24213b;
+  --sign-glow: transparent;
+}
+
+[data-theme='light'] .sign-frame {
+  box-shadow: 0 18px 40px rgb(36 33 59 / 0.18);
+}
+
+[data-theme='light'] .sign-board {
+  box-shadow: none;
+}
+
+[data-theme='light'] .sign-bulbs {
+  background-image: radial-gradient(
+    circle,
+    rgb(255 248 235 / 0.95) 0 3.5px,
+    rgb(255 255 255 / 0.25) 4.5px,
+    transparent 6px
+  );
+}
+
+[data-theme='light'] .sign-bulbs::after {
+  display: none;
+}
+
+/* The sign is the title of the section after it, so that section starts close below. */
+.marquee-sign + .section {
+  padding-top: clamp(24px, 4vw, 48px);
+}
+
+/*
+ * ---- bulbs: every third one burns brighter, and the bright ones run along ----
+ * Both layers are centred, so their bulbs line up and the row is symmetric; the ends fade out
+ * instead of showing a cut bulb.
+ */
+
+.sign-bulbs {
+  position: relative;
+  height: var(--bulb-size);
+  background: radial-gradient(circle, #ffd88f 0 4px, rgb(255 196 110 / 0.4) 5px, transparent 7px)
+    center / var(--bulb-gap) var(--bulb-size) repeat-x;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--bulb-gap),
+    #000 calc(100% - var(--bulb-gap)),
+    transparent
+  );
+}
+
+/* The tile is three bulbs wide with its bulb in the middle, so it lands on every third bulb. */
+.sign-bulbs::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #fffaf0 0 4.5px, rgb(255 214 140 / 0.85) 6px, transparent 9px)
+    center / calc(var(--bulb-gap) * 3) var(--bulb-size) repeat-x;
+  filter: drop-shadow(0 0 4px rgb(255 200 120 / 0.9));
+}
+
+/* ---- the letter board ---- */
+
+.sign-board {
+  padding: 0 clamp(6px, 2vw, 24px);
+  border-radius: 6px;
+  color: #16141f;
+  text-align: center;
+  /* Rails at the bottom of every letter row, on a warm white lightbox. */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 calc(var(--sign-row) - 2px),
+      rgb(27 25 48 / 0.18) calc(var(--sign-row) - 2px) var(--sign-row)
+    ),
+    linear-gradient(#fffdf6, #fff0d8);
+  box-shadow:
+    0 0 0 3px #2d2a47,
+    0 0 40px var(--sign-glow);
+}
+
+.sign-title,
+.sign-tagline {
+  margin: 0;
+  font: 600 calc(var(--sign-row) * 0.6) / var(--sign-row) var(--font-sign);
+  font-stretch: condensed;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The tagline: smaller, widely spaced letters in crimson, on its own row of the board. */
+.sign-tagline {
+  font-size: calc(var(--sign-row) * 0.4);
+  letter-spacing: 0.24em;
+  color: #9d282b;
+}
+
+.sign-word,
+.sign-letter {
+  display: inline-block;
+}
+
+.sign-word {
+  white-space: nowrap;
+}
+
+/* ---- power on ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme='dark'] .marquee-sign:not(.is-lit) .sign-bulbs {
+    opacity: 0.25;
+  }
+
+  .marquee-sign:not(.is-lit) .sign-bulbs::after {
+    opacity: 0;
+  }
+
+  .marquee-sign:not(.is-lit) .sign-board {
+    filter: brightness(0.45);
+  }
+
+  .marquee-sign:not(.is-lit) .sign-letter {
+    opacity: 0;
+  }
+
+  .marquee-sign.is-lit .sign-bulbs::after {
+    animation: sign-chase 1.2s steps(3) infinite;
+  }
+
+  .marquee-sign.is-lit .sign-board {
+    animation: sign-board-on 300ms 150ms ease-out both;
+  }
+
+  .marquee-sign.is-lit .sign-letter {
+    animation: sign-letter-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(350ms + var(--i) * 9ms);
+  }
+
+  /*
+   * At night the bulbs flicker on when the sign lights up. By day they are off, so the
+   * animation is applied afresh, and plays again, each time the lamp switches to dark.
+   */
+  [data-theme='dark'] .marquee-sign.is-lit .sign-bulbs {
+    animation: sign-flicker 450ms steps(1, end) both;
+  }
+}
+
+/* From the centred start, one bright bulb steps three places along. */
+@keyframes sign-chase {
+  to {
+    background-position-x: calc(50% + var(--bulb-gap) * 3);
+  }
+}
+
+@keyframes sign-board-on {
+  from {
+    filter: brightness(0.45);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+
+@keyframes sign-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35em) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sign-flicker {
+  0% {
+    opacity: 0.2;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  45% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 1;
+  }
+}
+
+/* ---- components/split.css ---- */
+
+/* Split section. */
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.points {
+  display: grid;
+  gap: 20px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.points li {
+  display: grid;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 2px solid var(--text);
+}
+
+/* ---- components/services.css ---- */
+
+/*
+ * Services section: one row per service, set apart by rules like a printed menu. The rows share
+ * the list's columns (subgrid), so the middle column lines up however long each row's text is.
+ */
+
+.service-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+  column-gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.service-list > li,
+.service-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+}
+
+.service-row {
+  align-items: center;
+  row-gap: 8px;
+  padding: clamp(20px, 3vw, 28px) 0;
+  border-top: 1px solid var(--border);
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-row h3 {
+  margin: 0 0 6px;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  transition: color 0.15s ease;
+}
+
+.service-includes {
+  margin: 0;
+  color: var(--muted);
+}
+
+.service-arrow {
+  font-size: 1.4rem;
+  color: var(--accent-text);
+  transition: transform 0.2s ease;
+}
+
+.service-row:hover h3,
+.service-row:focus-visible h3 {
+  color: var(--accent-text);
+}
+
+.service-row:hover .service-arrow,
+.service-row:focus-visible .service-arrow {
+  transform: translateX(6px);
+}
+
+/* Phones: name and "includes" stacked, the arrow beside them. */
+@media (max-width: 760px) {
+  .service-list {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .service-includes {
+    grid-column: 1;
+  }
+
+  .service-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ---- components/service-detail.css ---- */
+
+/* One service explained (js/components/sections/service-detail.js), Services page. */
+
+.service-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 32px clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+.service-detail-story .heading {
+  margin-bottom: 12px;
+}
+
+.service-detail-story .label {
+  margin-top: 24px;
+}
+
+.service-detail-includes .check-list {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 860px) {
+  .service-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- components/team.css ---- */
+
+/* Founder cards (team and contact sections). */
+
+.person-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.person-card p {
+  margin: 0;
+}
+
+/* Set like a small heading (it is a name, not a heading: see team.js). */
+.person-card .person-name {
+  margin-bottom: 4px;
+  font: 700 1.17em / 1.15 var(--font-display);
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  /* A rounded square, like the cards around it; about a quarter of the size keeps it soft. */
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: 800 1.6rem var(--font-display);
+}
+
+/* A real photo fills the same rounded square. */
+.avatar.has-photo {
+  object-fit: cover;
+  background: var(--surface);
+}
+
+/* ---- About page: one large card per founder ---- */
+
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.avatar-large {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 20px;
+  border-radius: 24px;
+  font-size: 2.4rem;
+}
+
+.founder-card h3 {
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+}
+
+.founder-role {
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+/* "Meet the team →" under the compact cards (home page). */
+.founders-link {
+  display: inline-block;
+  margin-top: 24px;
+}
+
+/* The link sits at the bottom, so both cards end level. */
+.founder-card .link-arrow {
+  margin-top: auto;
+}
+
+/* ---- components/samples.css ---- */
+
+/* Samples section. */
+
+.sample-card .btn-row {
+  margin-bottom: 0;
+}
+
+/* ---- components/process.css ---- */
+
+/* Process section. */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 20px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  padding-top: 20px;
+  border-top: 2px solid var(--text);
+}
+
+.step-number {
+  display: block;
+  margin-bottom: 12px;
+  font: 800 2rem var(--font-display);
+  color: var(--accent-text);
+}
+
+/* ---- components/faq.css ---- */
+
+/*
+ * FAQ section (js/components/sections/faq.js): heading and a "write to us" link on the left,
+ * the questions on the right; stacked on narrow screens.
+ */
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 24px clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+.faq-intro .heading {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.faq-help {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* The link wraps as a whole, never leaving its arrow alone on a line. */
+.faq-help .link-arrow {
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .faq-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- questions ---- */
+
+.faq {
+  border-top: 1px solid var(--border);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq summary {
+  position: relative;
+  padding: 20px 40px 20px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.15s ease;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary:hover {
+  color: var(--accent-text);
+}
+
+/* A thin plus drawn with two bars; opening folds the vertical bar away, leaving a minus. */
+.faq summary::before,
+.faq summary::after {
+  content: '';
+  position: absolute;
+  /* Centred on the first line of the question (line height 1.6). */
+  top: calc(20px + 0.8em - 1px);
+  right: 4px;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.faq summary::after {
+  transform: rotate(90deg);
+}
+
+.faq details[open] summary::after {
+  transform: rotate(90deg) scaleX(0);
+}
+
+.faq-more {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.faq details p {
+  margin: 0;
+  padding-bottom: 20px;
+  color: var(--muted);
+}
+
+/* Smooth opening where the browser can animate to "auto" height; elsewhere it opens at once. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) {
+    .faq {
+      interpolate-size: allow-keywords;
+    }
+
+    .faq details::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 0.25s ease,
+        content-visibility 0.25s allow-discrete;
+    }
+
+    .faq details[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
+
+/* ---- components/cta.css ---- */
+
+/* Call to action section. */
+
+.cta {
+  text-align: center;
+}
+
+.cta .heading,
+.cta .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The highlighted answer ("Let's hear it.") always starts its own line. */
+.cta .heading em {
+  display: block;
+}
+
+.cta .btn-row {
+  justify-content: center;
+}
+
+/* ---- components/pricing.css ---- */
+
+/* Pricing tool and the home-page price overview. */
+
+.pricing-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  margin: 32px 0;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.segmented button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--text);
+  font: 600 0.95rem var(--font-body);
+  cursor: pointer;
+}
+
+.segmented button[aria-pressed='true'] {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.pricing-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.package-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+.package-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* The price is sized to the card (cqi), so it fits however narrow the columns get. */
+  container-type: inline-size;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .package-card:not(.is-unavailable):hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+}
+
+.package-card .badge-accent {
+  align-self: flex-start;
+}
+
+.package-card.is-recommended {
+  border-color: var(--accent);
+}
+
+.package-card.is-selected {
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+.package-card.is-unavailable {
+  opacity: 0.7;
+}
+
+/* What's included: a compact check-list between the tagline and the price. */
+.package-includes {
+  margin-top: 8px;
+}
+
+.package-includes .check-list {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.package-includes .check-list li {
+  margin-bottom: 6px;
+}
+
+/* "Show all (9)": the rest of the list, opened in place. */
+.package-more summary {
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+/* "Ask about this package": under the select button, centred. */
+.package-ask {
+  align-self: center;
+  margin-top: 14px;
+  font-size: 0.9rem;
+}
+
+.package-price {
+  margin: auto 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.package-price p {
+  margin-bottom: 4px;
+}
+
+.price {
+  font: 800 clamp(1.4rem, 2.6vw, 1.8rem) / 1.2 var(--font-display);
+}
+
+.price small {
+  font: 500 0.85rem var(--font-body);
+  color: var(--muted);
+}
+
+.package-card .price {
+  font-size: clamp(1.2rem, 12cqi, 1.8rem);
+}
+
+/* A word, not a number: smaller, and it may wrap ("Անհասանելի" is long in the display font). */
+.package-card .price-unavailable {
+  font-size: clamp(1rem, 8cqi, 1.25rem);
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+
+.price-small {
+  font-weight: 700;
+}
+
+.saving {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.addons {
+  margin-top: 40px;
+}
+
+.addon-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.addon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+}
+
+.addon > div:first-child {
+  display: grid;
+}
+
+.addon.is-selected {
+  border-color: var(--text);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.stepper output {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.estimate {
+  position: sticky;
+  top: 96px;
+}
+
+.estimate-rows {
+  margin: 0 0 16px;
+}
+
+.estimate-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.estimate-row dt {
+  min-width: 0;
+}
+
+.estimate-row dd {
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.estimate-row.subtotal {
+  color: var(--muted);
+}
+
+.estimate-row.total {
+  border-bottom: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.estimate-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.estimate-actions .btn-row {
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .pricing-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .estimate {
+    position: static;
+  }
+}
+
+/* ---- phones: the chosen package and the next step, stuck to the bottom of the screen ---- */
+
+.estimate-bar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .estimate-bar {
+    position: sticky;
+    bottom: 12px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 8px 8px 8px 18px;
+    border-radius: 999px;
+    background: var(--inverse-bg);
+    color: var(--inverse-text);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+  }
+
+  .estimate-bar-text {
+    display: grid;
+    min-width: 0;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .estimate-bar-text strong,
+  .estimate-bar-text span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .estimate-bar .btn {
+    flex: none;
+  }
+}
+
+/* ---- components/package-preview.css ---- */
+
+/*
+ * Home page price overview (js/components/sections/package-preview.js): a table to scan, with
+ * names on the left and prices on the right, their digits lined up.
+ */
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 8px 40px;
+  margin-top: 24px;
+}
+
+.preview-group h3 {
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  color: var(--accent-text);
+}
+
+.preview-list,
+.preview-one-time {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  color: inherit;
+  text-decoration: none;
+}
+
+.preview-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+
+.preview-name strong {
+  font-weight: 600;
+}
+
+/* A quiet marker instead of a badge: a dot and a word in the accent colour. */
+.preview-tag,
+.preview-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.preview-tag {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.preview-tag::before {
+  content: '●';
+  margin-right: 4px;
+  font-size: 0.6em;
+  vertical-align: 0.2em;
+}
+
+.preview-price {
+  font: 700 1.2rem var(--font-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.preview-price small {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.preview-was {
+  margin-right: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* One-time packages sit under the table, one row across the full width. */
+.preview-one-time {
+  margin-top: 16px;
+}
+
+@media (hover: hover) {
+  .preview-row {
+    transition: color 0.15s ease;
+  }
+
+  .preview-row:hover strong,
+  .preview-row:focus-visible strong {
+    color: var(--accent-text);
+  }
+}
+
+/* ---- components/comparison.css ---- */
+
+/* Package comparison tables (js/components/sections/comparison.js), Pricing page. */
+
+/* Wide tables scroll inside their box on phones, never the whole page. */
+.comparison-scroll {
+  margin-top: 28px;
+  overflow-x: auto;
+}
+
+/* Fixed column widths, so the price columns line up from one table to the next. */
+.comparison {
+  width: 100%;
+  min-width: 680px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparison th:first-child {
+  width: 26%;
+}
+
+.comparison th:last-child {
+  width: 16%;
+}
+
+.comparison caption {
+  padding-bottom: 8px;
+  text-align: left;
+  font: 700 1.1rem var(--font-display);
+  color: var(--accent-text);
+}
+
+.comparison th,
+.comparison td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Column titles may wrap (long in Armenian); prices never do. */
+.comparison thead th {
+  vertical-align: bottom;
+  white-space: normal;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.comparison th:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.comparison tbody th {
+  font-weight: 600;
+}
+
+.comparison tbody th a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.comparison tbody th a:hover {
+  color: var(--accent-text);
+}
+
+.comparison tbody th .preview-tag {
+  margin-left: 8px;
+}
+
+/* At night the highlighted row is lighter than the page: a lighter orange keeps the tag legible. */
+:root[data-theme='dark'] .comparison .is-recommended .preview-tag {
+  color: #f47a5a;
+}
+
+.comparison .is-unavailable {
+  color: var(--muted);
+}
+
+.comparison-saving {
+  font-weight: 700;
+  color: var(--ok);
+}
+
+.comparison .is-recommended {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+/* ---- components/finder.css ---- */
+
+/* Package finder. */
+
+.finder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: clamp(24px, 5vw, 64px);
+  align-items: start;
+}
+
+.finder-question {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.finder-question legend {
+  margin-bottom: 16px;
+  font: 700 clamp(1.2rem, 2.4vw, 1.6rem) / 1.25 var(--font-display);
+}
+
+.finder-package {
+  font: 800 1.8rem var(--font-display);
+  margin-bottom: 4px;
+}
+
+.alternatives {
+  padding-left: 20px;
+}
+
+/* ---- components/contact.css ---- */
+
+/* Contact section (js/components/sections/contact.js). */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 28px;
+  margin-top: 32px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* On phones the form comes first: calling is already one tap away in the bottom bar. */
+  .contact-layout > .form,
+  .contact-layout > .form-success {
+    order: -1;
+  }
+}
+
+.people {
+  display: grid;
+  gap: 16px;
+}
+
+/* ---- direct contacts: icon, label and value, then the actions ---- */
+
+.direct-contacts {
+  display: grid;
+  gap: 4px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--accent-text);
+}
+
+.contact-value {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contact-value .label {
+  margin: 0;
+}
+
+.contact-value strong,
+.contact-value a {
+  font-size: 1.05rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* ---- what happens next: three numbered steps ---- */
+
+.next-steps {
+  margin-top: 28px;
+}
+
+.next-steps ol {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.next-steps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  counter-increment: step;
+}
+
+.next-steps li::before {
+  content: counter(step);
+  font: 700 1.2rem var(--font-display);
+  color: var(--accent-text);
+}
+
+/* The buttons sit under the value, lined up with it. */
+.contact-actions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---- base/reveal.css ---- */
+
+/*
+ * Entrance motion (only without a reduced-motion preference). Prices, forms and controls are
+ * never hidden or moved by these rules.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveals (js/lib/reveal.js): short, staggered, and started before reaching the viewport. */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.25s ease-out;
+    transition-delay: calc(min(var(--reveal-order, 0), 4) * 50ms);
+  }
+
+  .reveal-ready [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Page titles enter word by word. */
+  .hero h1 .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.5em) rotate(3deg);
+    animation: word-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: calc(0.05s + var(--i) * 40ms);
+  }
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- base/theme-transition.css ---- */
+
+/*
+ * Theme change (js/lib/theme.js): a circle of the new theme spreading from the bulb
+ * (View Transitions API), or a short crossfade where that is not supported.
+ */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Turning off: the old (light) page shrinks into the bulb, so it must be on top. */
+html[data-vt='off']::view-transition-old(root) {
+  z-index: 2;
+}
+
+html[data-vt='off']::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Soft-edged reveal: a feathered radial mask whose radius (--vt-r) is animated from JavaScript. */
+@property --vt-r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+html[data-vt='on'][data-vt-soft]::view-transition-new(root),
+html[data-vt='off'][data-vt-soft]::view-transition-old(root) {
+  --vt-mask: radial-gradient(
+    circle at var(--vt-x) var(--vt-y),
+    #000 calc(var(--vt-r) - var(--vt-feather)),
+    rgb(0 0 0 / 0.55) calc(var(--vt-r) - var(--vt-feather) * 0.45),
+    transparent var(--vt-r)
+  );
+  mask-image: var(--vt-mask);
+}
+
+/* The page being covered stays fully visible until the animation takes over. */
+html[data-vt='off'][data-vt-soft]::view-transition-old(root) {
+  --vt-r: 400vmax;
+}
+
+/* The bulb gets its own live layer, so it keeps swinging and glowing during the reveal. */
+html[data-vt] .bulb-toggle {
+  view-transition-name: theme-bulb;
+}
+
+::view-transition-group(theme-bulb),
+::view-transition-new(theme-bulb) {
+  animation: none;
+}
+
+::view-transition-old(theme-bulb) {
+  display: none;
+}
+
+/*
+ * The cord and wire are drawn over both themes at once while the circle spreads from the bulb:
+ * in either theme's text colour they would vanish against the other and leave the bead floating
+ * on its own. Halfway between navy and blush, they show on both.
+ */
+html[data-vt] .bulb-toggle {
+  --bulb-wire: color-mix(in srgb, var(--bg) 50%, var(--inverse-bg));
+  --bulb-cord: color-mix(in srgb, var(--bg) 50%, var(--inverse-bg));
+}
+
+/* Snapshots must show final colours, not mid-transition ones (the live bulb keeps its own). */
+html[data-vt],
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *) {
+  transition: none !important;
+}
+
+/*
+ * Frame rate: the new page is drawn live under the spreading circle, and anything still moving
+ * on it (the sign's bulbs, headings sliding in…) makes the browser redraw the whole screen on every
+ * frame. Holding those animations for the moment of the reveal lets it reuse one picture; only
+ * the bulb keeps moving.
+ */
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *),
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *)::before,
+html[data-vt] *:not(.bulb-toggle, .bulb-toggle *)::after {
+  animation-play-state: paused !important;
+}
+
+/* No View Transitions: crossfade every colour together. */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease,
+    fill 300ms ease,
+    stroke 300ms ease,
+    box-shadow 300ms ease !important;
+}
+
+/* ---- base/motion.css ---- */
+
+/* Respect the reduced-motion preference everywhere. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

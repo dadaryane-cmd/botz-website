@@ -2,5 +2,11 @@
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 100,
-  "semi": false
+  "semi": false,
+  "overrides": [
+    {
+      "files": "site/public/*.html",
+      "options": { "embeddedLanguageFormatting": "off" }
+    }
+  ]
 }
