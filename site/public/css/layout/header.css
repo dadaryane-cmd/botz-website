@@ -32,6 +32,11 @@
   min-height: 72px;
 }
 
+/* The logo keeps its size; the menu moves into ☰ before there is too little room for both. */
+.logo {
+  flex: none;
+}
+
 .logo img {
   display: block;
   width: 112px;
@@ -74,9 +79,15 @@
   white-space: nowrap;
 }
 
-.nav ul a:hover,
-.nav ul a[aria-current='page'] {
+.nav ul a:hover {
   background: var(--surface);
+}
+
+/* The page you are on: underlined in the brand orange (a grey pill was hard to see). */
+.nav ul a[aria-current='page'],
+.nav-group-toggle.is-current {
+  text-decoration: underline 2px var(--accent);
+  text-underline-offset: 8px;
 }
 
 /* ---- a group ("Services"): a small dropdown on wide screens ---- */
@@ -114,8 +125,7 @@
   transform: translateY(1px) rotate(-135deg);
 }
 
-.nav-group-toggle:hover,
-.nav-group-toggle.is-current {
+.nav-group-toggle:hover {
   background: var(--surface);
 }
 
@@ -147,7 +157,7 @@
  * With a mouse it also opens on hover (header.js, so the chevron and aria-expanded always match
  * what is shown); this invisible strip keeps the pointer "inside" on its way to the menu.
  */
-@media (hover: hover) and (min-width: 960px) {
+@media (hover: hover) and (min-width: 1120px) {
   .nav-group::after {
     content: '';
     position: absolute;
@@ -168,6 +178,96 @@
   align-items: center;
   gap: 8px;
 }
+
+/* WhatsApp beside the offer button (wide screens; phones have it in the bottom bar). */
+.header-whatsapp {
+  flex: none;
+  color: var(--text);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.header-whatsapp:hover,
+.header-whatsapp:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+/* ---- The language menu (wide screens): "Eng ▾" opens the three ---- */
+
+.language-menu {
+  position: relative;
+}
+
+.language-menu summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font: 600 0.85rem var(--font-body);
+  list-style: none;
+  cursor: pointer;
+}
+
+.language-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A small chevron that flips when the menu is open (as the Services group's). */
+.language-menu summary::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.language-menu[open] summary::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.language-menu summary:hover {
+  border-color: var(--text);
+}
+
+.language-menu-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.language-menu-list a {
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.language-menu-list a:hover {
+  background: var(--surface);
+}
+
+.language-menu-list a[aria-current='true'] {
+  color: var(--accent-text);
+}
+
+/* ---- The language switch (phone menu): the three side by side ---- */
 
 .language-switch {
   display: flex;
@@ -240,10 +340,11 @@
 }
 
 /*
- * Below 960px (header.js WIDE_NAV_MIN_PX) a full-screen menu behind ☰. The full navigation
- * needs about 945px in the longest language (Armenian) to stay on one line.
+ * Below 1120px (header.js WIDE_NAV_MIN_PX) a full-screen menu behind ☰. The full header (logo,
+ * menu, WhatsApp, the offer, language, lamp) needs about 1110px in the longest language
+ * (Armenian) to stay on one line with the logo at full size.
  */
-@media (max-width: 959px) {
+@media (max-width: 1119px) {
   .menu-toggle {
     display: grid;
   }
@@ -252,8 +353,9 @@
     margin-left: auto;
   }
 
-  /* The header keeps logo, lamp and ☰; the languages move into the menu. */
-  .header-tools > .language-switch {
+  /* The header keeps logo, lamp and ☰; the languages move into the menu, WhatsApp to the bar. */
+  .header-tools > .language-menu,
+  .header-whatsapp {
     display: none;
   }
 

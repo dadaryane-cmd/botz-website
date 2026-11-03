@@ -10,14 +10,12 @@ import { readFileSync } from 'node:fs'
 import {
   CONTRACT_LENGTHS,
   INQUIRY_SERVICES,
+  LANGUAGE_NAMES,
   LANGUAGES,
   PACKAGE_CATEGORIES,
   PAGES,
   SOCIAL_NETWORKS,
 } from '../public/js/config.js'
-
-/** Each language as the editor shows it. */
-const LANGUAGE_NAMES = { hy: 'Հայերեն', en: 'English', ru: 'Русский' }
 
 const CONTENT = 'site/public/content'
 const readContent = (file) =>

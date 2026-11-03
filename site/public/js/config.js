@@ -12,6 +12,8 @@ export const SITE_CONTENT = ['site', 'people', 'navigation', 'catalog', 'finder'
 export const LANGUAGES = ['hy', 'en', 'ru']
 export const DEFAULT_LANGUAGE = 'hy'
 export const LANGUAGE_LABELS = { hy: 'Հայ', en: 'Eng', ru: 'Рус' }
+/** Each language's name in that language (the language menu, the editor's fields). */
+export const LANGUAGE_NAMES = { hy: 'Հայերեն', en: 'English', ru: 'Русский' }
 
 /**
  * Contract lengths in months, as offered in the price list. There is no 1-month contract:

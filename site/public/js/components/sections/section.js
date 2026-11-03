@@ -18,12 +18,15 @@ export const heading = (text, level = 'h2') =>
 export const lead = (text) =>
   hasText(text) ? h('p', { class: 'lead', ...reveal(1) }, t(text)) : null
 
-/** A link styled as a button; with a `note`, clicking it also prefills the contact form's message. */
-export const button = ({ label, href, style, note }) =>
+/**
+ * A link styled as a button; with a `note`, clicking it also prefills the contact form's message.
+ * `size`: 'small' for the smaller button (the header's).
+ */
+export const button = ({ label, href, style, note }, { size } = {}) =>
   h(
     'a',
     {
-      class: `btn btn-${style || 'primary'}`,
+      class: [`btn btn-${style || 'primary'}`, size && `btn-${size}`].filter(Boolean).join(' '),
       href,
       // The note is kept in every language, so it follows a later language change.
       onclick: hasText(note) ? () => updateSelection({ note }) : null,
