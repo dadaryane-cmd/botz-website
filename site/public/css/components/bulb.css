@@ -4,8 +4,6 @@
   --bulb-width: 40px;
   --bulb-cord-length: 16px;
   --bulb-bead-size: 10px;
-  /* Header row 72px, tools 44px and centred: 14px up to the header's top edge. */
-  --bulb-drop: -14px;
   --bulb-wire: color-mix(in srgb, var(--text) 55%, transparent);
   --bulb-cord: color-mix(in srgb, var(--text) 70%, transparent);
   --bulb-bead-color: var(--accent);

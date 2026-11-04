@@ -800,14 +800,37 @@ h1.heading {
 
 /* Sticky header, navigation, language switch and mobile menu. */
 
+/*
+ * The height of the header's row: full at the top of the page, compact once it is scrolled
+ * (compact-header.js). Registered so the change can glide; the bulb and the phone menu follow it.
+ */
+@property --header-row {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 72px;
+}
+
 .site-header {
-  --header-height: 73px;
+  --header-row: 72px;
+  --header-height: calc(var(--header-row) + 1px);
+  /* The bulb (44px button, centred in the row) hangs from the header's top edge. */
+  --bulb-drop: calc((44px - var(--header-row)) / 2);
   position: sticky;
   top: 0;
   z-index: 50;
+  /* As the row gets shorter its place is kept, so the page below never moves. */
+  margin-bottom: calc(72px - var(--header-row));
   border-bottom: 1px solid var(--border);
   /* The bulb's glow must not widen the page; vertically it may hang below the header. */
   overflow-x: clip;
+  transition:
+    --header-row 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.site-header.is-compact {
+  --header-row: 56px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
 }
 
 /*
@@ -829,7 +852,7 @@ h1.heading {
   display: flex;
   align-items: center;
   gap: 20px;
-  min-height: 72px;
+  min-height: var(--header-row);
 }
 
 /* The logo keeps its size; the menu moves into ☰ before there is too little room for both. */
@@ -839,8 +862,13 @@ h1.heading {
 
 .logo img {
   display: block;
-  width: 112px;
+  width: 128px;
   height: auto;
+  transition: width 0.25s ease;
+}
+
+.is-compact .logo img {
+  width: 104px;
 }
 
 /* One logo per theme; switching themes is pure CSS. */
@@ -1169,7 +1197,7 @@ h1.heading {
     display: none;
     flex-direction: column;
     align-items: stretch;
-    padding: 16px var(--gutter) 32px;
+    padding: 8px var(--gutter) calc(24px + env(safe-area-inset-bottom));
     overflow-y: auto;
     overscroll-behavior: contain;
     background: var(--bg);
@@ -1180,17 +1208,46 @@ h1.heading {
     animation: menu-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
+  /* The pages: full-width rows with a thin line between them. */
   .nav ul {
     flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-links {
+    margin-bottom: 24px;
+  }
+
+  .nav-links > li + li {
+    border-top: 1px solid var(--border);
   }
 
   .nav ul a {
-    padding: 12px;
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 4px;
+    border-radius: 0;
+    font-size: 1.2rem;
   }
 
-  .nav > .btn {
-    margin-top: 16px;
+  .nav ul a:hover {
+    background: none;
+    color: var(--accent-text);
+  }
+
+  /* The page you are on: orange, with a dot at the end of its row. */
+  .nav ul a[aria-current='page'] {
+    color: var(--accent-text);
+    text-decoration: none;
+  }
+
+  .nav ul a[aria-current='page']::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   /* A group shows its name as a small label with all its links listed under it. */
@@ -1218,39 +1275,55 @@ h1.heading {
     box-shadow: none;
   }
 
-  /* Bottom of the menu: languages, then call and WhatsApp side by side. */
+  /*
+   * Everything to act on sits together at the bottom, within the thumb's reach: the languages,
+   * the offer, then call and WhatsApp. (The offer comes before the languages in the page, for
+   * wide screens; `order` places it here.)
+   */
   .nav-extras {
-    display: grid;
-    gap: 16px;
-    margin-top: auto;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
+    display: contents;
   }
 
+  /* The three languages share the width equally. */
   .nav-extras .language-switch {
-    justify-self: start;
+    order: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: auto;
+  }
+
+  /* Full size here, as the call and WhatsApp buttons under it (the header's is small). */
+  .nav > .btn {
+    order: 2;
+    min-height: 48px;
+    margin-top: 16px;
+    font-size: 1rem;
   }
 
   .nav-contact {
+    order: 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    margin-top: 8px;
   }
 }
 
 @media (max-width: 420px) {
   .logo img {
-    width: 88px;
+    width: 100px;
   }
 
-  .language-switch a {
-    min-width: 34px;
-    padding: 4px 5px;
+  .is-compact .logo img {
+    width: 84px;
   }
 }
 
-/* While the phone menu is open the page behind it stays still. */
-.menu-open,
+/*
+ * While the phone menu is open the page behind it stays still. Only on <body>, which passes it on
+ * to the window: with <html> hidden too, <body> (overflow-x: hidden, reset.css) would become the
+ * box the header sticks to, and the header would scroll out of view.
+ */
 .menu-open body {
   overflow: hidden;
 }
@@ -1272,8 +1345,6 @@ h1.heading {
   --bulb-width: 40px;
   --bulb-cord-length: 16px;
   --bulb-bead-size: 10px;
-  /* Header row 72px, tools 44px and centred: 14px up to the header's top edge. */
-  --bulb-drop: -14px;
   --bulb-wire: color-mix(in srgb, var(--text) 55%, transparent);
   --bulb-cord: color-mix(in srgb, var(--text) 70%, transparent);
   --bulb-bead-color: var(--accent);

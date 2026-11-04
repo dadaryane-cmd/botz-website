@@ -6,6 +6,7 @@
  */
 import { renderArticle } from './components/blog/article.js'
 import { renderFooter } from './components/layout/footer.js'
+import { setUpCompactHeader } from './components/layout/compact-header.js'
 import { renderHeader, setUpMobileMenu } from './components/layout/header.js'
 import { renderMobileBar } from './components/layout/mobile-bar.js'
 import { renderNotFound } from './components/not-found.js'
@@ -74,6 +75,7 @@ initSelection(location.search)
 await Promise.race([document.fonts.ready, wait(FONT_WAIT_MS)])
 renderAll()
 setUpMobileMenu(elements.header)
+setUpCompactHeader(elements.header)
 // Sections are created by script, so the browser could not jump to #anchors on load.
 if (location.hash) {
   document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' })

@@ -130,12 +130,12 @@ const languageLink = (language, label) =>
     label,
   )
 
-/** Phone menu: the three languages side by side (there is room for them there). */
+/** Phone menu: the three languages side by side, each named in full (there is room there). */
 const languageSwitch = () =>
   h(
     'div',
     { class: 'language-switch', role: 'group', 'aria-label': ui('common', 'language') },
-    LANGUAGES.map((language) => languageLink(language, LANGUAGE_LABELS[language])),
+    LANGUAGES.map((language) => languageLink(language, LANGUAGE_NAMES[language])),
   )
 
 /* ---------- menu items ---------- */
