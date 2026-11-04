@@ -20,9 +20,9 @@
         "ru": "Креативное *маркетинговое агентство*"
       },
       "subheading": {
-        "hy": "BOTZ-ը մարքեթինգային գործակալություն է։ Մենք զբաղվում ենք սոցցանցերի ստրատեգիկ առաջխաղացմամբ, ստեղծում կայքեր՝ զբաղվում դրանց SEO առաջխաղացմամբ։",
-        "en": "BOTZ is a digital marketing agency specializing in strategic social media marketing, website creation, and SEO optimization to help businesses grow online.",
-        "ru": "BOTZ это маркетинговое агентство, специализирующееся на стратегическом продвижении в социальных сетях, создании сайтов и их SEO-продвижении. Мы помогаем бизнесу развиваться и привлекать клиентов онлайн."
+        "hy": "BOTZ-ում զբաղվում ենք սոցցանցերի ստրատեգիկ առաջխաղացմամբ, ստեղծում կայքեր՝ զբաղվում դրանց SEO առաջխաղացմամբ։",
+        "en": "At BOTZ, we focus on strategic social media growth, website development, and SEO to improve website visibility and drive organic growth.",
+        "ru": "В BOTZ мы занимаемся стратегическим продвижением в социальных сетях, разработкой сайтов и SEO, чтобы повысить видимость сайтов в поисковых системах и обеспечить органический рост."
       },
       "buttons": [
         {
@@ -54,14 +54,14 @@
     {
       "type": "sign",
       "title": {
-        "hy": "ՌԱԶՄԱՎԱՐՈՒԹՅՈՒՆ\nԵՎ ԿՐԵԱՏԻՎ։",
-        "en": "STRATEGY MEETS\nCREATIVITY.",
-        "ru": "СТРАТЕГИЯ\nВСТРЕЧАЕТ КРЕАТИВ."
+        "hy": "ՌԱԶՄԱՎԱՐՈՒԹՅՈՒՆ՝\nՀԱՄԵՄՎԱԾ ԿՐԵԱՏԻՎՈՎ։",
+        "en": "STRATEGY, \nWITH A CREATIVE TWIST.",
+        "ru": "СТРАТЕГИЯ \nС ТВОРЧЕСКИМ ПОДХОДОМ."
       },
       "tagline": {
-        "hy": "ԳԱՂԱՓԱՐ, ԻՐԱԳՈՐԾՈՒՄ, ԱՃ։",
-        "en": "GENERATING IDEAS. CREATING. GROWING.",
-        "ru": "ИДЕЯ, РЕАЛИЗАЦИЯ, РОСТ."
+        "hy": "ԳԱՂԱՓԱՐԻՑ ՄԻՆՉԵՎ ԻՐԱԳՈՐԾՈՒՄ",
+        "en": "FROM CONCEPT TO ACTION.",
+        "ru": "ОТ ИДЕИ К РЕАЛИЗАЦИИ."
       }
     },
     {
