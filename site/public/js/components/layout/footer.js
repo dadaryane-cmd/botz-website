@@ -47,6 +47,8 @@ function footerTop() {
         alt: t(site.name),
         width: 112,
         height: 44,
+        loading: 'lazy',
+        decoding: 'async',
       }),
     ),
     hasText(navigation.footerTagline) &&

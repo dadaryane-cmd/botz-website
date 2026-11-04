@@ -15,6 +15,7 @@ import { site } from './content/index.js'
 import { getLanguage, initLanguage, t, ui } from './lib/i18n.js'
 import { currentArticle, currentPage, currentSitePath, isArticlePage } from './lib/page.js'
 import { startReveals } from './lib/reveal.js'
+import { syncThemeColor } from './lib/theme.js'
 import { initSelection } from './pricing/selection.js'
 import { startAnalytics } from './services/analytics.js'
 
@@ -67,6 +68,8 @@ function renderAll() {
 }
 
 initLanguage(currentSitePath())
+// head.js chose the theme; the phone browser's bar takes its background colour.
+syncThemeColor()
 // With <base href> at the site's root, the shell's "#main" would lead to the home page.
 elements.skipLink.setAttribute('href', `${location.pathname}#main`)
 initSelection(location.search)

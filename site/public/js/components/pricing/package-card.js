@@ -31,7 +31,8 @@ export function packageCard(pkg, selection) {
     'article',
     { class: classes.filter(Boolean).join(' ') },
     pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
-    h('h3', null, t(pkg.name)),
+    // A name ("Gold", "Start"): browser translation must not turn it into "Золото".
+    h('h3', { translate: 'no' }, t(pkg.name)),
     h('p', { class: 'muted' }, t(pkg.tagline)),
     pkg.includes?.length > 0 ? includedList(pkg) : pkg.components?.length > 0 && bundleNote(pkg),
     h('div', { class: 'package-price' }, priceDetails(pkg, price)),

@@ -9,6 +9,9 @@ import { reveal } from '../../lib/reveal.js'
 import { picture } from '../picture.js'
 import { heading, lead, section } from './section.js'
 
+/** The portrait files' size in px (square; team.css draws them smaller, as a circle). */
+const PORTRAIT_SIZE = 200
+
 /**
  * The founders. Variant "compact" (home page): photo, name and role only, with a link to the
  * full cards on the About page.
@@ -36,6 +39,11 @@ export const portrait = (person, className) =>
         src: person.photo,
         avif: person.photoAvif,
         alt: '',
+        // The photo files are square; the size keeps the page from moving as they load.
+        width: PORTRAIT_SIZE,
+        height: PORTRAIT_SIZE,
+        loading: 'lazy',
+        decoding: 'async',
       })
     : h('span', { class: className, 'aria-hidden': 'true' }, t(person.name).charAt(0))
 

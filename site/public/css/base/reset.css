@@ -12,6 +12,31 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
   -webkit-text-size-adjust: 100%;
+  /* A soft brand tint on tap (phones), instead of the browser's grey box. */
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Taps respond at once: no wait for a possible double-tap zoom (pinch zoom still works). */
+a,
+button,
+summary,
+label,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Headings break into even lines (no single word left alone on the last one); text avoids it. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 body {

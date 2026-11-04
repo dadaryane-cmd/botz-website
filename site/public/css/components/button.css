@@ -118,6 +118,24 @@
   text-decoration: underline;
 }
 
+/*
+ * Touch screens: a link of one text line is hard to hit, so its tap area reaches 8px above and
+ * below the text (an invisible layer; nothing on the page moves).
+ */
+@media (pointer: coarse) {
+  .text-link,
+  .comparison tbody th a {
+    position: relative;
+  }
+
+  .text-link::after,
+  .comparison tbody th a::after {
+    content: '';
+    position: absolute;
+    inset: -8px 0;
+  }
+}
+
 .icon-button {
   display: grid;
   place-items: center;

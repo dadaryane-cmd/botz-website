@@ -9,7 +9,8 @@
 .hero h1.heading {
   max-width: 22ch;
   font-family: var(--font-hero);
-  font-size: clamp(2.9rem, 8vw, 6.5rem);
+  /* On the narrowest phones a little smaller, so "գործակալություն" fits on the screen. */
+  font-size: clamp(min(2.9rem, 11.5vw), 8vw, 6.5rem);
   font-weight: 800;
   font-stretch: extra-condensed;
   line-height: 0.95;

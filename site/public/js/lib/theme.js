@@ -22,6 +22,16 @@ let latestTransition = null
 
 export const getTheme = () => (root.dataset.theme === 'dark' ? 'dark' : 'light')
 
+/**
+ * Phone browsers colour their bar with <meta name="theme-color">: give it the page's background
+ * (css/base/tokens.css), so the bar matches the theme the visitor sees.
+ */
+export function syncThemeColor() {
+  const meta = document.querySelector('meta[name="theme-color"]')
+  const background = getComputedStyle(root).getPropertyValue('--bg').trim()
+  if (meta && background) meta.content = background
+}
+
 /** True while the new theme is spreading from the bulb (a view transition is running). */
 export const isThemeChanging = () => 'vt' in root.dataset
 
@@ -33,6 +43,7 @@ export function setTheme(theme, { origin, animate = true } = {}) {
   const commit = () => {
     root.dataset.theme = theme
     save('theme', theme)
+    syncThemeColor()
   }
   if (!animate) {
     commit()

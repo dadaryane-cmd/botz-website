@@ -92,7 +92,14 @@ export function renderInquiryForm({ service: pageService }) {
       field(
         'email',
         ui('form', 'email'),
-        control('input', 'email', { type: 'email', autocomplete: 'email', maxlength: 200 }),
+        // No spell check or capital first letter: an address is not a word.
+        control('input', 'email', {
+          type: 'email',
+          autocomplete: 'email',
+          spellcheck: 'false',
+          autocapitalize: 'off',
+          maxlength: 200,
+        }),
       ),
       field(
         'phone',

@@ -250,6 +250,31 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
   -webkit-text-size-adjust: 100%;
+  /* A soft brand tint on tap (phones), instead of the browser's grey box. */
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Taps respond at once: no wait for a possible double-tap zoom (pinch zoom still works). */
+a,
+button,
+summary,
+label,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Headings break into even lines (no single word left alone on the last one); text avoids it. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 body {
@@ -586,6 +611,24 @@ h1.heading {
 
 .text-link:hover {
   text-decoration: underline;
+}
+
+/*
+ * Touch screens: a link of one text line is hard to hit, so its tap area reaches 8px above and
+ * below the text (an invisible layer; nothing on the page moves).
+ */
+@media (pointer: coarse) {
+  .text-link,
+  .comparison tbody th a {
+    position: relative;
+  }
+
+  .text-link::after,
+  .comparison tbody th a::after {
+    content: '';
+    position: absolute;
+    inset: -8px 0;
+  }
 }
 
 .icon-button {
@@ -1883,6 +1926,13 @@ h1.heading {
   }
 }
 
+/* The narrowest phones have no room beside the bulb: the hint would cover the logo. */
+@media (max-width: 359px) {
+  .bulb-hint {
+    display: none;
+  }
+}
+
 /* ---- playing with the lamp: its lines, then a flicker and a card with marketing tips ---- */
 
 /* A line can be longer than the hint; it may wrap instead of running off a phone screen. */
@@ -2114,6 +2164,19 @@ h1.heading {
   overflow-wrap: anywhere;
 }
 
+/* Touch screens: each link a taller tap area, the list as tall as before. */
+@media (pointer: coarse) {
+  .footer-columns li {
+    margin-bottom: 0;
+  }
+
+  .footer-columns a,
+  .footer-top-link {
+    display: inline-block;
+    padding-block: 4px;
+  }
+}
+
 .footer-columns a:hover {
   text-decoration: underline;
 }
@@ -2132,6 +2195,13 @@ h1.heading {
 
   .footer-columns > :last-child {
     grid-column: 1 / -1;
+  }
+}
+
+/* The narrowest phones: one column, so a long title ("ԳՈՐԾԱԿԱԼՈՒԹՅՈՒՆ") never runs off the screen. */
+@media (max-width: 359px) {
+  .footer-columns {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2271,7 +2341,8 @@ a.social-link:focus-visible {
 .hero h1.heading {
   max-width: 22ch;
   font-family: var(--font-hero);
-  font-size: clamp(2.9rem, 8vw, 6.5rem);
+  /* On the narrowest phones a little smaller, so "գործակալություն" fits on the screen. */
+  font-size: clamp(min(2.9rem, 11.5vw), 8vw, 6.5rem);
   font-weight: 800;
   font-stretch: extra-condensed;
   line-height: 0.95;
@@ -3187,7 +3258,9 @@ a.social-link:focus-visible {
 
 /* "Show all (9)": the rest of the list, opened in place. */
 .package-more summary {
-  margin-bottom: 8px;
+  /* A taller tap area without moving the text (the negative margins give the room back). */
+  margin: -10px 0 -2px;
+  padding-block: 10px;
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--accent-text);
@@ -3197,7 +3270,9 @@ a.social-link:focus-visible {
 /* "Ask about this package": under the select button, centred. */
 .package-ask {
   align-self: center;
-  margin-top: 14px;
+  margin-top: 4px;
+  /* A taller tap area: 10px above and below the text, in place of the margin. */
+  padding-block: 10px;
   font-size: 0.9rem;
 }
 
@@ -3213,6 +3288,8 @@ a.social-link:focus-visible {
 
 .price {
   font: 800 clamp(1.4rem, 2.6vw, 1.8rem) / 1.2 var(--font-display);
+  /* Digits of equal width, so prices side by side compare at a glance. */
+  font-variant-numeric: tabular-nums;
 }
 
 .price small {
@@ -3324,6 +3401,7 @@ a.social-link:focus-visible {
 .estimate-row dd {
   margin: 0;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 

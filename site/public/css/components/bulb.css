@@ -542,6 +542,13 @@
   }
 }
 
+/* The narrowest phones have no room beside the bulb: the hint would cover the logo. */
+@media (max-width: 359px) {
+  .bulb-hint {
+    display: none;
+  }
+}
+
 /* ---- playing with the lamp: its lines, then a flicker and a card with marketing tips ---- */
 
 /* A line can be longer than the hint; it may wrap instead of running off a phone screen. */

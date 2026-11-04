@@ -122,7 +122,9 @@
 
 /* "Show all (9)": the rest of the list, opened in place. */
 .package-more summary {
-  margin-bottom: 8px;
+  /* A taller tap area without moving the text (the negative margins give the room back). */
+  margin: -10px 0 -2px;
+  padding-block: 10px;
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--accent-text);
@@ -132,7 +134,9 @@
 /* "Ask about this package": under the select button, centred. */
 .package-ask {
   align-self: center;
-  margin-top: 14px;
+  margin-top: 4px;
+  /* A taller tap area: 10px above and below the text, in place of the margin. */
+  padding-block: 10px;
   font-size: 0.9rem;
 }
 
@@ -148,6 +152,8 @@
 
 .price {
   font: 800 clamp(1.4rem, 2.6vw, 1.8rem) / 1.2 var(--font-display);
+  /* Digits of equal width, so prices side by side compare at a glance. */
+  font-variant-numeric: tabular-nums;
 }
 
 .price small {
@@ -259,6 +265,7 @@
 .estimate-row dd {
   margin: 0;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
