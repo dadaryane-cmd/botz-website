@@ -5,7 +5,7 @@
 import { people } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { hasText, t } from '../../lib/i18n.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { picture } from '../picture.js'
 import { heading, lead, section } from './section.js'
 
@@ -18,9 +18,7 @@ const PORTRAIT_SIZE = 200
  */
 export function renderTeam(config) {
   const compact = config.variant === 'compact'
-  const card = compact
-    ? (person, index) => personCard(person, reveal(index))
-    : (person, index) => founderCard(person, index)
+  const card = compact ? (person) => personCard(person, REVEAL) : founderCard
   return section(
     config,
     heading(config.heading),
@@ -47,10 +45,10 @@ export const portrait = (person, className) =>
       })
     : h('span', { class: className, 'aria-hidden': 'true' }, t(person.name).charAt(0))
 
-function founderCard(person, index) {
+function founderCard(person) {
   return h(
     'article',
-    { class: 'card founder-card', ...reveal(index) },
+    { class: 'card founder-card', ...REVEAL },
     portrait(person, 'avatar avatar-large'),
     h('h3', null, t(person.name)),
     h('p', { class: 'founder-role' }, t(person.role)),

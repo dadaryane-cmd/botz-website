@@ -11,6 +11,7 @@ import {
   suggestedContact,
   validateInquiry,
 } from '../forms/inquiry.js'
+import { fadeIn } from '../lib/animation.js'
 import { h } from '../lib/dom.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
 import { external, mailtoHref, whatsappHref } from '../lib/links.js'
@@ -231,6 +232,7 @@ export function renderInquiryForm({ service: pageService }) {
       successNextSteps(values),
     )
     form.replaceWith(done)
+    fadeIn(done)
     done.focus()
   }
 

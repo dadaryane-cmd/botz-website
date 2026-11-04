@@ -53,8 +53,8 @@
   /* The price is sized to the card (cqi), so it fits however narrow the columns get. */
   container-type: inline-size;
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
 }
 
 @media (hover: hover) {
@@ -129,6 +129,27 @@
   font-weight: 700;
   color: var(--accent-text);
   cursor: pointer;
+}
+
+/* The rest of the list opens smoothly where the browser can animate to "auto" height (as the FAQ). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) {
+    .package-more {
+      interpolate-size: allow-keywords;
+    }
+
+    .package-more::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 0.25s var(--ease-out),
+        content-visibility 0.25s allow-discrete;
+    }
+
+    .package-more[open]::details-content {
+      block-size: auto;
+    }
+  }
 }
 
 /* "Ask about this package": under the select button, centred. */

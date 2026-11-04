@@ -7,7 +7,7 @@ import { postFile } from '../../blog/posts.js'
 import { h } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
 import { publishedPosts } from '../../lib/page.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { authorLine, cover, dateAndReadingTime } from '../blog/post-meta.js'
 import { heading, lead, section } from './section.js'
 
@@ -23,10 +23,10 @@ export function renderBlogList(config) {
   )
 }
 
-function postCard(post, index) {
+function postCard(post) {
   return h(
     'li',
-    reveal(index),
+    REVEAL,
     h(
       'a',
       { class: 'post-card', href: postFile(post.slug) },

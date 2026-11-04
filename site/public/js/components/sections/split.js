@@ -1,6 +1,6 @@
 import { h } from '../../lib/dom.js'
 import { t } from '../../lib/i18n.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
 /** Large statement on one side, explanation and key points on the other. */
@@ -19,13 +19,8 @@ export const renderSplit = (config) =>
           h(
             'ul',
             { class: 'points' },
-            config.points.map((point, index) =>
-              h(
-                'li',
-                reveal(index),
-                h('strong', null, t(point.title)),
-                h('span', null, t(point.text)),
-              ),
+            config.points.map((point) =>
+              h('li', REVEAL, h('strong', null, t(point.title)), h('span', null, t(point.text))),
             ),
           ),
       ),

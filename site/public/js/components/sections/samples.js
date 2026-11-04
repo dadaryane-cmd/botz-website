@@ -1,7 +1,7 @@
 import { h } from '../../lib/dom.js'
 import { t, ui } from '../../lib/i18n.js'
 import { external } from '../../lib/links.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
 /** Example deliverables (PDFs in /downloads). */
@@ -13,10 +13,10 @@ export const renderSamples = (config) =>
     h('div', { class: 'grid grid-3' }, config.items.map(sampleCard)),
   )
 
-const sampleCard = (item, index) =>
+const sampleCard = (item) =>
   h(
     'article',
-    { class: 'card sample-card', ...reveal(index) },
+    { class: 'card sample-card', ...REVEAL },
     h('span', { class: 'badge' }, ui('trust', 'sampleLabel')),
     h('h3', null, t(item.title)),
     h('p', null, t(item.text)),

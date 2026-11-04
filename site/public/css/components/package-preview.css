@@ -90,7 +90,7 @@
 
 @media (hover: hover) {
   .preview-row {
-    transition: color 0.15s ease;
+    transition: color 0.15s var(--ease-out);
   }
 
   .preview-row:hover strong,

@@ -18,8 +18,8 @@
   isolation: isolate;
   overflow: hidden;
   transition:
-    color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    color 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
 }
 
 /* Hover: a fill in the text colour wipes up from the bottom. */
@@ -30,7 +30,7 @@
   inset: 0;
   background: var(--text);
   transform: translateY(101%);
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.35s var(--ease-out);
 }
 
 .btn:hover::after,

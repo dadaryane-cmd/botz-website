@@ -24,8 +24,8 @@
   /* The bulb's glow must not widen the page; vertically it may hang below the header. */
   overflow-x: clip;
   transition:
-    --header-row 0.25s ease,
-    box-shadow 0.25s ease;
+    --header-row 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
 }
 
 .site-header.is-compact {
@@ -60,15 +60,20 @@
   flex: none;
 }
 
+/*
+ * Compact, the logo is scaled from its left edge (104px of 128px): a transform costs the browser
+ * nothing per frame, where a changing width would lay out the header again each time.
+ */
 .logo img {
   display: block;
   width: 128px;
   height: auto;
-  transition: width 0.25s ease;
+  transform-origin: left center;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .is-compact .logo img {
-  width: 104px;
+  transform: scale(0.8125);
 }
 
 /* One logo per theme; switching themes is pure CSS. */
@@ -146,7 +151,7 @@
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .nav-group.is-open .nav-group-toggle::after {
@@ -212,8 +217,8 @@
   flex: none;
   color: var(--text);
   transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
+    color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
 }
 
 .header-whatsapp:hover,
@@ -253,7 +258,7 @@
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .language-menu[open] summary::after {
@@ -295,6 +300,29 @@
   color: var(--accent-text);
 }
 
+/* The language list and the Services list unfold from their button (closing is instant). */
+.language-menu-list {
+  transform-origin: top right;
+}
+
+.nav .nav-submenu {
+  transform-origin: top left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .language-menu[open] .language-menu-list,
+  .nav-group.is-open .nav-submenu {
+    animation: dropdown-in 160ms var(--ease-out);
+  }
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
 /* ---- The language switch (phone menu): the three side by side ---- */
 
 .language-switch {
@@ -333,7 +361,7 @@
   height: 2px;
   background: currentColor;
   border-radius: 2px;
-  transition: transform 0.2s;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .burger {
@@ -405,7 +433,28 @@
 
   .is-open .nav {
     display: flex;
-    animation: menu-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /*
+   * Opening unrolls the menu from the top; closing is quicker and quieter: a short fade a few
+   * pixels up, with the menu kept on screen until it ends (browsers without `allow-discrete`
+   * close it at once).
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    .nav {
+      opacity: 0;
+      transform: translateY(-6px);
+      transition:
+        opacity 150ms var(--ease-in),
+        transform 150ms var(--ease-in),
+        display 150ms allow-discrete;
+    }
+
+    .is-open .nav {
+      opacity: 1;
+      transform: none;
+      animation: menu-in 0.35s var(--ease-out);
+    }
   }
 
   /* The pages: full-width rows with a thin line between them. */
@@ -514,8 +563,9 @@
     width: 100px;
   }
 
+  /* 84px of 100px. */
   .is-compact .logo img {
-    width: 84px;
+    transform: scale(0.84);
   }
 }
 

@@ -1,6 +1,6 @@
 import { h } from '../../lib/dom.js'
 import { t } from '../../lib/i18n.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
 /**
@@ -15,7 +15,7 @@ export const renderServices = (config) =>
     h('ul', { class: 'service-list' }, config.items.map(serviceRow)),
   )
 
-function serviceRow(item, index) {
+function serviceRow(item) {
   const content = [
     h('div', { class: 'service-name' }, h('h3', null, t(item.title))),
     // A middle dot keeps each item's capital letter readable ("Posts and stories · Meta ads").
@@ -25,5 +25,5 @@ function serviceRow(item, index) {
   const row = item.link?.href
     ? h('a', { class: 'service-row', href: item.link.href }, content)
     : h('div', { class: 'service-row' }, content)
-  return h('li', reveal(index), row)
+  return h('li', REVEAL, row)
 }

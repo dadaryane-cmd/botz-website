@@ -62,3 +62,22 @@ export function tween(from, to, duration, onUpdate, onDone) {
 
 export const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+/** The site's ease-out curve (css/base/tokens.css --ease-out), for animations started here. */
+const EASE_OUT = 'cubic-bezier(0.2, 0.8, 0.2, 1)'
+const FADE_IN_MS = 200
+
+/**
+ * New content in a place that stays on the page (the next finder question, the thank-you
+ * message) fades in and settles from a few pixels below, so the change is seen, not missed.
+ */
+export function fadeIn(element) {
+  if (prefersReducedMotion() || !element.animate) return
+  element.animate(
+    [
+      { opacity: 0, transform: 'translateY(6px)' },
+      { opacity: 1, transform: 'none' },
+    ],
+    { duration: FADE_IN_MS, easing: EASE_OUT },
+  )
+}

@@ -5,7 +5,7 @@
  */
 import { h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { heading, lead, section } from './section.js'
 
 export const renderServiceDetail = (config) =>
@@ -26,7 +26,7 @@ export const renderServiceDetail = (config) =>
       ),
       h(
         'div',
-        { class: 'card service-detail-includes', ...reveal(1) },
+        { class: 'card service-detail-includes', ...REVEAL },
         h('p', { class: 'label' }, ui('servicesPage', 'includesLabel')),
         h(
           'ul',

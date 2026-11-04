@@ -193,6 +193,9 @@
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);
   --shadow: 0 1px 2px rgb(36 33 59 / 0.05), 0 8px 24px rgb(36 33 59 / 0.08);
+  /* Motion curves: things arrive quickly and settle softly, and leave quickly. */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
   color-scheme: light;
 }
 
@@ -513,8 +516,8 @@ h1.heading {
   isolation: isolate;
   overflow: hidden;
   transition:
-    color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    color 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
 }
 
 /* Hover: a fill in the text colour wipes up from the bottom. */
@@ -525,7 +528,7 @@ h1.heading {
   inset: 0;
   background: var(--text);
   transform: translateY(101%);
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.35s var(--ease-out);
 }
 
 .btn:hover::after,
@@ -867,8 +870,8 @@ h1.heading {
   /* The bulb's glow must not widen the page; vertically it may hang below the header. */
   overflow-x: clip;
   transition:
-    --header-row 0.25s ease,
-    box-shadow 0.25s ease;
+    --header-row 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
 }
 
 .site-header.is-compact {
@@ -903,15 +906,20 @@ h1.heading {
   flex: none;
 }
 
+/*
+ * Compact, the logo is scaled from its left edge (104px of 128px): a transform costs the browser
+ * nothing per frame, where a changing width would lay out the header again each time.
+ */
 .logo img {
   display: block;
   width: 128px;
   height: auto;
-  transition: width 0.25s ease;
+  transform-origin: left center;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .is-compact .logo img {
-  width: 104px;
+  transform: scale(0.8125);
 }
 
 /* One logo per theme; switching themes is pure CSS. */
@@ -989,7 +997,7 @@ h1.heading {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .nav-group.is-open .nav-group-toggle::after {
@@ -1055,8 +1063,8 @@ h1.heading {
   flex: none;
   color: var(--text);
   transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
+    color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
 }
 
 .header-whatsapp:hover,
@@ -1096,7 +1104,7 @@ h1.heading {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .language-menu[open] summary::after {
@@ -1138,6 +1146,29 @@ h1.heading {
   color: var(--accent-text);
 }
 
+/* The language list and the Services list unfold from their button (closing is instant). */
+.language-menu-list {
+  transform-origin: top right;
+}
+
+.nav .nav-submenu {
+  transform-origin: top left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .language-menu[open] .language-menu-list,
+  .nav-group.is-open .nav-submenu {
+    animation: dropdown-in 160ms var(--ease-out);
+  }
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
 /* ---- The language switch (phone menu): the three side by side ---- */
 
 .language-switch {
@@ -1176,7 +1207,7 @@ h1.heading {
   height: 2px;
   background: currentColor;
   border-radius: 2px;
-  transition: transform 0.2s;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .burger {
@@ -1248,7 +1279,28 @@ h1.heading {
 
   .is-open .nav {
     display: flex;
-    animation: menu-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /*
+   * Opening unrolls the menu from the top; closing is quicker and quieter: a short fade a few
+   * pixels up, with the menu kept on screen until it ends (browsers without `allow-discrete`
+   * close it at once).
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    .nav {
+      opacity: 0;
+      transform: translateY(-6px);
+      transition:
+        opacity 150ms var(--ease-in),
+        transform 150ms var(--ease-in),
+        display 150ms allow-discrete;
+    }
+
+    .is-open .nav {
+      opacity: 1;
+      transform: none;
+      animation: menu-in 0.35s var(--ease-out);
+    }
   }
 
   /* The pages: full-width rows with a thin line between them. */
@@ -1357,8 +1409,9 @@ h1.heading {
     width: 100px;
   }
 
+  /* 84px of 100px. */
   .is-compact .logo img {
-    width: 84px;
+    transform: scale(0.84);
   }
 }
 
@@ -1501,7 +1554,7 @@ h1.heading {
 
 .bulb-glass-on {
   opacity: 0;
-  transition: opacity var(--bulb-on-ms) ease;
+  transition: opacity var(--bulb-on-ms) var(--ease-out);
 }
 
 .bulb-filament-dim {
@@ -1514,7 +1567,7 @@ h1.heading {
 
 .bulb-filament-hot {
   opacity: 0;
-  transition: opacity var(--bulb-off-ms) ease-out;
+  transition: opacity var(--bulb-off-ms) var(--ease-out);
 }
 
 .bulb-filament-core {
@@ -1549,8 +1602,8 @@ h1.heading {
   opacity: 0;
   transform: scale(0.6);
   transition:
-    opacity 300ms ease,
-    transform 300ms ease;
+    opacity 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
   pointer-events: none;
 }
 
@@ -1623,7 +1676,7 @@ h1.heading {
 }
 
 .bulb-bead-lift {
-  transition: transform 0.25s ease;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .bulb-bead-shape {
@@ -1674,15 +1727,15 @@ h1.heading {
 }
 
 .bulb-toggle.is-turning-on .bulb-halo {
-  animation: bulb-halo-in var(--bulb-on-ms) ease-out;
+  animation: bulb-halo-in var(--bulb-on-ms) var(--ease-out);
 }
 
 .bulb-toggle.is-turning-off .bulb-filament-dim {
-  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) ease-out;
+  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) var(--ease-out);
 }
 
 .bulb-toggle.is-click .bulb-bead-shape {
-  animation: bulb-squash 80ms ease-out;
+  animation: bulb-squash 80ms var(--ease-out);
 }
 
 @keyframes bulb-flicker {
@@ -1735,19 +1788,20 @@ h1.heading {
   }
 }
 
-/* ---- idle and hover motion ---- */
+/*
+ * ---- idle and hover motion ----
+ * The lamp swings for a moment when the page opens and while the mouse is on it, then hangs
+ * still, and the dust shows a few times: the flames and the sign already move, and too much
+ * moving at once pulls the eye from the headline and the offer.
+ */
 
 @media (prefers-reduced-motion: no-preference) {
   .bulb-sway {
-    animation: bulb-sway 5s ease-in-out infinite;
-  }
-
-  [data-theme='light'] .bulb-toggle:not(.is-turning-on) .bulb-halo {
-    animation: bulb-breathe 3s ease-in-out infinite;
+    animation: bulb-sway 5s ease-in-out 2;
   }
 
   [data-theme='light'] .bulb-mote {
-    animation: bulb-mote 3.6s ease-in-out infinite;
+    animation: bulb-mote 3.6s ease-in-out 3;
   }
 }
 
@@ -1767,12 +1821,16 @@ h1.heading {
   }
 }
 
+/* Both swings start and end hanging straight, so starting or stopping never jumps. */
 @keyframes bulb-sway {
   0%,
   100% {
+    transform: none;
+  }
+  25% {
     transform: rotate(-1.5deg);
   }
-  50% {
+  75% {
     transform: rotate(1.5deg);
   }
 }
@@ -1780,20 +1838,13 @@ h1.heading {
 @keyframes bulb-sway-hover {
   0%,
   100% {
+    transform: none;
+  }
+  25% {
     transform: rotate(-3deg);
   }
-  50% {
+  75% {
     transform: rotate(3deg);
-  }
-}
-
-@keyframes bulb-breathe {
-  0%,
-  100% {
-    opacity: 0.85;
-  }
-  50% {
-    opacity: 1;
   }
 }
 
@@ -1830,8 +1881,8 @@ h1.heading {
   opacity: 0;
   transform: translate(6px, -50%);
   transition:
-    opacity 0.15s ease,
-    transform 0.15s ease;
+    opacity 0.15s var(--ease-out),
+    transform 0.15s var(--ease-out);
   pointer-events: none;
 }
 
@@ -1872,8 +1923,8 @@ h1.heading {
   opacity: 0;
   transform: translateY(-6px);
   transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
+    opacity 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
   pointer-events: none;
 }
 
@@ -1887,9 +1938,10 @@ h1.heading {
   color: var(--accent);
 }
 
+/* Three bobs to catch the eye, then it rests (a hint that never stops becomes noise). */
 @media (prefers-reduced-motion: no-preference) {
   .bulb-hint.is-visible {
-    animation: bulb-hint-bob 1.8s ease-in-out 0.4s infinite;
+    animation: bulb-hint-bob 1.8s ease-in-out 0.4s 3;
   }
 }
 
@@ -1950,7 +2002,7 @@ h1.heading {
 }
 
 .bulb-toggle.is-celebrating .bulb-halo {
-  animation: bulb-halo-in var(--bulb-on-ms) ease-out 3;
+  animation: bulb-halo-in var(--bulb-on-ms) var(--ease-out) 3;
 }
 
 .lamp-tip {
@@ -1971,8 +2023,8 @@ h1.heading {
   opacity: 0;
   transform: translateY(-12px);
   transition:
-    opacity 0.3s ease,
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
 }
 
 .lamp-tip.is-visible {
@@ -2004,7 +2056,7 @@ h1.heading {
 /* A new tip fades in, so it is clear the text changed. */
 @media (prefers-reduced-motion: no-preference) {
   .lamp-tip-body.is-new {
-    animation: lamp-tip-in 0.4s ease-out;
+    animation: lamp-tip-in 0.4s var(--ease-out);
   }
 }
 
@@ -2075,7 +2127,7 @@ h1.heading {
     rgb(255 236 205 / 0.35) 35%,
     rgb(236 224 224 / 0.5) 100%
   );
-  transition: opacity 500ms ease-out;
+  transition: opacity 500ms var(--ease-out);
 }
 
 [data-theme='light'] .lamp-light {
@@ -2224,8 +2276,8 @@ h1.heading {
   border-radius: 12px;
   color: inherit;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+    background-color 0.15s var(--ease-out),
+    color 0.15s var(--ease-out);
 }
 
 a.social-link:hover,
@@ -2297,7 +2349,7 @@ a.social-link:focus-visible {
     background: var(--inverse-bg);
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
     transition:
-      transform 0.25s ease,
+      transform 0.25s var(--ease-out),
       visibility 0.25s;
   }
 
@@ -2480,7 +2532,7 @@ a.social-link:focus-visible {
     url('../images/hero-flame-poster-light.avif') type('image/avif'),
     url('../images/hero-flame-poster-light.webp') type('image/webp')
   );
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s var(--ease-out);
 }
 
 :root[data-theme='dark'] .flame-background::before {
@@ -2507,7 +2559,7 @@ a.social-link:focus-visible {
 
 .flame-canvas {
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s var(--ease-out);
 }
 
 .flame-background[data-mode='webgl'] .flame-canvas {
@@ -2687,11 +2739,11 @@ a.social-link:focus-visible {
   }
 
   .marquee-sign.is-lit .sign-board {
-    animation: sign-board-on 300ms 150ms ease-out both;
+    animation: sign-board-on 300ms 150ms var(--ease-out) both;
   }
 
   .marquee-sign.is-lit .sign-letter {
-    animation: sign-letter-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation: sign-letter-in 260ms var(--ease-out) both;
     animation-delay: calc(350ms + var(--i) * 9ms);
   }
 
@@ -2813,7 +2865,7 @@ a.social-link:focus-visible {
 .service-row h3 {
   margin: 0 0 6px;
   font-size: clamp(1.35rem, 2.6vw, 2rem);
-  transition: color 0.15s ease;
+  transition: color 0.15s var(--ease-out);
 }
 
 .service-includes {
@@ -2824,7 +2876,7 @@ a.social-link:focus-visible {
 .service-arrow {
   font-size: 1.4rem;
   color: var(--accent-text);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .service-row:hover h3,
@@ -3043,7 +3095,7 @@ a.social-link:focus-visible {
   font-size: 1.1rem;
   cursor: pointer;
   list-style: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s var(--ease-out);
 }
 
 .faq summary::-webkit-details-marker {
@@ -3066,7 +3118,7 @@ a.social-link:focus-visible {
   height: 2px;
   border-radius: 2px;
   background: currentColor;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .faq summary::after {
@@ -3099,7 +3151,7 @@ a.social-link:focus-visible {
       block-size: 0;
       overflow: hidden;
       transition:
-        block-size 0.25s ease,
+        block-size 0.25s var(--ease-out),
         content-visibility 0.25s allow-discrete;
     }
 
@@ -3189,8 +3241,8 @@ a.social-link:focus-visible {
   /* The price is sized to the card (cqi), so it fits however narrow the columns get. */
   container-type: inline-size;
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
 }
 
 @media (hover: hover) {
@@ -3265,6 +3317,27 @@ a.social-link:focus-visible {
   font-weight: 700;
   color: var(--accent-text);
   cursor: pointer;
+}
+
+/* The rest of the list opens smoothly where the browser can animate to "auto" height (as the FAQ). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) {
+    .package-more {
+      interpolate-size: allow-keywords;
+    }
+
+    .package-more::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 0.25s var(--ease-out),
+        content-visibility 0.25s allow-discrete;
+    }
+
+    .package-more[open]::details-content {
+      block-size: auto;
+    }
+  }
 }
 
 /* "Ask about this package": under the select button, centred. */
@@ -3621,7 +3694,7 @@ a.social-link:focus-visible {
 
 @media (hover: hover) {
   .preview-row {
-    transition: color 0.15s ease;
+    transition: color 0.15s var(--ease-out);
   }
 
   .preview-row:hover strong,
@@ -3942,8 +4015,8 @@ a.social-link:focus-visible {
   color: inherit;
   text-decoration: none;
   transition:
-    border-color 0.25s ease,
-    transform 0.25s ease;
+    border-color 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out);
 }
 
 .post-card:hover {
@@ -4089,14 +4162,16 @@ a.social-link:focus-visible {
  */
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Scroll reveals (js/lib/reveal.js): short, staggered, and started before reaching the viewport. */
+  /*
+   * Scroll reveals (js/lib/reveal.js): cards and rows only, small and short, all together, and
+   * started before they reach the viewport.
+   */
   .reveal-ready [data-reveal] {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(6px);
     transition:
-      opacity 0.25s ease-out,
-      transform 0.25s ease-out;
-    transition-delay: calc(min(var(--reveal-order, 0), 4) * 50ms);
+      opacity 0.2s var(--ease-out),
+      transform 0.2s var(--ease-out);
   }
 
   .reveal-ready [data-reveal].is-in {
@@ -4109,7 +4184,7 @@ a.social-link:focus-visible {
     display: inline-block;
     opacity: 0;
     transform: translateY(0.5em) rotate(3deg);
-    animation: word-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: word-in 0.5s var(--ease-out) forwards;
     animation-delay: calc(0.05s + var(--i) * 40ms);
   }
 }
@@ -4214,12 +4289,12 @@ html.theme-fade *,
 html.theme-fade *::before,
 html.theme-fade *::after {
   transition:
-    background-color 300ms ease,
-    color 300ms ease,
-    border-color 300ms ease,
-    fill 300ms ease,
-    stroke 300ms ease,
-    box-shadow 300ms ease !important;
+    background-color 300ms var(--ease-out),
+    color 300ms var(--ease-out),
+    border-color 300ms var(--ease-out),
+    fill 300ms var(--ease-out),
+    stroke 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out) !important;
 }
 
 /* ---- base/motion.css ---- */

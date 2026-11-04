@@ -17,7 +17,7 @@
     rgb(255 236 205 / 0.35) 35%,
     rgb(236 224 224 / 0.5) 100%
   );
-  transition: opacity 500ms ease-out;
+  transition: opacity 500ms var(--ease-out);
 }
 
 [data-theme='light'] .lamp-light {

@@ -1,12 +1,13 @@
 /**
- * Scroll reveals: elements marked with `reveal(n)` fade up as they approach the viewport,
- * staggered by `n` (css/base/reveal.css). Content is only hidden once this has run, so it stays
- * visible if JavaScript fails; anything already on screen is shown at once and never blinks.
+ * Scroll reveals: cards and rows marked with `REVEAL` fade up slightly as they approach the
+ * viewport, all together (css/base/reveal.css). Headings and text are never hidden: they are
+ * there to be read at once. Content is only hidden once this has run, so it stays visible if
+ * JavaScript fails; anything already on screen is shown at once and never blinks.
  */
 import { prefersReducedMotion } from './animation.js'
 
-/** Attributes for a revealed element; `order` staggers siblings (capped in CSS). */
-export const reveal = (order = 0) => ({ 'data-reveal': true, style: `--reveal-order: ${order}` })
+/** Attributes for a revealed card or row. */
+export const REVEAL = Object.freeze({ 'data-reveal': true })
 
 let observer = null
 

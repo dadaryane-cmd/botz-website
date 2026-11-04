@@ -9,7 +9,7 @@ import { h } from '../../lib/dom.js'
 import { formatAmd, formatMonths } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
-import { reveal } from '../../lib/reveal.js'
+import { REVEAL } from '../../lib/reveal.js'
 import { availableLengths, baseMonthlyPrice, isRecurring, priceFor } from '../../pricing/engine.js'
 import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
 import { button, heading, lead, section } from './section.js'
@@ -31,12 +31,11 @@ export function renderPackagePreview(config) {
     h(
       'div',
       { class: 'preview-grid' },
-      tableCategories.map((category, index) =>
+      tableCategories.map((category) =>
         categoryColumn(
           category,
           monthly.filter((pkg) => pkg.category === category),
           months,
-          index,
         ),
       ),
     ),
@@ -55,10 +54,10 @@ export function renderPackagePreview(config) {
   )
 }
 
-function categoryColumn(category, packages, months, index) {
+function categoryColumn(category, packages, months) {
   return h(
     'div',
-    { class: 'preview-group', ...reveal(index) },
+    { class: 'preview-group', ...REVEAL },
     h('h3', null, categoryLabel(category)),
     h(
       'ul',

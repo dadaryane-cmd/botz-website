@@ -138,8 +138,8 @@
   border-radius: 12px;
   color: inherit;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+    background-color 0.15s var(--ease-out),
+    color 0.15s var(--ease-out);
 }
 
 a.social-link:hover,

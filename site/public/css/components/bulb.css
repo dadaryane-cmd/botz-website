@@ -117,7 +117,7 @@
 
 .bulb-glass-on {
   opacity: 0;
-  transition: opacity var(--bulb-on-ms) ease;
+  transition: opacity var(--bulb-on-ms) var(--ease-out);
 }
 
 .bulb-filament-dim {
@@ -130,7 +130,7 @@
 
 .bulb-filament-hot {
   opacity: 0;
-  transition: opacity var(--bulb-off-ms) ease-out;
+  transition: opacity var(--bulb-off-ms) var(--ease-out);
 }
 
 .bulb-filament-core {
@@ -165,8 +165,8 @@
   opacity: 0;
   transform: scale(0.6);
   transition:
-    opacity 300ms ease,
-    transform 300ms ease;
+    opacity 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
   pointer-events: none;
 }
 
@@ -239,7 +239,7 @@
 }
 
 .bulb-bead-lift {
-  transition: transform 0.25s ease;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .bulb-bead-shape {
@@ -290,15 +290,15 @@
 }
 
 .bulb-toggle.is-turning-on .bulb-halo {
-  animation: bulb-halo-in var(--bulb-on-ms) ease-out;
+  animation: bulb-halo-in var(--bulb-on-ms) var(--ease-out);
 }
 
 .bulb-toggle.is-turning-off .bulb-filament-dim {
-  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) ease-out;
+  animation: bulb-afterglow calc(var(--bulb-off-ms) + var(--bulb-afterglow-ms)) var(--ease-out);
 }
 
 .bulb-toggle.is-click .bulb-bead-shape {
-  animation: bulb-squash 80ms ease-out;
+  animation: bulb-squash 80ms var(--ease-out);
 }
 
 @keyframes bulb-flicker {
@@ -351,19 +351,20 @@
   }
 }
 
-/* ---- idle and hover motion ---- */
+/*
+ * ---- idle and hover motion ----
+ * The lamp swings for a moment when the page opens and while the mouse is on it, then hangs
+ * still, and the dust shows a few times: the flames and the sign already move, and too much
+ * moving at once pulls the eye from the headline and the offer.
+ */
 
 @media (prefers-reduced-motion: no-preference) {
   .bulb-sway {
-    animation: bulb-sway 5s ease-in-out infinite;
-  }
-
-  [data-theme='light'] .bulb-toggle:not(.is-turning-on) .bulb-halo {
-    animation: bulb-breathe 3s ease-in-out infinite;
+    animation: bulb-sway 5s ease-in-out 2;
   }
 
   [data-theme='light'] .bulb-mote {
-    animation: bulb-mote 3.6s ease-in-out infinite;
+    animation: bulb-mote 3.6s ease-in-out 3;
   }
 }
 
@@ -383,12 +384,16 @@
   }
 }
 
+/* Both swings start and end hanging straight, so starting or stopping never jumps. */
 @keyframes bulb-sway {
   0%,
   100% {
+    transform: none;
+  }
+  25% {
     transform: rotate(-1.5deg);
   }
-  50% {
+  75% {
     transform: rotate(1.5deg);
   }
 }
@@ -396,20 +401,13 @@
 @keyframes bulb-sway-hover {
   0%,
   100% {
+    transform: none;
+  }
+  25% {
     transform: rotate(-3deg);
   }
-  50% {
+  75% {
     transform: rotate(3deg);
-  }
-}
-
-@keyframes bulb-breathe {
-  0%,
-  100% {
-    opacity: 0.85;
-  }
-  50% {
-    opacity: 1;
   }
 }
 
@@ -446,8 +444,8 @@
   opacity: 0;
   transform: translate(6px, -50%);
   transition:
-    opacity 0.15s ease,
-    transform 0.15s ease;
+    opacity 0.15s var(--ease-out),
+    transform 0.15s var(--ease-out);
   pointer-events: none;
 }
 
@@ -488,8 +486,8 @@
   opacity: 0;
   transform: translateY(-6px);
   transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
+    opacity 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
   pointer-events: none;
 }
 
@@ -503,9 +501,10 @@
   color: var(--accent);
 }
 
+/* Three bobs to catch the eye, then it rests (a hint that never stops becomes noise). */
 @media (prefers-reduced-motion: no-preference) {
   .bulb-hint.is-visible {
-    animation: bulb-hint-bob 1.8s ease-in-out 0.4s infinite;
+    animation: bulb-hint-bob 1.8s ease-in-out 0.4s 3;
   }
 }
 
@@ -566,7 +565,7 @@
 }
 
 .bulb-toggle.is-celebrating .bulb-halo {
-  animation: bulb-halo-in var(--bulb-on-ms) ease-out 3;
+  animation: bulb-halo-in var(--bulb-on-ms) var(--ease-out) 3;
 }
 
 .lamp-tip {
@@ -587,8 +586,8 @@
   opacity: 0;
   transform: translateY(-12px);
   transition:
-    opacity 0.3s ease,
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
 }
 
 .lamp-tip.is-visible {
@@ -620,7 +619,7 @@
 /* A new tip fades in, so it is clear the text changed. */
 @media (prefers-reduced-motion: no-preference) {
   .lamp-tip-body.is-new {
-    animation: lamp-tip-in 0.4s ease-out;
+    animation: lamp-tip-in 0.4s var(--ease-out);
   }
 }
 

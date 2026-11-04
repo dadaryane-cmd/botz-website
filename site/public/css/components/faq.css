@@ -47,7 +47,7 @@
   font-size: 1.1rem;
   cursor: pointer;
   list-style: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s var(--ease-out);
 }
 
 .faq summary::-webkit-details-marker {
@@ -70,7 +70,7 @@
   height: 2px;
   border-radius: 2px;
   background: currentColor;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .faq summary::after {
@@ -103,7 +103,7 @@
       block-size: 0;
       overflow: hidden;
       transition:
-        block-size 0.25s ease,
+        block-size 0.25s var(--ease-out),
         content-visibility 0.25s allow-discrete;
     }
 

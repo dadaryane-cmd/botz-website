@@ -32,7 +32,7 @@
 .service-row h3 {
   margin: 0 0 6px;
   font-size: clamp(1.35rem, 2.6vw, 2rem);
-  transition: color 0.15s ease;
+  transition: color 0.15s var(--ease-out);
 }
 
 .service-includes {
@@ -43,7 +43,7 @@
 .service-arrow {
   font-size: 1.4rem;
   color: var(--accent-text);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .service-row:hover h3,

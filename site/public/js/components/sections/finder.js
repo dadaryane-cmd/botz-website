@@ -1,5 +1,6 @@
 /** Package finder: one question at a time, then a recommendation with reasons and real cost. */
 import { catalog, finder } from '../../content/index.js'
+import { fadeIn } from '../../lib/animation.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
 import { hasText, t, ui, uiInEveryLanguage } from '../../lib/i18n.js'
@@ -31,6 +32,8 @@ export function renderFinder(config) {
     panel.replaceChildren(...(isIntro ? [] : screen().flat().filter(Boolean)))
     panel.hidden = isIntro
     const shown = isIntro ? start : panel
+    // Only a visitor's step fades in, not the first drawing of the page.
+    if (shown.isConnected) fadeIn(shown)
     shown.querySelector('input:checked, input, .btn-primary')?.focus()
   }
 
