@@ -34,6 +34,12 @@ describe('validateInquiry', () => {
       message: 'messageTooShort',
     })
   })
+
+  it('lets the message stay empty when an estimate is attached', () => {
+    const empty = { ...valid, message: '' }
+    assert.equal(validateInquiry(empty).message, 'messageTooShort')
+    assert.deepEqual(validateInquiry(empty, { hasEstimate: true }), {})
+  })
 })
 
 describe('initialService', () => {
@@ -95,8 +101,9 @@ describe('inquiryEmail', () => {
   })
 
   it('fills empty values with a dash', () => {
-    const email = inquiryEmail({ ...valid, phone: '' }, context)
+    const email = inquiryEmail({ ...valid, phone: '', message: '' }, context)
     assert.equal(email.Phone, '—')
+    assert.equal(email.Message, '—')
     assert.equal(email.Estimate, '—')
     assert.equal(email.Language, 'HY')
   })

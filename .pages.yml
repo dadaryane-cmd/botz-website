@@ -1577,6 +1577,18 @@ content:
           - name: successText
             label: Success text
             component: line
+          - name: successWhatsapp
+            label: Success whatsapp
+            component: line
+          - name: successWhatsappMessage
+            label: Success whatsapp message
+            component: line
+          - name: successHome
+            label: Success home
+            component: line
+          - name: optional
+            label: Optional
+            component: line
           - name: teamName
             label: Team name
             component: line

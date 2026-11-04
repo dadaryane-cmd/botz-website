@@ -5,15 +5,19 @@ import { responsibleFor } from '../lib/people.js'
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE = /^\+?[0-9 ()-]{6,20}$/
 
-/** Field name → message key in content/ui.json (`form` group). Empty object = valid. */
-export function validateInquiry({ name, email, phone, service, message }) {
+/**
+ * Field name → message key in content/ui.json (`form` group). Empty object = valid.
+ * `hasEstimate`: an estimate is attached, which already says what the visitor wants, so the
+ * message may stay empty.
+ */
+export function validateInquiry({ name, email, phone, service, message }, { hasEstimate } = {}) {
   const errors = {}
   if (name.length < 2) errors.name = 'required'
   if (!email && !phone) errors.email = 'needEmailOrPhone'
   if (email && !EMAIL.test(email)) errors.email = 'invalidEmail'
   if (phone && !PHONE.test(phone)) errors.phone = 'invalidPhone'
   if (!service) errors.service = 'required'
-  if (message.length < 5) errors.message = 'messageTooShort'
+  if (!hasEstimate && message.length < 5) errors.message = 'messageTooShort'
   return errors
 }
 
@@ -55,7 +59,7 @@ export function inquiryEmail(values, { serviceLabel, contactName, estimate, page
     Phone: values.phone || '—',
     Service: serviceLabel,
     'Preferred contact': contactName,
-    Message: values.message,
+    Message: values.message || '—',
     Estimate: estimate || '—',
     Page: page,
     Language: language.toUpperCase(),

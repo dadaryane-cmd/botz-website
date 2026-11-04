@@ -495,6 +495,26 @@
       "en": "We will get back to you during working hours. If it is urgent, call or message us on WhatsApp.",
       "ru": "Мы свяжемся с вами в рабочее время. Если срочно — позвоните или напишите в WhatsApp."
     },
+    "successWhatsapp": {
+      "hy": "Գրել մեզ WhatsApp-ով",
+      "en": "Message us on WhatsApp",
+      "ru": "Написать нам в WhatsApp"
+    },
+    "successWhatsappMessage": {
+      "hy": "Բարև։ Հենց նոր հարցում ուղարկեցի ձեր կայքից։ Իմ անունը {name} է։",
+      "en": "Hello! I just sent an inquiry from your website. My name is {name}.",
+      "ru": "Здравствуйте! Я только что отправил(а) заявку с вашего сайта. Меня зовут {name}."
+    },
+    "successHome": {
+      "hy": "Վերադառնալ գլխավոր էջ",
+      "en": "Back to the home page",
+      "ru": "Вернуться на главную"
+    },
+    "optional": {
+      "hy": "կամընտիր",
+      "en": "optional",
+      "ru": "необязательно"
+    },
     "teamName": {
       "hy": "Մեր թիմը",
       "en": "Our team",

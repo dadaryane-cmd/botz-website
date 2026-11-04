@@ -14,6 +14,7 @@ import {
 import { h } from '../lib/dom.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
 import { external, mailtoHref, whatsappHref } from '../lib/links.js'
+import { currentFile } from '../lib/page.js'
 import { findPackage } from '../pricing/engine.js'
 import { estimateSummary } from '../pricing/estimate.js'
 import { getSelection, subscribe, updateSelection } from '../pricing/selection.js'
@@ -69,6 +70,13 @@ export function renderInquiryForm({ service: pageService }) {
   })
   const fillSuggestedNote = noteFiller(message, selection.note)
   const estimate = attachedEstimate()
+  const hasEstimate = () => Boolean(estimateSummary())
+  // An attached estimate already says what the visitor wants: the message becomes optional.
+  const messageOptional = h('span', { class: 'muted' })
+  const showMessageOptional = () => {
+    messageOptional.textContent = hasEstimate() ? ` (${ui('form', 'optional')})` : ''
+  }
+  showMessageOptional()
 
   const status = h('div', { class: 'form-status', role: 'status', tabindex: '-1' })
   const submitButton = h(
@@ -108,7 +116,7 @@ export function renderInquiryForm({ service: pageService }) {
       ),
       h('p', { class: 'hint full' }, ui('form', 'contactHint')),
       serviceChoice,
-      field('message', ui('form', 'message'), message, { full: true }),
+      field('message', [ui('form', 'message'), messageOptional], message, { full: true }),
     ),
     // Honeypot: hidden from people, but bots fill it in.
     h(
@@ -127,9 +135,23 @@ export function renderInquiryForm({ service: pageService }) {
     status,
   )
 
+  // The service follows the package chosen on the page, until the visitor picks one themselves.
+  let serviceChosenByVisitor = false
+  serviceChoice.addEventListener('change', () => {
+    serviceChosenByVisitor = true
+  })
+  const followSelection = (service) => {
+    const radio = service && form.querySelector(`input[name="service"][value="${service}"]`)
+    if (!radio || radio.checked) return
+    radio.checked = true
+    errorFor.service.textContent = ''
+  }
+
   subscribe(form, (changed) => {
     estimate.update()
+    showMessageOptional()
     fillSuggestedNote(changed.note)
+    if (!serviceChosenByVisitor) followSelection(serviceOfSelection(changed))
   })
 
   /* ---------- behaviour ---------- */
@@ -145,7 +167,7 @@ export function renderInquiryForm({ service: pageService }) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault()
     const values = readValues(form)
-    const errors = validateInquiry(values)
+    const errors = validateInquiry(values, { hasEstimate: hasEstimate() })
     showFieldErrors(form, errorFor, errors)
     const firstInvalid = Object.keys(errors)[0]
     if (firstInvalid) {
@@ -160,7 +182,7 @@ export function renderInquiryForm({ service: pageService }) {
     const contactName = t(contact?.name) || ui('form', 'teamName')
     // The honeypot was filled in, so this is a bot: pretend it worked and send nothing.
     if (values.website) {
-      showSuccess()
+      showSuccess(values)
       return
     }
 
@@ -177,7 +199,7 @@ export function renderInquiryForm({ service: pageService }) {
         }),
       )
       trackEvent('generate_lead', { service: values.service || 'other' })
-      showSuccess()
+      showSuccess(values)
     } catch (error) {
       // Visitors see a friendly message; the console keeps FormSubmit's reason (e.g. "This form
       // needs Activation") for whoever looks after the site.
@@ -199,13 +221,14 @@ export function renderInquiryForm({ service: pageService }) {
     status.focus()
   }
 
-  function showSuccess() {
+  function showSuccess(values) {
     updateSelection({ packageKey: null, addons: {}, note: null })
     const done = h(
       'div',
       { class: 'card form form-success', role: 'status', tabindex: '-1' },
       h('p', { class: 'form-success-title' }, ui('form', 'successTitle')),
       h('p', { class: 'muted' }, ui('form', 'successText')),
+      successNextSteps(values),
     )
     form.replaceWith(done)
     done.focus()
@@ -215,6 +238,32 @@ export function renderInquiryForm({ service: pageService }) {
 }
 
 /* ---------- parts of the form ---------- */
+
+/** The service the visitor's chosen package (or add-ons alone) belongs to, or '' for none. */
+const serviceOfSelection = (selection) =>
+  initialService({
+    packageCategory: findPackage(catalog, selection.packageKey)?.category,
+    hasAddons: Object.keys(selection.addons).length > 0,
+  })
+
+/**
+ * After sending: WhatsApp for anything urgent (the chat opens with a greeting naming the visitor)
+ * and, away from the home page, the way back to it, so the page is not a dead end.
+ */
+function successNextSteps(values) {
+  const greeting = ui('form', 'successWhatsappMessage', { name: values.name })
+  return h(
+    'div',
+    { class: 'btn-row' },
+    h(
+      'a',
+      { class: 'btn btn-secondary', href: whatsappHref(greeting), ...external },
+      ui('form', 'successWhatsapp'),
+    ),
+    currentFile() !== 'index.html' &&
+      h('a', { class: 'text-link', href: 'index.html' }, ui('form', 'successHome')),
+  )
+}
 
 /** The services as a row of buttons (radio buttons underneath), so every option is visible. */
 function serviceFieldset({ preselected, describedBy, extra }) {
