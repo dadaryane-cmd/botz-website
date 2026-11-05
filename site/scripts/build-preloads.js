@@ -96,7 +96,7 @@ const headScript = () =>
  * The block for a page's <head>: the stylesheet, the content and the modules to fetch, and the
  * head script (last, so the browser has seen everything to fetch before it runs).
  */
-export function renderBlock(html, modules = moduleGraph(), script = headScript()) {
+function renderBlock(html, modules = moduleGraph(), script = headScript()) {
   const pageKey = html.match(/data-page="([\w-]+)"/)?.[1]
   const content = [
     ...SITE_CONTENT.map((name) => `content/${name}.json`),

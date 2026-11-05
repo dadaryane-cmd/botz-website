@@ -29,7 +29,7 @@ import { escapeHtml, scriptJson, withSeoTags } from './seo/head-tags.js'
 import { pageDescription, publishedPages } from './seo/pages.js'
 import { robotsTxt, sitemapXml } from './seo/sitemap.js'
 
-export const DIST_DIR = fileURLToPath(new URL('../dist/', import.meta.url))
+const DIST_DIR = fileURLToPath(new URL('../dist/', import.meta.url))
 const ARTICLE_TEMPLATE = `${ARTICLE_PAGE}.html`
 /** The <base href> of the page shells, for the dev server at the root of localhost. */
 const SOURCE_BASE = '<base href="/" />'
@@ -53,7 +53,7 @@ export function withNoindex(html) {
 }
 
 /** A page that keeps search engines away: noindex, and not one of the redirect pages. */
-export const blocksSearchEngines = (html) =>
+const blocksSearchEngines = (html) =>
   html.includes(NOINDEX) && !html.includes('http-equiv="refresh"')
 
 /**
@@ -192,13 +192,15 @@ function build({ preview = false, today } = {}) {
   const site = { ...content.site, url: siteUrl }
 
   rmSync(DIST_DIR, { recursive: true, force: true })
-  // The page shells become the pages below and redirects; content files are copied as they are.
+  // The page shells become the pages below and redirects; content files are copied as they are
+  // (not the .gitkeep that keeps an empty media folder, such as downloads/, in the repository).
   const shells = new Set(readdirSync(PUBLIC_DIR).filter((file) => file.endsWith('.html')))
   cpSync(PUBLIC_DIR, DIST_DIR, {
     recursive: true,
     filter: (source) =>
       !shells.has(source.slice(PUBLIC_DIR.length)) &&
-      !source.endsWith(join('content/posts', INDEX_FILE)),
+      !source.endsWith(join('content/posts', INDEX_FILE)) &&
+      !source.endsWith('.gitkeep'),
   })
 
   const posts = readPostIndex(PUBLIC_DIR, today)

@@ -7,7 +7,7 @@ import { DEFAULT_LANGUAGE, LANGUAGES } from '../../public/js/config.js'
 import { pagePath, postPath } from '../../public/js/lib/urls.js'
 
 /** The page's address in `language`, relative to the site's root ("ru/uslugi/"). */
-export const entryPath = (routes, entry, language) =>
+const entryPath = (routes, entry, language) =>
   entry.post ? postPath(routes, entry.post.slug, language) : pagePath(routes, entry.key, language)
 
 /** A page in `language` as a full address; the Armenian home page is the site's own address. */

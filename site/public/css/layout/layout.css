@@ -50,19 +50,6 @@
   color: var(--text);
 }
 
-.bg-accent {
-  --text: var(--on-accent);
-  --muted: var(--on-accent);
-  --accent-text: var(--on-accent);
-  background: var(--accent);
-  color: var(--text);
-}
-
-.bg-accent .heading em {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-}
-
 .grid {
   display: grid;
   gap: 20px;
@@ -74,13 +61,4 @@
 
 .grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-}
-
-.grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-}
-
-.bg-accent .btn-primary {
-  background: var(--on-accent);
-  color: var(--accent);
 }

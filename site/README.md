@@ -1,7 +1,8 @@
 # BOTZ website (static)
 
 The BOTZ Marketing Agency website in plain HTML, CSS and JavaScript (ES modules).
-No framework, no build step and no server: GitHub Pages publishes `public/` as it is
+No framework, no dependencies and no server: `public/` runs as it is, and `npm run build`
+adds each page and article at its address in every language before GitHub Pages publishes it
 (see `.github/workflows/pages.yml`).
 
 ## Run locally

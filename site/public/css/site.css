@@ -174,8 +174,6 @@
   --on-accent: #15132a;
   --inverse-bg: #24213b;
   --inverse-text: #f4ebea;
-  /* The same light blush in both themes (button hover on the red). */
-  --blush: #f4ebea;
   --ok: #1e7a3c;
   --error: #b42318;
 
@@ -459,19 +457,6 @@ h1.heading {
   color: var(--text);
 }
 
-.bg-accent {
-  --text: var(--on-accent);
-  --muted: var(--on-accent);
-  --accent-text: var(--on-accent);
-  background: var(--accent);
-  color: var(--text);
-}
-
-.bg-accent .heading em {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-}
-
 .grid {
   display: grid;
   gap: 20px;
@@ -483,15 +468,6 @@ h1.heading {
 
 .grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-}
-
-.grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-}
-
-.bg-accent .btn-primary {
-  background: var(--on-accent);
-  color: var(--accent);
 }
 
 /* ---- components/button.css ---- */
@@ -540,17 +516,6 @@ h1.heading {
 .btn:focus-visible {
   color: var(--bg);
   border-color: var(--text);
-}
-
-/* On the orange background the fill is light blush in both themes, like everywhere else in dark mode. */
-.bg-accent .btn::after {
-  background: var(--blush);
-}
-
-.bg-accent .btn:hover,
-.bg-accent .btn:focus-visible {
-  color: var(--on-accent);
-  border-color: var(--blush);
 }
 
 .btn:disabled {

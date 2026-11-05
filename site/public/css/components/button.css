@@ -44,17 +44,6 @@
   border-color: var(--text);
 }
 
-/* On the orange background the fill is light blush in both themes, like everywhere else in dark mode. */
-.bg-accent .btn::after {
-  background: var(--blush);
-}
-
-.bg-accent .btn:hover,
-.bg-accent .btn:focus-visible {
-  color: var(--on-accent);
-  border-color: var(--blush);
-}
-
 .btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;

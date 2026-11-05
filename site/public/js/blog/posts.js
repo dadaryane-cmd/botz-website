@@ -25,7 +25,7 @@ export function readingMinutes(markdown) {
 }
 
 /** What the blog page needs of an article: everything except the text, plus reading times. */
-export function indexEntry(post) {
+function indexEntry(post) {
   const { body, ...summary } = post
   const minutes = Object.fromEntries(
     LANGUAGES.map((language) => [language, readingMinutes(body?.[language])]),

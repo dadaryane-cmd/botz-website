@@ -10,7 +10,7 @@ export const INDEX_FILE = 'index.json'
 
 export const postsFolder = (publicDir) => join(publicDir, 'content/posts')
 
-export function readPosts(publicDir) {
+function readPosts(publicDir) {
   const folder = postsFolder(publicDir)
   return readdirSync(folder)
     .filter((file) => file.endsWith('.json') && file !== INDEX_FILE)

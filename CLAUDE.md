@@ -20,10 +20,11 @@ The owner's standing rule: **write clean JS code.** For `site/` that means:
   `site/tests/` for new logic.
 - **Respect `prefers-reduced-motion`** for every animation; clean up observers, timers and
   animation frames when an element leaves the page.
-- **Format with Prettier** (repo `.prettierrc.json`) and keep `npx eslint site` clean. The
-  `site/**` block in `eslint.config.mjs` enforces the readability rules: no nested ternaries,
-  comma or assignment expressions, braces on multi-line blocks, no one-letter names
-  (except `i`, `x`, `y`, `t` and `h`).
+- **Format with Prettier** (repo `.prettierrc.json`) and keep `npx eslint site` clean.
+  `eslint.config.mjs` adds ESLint's recommended rules and the readability rules: no nested
+  ternaries, comma or assignment expressions, braces on multi-line blocks, no one-letter names
+  (except `i`, `x`, `y`, `t` and `h`), no unused variables. The root `package.json` holds only
+  these tools (`npm install` at the root).
 - **Make edits directly in the files** (Edit tool), not with ad-hoc patch scripts.
 
 ## Before pushing changes to `site/`
@@ -87,4 +88,3 @@ id are optional fields in `content/site.json` (Pages CMS → Contact details); G
 `preview` branch (branched from `main`), not on `main`. Pushing it publishes the site from that
 branch at https://dadaryane-cmd.github.io/botz-website/preview/ (pages marked noindex), and the live
 site stays as it is. When the owner approves, merge `preview` into `main` and delete the branch.
-The Next.js app at the repository root is the original CMS version and is not deployed.

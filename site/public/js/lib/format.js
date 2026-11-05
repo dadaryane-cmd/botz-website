@@ -1,12 +1,15 @@
 import { getLanguage, ui } from './i18n.js'
 
-/** `79,000 ֏` — with a non-breaking space so amounts never wrap. */
+/** Between an amount and its currency sign, so "79,000 ֏" never wraps onto two lines. */
+const NO_BREAK_SPACE = ' '
+
+/** `79,000 ֏` (`79 000 ֏` in Russian). */
 export function formatAmd(amount, language = getLanguage()) {
   const locale = language === 'ru' ? 'ru-RU' : 'en-US'
   const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(
     Math.round(amount),
   )
-  return `${number} ֏`
+  return `${number}${NO_BREAK_SPACE}֏`
 }
 
 export const formatMonths = (months) =>

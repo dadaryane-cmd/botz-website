@@ -21,7 +21,7 @@ export function currentFile() {
   return `${pageKey}.html`
 }
 
-export const hasSection = (id) => Boolean(page?.sections.some((section) => section.id === id))
+const hasSection = (id) => Boolean(page?.sections.some((section) => section.id === id))
 
 /** Link to a section on this page if it has one, otherwise on `file`. */
 export const sectionHref = (id, file) => (hasSection(id) ? `#${id}` : `${file}#${id}`)

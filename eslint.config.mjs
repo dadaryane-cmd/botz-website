@@ -1,32 +1,18 @@
-import nextVitals from 'eslint-config-next/core-web-vitals'
-import nextTs from 'eslint-config-next/typescript'
+import js from '@eslint/js'
+import globals from 'globals'
 
-const eslintConfig = [
-  ...nextVitals,
-  ...nextTs,
+export default [
+  { ignores: ['site/dist/'] },
+  js.configs.recommended,
   {
-    rules: {
-      '@typescript-eslint/ban-ts-comment': 'warn',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      // CMS documents are loosely typed JSON in a few rendering helpers.
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          args: 'after-used',
-          ignoreRestSiblings: false,
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^(_|ignore)',
-        },
-      ],
-    },
-  },
-  {
-    // The static site: clean, readable plain JavaScript (see CLAUDE.md).
+    // The website: browser modules (public/) and the Node tools that build and test it.
     files: ['site/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: { ...globals.browser, ...globals.node },
+    },
+    // Clean, readable plain JavaScript (see CLAUDE.md).
     rules: {
       'no-nested-ternary': 'error',
       'no-sequences': 'error',
@@ -36,11 +22,7 @@ const eslintConfig = [
       'prefer-const': 'error',
       'no-var': 'error',
       eqeqeq: ['error', 'smart'],
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_', caughtErrors: 'none' }],
     },
   },
-  {
-    ignores: ['.next/', 'src/payload-types.ts', 'src/payload-generated-schema.ts', 'src/migrations/', 'src/app/(payload)/admin/importMap.js'],
-  },
 ]
-
-export default eslintConfig
