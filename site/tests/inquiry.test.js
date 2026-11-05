@@ -7,6 +7,9 @@ import {
   suggestedContact,
   validateInquiry,
 } from '../public/js/forms/inquiry.js'
+import { formSubmitBody } from '../public/js/services/formsubmit.js'
+import { firstToSucceed } from '../public/js/services/send-inquiry.js'
+import { web3FormsBody } from '../public/js/services/web3forms.js'
 
 const valid = {
   name: 'Ani',
@@ -95,16 +98,92 @@ describe('inquiryEmail', () => {
     language: 'hy',
   }
 
-  it('sets reply-to only when the visitor gave an email', () => {
-    assert.equal(inquiryEmail(valid, context)._replyto, 'ani@example.com')
-    assert.equal('_replyto' in inquiryEmail({ ...valid, email: '' }, context), false)
+  it('names the visitor and service in the subject; replies go to the visitor, if they gave an email', () => {
+    const email = inquiryEmail(valid, context)
+    assert.equal(email.subject, 'New inquiry: Ani · SEO')
+    assert.equal(email.replyTo, 'ani@example.com')
+    assert.equal(inquiryEmail({ ...valid, email: '' }, context).replyTo, null)
   })
 
   it('fills empty values with a dash', () => {
-    const email = inquiryEmail({ ...valid, phone: '', message: '' }, context)
-    assert.equal(email.Phone, '—')
-    assert.equal(email.Message, '—')
-    assert.equal(email.Estimate, '—')
-    assert.equal(email.Language, 'HY')
+    const { fields } = inquiryEmail({ ...valid, phone: '', message: '' }, context)
+    assert.equal(fields.Phone, '—')
+    assert.equal(fields.Message, '—')
+    assert.equal(fields.Estimate, '—')
+    assert.equal(fields.Language, 'HY')
+  })
+})
+
+describe('delivery formats', () => {
+  const email = { subject: 'New inquiry', replyTo: 'ani@example.com', fields: { Name: 'Ani' } }
+
+  it('Web3Forms: access key, subject, sender name and reply-to, then the table', () => {
+    assert.deepEqual(web3FormsBody('key-1', email), {
+      access_key: 'key-1',
+      subject: 'New inquiry',
+      from_name: 'BOTZ website',
+      replyto: 'ani@example.com',
+      Name: 'Ani',
+    })
+    assert.equal('replyto' in web3FormsBody('key-1', { ...email, replyTo: null }), false)
+  })
+
+  it('FormSubmit: underscore settings, then the table', () => {
+    assert.deepEqual(formSubmitBody(email), {
+      _subject: 'New inquiry',
+      _template: 'table',
+      _captcha: 'false',
+      _replyto: 'ani@example.com',
+      Name: 'Ani',
+    })
+    assert.equal('_replyto' in formSubmitBody({ ...email, replyTo: null }), false)
+  })
+})
+
+describe('firstToSucceed', () => {
+  const quietly = async (run) => {
+    const warn = console.warn
+    console.warn = () => {}
+    try {
+      return await run()
+    } finally {
+      console.warn = warn
+    }
+  }
+  const failing = (message) => async () => {
+    throw new Error(message)
+  }
+
+  it('uses the first service that delivers and does not try the rest', async () => {
+    const tried = []
+    const delivered = await firstToSucceed([
+      ['A', async () => tried.push('A')],
+      ['B', async () => tried.push('B')],
+    ])
+    assert.equal(delivered, 'A')
+    assert.deepEqual(tried, ['A'])
+  })
+
+  it('falls back to the next service when one fails', async () => {
+    const delivered = await quietly(() =>
+      firstToSucceed([
+        ['A', failing('down')],
+        ['B', async () => {}],
+      ]),
+    )
+    assert.equal(delivered, 'B')
+  })
+
+  it("throws the last service's reason when none delivers, or when none is set up", async () => {
+    await assert.rejects(
+      quietly(() =>
+        firstToSucceed([
+          ['A', failing('down')],
+          ['B', failing('needs activation')],
+        ]),
+      ),
+      /needs activation/,
+    )
+    await assert.rejects(firstToSucceed([]), /No delivery service/)
   })
 })

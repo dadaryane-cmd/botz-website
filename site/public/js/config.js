@@ -31,4 +31,8 @@ export const INQUIRY_SERVICES = ['smm', 'seo', 'website', 'strategy', 'bundle', 
 export const SOCIAL_NETWORKS = ['instagram', 'facebook', 'tiktok']
 
 export const STORAGE_PREFIX = 'botz.'
+/** Inquiry delivery: Web3Forms first, FormSubmit if it fails (js/services/send-inquiry.js). */
+export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 export const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/'
+/** How long one service may take before the next one is tried. */
+export const SEND_TIMEOUT_MS = 15000

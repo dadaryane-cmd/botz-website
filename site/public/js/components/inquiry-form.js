@@ -1,6 +1,6 @@
 /**
  * Inquiry form. Validates in the browser, attaches the visitor's estimate and emails
- * everything to site.formEmail through FormSubmit.
+ * everything to the agency (Web3Forms, with FormSubmit as the backup: js/services/send-inquiry.js).
  */
 import { INQUIRY_SERVICES } from '../config.js'
 import { catalog, people, site } from '../content/index.js'
@@ -20,7 +20,7 @@ import { findPackage } from '../pricing/engine.js'
 import { estimateSummary } from '../pricing/estimate.js'
 import { getSelection, subscribe, updateSelection } from '../pricing/selection.js'
 import { trackEvent } from '../services/analytics.js'
-import { sendForm } from '../services/formsubmit.js'
+import { sendInquiry } from '../services/send-inquiry.js'
 
 /** Email and phone are validated together (one of them is needed). */
 const LINKED_FIELDS = ['email', 'phone']
@@ -189,8 +189,8 @@ export function renderInquiryForm({ service: pageService }) {
 
     setSending(true)
     try {
-      await sendForm(
-        site.formEmail,
+      await sendInquiry(
+        site,
         inquiryEmail(values, {
           serviceLabel: ui('services', values.service),
           contactName,
@@ -202,8 +202,8 @@ export function renderInquiryForm({ service: pageService }) {
       trackEvent('generate_lead', { service: values.service || 'other' })
       showSuccess(values)
     } catch (error) {
-      // Visitors see a friendly message; the console keeps FormSubmit's reason (e.g. "This form
-      // needs Activation") for whoever looks after the site.
+      // Visitors see a friendly message with email and WhatsApp instead; the console keeps each
+      // service's reason (send-inquiry.js) for whoever looks after the site.
       console.warn('Inquiry not sent:', error.message)
       setSending(false)
       showError(ui('form', 'errorGeneric'), fallbackLinks(values))

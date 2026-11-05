@@ -419,8 +419,16 @@ const siteEntry = {
     string('phoneE164', 'Phone (international, no spaces)', { pattern: '^\\+[0-9]{8,15}$' }),
     string('whatsapp', 'WhatsApp number (digits only)', { pattern: '^[0-9]{8,15}$' }),
     string('email', 'Public email'),
-    string('formEmail', 'Inquiry form sends to', {
-      description: 'Changing this needs a new FormSubmit activation (see site/README.md).',
+    string('web3formsKey', 'Inquiry form: Web3Forms access key', {
+      description:
+        'Inquiries are emailed through Web3Forms to the inbox this key belongs to (web3forms.com, ' +
+        'signed in as botz.marketingagency@gmail.com). The key is public by design.',
+      pattern: '^[0-9a-f-]{36}$',
+    }),
+    string('formEmail', 'Inquiry form backup sends to', {
+      description:
+        'Used by FormSubmit when Web3Forms does not answer. Changing it needs a new FormSubmit ' +
+        'activation (see site/README.md).',
     }),
     text('location', 'City'),
     text('streetAddress', 'Street address (optional)', {

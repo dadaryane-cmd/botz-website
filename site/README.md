@@ -40,7 +40,7 @@ site/
 │   │   │                       animation (spring / tween) and scroll reveals
 │   │   ├── pricing/            price engine, package finder scoring, selection state
 │   │   ├── forms/              inquiry validation and email payload
-│   │   ├── services/           FormSubmit client
+│   │   ├── services/           inquiry delivery (Web3Forms, FormSubmit backup), analytics
 │   │   └── components/
 │   │       ├── layout/         header, footer, mobile bar
 │   │       ├── sections/       one render function per section type + index.js registry
@@ -97,13 +97,15 @@ saves can never drop data. Empty editor fields arrive as `""`; the loader turns 
 
 ## Contact form
 
-Messages are emailed to `formEmail` in `content/site.json` (botz.marketingagency@gmail.com)
-through [FormSubmit](https://formsubmit.co), a free form-to-email service.
+Messages are emailed to botz.marketingagency@gmail.com through
+[Web3Forms](https://web3forms.com): `web3formsKey` in `content/site.json` is the access key of
+that inbox (free up to 250 messages a month). If Web3Forms does not answer within 15 seconds or
+refuses, the form tries [FormSubmit](https://formsubmit.co) with `formEmail` instead
+(`js/services/send-inquiry.js`). If both fail, the visitor is offered email or WhatsApp with the
+same text.
 
-**One-time setup:** once the site is online, send one test message. FormSubmit emails an
-**Activate Form** link to botz.marketingagency@gmail.com — click it. Until then the form shows an error
-and offers email or WhatsApp instead. After activation FormSubmit also offers a random alias
-you can use as `formEmail` so the address is not visible in the page source.
+**FormSubmit setup:** the first message to a new `formEmail` makes FormSubmit email an
+**Activate Form** link to that address; until it is clicked, FormSubmit refuses to send.
 
 ## Content notes
 

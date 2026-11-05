@@ -45,23 +45,23 @@ export function suggestedContact(people, service) {
 }
 
 /**
- * FormSubmit fields. Keys starting with `_` configure the email
- * (https://formsubmit.co/documentation); the rest appear as a table.
+ * The inquiry as an email: its subject, the address a reply goes to (only when the visitor gave
+ * one) and the fields shown as a table. js/services/ puts it in each delivery service's format.
  */
 export function inquiryEmail(values, { serviceLabel, contactName, estimate, page, language }) {
   return {
-    _subject: `New inquiry: ${values.name} · ${serviceLabel}`,
-    _template: 'table',
-    _captcha: 'false',
-    ...(values.email && { _replyto: values.email }),
-    Name: values.name,
-    Email: values.email || '—',
-    Phone: values.phone || '—',
-    Service: serviceLabel,
-    'Preferred contact': contactName,
-    Message: values.message || '—',
-    Estimate: estimate || '—',
-    Page: page,
-    Language: language.toUpperCase(),
+    subject: `New inquiry: ${values.name} · ${serviceLabel}`,
+    replyTo: values.email || null,
+    fields: {
+      Name: values.name,
+      Email: values.email || '—',
+      Phone: values.phone || '—',
+      Service: serviceLabel,
+      'Preferred contact': contactName,
+      Message: values.message || '—',
+      Estimate: estimate || '—',
+      Page: page,
+      Language: language.toUpperCase(),
+    },
   }
 }

@@ -1095,10 +1095,15 @@ content:
       - name: email
         label: Public email
         type: string
-      - name: formEmail
-        label: Inquiry form sends to
+      - name: web3formsKey
+        label: "Inquiry form: Web3Forms access key"
         type: string
-        description: Changing this needs a new FormSubmit activation (see site/README.md).
+        description: "Inquiries are emailed through Web3Forms to the inbox this key belongs to (web3forms.com, signed in as botz.marketingagency@gmail.com). The key is public by design."
+        pattern: "^[0-9a-f-]{36}$"
+      - name: formEmail
+        label: Inquiry form backup sends to
+        type: string
+        description: Used by FormSubmit when Web3Forms does not answer. Changing it needs a new FormSubmit activation (see site/README.md).
       - name: location
         label: City
         component: line
