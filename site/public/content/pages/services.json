@@ -6,7 +6,7 @@
   },
   "meta": {
     "title": {
-      "hy": "Մարքեթինգ ծառայություններ՝ SMM, SEO և վեբ կայքեր",
+      "hy": "Մարքեթինգային ծառայություններ՝ SMM, SEO և վեբ կայքեր",
       "en": "Marketing Services in Yerevan: SMM, SEO & Websites",
       "ru": "Услуги: SMM, SEO-продвижение и создание сайтов"
     },
@@ -52,7 +52,6 @@
     },
     {
       "type": "services",
-      "id": "overview",
       "heading": {
         "hy": "Չորս ծառայություն, մեկ թիմ",
         "en": "Four services, one team",
@@ -196,11 +195,11 @@
             "href": "#strategy"
           }
         }
-      ]
+      ],
+      "id": "overview"
     },
     {
       "type": "serviceDetail",
-      "id": "strategy",
       "title": {
         "hy": "Թվային մարքեթինգի ռազմավարություն",
         "en": "Digital marketing strategy",
@@ -251,12 +250,11 @@
           "ru": "Обсудить стратегию"
         },
         "href": "contact.html"
-      }
+      },
+      "id": "strategy"
     },
     {
       "type": "process",
-      "id": "approach",
-      "background": "surface",
       "heading": {
         "hy": "Ռազմավարություն, կրեատիվ և արդյունք",
         "en": "Strategy, creativity and performance",
@@ -299,7 +297,9 @@
             "ru": "Измеряем результаты, понятно отчитываемся и корректируем, чтобы работа становилась лучше из месяца в месяц."
           }
         }
-      ]
+      ],
+      "id": "approach",
+      "background": "surface"
     },
     {
       "type": "split",
