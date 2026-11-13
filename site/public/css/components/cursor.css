@@ -9,29 +9,29 @@
   left: 0;
   pointer-events: none;
   opacity: 0;
-  transition:
-    opacity 0.15s var(--ease-out),
-    scale 0.2s var(--ease-out);
+  transition: opacity 0.15s var(--ease-out);
 }
 
 .cursor-follower.is-shown {
   opacity: 1;
 }
 
-/* Over headlines: flips the colours beneath it (light becomes dark, the orange turns blue). */
-.cursor-flip {
+/*
+ * The flashlight (dark theme, over the top of a page): a square far larger than the window,
+ * centred on the pointer, clear in the middle and a little darker further out. Moving it is a
+ * transform, so the browser redraws nothing; it sits under the header.
+ */
+.cursor-flashlight {
   z-index: 40;
-  width: 96px;
-  height: 96px;
-  margin: -48px 0 0 -48px;
-  border-radius: 50%;
-  background: #f4ebea;
-  mix-blend-mode: difference;
-  scale: 0.4;
+  width: 300vmax;
+  height: 300vmax;
+  margin: -150vmax 0 0 -150vmax;
+  background: radial-gradient(circle at center, transparent 0 180px, rgb(12 10 30 / 0.42) 480px);
+  transition-duration: 0.4s;
 }
 
-.cursor-flip.is-shown {
-  scale: 1;
+[data-theme='light'] .cursor-flashlight {
+  display: none;
 }
 
 /* Over package cards: the price for the chosen contract length, beside the pointer. */
@@ -47,19 +47,8 @@
   box-shadow: var(--shadow);
 }
 
-/* Sparks behind a fast mouse on the home page, under the header. */
-.cursor-sparks {
-  position: fixed;
-  inset: 0;
-  z-index: 45;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .cursor-follower,
-  .cursor-sparks {
+  .cursor-follower {
     display: none;
   }
 }
