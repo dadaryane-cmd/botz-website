@@ -39,14 +39,18 @@
   color-scheme: light;
 }
 
+/*
+ * The dark theme: the night navy, kept about 8% darker on screen than the brand swatch so the
+ * flashlight cursor reads (js/components/cursor/flashlight.js).
+ */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #24213b;
-    --surface: #2d2a47;
-    --card: #29263f;
+    --bg: #211e36;
+    --surface: #292741;
+    --card: #26233a;
     --text: #f4ebea;
     --muted: #b9b1c0;
-    --border: #3d3958;
+    --border: #383451;
     --accent: #ea4823;
     --accent-text: #f26a48;
     --on-accent: #15132a;
@@ -60,12 +64,12 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #24213b;
-  --surface: #2d2a47;
-  --card: #29263f;
+  --bg: #211e36;
+  --surface: #292741;
+  --card: #26233a;
   --text: #f4ebea;
   --muted: #b9b1c0;
-  --border: #3d3958;
+  --border: #383451;
   --accent: #ea4823;
   --accent-text: #f26a48;
   --on-accent: #15132a;
