@@ -17,7 +17,7 @@
 }
 
 /*
- * The flashlight (dark theme, over the top of a page): a square far larger than the window,
+ * The flashlight (dark theme, every page): a square far larger than the window,
  * centred on the pointer, clear in the middle and a little darker further out. Moving it is a
  * transform, so the browser redraws nothing; it sits under the header.
  */
