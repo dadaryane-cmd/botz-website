@@ -2,7 +2,13 @@ import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 import { catalog } from '../public/js/content/index.js'
 import { CONTRACT_LENGTHS } from '../public/js/config.js'
-import { baseMonthlyPrice, findPackage, priceFor, quote } from '../public/js/pricing/engine.js'
+import {
+  baseMonthlyPrice,
+  findPackage,
+  priceFor,
+  quote,
+  shortPrice,
+} from '../public/js/pricing/engine.js'
 import { categoryFromSearch, fromParams, toParams } from '../public/js/pricing/selection.js'
 
 const pkg = (key) => findPackage(catalog, key)
@@ -42,6 +48,17 @@ describe('priceFor', () => {
   it('returns null for a contract length the package is not offered for', () => {
     assert.equal(priceFor(pkg('seo-fundamental'), 12), null)
     assert.equal(priceFor(pkg('smm-start'), 1), null)
+  })
+})
+
+describe('shortPrice', () => {
+  it('gives the monthly price for the contract length, or the one-time price of a website', () => {
+    assert.deepEqual(shortPrice(pkg('smm-start'), 12), { kind: 'monthly', amount: 70000 })
+    assert.deepEqual(shortPrice(pkg('website-creation'), 6), { kind: 'oneTime', amount: 299000 })
+  })
+
+  it('says when a package is not offered for that length', () => {
+    assert.deepEqual(shortPrice(pkg('seo-fundamental'), 12), { kind: 'unavailable', amount: null })
   })
 })
 

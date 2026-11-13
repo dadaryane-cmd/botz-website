@@ -52,14 +52,19 @@
   border-radius: 14px;
   background: none;
   color: inherit;
-  cursor: grab;
+  /* The brand's hand (an open palm; closed while pulling); the system's grab hand as fallback. */
+  cursor:
+    url('../../images/cursor-grab.svg') 16 14,
+    grab;
   touch-action: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 .bulb-toggle.is-dragging {
-  cursor: grabbing;
+  cursor:
+    url('../../images/cursor-grabbing.svg') 16 16,
+    grabbing;
 }
 
 .bulb-sway,
