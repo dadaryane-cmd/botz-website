@@ -1,0 +1,199 @@
+{
+  "path": {
+    "hy": "seo-tsarayutyunner",
+    "en": "seo-services",
+    "ru": "seo-prodvizhenie"
+  },
+  "meta": {
+    "title": {
+      "hy": "SEO ծառայություններ և կայքերի առաջխաղացում",
+      "en": "SEO Services in Yerevan, Armenia, with Prices",
+      "ru": "SEO-продвижение сайтов в Ереване: цены"
+    },
+    "description": {
+      "hy": "SEO ծառայություններ և կայքերի առաջխաղացում Google-ում՝ տեխնիկական SEO, բանալի բառեր, հոդվածներ և Google Business Profile։ Երեք փաթեթ՝ հրապարակված գներով։",
+      "en": "SEO services in Yerevan: technical fixes, keyword research, articles and Google Business Profile. Three SEO packages with published prices in AMD.",
+      "ru": "SEO-продвижение сайтов в Ереване: техническая оптимизация, ключевые слова, статьи и Google Business Profile. Три пакета с открытыми ценами."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*SEO ծառայություններ* և կայքերի առաջխաղացում",
+        "en": "*SEO services* in Yerevan",
+        "ru": "*SEO-продвижение* сайтов в Ереване"
+      },
+      "subheading": {
+        "hy": "Ուղղում ենք այն, ինչը հետ է պահում ձեր կայքը, գտնում ենք այն բառերը, որոնցով ձեզ փնտրում են, և գրում ենք էջեր ու հոդվածներ, որոնք պատասխանում են այդ որոնումներին։",
+        "en": "We fix what holds your site back, find the words people use to search for you, and write pages and articles that answer those searches.",
+        "ru": "Исправляем то, что тормозит сайт, находим слова, по которым вас ищут, и пишем страницы и статьи, которые отвечают на эти запросы."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել փաթեթներն ու գները",
+            "en": "See packages and prices",
+            "ru": "Пакеты и цены"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Ստանալ անվճար աուդիտ",
+            "en": "Get a free audit",
+            "ru": "Получить бесплатный аудит"
+          },
+          "href": "#contact",
+          "style": "secondary",
+          "note": {
+            "hy": "Կցանկանայի անվճար աուդիտ իմ բիզնեսի համար։ Մեր կայքը / էջը՝ ",
+            "en": "I'd like a free audit for my business. Our website / page: ",
+            "ru": "Хочу бесплатный аудит для своего бизнеса. Наш сайт / страница: "
+          }
+        }
+      ]
+    },
+    {
+      "type": "serviceDetail",
+      "id": "about-seo",
+      "background": "surface",
+      "title": {
+        "hy": "SEO ծառայություններ",
+        "en": "SEO services",
+        "ru": "SEO-продвижение сайтов"
+      },
+      "service": "seo",
+      "problem": {
+        "hy": "Հաճախորդներն ամեն օր փնտրում են այն, ինչ դուք վաճառում եք։ Եթե ձեր կայքը չի երևում, նրանք գտնում են ուրիշին։ Մենք աշխատում ենք, որ ձեր կայքը հայտնվի այդ արդյունքներում։",
+        "en": "Customers search for what you sell every day. If your site doesn't appear, they find someone else. We work on getting your site into those results.",
+        "ru": "Клиенты каждый день ищут то, что вы продаёте. Если вашего сайта нет в выдаче, они находят кого-то другого. Мы работаем над тем, чтобы ваш сайт появлялся в этой выдаче."
+      },
+      "approach": {
+        "hy": "Մենք սկսում ենք այն շտկելուց, ինչը հետ է պահում ձեր կայքը, ապա զարգացնում ենք էջերն ու բովանդակությունը, որոնք պատասխանում են ձեր հաճախորդների որոնումներին։",
+        "en": "We start by fixing what holds your site back, then grow the pages and content that answer what your customers search for.",
+        "ru": "Мы начинаем с исправления того, что тормозит ваш сайт, а затем развиваем страницы и контент, которые отвечают на запросы ваших клиентов."
+      },
+      "deliverables": [
+        {
+          "hy": "Տեխնիկական SEO",
+          "en": "Technical SEO",
+          "ru": "Техническое SEO"
+        },
+        {
+          "hy": "Բանալի բառերի հետազոտություն և խմբավորում",
+          "en": "Keyword research and clustering",
+          "ru": "Подбор и кластеризация ключевых слов"
+        },
+        {
+          "hy": "Էջերի SEO օպտիմալացում",
+          "en": "On-page SEO",
+          "ru": "Внутренняя оптимизация страниц"
+        },
+        {
+          "hy": "Տեղական SEO",
+          "en": "Local SEO",
+          "ru": "Локальное SEO"
+        },
+        {
+          "hy": "Բովանդակության օպտիմալացում",
+          "en": "Content optimisation",
+          "ru": "Оптимизация контента"
+        },
+        {
+          "hy": "Օրգանիկ որոնման աճ",
+          "en": "Organic search growth",
+          "ru": "Рост органического трафика"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Դիտել SEO փաթեթներն ու գները",
+          "en": "See SEO packages and prices",
+          "ru": "Пакеты и цены SEO"
+        },
+        "href": "#pricing"
+      }
+    },
+    {
+      "type": "pricing",
+      "heading": {
+        "hy": "SEO փաթեթներ և գներ",
+        "en": "SEO packages and prices",
+        "ru": "Пакеты и цены SEO"
+      },
+      "defaultCategory": "seo",
+      "defaultDuration": 6,
+      "lockCategory": true,
+      "showAddons": false,
+      "id": "pricing"
+    },
+    {
+      "type": "faq",
+      "heading": {
+        "hy": "Հարցեր SEO-ի մասին",
+        "en": "Questions about SEO",
+        "ru": "Вопросы о SEO"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Ի՞նչ է SEO-ն կամ կայքերի առաջխաղացումը",
+            "en": "What is SEO?",
+            "ru": "Что такое SEO-продвижение?"
+          },
+          "answer": {
+            "hy": "Այն աշխատանքն է, որի շնորհիվ ձեր կայքը հայտնվում է Google-ում, երբ մարդիկ փնտրում են այն, ինչ դուք առաջարկում եք։ Ներառում է կայքի տեխնիկական շտկումներ, բանալի բառերի ընտրություն, էջերի և հոդվածների գրում և Google Business Profile-ի կարգավորում։",
+            "en": "It is the work that makes your website appear on Google when people search for what you offer: technical fixes, choosing keywords, writing pages and articles, and setting up your Google Business Profile.",
+            "ru": "Это работа, благодаря которой ваш сайт появляется в Google, когда люди ищут то, что вы предлагаете: технические исправления, подбор ключевых слов, страницы и статьи и настройка Google Business Profile."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Ե՞րբ կտեսնեմ արդյունքները",
+            "en": "When will I see results?",
+            "ru": "Когда я увижу результат?"
+          },
+          "answer": {
+            "hy": "Սոցցանցերում փոփոխությունը երևում է առաջին ամսում, երբ սկսում են հրապարակվել պլանավորված գրառումները, իսկ կայուն աճը պահանջում է մի քանի ամիս։ SEO-ն ավելի դանդաղ է․ առաջին ամիսները գնում են կայքը շտկելուն, իսկ այցելությունները սովորաբար աճում են դրանից հետո։ Ամեն ամսվա հաշվետվությունը ցույց է տալիս, թե որտեղ ենք։",
+            "en": "On social media you see the change in the first month, as the planned posts start going out; steady growth takes a few months. SEO is slower: the first months go into fixing the site, and visits usually grow after that. Each monthly report shows where things stand.",
+            "ru": "В соцсетях изменения видны уже в первый месяц, когда начинают выходить запланированные публикации, а стабильный рост занимает несколько месяцев. SEO медленнее: первые месяцы уходят на исправление сайта, а посещаемость обычно растёт после этого. Ежемесячный отчёт показывает, где мы находимся."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Երաշխավորո՞ւմ եք արդյունքները",
+            "en": "Do you guarantee results?",
+            "ru": "Вы гарантируете результат?"
+          },
+          "answer": {
+            "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
+            "en": "We are responsible for the work, its quality and honest reports. Results also depend on your market, your competitors and your budget, so we never promise rankings, sales or follower numbers.",
+            "ru": "Мы отвечаем за работу, её качество и честные отчёты. Результат зависит ещё и от рынка, конкурентов и бюджета, поэтому мы не обещаем позиции, продажи или число подписчиков."
+          },
+          "openByDefault": false
+        }
+      ],
+      "id": "faq",
+      "background": "surface"
+    },
+    {
+      "type": "contact",
+      "heading": {
+        "hy": "Ստանալ խորհրդատվություն",
+        "en": "Request a consultation",
+        "ru": "Запросите консультацию"
+      },
+      "intro": {
+        "hy": "Եթե փաթեթ եք ընտրել, այն արդեն կցված է ձևին։ Ավելացրեք մի քանի բառ ձեր բիզնեսի մասին։",
+        "en": "If you have chosen a package, it is already attached to the form. Add a few words about your business.",
+        "ru": "Если вы выбрали пакет, он уже прикреплён к форме. Добавьте пару слов о своём бизнесе."
+      },
+      "service": "seo",
+      "id": "contact"
+    }
+  ]
+}

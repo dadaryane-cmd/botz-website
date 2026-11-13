@@ -1,0 +1,194 @@
+{
+  "path": {
+    "hy": "smm-tsarayutyunner",
+    "en": "smm-services",
+    "ru": "smm-prodvizhenie"
+  },
+  "meta": {
+    "title": {
+      "hy": "SMM ծառայություններ Երևանում՝ փաթեթներ և գներ",
+      "en": "SMM Services in Armenia: Packages & Prices",
+      "ru": "SMM-продвижение в Ереване: пакеты и цены"
+    },
+    "description": {
+      "hy": "SMM ծառայություններ Երևանում՝ սոցցանցերի վարում, Meta գովազդ, բովանդակություն և նկարահանումներ։ Երեք փաթեթ՝ հրապարակված գներով և անվճար աուդիտով։",
+      "en": "SMM services in Yerevan: social media management, Meta ads, content and shoots. Three packages with published monthly prices and a free audit.",
+      "ru": "SMM-продвижение в Ереване: ведение соцсетей, реклама в Meta, контент и съёмки. Три пакета с открытыми ценами и бесплатный аудит."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*SMM ծառայություններ* ձեր բիզնեսի համար",
+        "en": "*SMM services* for your business",
+        "ru": "*SMM-продвижение* для вашего бизнеса"
+      },
+      "subheading": {
+        "hy": "Վարում ենք ձեր Instagram-ը, Facebook-ը և TikTok-ը, ստեղծում բովանդակությունը, վարում Meta գովազդը և ամեն ամիս ցույց տալիս արդյունքները։",
+        "en": "We run your Instagram, Facebook and TikTok, create the content, manage your Meta ads and show you the results every month.",
+        "ru": "Ведём ваши Instagram, Facebook и TikTok, создаём контент, настраиваем рекламу в Meta и каждый месяц показываем результаты."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել փաթեթներն ու գները",
+            "en": "See packages and prices",
+            "ru": "Пакеты и цены"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Ստանալ անվճար աուդիտ",
+            "en": "Get a free audit",
+            "ru": "Получить бесплатный аудит"
+          },
+          "href": "#contact",
+          "style": "secondary",
+          "note": {
+            "hy": "Կցանկանայի անվճար աուդիտ իմ բիզնեսի համար։ Մեր կայքը / էջը՝ ",
+            "en": "I'd like a free audit for my business. Our website / page: ",
+            "ru": "Хочу бесплатный аудит для своего бизнеса. Наш сайт / страница: "
+          }
+        }
+      ]
+    },
+    {
+      "type": "serviceDetail",
+      "id": "about-smm",
+      "background": "surface",
+      "title": {
+        "hy": "Սոցիալական մեդիա մարքեթինգ",
+        "en": "Social media marketing",
+        "ru": "Маркетинг в соцсетях"
+      },
+      "service": "smm",
+      "problem": {
+        "hy": "Ժամանակ առ ժամանակ հրապարակելը հազվադեպ է լսարան հավաքում։ Մենք հրապարակում ենք կանոնավոր և ճանաչելի ոճով, որպեսզի մարդիկ հիշեն ձեր բրենդը և շարունակեն հետևել դրան։",
+        "en": "Posting now and then rarely builds an audience. We post regularly and in a style people recognise, so they remember your brand and keep following it.",
+        "ru": "Редкие публикации почти никогда не собирают аудиторию. Мы публикуем регулярно и в узнаваемом стиле, чтобы люди запоминали ваш бренд и продолжали за ним следить."
+      },
+      "approach": {
+        "hy": "Մենք ձեզ հետ պլանավորում ենք ամեն ամիսը, ստեղծում բովանդակությունը և վարում առաջխաղացումը, հետո վերլուծում ենք թվերը և ճշգրտում պլանը։",
+        "en": "We plan each month with you, create the content and run the promotion, then review the numbers and adjust the plan.",
+        "ru": "Мы вместе с вами планируем каждый месяц, создаём контент и ведём продвижение, затем анализируем цифры и корректируем план."
+      },
+      "deliverables": [
+        {
+          "hy": "Սոցցանցերի ռազմավարություն",
+          "en": "Social media strategy",
+          "ru": "Стратегия в соцсетях"
+        },
+        {
+          "hy": "Բովանդակության պլանավորում և կառավարում",
+          "en": "Content planning and management",
+          "ru": "Планирование и ведение контента"
+        },
+        {
+          "hy": "Կրեատիվ բովանդակություն և գրաֆիկական դիզայն",
+          "en": "Creative content and graphic design",
+          "ru": "Креативный контент и графический дизайн"
+        },
+        {
+          "hy": "Առաջխաղացում սոցցանցերում",
+          "en": "Social media promotion",
+          "ru": "Продвижение в соцсетях"
+        },
+        {
+          "hy": "Լսարանի ներգրավում և աճ",
+          "en": "Audience engagement and growth",
+          "ru": "Вовлечение и рост аудитории"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Դիտել SMM փաթեթներն ու գները",
+          "en": "See SMM packages and prices",
+          "ru": "Пакеты и цены SMM"
+        },
+        "href": "#pricing"
+      }
+    },
+    {
+      "type": "pricing",
+      "heading": {
+        "hy": "SMM փաթեթներ և գներ",
+        "en": "SMM packages and prices",
+        "ru": "Пакеты и цены SMM"
+      },
+      "defaultCategory": "smm",
+      "defaultDuration": 6,
+      "lockCategory": true,
+      "showAddons": false,
+      "id": "pricing"
+    },
+    {
+      "type": "faq",
+      "heading": {
+        "hy": "Հարցեր SMM-ի մասին",
+        "en": "Questions about SMM",
+        "ru": "Вопросы о SMM"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Ի՞նչ է ներառված SMM ծառայություններում",
+            "en": "What do your SMM services include?",
+            "ru": "Что входит в SMM-продвижение?"
+          },
+          "answer": {
+            "hy": "Բոլոր փաթեթներում կա սոցցանցերի վարում, հրապարակումներ և սթորիներ, տեքստեր, գովազդի կառավարում և հաշվետվություն։ Յուրաքանչյուր փաթեթի ամբողջական ցանկը վերևի քարտերում է, իսկ վերջնական ծավալը հաստատվում է ձեր անհատական առաջարկում։",
+            "en": "Every package includes running your accounts, posts and stories, copywriting, ad management and reports. The cards above list everything each package includes, and the final scope is confirmed in your personal proposal.",
+            "ru": "В каждом пакете есть ведение аккаунтов, публикации и сторис, тексты, управление рекламой и отчёты. Всё, что входит в каждый пакет, перечислено в карточках выше, а окончательный объём подтверждается в персональном предложении."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Ինչո՞ւ է նվազագույն ժամկետը 3 ամիս",
+            "en": "Why is the minimum contract 3 months?",
+            "ru": "Почему минимальный срок договора — 3 месяца?"
+          },
+          "answer": {
+            "hy": "Սոցցանցերը և որոնումը ժամանակ են պահանջում։ Առաջին ամիսը գնում է ձեր բիզնեսին ծանոթանալուն, կարգավորումներին և առաջին բովանդակությանը, իսկ արդյունքները սովորաբար երևում են երկրորդ-երրորդ ամսից։ Երեք ամիսը ամենակարճ ժամկետն է, որում կարող ենք ցույց տալ իրական արդյունք։ Դեռ վստա՞հ չեք։ Սկսեք անվճար մարքեթինգային աուդիտից։",
+            "en": "Social media and search take time. The first month goes into getting to know your business, setting things up and the first content, and results usually show from the second or third month. Three months is the shortest time in which we can show you real results. Not sure yet? Start with a free marketing audit.",
+            "ru": "Соцсети и поиск требуют времени. Первый месяц уходит на знакомство с вашим бизнесом, настройку и первый контент, а результаты обычно видны со второго-третьего месяца. Три месяца — самый короткий срок, за который мы можем показать реальный результат. Пока не уверены? Начните с бесплатного маркетингового аудита."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Երաշխավորո՞ւմ եք արդյունքները",
+            "en": "Do you guarantee results?",
+            "ru": "Вы гарантируете результат?"
+          },
+          "answer": {
+            "hy": "Մենք պատասխանատու ենք աշխատանքի, դրա որակի և հստակ հաշվետվության համար։ Արդյունքները կախված են ձեր շուկայից, մրցակցությունից, բյուջեից և իրականացումից, ուստի մենք չենք խոստանում դիրքեր, վաճառք կամ հետևորդների թիվ։",
+            "en": "We are responsible for the work, its quality and honest reports. Results also depend on your market, your competitors and your budget, so we never promise rankings, sales or follower numbers.",
+            "ru": "Мы отвечаем за работу, её качество и честные отчёты. Результат зависит ещё и от рынка, конкурентов и бюджета, поэтому мы не обещаем позиции, продажи или число подписчиков."
+          },
+          "openByDefault": false
+        }
+      ],
+      "id": "faq",
+      "background": "surface"
+    },
+    {
+      "type": "contact",
+      "heading": {
+        "hy": "Ստանալ խորհրդատվություն",
+        "en": "Request a consultation",
+        "ru": "Запросите консультацию"
+      },
+      "intro": {
+        "hy": "Եթե փաթեթ եք ընտրել, այն արդեն կցված է ձևին։ Ավելացրեք մի քանի բառ ձեր բիզնեսի մասին։",
+        "en": "If you have chosen a package, it is already attached to the form. Add a few words about your business.",
+        "ru": "Если вы выбрали пакет, он уже прикреплён к форме. Добавьте пару слов о своём бизнесе."
+      },
+      "service": "smm",
+      "id": "contact"
+    }
+  ]
+}

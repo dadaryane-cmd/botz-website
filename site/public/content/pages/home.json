@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": {
-      "hy": "SMM, SEO և կայքերի պատրաստում Երևանում",
-      "en": "SMM, SEO & Website Development in Yerevan",
+      "hy": "SMM, SEO և վեբ կայքերի պատրաստում Երևանում",
+      "en": "Marketing Agency in Yerevan: SMM, SEO & Websites",
       "ru": "SMM, SEO-продвижение и создание сайтов в Ереване"
     },
     "description": {
-      "hy": "Մարքեթինգային գործակալություն Երևանում՝ սոցցանցերի վարում (SMM), SEO և կայքերի պատրաստում։ Հստակ փաթեթներ, հրապարակված գներ և անվճար աուդիտ։",
+      "hy": "Մարքեթինգային գործակալություն Երևանում՝ սոցցանցերի վարում (SMM), SEO և վեբ կայքերի պատրաստում։ Հստակ փաթեթներ, հրապարակված գներ և անվճար աուդիտ։",
       "en": "Digital marketing agency in Yerevan: social media management, SEO and website development. Clear packages, published prices and a free marketing audit.",
       "ru": "Маркетинговое агентство в Ереване: ведение соцсетей, SEO-продвижение и создание сайтов. Понятные пакеты, открытые цены и бесплатный аудит."
     }
@@ -97,7 +97,7 @@
               "en": "Explore SMM",
               "ru": "Подробнее об SMM"
             },
-            "href": "services.html#smm"
+            "href": "smm.html"
           }
         },
         {
@@ -130,13 +130,13 @@
               "en": "Explore SEO",
               "ru": "Подробнее об SEO"
             },
-            "href": "services.html#seo"
+            "href": "seo.html"
           }
         },
         {
           "title": {
-            "hy": "Կայքի ստեղծում",
-            "en": "Website creation",
+            "hy": "Վեբ կայքերի պատրաստում",
+            "en": "Website development",
             "ru": "Создание сайтов"
           },
           "service": "website",
@@ -158,7 +158,7 @@
               "en": "Explore websites",
               "ru": "Подробнее о сайтах"
             },
-            "href": "services.html#website"
+            "href": "website.html"
           }
         },
         {

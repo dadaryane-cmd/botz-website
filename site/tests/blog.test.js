@@ -209,6 +209,8 @@ describe('publishing', () => {
         home: {},
         about: { hy: 'mer-masin', en: 'about', ru: 'o-nas' },
         services: { hy: 'tsarayutyunner', en: 'services', ru: 'uslugi' },
+        seo: { hy: 'seo-tsarayutyunner', en: 'seo-services', ru: 'seo-prodvizhenie' },
+        website: { hy: 'web-kayqeri-patrastum', en: 'website-development', ru: 'sozdanie-sajtov' },
         blog: { hy: 'blog', en: 'blog', ru: 'blog' },
       },
       posts: { maps: { hy: 'qartez', en: 'maps', ru: 'karty' } },
@@ -221,7 +223,9 @@ describe('publishing', () => {
     assert.equal(redirects['index-en.html'], 'en/')
     assert.equal(redirects['index.html'], undefined, 'index.html is the home page itself')
     assert.equal(redirects['post-maps-en.html'], 'en/blog/maps/')
-    assert.equal(redirects['seo.html'], 'tsarayutyunner/#seo')
+    assert.equal(redirects['seo-ru.html'], 'ru/seo-prodvizhenie/')
+    // A retired page leads to the page that replaced it.
+    assert.equal(redirects['website-creation.html'], 'web-kayqeri-patrastum/')
   })
 
   it('writes redirect pages that keep search engines, ?queries and #anchors on the new address', () => {

@@ -34,11 +34,12 @@ const ARTICLE_TEMPLATE = `${ARTICLE_PAGE}.html`
 /** The <base href> of the page shells, for the dev server at the root of localhost. */
 const SOURCE_BASE = '<base href="/" />'
 
-/** Pages that were merged into the Services page, and where they went. */
+/**
+ * Earlier pages that now live under another name, and where they went (smm.html and seo.html
+ * are pages again, so they need no entry here).
+ */
 export const RETIRED_PAGES = {
-  'smm.html': 'services.html#smm',
-  'seo.html': 'services.html#seo',
-  'website-creation.html': 'services.html#website',
+  'website-creation.html': 'website.html',
 }
 
 const NOINDEX = '<meta name="robots" content="noindex" />'

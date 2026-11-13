@@ -60,12 +60,16 @@ describe('content', () => {
     }
   })
 
-  it('redirects every retired page to a section that exists on the Services page', () => {
-    const services = pages.services.sections.map((section) => section.id).filter(Boolean)
+  it('redirects every retired page to a page (and section) that exists', () => {
     for (const [file, target] of Object.entries(RETIRED_PAGES)) {
-      const [page, section] = target.split('#')
-      assert.equal(page, 'services.html', file)
-      assert.ok(services.includes(section), `${file} should redirect to a Services section`)
+      const [pageFile, section] = target.split('#')
+      const key = PAGES.find((name) => htmlFile(name) === pageFile)
+      assert.ok(key, `${file} should redirect to one of the pages`)
+      const isPageAgain = PAGES.some((name) => htmlFile(name) === file)
+      assert.ok(!isPageAgain, `${file} is a page again: remove it from RETIRED_PAGES`)
+      if (!section) continue
+      const ids = pages[key].sections.map((part) => part.id)
+      assert.ok(ids.includes(section), `${file} should redirect to a section of ${pageFile}`)
     }
   })
 

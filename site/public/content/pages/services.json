@@ -6,13 +6,13 @@
   },
   "meta": {
     "title": {
-      "hy": "Ծառայություններ՝ SMM, SEO և կայքերի պատրաստում",
-      "en": "Services: Social Media Marketing, SEO & Websites",
+      "hy": "Մարքեթինգ ծառայություններ՝ SMM, SEO և վեբ կայքեր",
+      "en": "Marketing Services in Yerevan: SMM, SEO & Websites",
       "ru": "Услуги: SMM, SEO-продвижение и создание сайтов"
     },
     "description": {
-      "hy": "Սոցցանցերի վարում և գովազդ, SEO՝ Google-ում առաջխաղացման համար, կայքերի պատրաստում և մարքեթինգային ռազմավարություն Երևանում։",
-      "en": "Social media management and ads, SEO to rank on Google, website development and marketing strategy for businesses in Yerevan, Armenia.",
+      "hy": "Մարքեթինգ ծառայություններ Երևանում՝ SMM, SEO, վեբ կայքերի պատրաստում և թվային մարքեթինգի ռազմավարություն։ Ընտրեք մեկը կամ համատեղեք դրանք։",
+      "en": "Marketing services in Yerevan: SMM, SEO, website development and a digital marketing strategy. Choose one service or combine them.",
       "ru": "Ведение соцсетей и таргетированная реклама, SEO-продвижение сайтов в Google, создание сайтов и маркетинговая стратегия для бизнеса в Ереване."
     }
   },
@@ -20,9 +20,9 @@
     {
       "type": "hero",
       "heading": {
-        "hy": "SMM, SEO և *կայքերի պատրաստում*",
-        "en": "Social media, SEO and *website development*",
-        "ru": "SMM, SEO-продвижение и *создание сайтов*"
+        "hy": "*Մարքեթինգ ծառայություններ* Երևանում",
+        "en": "*Marketing services* in Yerevan",
+        "ru": "*Маркетинговые услуги* в Ереване"
       },
       "subheading": {
         "hy": "Վարում ենք սոցցանցերը, առաջ ենք տանում կայքերը որոնման մեջ, ստեղծում ենք կայքեր և կազմում մարքեթինգային պլան, որը կապում է այս ամենը։",
@@ -94,14 +94,14 @@
               "en": "Social media marketing",
               "ru": "Маркетинг в соцсетях"
             },
-            "href": "#smm"
+            "href": "smm.html"
           }
         },
         {
           "title": {
-            "hy": "SEO և կայքի օպտիմալացում",
-            "en": "SEO and website optimisation",
-            "ru": "SEO и оптимизация сайта"
+            "hy": "SEO ծառայություններ",
+            "en": "SEO services",
+            "ru": "SEO-продвижение сайтов"
           },
           "service": "seo",
           "highlights": [
@@ -123,17 +123,17 @@
           ],
           "link": {
             "label": {
-              "hy": "SEO և կայքի օպտիմալացում",
-              "en": "SEO and website optimisation",
-              "ru": "SEO и оптимизация сайта"
+              "hy": "SEO ծառայություններ",
+              "en": "SEO services",
+              "ru": "SEO-продвижение сайтов"
             },
-            "href": "#seo"
+            "href": "seo.html"
           }
         },
         {
           "title": {
-            "hy": "Կայքի ստեղծում",
-            "en": "Website creation",
+            "hy": "Վեբ կայքերի պատրաստում",
+            "en": "Website development",
             "ru": "Создание сайтов"
           },
           "service": "website",
@@ -156,11 +156,11 @@
           ],
           "link": {
             "label": {
-              "hy": "Կայքի ստեղծում",
-              "en": "Website creation",
+              "hy": "Վեբ կայքերի պատրաստում",
+              "en": "Website development",
               "ru": "Создание сайтов"
             },
-            "href": "#website"
+            "href": "website.html"
           }
         },
         {
@@ -197,178 +197,6 @@
           }
         }
       ]
-    },
-    {
-      "type": "serviceDetail",
-      "id": "smm",
-      "background": "surface",
-      "title": {
-        "hy": "Սոցիալական մեդիա մարքեթինգ",
-        "en": "Social media marketing",
-        "ru": "Маркетинг в соцсетях"
-      },
-      "service": "smm",
-      "problem": {
-        "hy": "Ժամանակ առ ժամանակ հրապարակելը հազվադեպ է լսարան հավաքում։ Մենք հրապարակում ենք կանոնավոր և ճանաչելի ոճով, որպեսզի մարդիկ հիշեն ձեր բրենդը և շարունակեն հետևել դրան։",
-        "en": "Posting now and then rarely builds an audience. We post regularly and in a style people recognise, so they remember your brand and keep following it.",
-        "ru": "Редкие публикации почти никогда не собирают аудиторию. Мы публикуем регулярно и в узнаваемом стиле, чтобы люди запоминали ваш бренд и продолжали за ним следить."
-      },
-      "approach": {
-        "hy": "Մենք ձեզ հետ պլանավորում ենք ամեն ամիսը, ստեղծում բովանդակությունը և վարում առաջխաղացումը, հետո վերլուծում ենք թվերը և ճշգրտում պլանը։",
-        "en": "We plan each month with you, create the content and run the promotion, then review the numbers and adjust the plan.",
-        "ru": "Мы вместе с вами планируем каждый месяц, создаём контент и ведём продвижение, затем анализируем цифры и корректируем план."
-      },
-      "deliverables": [
-        {
-          "hy": "Սոցցանցերի ռազմավարություն",
-          "en": "Social media strategy",
-          "ru": "Стратегия в соцсетях"
-        },
-        {
-          "hy": "Բովանդակության պլանավորում և կառավարում",
-          "en": "Content planning and management",
-          "ru": "Планирование и ведение контента"
-        },
-        {
-          "hy": "Կրեատիվ բովանդակություն և գրաֆիկական դիզայն",
-          "en": "Creative content and graphic design",
-          "ru": "Креативный контент и графический дизайн"
-        },
-        {
-          "hy": "Առաջխաղացում սոցցանցերում",
-          "en": "Social media promotion",
-          "ru": "Продвижение в соцсетях"
-        },
-        {
-          "hy": "Լսարանի ներգրավում և աճ",
-          "en": "Audience engagement and growth",
-          "ru": "Вовлечение и рост аудитории"
-        }
-      ],
-      "link": {
-        "label": {
-          "hy": "Դիտել SMM փաթեթներն ու գները",
-          "en": "See SMM packages and prices",
-          "ru": "Пакеты и цены SMM"
-        },
-        "href": "pricing.html?cat=smm#pricing"
-      }
-    },
-    {
-      "type": "serviceDetail",
-      "id": "seo",
-      "title": {
-        "hy": "SEO և կայքի օպտիմալացում",
-        "en": "SEO and website optimisation",
-        "ru": "SEO и оптимизация сайта"
-      },
-      "service": "seo",
-      "problem": {
-        "hy": "Հաճախորդներն ամեն օր փնտրում են այն, ինչ դուք վաճառում եք։ Եթե ձեր կայքը չի երևում, նրանք գտնում են ուրիշին։ Մենք աշխատում ենք, որ ձեր կայքը հայտնվի այդ արդյունքներում։",
-        "en": "Customers search for what you sell every day. If your site doesn't appear, they find someone else. We work on getting your site into those results.",
-        "ru": "Клиенты каждый день ищут то, что вы продаёте. Если вашего сайта нет в выдаче, они находят кого-то другого. Мы работаем над тем, чтобы ваш сайт появлялся в этой выдаче."
-      },
-      "approach": {
-        "hy": "Մենք սկսում ենք այն շտկելուց, ինչը հետ է պահում ձեր կայքը, ապա զարգացնում ենք էջերն ու բովանդակությունը, որոնք պատասխանում են ձեր հաճախորդների որոնումներին։",
-        "en": "We start by fixing what holds your site back, then grow the pages and content that answer what your customers search for.",
-        "ru": "Мы начинаем с исправления того, что тормозит ваш сайт, а затем развиваем страницы и контент, которые отвечают на запросы ваших клиентов."
-      },
-      "deliverables": [
-        {
-          "hy": "Տեխնիկական SEO",
-          "en": "Technical SEO",
-          "ru": "Техническое SEO"
-        },
-        {
-          "hy": "Բանալի բառերի հետազոտություն և խմբավորում",
-          "en": "Keyword research and clustering",
-          "ru": "Подбор и кластеризация ключевых слов"
-        },
-        {
-          "hy": "Էջերի SEO օպտիմալացում",
-          "en": "On-page SEO",
-          "ru": "Внутренняя оптимизация страниц"
-        },
-        {
-          "hy": "Տեղական SEO",
-          "en": "Local SEO",
-          "ru": "Локальное SEO"
-        },
-        {
-          "hy": "Բովանդակության օպտիմալացում",
-          "en": "Content optimisation",
-          "ru": "Оптимизация контента"
-        },
-        {
-          "hy": "Օրգանիկ որոնման աճ",
-          "en": "Organic search growth",
-          "ru": "Рост органического трафика"
-        }
-      ],
-      "link": {
-        "label": {
-          "hy": "Դիտել SEO փաթեթներն ու գները",
-          "en": "See SEO packages and prices",
-          "ru": "Пакеты и цены SEO"
-        },
-        "href": "pricing.html?cat=seo#pricing"
-      }
-    },
-    {
-      "type": "serviceDetail",
-      "id": "website",
-      "background": "surface",
-      "title": {
-        "hy": "Կայքի ստեղծում",
-        "en": "Website creation",
-        "ru": "Создание сайтов"
-      },
-      "service": "website",
-      "problem": {
-        "hy": "Դանդաղ կամ շփոթեցնող կայքը կորցնում է այցելուներին, նախքան նրանք կկապվեն ձեզ հետ։ Մենք ստեղծում ենք հստակ և արագ կայքեր, որպեսզի ավելի շատ այցելուներ հասնեն մինչև ձեզ գրելը։",
-        "en": "A slow or confusing website loses visitors before they contact you. We build clear, fast websites, so more visitors get as far as writing to you.",
-        "ru": "Медленный или запутанный сайт теряет посетителей до того, как они с вами свяжутся. Мы делаем понятные и быстрые сайты, чтобы больше посетителей доходили до заявки."
-      },
-      "approach": {
-        "hy": "Նախ համաձայնեցնում ենք կառուցվածքը, ապա ստեղծում ենք դիզայնն ու կայքը և գործարկումից առաջ ստուգում ենք յուրաքանչյուր էջը հեռախոսում և համակարգչում։",
-        "en": "We agree the structure first, then design and build the site, and check every page on a phone and a computer before launch.",
-        "ru": "Сначала согласуем структуру, затем делаем дизайн и сайт и перед запуском проверяем каждую страницу на телефоне и компьютере."
-      },
-      "deliverables": [
-        {
-          "hy": "Կայքի դիզայն և մշակում",
-          "en": "Website design and development",
-          "ru": "Дизайн и разработка сайта"
-        },
-        {
-          "hy": "Ադապտիվ կայքեր բոլոր էկրանների համար",
-          "en": "Responsive websites for every screen",
-          "ru": "Адаптивные сайты для любых экранов"
-        },
-        {
-          "hy": "Օգտատիրոջ փորձի օպտիմալացում",
-          "en": "User experience optimisation",
-          "ru": "Оптимизация пользовательского опыта"
-        },
-        {
-          "hy": "Կոնվերսիայի վրա կենտրոնացած դիզայն",
-          "en": "Conversion-focused design",
-          "ru": "Дизайн, ориентированный на конверсию"
-        },
-        {
-          "hy": "Կայքի կառուցվածք և օպտիմալացում",
-          "en": "Website structure and optimisation",
-          "ru": "Структура и оптимизация сайта"
-        }
-      ],
-      "link": {
-        "label": {
-          "hy": "Դիտել կայքի գները",
-          "en": "See website prices",
-          "ru": "Цены на сайты"
-        },
-        "href": "pricing.html?cat=website#pricing"
-      }
     },
     {
       "type": "serviceDetail",

@@ -74,23 +74,23 @@
             "en": "Social media marketing",
             "ru": "Маркетинг в соцсетях"
           },
-          "href": "services.html#smm"
+          "href": "smm.html"
         },
         {
           "label": {
-            "hy": "SEO",
-            "en": "SEO",
-            "ru": "SEO"
+            "hy": "SEO ծառայություններ",
+            "en": "SEO services",
+            "ru": "SEO-продвижение"
           },
-          "href": "services.html#seo"
+          "href": "seo.html"
         },
         {
           "label": {
-            "hy": "Կայքի ստեղծում",
-            "en": "Website creation",
+            "hy": "Վեբ կայքերի պատրաստում",
+            "en": "Website development",
             "ru": "Создание сайтов"
           },
-          "href": "services.html#website"
+          "href": "website.html"
         },
         {
           "label": {

@@ -153,13 +153,10 @@ describe('schema.org', () => {
     )
   })
 
-  it('describes each service on the Services page, with its prices in AMD', () => {
-    const offered = schemaOf('services', 'ru').filter((node) => node['@type'] === 'Service')
-    assert.deepEqual(
-      offered.map((node) => node.url),
-      ['smm', 'seo', 'website', 'strategy'].map((id) => `${site.url}ru/uslugi/#${id}`),
-    )
-    const smm = offered[0]
+  it('describes each service on its own page, with its prices in AMD', () => {
+    const servicesOf = (key) => schemaOf(key, 'ru').filter((node) => node['@type'] === 'Service')
+    const [smm] = servicesOf('smm')
+    assert.equal(smm.url, `${site.url}ru/smm-prodvizhenie/#about-smm`)
     assert.equal(smm.provider['@id'], `${site.url}#organization`)
     const start = smm.hasOfferCatalog.itemListElement[0]
     assert.deepEqual(start.priceSpecification, {
@@ -169,15 +166,17 @@ describe('schema.org', () => {
       priceCurrency: 'AMD',
       unitCode: 'MON',
     })
-    const website = offered[2].hasOfferCatalog.itemListElement[0]
-    assert.equal(website.priceSpecification.minPrice, 299000)
-    // Strategy has no packages: no prices to show.
-    assert.equal(offered[3].hasOfferCatalog, undefined)
+    const [website] = servicesOf('website')
+    assert.equal(website.hasOfferCatalog.itemListElement[0].priceSpecification.minPrice, 299000)
+    // The Services page keeps the one service without a page of its own; it has no packages.
+    const [strategy] = servicesOf('services')
+    assert.equal(strategy.url, `${site.url}ru/uslugi/#strategy`)
+    assert.equal(strategy.hasOfferCatalog, undefined)
   })
 
   it('lists questions and answers only where the full list is (not a short list linking to it)', () => {
     const pagesWithFaq = PAGES.filter((key) => types(schemaOf(key)).includes('FAQPage'))
-    assert.deepEqual(pagesWithFaq, ['pricing'])
+    assert.deepEqual(pagesWithFaq, ['smm', 'seo', 'website', 'pricing'])
   })
 })
 

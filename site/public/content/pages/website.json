@@ -1,0 +1,189 @@
+{
+  "path": {
+    "hy": "web-kayqeri-patrastum",
+    "en": "website-development",
+    "ru": "sozdanie-sajtov"
+  },
+  "meta": {
+    "title": {
+      "hy": "Վեբ կայքերի պատրաստում Երևանում՝ գին",
+      "en": "Web Development in Yerevan, Armenia: Price",
+      "ru": "Создание сайтов в Ереване: цена"
+    },
+    "description": {
+      "hy": "Վեբ կայքերի պատրաստում Երևանում՝ դիզայն, մշակում, բջջային սարքերին հարմարեցում և SEO-ի հիմնական կարգավորում։ Մեկանգամյա գինը հրապարակված է կայքում։",
+      "en": "Website development in Yerevan: design, build, mobile-friendly pages and a basic SEO setup, with the one-time price published on the site.",
+      "ru": "Создание сайтов в Ереване: дизайн, разработка, адаптация под телефоны и базовая SEO-настройка. Разовая цена опубликована на сайте."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*Վեբ կայքերի պատրաստում*",
+        "en": "*Website development*",
+        "ru": "*Создание сайтов*"
+      },
+      "subheading": {
+        "hy": "Ստեղծում ենք հստակ և արագ կայքեր, որոնք հարմար են հեռախոսում և պատրաստ են Google-ի համար։",
+        "en": "We build clear, fast websites that work well on phones and are ready for Google.",
+        "ru": "Делаем понятные и быстрые сайты, которые удобны на телефоне и готовы к Google."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել գինը",
+            "en": "See the price",
+            "ru": "Посмотреть цену"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Քննարկել ձեր կայքը",
+            "en": "Discuss your website",
+            "ru": "Обсудить сайт"
+          },
+          "href": "#contact",
+          "style": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "serviceDetail",
+      "id": "about-website",
+      "background": "surface",
+      "title": {
+        "hy": "Վեբ կայքերի պատրաստում",
+        "en": "Website development",
+        "ru": "Создание сайтов"
+      },
+      "service": "website",
+      "problem": {
+        "hy": "Դանդաղ կամ շփոթեցնող կայքը կորցնում է այցելուներին, նախքան նրանք կկապվեն ձեզ հետ։ Մենք ստեղծում ենք հստակ և արագ կայքեր, որպեսզի ավելի շատ այցելուներ հասնեն մինչև ձեզ գրելը։",
+        "en": "A slow or confusing website loses visitors before they contact you. We build clear, fast websites, so more visitors get as far as writing to you.",
+        "ru": "Медленный или запутанный сайт теряет посетителей до того, как они с вами свяжутся. Мы делаем понятные и быстрые сайты, чтобы больше посетителей доходили до заявки."
+      },
+      "approach": {
+        "hy": "Նախ համաձայնեցնում ենք կառուցվածքը, ապա ստեղծում ենք դիզայնն ու կայքը և գործարկումից առաջ ստուգում ենք յուրաքանչյուր էջը հեռախոսում և համակարգչում։",
+        "en": "We agree the structure first, then design and build the site, and check every page on a phone and a computer before launch.",
+        "ru": "Сначала согласуем структуру, затем делаем дизайн и сайт и перед запуском проверяем каждую страницу на телефоне и компьютере."
+      },
+      "deliverables": [
+        {
+          "hy": "Կայքի դիզայն և մշակում",
+          "en": "Website design and development",
+          "ru": "Дизайн и разработка сайта"
+        },
+        {
+          "hy": "Ադապտիվ կայքեր բոլոր էկրանների համար",
+          "en": "Responsive websites for every screen",
+          "ru": "Адаптивные сайты для любых экранов"
+        },
+        {
+          "hy": "Օգտատիրոջ փորձի օպտիմալացում",
+          "en": "User experience optimisation",
+          "ru": "Оптимизация пользовательского опыта"
+        },
+        {
+          "hy": "Կոնվերսիայի վրա կենտրոնացած դիզայն",
+          "en": "Conversion-focused design",
+          "ru": "Дизайн, ориентированный на конверсию"
+        },
+        {
+          "hy": "Կայքի կառուցվածք և օպտիմալացում",
+          "en": "Website structure and optimisation",
+          "ru": "Структура и оптимизация сайта"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Դիտել կայքի գինը",
+          "en": "See the website price",
+          "ru": "Цена сайта"
+        },
+        "href": "#pricing"
+      }
+    },
+    {
+      "type": "pricing",
+      "heading": {
+        "hy": "Վեբ կայքի պատրաստման գինը",
+        "en": "Website development price",
+        "ru": "Цена создания сайта"
+      },
+      "defaultCategory": "website",
+      "defaultDuration": 6,
+      "lockCategory": true,
+      "showAddons": false,
+      "id": "pricing"
+    },
+    {
+      "type": "faq",
+      "heading": {
+        "hy": "Հարցեր կայքի պատրաստման մասին",
+        "en": "Questions about website development",
+        "ru": "Вопросы о создании сайта"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Որքա՞ն արժե կայքի պատրաստումը",
+            "en": "How much does a website cost?",
+            "ru": "Сколько стоит создание сайта?"
+          },
+          "answer": {
+            "hy": "Կայքի պատրաստման գինը մեկանգամյա է և նշված է վերևի քարտում։ Վերջնական գինը հաստատվում է ձեր անհատական առաջարկում, երբ համաձայնեցնենք ծավալը։",
+            "en": "The website price is a one-time fee, shown on the card above. The final price is confirmed in your personal proposal once we agree the scope.",
+            "ru": "Цена сайта разовая и указана в карточке выше. Окончательная цена подтверждается в персональном предложении, когда мы согласуем объём."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Կայքը լա՞վ կաշխատի հեռախոսում",
+            "en": "Will the website work on phones?",
+            "ru": "Будет ли сайт удобен на телефоне?"
+          },
+          "answer": {
+            "hy": "Այո։ Գործարկումից առաջ ստուգում ենք յուրաքանչյուր էջը հեռախոսում և համակարգչում։",
+            "en": "Yes. We check every page on a phone and a computer before launch.",
+            "ru": "Да. Перед запуском мы проверяем каждую страницу на телефоне и компьютере."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "SEO-ն ներառվա՞ծ է",
+            "en": "Is SEO included?",
+            "ru": "Входит ли SEO?"
+          },
+          "answer": {
+            "hy": "Կայքը պատրաստվում է SEO-ի հիմնական կարգավորումով։ Google-ում կայուն աճի համար կարող եք ավելացնել մեր SEO ծառայություններից մեկը։",
+            "en": "The website comes with a basic SEO setup. For steady growth on Google, you can add one of our SEO services.",
+            "ru": "Сайт делается с базовой SEO-настройкой. Для стабильного роста в Google можно подключить SEO-продвижение."
+          },
+          "openByDefault": false
+        }
+      ],
+      "id": "faq",
+      "background": "surface"
+    },
+    {
+      "type": "contact",
+      "heading": {
+        "hy": "Քննարկենք ձեր կայքը",
+        "en": "Let's discuss your website",
+        "ru": "Обсудим ваш сайт"
+      },
+      "intro": {
+        "hy": "Գրեք մի քանի բառ ձեր բիզնեսի և այն մասին, թե ինչ պետք է անի կայքը։",
+        "en": "Write a few words about your business and what the website should do.",
+        "ru": "Напишите пару слов о вашем бизнесе и о том, что должен делать сайт."
+      },
+      "service": "website",
+      "id": "contact"
+    }
+  ]
+}
