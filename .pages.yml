@@ -1865,6 +1865,9 @@ content:
           - name: notOffered
             label: Not offered
             component: line
+          - name: show
+            label: Show
+            component: line
       - name: faq
         label: Faq
         type: object

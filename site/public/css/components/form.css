@@ -109,6 +109,33 @@
   padding: 10px 16px;
 }
 
+/* Phones: two options to a row, so the list takes half the height and "Send" comes sooner. */
+@media (max-width: 560px) {
+  .radios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .radios .option {
+    gap: 8px;
+    margin: 0;
+    padding: 10px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .radios .option input {
+    flex: none;
+    width: 18px;
+    height: 18px;
+  }
+
+  .radios .field-error {
+    grid-column: 1 / -1;
+  }
+}
+
 .honeypot {
   position: absolute;
   left: -9999px;

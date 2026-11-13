@@ -163,7 +163,8 @@
 }
 
 /* The phone menu shows the group's name as a label instead of a button. */
-.nav-group-label {
+.nav-group-label,
+.nav .nav-group-link {
   display: none;
 }
 
@@ -184,6 +185,11 @@
 
 .nav-group.is-open .nav-submenu {
   display: flex;
+}
+
+/* Each page name on one line: the dropdown widens to the longest ("Սոցիալական մեդիա …"). */
+.nav .nav-submenu a {
+  white-space: nowrap;
 }
 
 /*
@@ -522,6 +528,27 @@
     border: 0;
     background: none;
     box-shadow: none;
+  }
+
+  /* A group with its own page: its name is a row like the other pages, linking there. */
+  .nav .nav-group-link {
+    display: flex;
+  }
+
+  .nav-submenu .is-group-page {
+    display: none;
+  }
+
+  /* The group's links: smaller and indented under its name, so the menu stays short. */
+  .nav .nav-submenu a {
+    min-height: 44px;
+    padding: 8px 4px 8px 20px;
+    font-size: 1.05rem;
+    white-space: normal;
+  }
+
+  .nav .nav-submenu li:last-child a {
+    margin-bottom: 8px;
   }
 
   /*

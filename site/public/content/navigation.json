@@ -14,7 +14,41 @@
         "en": "Services",
         "ru": "Услуги"
       },
-      "href": "services.html"
+      "href": "services.html",
+      "children": [
+        {
+          "label": {
+            "hy": "Բոլոր ծառայությունները",
+            "en": "All services",
+            "ru": "Все услуги"
+          },
+          "href": "services.html"
+        },
+        {
+          "label": {
+            "hy": "Սոցիալական մեդիա մարքեթինգ",
+            "en": "Social media marketing",
+            "ru": "Маркетинг в соцсетях"
+          },
+          "href": "smm.html"
+        },
+        {
+          "label": {
+            "hy": "SEO ծառայություններ",
+            "en": "SEO services",
+            "ru": "SEO-продвижение"
+          },
+          "href": "seo.html"
+        },
+        {
+          "label": {
+            "hy": "Վեբ կայքերի պատրաստում",
+            "en": "Website development",
+            "ru": "Создание сайтов"
+          },
+          "href": "website.html"
+        }
+      ]
     },
     {
       "label": {

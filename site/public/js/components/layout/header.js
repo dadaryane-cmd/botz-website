@@ -140,10 +140,14 @@ const languageSwitch = () =>
 
 /* ---------- menu items ---------- */
 
-const navLink = (link) =>
+const navLink = (link, className = null) =>
   h(
     'a',
-    { href: link.href, 'aria-current': link.href === currentFile() ? 'page' : null },
+    {
+      class: className,
+      href: link.href,
+      'aria-current': link.href === currentFile() ? 'page' : null,
+    },
     t(link.label),
   )
 
@@ -189,11 +193,17 @@ function navGroup(item, id) {
       },
       t(item.label),
     ),
-    h('span', { class: 'nav-group-label' }, t(item.label)),
+    // Phone menu: the group's name links to its own page ("Services" to the overview) when it
+    // has one, so the dropdown's link to that page is left out there (header.css).
+    item.href
+      ? navLink(item, 'nav-group-link')
+      : h('span', { class: 'nav-group-label' }, t(item.label)),
     h(
       'ul',
       { class: 'nav-submenu', id },
-      item.children.map((child) => h('li', null, navLink(child))),
+      item.children.map((child) =>
+        h('li', { class: child.href === item.href ? 'is-group-page' : null }, navLink(child)),
+      ),
     ),
   )
   return group

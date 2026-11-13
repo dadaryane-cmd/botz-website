@@ -1,6 +1,10 @@
 /**
  * Pricing page: every monthly package side by side, its price per month for each contract
  * length and what the longest term saves. Built only from content/catalog.json.
+ *
+ * Phones have no room for four price columns: there the tables sit folded under a button, and
+ * once open they show one contract length at a time, picked with the same buttons (and the same
+ * shared choice) as the pricing tool's.
  */
 import { CONTRACT_LENGTHS, PACKAGE_CATEGORIES } from '../../config.js'
 import { catalog } from '../../content/index.js'
@@ -9,7 +13,11 @@ import { formatAmd, formatMonths } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
 import { isRecurring, priceFor } from '../../pricing/engine.js'
 import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
+import { getSelection, subscribe, updateSelection } from '../../pricing/selection.js'
 import { heading, lead, section } from './section.js'
+
+/** Below this width the tables show one contract length at a time (comparison.css). */
+const PHONE_QUERY = '(max-width: 720px)'
 
 export function renderComparison(config) {
   const categories = config.categories?.length ? config.categories : PACKAGE_CATEGORIES
@@ -17,7 +25,47 @@ export function renderComparison(config) {
     .map((category) => catalog.packages.filter((pkg) => pkg.category === category))
     .filter((packages) => packages.some(isRecurring))
     .map(comparisonTable)
-  return section(config, heading(config.heading), lead(config.intro), tables)
+  const fold = h(
+    'details',
+    // Open from the start where all columns fit; on phones, folded until asked for.
+    { class: 'comparison-fold', open: !window.matchMedia(PHONE_QUERY).matches },
+    h('summary', { class: 'btn btn-secondary' }, ui('comparison', 'show')),
+    lengthPicker(),
+    tables,
+  )
+  showLength(fold, getSelection().months)
+  subscribe(fold, (selection) => showLength(fold, selection.months))
+  return section(config, heading(config.heading), lead(config.intro), fold)
+}
+
+/** The contract-length buttons shown on phones; the choice is shared with the pricing tool. */
+function lengthPicker() {
+  const label = ui('pricing', 'durationLabel')
+  return h(
+    'div',
+    { class: 'comparison-lengths' },
+    h('span', { class: 'label' }, label),
+    h(
+      'div',
+      { class: 'segmented', role: 'group', 'aria-label': label },
+      CONTRACT_LENGTHS.map((months) =>
+        h(
+          'button',
+          { type: 'button', 'data-months': months, onclick: () => updateSelection({ months }) },
+          formatMonths(months),
+        ),
+      ),
+    ),
+  )
+}
+
+/** Marks the chosen length's buttons and price columns; on phones only those columns show. */
+function showLength(root, months) {
+  for (const element of root.querySelectorAll('[data-months]')) {
+    const isChosen = Number(element.dataset.months) === months
+    if (element.tagName === 'BUTTON') element.setAttribute('aria-pressed', String(isChosen))
+    else element.classList.toggle('is-chosen', isChosen)
+  }
 }
 
 function comparisonTable(packages) {
@@ -37,7 +85,9 @@ function comparisonTable(packages) {
           null,
           // The names speak for themselves; only screen readers hear the column's title.
           h('th', { scope: 'col' }, h('span', { class: 'sr-only' }, ui('comparison', 'package'))),
-          CONTRACT_LENGTHS.map((months) => h('th', { scope: 'col' }, formatMonths(months))),
+          CONTRACT_LENGTHS.map((months) =>
+            h('th', { scope: 'col', 'data-months': months }, formatMonths(months)),
+          ),
           h('th', { scope: 'col' }, ui('comparison', 'saving', { term: formatMonths(longest) })),
         ),
       ),
@@ -84,9 +134,9 @@ function priceCell(pkg, months) {
   if (!price) {
     return h(
       'td',
-      { class: 'is-unavailable' },
+      { class: 'is-unavailable', 'data-months': months },
       h('span', { 'aria-label': ui('comparison', 'notOffered') }, '—'),
     )
   }
-  return h('td', null, formatAmd(price.monthly))
+  return h('td', { 'data-months': months }, formatAmd(price.monthly))
 }

@@ -78,16 +78,20 @@
   overflow-wrap: anywhere;
 }
 
-/* Touch screens: each link a taller tap area, the list as tall as before. */
-@media (pointer: coarse) {
+/*
+ * Touch screens and phones: each link a finger-sized tap area (44px tall), with no gaps between
+ * them, so a tap lands on the link meant and never on its neighbour.
+ */
+@media (pointer: coarse), (max-width: 760px) {
   .footer-columns li {
     margin-bottom: 0;
   }
 
   .footer-columns a,
   .footer-top-link {
-    display: inline-block;
-    padding-block: 4px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 
