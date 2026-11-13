@@ -1,0 +1,54 @@
+/*
+ * The custom cursor's moving parts (js/components/cursor/): decorative layers that follow the
+ * mouse and never take a click. They exist only with a mouse and without a reduced-motion wish.
+ */
+
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s var(--ease-out);
+}
+
+.cursor-follower.is-shown {
+  opacity: 1;
+}
+
+/*
+ * The flashlight (dark theme, every page): a square far larger than the window,
+ * centred on the pointer, clear in the middle and a little darker further out. Moving it is a
+ * transform, so the browser redraws nothing; it sits under the header.
+ */
+.cursor-flashlight {
+  z-index: 40;
+  width: 300vmax;
+  height: 300vmax;
+  margin: -150vmax 0 0 -150vmax;
+  background: radial-gradient(circle at center, transparent 0 180px, rgb(12 10 30 / 0.42) 480px);
+  transition-duration: 0.4s;
+}
+
+[data-theme='light'] .cursor-flashlight {
+  display: none;
+}
+
+/* Over package cards: the price for the chosen contract length, beside the pointer. */
+.cursor-price-tip {
+  z-index: 60;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font: 700 0.85rem var(--font-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-follower {
+    display: none;
+  }
+}

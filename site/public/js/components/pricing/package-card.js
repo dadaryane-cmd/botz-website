@@ -29,7 +29,8 @@ export function packageCard(pkg, selection) {
 
   return h(
     'article',
-    { class: classes.filter(Boolean).join(' ') },
+    // data-package: the cursor's price tip finds the package by it (components/cursor/price-tip.js).
+    { class: classes.filter(Boolean).join(' '), 'data-package': pkg.key },
     pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
     // A name ("Gold", "Start"): browser translation must not turn it into "Золото".
     h('h3', { translate: 'no' }, t(pkg.name)),

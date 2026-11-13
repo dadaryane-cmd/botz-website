@@ -39,6 +39,17 @@ export function priceFor(pkg, months) {
 }
 
 /**
+ * A package's price in one line for `months`: monthly, one-time (websites), or unavailable when
+ * the package is not offered for that length. `amount` is null when unavailable.
+ */
+export function shortPrice(pkg, months) {
+  if (!isRecurring(pkg)) return { kind: 'oneTime', amount: pkg.oneTimePrice }
+  const price = priceFor(pkg, months)
+  if (!price) return { kind: 'unavailable', amount: null }
+  return { kind: 'monthly', amount: price.monthly }
+}
+
+/**
  * Totals for a selection `{ packageKey, months, addons: { key: quantity } }`.
  * Unknown keys and quantities below 1 are ignored.
  */
