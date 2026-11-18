@@ -17,7 +17,15 @@
  * With --preview the site is built for /preview/ under the site's address, with every page marked
  * noindex (the workflow publishes the `preview` branch built this way).
  */
-import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { ARTICLE_PAGE, DEFAULT_LANGUAGE, LANGUAGES } from '../public/js/config.js'
@@ -30,6 +38,11 @@ import { pageDescription, publishedPages } from './seo/pages.js'
 import { robotsTxt, sitemapXml } from './seo/sitemap.js'
 
 const DIST_DIR = fileURLToPath(new URL('../dist/', import.meta.url))
+/**
+ * Search engines' site-verification files (Google Search Console's google<code>.html, …),
+ * published as they are at the site's root. They are not pages, so they live outside public/.
+ */
+const VERIFICATION_DIR = fileURLToPath(new URL('../verification/', import.meta.url))
 const ARTICLE_TEMPLATE = `${ARTICLE_PAGE}.html`
 /** The <base href> of the page shells, for the dev server at the root of localhost. */
 const SOURCE_BASE = '<base href="/" />'
@@ -221,6 +234,8 @@ function build({ preview = false, today } = {}) {
 
   if (preview) rewritePages(withNoindex)
   checkIndexing(builtPages(), { preview })
+  // After the checks: these files must stay exactly as the search engine wrote them.
+  if (existsSync(VERIFICATION_DIR)) cpSync(VERIFICATION_DIR, DIST_DIR, { recursive: true })
   console.log(
     `Built dist/ for ${siteUrl}: ${pages.length} pages in ${LANGUAGES.length} languages ` +
       `(${posts.length} articles)`,

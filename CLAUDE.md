@@ -81,8 +81,10 @@ address (`about-ru.html`, `smm.html` …). Full addresses start from `url` in `c
 The page shells in `public/` (`about.html` …) are templates and are not published as pages. It
 also runs daily, so articles dated in the future appear on their day. The build stops if a live
 page carries `noindex` or a preview page lacks it. Search-engine verification codes and the GA4
-id are optional fields in `content/site.json` (Pages CMS → Contact details); GA4
-(`js/services/analytics.js`) loads only when the id is set, after the page is idle.
+id are optional fields in `content/site.json` (Pages CMS → Contact details); a verification
+file (Google's `google<code>.html` method) goes in `site/verification/`, which the build copies
+to the site's root unchanged. GA4 (`js/services/analytics.js`) loads only when the id is set,
+after the page is idle.
 
 **Preview before going live:** when the owner wants to try a change first, make it on the
 `preview` branch (branched from `main`), not on `main`. Pushing it publishes the site from that
