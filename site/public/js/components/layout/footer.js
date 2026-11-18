@@ -6,9 +6,10 @@
 import { navigation, site } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
-import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { emailHref, phoneHref } from '../../lib/links.js'
 import { logoSources } from '../logo.js'
 import { picture } from '../picture.js'
+import { whatsappLinkAttributes } from '../whatsapp-link.js'
 import { renderSocialLinks } from './social-links.js'
 
 export function renderFooter(footer) {
@@ -76,7 +77,7 @@ function contactColumn() {
     ui('footer', 'contactTitle'),
     [
       h('a', { href: phoneHref }, site.phoneDisplay),
-      h('a', { href: whatsappHref(), ...external }, 'WhatsApp'),
+      h('a', whatsappLinkAttributes(), 'WhatsApp'),
       h('a', { href: emailHref }, site.email),
     ],
     [

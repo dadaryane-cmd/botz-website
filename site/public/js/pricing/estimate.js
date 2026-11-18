@@ -3,9 +3,11 @@ import { catalog } from '../content/index.js'
 import { routes } from '../content/routes.js'
 import { formatAmd, formatMonths } from '../lib/format.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
+import { whatsappHref } from '../lib/links.js'
 import { localizeHref } from '../lib/urls.js'
 import { quote } from './engine.js'
 import { getSelection, toParams } from './selection.js'
+import { whatsappEstimateMessage } from './whatsapp-message.js'
 
 export const categoryLabel = (category) => ui('pricing', `cat_${category}`)
 
@@ -36,6 +38,10 @@ export function estimateSummary(totals = currentQuote()) {
   lines.push(`${ui('pricing', 'combinedEstimate')}: ${from}${formatAmd(totals.total)}`)
   return lines.join('\n')
 }
+
+/** A WhatsApp chat that opens naming the chosen package and add-ons (empty without a choice). */
+export const estimateWhatsappHref = (totals = currentQuote()) =>
+  whatsappHref(whatsappEstimateMessage(estimateSummary(totals)))
 
 /** Absolute link that reopens the pricing tool with this selection. */
 export function estimateLink(selection = getSelection()) {

@@ -1,6 +1,7 @@
 import { h } from '../../lib/dom.js'
 import { ui } from '../../lib/i18n.js'
-import { external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { phoneHref } from '../../lib/links.js'
+import { whatsappLinkAttributes } from '../whatsapp-link.js'
 
 /** Sections that already offer calling and WhatsApp: while one is on screen, the bar steps aside. */
 const OWN_CONTACTS = '.contact-layout, .site-footer'
@@ -15,7 +16,7 @@ let observer = null
 export function renderMobileBar(bar) {
   bar.replaceChildren(
     h('a', { href: phoneHref }, ui('contact', 'call')),
-    h('a', { href: whatsappHref(), ...external }, ui('contact', 'whatsapp')),
+    h('a', whatsappLinkAttributes(), ui('contact', 'whatsapp')),
   )
   hideNearOwnContacts(bar)
 }

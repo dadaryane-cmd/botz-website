@@ -2,11 +2,12 @@ import { LANGUAGE_LABELS, LANGUAGE_NAMES, LANGUAGES } from '../../config.js'
 import { navigation, site } from '../../content/index.js'
 import { fromMarkup, h } from '../../lib/dom.js'
 import { getLanguage, rememberLanguage, t, ui } from '../../lib/i18n.js'
-import { external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { phoneHref } from '../../lib/links.js'
 import { currentFile, currentPageIn } from '../../lib/page.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 import { logoImages } from '../logo.js'
 import { button } from '../sections/section.js'
+import { whatsappLinkAttributes } from '../whatsapp-link.js'
 
 /** A speech bubble with a handset (static, trusted markup), drawn with the text colour. */
 const WHATSAPP_ICON = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none"
@@ -44,7 +45,7 @@ export function renderHeader(header) {
         h('a', { class: 'btn btn-secondary', href: phoneHref }, ui('contact', 'call')),
         h(
           'a',
-          { class: 'btn btn-secondary', href: whatsappHref(), ...external },
+          { class: 'btn btn-secondary', ...whatsappLinkAttributes() },
           ui('contact', 'whatsapp'),
         ),
       ),
@@ -84,8 +85,7 @@ const whatsappLink = () =>
     'a',
     {
       class: 'icon-button header-whatsapp',
-      href: whatsappHref(),
-      ...external,
+      ...whatsappLinkAttributes(),
       'aria-label': `${ui('contact', 'whatsapp')} ${site.phoneDisplay}`,
       title: `${ui('contact', 'whatsapp')} ${site.phoneDisplay}`,
     },

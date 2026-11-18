@@ -3,10 +3,10 @@ import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
-import { external, whatsappHref } from '../../lib/links.js'
+import { external } from '../../lib/links.js'
 import { sectionHref } from '../../lib/page.js'
 import { quote } from '../../pricing/engine.js'
-import { estimateLink, estimateSummary, packageTitle } from '../../pricing/estimate.js'
+import { estimateLink, estimateWhatsappHref, packageTitle } from '../../pricing/estimate.js'
 import { clearSelection } from '../../pricing/selection.js'
 import { animatedAmount } from '../animated-amount.js'
 
@@ -40,7 +40,7 @@ export function estimatePanel(selection) {
       ),
       h(
         'a',
-        { class: 'btn btn-secondary', href: whatsappHref(whatsappMessage(totals)), ...external },
+        { class: 'btn btn-secondary', href: estimateWhatsappHref(totals), ...external },
         ui('pricing', 'discussWhatsapp'),
       ),
       h(
@@ -101,13 +101,6 @@ function estimateRows(totals) {
   rows.push(row(ui('pricing', 'combinedEstimate'), [from, total], 'total'))
   return rows
 }
-
-const whatsappMessage = (totals) =>
-  [
-    ui('whatsapp', 'greeting', { contact: 'BOTZ' }),
-    estimateSummary(totals),
-    ui('whatsapp', 'closing'),
-  ].join('\n')
 
 /** Copy a link that reopens this estimate; where copying is blocked, show it to copy by hand. */
 async function shareEstimate(selection, status) {

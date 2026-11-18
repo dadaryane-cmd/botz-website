@@ -1783,8 +1783,8 @@ content:
         label: Whatsapp
         type: object
         fields:
-          - name: greeting
-            label: Greeting
+          - name: interested
+            label: Interested
             component: line
           - name: closing
             label: Closing
