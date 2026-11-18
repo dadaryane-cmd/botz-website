@@ -6,3 +6,5 @@ site/public/content/
 site/public/css/site.css
 # Published site, written by `npm run build` in site/.
 site/dist/
+# Search engines' verification files: published exactly as the search engine wrote them.
+site/verification/
