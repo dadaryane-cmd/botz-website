@@ -80,10 +80,14 @@ describe('head tags', () => {
   })
 
   it('give each page a title of at most 60 characters and a description of at most 160', () => {
+    // The owner chose longer Services titles on purpose (Google may cut their end); a looser
+    // limit still catches a title that runs away.
+    const titleLimit = (key) => (key === 'services' ? 70 : 60)
     for (const entry of entries.filter((candidate) => candidate.page)) {
       for (const language of LANGUAGES) {
         const page = pageDescription(entry, language, content)
-        assert.ok(page.title.length <= 60, `${entry.key} ${language}: "${page.title}"`)
+        const limit = titleLimit(entry.key)
+        assert.ok(page.title.length <= limit, `${entry.key} ${language}: "${page.title}"`)
         assert.ok(page.description.length <= 160, `${entry.key} ${language}: description`)
       }
     }
