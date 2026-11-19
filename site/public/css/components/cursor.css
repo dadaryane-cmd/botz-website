@@ -17,16 +17,26 @@
 }
 
 /*
- * The flashlight (dark theme, every page): a square far larger than the window,
- * centred on the pointer, clear in the middle and a little darker further out. Moving it is a
- * transform, so the browser redraws nothing; it sits under the header.
+ * The flashlight (dark theme, every page): centred on the pointer, a warm glow in the middle that
+ * fades to clear, then a little darker further out. Twice the window in each direction is the
+ * least that still covers the whole window wherever the pointer is (a larger layer costs the
+ * graphics card memory for nothing). Moving it is a transform on its own layer, so the browser
+ * redraws nothing; it sits under the header.
  */
 .cursor-flashlight {
   z-index: 40;
-  width: 300vmax;
-  height: 300vmax;
-  margin: -150vmax 0 0 -150vmax;
-  background: radial-gradient(circle at center, transparent 0 180px, rgb(12 10 30 / 0.42) 480px);
+  width: 200vw;
+  height: 200vh;
+  margin: -100vh 0 0 -100vw;
+  background: radial-gradient(
+    circle at center,
+    rgb(255 222 186 / 0.13) 0,
+    rgb(255 222 186 / 0.05) 110px,
+    rgb(255 222 186 / 0) 200px,
+    rgb(12 10 30 / 0.42) 500px
+  );
+  will-change: transform;
+  contain: strict;
   transition-duration: 0.4s;
 }
 

@@ -23,11 +23,13 @@
   list-style: none;
 }
 
+/* On the narrowest phones a long name and its price share no line: the price moves under it. */
 .preview-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 16px;
+  gap: 4px 16px;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
   color: inherit;
@@ -65,6 +67,7 @@
 }
 
 .preview-price {
+  margin-left: auto;
   font: 700 1.2rem var(--font-body);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
