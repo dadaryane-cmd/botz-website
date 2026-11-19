@@ -1518,19 +1518,11 @@ h1.heading {
   border-radius: 14px;
   background: none;
   color: inherit;
-  /* The brand's hand (an open palm; closed while pulling); the system's grab hand as fallback. */
-  cursor:
-    url('../images/cursor-grab.svg') 16 14,
-    grab;
+  /* The usual pointer of anything clickable; no hand that opens and closes while pulling. */
+  cursor: pointer;
   touch-action: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-}
-
-.bulb-toggle.is-dragging {
-  cursor:
-    url('../images/cursor-grabbing.svg') 16 16,
-    grabbing;
 }
 
 .bulb-sway,
