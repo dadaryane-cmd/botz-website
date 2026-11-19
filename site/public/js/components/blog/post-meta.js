@@ -32,7 +32,11 @@ export function dateAndReadingTime(post) {
   )
 }
 
-/** 16:9, so the space is kept while it loads. `eager` for the cover at the top of an article. */
+/**
+ * 16:9, so the space is kept while it loads. `eager` for the cover at the top of an article.
+ * `cover` (a JPEG, also the picture shown when the article is shared) is the fallback; browsers
+ * that read them get the smaller AVIF or WebP copies when the article has them.
+ */
 export function cover(post, { eager = false } = {}) {
   if (!post.cover) {
     return h(
@@ -49,8 +53,12 @@ export function cover(post, { eager = false } = {}) {
     )
   }
   return picture({
+    avif: post.coverAvif,
+    webp: post.coverWebp,
     class: 'post-cover',
     src: post.cover,
+    width: 1600,
+    height: 900,
     alt: t(post.coverAlt) || '',
     loading: eager ? 'eager' : 'lazy',
     fetchpriority: eager ? 'high' : null,

@@ -8,6 +8,8 @@
   "date": "2026-10-30",
   "author": "mariam",
   "cover": "images/blog/instagram-post-ideas.jpg",
+  "coverWebp": "images/blog/instagram-post-ideas.webp",
+  "coverAvif": "images/blog/instagram-post-ideas.avif",
   "coverAlt": {
     "hy": "Instagram-ի գրառումների ցանց",
     "en": "A grid of Instagram posts",

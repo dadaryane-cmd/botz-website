@@ -8,6 +8,8 @@
   "date": "2026-11-18",
   "author": "mariam",
   "cover": "images/blog/clinic-marketing.jpg",
+  "coverWebp": "images/blog/clinic-marketing.webp",
+  "coverAvif": "images/blog/clinic-marketing.avif",
   "coverAlt": {
     "hy": "Բժշկական խաչ վահանի վրա, քարտեզի նշիչ և աստղ",
     "en": "A medical cross on a shield, a map pin and a star",

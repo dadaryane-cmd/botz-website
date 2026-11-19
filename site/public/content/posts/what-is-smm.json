@@ -8,6 +8,8 @@
   "date": "2026-11-18",
   "author": "mariam",
   "cover": "images/blog/what-is-smm.jpg",
+  "coverWebp": "images/blog/what-is-smm.webp",
+  "coverAvif": "images/blog/what-is-smm.avif",
   "coverAlt": {
     "hy": "Հեռախոս՝ տեսանյութով, լայք և մեկնաբանություն",
     "en": "A phone with a video post, a like and a comment",

@@ -1190,7 +1190,17 @@ content:
         options:
           values: [mariam, edgar]
       - name: cover
-        label: "Cover (16:9, e.g. 1600×900; WebP or JPEG)"
+        label: "Cover (16:9, e.g. 1600×900; JPEG, also shown when the article is shared)"
+        type: image
+        options:
+          media: images
+      - name: coverWebp
+        label: Same cover as WebP (optional, smaller)
+        type: image
+        options:
+          media: images
+      - name: coverAvif
+        label: Same cover as AVIF (optional, smallest)
         type: image
         options:
           media: images

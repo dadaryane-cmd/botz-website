@@ -157,7 +157,8 @@ describe('blog articles', () => {
     })
 
     it(`"${post.slug}" links only to pages and pictures that exist`, () => {
-      const targets = [post.cover, ...LANGUAGES.flatMap((language) => links(post.body[language]))]
+      const covers = [post.cover, post.coverWebp, post.coverAvif]
+      const targets = [...covers, ...LANGUAGES.flatMap((language) => links(post.body[language]))]
       // Another article's page is written when publishing (post-<id>.html), so it has no file.
       const articlePages = posts.map((other) => postFile(other.slug))
       for (const target of targets.filter(Boolean)) {

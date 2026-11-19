@@ -8,6 +8,8 @@
   "date": "2026-11-02",
   "author": "edgar",
   "cover": "images/blog/google-business-profile.jpg",
+  "coverWebp": "images/blog/google-business-profile.webp",
+  "coverAvif": "images/blog/google-business-profile.avif",
   "coverAlt": {
     "hy": "Քարտեզի նշիչ և հինգ աստղանի գնահատական",
     "en": "A map pin and a five-star rating",
