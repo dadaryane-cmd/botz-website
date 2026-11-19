@@ -7,7 +7,12 @@
   },
   "date": "2026-11-18",
   "author": "edgar",
-  "cover": null,
+  "cover": "images/blog/smm-seo-prices-armenia.jpg",
+  "coverAlt": {
+    "hy": "Գնապիտակ դրամի նշանով և երեք աճող սյունակ",
+    "en": "A price tag with the dram sign and three rising bars",
+    "ru": "Ценник со знаком драма и три растущих столбца"
+  },
   "title": {
     "hy": "SMM-ի և SEO-ի գները Հայաստանում",
     "en": "SMM and SEO prices in Armenia: what you pay for",

@@ -565,6 +565,46 @@
       "en": "Enter a valid phone number",
       "ru": "Введите корректный номер телефона"
     },
+    "invalidLink": {
+      "hy": "Գրեք Instagram-ի անունը (@...) կամ կայքի հասցեն՝ առանց բացատների",
+      "en": "Enter an Instagram handle (@...) or a website address, without spaces",
+      "ru": "Укажите ник в Instagram (@...) или адрес сайта, без пробелов"
+    },
+    "auditLink": {
+      "hy": "Ձեր Instagram-ը կամ կայքը",
+      "en": "Your Instagram or website",
+      "ru": "Ваш Instagram или сайт"
+    },
+    "auditLinkPlaceholder": {
+      "hy": "@ձեր_բիզնեսը կամ yoursite.am",
+      "en": "@yourbusiness or yoursite.am",
+      "ru": "@вашбизнес или yoursite.am"
+    },
+    "auditPhone": {
+      "hy": "Հեռախոս կամ WhatsApp",
+      "en": "Phone or WhatsApp",
+      "ru": "Телефон или WhatsApp"
+    },
+    "auditNote": {
+      "hy": "Ինչն է ձեզ ամենաշատը մտահոգում",
+      "en": "What worries you most",
+      "ru": "Что вас больше всего беспокоит"
+    },
+    "auditSubmit": {
+      "hy": "Ստանալ անվճար աուդիտ",
+      "en": "Get my free audit",
+      "ru": "Получить бесплатный аудит"
+    },
+    "auditSuccessText": {
+      "hy": "Կնայենք ձեր էջերը և կկապվենք ձեզ հետ մեկ աշխատանքային օրվա ընթացքում։",
+      "en": "We'll look at your pages and get back to you within one working day.",
+      "ru": "Мы посмотрим ваши страницы и свяжемся с вами в течение одного рабочего дня."
+    },
+    "auditWhatsappMessage": {
+      "hy": "Բարև։ Հենց նոր անվճար աուդիտի հայտ ուղարկեցի ձեր կայքից։ Իմ անունը {name} է, էջս՝ {link}։",
+      "en": "Hello! I just requested a free audit on your website. My name is {name}, my page is {link}.",
+      "ru": "Здравствуйте! Я только что отправил(а) заявку на бесплатный аудит с вашего сайта. Меня зовут {name}, моя страница — {link}."
+    },
     "needEmailOrPhone": {
       "hy": "Ավելացրեք էլ. փոստ կամ հեռախոսահամար",
       "en": "Add an email or a phone number",
@@ -635,6 +675,18 @@
       "hy": "Կարո՞ղ ենք քննարկել։",
       "en": "Could we discuss it?",
       "ru": "Можем обсудить?"
+    }
+  },
+  "audit": {
+    "checksTitle": {
+      "hy": "Ինչ ենք ստուգում",
+      "en": "What we look at",
+      "ru": "Что мы смотрим"
+    },
+    "promiseTitle": {
+      "hy": "Ինչ եք ստանում",
+      "en": "What you get",
+      "ru": "Что вы получите"
     }
   },
   "trust": {

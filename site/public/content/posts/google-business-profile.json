@@ -7,7 +7,12 @@
   },
   "date": "2026-11-02",
   "author": "edgar",
-  "cover": null,
+  "cover": "images/blog/google-business-profile.jpg",
+  "coverAlt": {
+    "hy": "Քարտեզի նշիչ և հինգ աստղանի գնահատական",
+    "en": "A map pin and a five-star rating",
+    "ru": "Метка на карте и оценка в пять звёзд"
+  },
   "title": {
     "hy": "Ինչպես ավելացնել ձեր բիզնեսը Google Քարտեզներում. քայլ առ քայլ ուղեցույց",
     "en": "How to put your business on Google Maps: a step-by-step guide",

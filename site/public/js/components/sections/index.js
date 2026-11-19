@@ -1,5 +1,6 @@
 /** Section `type` (as used in content/pages) → render function. */
 import { renderMarqueeSign } from '../marquee-sign.js'
+import { renderAudit } from './audit.js'
 import { renderBlogList } from './blog-list.js'
 import { renderComparison } from './comparison.js'
 import { renderContact } from './contact.js'
@@ -17,6 +18,7 @@ import { renderSplit } from './split.js'
 import { renderTeam } from './team.js'
 
 const renderers = {
+  audit: renderAudit,
   blogList: renderBlogList,
   comparison: renderComparison,
   contact: renderContact,

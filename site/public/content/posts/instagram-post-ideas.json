@@ -7,7 +7,12 @@
   },
   "date": "2026-10-30",
   "author": "mariam",
-  "cover": null,
+  "cover": "images/blog/instagram-post-ideas.jpg",
+  "coverAlt": {
+    "hy": "Instagram-ի գրառումների ցանց",
+    "en": "A grid of Instagram posts",
+    "ru": "Сетка постов в Instagram"
+  },
   "title": {
     "hy": "Չգիտե՞ք ինչ հրապարակել. Instagram-ի 10 գաղափար փոքր բիզնեսի համար",
     "en": "Nothing to post? 10 Instagram ideas for a small business",

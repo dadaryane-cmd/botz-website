@@ -1,0 +1,213 @@
+{
+  "path": {
+    "hy": "smm-gegheckutyan-srahneri-hamar",
+    "en": "smm-for-beauty-salons",
+    "ru": "smm-dlya-salonov-krasoty"
+  },
+  "meta": {
+    "title": {
+      "hy": "SMM գեղեցկության սրահների համար Երևանում",
+      "en": "SMM for Beauty Salons in Yerevan",
+      "ru": "SMM для салонов красоты в Ереване"
+    },
+    "description": {
+      "hy": "Գեղեցկության սրահների SMM Երևանում՝ վարպետների աշխատանքներ, Reels, Instagram և հեշտ գրանցում WhatsApp-ով։ Փաթեթներ՝ հրապարակված գներով։",
+      "en": "SMM for beauty salons in Yerevan: your masters' work, Reels, Instagram and easy booking through WhatsApp. Packages with published monthly prices.",
+      "ru": "SMM для салонов красоты в Ереване: работы мастеров, Reels, Instagram и простая запись через WhatsApp. Пакеты с открытыми ценами."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*SMM* գեղեցկության սրահների համար",
+        "en": "*SMM* for beauty salons",
+        "ru": "*SMM* для салонов красоты"
+      },
+      "subheading": {
+        "hy": "Հաճախորդը վարպետ ընտրում է նրա աշխատանքներով։ Մենք Instagram-ը դարձնում ենք ձեր պորտֆոլիոն և գրանցումը՝ մեկ հաղորդագրություն։",
+        "en": "Clients choose a master by their work. We turn your Instagram into your portfolio, and booking into a single message.",
+        "ru": "Клиент выбирает мастера по его работам. Мы превращаем ваш Instagram в портфолио, а запись — в одно сообщение."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել գները",
+            "en": "See prices",
+            "ru": "Смотреть цены"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Ստանալ անվճար աուդիտ",
+            "en": "Get a free audit",
+            "ru": "Получить бесплатный аудит"
+          },
+          "href": "audit.html",
+          "style": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "serviceDetail",
+      "id": "about",
+      "background": "surface",
+      "title": {
+        "hy": "Ինչ ենք անում գեղեցկության սրահների համար",
+        "en": "What we do for beauty salons",
+        "ru": "Что мы делаем для салонов красоты"
+      },
+      "service": "smm",
+      "problem": {
+        "hy": "Լավ վարպետների աշխատանքները մնում են նրանց հեռախոսներում, իսկ սրահի էջում կան միայն պատահական լուսանկարներ։ Հաճախորդը չի տեսնում, թե ում մոտ գրանցվել, և չի գտնում՝ ինչպես։",
+        "en": "Good masters' work stays on their phones, and the salon's page shows only random photos. Clients can't see whom to book, or find out how.",
+        "ru": "Работы хороших мастеров остаются у них в телефонах, а на странице салона — случайные фото. Клиент не видит, к кому записаться, и не понимает как."
+      },
+      "approach": {
+        "hy": "Յուրաքանչյուր վարպետի աշխատանքները ցույց ենք տալիս առանձին շարքով, ամեն շաբաթ հրապարակում ենք նոր աշխատանքներ և Reels, իսկ պրոֆիլում և սթորիներում գրանցումը դարձնում ենք մեկ սեղմում։",
+        "en": "We show each master's work in a series of its own, post new work and Reels every week, and make booking one tap from your profile and stories.",
+        "ru": "Работы каждого мастера показываем отдельной серией, каждую неделю публикуем новые работы и Reels, а запись из профиля и сторис делаем в одно касание."
+      },
+      "deliverables": [
+        {
+          "hy": "Վարպետների աշխատանքներ՝ պորտֆոլիոյի պես դասավորված",
+          "en": "Your masters' work, arranged like a portfolio",
+          "ru": "Работы мастеров, собранные как портфолио"
+        },
+        {
+          "hy": "Reels և սթորիներ աշխատանքի ընթացքից",
+          "en": "Reels and stories from the work in progress",
+          "ru": "Reels и сторис из процесса работы"
+        },
+        {
+          "hy": "Գրանցում WhatsApp-ով կամ ձեր գրանցման համակարգով՝ պրոֆիլից",
+          "en": "Booking from your profile, through WhatsApp or your booking system",
+          "ru": "Запись из профиля — через WhatsApp или вашу систему записи"
+        },
+        {
+          "hy": "Highlights՝ գներով, վարպետներով և հասցեով",
+          "en": "Highlights with prices, masters and your address",
+          "ru": "Highlights с ценами, мастерами и адресом"
+        },
+        {
+          "hy": "Գովազդ ձեր թաղամասի կանանց և տղամարդկանց համար",
+          "en": "Ads for people in your part of the city",
+          "ru": "Реклама для жителей вашего района"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Կարդալ՝ ինչ է SMM-ը",
+          "en": "Read: what SMM is",
+          "ru": "Читать: что такое SMM"
+        },
+        "href": "post-what-is-smm.html"
+      }
+    },
+    {
+      "type": "packagePreview",
+      "id": "pricing",
+      "heading": {
+        "hy": "Ամսական գներ",
+        "en": "Monthly prices",
+        "ru": "Цены в месяц"
+      },
+      "intro": {
+        "hy": "12 ամսվա պայմանագրով։ Սրահների մեծ մասին հարմար է SMM Pro-ն՝ Reels-ի մոնտաժով և Highlights-ի դիզայնով։",
+        "en": "On a 12-month contract. SMM Pro, with Reels editing and Highlights design, suits most salons.",
+        "ru": "При договоре на 12 месяцев. Большинству салонов подходит SMM Pro — с монтажом Reels и оформлением Highlights."
+      },
+      "categories": ["smm"],
+      "duration": 12,
+      "link": {
+        "label": {
+          "hy": "Բոլոր փաթեթները",
+          "en": "All packages",
+          "ru": "Все пакеты"
+        },
+        "href": "pricing.html?cat=smm",
+        "style": "primary"
+      },
+      "showGuideLink": true
+    },
+    {
+      "type": "faq",
+      "id": "faq",
+      "background": "surface",
+      "heading": {
+        "hy": "Հարցեր գեղեցկության սրահների SMM-ի մասին",
+        "en": "Questions about SMM for beauty salons",
+        "ru": "Вопросы о SMM для салонов красоты"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Հրապարակո՞ւմ եք հաճախորդների լուսանկարներ",
+            "en": "Do you post photos of clients?",
+            "ru": "Публикуете ли вы фото клиентов?"
+          },
+          "answer": {
+            "hy": "Միայն հաճախորդի համաձայնությամբ։ Եթե նա չի ուզում դեմքը ցույց տալ, նկարահանում ենք միայն աշխատանքը՝ մազերը, եղունգները, դիմահարդարումը։",
+            "en": "Only with the client's consent. When someone prefers not to show their face, we shoot only the work: the hair, the nails, the make-up.",
+            "ru": "Только с согласия клиента. Если человек не хочет показывать лицо, снимаем только саму работу: волосы, ногти, макияж."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Կարո՞ղ են հաճախորդները գրանցվել Instagram-ից",
+            "en": "Can clients book from Instagram?",
+            "ru": "Можно ли записаться прямо из Instagram?"
+          },
+          "answer": {
+            "hy": "Այո։ Պրոֆիլում ավելացնում ենք գրանցման կոճակ կամ WhatsApp-ի հղում, իսկ Highlights-ում և սթորիներում ցույց ենք տալիս, թե ինչպես գրանցվել։",
+            "en": "Yes. We add a booking button or a WhatsApp link to your profile, and show how to book in your Highlights and stories.",
+            "ru": "Да. Добавляем в профиль кнопку записи или ссылку на WhatsApp, а в Highlights и сторис показываем, как записаться."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Կարո՞ղ եք ցույց տալ յուրաքանչյուր վարպետին առանձին",
+            "en": "Can you show each master separately?",
+            "ru": "Можно ли показать каждого мастера отдельно?"
+          },
+          "answer": {
+            "hy": "Այո։ Յուրաքանչյուր վարպետի աշխատանքները հավաքում ենք առանձին Highlights-ում կամ գրառումների շարքում, որ հաճախորդը ընտրի հենց այն վարպետին, ում աշխատանքը դուր է գալիս։",
+            "en": "Yes. We collect each master's work in their own Highlight or series of posts, so clients can book the very master whose work they like.",
+            "ru": "Да. Работы каждого мастера собираем в отдельные Highlights или серию постов, чтобы клиент мог записаться именно к тому мастеру, чьи работы ему нравятся."
+          },
+          "openByDefault": false
+        }
+      ]
+    },
+    {
+      "type": "blogList",
+      "id": "articles",
+      "heading": {
+        "hy": "Կարդացեք նաև",
+        "en": "Further reading",
+        "ru": "Почитать по теме"
+      },
+      "posts": ["instagram-post-ideas", "what-is-smm", "smm-specialist-or-agency"]
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "background": "surface",
+      "heading": {
+        "hy": "Քննարկենք ձեր սրահը",
+        "en": "Let's talk about your salon",
+        "ru": "Обсудим ваш салон"
+      },
+      "intro": {
+        "hy": "Գրեք մի քանի բառ ձեր սրահի մասին և կցեք Instagram-ի հղումը, եթե կա։",
+        "en": "Write a few words about your salon and add your Instagram link if you have one.",
+        "ru": "Напишите пару слов о салоне и добавьте ссылку на Instagram, если она есть."
+      },
+      "service": "smm"
+    }
+  ]
+}

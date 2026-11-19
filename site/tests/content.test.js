@@ -15,6 +15,7 @@ const pages = Object.fromEntries(
   await Promise.all(PAGES.map(async (key) => [key, await loadJson(`pages/${key}.json`)])),
 )
 const SECTION_TYPES = [
+  'audit',
   'blogList',
   'comparison',
   'contact',
@@ -106,11 +107,16 @@ describe('content', () => {
     const pageLinks = JSON.stringify(pages)
       .match(/"(?:href|file)":"[^"#]+/g)
       .map((match) => match.split(':"')[1])
+    // An article's page is written when publishing (post-<id>.html), so it has no file.
+    const articlePages = readdirSync(join(publicDir, 'content/posts'))
+      .filter((file) => file.endsWith('.json') && file !== 'index.json')
+      .map((file) => `post-${file.replace('.json', '')}.html`)
     for (const href of [...links.map((link) => link.href), ...pageLinks]) {
       if (/^(https?:|mailto:|tel:|#)/.test(href)) continue
       // The file part only: without "?cat=…" and "#section".
       const file = href.split(/[?#]/)[0]
-      assert.ok(existsSync(publicDir + file), `missing ${href}`)
+      const exists = articlePages.includes(file) || existsSync(publicDir + file)
+      assert.ok(exists, `missing ${href}`)
     }
   })
 

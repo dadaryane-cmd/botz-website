@@ -81,13 +81,8 @@
       "en": "Free audit",
       "ru": "Бесплатный аудит"
     },
-    "href": "contact.html",
-    "style": "primary",
-    "note": {
-      "hy": "Բարև։ Կցանկանայի անվճար մարքեթինգային աուդիտ իմ բիզնեսի համար։",
-      "en": "Hello! I would like a free marketing audit for my business.",
-      "ru": "Здравствуйте! Хочу бесплатный маркетинговый аудит для моего бизнеса."
-    }
+    "href": "audit.html",
+    "style": "primary"
   },
   "footerTagline": {
     "hy": "Թվային մարքեթինգի լուծումներ։ Երևան։",
@@ -138,6 +133,39 @@
     },
     {
       "title": {
+        "hy": "Ոլորտներ",
+        "en": "Industries",
+        "ru": "Отрасли"
+      },
+      "links": [
+        {
+          "label": {
+            "hy": "Կլինիկաների համար",
+            "en": "For clinics",
+            "ru": "Для клиник"
+          },
+          "href": "clinics.html"
+        },
+        {
+          "label": {
+            "hy": "Ռեստորանների համար",
+            "en": "For restaurants",
+            "ru": "Для ресторанов"
+          },
+          "href": "restaurants.html"
+        },
+        {
+          "label": {
+            "hy": "Գեղեցկության սրահների համար",
+            "en": "For beauty salons",
+            "ru": "Для салонов красоты"
+          },
+          "href": "beauty.html"
+        }
+      ]
+    },
+    {
+      "title": {
         "hy": "Գործակալություն",
         "en": "Agency",
         "ru": "Агентство"
@@ -158,6 +186,14 @@
             "ru": "Блог"
           },
           "href": "blog.html"
+        },
+        {
+          "label": {
+            "hy": "Անվճար աուդիտ",
+            "en": "Free audit",
+            "ru": "Бесплатный аудит"
+          },
+          "href": "audit.html"
         },
         {
           "label": {

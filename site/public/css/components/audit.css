@@ -1,0 +1,25 @@
+/* Free audit section (js/components/sections/audit.js): what we check beside the short form. */
+
+.audit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 28px;
+  margin-top: 32px;
+  align-items: start;
+}
+
+.audit-details .label:not(:first-child) {
+  margin-top: 28px;
+}
+
+/* Phones: the form first, so the request is one step away; what we check follows it. */
+@media (max-width: 900px) {
+  .audit-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .audit-layout > .form,
+  .audit-layout > .form-success {
+    order: -1;
+  }
+}

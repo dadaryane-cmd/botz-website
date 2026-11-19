@@ -14,7 +14,9 @@ import { people } from '../public/js/content/index.js'
 import { formatDate } from '../public/js/lib/format.js'
 import { isSafeHref, parseInline, parseMarkdown } from '../public/js/blog/markdown.js'
 import {
+  chosenPosts,
   isSlug,
+  listsArticles,
   postFile,
   postIndex,
   publishedNewestFirst,
@@ -180,6 +182,35 @@ describe('article dates', () => {
     assert.equal(formatDate('2026-11-02', 'en'), '2 November 2026')
     assert.match(formatDate('2026-11-02', 'ru'), /^2 ноября 2026/)
     assert.equal(formatDate('soon', 'en'), 'soon')
+  })
+})
+
+describe('article lists on other pages ("Read more")', () => {
+  const list = [{ slug: 'a' }, { slug: 'b' }, { slug: 'c' }]
+
+  it('show the named articles in the order given, skipping unpublished ones', () => {
+    assert.deepEqual(chosenPosts(list, ['c', 'later', 'a']), [{ slug: 'c' }, { slug: 'a' }])
+  })
+
+  it('show every article when none are named (the blog page)', () => {
+    assert.equal(chosenPosts(list), list)
+    assert.equal(chosenPosts(list, []), list)
+  })
+
+  it('are found in a page by their section type, so the page fetches the article list', () => {
+    assert.equal(listsArticles({ sections: [{ type: 'hero' }, { type: 'blogList' }] }), true)
+    assert.equal(listsArticles({ sections: [{ type: 'hero' }] }), false)
+    assert.equal(listsArticles(null), false)
+  })
+
+  it('on service pages name only articles that exist', () => {
+    const slugs = new Set(posts.map((post) => post.slug))
+    for (const file of readdirSync(new URL('content/pages/', publicDir))) {
+      const page = JSON.parse(readFileSync(new URL(`content/pages/${file}`, publicDir), 'utf8'))
+      for (const section of page.sections.filter((entry) => entry.type === 'blogList')) {
+        for (const slug of section.posts ?? []) assert.ok(slugs.has(slug), `${file}: ${slug}`)
+      }
+    }
   })
 })
 

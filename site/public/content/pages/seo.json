@@ -45,13 +45,8 @@
             "en": "Get a free audit",
             "ru": "Получить бесплатный аудит"
           },
-          "href": "#contact",
-          "style": "secondary",
-          "note": {
-            "hy": "Կցանկանայի անվճար աուդիտ իմ բիզնեսի համար։ Մեր կայքը / էջը՝ ",
-            "en": "I'd like a free audit for my business. Our website / page: ",
-            "ru": "Хочу бесплатный аудит для своего бизнеса. Наш сайт / страница: "
-          }
+          "href": "audit.html",
+          "style": "secondary"
         }
       ]
     },
@@ -181,6 +176,16 @@
       "background": "surface"
     },
     {
+      "type": "blogList",
+      "heading": {
+        "hy": "Կարդացեք նաև",
+        "en": "Further reading",
+        "ru": "Почитать по теме"
+      },
+      "posts": ["smm-seo-prices-armenia", "google-business-profile", "digital-marketing-guide"],
+      "id": "articles"
+    },
+    {
       "type": "contact",
       "heading": {
         "hy": "Ստանալ խորհրդատվություն",
@@ -193,7 +198,8 @@
         "ru": "Если вы выбрали пакет, он уже прикреплён к форме. Добавьте пару слов о своём бизнесе."
       },
       "service": "seo",
-      "id": "contact"
+      "id": "contact",
+      "background": "surface"
     }
   ]
 }

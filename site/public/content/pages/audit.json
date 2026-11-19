@@ -1,0 +1,87 @@
+{
+  "path": {
+    "hy": "anvchar-audit",
+    "en": "free-audit",
+    "ru": "besplatnyj-audit"
+  },
+  "meta": {
+    "title": {
+      "hy": "Անվճար մարքեթինգային աուդիտ Երևանում",
+      "en": "Free Marketing Audit for Your Business",
+      "ru": "Бесплатный маркетинговый аудит в Ереване"
+    },
+    "description": {
+      "hy": "Ուղարկեք ձեր Instagram-ը կամ կայքը, և մենք կասենք, թե ինչն է խանգարում հաճախորդներին ձեզ գտնել և գրել։ Անվճար է և ոչ մի պարտավորություն չի ստեղծում։",
+      "en": "Send us your Instagram or website and we'll tell you what keeps customers from finding you and getting in touch. Free, with no obligation.",
+      "ru": "Пришлите свой Instagram или сайт — мы скажем, что мешает клиентам вас найти и написать. Бесплатно и ни к чему не обязывает."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*Անվճար* մարքեթինգային աուդիտ",
+        "en": "A *free* marketing audit",
+        "ru": "*Бесплатный* маркетинговый аудит"
+      },
+      "subheading": {
+        "hy": "Ուղարկեք ձեր Instagram-ը կամ կայքը։ Կնայենք, թե ինչն է խանգարում հաճախորդներին ձեզ գտնել և գրել, և կասենք, թե ինչն ենք առաջինը ուղղելու։",
+        "en": "Send us your Instagram or website. We'll look at what keeps customers from finding you and getting in touch, and tell you what we would fix first.",
+        "ru": "Пришлите свой Instagram или сайт. Мы посмотрим, что мешает клиентам вас найти и написать, и скажем, что исправили бы в первую очередь."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Լրացնել հայտը",
+            "en": "Fill in the request",
+            "ru": "Заполнить заявку"
+          },
+          "href": "#audit",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "type": "audit",
+      "id": "audit",
+      "background": "surface",
+      "heading": {
+        "hy": "Կես րոպե՝ հայտի համար",
+        "en": "Half a minute to ask",
+        "ru": "Полминуты на заявку"
+      },
+      "checks": [
+        {
+          "hy": "Instagram-ի և Facebook-ի պրոֆիլը՝ նկարագրություն, Highlights, ինչպես կապվել ձեզ հետ",
+          "en": "Your Instagram and Facebook profile: the bio, Highlights and how to contact you",
+          "ru": "Профиль в Instagram и Facebook: описание, Highlights, как с вами связаться"
+        },
+        {
+          "hy": "Գրառումները՝ որոնք են արձագանք բերում, և որոնք՝ ոչ",
+          "en": "Your posts: which bring a response and which don't",
+          "ru": "Посты: какие вызывают отклик, а какие нет"
+        },
+        {
+          "hy": "Google-ը՝ արդյոք ձեզ գտնում են ըստ ծառայության և քաղաքի, և ձեր էջը Google Maps-ում",
+          "en": "Google: whether people find you by service and city, and your Google Maps profile",
+          "ru": "Google: находят ли вас по услуге и городу, и ваша карточка на Google Картах"
+        },
+        {
+          "hy": "Կայքը, եթե կա՝ հեռախոսով բացվելը, գները և կապի միջոցը",
+          "en": "Your website, if you have one: how it works on a phone, the prices and the way to get in touch",
+          "ru": "Сайт, если он есть: как он открывается с телефона, цены и способ связи"
+        },
+        {
+          "hy": "Գովազդը, եթե վարում եք՝ ում է ցույց տրվում և որքան արժե",
+          "en": "Your ads, if you run any: who sees them and what they cost",
+          "ru": "Реклама, если вы её запускаете: кому её показывают и сколько она стоит"
+        }
+      ],
+      "promise": {
+        "hy": "Ամենակարևոր ուղղումների կարճ ցուցակ, որոնք կարող եք անել ինքներդ կամ մեզ հետ։ Անվճար է և ոչ մի պարտավորություն չի ստեղծում։",
+        "en": "A short list of the most important fixes, which you can make yourself or with us. It's free and you're under no obligation.",
+        "ru": "Короткий список самых важных исправлений, которые можно сделать самим или вместе с нами. Бесплатно и ни к чему не обязывает."
+      }
+    }
+  ]
+}

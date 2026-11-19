@@ -264,7 +264,19 @@ const sectionBlocks = [
     name: 'blogList',
     label: 'Blog articles',
     // The articles themselves are edited under Blog articles.
-    fields: [heading(), text('intro', 'Intro', { long: true }), ...layout],
+    fields: [
+      heading(),
+      text('intro', 'Intro', { long: true }),
+      list(
+        string('posts', 'Article id', {
+          description:
+            'Only on pages other than the blog: the articles to show, by their id (e.g. ' +
+            'what-is-smm). Leave empty to list all articles.',
+          pattern: SLUG_PATTERN,
+        }),
+      ),
+      ...layout,
+    ],
   },
   {
     name: 'cta',
@@ -276,6 +288,18 @@ const sectionBlocks = [
       ...layout,
     ],
   },
+  {
+    name: 'audit',
+    label: 'Free audit request',
+    // The form's own texts are under Interface texts → form.
+    fields: [
+      heading(),
+      text('intro', 'Intro', { long: true }),
+      list(text('checks', 'What we look at')),
+      text('promise', 'What the visitor gets', { long: true }),
+      ...layout,
+    ],
+  },
 ]
 
 const PAGE_LABELS = {
@@ -284,7 +308,11 @@ const PAGE_LABELS = {
   smm: 'Services: SMM',
   seo: 'Services: SEO',
   website: 'Services: Website development',
+  clinics: 'Industries: Clinics',
+  restaurants: 'Industries: Restaurants and cafés',
+  beauty: 'Industries: Beauty salons',
   pricing: 'Pricing',
+  audit: 'Free audit',
   about: 'About',
   blog: 'Blog',
   contact: 'Contact',

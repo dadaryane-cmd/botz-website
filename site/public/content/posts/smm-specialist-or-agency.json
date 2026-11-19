@@ -7,7 +7,12 @@
   },
   "date": "2026-11-18",
   "author": "mariam",
-  "cover": null,
+  "cover": "images/blog/smm-specialist-or-agency.jpg",
+  "coverAlt": {
+    "hy": "Մեկ մասնագետ և չորս հոգանոց թիմ",
+    "en": "One specialist and a team of four",
+    "ru": "Один специалист и команда из четырёх человек"
+  },
   "title": {
     "hy": "SMM մասնագե՞տ, թե՞ գործակալություն",
     "en": "SMM specialist or agency: which one to choose",

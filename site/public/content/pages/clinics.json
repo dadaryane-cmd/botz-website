@@ -1,0 +1,213 @@
+{
+  "path": {
+    "hy": "smm-klinikaneri-hamar",
+    "en": "smm-for-clinics",
+    "ru": "smm-dlya-klinik"
+  },
+  "meta": {
+    "title": {
+      "hy": "SMM և մարքեթինգ կլինիկաների համար Երևանում",
+      "en": "SMM and Marketing for Clinics in Yerevan",
+      "ru": "SMM и маркетинг для клиник в Ереване"
+    },
+    "description": {
+      "hy": "Կլինիկաների և ատամնաբուժարանների մարքեթինգ Երևանում՝ Instagram, Google Maps, կայք և գովազդ։ Պացիենտների վստահություն՝ առանց արդյունքների խոստումների։",
+      "en": "Marketing for clinics and dental practices in Yerevan: Instagram, Google Maps, the website and ads. Patients' trust, without promises of results.",
+      "ru": "Маркетинг для клиник и стоматологий в Ереване: Instagram, Google Карты, сайт и реклама. Доверие пациентов — без обещаний результата лечения."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*SMM և մարքեթինգ* կլինիկաների համար",
+        "en": "*SMM and marketing* for clinics",
+        "ru": "*SMM и маркетинг* для клиник"
+      },
+      "subheading": {
+        "hy": "Պացիենտը կլինիկա ընտրում է զանգելուց առաջ՝ Google-ում, քարտեզում և Instagram-ում։ Մենք օգնում ենք, որ այդ ամենուր նա տեսնի ձեր բժիշկներին, գները և իրական կարծիքներ։",
+        "en": "Patients choose a clinic before they call: on Google, on the map and on Instagram. We make sure that everywhere they look, they see your doctors, your prices and real reviews.",
+        "ru": "Пациент выбирает клинику ещё до звонка: в Google, на карте и в Instagram. Мы делаем так, чтобы везде он видел ваших врачей, цены и настоящие отзывы."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել գները",
+            "en": "See prices",
+            "ru": "Смотреть цены"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Ստանալ անվճար աուդիտ",
+            "en": "Get a free audit",
+            "ru": "Получить бесплатный аудит"
+          },
+          "href": "audit.html",
+          "style": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "serviceDetail",
+      "id": "about",
+      "background": "surface",
+      "title": {
+        "hy": "Ինչ ենք անում կլինիկաների համար",
+        "en": "What we do for clinics",
+        "ru": "Что мы делаем для клиник"
+      },
+      "service": "smm",
+      "problem": {
+        "hy": "Պացիենտը անհանգստացած է և ուշադիր համեմատում է։ Նրան պետք է տեսնել, թե ով է բժիշկը, որքան արժե ծառայությունը և ինչ են ասում մյուս պացիենտները։ Եթե դա չի գտնում, գնում է այլ կլինիկա։",
+        "en": "Patients are worried and compare carefully. They want to see who the doctor is, what the treatment costs and what other patients say. When they can't find it, they go to another clinic.",
+        "ru": "Пациент волнуется и внимательно сравнивает. Ему нужно увидеть, кто врач, сколько стоит услуга и что говорят другие пациенты. Если он этого не находит, он уходит в другую клинику."
+      },
+      "approach": {
+        "hy": "Սկզբում ձեզ հետ համաձայնեցնում ենք կանոնները՝ ինչ կարելի է հրապարակել, ով է պատասխանում բժշկական հարցերին։ Հետո ամեն ամիս պատրաստում ենք բովանդակություն ձեր բժիշկների հետ, վարում ենք էջերը և հաշվում, թե որտեղից են գալիս գրանցումները։",
+        "en": "First we agree on the rules with you: what may be published and who answers medical questions. Then each month we create content with your doctors, run the pages and count where bookings come from.",
+        "ru": "Сначала мы согласуем с вами правила: что можно публиковать и кто отвечает на медицинские вопросы. Затем каждый месяц готовим контент вместе с вашими врачами, ведём страницы и считаем, откуда приходят записи."
+      },
+      "deliverables": [
+        {
+          "hy": "Instagram և Facebook՝ բժիշկներով, ծառայություններով և պացիենտների հաճախ տվող հարցերով",
+          "en": "Instagram and Facebook with your doctors, your services and patients' common questions",
+          "ru": "Instagram и Facebook с вашими врачами, услугами и частыми вопросами пациентов"
+        },
+        {
+          "hy": "Կարճ տեսանյութեր, որտեղ բժիշկը պատասխանում է մեկ հարցի",
+          "en": "Short videos in which a doctor answers one question",
+          "ru": "Короткие видео, в которых врач отвечает на один вопрос"
+        },
+        {
+          "hy": "Google Business Profile՝ ճիշտ ժամերով, լուսանկարներով և կարծիքների պատասխաններով",
+          "en": "Google Business Profile with correct hours, photos and replies to reviews",
+          "ru": "Google Business Profile с точными часами, фото и ответами на отзывы"
+        },
+        {
+          "hy": "Գովազդ կոնկրետ ծառայությունների համար՝ ստուգումներ, հիգիենա, ախտորոշում",
+          "en": "Ads for specific services: check-ups, hygiene, diagnostics",
+          "ru": "Реклама конкретных услуг: чекапы, гигиена, диагностика"
+        },
+        {
+          "hy": "Ամսական հաշվետվություն՝ որտեղից են եկել գրանցումները",
+          "en": "A monthly report on where bookings came from",
+          "ru": "Ежемесячный отчёт о том, откуда пришли записи"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Կարդալ՝ բժշկական ծառայությունների մարքեթինգ",
+          "en": "Read: marketing for clinics in Armenia",
+          "ru": "Читать: маркетинг медицинских услуг"
+        },
+        "href": "post-clinic-marketing.html"
+      }
+    },
+    {
+      "type": "packagePreview",
+      "id": "pricing",
+      "heading": {
+        "hy": "Ամսական գներ",
+        "en": "Monthly prices",
+        "ru": "Цены в месяц"
+      },
+      "intro": {
+        "hy": "12 ամսվա պայմանագրով։ Կլինիկաների մեծ մասը սկսում է սոցցանցերից և Google-ի որոնումից միասին։",
+        "en": "On a 12-month contract. Most clinics start with social media and Google search together.",
+        "ru": "При договоре на 12 месяцев. Большинство клиник начинают сразу с соцсетей и поиска в Google."
+      },
+      "categories": ["smm", "seo", "bundle"],
+      "duration": 12,
+      "link": {
+        "label": {
+          "hy": "Բոլոր փաթեթները",
+          "en": "All packages",
+          "ru": "Все пакеты"
+        },
+        "href": "pricing.html",
+        "style": "primary"
+      },
+      "showGuideLink": true
+    },
+    {
+      "type": "faq",
+      "id": "faq",
+      "background": "surface",
+      "heading": {
+        "hy": "Հարցեր կլինիկաների մարքեթինգի մասին",
+        "en": "Questions about marketing for clinics",
+        "ru": "Вопросы о маркетинге для клиник"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Կարո՞ղ եք հրապարակել պացիենտների լուսանկարներ՝ «առաջ և հետո»",
+            "en": "Can you post patients' before-and-after photos?",
+            "ru": "Можно ли публиковать фото пациентов «до и после»?"
+          },
+          "answer": {
+            "hy": "Միայն պացիենտի գրավոր համաձայնությամբ։ Մենք չենք խոստանում արդյունքներ գրառումներում և չենք օգտագործում վախի վրա կառուցված բովանդակություն։ Կանոնները համաձայնեցնում ենք կլինիկայի հետ աշխատանքը սկսելուց առաջ։",
+            "en": "Only with the patient's written consent. We don't promise results in posts and don't use content built on fear. We agree on the rules with the clinic before the work starts.",
+            "ru": "Только с письменного согласия пациента. Мы не обещаем результат в постах и не используем контент, построенный на страхе. Правила согласуем с клиникой до начала работы."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Ո՞վ է պատասխանում պացիենտների նամակներին",
+            "en": "Who answers patients' messages?",
+            "ru": "Кто отвечает на сообщения пациентов?"
+          },
+          "answer": {
+            "hy": "Ընդհանուր հարցերին՝ գներ, հասցե, աշխատանքային ժամեր, կարող ենք պատասխանել մենք։ Բժշկական հարցերը միշտ փոխանցվում են ձեր աշխատակիցներին։ Թե որ հարցերին ով է պատասխանում, որոշում ենք միասին։",
+            "en": "We can answer general questions about prices, the address and opening hours. Medical questions always go to your staff. We decide together who answers what.",
+            "ru": "На общие вопросы — цены, адрес, часы работы — можем отвечать мы. Медицинские вопросы всегда передаются вашим сотрудникам. Кто на что отвечает, решаем вместе."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Աշխատո՞ւմ եք նաև Google Maps-ի և կայքի հետ",
+            "en": "Do you also work on Google Maps and the website?",
+            "ru": "Работаете ли вы с Google Картами и сайтом?"
+          },
+          "answer": {
+            "hy": "Այո։ Google Business Profile-ը ներառված է մեր բոլոր SEO փաթեթներում, իսկ կայքը կարող ենք պատրաստել առանձին՝ ծառայությունների, բժիշկների և գների էջերով։",
+            "en": "Yes. Your Google Business Profile is part of every SEO package, and we can build a website with pages for your services, doctors and prices.",
+            "ru": "Да. Google Business Profile входит во все наши SEO-пакеты, а сайт со страницами услуг, врачей и цен можем сделать отдельно."
+          },
+          "openByDefault": false
+        }
+      ]
+    },
+    {
+      "type": "blogList",
+      "id": "articles",
+      "heading": {
+        "hy": "Կարդացեք նաև",
+        "en": "Further reading",
+        "ru": "Почитать по теме"
+      },
+      "posts": ["clinic-marketing", "google-business-profile", "what-is-smm"]
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "background": "surface",
+      "heading": {
+        "hy": "Քննարկենք ձեր կլինիկան",
+        "en": "Let's talk about your clinic",
+        "ru": "Обсудим вашу клинику"
+      },
+      "intro": {
+        "hy": "Գրեք մի քանի բառ ձեր կլինիկայի և այն մասին, թե որ ծառայությունների համար եք ուզում ավելի շատ պացիենտներ։",
+        "en": "Write a few words about your clinic and which services you want more patients for.",
+        "ru": "Напишите пару слов о клинике и о том, для каких услуг вам нужно больше пациентов."
+      },
+      "service": "smm"
+    }
+  ]
+}

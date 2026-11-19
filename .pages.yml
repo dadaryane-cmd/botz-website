@@ -478,6 +478,14 @@ components:
           - name: intro
             label: Intro
             component: paragraph
+          - name: posts
+            label: Article id
+            type: string
+            description: "Only on pages other than the blog: the articles to show, by their id (e.g. what-is-smm). Leave empty to list all articles."
+            pattern:
+              regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+              message: Lowercase Latin letters, digits and hyphens only.
+            list: true
           - name: id
             label: Anchor
             type: string
@@ -507,6 +515,35 @@ components:
               collapsible:
                 collapsed: true
                 summary: "{label.en}"
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
+      - name: audit
+        label: Free audit request
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: checks
+            label: What we look at
+            component: line
+            list: true
+          - name: promise
+            label: What the visitor gets
+            component: paragraph
           - name: id
             label: Anchor
             type: string
@@ -761,10 +798,178 @@ content:
           - name: sections
             label: Sections
             component: sections
+      - name: page-clinics
+        label: "Industries: Clinics"
+        type: file
+        path: site/public/content/pages/clinics.json
+        format: json
+        fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-restaurants
+        label: "Industries: Restaurants and cafés"
+        type: file
+        path: site/public/content/pages/restaurants.json
+        format: json
+        fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-beauty
+        label: "Industries: Beauty salons"
+        type: file
+        path: site/public/content/pages/beauty.json
+        format: json
+        fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
       - name: page-pricing
         label: Pricing
         type: file
         path: site/public/content/pages/pricing.json
+        format: json
+        fields:
+          - name: path
+            label: Address in each language
+            description: "The page is at <address>/ in Armenian, ru/<address>/ and en/<address>/. Lowercase Latin letters, digits and hyphens, written the way people search (Armenian and Russian in Latin letters). Changing a published address breaks links to it."
+            type: object
+            fields:
+              - name: hy
+                label: "Հայերեն"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: en
+                label: English
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+              - name: ru
+                label: "Русский"
+                type: string
+                pattern:
+                  regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+                  message: Lowercase Latin letters, digits and hyphens only.
+          - name: meta
+            label: Search engines & browser tab
+            type: object
+            fields:
+              - name: title
+                label: Page title
+                component: line
+              - name: description
+                label: Description
+                component: paragraph
+          - name: sections
+            label: Sections
+            component: sections
+      - name: page-audit
+        label: Free audit
+        type: file
+        path: site/public/content/pages/audit.json
         format: json
         fields:
           - name: path
@@ -1750,6 +1955,30 @@ content:
           - name: invalidPhone
             label: Invalid phone
             component: line
+          - name: invalidLink
+            label: Invalid link
+            component: line
+          - name: auditLink
+            label: Audit link
+            component: line
+          - name: auditLinkPlaceholder
+            label: Audit link placeholder
+            component: line
+          - name: auditPhone
+            label: Audit phone
+            component: line
+          - name: auditNote
+            label: Audit note
+            component: line
+          - name: auditSubmit
+            label: Audit submit
+            component: line
+          - name: auditSuccessText
+            label: Audit success text
+            component: line
+          - name: auditWhatsappMessage
+            label: Audit whatsapp message
+            component: line
           - name: needEmailOrPhone
             label: Need email or phone
             component: line
@@ -1800,6 +2029,16 @@ content:
             component: line
           - name: closing
             label: Closing
+            component: line
+      - name: audit
+        label: Audit
+        type: object
+        fields:
+          - name: checksTitle
+            label: Checks title
+            component: line
+          - name: promiseTitle
+            label: Promise title
             component: line
       - name: trust
         label: Trust

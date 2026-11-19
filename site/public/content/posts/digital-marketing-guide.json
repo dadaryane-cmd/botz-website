@@ -7,7 +7,12 @@
   },
   "date": "2026-11-18",
   "author": "edgar",
-  "cover": null,
+  "cover": "images/blog/digital-marketing-guide.jpg",
+  "coverAlt": {
+    "hy": "Թվային մարքեթինգի ուղիները՝ որոնում, քարտեզներ, հաղորդագրություններ, գովազդ և կայք",
+    "en": "Digital marketing channels: search, maps, messages, ads and the website",
+    "ru": "Каналы цифрового маркетинга: поиск, карты, сообщения, реклама и сайт"
+  },
   "title": {
     "hy": "Թվային մարքեթինգ՝ պարզ ուղեցույց փոքր բիզնեսի համար",
     "en": "Digital marketing: a plain guide for small business",

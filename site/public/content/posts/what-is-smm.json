@@ -7,7 +7,12 @@
   },
   "date": "2026-11-18",
   "author": "mariam",
-  "cover": null,
+  "cover": "images/blog/what-is-smm.jpg",
+  "coverAlt": {
+    "hy": "Հեռախոս՝ տեսանյութով, լայք և մեկնաբանություն",
+    "en": "A phone with a video post, a like and a comment",
+    "ru": "Телефон с видео, лайк и комментарий"
+  },
   "title": {
     "hy": "Ի՞նչ է սմմ-ը և ինչ է այն տալիս բիզնեսին",
     "en": "What is SMM, and what does it give a business?",

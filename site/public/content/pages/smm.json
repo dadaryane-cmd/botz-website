@@ -45,13 +45,8 @@
             "en": "Get a free audit",
             "ru": "Получить бесплатный аудит"
           },
-          "href": "#contact",
-          "style": "secondary",
-          "note": {
-            "hy": "Կցանկանայի անվճար աուդիտ իմ բիզնեսի համար։ Մեր կայքը / էջը՝ ",
-            "en": "I'd like a free audit for my business. Our website / page: ",
-            "ru": "Хочу бесплатный аудит для своего бизнеса. Наш сайт / страница: "
-          }
+          "href": "audit.html",
+          "style": "secondary"
         }
       ]
     },
@@ -176,6 +171,16 @@
       "background": "surface"
     },
     {
+      "type": "blogList",
+      "heading": {
+        "hy": "Կարդացեք նաև",
+        "en": "Further reading",
+        "ru": "Почитать по теме"
+      },
+      "posts": ["what-is-smm", "smm-specialist-or-agency", "instagram-post-ideas"],
+      "id": "articles"
+    },
+    {
       "type": "contact",
       "heading": {
         "hy": "Ստանալ խորհրդատվություն",
@@ -188,7 +193,8 @@
         "ru": "Если вы выбрали пакет, он уже прикреплён к форме. Добавьте пару слов о своём бизнесе."
       },
       "service": "smm",
-      "id": "contact"
+      "id": "contact",
+      "background": "surface"
     }
   ]
 }

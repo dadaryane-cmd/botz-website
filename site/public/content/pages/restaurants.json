@@ -1,0 +1,213 @@
+{
+  "path": {
+    "hy": "smm-restoranneri-hamar",
+    "en": "smm-for-restaurants",
+    "ru": "smm-dlya-restoranov"
+  },
+  "meta": {
+    "title": {
+      "hy": "SMM ռեստորանների և սրճարանների համար",
+      "en": "SMM for Restaurants and Cafés in Yerevan",
+      "ru": "SMM для ресторанов и кафе в Ереване"
+    },
+    "description": {
+      "hy": "Ռեստորանների և սրճարանների SMM Երևանում՝ ուտեստների լուսանկարներ, Reels, Instagram, Google Maps և կարծիքներ։ Փաթեթներ՝ հրապարակված գներով։",
+      "en": "SMM for restaurants and cafés in Yerevan: food photos, Reels, Instagram, Google Maps and reviews. Packages with published monthly prices.",
+      "ru": "SMM для ресторанов и кафе в Ереване: фото блюд, Reels, Instagram, Google Карты и отзывы. Пакеты с открытыми ценами."
+    }
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "heading": {
+        "hy": "*SMM* ռեստորանների և սրճարանների համար",
+        "en": "*SMM* for restaurants and cafés",
+        "ru": "*SMM* для ресторанов и кафе"
+      },
+      "subheading": {
+        "hy": "Մարդիկ սեղան են ամրագրում աչքերով՝ Instagram-ում, Reels-ում և Google Maps-ում։ Մենք նկարահանում ենք ձեր ուտեստները և մթնոլորտը, որ ձեզ ընտրեն այսօր երեկոյան։",
+        "en": "People choose where to eat with their eyes: on Instagram, in Reels and on Google Maps. We shoot your dishes and your atmosphere, so they pick you for tonight.",
+        "ru": "Место для ужина выбирают глазами: в Instagram, в Reels и на Google Картах. Мы снимаем ваши блюда и атмосферу, чтобы сегодня вечером выбрали вас."
+      },
+      "buttons": [
+        {
+          "label": {
+            "hy": "Դիտել գները",
+            "en": "See prices",
+            "ru": "Смотреть цены"
+          },
+          "href": "#pricing",
+          "style": "primary"
+        },
+        {
+          "label": {
+            "hy": "Ստանալ անվճար աուդիտ",
+            "en": "Get a free audit",
+            "ru": "Получить бесплатный аудит"
+          },
+          "href": "audit.html",
+          "style": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "serviceDetail",
+      "id": "about",
+      "background": "surface",
+      "title": {
+        "hy": "Ինչ ենք անում ռեստորանների համար",
+        "en": "What we do for restaurants",
+        "ru": "Что мы делаем для ресторанов"
+      },
+      "service": "smm",
+      "problem": {
+        "hy": "Համեղ ուտեստը վատ լուսանկարում ոչ մեկին չի գրավում, իսկ էջը, որը թարմացվել է մեկ ամիս առաջ, թվում է՝ փակված է։ Հյուրը մի քանի վայրկյանում որոշում է, թե ուր գնալ։",
+        "en": "A delicious dish in a bad photo tempts nobody, and a page last updated a month ago looks closed. Guests decide where to go in a few seconds.",
+        "ru": "Вкусное блюдо на плохом фото никого не привлечёт, а страница, которую обновляли месяц назад, выглядит закрытой. Гость решает, куда пойти, за несколько секунд."
+      },
+      "approach": {
+        "hy": "Ամեն ամիս պլանավորում ենք ձեզ հետ՝ նոր ճաշացանկ, միջոցառումներ, սեզոնային առաջարկներ, նկարահանում ենք և հրապարակում կանոնավոր։ Գովազդը ցույց ենք տալիս ձեր թաղամասում ապրողներին և աշխատողներին։",
+        "en": "Each month we plan with you around new dishes, events and seasonal offers, then shoot and post on a steady schedule. Ads go to people who live and work near you.",
+        "ru": "Каждый месяц планируем вместе с вами — новые блюда, события, сезонные предложения, — снимаем и публикуем по графику. Рекламу показываем тем, кто живёт и работает рядом с вами."
+      },
+      "deliverables": [
+        {
+          "hy": "Ուտեստների և մթնոլորտի լուսանկարներ և Reels",
+          "en": "Photos and Reels of your dishes and atmosphere",
+          "ru": "Фото и Reels блюд и атмосферы"
+        },
+        {
+          "hy": "Instagram, Facebook և TikTok՝ կանոնավոր գրառումներով և սթորիներով",
+          "en": "Instagram, Facebook and TikTok with regular posts and stories",
+          "ru": "Instagram, Facebook и TikTok с регулярными постами и сторис"
+        },
+        {
+          "hy": "Google Business Profile՝ ճաշացանկով, ժամերով և կարծիքների պատասխաններով",
+          "en": "Google Business Profile with your menu, hours and replies to reviews",
+          "ru": "Google Business Profile с меню, часами работы и ответами на отзывы"
+        },
+        {
+          "hy": "Տեղական գովազդ ձեր թաղամասի մարդկանց համար",
+          "en": "Local ads for people in your neighbourhood",
+          "ru": "Локальная реклама для жителей вашего района"
+        },
+        {
+          "hy": "Միջոցառումների և նոր ճաշացանկի մասին հայտարարություններ",
+          "en": "Announcements of events and new dishes",
+          "ru": "Анонсы событий и новых блюд"
+        }
+      ],
+      "link": {
+        "label": {
+          "hy": "Կարդալ՝ Instagram-ի գաղափարներ փոքր բիզնեսի համար",
+          "en": "Read: Instagram post ideas for small businesses",
+          "ru": "Читать: идеи для постов в Instagram"
+        },
+        "href": "post-instagram-post-ideas.html"
+      }
+    },
+    {
+      "type": "packagePreview",
+      "id": "pricing",
+      "heading": {
+        "hy": "Ամսական գներ",
+        "en": "Monthly prices",
+        "ru": "Цены в месяц"
+      },
+      "intro": {
+        "hy": "12 ամսվա պայմանագրով։ Լուսանկարահանում և տեսանկարահանում ներառված է SMM Max-ում, իսկ մյուս փաթեթներին կարող եք ավելացնել Reels՝ նկարահանումով։",
+        "en": "On a 12-month contract. Photo and video shoots are part of SMM Max; with the other packages you can add Reels with a shoot.",
+        "ru": "При договоре на 12 месяцев. Фото- и видеосъёмка входит в SMM Max, к другим пакетам можно добавить Reels со съёмкой."
+      },
+      "categories": ["smm", "seo"],
+      "duration": 12,
+      "link": {
+        "label": {
+          "hy": "Բոլոր փաթեթները",
+          "en": "All packages",
+          "ru": "Все пакеты"
+        },
+        "href": "pricing.html?cat=smm",
+        "style": "primary"
+      },
+      "showGuideLink": true
+    },
+    {
+      "type": "faq",
+      "id": "faq",
+      "background": "surface",
+      "heading": {
+        "hy": "Հարցեր ռեստորանների SMM-ի մասին",
+        "en": "Questions about SMM for restaurants",
+        "ru": "Вопросы о SMM для ресторанов"
+      },
+      "items": [
+        {
+          "question": {
+            "hy": "Նկարահանո՞ւմ եք ուտեստները",
+            "en": "Do you shoot the food?",
+            "ru": "Вы снимаете блюда?"
+          },
+          "answer": {
+            "hy": "Այո։ Լուսանկարահանումը և տեսանկարահանումը ներառված են SMM Max փաթեթում։ Մյուս փաթեթներին կարող եք ավելացնել Reels՝ ամբողջական սարքավորումով նկարահանումով՝ 25,000 ֏ մեկ Reel-ի համար կամ 89,000 ֏ չորսի համար։",
+            "en": "Yes. Photo and video shoots are part of the SMM Max package. With the other packages you can add Reels shot with full equipment: 25,000 ֏ for one or 89,000 ֏ for four.",
+            "ru": "Да. Фото- и видеосъёмка входит в пакет SMM Max. К другим пакетам можно добавить Reels со съёмкой на полном оборудовании: 25 000 ֏ за один или 89 000 ֏ за четыре."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Կօգնե՞ք Google Maps-ի կարծիքներով",
+            "en": "Can you help with Google Maps reviews?",
+            "ru": "Поможете с отзывами на Google Картах?"
+          },
+          "answer": {
+            "hy": "Կարգավորում և վարում ենք ձեր Google Business Profile-ը, պատասխանում ենք կարծիքներին և ցույց ենք տալիս ձեր թիմին, թե ինչպես խնդրել հյուրերին կարծիք թողնել։ Կեղծ կարծիքներ երբեք չենք գրում։",
+            "en": "We set up and run your Google Business Profile, reply to reviews and show your staff how to ask guests for one. We never write fake reviews.",
+            "ru": "Настраиваем и ведём ваш Google Business Profile, отвечаем на отзывы и показываем персоналу, как просить гостей оставить отзыв. Фальшивые отзывы мы не пишем никогда."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Որքա՞ն շուտ կտեսնենք ավելի շատ հյուրեր",
+            "en": "How soon will we see more guests?",
+            "ru": "Как скоро станет больше гостей?"
+          },
+          "answer": {
+            "hy": "Գովազդը մարդկանց հասնում է մի քանի օրում։ Կանոնավոր բովանդակությունից և կարծիքներից կայուն աճը սովորաբար երևում է երկրորդ կամ երրորդ ամսից։ Ամեն ամիս ցույց ենք տալիս թվերը, որ տեսնեք՝ ինչն է աշխատում։",
+            "en": "Ads reach people within days. Steady growth from regular content and reviews usually shows from the second or third month. We show you the numbers every month, so you can see what works.",
+            "ru": "Реклама доходит до людей за несколько дней. Устойчивый рост от регулярного контента и отзывов обычно заметен со второго-третьего месяца. Каждый месяц показываем цифры, чтобы было видно, что работает."
+          },
+          "openByDefault": false
+        }
+      ]
+    },
+    {
+      "type": "blogList",
+      "id": "articles",
+      "heading": {
+        "hy": "Կարդացեք նաև",
+        "en": "Further reading",
+        "ru": "Почитать по теме"
+      },
+      "posts": ["instagram-post-ideas", "google-business-profile", "what-is-smm"]
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "background": "surface",
+      "heading": {
+        "hy": "Քննարկենք ձեր ռեստորանը",
+        "en": "Let's talk about your restaurant",
+        "ru": "Обсудим ваш ресторан"
+      },
+      "intro": {
+        "hy": "Գրեք մի քանի բառ ձեր ռեստորանի կամ սրճարանի մասին և կցեք Instagram-ի հղումը, եթե կա։",
+        "en": "Write a few words about your restaurant or café, and add your Instagram link if you have one.",
+        "ru": "Напишите пару слов о ресторане или кафе и добавьте ссылку на Instagram, если она есть."
+      },
+      "service": "smm"
+    }
+  ]
+}

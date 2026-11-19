@@ -171,6 +171,16 @@
       "background": "surface"
     },
     {
+      "type": "blogList",
+      "heading": {
+        "hy": "Կարդացեք նաև",
+        "en": "Further reading",
+        "ru": "Почитать по теме"
+      },
+      "posts": ["digital-marketing-guide", "google-business-profile", "smm-seo-prices-armenia"],
+      "id": "articles"
+    },
+    {
       "type": "contact",
       "heading": {
         "hy": "Քննարկենք ձեր կայքը",
@@ -183,7 +193,8 @@
         "ru": "Напишите пару слов о вашем бизнесе и о том, что должен делать сайт."
       },
       "service": "website",
-      "id": "contact"
+      "id": "contact",
+      "background": "surface"
     }
   ]
 }

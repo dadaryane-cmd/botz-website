@@ -17,6 +17,7 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, posix, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { listsArticles } from '../public/js/blog/posts.js'
 import { PAGES, SITE_CONTENT } from '../public/js/config.js'
 import { ROUTES_FILE } from './read-content.js'
 
@@ -92,6 +93,13 @@ const headScript = () =>
     .map((line) => (line ? `      ${line}` : line))
     .join('\n')
 
+/** Pages whose content has a list of articles fetch the blog's list too (js/content/page.js). */
+function showsArticles(pageKey) {
+  if (!PAGES.includes(pageKey)) return false
+  const file = join(PUBLIC_DIR, 'content/pages', `${pageKey}.json`)
+  return listsArticles(JSON.parse(readFileSync(file, 'utf8')))
+}
+
 /**
  * The block for a page's <head>: the stylesheet, the content and the modules to fetch, and the
  * head script (last, so the browser has seen everything to fetch before it runs).
@@ -102,7 +110,7 @@ function renderBlock(html, modules = moduleGraph(), script = headScript()) {
     ...SITE_CONTENT.map((name) => `content/${name}.json`),
     ROUTES_FILE,
     ...(PAGES.includes(pageKey) ? [`content/pages/${pageKey}.json`] : []),
-    ...(pageKey === 'blog' ? [POST_INDEX] : []),
+    ...(pageKey === 'blog' || showsArticles(pageKey) ? [POST_INDEX] : []),
   ]
   const lines = [
     START,

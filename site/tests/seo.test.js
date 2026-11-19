@@ -180,7 +180,15 @@ describe('schema.org', () => {
 
   it('lists questions and answers only where the full list is (not a short list linking to it)', () => {
     const pagesWithFaq = PAGES.filter((key) => types(schemaOf(key)).includes('FAQPage'))
-    assert.deepEqual(pagesWithFaq, ['smm', 'seo', 'website', 'pricing'])
+    assert.deepEqual(pagesWithFaq, [
+      'smm',
+      'seo',
+      'website',
+      'clinics',
+      'restaurants',
+      'beauty',
+      'pricing',
+    ])
   })
 })
 

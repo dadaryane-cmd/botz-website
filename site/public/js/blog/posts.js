@@ -45,3 +45,16 @@ const hasAddresses = (post) => LANGUAGES.every((language) => isSlug(post.path?.[
 
 /** The blog list: what content/posts/index.json holds. */
 export const postIndex = (posts, today) => publishedNewestFirst(posts, today).map(indexEntry)
+
+/** True when a page's content has a list of articles (section type "blogList"). */
+export const listsArticles = (pageContent) =>
+  Boolean(pageContent?.sections?.some((section) => section.type === 'blogList'))
+
+/**
+ * The articles a list shows: those named in `slugs`, in that order (a service page's "Read
+ * more"), skipping any not published yet; with no slugs, all of them.
+ */
+export function chosenPosts(posts, slugs = []) {
+  if (slugs.length === 0) return posts
+  return slugs.map((slug) => posts.find((post) => post.slug === slug)).filter(Boolean)
+}
