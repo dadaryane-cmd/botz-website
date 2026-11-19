@@ -86,3 +86,67 @@
 .comparison .is-recommended {
   background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
+
+/* Open wherever all columns fit, so the button and the length picker are for phones only. */
+.comparison-fold > summary {
+  display: none;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.comparison-fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+.comparison-lengths {
+  display: none;
+}
+
+/* Phones: folded under a button; once open, one contract length at a time. */
+@media (max-width: 720px) {
+  .comparison-fold > summary {
+    display: inline-flex;
+  }
+
+  .comparison-fold[open] > summary {
+    display: none;
+  }
+
+  .comparison-lengths {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .comparison {
+    min-width: 0;
+  }
+
+  .comparison th:first-child {
+    width: auto;
+  }
+
+  .comparison th:last-child {
+    width: 34%;
+  }
+
+  .comparison [data-months]:not(.is-chosen) {
+    display: none;
+  }
+
+  /* The "Recommended" tag goes under the name, not into the price beside it. */
+  .comparison tbody th {
+    white-space: normal;
+  }
+
+  .comparison tbody th .preview-tag {
+    display: block;
+    margin: 4px 0 0;
+  }
+}
+
+/* Above the phone width the folded state cannot be reached, but a resized window may keep it. */
+@media (min-width: 721px) {
+  .comparison-fold:not([open]) > summary {
+    display: inline-flex;
+  }
+}

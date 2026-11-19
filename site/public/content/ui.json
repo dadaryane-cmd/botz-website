@@ -151,6 +151,26 @@
       "en": "Website",
       "ru": "Сайт"
     },
+    "group_smm": {
+      "hy": "Սոցցանցեր (SMM)",
+      "en": "Social media",
+      "ru": "Соцсети"
+    },
+    "group_seo": {
+      "hy": "Google-ի որոնում (SEO)",
+      "en": "Google search",
+      "ru": "Поиск в Google"
+    },
+    "group_bundle": {
+      "hy": "Սոցցանցեր + Google",
+      "en": "Social + Google",
+      "ru": "Соцсети + Google"
+    },
+    "group_website": {
+      "hy": "Կայք",
+      "en": "Website",
+      "ru": "Сайт"
+    },
     "durationLabel": {
       "hy": "Պայմանագրի ժամկետ (նվազագույնը 3 ամիս)",
       "en": "Contract length (minimum 3 months)",
@@ -606,10 +626,10 @@
     }
   },
   "whatsapp": {
-    "greeting": {
-      "hy": "Բարև, {contact}։ Գտա BOTZ-ը ձեր կայքում։",
-      "en": "Hello {contact}! I found BOTZ on your website.",
-      "ru": "Здравствуйте, {contact}! Нашёл(ла) BOTZ на вашем сайте."
+    "interested": {
+      "hy": "Բարև։ Ինձ հետաքրքրում է՝",
+      "en": "Hello! I'm interested in:",
+      "ru": "Здравствуйте! Меня интересует:"
     },
     "closing": {
       "hy": "Կարո՞ղ ենք քննարկել։",
@@ -723,6 +743,11 @@
       "hy": "Չի առաջարկվում այս ժամկետով",
       "en": "Not offered for this term",
       "ru": "Не предлагается на этот срок"
+    },
+    "show": {
+      "hy": "Համեմատել բոլոր գները",
+      "en": "Compare all prices",
+      "ru": "Сравнить все цены"
     }
   },
   "faq": {

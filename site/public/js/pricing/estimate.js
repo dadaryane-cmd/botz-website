@@ -3,13 +3,19 @@ import { catalog } from '../content/index.js'
 import { routes } from '../content/routes.js'
 import { formatAmd, formatMonths } from '../lib/format.js'
 import { getLanguage, t, ui } from '../lib/i18n.js'
+import { whatsappHref } from '../lib/links.js'
 import { localizeHref } from '../lib/urls.js'
 import { quote } from './engine.js'
 import { getSelection, toParams } from './selection.js'
+import { whatsappEstimateMessage } from './whatsapp-message.js'
 
+/** The short prefix of a package's name: "SMM", "SEO", "SMM + SEO". */
 export const categoryLabel = (category) => ui('pricing', `cat_${category}`)
 
-/** "SMM Gold", "SEO Vision" — website creation already has a full name. */
+/** A package group in plain words, for buttons and headings: "Social media", "Google search". */
+export const categoryName = (category) => ui('pricing', `group_${category}`)
+
+/** "SMM Max", "SEO Pro" — website creation already has a full name. */
 export const packageTitle = (pkg) =>
   pkg.category === 'website' ? t(pkg.name) : `${categoryLabel(pkg.category)} ${t(pkg.name)}`
 
@@ -36,6 +42,10 @@ export function estimateSummary(totals = currentQuote()) {
   lines.push(`${ui('pricing', 'combinedEstimate')}: ${from}${formatAmd(totals.total)}`)
   return lines.join('\n')
 }
+
+/** A WhatsApp chat that opens naming the chosen package and add-ons (empty without a choice). */
+export const estimateWhatsappHref = (totals = currentQuote()) =>
+  whatsappHref(whatsappEstimateMessage(estimateSummary(totals)))
 
 /** Absolute link that reopens the pricing tool with this selection. */
 export function estimateLink(selection = getSelection()) {

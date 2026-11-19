@@ -18,13 +18,16 @@ export function createFollower(className, { offsetX = 0, offsetY = 0, keepInView
   let frame = 0
   let isShown = false
 
+  // Measuring the element costs a layout read every frame: only followers that flip need it.
   const sideways = () => {
+    if (!keepInView) return offsetX
     const fitsRight = pointerX + offsetX + element.offsetWidth + EDGE_PX < innerWidth
-    return fitsRight || !keepInView ? offsetX : -offsetX - element.offsetWidth
+    return fitsRight ? offsetX : -offsetX - element.offsetWidth
   }
   const vertical = () => {
+    if (!keepInView) return offsetY
     const fitsBelow = pointerY + offsetY + element.offsetHeight + EDGE_PX < innerHeight
-    return fitsBelow || !keepInView ? offsetY : -offsetY - element.offsetHeight
+    return fitsBelow ? offsetY : -offsetY - element.offsetHeight
   }
   const place = () => {
     frame = 0

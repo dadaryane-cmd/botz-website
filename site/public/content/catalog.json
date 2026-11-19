@@ -78,20 +78,20 @@
       "key": "smm-dominance",
       "category": "smm",
       "name": {
-        "hy": "Dominance",
-        "en": "Dominance",
-        "ru": "Dominance"
+        "hy": "Pro",
+        "en": "Pro",
+        "ru": "Pro"
       },
       "tagline": {
-        "hy": "Ավելի շատ բովանդակություն, քան Start-ում, ուժեղ կրեատիվ գաղափար և Reels-ի մոնտաժ",
-        "en": "More content than Start, a stronger creative idea and Reels editing",
-        "ru": "Больше контента, чем в Start, сильная креативная идея и монтаж Reels"
+        "hy": "Ավելի շատ բովանդակություն, քան SMM Start-ում, ուժեղ կրեատիվ գաղափար և Reels-ի մոնտաժ",
+        "en": "More content than SMM Start, a stronger creative idea and Reels editing",
+        "ru": "Больше контента, чем в SMM Start, сильная креативная идея и монтаж Reels"
       },
       "includes": [
         {
-          "hy": "Start-ի ամբողջ ծավալը՝ ամսական 10 հրապարակում և 10 սթորի",
-          "en": "Everything in Start, upgraded to 10 posts and 10 stories per month",
-          "ru": "Всё из Start, но 10 публикаций и 10 сторис в месяц"
+          "hy": "SMM Start-ի ամբողջ ծավալը՝ ամսական 10 հրապարակում և 10 սթորի",
+          "en": "Everything in SMM Start, upgraded to 10 posts and 10 stories per month",
+          "ru": "Всё из SMM Start, но 10 публикаций и 10 сторис в месяц"
         },
         {
           "hy": "Գրաֆիկական դիզայն",
@@ -142,9 +142,9 @@
       "key": "smm-gold",
       "category": "smm",
       "name": {
-        "hy": "Gold",
-        "en": "Gold",
-        "ru": "Gold"
+        "hy": "Max",
+        "en": "Max",
+        "ru": "Max"
       },
       "tagline": {
         "hy": "Լուսանկարահանում և տեսանկարահանում, TikTok-ը՝ Instagram-ի և Facebook-ի կողքին, և ամսական վերլուծություն",
@@ -153,9 +153,9 @@
       },
       "includes": [
         {
-          "hy": "Dominance-ի ամբողջ ծավալը՝ ամսական 12–16 հրապարակում և 12–16 սթորի",
-          "en": "Everything in Dominance, upgraded to 12–16 posts and 12–16 stories per month",
-          "ru": "Всё из Dominance, но 12–16 публикаций и 12–16 сторис в месяц"
+          "hy": "SMM Pro-ի ամբողջ ծավալը՝ ամսական 12–16 հրապարակում և 12–16 սթորի",
+          "en": "Everything in SMM Pro, upgraded to 12–16 posts and 12–16 stories per month",
+          "ru": "Всё из SMM Pro, но 12–16 публикаций и 12–16 сторис в месяц"
         },
         {
           "hy": "Մի քանի հարթակների վարում՝ Instagram, Facebook և TikTok",
@@ -191,9 +191,9 @@
       "key": "seo-fundamental",
       "category": "seo",
       "name": {
-        "hy": "Fundamental",
-        "en": "Fundamental",
-        "ru": "Fundamental"
+        "hy": "Start",
+        "en": "Start",
+        "ru": "Start"
       },
       "tagline": {
         "hy": "Հիմքը՝ SEO աուդիտ, տեխնիկական շտկումներ և Google Business Profile-ի օպտիմալացում",
@@ -245,9 +245,9 @@
       "key": "seo-vision",
       "category": "seo",
       "name": {
-        "hy": "Vision",
-        "en": "Vision",
-        "ru": "Vision"
+        "hy": "Pro",
+        "en": "Pro",
+        "ru": "Pro"
       },
       "tagline": {
         "hy": "Բովանդակության վրա հիմնված SEO՝ ամսական երկու հոդված, ավելի շատ բանալի բառեր և տեղական հիշատակումներ",
@@ -256,9 +256,9 @@
       },
       "includes": [
         {
-          "hy": "Fundamental-ի ամբողջ ծավալը և ընդլայնված հետազոտություն՝ 51+ բանալի բառ",
-          "en": "Everything in Fundamental, with expanded keyword research: 51+ keywords",
-          "ru": "Всё из Fundamental и расширенный подбор: 51+ ключевых слов"
+          "hy": "SEO Start-ի ամբողջ ծավալը և ընդլայնված հետազոտություն՝ 51+ բանալի բառ",
+          "en": "Everything in SEO Start, with expanded keyword research: 51+ keywords",
+          "ru": "Всё из SEO Start и расширенный подбор: 51+ ключевых слов"
         },
         {
           "hy": "Բովանդակային ռազմավարություն",
@@ -304,9 +304,9 @@
       "key": "seo-authority",
       "category": "seo",
       "name": {
-        "hy": "Authority",
-        "en": "Authority",
-        "ru": "Authority"
+        "hy": "Max",
+        "en": "Max",
+        "ru": "Max"
       },
       "tagline": {
         "hy": "Մրցակցային ոլորտների բրենդների համար՝ ամսական վեց հոդված, հղումների կառուցում և թվային PR",
@@ -315,9 +315,9 @@
       },
       "includes": [
         {
-          "hy": "Vision-ի ամբողջ ծավալը և խորացված տեխնիկական SEO",
-          "en": "Everything in Vision, plus advanced technical SEO",
-          "ru": "Всё из Vision и продвинутое техническое SEO"
+          "hy": "SEO Pro-ի ամբողջ ծավալը և խորացված տեխնիկական SEO",
+          "en": "Everything in SEO Pro, plus advanced technical SEO",
+          "ru": "Всё из SEO Pro и продвинутое техническое SEO"
         },
         {
           "hy": "Ամսական 6 SEO հոդված",
@@ -368,25 +368,25 @@
       "key": "business-boost",
       "category": "bundle",
       "name": {
-        "hy": "Business Boost",
-        "en": "Business Boost",
-        "ru": "Business Boost"
+        "hy": "Pro",
+        "en": "Pro",
+        "ru": "Pro"
       },
       "tagline": {
-        "hy": "SMM Dominance և SEO Vision՝ մեկ թիմից և մեկ պլանով",
-        "en": "SMM Dominance and SEO Vision, from one team on one plan",
-        "ru": "SMM Dominance и SEO Vision от одной команды по единому плану"
+        "hy": "SMM Pro և SEO Pro՝ մեկ թիմից և մեկ պլանով",
+        "en": "SMM Pro and SEO Pro, from one team on one plan",
+        "ru": "SMM Pro и SEO Pro от одной команды по единому плану"
       },
       "includes": [
         {
-          "hy": "SMM Dominance-ի ամբողջ ծավալը",
-          "en": "Everything in SMM Dominance",
-          "ru": "Всё из SMM Dominance"
+          "hy": "SMM Pro-ի ամբողջ ծավալը",
+          "en": "Everything in SMM Pro",
+          "ru": "Всё из SMM Pro"
         },
         {
-          "hy": "SEO Vision-ի ամբողջ ծավալը",
-          "en": "Everything in SEO Vision",
-          "ru": "Всё из SEO Vision"
+          "hy": "SEO Pro-ի ամբողջ ծավալը",
+          "en": "Everything in SEO Pro",
+          "ru": "Всё из SEO Pro"
         },
         {
           "hy": "SMM-ը և SEO-ն աշխատում են որպես մեկ համակարգ",
@@ -411,25 +411,25 @@
       "key": "ultra",
       "category": "bundle",
       "name": {
-        "hy": "Ultra",
-        "en": "Ultra",
-        "ru": "Ultra"
+        "hy": "Max",
+        "en": "Max",
+        "ru": "Max"
       },
       "tagline": {
-        "hy": "SMM Gold և SEO Authority՝ մեկ թիմից և մեկ պլանով",
-        "en": "SMM Gold and SEO Authority, from one team on one plan",
-        "ru": "SMM Gold и SEO Authority от одной команды по единому плану"
+        "hy": "SMM Max և SEO Max՝ մեկ թիմից և մեկ պլանով",
+        "en": "SMM Max and SEO Max, from one team on one plan",
+        "ru": "SMM Max и SEO Max от одной команды по единому плану"
       },
       "includes": [
         {
-          "hy": "SMM Gold-ի ամբողջ ծավալը",
-          "en": "Everything in SMM Gold",
-          "ru": "Всё из SMM Gold"
+          "hy": "SMM Max-ի ամբողջ ծավալը",
+          "en": "Everything in SMM Max",
+          "ru": "Всё из SMM Max"
         },
         {
-          "hy": "SEO Authority-ի ամբողջ ծավալը",
-          "en": "Everything in SEO Authority",
-          "ru": "Всё из SEO Authority"
+          "hy": "SEO Max-ի ամբողջ ծավալը",
+          "en": "Everything in SEO Max",
+          "ru": "Всё из SEO Max"
         },
         {
           "hy": "SMM-ը և SEO-ն աշխատում են որպես մեկ համակարգ",

@@ -156,10 +156,13 @@ describe('blog articles', () => {
 
     it(`"${post.slug}" links only to pages and pictures that exist`, () => {
       const targets = [post.cover, ...LANGUAGES.flatMap((language) => links(post.body[language]))]
+      // Another article's page is written when publishing (post-<id>.html), so it has no file.
+      const articlePages = posts.map((other) => postFile(other.slug))
       for (const target of targets.filter(Boolean)) {
         if (/^(https?:|mailto:|tel:|#)/.test(target)) continue
         const path = target.split(/[?#]/)[0]
-        assert.ok(existsSync(new URL(path, publicDir)), `missing ${target}`)
+        const exists = articlePages.includes(path) || existsSync(new URL(path, publicDir))
+        assert.ok(exists, `missing ${target}`)
       }
     })
   }

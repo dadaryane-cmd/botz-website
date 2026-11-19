@@ -2,8 +2,9 @@
 import { people, site } from '../../content/index.js'
 import { fromMarkup, h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
-import { emailHref, external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { emailHref, phoneHref } from '../../lib/links.js'
 import { renderInquiryForm } from '../inquiry-form.js'
+import { whatsappLinkAttributes } from '../whatsapp-link.js'
 import { heading, lead, section } from './section.js'
 import { personCard } from './team.js'
 
@@ -57,7 +58,7 @@ function directContacts() {
         h('a', { class: 'btn btn-secondary btn-small', href: phoneHref }, ui('contact', 'call')),
         h(
           'a',
-          { class: 'btn btn-secondary btn-small', href: whatsappHref(), ...external },
+          { class: 'btn btn-secondary btn-small', ...whatsappLinkAttributes() },
           ui('contact', 'whatsapp'),
         ),
       ],

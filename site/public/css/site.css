@@ -348,11 +348,21 @@ p {
 .label {
   display: block;
   margin-bottom: 6px;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/*
+ * Armenian capitals are all of a height and much alike ("ՀԵՌԱԽՈՍ"), hard to read this small on a
+ * phone: Armenian small labels keep their normal letters and are a little larger instead.
+ */
+:lang(hy) :is(.label, .badge, .nav-group-label, .footer-columns h2) {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .heading {
@@ -759,6 +769,49 @@ h1.heading {
   padding: 10px 16px;
 }
 
+/*
+ * Phones: the options become chips that share a row when they are short, so the list takes about
+ * half the height and "Send" comes sooner. Each chip is as wide as its words, and a long one
+ * («Թվային մարքեթինգի ռազմավարություն») takes a row of its own instead of breaking a word.
+ * The round button is hidden (still there for keyboards and screen readers); the chosen chip
+ * shows by its border.
+ */
+@media (max-width: 560px) {
+  .radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .radios legend {
+    width: 100%;
+  }
+
+  .radios .option {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .radios .option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .radios .option:has(input:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .radios .field-error {
+    flex-basis: 100%;
+  }
+}
+
 .honeypot {
   position: absolute;
   left: -9999px;
@@ -974,7 +1027,8 @@ h1.heading {
 }
 
 /* The phone menu shows the group's name as a label instead of a button. */
-.nav-group-label {
+.nav-group-label,
+.nav .nav-group-link {
   display: none;
 }
 
@@ -995,6 +1049,11 @@ h1.heading {
 
 .nav-group.is-open .nav-submenu {
   display: flex;
+}
+
+/* Each page name on one line: the dropdown widens to the longest ("Սոցիալական մեդիա …"). */
+.nav .nav-submenu a {
+  white-space: nowrap;
 }
 
 /*
@@ -1335,6 +1394,27 @@ h1.heading {
     box-shadow: none;
   }
 
+  /* A group with its own page: its name is a row like the other pages, linking there. */
+  .nav .nav-group-link {
+    display: flex;
+  }
+
+  .nav-submenu .is-group-page {
+    display: none;
+  }
+
+  /* The group's links: smaller and indented under its name, so the menu stays short. */
+  .nav .nav-submenu a {
+    min-height: 44px;
+    padding: 8px 4px 8px 20px;
+    font-size: 1.05rem;
+    white-space: normal;
+  }
+
+  .nav .nav-submenu li:last-child a {
+    margin-bottom: 8px;
+  }
+
   /*
    * Everything to act on sits together at the bottom, within the thumb's reach: the languages,
    * the offer, then call and WhatsApp. (The offer comes before the languages in the page, for
@@ -1454,19 +1534,11 @@ h1.heading {
   border-radius: 14px;
   background: none;
   color: inherit;
-  /* The brand's hand (an open palm; closed while pulling); the system's grab hand as fallback. */
-  cursor:
-    url('../images/cursor-grab.svg') 16 14,
-    grab;
+  /* The usual pointer of anything clickable; no hand that opens and closes while pulling. */
+  cursor: pointer;
   touch-action: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-}
-
-.bulb-toggle.is-dragging {
-  cursor:
-    url('../images/cursor-grabbing.svg') 16 16,
-    grabbing;
 }
 
 .bulb-sway,
@@ -2186,16 +2258,20 @@ h1.heading {
   overflow-wrap: anywhere;
 }
 
-/* Touch screens: each link a taller tap area, the list as tall as before. */
-@media (pointer: coarse) {
+/*
+ * Touch screens and phones: each link a finger-sized tap area (44px tall), with no gaps between
+ * them, so a tap lands on the link meant and never on its neighbour.
+ */
+@media (pointer: coarse), (max-width: 760px) {
   .footer-columns li {
     margin-bottom: 0;
   }
 
   .footer-columns a,
   .footer-top-link {
-    display: inline-block;
-    padding-block: 4px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 
@@ -3597,11 +3673,13 @@ a.social-link:focus-visible {
   list-style: none;
 }
 
+/* On the narrowest phones a long name and its price share no line: the price moves under it. */
 .preview-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 16px;
+  gap: 4px 16px;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
   color: inherit;
@@ -3639,6 +3717,7 @@ a.social-link:focus-visible {
 }
 
 .preview-price {
+  margin-left: auto;
   font: 700 1.2rem var(--font-body);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -3762,6 +3841,70 @@ a.social-link:focus-visible {
 
 .comparison .is-recommended {
   background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+/* Open wherever all columns fit, so the button and the length picker are for phones only. */
+.comparison-fold > summary {
+  display: none;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.comparison-fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+.comparison-lengths {
+  display: none;
+}
+
+/* Phones: folded under a button; once open, one contract length at a time. */
+@media (max-width: 720px) {
+  .comparison-fold > summary {
+    display: inline-flex;
+  }
+
+  .comparison-fold[open] > summary {
+    display: none;
+  }
+
+  .comparison-lengths {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .comparison {
+    min-width: 0;
+  }
+
+  .comparison th:first-child {
+    width: auto;
+  }
+
+  .comparison th:last-child {
+    width: 34%;
+  }
+
+  .comparison [data-months]:not(.is-chosen) {
+    display: none;
+  }
+
+  /* The "Recommended" tag goes under the name, not into the price beside it. */
+  .comparison tbody th {
+    white-space: normal;
+  }
+
+  .comparison tbody th .preview-tag {
+    display: block;
+    margin: 4px 0 0;
+  }
+}
+
+/* Above the phone width the folded state cannot be reached, but a resized window may keep it. */
+@media (min-width: 721px) {
+  .comparison-fold:not([open]) > summary {
+    display: inline-flex;
+  }
 }
 
 /* ---- components/finder.css ---- */
@@ -4145,16 +4288,26 @@ a.social-link:focus-visible {
 }
 
 /*
- * The flashlight (dark theme, every page): a square far larger than the window,
- * centred on the pointer, clear in the middle and a little darker further out. Moving it is a
- * transform, so the browser redraws nothing; it sits under the header.
+ * The flashlight (dark theme, every page): centred on the pointer, a warm glow in the middle that
+ * fades to clear, then a little darker further out. Twice the window in each direction is the
+ * least that still covers the whole window wherever the pointer is (a larger layer costs the
+ * graphics card memory for nothing). Moving it is a transform on its own layer, so the browser
+ * redraws nothing; it sits under the header.
  */
 .cursor-flashlight {
   z-index: 40;
-  width: 300vmax;
-  height: 300vmax;
-  margin: -150vmax 0 0 -150vmax;
-  background: radial-gradient(circle at center, transparent 0 180px, rgb(12 10 30 / 0.42) 480px);
+  width: 200vw;
+  height: 200vh;
+  margin: -100vh 0 0 -100vw;
+  background: radial-gradient(
+    circle at center,
+    rgb(255 222 186 / 0.13) 0,
+    rgb(255 222 186 / 0.05) 110px,
+    rgb(255 222 186 / 0) 200px,
+    rgb(12 10 30 / 0.42) 500px
+  );
+  will-change: transform;
+  contain: strict;
   transition-duration: 0.4s;
 }
 

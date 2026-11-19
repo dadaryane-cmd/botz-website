@@ -2,11 +2,12 @@ import { LANGUAGE_LABELS, LANGUAGE_NAMES, LANGUAGES } from '../../config.js'
 import { navigation, site } from '../../content/index.js'
 import { fromMarkup, h } from '../../lib/dom.js'
 import { getLanguage, rememberLanguage, t, ui } from '../../lib/i18n.js'
-import { external, phoneHref, whatsappHref } from '../../lib/links.js'
+import { phoneHref } from '../../lib/links.js'
 import { currentFile, currentPageIn } from '../../lib/page.js'
 import { renderBulbToggle } from '../bulb/bulb-toggle.js'
 import { logoImages } from '../logo.js'
 import { button } from '../sections/section.js'
+import { whatsappLinkAttributes } from '../whatsapp-link.js'
 
 /** A speech bubble with a handset (static, trusted markup), drawn with the text colour. */
 const WHATSAPP_ICON = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none"
@@ -44,7 +45,7 @@ export function renderHeader(header) {
         h('a', { class: 'btn btn-secondary', href: phoneHref }, ui('contact', 'call')),
         h(
           'a',
-          { class: 'btn btn-secondary', href: whatsappHref(), ...external },
+          { class: 'btn btn-secondary', ...whatsappLinkAttributes() },
           ui('contact', 'whatsapp'),
         ),
       ),
@@ -84,8 +85,7 @@ const whatsappLink = () =>
     'a',
     {
       class: 'icon-button header-whatsapp',
-      href: whatsappHref(),
-      ...external,
+      ...whatsappLinkAttributes(),
       'aria-label': `${ui('contact', 'whatsapp')} ${site.phoneDisplay}`,
       title: `${ui('contact', 'whatsapp')} ${site.phoneDisplay}`,
     },
@@ -140,10 +140,14 @@ const languageSwitch = () =>
 
 /* ---------- menu items ---------- */
 
-const navLink = (link) =>
+const navLink = (link, className = null) =>
   h(
     'a',
-    { href: link.href, 'aria-current': link.href === currentFile() ? 'page' : null },
+    {
+      class: className,
+      href: link.href,
+      'aria-current': link.href === currentFile() ? 'page' : null,
+    },
     t(link.label),
   )
 
@@ -189,11 +193,17 @@ function navGroup(item, id) {
       },
       t(item.label),
     ),
-    h('span', { class: 'nav-group-label' }, t(item.label)),
+    // Phone menu: the group's name links to its own page ("Services" to the overview) when it
+    // has one, so the dropdown's link to that page is left out there (header.css).
+    item.href
+      ? navLink(item, 'nav-group-link')
+      : h('span', { class: 'nav-group-label' }, t(item.label)),
     h(
       'ul',
       { class: 'nav-submenu', id },
-      item.children.map((child) => h('li', null, navLink(child))),
+      item.children.map((child) =>
+        h('li', { class: child.href === item.href ? 'is-group-page' : null }, navLink(child)),
+      ),
     ),
   )
   return group

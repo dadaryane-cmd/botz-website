@@ -16,11 +16,21 @@
 .label {
   display: block;
   margin-bottom: 6px;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/*
+ * Armenian capitals are all of a height and much alike ("ՀԵՌԱԽՈՍ"), hard to read this small on a
+ * phone: Armenian small labels keep their normal letters and are a little larger instead.
+ */
+:lang(hy) :is(.label, .badge, .nav-group-label, .footer-columns h2) {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .heading {

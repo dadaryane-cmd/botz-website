@@ -3,7 +3,7 @@ import { CONTRACT_LENGTHS, PACKAGE_CATEGORIES } from '../../config.js'
 import { h } from '../../lib/dom.js'
 import { formatMonths } from '../../lib/format.js'
 import { ui } from '../../lib/i18n.js'
-import { categoryLabel } from '../../pricing/estimate.js'
+import { categoryName } from '../../pricing/estimate.js'
 import { updateSelection } from '../../pricing/selection.js'
 
 /** A labelled row of toggle buttons. */
@@ -27,7 +27,7 @@ export function pricingFilters({ lockCategory, category, months, onCategory }) {
       group(
         ui('pricing', 'filterLabel'),
         PACKAGE_CATEGORIES.map((option) =>
-          toggle(`category-${option}`, option === category, categoryLabel(option), () =>
+          toggle(`category-${option}`, option === category, categoryName(option), () =>
             onCategory(option),
           ),
         ),
