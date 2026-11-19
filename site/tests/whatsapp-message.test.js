@@ -10,12 +10,12 @@ describe('whatsappEstimateMessage', () => {
 
   it('names the chosen package between a greeting and a question, in the page language', () => {
     initLanguage('en/')
-    const summary = 'SMM Gold, 6 months — 145,000 ֏ per month'
+    const summary = 'SMM Max, 6 months — 145,000 ֏ per month'
     assert.equal(
       whatsappEstimateMessage(summary),
       `Hello! I'm interested in:\n${summary}\nCould we discuss it?`,
     )
     initLanguage('')
-    assert.match(whatsappEstimateMessage(summary), /^Բարև։ Ինձ հետաքրքրում է՝\nSMM Gold/)
+    assert.match(whatsappEstimateMessage(summary), /^Բարև։ Ինձ հետաքրքրում է՝\nSMM Max/)
   })
 })

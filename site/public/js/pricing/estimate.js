@@ -9,9 +9,13 @@ import { quote } from './engine.js'
 import { getSelection, toParams } from './selection.js'
 import { whatsappEstimateMessage } from './whatsapp-message.js'
 
+/** The short prefix of a package's name: "SMM", "SEO", "SMM + SEO". */
 export const categoryLabel = (category) => ui('pricing', `cat_${category}`)
 
-/** "SMM Gold", "SEO Vision" — website creation already has a full name. */
+/** A package group in plain words, for buttons and headings: "Social media", "Google search". */
+export const categoryName = (category) => ui('pricing', `group_${category}`)
+
+/** "SMM Max", "SEO Pro" — website creation already has a full name. */
 export const packageTitle = (pkg) =>
   pkg.category === 'website' ? t(pkg.name) : `${categoryLabel(pkg.category)} ${t(pkg.name)}`
 

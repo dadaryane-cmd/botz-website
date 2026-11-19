@@ -1496,6 +1496,18 @@ content:
           - name: cat_website
             label: Cat website
             component: line
+          - name: group_smm
+            label: Group smm
+            component: line
+          - name: group_seo
+            label: Group seo
+            component: line
+          - name: group_bundle
+            label: Group bundle
+            component: line
+          - name: group_website
+            label: Group website
+            component: line
           - name: durationLabel
             label: Duration label
             component: line

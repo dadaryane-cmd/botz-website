@@ -12,7 +12,7 @@ import { h } from '../../lib/dom.js'
 import { formatAmd, formatMonths } from '../../lib/format.js'
 import { t, ui } from '../../lib/i18n.js'
 import { isRecurring, priceFor } from '../../pricing/engine.js'
-import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
+import { categoryLabel, categoryName, estimateLink } from '../../pricing/estimate.js'
 import { getSelection, subscribe, updateSelection } from '../../pricing/selection.js'
 import { heading, lead, section } from './section.js'
 
@@ -76,7 +76,7 @@ function comparisonTable(packages) {
     h(
       'table',
       { class: 'comparison' },
-      h('caption', null, categoryLabel(packages[0].category)),
+      h('caption', null, categoryName(packages[0].category)),
       h(
         'thead',
         null,

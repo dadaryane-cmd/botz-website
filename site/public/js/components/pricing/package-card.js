@@ -32,8 +32,9 @@ export function packageCard(pkg, selection) {
     // data-package: the cursor's price tip finds the package by it (components/cursor/price-tip.js).
     { class: classes.filter(Boolean).join(' '), 'data-package': pkg.key },
     pkg.recommended && h('span', { class: 'badge badge-accent' }, ui('pricing', 'recommended')),
-    // A name ("Gold", "Start"): browser translation must not turn it into "Золото".
-    h('h3', { translate: 'no' }, t(pkg.name)),
+    // The full name ("SMM Pro"): SMM and SEO share Start, Pro and Max, and a screenshot of one
+    // card must still say which. Browser translation must not turn "Max" into "Макс".
+    h('h3', { translate: 'no' }, packageTitle(pkg)),
     h('p', { class: 'muted' }, t(pkg.tagline)),
     pkg.includes?.length > 0 ? includedList(pkg) : pkg.components?.length > 0 && bundleNote(pkg),
     h('div', { class: 'package-price' }, priceDetails(pkg, price)),
@@ -99,7 +100,7 @@ function includedList(pkg) {
   )
 }
 
-/** "SMM Gold + SEO Vision" for packages that combine others. */
+/** "SMM Max + SEO Max" for packages that combine others. */
 function bundleNote(pkg) {
   const list = pkg.components.map((key) => packageTitle(findPackage(catalog, key))).join(' + ')
   return h('p', { class: 'muted small' }, ui('pricing', 'bundleOf', { list }))

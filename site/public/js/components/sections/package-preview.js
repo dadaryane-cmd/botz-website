@@ -11,7 +11,7 @@ import { t, ui } from '../../lib/i18n.js'
 import { sectionHref } from '../../lib/page.js'
 import { REVEAL } from '../../lib/reveal.js'
 import { availableLengths, baseMonthlyPrice, isRecurring, priceFor } from '../../pricing/engine.js'
-import { categoryLabel, estimateLink } from '../../pricing/estimate.js'
+import { categoryName, estimateLink } from '../../pricing/estimate.js'
 import { button, heading, lead, section } from './section.js'
 
 export function renderPackagePreview(config) {
@@ -58,7 +58,7 @@ function categoryColumn(category, packages, months) {
   return h(
     'div',
     { class: 'preview-group', ...REVEAL },
-    h('h3', null, categoryLabel(category)),
+    h('h3', null, categoryName(category)),
     h(
       'ul',
       { class: 'preview-list' },
@@ -70,7 +70,7 @@ function categoryColumn(category, packages, months) {
 /** One package: name (and notes) on the left, the monthly price on the right. */
 function previewRow(pkg, months) {
   const offered = priceFor(pkg, months)
-  // Not sold for this long (e.g. SEO Fundamental): show the longest term it is sold for, and say so.
+  // Not sold for this long (e.g. SEO Start): show the longest term it is sold for, and say so.
   const term = offered ? months : availableLengths(pkg).at(-1)
   const { monthly } = offered ?? priceFor(pkg, term)
 

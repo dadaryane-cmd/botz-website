@@ -151,6 +151,26 @@
       "en": "Website",
       "ru": "Сайт"
     },
+    "group_smm": {
+      "hy": "Սոցցանցեր (SMM)",
+      "en": "Social media",
+      "ru": "Соцсети"
+    },
+    "group_seo": {
+      "hy": "Google-ի որոնում (SEO)",
+      "en": "Google search",
+      "ru": "Поиск в Google"
+    },
+    "group_bundle": {
+      "hy": "Սոցցանցեր + Google",
+      "en": "Social + Google",
+      "ru": "Соцсети + Google"
+    },
+    "group_website": {
+      "hy": "Կայք",
+      "en": "Website",
+      "ru": "Сайт"
+    },
     "durationLabel": {
       "hy": "Պայմանագրի ժամկետ (նվազագույնը 3 ամիս)",
       "en": "Contract length (minimum 3 months)",
