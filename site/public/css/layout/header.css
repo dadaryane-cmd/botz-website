@@ -218,19 +218,25 @@
   gap: 8px;
 }
 
-/* WhatsApp beside the offer button (wide screens; phones have it in the bottom bar). */
+/*
+ * WhatsApp beside the offer button (wide screens; phones have it in the bottom bar): the brand
+ * orange, so it reads as the second way to get in touch; filled on hover.
+ */
 .header-whatsapp {
   flex: none;
-  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--accent);
   transition:
     color 0.2s var(--ease-out),
+    background-color 0.2s var(--ease-out),
     border-color 0.2s var(--ease-out);
 }
 
 .header-whatsapp:hover,
 .header-whatsapp:focus-visible {
   border-color: var(--accent);
-  color: var(--accent-text);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 /* ---- The language menu (wide screens): "Eng ▾" opens the three ---- */
