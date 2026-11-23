@@ -1,6 +1,6 @@
 /**
- * Split text into words and letters for letter-by-letter animation. Letters are graphemes, so a
- * letter with an accent or an emoji is never cut in two.
+ * Split text into lines, words and letters, for text that animates piece by piece. Letters are
+ * graphemes, so a letter with an accent or an emoji is never cut in two.
  */
 const graphemes =
   typeof Intl.Segmenter === 'function'
@@ -12,12 +12,12 @@ export function splitLetters(word) {
   return Array.from(graphemes.segment(word), (part) => part.segment)
 }
 
-/** The non-empty lines of a text, trimmed (a letter board shows one per row). */
-export const boardLines = (text = '') =>
+/** The non-empty lines of a text, trimmed (each line break typed in the editor starts one). */
+export const textLines = (text = '') =>
   text
     .split('\n')
     .map((line) => line.trim())
     .filter(Boolean)
 
-/** Words (separated by any whitespace), each as a list of letters. */
-export const splitWords = (text) => text.split(/\s+/).filter(Boolean).map(splitLetters)
+/** The words of a line, separated by any whitespace. */
+export const textWords = (line = '') => line.split(/\s+/).filter(Boolean)

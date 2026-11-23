@@ -1,0 +1,74 @@
+/*
+ * A statement that lights up (js/components/statement.js). The script sets --lit (how many words
+ * are lit, with a fraction for the word being lit) and --progress (0–1); each word's brightness
+ * follows from its own number --i, so the words light up one after another.
+ */
+
+.statement {
+  --lit: 0;
+  --progress: 0;
+  position: relative;
+  isolation: isolate;
+  padding: clamp(24px, 6vw, 72px) 0;
+  text-align: center;
+}
+
+/* The lamp's warm light: a glow behind the words that grows as they light up. */
+.statement::before {
+  content: '';
+  position: absolute;
+  /* Taller than the words but no wider than the column, so it never widens the page. */
+  inset: -10% 0;
+  z-index: -1;
+  background: radial-gradient(
+    closest-side,
+    rgb(255 196 140 / calc(0.2 * var(--progress))),
+    rgb(234 72 35 / calc(0.08 * var(--progress))) 55%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.statement-title {
+  max-width: 20ch;
+  margin: 0 auto;
+  font: 400 clamp(2rem, 6.4vw, 4.8rem) / 1.08 var(--font-display);
+  text-wrap: balance;
+}
+
+/* The display font has no Armenian letters: Noto Sans Armenian stands in, as heavy as it goes. */
+:lang(hy) .statement-title {
+  font-weight: 800;
+  font-stretch: 87.5%;
+}
+
+.statement-line {
+  display: block;
+}
+
+.statement-tagline {
+  margin: clamp(20px, 3vw, 32px) 0 0;
+  font: 700 clamp(0.95rem, 2vw, 1.25rem) / 1.4 var(--font-body);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+/* Not lit yet: faint. Lighting: brightens over the length of one word. Lit: full. */
+.statement-word {
+  opacity: clamp(0.16, calc(var(--lit) - var(--i)), 1);
+  transition: opacity 0.2s linear;
+}
+
+/* Armenian capitals are all of a height and hard to read spaced out: normal letters there. */
+:lang(hy) .statement-tagline {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statement-word {
+    opacity: 1;
+    transition: none;
+  }
+}

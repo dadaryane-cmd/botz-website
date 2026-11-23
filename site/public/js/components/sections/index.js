@@ -1,5 +1,5 @@
 /** Section `type` (as used in content/pages) → render function. */
-import { renderMarqueeSign } from '../marquee-sign.js'
+import { renderStatement } from '../statement.js'
 import { renderAudit } from './audit.js'
 import { renderBlogList } from './blog-list.js'
 import { renderComparison } from './comparison.js'
@@ -32,7 +32,7 @@ const renderers = {
   samples: renderSamples,
   serviceDetail: renderServiceDetail,
   services: renderServices,
-  sign: renderMarqueeSign,
+  sign: renderStatement,
   split: renderSplit,
   team: renderTeam,
 }

@@ -27,8 +27,6 @@
    * Oswald letter by letter; Armenian uses Noto's extra-condensed width.
    */
   --font-hero: 'Anton', 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
-  /* Tall, narrow capitals of the cinema sign; Armenian uses Noto's condensed width. */
-  --font-sign: 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
   --radius: 28px;
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);

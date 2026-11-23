@@ -185,8 +185,6 @@
    * Oswald letter by letter; Armenian uses Noto's extra-condensed width.
    */
   --font-hero: 'Anton', 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
-  /* Tall, narrow capitals of the cinema sign; Armenian uses Noto's condensed width. */
-  --font-sign: 'Oswald', 'Noto Sans Armenian', 'Arial Narrow', sans-serif;
   --radius: 28px;
   --radius-small: 14px;
   --gutter: clamp(16px, 4vw, 40px);
@@ -2630,229 +2628,80 @@ a.social-link:focus-visible {
   display: block;
 }
 
-/* ---- components/marquee-sign.css ---- */
+/* ---- components/statement.css ---- */
 
 /*
- * Cinema announcement banner (js/components/marquee-sign.js): a compact lit letter board with a
- * headline and a tagline, in a frame between two rows of chasing bulbs. It stays unlit until
- * `.is-lit`; then the bulbs flicker on, the board lights up and the letters are put up one by one.
+ * A statement that lights up (js/components/statement.js). The script sets --lit (how many words
+ * are lit, with a fraction for the word being lit) and --progress (0–1); each word's brightness
+ * follows from its own number --i, so the words light up one after another.
  */
 
-.marquee-sign {
-  --sign-casing: #1b1930;
-  --sign-row: clamp(2.1rem, 4.4vw, 3.4rem);
-  --sign-glow: rgb(255 196 110 / 0.4);
-  --bulb-gap: 28px;
-  --bulb-size: 16px;
-  /* Room above to breathe after the hero; the section below starts close (it is our title). */
-  padding: clamp(40px, 5vw, 64px) var(--gutter) 0;
-}
-
-/* A compact sign standing on the page as one object, centred. */
-.sign-frame {
-  display: grid;
-  gap: 10px;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 12px clamp(10px, 2vw, 24px);
-  border-radius: 18px;
-  background: var(--sign-casing);
-  box-shadow: 0 0 60px var(--sign-glow);
-}
-
-/* By day: the navy casing with its bulbs switched off (no glow, no chase), like a cinema at noon. */
-[data-theme='light'] .marquee-sign {
-  --sign-casing: #24213b;
-  --sign-glow: transparent;
-}
-
-[data-theme='light'] .sign-frame {
-  box-shadow: 0 18px 40px rgb(36 33 59 / 0.18);
-}
-
-[data-theme='light'] .sign-board {
-  box-shadow: none;
-}
-
-[data-theme='light'] .sign-bulbs {
-  background-image: radial-gradient(
-    circle,
-    rgb(255 248 235 / 0.95) 0 3.5px,
-    rgb(255 255 255 / 0.25) 4.5px,
-    transparent 6px
-  );
-}
-
-[data-theme='light'] .sign-bulbs::after {
-  display: none;
-}
-
-/* The sign is the title of the section after it, so that section starts close below. */
-.marquee-sign + .section {
-  padding-top: clamp(24px, 4vw, 48px);
-}
-
-/*
- * ---- bulbs: every third one burns brighter, and the bright ones run along ----
- * Both layers are centred, so their bulbs line up and the row is symmetric; the ends fade out
- * instead of showing a cut bulb.
- */
-
-.sign-bulbs {
+.statement {
+  --lit: 0;
+  --progress: 0;
   position: relative;
-  height: var(--bulb-size);
-  background: radial-gradient(circle, #ffd88f 0 4px, rgb(255 196 110 / 0.4) 5px, transparent 7px)
-    center / var(--bulb-gap) var(--bulb-size) repeat-x;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 var(--bulb-gap),
-    #000 calc(100% - var(--bulb-gap)),
-    transparent
-  );
+  isolation: isolate;
+  padding: clamp(24px, 6vw, 72px) 0;
+  text-align: center;
 }
 
-/* The tile is three bulbs wide with its bulb in the middle, so it lands on every third bulb. */
-.sign-bulbs::after {
+/* The lamp's warm light: a glow behind the words that grows as they light up. */
+.statement::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, #fffaf0 0 4.5px, rgb(255 214 140 / 0.85) 6px, transparent 9px)
-    center / calc(var(--bulb-gap) * 3) var(--bulb-size) repeat-x;
-  filter: drop-shadow(0 0 4px rgb(255 200 120 / 0.9));
+  /* Taller than the words but no wider than the column, so it never widens the page. */
+  inset: -10% 0;
+  z-index: -1;
+  background: radial-gradient(
+    closest-side,
+    rgb(255 196 140 / calc(0.2 * var(--progress))),
+    rgb(234 72 35 / calc(0.08 * var(--progress))) 55%,
+    transparent
+  );
+  pointer-events: none;
 }
 
-/* ---- the letter board ---- */
-
-.sign-board {
-  padding: 0 clamp(6px, 2vw, 24px);
-  border-radius: 6px;
-  color: #16141f;
-  text-align: center;
-  /* Rails at the bottom of every letter row, on a warm white lightbox. */
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0 calc(var(--sign-row) - 2px),
-      rgb(27 25 48 / 0.18) calc(var(--sign-row) - 2px) var(--sign-row)
-    ),
-    linear-gradient(#fffdf6, #fff0d8);
-  box-shadow:
-    0 0 0 3px #2d2a47,
-    0 0 40px var(--sign-glow);
+.statement-title {
+  max-width: 20ch;
+  margin: 0 auto;
+  font: 400 clamp(2rem, 6.4vw, 4.8rem) / 1.08 var(--font-display);
+  text-wrap: balance;
 }
 
-.sign-title,
-.sign-tagline {
-  margin: 0;
-  font: 600 calc(var(--sign-row) * 0.6) / var(--sign-row) var(--font-sign);
-  font-stretch: condensed;
-  letter-spacing: 0.04em;
+/* The display font has no Armenian letters: Noto Sans Armenian stands in, as heavy as it goes. */
+:lang(hy) .statement-title {
+  font-weight: 800;
+  font-stretch: 87.5%;
+}
+
+.statement-line {
+  display: block;
+}
+
+.statement-tagline {
+  margin: clamp(20px, 3vw, 32px) 0 0;
+  font: 700 clamp(0.95rem, 2vw, 1.25rem) / 1.4 var(--font-body);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--accent-text);
 }
 
-/* The tagline: smaller, widely spaced letters in crimson, on its own row of the board. */
-.sign-tagline {
-  font-size: calc(var(--sign-row) * 0.4);
-  letter-spacing: 0.24em;
-  color: #9d282b;
+/* Not lit yet: faint. Lighting: brightens over the length of one word. Lit: full. */
+.statement-word {
+  opacity: clamp(0.16, calc(var(--lit) - var(--i)), 1);
+  transition: opacity 0.2s linear;
 }
 
-.sign-word,
-.sign-letter {
-  display: inline-block;
+/* Armenian capitals are all of a height and hard to read spaced out: normal letters there. */
+:lang(hy) .statement-tagline {
+  letter-spacing: 0.04em;
+  text-transform: none;
 }
 
-.sign-word {
-  white-space: nowrap;
-}
-
-/* ---- power on ---- */
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-theme='dark'] .marquee-sign:not(.is-lit) .sign-bulbs {
-    opacity: 0.25;
-  }
-
-  .marquee-sign:not(.is-lit) .sign-bulbs::after {
-    opacity: 0;
-  }
-
-  .marquee-sign:not(.is-lit) .sign-board {
-    filter: brightness(0.45);
-  }
-
-  .marquee-sign:not(.is-lit) .sign-letter {
-    opacity: 0;
-  }
-
-  .marquee-sign.is-lit .sign-bulbs::after {
-    animation: sign-chase 1.2s steps(3) infinite;
-  }
-
-  .marquee-sign.is-lit .sign-board {
-    animation: sign-board-on 300ms 150ms var(--ease-out) both;
-  }
-
-  .marquee-sign.is-lit .sign-letter {
-    animation: sign-letter-in 260ms var(--ease-out) both;
-    animation-delay: calc(350ms + var(--i) * 9ms);
-  }
-
-  /*
-   * At night the bulbs flicker on when the sign lights up. By day they are off, so the
-   * animation is applied afresh, and plays again, each time the lamp switches to dark.
-   */
-  [data-theme='dark'] .marquee-sign.is-lit .sign-bulbs {
-    animation: sign-flicker 450ms steps(1, end) both;
-  }
-}
-
-/* From the centred start, one bright bulb steps three places along. */
-@keyframes sign-chase {
-  to {
-    background-position-x: calc(50% + var(--bulb-gap) * 3);
-  }
-}
-
-@keyframes sign-board-on {
-  from {
-    filter: brightness(0.45);
-  }
-  to {
-    filter: brightness(1);
-  }
-}
-
-@keyframes sign-letter-in {
-  from {
-    opacity: 0;
-    transform: translateY(-0.35em) rotate(-6deg);
-  }
-  to {
+@media (prefers-reduced-motion: reduce) {
+  .statement-word {
     opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes sign-flicker {
-  0% {
-    opacity: 0.2;
-  }
-  15% {
-    opacity: 1;
-  }
-  30% {
-    opacity: 0.3;
-  }
-  45% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 1;
+    transition: none;
   }
 }
 

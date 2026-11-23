@@ -49,16 +49,16 @@ components:
             type: string
             hidden: true
       - name: sign
-        label: Cinema banner
+        label: Statement that lights up
         fields:
           - name: title
             label: Headline
             component: paragraph
-            description: Each line is one row of the board.
+            description: Large words that light up one by one on scrolling. Each line stays a line.
           - name: tagline
             label: Tagline
             component: paragraph
-            description: Each line is one row of the board.
+            description: Shown under it, in the accent colour.
       - name: split
         label: Statement with key points
         fields:

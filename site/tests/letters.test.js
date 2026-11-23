@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { boardLines, splitLetters, splitWords } from '../public/js/lib/letters.js'
+import { splitLetters, textLines, textWords } from '../public/js/lib/letters.js'
 
 describe('letters', () => {
   it('splits a word into letters', () => {
@@ -16,20 +16,17 @@ describe('letters', () => {
     assert.deepEqual(splitLetters('É'), ['É'])
   })
 
-  it('splits text into board rows at line breaks, skipping empty lines', () => {
-    assert.deepEqual(boardLines('STRATEGY MEETS\n\n  CREATIVITY. '), [
-      'STRATEGY MEETS',
-      'CREATIVITY.',
+  it('splits text into lines at line breaks, skipping empty lines', () => {
+    assert.deepEqual(textLines('Strategy meets\n\n  creativity. '), [
+      'Strategy meets',
+      'creativity.',
     ])
-    assert.deepEqual(boardLines('ONE ROW'), ['ONE ROW'])
-    assert.deepEqual(boardLines(''), [])
+    assert.deepEqual(textLines('One line'), ['One line'])
+    assert.deepEqual(textLines(''), [])
   })
 
-  it('splits text into words of letters, ignoring extra spaces', () => {
-    assert.deepEqual(splitWords('  WE  OFFER '), [
-      ['W', 'E'],
-      ['O', 'F', 'F', 'E', 'R'],
-    ])
-    assert.deepEqual(splitWords(''), [])
+  it('splits a line into words, ignoring extra spaces', () => {
+    assert.deepEqual(textWords('  We  offer '), ['We', 'offer'])
+    assert.deepEqual(textWords(''), [])
   })
 })

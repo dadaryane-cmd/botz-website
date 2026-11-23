@@ -98,10 +98,16 @@ const sectionBlocks = [
   },
   {
     name: 'sign',
-    label: 'Cinema banner',
+    label: 'Statement that lights up',
     fields: [
-      text('title', 'Headline', { long: true, description: 'Each line is one row of the board.' }),
-      text('tagline', 'Tagline', { long: true, description: 'Each line is one row of the board.' }),
+      text('title', 'Headline', {
+        long: true,
+        description: 'Large words that light up one by one on scrolling. Each line stays a line.',
+      }),
+      text('tagline', 'Tagline', {
+        long: true,
+        description: 'Shown under it, in the accent colour.',
+      }),
     ],
   },
   {
