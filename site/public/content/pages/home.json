@@ -71,19 +71,19 @@
           "service": "smm",
           "highlights": [
             {
-              "hy": "Հրապարակումներ և սթորիներ",
-              "en": "Posts and stories",
-              "ru": "Посты и сторис"
+              "hy": "Վարում ենք ձեր Instagram-ը, Facebook-ը և TikTok-ը",
+              "en": "We run your Instagram, Facebook and TikTok",
+              "ru": "Ведём ваши Instagram, Facebook и TikTok"
             },
             {
-              "hy": "Նկարահանումներ և տեսանյութեր",
-              "en": "Shoots and video",
-              "ru": "Съёмка и видеопроизводство"
+              "hy": "Նկարում ենք լուսանկարներ և տեսանյութեր",
+              "en": "We shoot the photos and videos",
+              "ru": "Снимаем фото и видео"
             },
             {
-              "hy": "Meta գովազդ",
-              "en": "Meta ads",
-              "ru": "Meta Рекламы"
+              "hy": "Գովազդը ցույց ենք տալիս ճիշտ մարդկանց",
+              "en": "We show your ads to the right people",
+              "ru": "Показываем рекламу нужным людям"
             }
           ],
           "link": {
@@ -97,26 +97,26 @@
         },
         {
           "title": {
-            "hy": "SEO",
-            "en": "SEO",
-            "ru": "SEO"
+            "hy": "Առաջխաղացում Google-ում (SEO)",
+            "en": "Getting found on Google (SEO)",
+            "ru": "Продвижение в Google (SEO)"
           },
           "service": "seo",
           "highlights": [
             {
-              "hy": "Տեխնիկական SEO",
-              "en": "Technical SEO",
-              "ru": "Техническое SEO"
+              "hy": "Հաճախորդները ձեզ գտնում են Google-ում",
+              "en": "Customers find you on Google",
+              "ru": "Клиенты находят вас в Google"
             },
             {
-              "hy": "Ներքին SEO",
-              "en": "On-Page SEO",
-              "ru": "Внутренняя SEO"
+              "hy": "Ձեր բիզնեսը Google Maps-ում",
+              "en": "Your business on Google Maps",
+              "ru": "Ваш бизнес на Google Картах"
             },
             {
-              "hy": "Լոկալ SEO",
-              "en": "Local SEO",
-              "ru": "Локальное SEO"
+              "hy": "Արագ կայք՝ առանց սխալների",
+              "en": "A fast website without errors",
+              "ru": "Быстрый сайт без ошибок"
             }
           ],
           "link": {
@@ -137,14 +137,14 @@
           "service": "website",
           "highlights": [
             {
-              "hy": "Հարմարեցում բջջային սարքերին",
-              "en": "Mobile Responsiveness",
-              "ru": "Адаптация под мобильные устройства"
+              "hy": "Հարմար է հեռախոսով",
+              "en": "Easy to use on a phone",
+              "ru": "Удобно открывается с телефона"
             },
             {
-              "hy": "SEO-ի հիմքային կարգավորում",
-              "en": "Basic SEO setup",
-              "ru": "Базовая SEO-настройка"
+              "hy": "Պատրաստ է Google-ի համար առաջին օրվանից",
+              "en": "Ready for Google from day one",
+              "ru": "Готов к Google с первого дня"
             }
           ],
           "link": {
@@ -158,16 +158,16 @@
         },
         {
           "title": {
-            "hy": "SMM + SEO փաթեթներ",
-            "en": "SMM + SEO plans",
-            "ru": "Планы SMM + SEO"
+            "hy": "Սոցցանցեր + Google միասին",
+            "en": "Social media + Google together",
+            "ru": "Соцсети + Google вместе"
           },
           "service": "bundle",
           "highlights": [
             {
-              "hy": "Սոցցանցեր և SEO մեկ փաթեթում",
-              "en": "Social media and SEO in one plan",
-              "ru": "Соцсети и SEO в одном плане"
+              "hy": "Մեկ թիմ, մեկ պլան, մեկ գին",
+              "en": "One team, one plan, one price",
+              "ru": "Одна команда, один план, одна цена"
             }
           ],
           "link": {
