@@ -34,7 +34,10 @@ export function renderFooter(footer) {
   )
 }
 
-/** The footer is always dark, so it always shows the light-on-dark logo. */
+/**
+ * Logo and tagline, with the social icons beside them (a row of their own would make the footer
+ * longer on phones). The footer is always dark, so it always shows the light-on-dark logo.
+ */
 function footerTop() {
   return h(
     'div',
@@ -52,15 +55,16 @@ function footerTop() {
         decoding: 'async',
       }),
     ),
+    renderSocialLinks(site.social),
     hasText(navigation.footerTagline) &&
       h('p', { class: 'footer-tagline' }, t(navigation.footerTagline)),
   )
 }
 
-function column(title, items, extra) {
+function column(title, items, extra, className) {
   return h(
     'div',
-    null,
+    { class: className },
     h('h2', null, title),
     h(
       'ul',
@@ -80,10 +84,8 @@ function contactColumn() {
       h('a', whatsappLinkAttributes(), 'WhatsApp'),
       h('a', { href: emailHref }, site.email),
     ],
-    [
-      place.length > 0 && h('p', { class: 'footer-place' }, place.join(' · ')),
-      renderSocialLinks(site.social),
-    ],
+    place.length > 0 && h('p', { class: 'footer-place' }, place.join(' · ')),
+    'footer-contact',
   )
 }
 

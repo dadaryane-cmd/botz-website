@@ -2223,8 +2223,21 @@ h1.heading {
 
 /* ---- logo and one line about the business ---- */
 
+/* Logo and social icons on one line, the tagline under them. */
 .footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 16px;
   margin-bottom: 40px;
+}
+
+.footer-top .social-links {
+  margin: 0;
+}
+
+.footer-top .footer-tagline {
+  grid-column: 1 / -1;
 }
 
 .footer-logo {
@@ -2299,19 +2312,41 @@ h1.heading {
   color: var(--muted);
 }
 
-/* Phones: the two link columns side by side, contact underneath across the full width. */
+/*
+ * Phones: the two link columns side by side, contact underneath across the full width, its
+ * phone, WhatsApp and email in one wrapping row instead of a tall list.
+ */
 @media (max-width: 600px) {
-  .footer-columns {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 20px;
+  .site-footer {
+    padding-top: 40px;
   }
 
-  .footer-columns > :last-child {
+  .footer-top,
+  .footer-columns {
+    margin-bottom: 28px;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .footer-contact {
     grid-column: 1 / -1;
+  }
+
+  .footer-contact ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+  }
+
+  .footer-place {
+    margin-top: 4px;
   }
 }
 
-/* The narrowest phones: one column, so a long title ("ԳՈՐԾԱԿԱԼՈՒԹՅՈՒՆ") never runs off the screen. */
+/* The narrowest phones: one column, so a long title ("ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ") never runs off the screen. */
 @media (max-width: 359px) {
   .footer-columns {
     grid-template-columns: 1fr;

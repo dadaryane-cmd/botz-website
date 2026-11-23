@@ -163,47 +163,6 @@
           "href": "beauty.html"
         }
       ]
-    },
-    {
-      "title": {
-        "hy": "Գործակալություն",
-        "en": "Agency",
-        "ru": "Агентство"
-      },
-      "links": [
-        {
-          "label": {
-            "hy": "Մեր մասին",
-            "en": "About",
-            "ru": "О нас"
-          },
-          "href": "about.html"
-        },
-        {
-          "label": {
-            "hy": "Բլոգ",
-            "en": "Blog",
-            "ru": "Блог"
-          },
-          "href": "blog.html"
-        },
-        {
-          "label": {
-            "hy": "Անվճար աուդիտ",
-            "en": "Free audit",
-            "ru": "Бесплатный аудит"
-          },
-          "href": "audit.html"
-        },
-        {
-          "label": {
-            "hy": "Կապ",
-            "en": "Contact",
-            "ru": "Контакты"
-          },
-          "href": "contact.html"
-        }
-      ]
     }
   ],
   "footerNote": {
