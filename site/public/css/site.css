@@ -2676,17 +2676,13 @@ a.social-link:focus-visible {
   pointer-events: none;
 }
 
+/* In the page title's tall, condensed font (hero.css), so the two read as one voice. */
 .statement-title {
   max-width: 20ch;
   margin: 0 auto;
-  font: 400 clamp(2rem, 6.4vw, 4.8rem) / 1.08 var(--font-display);
+  font: 800 clamp(2.6rem, 8vw, 6rem) / 1 var(--font-hero);
+  font-stretch: extra-condensed;
   text-wrap: balance;
-}
-
-/* The display font has no Armenian letters: Noto Sans Armenian stands in, as heavy as it goes. */
-:lang(hy) .statement-title {
-  font-weight: 800;
-  font-stretch: 87.5%;
 }
 
 .statement-line {
