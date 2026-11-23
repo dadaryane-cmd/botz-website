@@ -36,6 +36,11 @@
   padding: 0;
 }
 
+/* The fire already fades out into empty space at its foot: the next section adds little more. */
+.hero-home + .section {
+  padding-top: clamp(16px, 3vw, 32px);
+}
+
 .hero-stage {
   position: relative;
   isolation: isolate;

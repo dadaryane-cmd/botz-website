@@ -31,7 +31,18 @@
 }
 
 .section {
-  padding: clamp(56px, 9vw, 112px) 0;
+  padding: clamp(40px, 6vw, 80px) 0;
+}
+
+/*
+ * Two sections on the same background read as one band: the second adds no space of its own
+ * above, or the gap between them would be twice as tall as anywhere else. (A page title keeps its
+ * own smaller gap, hero.css.)
+ */
+.section:not(.hero, .bg-surface, .bg-inverse) + .section:not(.bg-surface, .bg-inverse),
+.bg-surface + .section.bg-surface,
+.bg-inverse + .section.bg-inverse {
+  padding-top: 0;
 }
 
 .bg-surface {
