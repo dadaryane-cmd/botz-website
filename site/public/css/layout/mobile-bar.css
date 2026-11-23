@@ -16,7 +16,12 @@
     gap: 8px;
     padding: 6px;
     border-radius: 999px;
-    background: var(--inverse-bg);
+    /*
+     * Safari on iOS 26 paints the strip under its toolbar in the background colour of a fixed
+     * element at the bottom edge, which here was the bar's cream under a dark page. It reads only
+     * background-color, so that stays the page's colour and the bar is drawn as an image.
+     */
+    background: linear-gradient(var(--inverse-bg), var(--inverse-bg)) var(--bg);
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
     transition:
       transform 0.25s var(--ease-out),

@@ -337,7 +337,8 @@
     margin-top: 16px;
     padding: 8px 8px 8px 18px;
     border-radius: 999px;
-    background: var(--inverse-bg);
+    /* Drawn as an image so Safari on iOS 26 doesn't paint its toolbar cream (css/layout/mobile-bar.css). */
+    background: linear-gradient(var(--inverse-bg), var(--inverse-bg)) var(--bg);
     color: var(--inverse-text);
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
   }
