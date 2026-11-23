@@ -185,14 +185,14 @@
     {
       "type": "team",
       "heading": {
-        "hy": "Անմիջական քննարկում այն մարդու հետ, ով կատարում է աշխատանքը։",
-        "en": "Talk directly with the person responsible for your project.",
-        "ru": "Вы общаетесь напрямую со специалистом, который работает над вашим проектом."
+        "hy": "Անմիջապես մասնագետի հետ",
+        "en": "Straight to the specialist",
+        "ru": "Напрямую со специалистом"
       },
       "intro": {
-        "hy": "Համագործակցություն առանց միջանկյալ մարդկանց։",
-        "en": "We work directly with you, with no middlemen.",
-        "ru": "Работаем с вами напрямую, без посредников."
+        "hy": "Առանց մենեջերների և միջնորդների՝ ձեզ պատասխանում է նա, ով կատարում է աշխատանքը։",
+        "en": "No account managers in between: the person doing the work answers you.",
+        "ru": "Без менеджеров и посредников: вам отвечает тот, кто делает работу."
       },
       "link": {
         "label": {
