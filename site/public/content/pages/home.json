@@ -206,36 +206,6 @@
       "background": "surface"
     },
     {
-      "type": "packagePreview",
-      "heading": {
-        "hy": "Ամսական գներ",
-        "en": "Monthly prices",
-        "ru": "Цены в месяц"
-      },
-      "intro": {
-        "hy": "12 ամսվա պայմանագրով։ Ջնջված գինը 3 ամսվա պայմանագրի դեպքում է՝ նվազագույն ժամկետով։",
-        "en": "With a 12-month contract. The crossed-out price is for the shortest contract, 3 months.",
-        "ru": "При договоре на 12 месяцев. Зачёркнутая цена — для самого короткого договора, на 3 месяца."
-      },
-      "categories": [
-        "smm",
-        "seo",
-        "bundle",
-        "website"
-      ],
-      "duration": 11,
-      "link": {
-        "label": {
-          "hy": "Դիտել փաթեթները",
-          "en": "Explore packages",
-          "ru": "Смотреть пакеты"
-        },
-        "href": "pricing.html",
-        "style": "primary"
-      },
-      "showGuideLink": true
-    },
-    {
       "type": "faq",
       "heading": {
         "hy": "Հաճախ մեզ հարցնում են",
@@ -290,8 +260,7 @@
           "ru": "Другие вопросы"
         },
         "href": "pricing.html#faq"
-      },
-      "background": "surface"
+      }
     },
     {
       "type": "contact",
@@ -305,7 +274,8 @@
         "en": "Call, send a WhatsApp message or use the form.",
         "ru": "Позвоните, напишите в WhatsApp или отправьте форму."
       },
-      "id": "contact"
+      "id": "contact",
+      "background": "surface"
     }
   ]
 }
