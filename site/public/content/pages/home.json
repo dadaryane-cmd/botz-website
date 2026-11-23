@@ -20,16 +20,16 @@
         "ru": "Креативное *маркетинговое агентство*"
       },
       "subheading": {
-        "hy": "BOTZ-ում զբաղվում ենք սոցցանցերի ստրատեգիկ առաջխաղացմամբ, ստեղծում կայքեր՝ զբաղվում դրանց SEO առաջխաղացմամբ։",
-        "en": "At BOTZ, we focus on strategic social media growth, website development, and SEO to improve website visibility and drive organic growth.",
-        "ru": "В BOTZ мы занимаемся стратегическим продвижением в социальных сетях, разработкой сайтов и SEO, чтобы повысить видимость сайтов в поисковых системах и обеспечить органический рост."
+        "hy": "Սոցցանցեր, SEO և կայքեր Երևանի բիզնեսների համար՝ հստակ փաթեթներով և բաց գներով։",
+        "en": "Social media, SEO and websites for businesses in Yerevan, with clear packages and open prices.",
+        "ru": "Соцсети, SEO и сайты для бизнеса в Ереване — понятные пакеты и открытые цены."
       },
       "buttons": [
         {
           "label": {
-            "hy": "Ստանալ անվճար աուդիտ",
-            "en": "Get a free audit",
-            "ru": "Получить бесплатный аудит"
+            "hy": "Անվճար աուդիտ",
+            "en": "Free audit",
+            "ru": "Бесплатный аудит"
           },
           "href": "audit.html",
           "style": "primary"
