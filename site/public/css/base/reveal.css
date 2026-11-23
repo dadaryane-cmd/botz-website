@@ -21,19 +21,21 @@
     transform: none;
   }
 
-  /* Page titles enter word by word. */
+  /*
+   * Page titles enter word by word. The words wait in their starting pose (`backwards`) and,
+   * once in, keep no transform at all: a leftover one would pin the mouse's light on headings
+   * (text-light.css) to each word instead of the window.
+   */
   .hero h1 .word {
     display: inline-block;
-    opacity: 0;
-    transform: translateY(0.5em) rotate(3deg);
-    animation: word-in 0.5s var(--ease-out) forwards;
+    animation: word-in 0.5s var(--ease-out) backwards;
     animation-delay: calc(0.05s + var(--i) * 40ms);
   }
 }
 
 @keyframes word-in {
-  to {
-    opacity: 1;
-    transform: none;
+  from {
+    opacity: 0;
+    transform: translateY(0.5em) rotate(3deg);
   }
 }

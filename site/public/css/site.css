@@ -4181,34 +4181,6 @@ a.social-link:focus-visible {
   opacity: 1;
 }
 
-/*
- * The flashlight (dark theme, every page): centred on the pointer, a warm glow in the middle that
- * fades to clear, then a little darker further out. Twice the window in each direction is the
- * least that still covers the whole window wherever the pointer is (a larger layer costs the
- * graphics card memory for nothing). Moving it is a transform on its own layer, so the browser
- * redraws nothing; it sits under the header.
- */
-.cursor-flashlight {
-  z-index: 40;
-  width: 200vw;
-  height: 200vh;
-  margin: -100vh 0 0 -100vw;
-  background: radial-gradient(
-    circle at center,
-    rgb(255 222 186 / 0.13) 0,
-    rgb(255 222 186 / 0.05) 110px,
-    rgb(255 222 186 / 0) 200px,
-    rgb(12 10 30 / 0.42) 500px
-  );
-  will-change: transform;
-  contain: strict;
-  transition-duration: 0.4s;
-}
-
-[data-theme='light'] .cursor-flashlight {
-  display: none;
-}
-
 /* Over package cards: the price for the chosen contract length, beside the pointer. */
 .cursor-price-tip {
   z-index: 60;
@@ -4226,6 +4198,39 @@ a.social-link:focus-visible {
   .cursor-follower {
     display: none;
   }
+}
+
+/* ---- components/text-light.css ---- */
+
+/*
+ * The mouse lights the big text (js/components/cursor/text-light.js): in the dark theme, while the
+ * mouse is over the page (<html class="text-light">), headings and the statement's words are
+ * painted with a gradient centred on the pointer: brighter near it, their own colour a little
+ * further, slightly dimmed far away. The gradient is fixed to the window (--lx, --ly in window
+ * pixels), so it flows on across lines and words. The text stays real text.
+ *
+ * Painted on the smallest pieces of text: words that animate in (.word, .statement-word) keep
+ * their own fade, and highlighted words (<em>) their own orange.
+ */
+:root[data-theme='dark'].text-light
+  :is(.heading:not(:has(.word)), .heading:not(:has(.word)) em, .heading .word, .statement-word) {
+  --light-base: var(--text);
+  background: radial-gradient(
+      circle 380px at var(--lx, -999px) var(--ly, -999px),
+      color-mix(in srgb, var(--light-base) 55%, #fff) 0%,
+      var(--light-base) 45%,
+      color-mix(in srgb, var(--light-base) 62%, var(--bg)) 100%
+    )
+    fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Orange words glow orange. */
+:root[data-theme='dark'].text-light
+  :is(.heading:not(:has(.word)) em, .heading em .word, .statement-tagline .statement-word) {
+  --light-base: var(--accent-text);
 }
 
 /* ---- base/reveal.css ---- */
@@ -4253,20 +4258,22 @@ a.social-link:focus-visible {
     transform: none;
   }
 
-  /* Page titles enter word by word. */
+  /*
+   * Page titles enter word by word. The words wait in their starting pose (`backwards`) and,
+   * once in, keep no transform at all: a leftover one would pin the mouse's light on headings
+   * (text-light.css) to each word instead of the window.
+   */
   .hero h1 .word {
     display: inline-block;
-    opacity: 0;
-    transform: translateY(0.5em) rotate(3deg);
-    animation: word-in 0.5s var(--ease-out) forwards;
+    animation: word-in 0.5s var(--ease-out) backwards;
     animation-delay: calc(0.05s + var(--i) * 40ms);
   }
 }
 
 @keyframes word-in {
-  to {
-    opacity: 1;
-    transform: none;
+  from {
+    opacity: 0;
+    transform: translateY(0.5em) rotate(3deg);
   }
 }
 

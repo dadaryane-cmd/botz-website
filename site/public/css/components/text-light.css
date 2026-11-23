@@ -1,0 +1,30 @@
+/*
+ * The mouse lights the big text (js/components/cursor/text-light.js): in the dark theme, while the
+ * mouse is over the page (<html class="text-light">), headings and the statement's words are
+ * painted with a gradient centred on the pointer: brighter near it, their own colour a little
+ * further, slightly dimmed far away. The gradient is fixed to the window (--lx, --ly in window
+ * pixels), so it flows on across lines and words. The text stays real text.
+ *
+ * Painted on the smallest pieces of text: words that animate in (.word, .statement-word) keep
+ * their own fade, and highlighted words (<em>) their own orange.
+ */
+:root[data-theme='dark'].text-light
+  :is(.heading:not(:has(.word)), .heading:not(:has(.word)) em, .heading .word, .statement-word) {
+  --light-base: var(--text);
+  background: radial-gradient(
+      circle 380px at var(--lx, -999px) var(--ly, -999px),
+      color-mix(in srgb, var(--light-base) 55%, #fff) 0%,
+      var(--light-base) 45%,
+      color-mix(in srgb, var(--light-base) 62%, var(--bg)) 100%
+    )
+    fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Orange words glow orange. */
+:root[data-theme='dark'].text-light
+  :is(.heading:not(:has(.word)) em, .heading em .word, .statement-tagline .statement-word) {
+  --light-base: var(--accent-text);
+}

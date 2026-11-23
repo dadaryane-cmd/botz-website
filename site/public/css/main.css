@@ -45,6 +45,7 @@
 @import url('components/audit.css');
 @import url('components/blog.css');
 @import url('components/cursor.css');
+@import url('components/text-light.css');
 
 /* Overrides */
 @import url('base/reveal.css');

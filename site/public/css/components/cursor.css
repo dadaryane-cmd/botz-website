@@ -16,34 +16,6 @@
   opacity: 1;
 }
 
-/*
- * The flashlight (dark theme, every page): centred on the pointer, a warm glow in the middle that
- * fades to clear, then a little darker further out. Twice the window in each direction is the
- * least that still covers the whole window wherever the pointer is (a larger layer costs the
- * graphics card memory for nothing). Moving it is a transform on its own layer, so the browser
- * redraws nothing; it sits under the header.
- */
-.cursor-flashlight {
-  z-index: 40;
-  width: 200vw;
-  height: 200vh;
-  margin: -100vh 0 0 -100vw;
-  background: radial-gradient(
-    circle at center,
-    rgb(255 222 186 / 0.13) 0,
-    rgb(255 222 186 / 0.05) 110px,
-    rgb(255 222 186 / 0) 200px,
-    rgb(12 10 30 / 0.42) 500px
-  );
-  will-change: transform;
-  contain: strict;
-  transition-duration: 0.4s;
-}
-
-[data-theme='light'] .cursor-flashlight {
-  display: none;
-}
-
 /* Over package cards: the price for the chosen contract length, beside the pointer. */
 .cursor-price-tip {
   z-index: 60;
