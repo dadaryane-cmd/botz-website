@@ -114,7 +114,7 @@
         "ru": "Цена создания сайта"
       },
       "defaultCategory": "website",
-      "defaultDuration": 6,
+      "defaultDuration": 3,
       "lockCategory": true,
       "showAddons": false,
       "id": "pricing"

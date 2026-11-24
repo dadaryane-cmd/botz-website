@@ -30,6 +30,36 @@
   color: var(--bg);
 }
 
+/* "save 24,000 ֏" under a contract length: the button grows to two lines. */
+.segmented button:has(.length-saving) {
+  border-radius: 18px;
+  line-height: 1.2;
+}
+
+.length-saving {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.segmented button[aria-pressed='true'] .length-saving {
+  color: inherit;
+  opacity: 0.8;
+}
+
+/* Phones: the three lengths side by side, each saving wrapping inside its own button. */
+@media (max-width: 600px) {
+  .segmented-lengths {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .segmented-lengths button {
+    padding-inline: 8px;
+  }
+}
+
 .pricing-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
@@ -50,6 +80,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  /* A long Armenian word wraps inside a narrow card instead of running past its edge. */
+  overflow-wrap: break-word;
   /* The price is sized to the card (cqi), so it fits however narrow the columns get. */
   container-type: inline-size;
   transition:
@@ -152,13 +184,21 @@
   }
 }
 
-/* "Ask about this package": under the select button, centred. */
-.package-ask {
-  align-self: center;
-  margin-top: 4px;
-  /* A taller tap area: 10px above and below the text, in place of the margin. */
-  padding-block: 10px;
-  font-size: 0.9rem;
+/* "Message on WhatsApp": under the select button. */
+.package-whatsapp {
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.package-whatsapp svg {
+  flex: none;
+}
+
+/* "Not sure which one? … Free audit": the free first step, at the foot of every card. */
+.package-audit {
+  margin: 14px 0 0;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .package-price {

@@ -9,9 +9,9 @@
         "ru": "Start"
       },
       "tagline": {
-        "hy": "Instagram-ի և Facebook-ի պրոֆեսիոնալ վարում հստակ գրաֆիկով՝ աճող բրենդների համար",
-        "en": "Instagram and Facebook run by professionals on a fixed schedule, for growing brands",
-        "ru": "Профессиональное ведение Instagram и Facebook по чёткому графику для растущих брендов"
+        "hy": "Սրճարանի, սրահի կամ խանութի համար, որը ցանկանում է պրոֆեսիոնալ Instagram առանց աշխատող վարձելու։ Ամսական 8 գրառում և 8 սթորի։",
+        "en": "For a café, salon or shop that wants a professional Instagram without hiring someone. 8 posts and 8 stories a month.",
+        "ru": "Для кафе, салона или магазина, которым нужен профессиональный Instagram без своего сотрудника. 8 постов и 8 сторис в месяц."
       },
       "includes": [
         {
@@ -68,7 +68,6 @@
       "prices": {
         "m3": 79000,
         "m6": 75000,
-        "m9": 73000,
         "m12": 70000
       },
       "recommended": false,
@@ -83,9 +82,9 @@
         "ru": "Pro"
       },
       "tagline": {
-        "hy": "Ավելի շատ բովանդակություն, քան SMM Start-ում, ուժեղ կրեատիվ գաղափար և Reels-ի մոնտաժ",
-        "en": "More content than SMM Start, a stronger creative idea and Reels editing",
-        "ru": "Больше контента, чем в SMM Start, сильная креативная идея и монтаж Reels"
+        "hy": "Այն բիզնեսի համար, որը ցանկանում է առանձնանալ և նոր հաճախորդներ գտնել Instagram-ում։ Ավելի շատ գրառումներ, Reels և կրեատիվ գաղափար։",
+        "en": "For a business that wants to stand out and win new customers on Instagram. More posts, Reels and a creative idea behind them.",
+        "ru": "Для бизнеса, который хочет выделяться и находить новых клиентов в Instagram. Больше публикаций, Reels и креативная идея."
       },
       "includes": [
         {
@@ -132,7 +131,6 @@
       "prices": {
         "m3": 119000,
         "m6": 115000,
-        "m9": 110000,
         "m12": 105000
       },
       "recommended": true,
@@ -147,9 +145,9 @@
         "ru": "Max"
       },
       "tagline": {
-        "hy": "Լուսանկարահանում և տեսանկարահանում, TikTok-ը՝ Instagram-ի և Facebook-ի կողքին, և ամսական վերլուծություն",
-        "en": "Photo and video shoots, TikTok alongside Instagram and Facebook, and monthly analytics",
-        "ru": "Фото- и видеосъёмка, TikTok в дополнение к Instagram и Facebook и ежемесячная аналитика"
+        "hy": "Այն բրենդի համար, որը ցանկանում է երևալ ամենուր։ Instagram, Facebook և TikTok, իսկ լուսանկարներն ու տեսանյութերը նկարում ենք մենք։",
+        "en": "For a brand that wants to be seen everywhere. Instagram, Facebook and TikTok, with our own photo and video shoots.",
+        "ru": "Для бренда, который хочет быть заметным везде. Instagram, Facebook и TikTok, с нашими фото- и видеосъёмками."
       },
       "includes": [
         {
@@ -179,10 +177,9 @@
         }
       ],
       "prices": {
-        "m3": 149000,
-        "m6": 145000,
-        "m9": 140000,
-        "m12": 135000
+        "m3": 179000,
+        "m6": 175000,
+        "m12": 165000
       },
       "recommended": false,
       "contact": "mariam"
@@ -196,9 +193,9 @@
         "ru": "Start"
       },
       "tagline": {
-        "hy": "Հիմքը՝ SEO աուդիտ, տեխնիկական շտկումներ և Google Business Profile-ի օպտիմալացում",
-        "en": "The basics: an SEO audit, technical fixes and your Google Business Profile",
-        "ru": "Основа: SEO-аудит, технические исправления и профиль компании в Google"
+        "hy": "Այն բիզնեսի համար, որին հաճախորդները չեն գտնում Google-ում։ Կշտկենք ձեր կայքը և Google Maps-ի էջը։",
+        "en": "For a business that customers can't find on Google. We fix your website and your Google Maps listing.",
+        "ru": "Для бизнеса, который клиенты не находят в Google. Исправим сайт и карточку в Google Картах."
       },
       "includes": [
         {
@@ -235,7 +232,6 @@
       "prices": {
         "m3": 179000,
         "m6": 175000,
-        "m9": null,
         "m12": null
       },
       "recommended": false,
@@ -250,9 +246,9 @@
         "ru": "Pro"
       },
       "tagline": {
-        "hy": "Բովանդակության վրա հիմնված SEO՝ ամսական երկու հոդված, ավելի շատ բանալի բառեր և տեղական հիշատակումներ",
-        "en": "SEO built on content: two articles a month, more keywords and local citations",
-        "ru": "SEO на основе контента: две статьи в месяц, больше ключевых слов и локальные упоминания"
+        "hy": "Այն բիզնեսի համար, որը ցանկանում է ամեն ամիս ավելի շատ հաճախորդներ Google-ից։ Ամսական երկու օգտակար հոդված, որոնք այցելուներ են բերում ձեր կայք։",
+        "en": "For a business that wants more customers from Google every month. Two helpful articles a month that bring visitors to your site.",
+        "ru": "Для бизнеса, который хочет каждый месяц больше клиентов из Google. Две полезные статьи в месяц, которые приводят людей на сайт."
       },
       "includes": [
         {
@@ -294,7 +290,6 @@
       "prices": {
         "m3": 349000,
         "m6": 340000,
-        "m9": 330000,
         "m12": 320000
       },
       "recommended": true,
@@ -309,9 +304,9 @@
         "ru": "Max"
       },
       "tagline": {
-        "hy": "Մրցակցային ոլորտների բրենդների համար՝ ամսական վեց հոդված, հղումների կառուցում և թվային PR",
-        "en": "For brands in competitive markets: six articles a month, link building and digital PR",
-        "ru": "Для брендов в конкурентных нишах: шесть статей в месяц, ссылки и цифровой PR"
+        "hy": "Շատ մրցակիցներ ունեցող բիզնեսի համար, որը ցանկանում է լինել Google-ի առաջին տեղերում։ Ամսական վեց հոդված և հղումներ ձեր կայքին այլ կայքերից։",
+        "en": "For a business with strong competitors that wants to be near the top of Google. Six articles a month, and other websites linking to yours.",
+        "ru": "Для бизнеса с сильными конкурентами, который хочет быть в верхних строках Google. Шесть статей в месяц и ссылки на ваш сайт с других сайтов."
       },
       "includes": [
         {
@@ -358,7 +353,6 @@
       "prices": {
         "m3": 499000,
         "m6": 480000,
-        "m9": 475000,
         "m12": 445000
       },
       "recommended": false,
@@ -373,9 +367,9 @@
         "ru": "Pro"
       },
       "tagline": {
-        "hy": "SMM Pro և SEO Pro՝ մեկ թիմից և մեկ պլանով",
-        "en": "SMM Pro and SEO Pro, from one team on one plan",
-        "ru": "SMM Pro и SEO Pro от одной команды по единому плану"
+        "hy": "Այն բիզնեսի համար, որը ցանկանում է, որ սոցցանցերն ու Google-ը վարի մեկ թիմ։ SMM Pro և SEO Pro՝ մեկ պլանով և մեկ գնով։",
+        "en": "For a business that wants social media and Google handled by one team. SMM Pro and SEO Pro on one plan, for one price.",
+        "ru": "Для бизнеса, которому нужны и соцсети, и Google от одной команды. SMM Pro и SEO Pro по одному плану и за одну цену."
       },
       "includes": [
         {
@@ -397,7 +391,6 @@
       "prices": {
         "m3": 449000,
         "m6": 430000,
-        "m9": 420000,
         "m12": 410000
       },
       "recommended": false,
@@ -416,9 +409,9 @@
         "ru": "Max"
       },
       "tagline": {
-        "hy": "SMM Max և SEO Max՝ մեկ թիմից և մեկ պլանով",
-        "en": "SMM Max and SEO Max, from one team on one plan",
-        "ru": "SMM Max и SEO Max от одной команды по единому плану"
+        "hy": "Այն բրենդի համար, որը ցանկանում է առավելագույնը սոցցանցերից և Google-ից։ SMM Max և SEO Max՝ մեկ թիմ, մեկ պլան։",
+        "en": "For a brand that wants the most from social media and Google. SMM Max and SEO Max: one team, one plan.",
+        "ru": "Для бренда, который хочет максимум от соцсетей и Google. SMM Max и SEO Max: одна команда, один план."
       },
       "includes": [
         {
@@ -440,7 +433,6 @@
       "prices": {
         "m3": 630000,
         "m6": 615000,
-        "m9": 610000,
         "m12": 559000
       },
       "recommended": false,
@@ -459,9 +451,9 @@
         "ru": "Создание сайта"
       },
       "tagline": {
-        "hy": "Հիմնական SEO կարգավորումով",
-        "en": "With basic SEO setup",
-        "ru": "С базовой SEO-настройкой"
+        "hy": "Այն բիզնեսի համար, որը կայք չունի, կամ որի կայքն անհարմար է հեռախոսով։ Արագ կայք՝ պատրաստ Google-ի համար։",
+        "en": "For a business without a website, or with one that's hard to use on a phone. A fast site that's ready for Google.",
+        "ru": "Для бизнеса без сайта или с сайтом, неудобным на телефоне. Быстрый сайт, готовый к Google."
       },
       "oneTimePrice": 299000,
       "recommended": false,

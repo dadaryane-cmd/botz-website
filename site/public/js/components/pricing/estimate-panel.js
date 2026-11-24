@@ -9,6 +9,7 @@ import { quote } from '../../pricing/engine.js'
 import { estimateLink, estimateWhatsappHref, packageTitle } from '../../pricing/estimate.js'
 import { clearSelection } from '../../pricing/selection.js'
 import { animatedAmount } from '../animated-amount.js'
+import { sendEstimateForm } from './send-estimate.js'
 
 export function estimatePanel(selection) {
   const totals = quote(catalog, selection)
@@ -63,6 +64,7 @@ export function estimatePanel(selection) {
       ),
     ),
     status,
+    sendEstimateForm(totals, selection),
   )
 }
 

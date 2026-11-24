@@ -1,0 +1,53 @@
+/*
+ * "Send me this estimate" under the live estimate (js/components/pricing/send-estimate.js): a
+ * phone field and its button on one row, set apart from the estimate's own buttons above.
+ */
+
+.send-estimate,
+.send-estimate-done {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.send-estimate-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.send-estimate label {
+  display: block;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.send-estimate-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.send-estimate-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.send-estimate-row .btn {
+  flex: none;
+}
+
+.send-estimate .field-error {
+  display: block;
+  margin-top: 6px;
+}
+
+.send-estimate-done {
+  font-weight: 600;
+}

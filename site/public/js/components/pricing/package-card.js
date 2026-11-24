@@ -3,11 +3,12 @@ import { catalog } from '../../content/index.js'
 import { h } from '../../lib/dom.js'
 import { formatAmd, formatMonths } from '../../lib/format.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
-import { sectionHref } from '../../lib/page.js'
+import { external } from '../../lib/links.js'
 import { availableLengths, findPackage, isRecurring, priceFor } from '../../pricing/engine.js'
-import { packageTitle } from '../../pricing/estimate.js'
+import { packageTitle, packageWhatsappHref } from '../../pricing/estimate.js'
 import { updateSelection } from '../../pricing/selection.js'
 import { animatedAmount } from '../animated-amount.js'
+import { whatsappIcon } from '../whatsapp-link.js'
 
 /** How many "What's included" items a card shows before "Show all". */
 const INCLUDES_SHOWN = 4
@@ -50,17 +51,28 @@ export function packageCard(pkg, selection) {
       },
       isSelected ? `✓ ${ui('pricing', 'selected')}` : ui('pricing', 'select'),
     ),
+    // People here message far more readily than they fill in forms: the chat opens already
+    // naming this package and its price.
     !unavailable &&
       h(
         'a',
         {
-          class: 'text-link package-ask',
-          href: sectionHref('contact', 'contact.html'),
-          // The inquiry form then says which package it is about.
-          onclick: () => updateSelection({ packageKey: pkg.key }),
+          class: 'btn btn-secondary package-whatsapp',
+          href: packageWhatsappHref(pkg, selection.months),
+          ...external,
+          // The button shows the icon and "WhatsApp" only, to fit narrow cards.
+          'aria-label': ui('pricing', 'askWhatsapp'),
+          title: ui('pricing', 'askWhatsapp'),
         },
-        ui('pricing', 'askAbout'),
+        whatsappIcon(),
+        'WhatsApp',
       ),
+    h(
+      'p',
+      { class: 'small muted package-audit' },
+      `${ui('pricing', 'auditNotSure')} `,
+      h('a', { class: 'text-link', href: 'audit.html' }, ui('pricing', 'auditLink')),
+    ),
   )
 }
 

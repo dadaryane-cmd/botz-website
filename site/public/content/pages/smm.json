@@ -114,7 +114,7 @@
         "ru": "Пакеты и цены SMM"
       },
       "defaultCategory": "smm",
-      "defaultDuration": 6,
+      "defaultDuration": 3,
       "lockCategory": true,
       "showAddons": false,
       "id": "pricing"

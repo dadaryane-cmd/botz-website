@@ -47,6 +47,10 @@ export function estimateSummary(totals = currentQuote()) {
 export const estimateWhatsappHref = (totals = currentQuote()) =>
   whatsappHref(whatsappEstimateMessage(estimateSummary(totals)))
 
+/** A WhatsApp chat about one package at this contract length, whatever else is selected. */
+export const packageWhatsappHref = (pkg, months) =>
+  estimateWhatsappHref(quote(catalog, { packageKey: pkg.key, months, addons: {} }))
+
 /** Absolute link that reopens the pricing tool with this selection. */
 export function estimateLink(selection = getSelection()) {
   const url = new URL(localizeHref('pricing.html', getLanguage(), routes), document.baseURI)

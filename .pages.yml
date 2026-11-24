@@ -316,7 +316,7 @@ components:
           - name: duration
             label: Contract length shown (months)
             type: number
-            description: One of 3, 6, 9, 12.
+            description: One of 3, 6, 12.
           - name: link
             label: Button
             component: button
@@ -449,7 +449,7 @@ components:
           - name: defaultDuration
             label: Contract length selected first (months)
             type: number
-            description: One of 3, 6, 9, 12.
+            description: One of 3, 6, 12.
           - name: lockCategory
             label: Show only this package group
             type: boolean
@@ -1264,9 +1264,6 @@ content:
               - name: m6
                 label: "6 months"
                 type: number
-              - name: m9
-                label: "9 months"
-                type: number
               - name: m12
                 label: "12 months"
                 type: number
@@ -1765,9 +1762,6 @@ content:
           - name: showAllIncluded
             label: Show all included
             component: line
-          - name: askAbout
-            label: Ask about
-            component: line
           - name: upToTerm
             label: Up to term
             component: line
@@ -1842,6 +1836,36 @@ content:
             component: line
           - name: noSelection
             label: No selection
+            component: line
+          - name: saveShort
+            label: Save short
+            component: line
+          - name: auditNotSure
+            label: Audit not sure
+            component: line
+          - name: auditLink
+            label: Audit link
+            component: line
+          - name: askWhatsapp
+            label: Ask whatsapp
+            component: line
+          - name: adSpend
+            label: Ad spend
+            component: line
+          - name: sendTitle
+            label: Send title
+            component: line
+          - name: sendIntro
+            label: Send intro
+            component: line
+          - name: sendPhone
+            label: Send phone
+            component: line
+          - name: sendSubmit
+            label: Send submit
+            component: line
+          - name: sendDone
+            label: Send done
             component: line
       - name: guide
         label: Guide
