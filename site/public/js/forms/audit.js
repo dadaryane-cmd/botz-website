@@ -2,8 +2,8 @@
  * Free audit request rules and the email it produces: a name, a phone or WhatsApp number and the
  * page to look at (an Instagram handle or a website). No DOM access, so it is unit-tested.
  */
+import { isPhone } from './phone.js'
 
-const PHONE = /^\+?[0-9 ()-]{6,20}$/
 /** "@botz.yerevan", "instagram.com/botz", "botz.am", "https://…": something to open, no spaces. */
 const PAGE = /^@?[^\s@]+\.?[^\s]*$/
 
@@ -12,7 +12,7 @@ export function validateAudit({ name, phone, link }) {
   const errors = {}
   if (name.length < 2) errors.name = 'required'
   if (!phone) errors.phone = 'required'
-  else if (!PHONE.test(phone)) errors.phone = 'invalidPhone'
+  else if (!isPhone(phone)) errors.phone = 'invalidPhone'
   if (!link) errors.link = 'required'
   else if (link.length < 3 || !PAGE.test(link)) errors.link = 'invalidLink'
   return errors

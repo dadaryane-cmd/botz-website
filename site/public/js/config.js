@@ -33,8 +33,9 @@ export const LANGUAGE_NAMES = { hy: 'Հայերեն', en: 'English', ru: 'Рус
  * Contract lengths in months, as offered in the price list. There is no 1-month contract:
  * social media and search take a few months to show results.
  */
-export const CONTRACT_LENGTHS = [3, 6, 9, 12]
-export const DEFAULT_CONTRACT_LENGTH = 6
+export const CONTRACT_LENGTHS = [3, 6, 12]
+/** The shortest contract first: its price is the one longer contracts show their saving against. */
+export const DEFAULT_CONTRACT_LENGTH = 3
 export const MAX_ADDON_QUANTITY = 20
 
 export const PACKAGE_CATEGORIES = ['smm', 'seo', 'bundle', 'website']

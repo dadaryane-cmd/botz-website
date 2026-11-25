@@ -11,9 +11,14 @@ export const section = ({ id, background, width }, ...children) =>
     h('div', { class: width ? `container container-${width}` : 'container' }, children),
   )
 
-/* Headings and intros are not revealed on scroll: text is there to be read at once. */
+/**
+ * Headings and intros are not revealed on scroll: text is there to be read at once. The text is
+ * wrapped in an inline span, which the mouse's light paints (text-light.css).
+ */
 export const heading = (text, level = 'h2') =>
-  hasText(text) ? h(level, { class: 'heading' }, richText(text)) : null
+  hasText(text)
+    ? h(level, { class: 'heading' }, h('span', { class: 'heading-text' }, richText(text)))
+    : null
 
 export const lead = (text) => (hasText(text) ? h('p', { class: 'lead' }, t(text)) : null)
 

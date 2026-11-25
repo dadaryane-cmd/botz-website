@@ -119,7 +119,7 @@
         "ru": "Пакеты и цены SEO"
       },
       "defaultCategory": "seo",
-      "defaultDuration": 6,
+      "defaultDuration": 3,
       "lockCategory": true,
       "showAddons": false,
       "id": "pricing"

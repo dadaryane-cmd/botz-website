@@ -236,15 +236,6 @@
           "months": 6
         },
         {
-          "value": "m9",
-          "label": {
-            "hy": "9 ամիս",
-            "en": "9 months",
-            "ru": "9 месяцев"
-          },
-          "months": 9
-        },
-        {
           "value": "m12",
           "label": {
             "hy": "12 ամիս",

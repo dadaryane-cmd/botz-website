@@ -38,6 +38,7 @@ export function renderPricing(config) {
         lockCategory: config.lockCategory,
         category,
         months: selection.months,
+        savingsPackage: savingsPackage(packages, selection),
         onCategory: showCategory,
       }),
       h(
@@ -52,6 +53,8 @@ export function renderPricing(config) {
             packages.map((pkg) => packageCard(pkg, selection)),
           ),
           h('p', { class: 'muted small pricing-scope' }, ui('pricing', 'scopeInProposal')),
+          // Said up front, so the monthly fee is never mistaken for the advertising budget.
+          category !== 'website' && h('p', { class: 'muted small' }, ui('pricing', 'adSpend')),
           config.showAddons && addonList(selection),
         ),
         estimatePanel(selection),
@@ -63,6 +66,15 @@ export function renderPricing(config) {
   render()
   subscribe(body, render)
   return section(config, heading(config.heading), body)
+}
+
+/** The package whose saving the contract-length buttons show: the chosen one, else the recommended. */
+function savingsPackage(packages, selection) {
+  return (
+    packages.find((pkg) => pkg.key === selection.packageKey) ??
+    packages.find((pkg) => pkg.recommended) ??
+    packages[0]
+  )
 }
 
 /**

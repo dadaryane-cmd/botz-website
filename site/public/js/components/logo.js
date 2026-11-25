@@ -29,8 +29,33 @@ export const logoSources = (theme, sizes = SMALL_LOGO_SIZES) => ({
 export const logoPicture = (theme, attributes = {}) =>
   picture({ class: `logo-${theme}`, ...logoSources(theme), ...attributes })
 
-const logoImage = (theme) =>
-  logoPicture(theme, { alt: t(site.name), sizes: HEADER_LOGO_SIZES, width: 128, height: 50 })
+/**
+ * The header logo of one theme: it draws itself in a loop (an animated AVIF, made from the
+ * owner's logo video), and stays still for visitors who ask for less motion. Its first frame is
+ * the finished logo, so a browser that shows only that frame still shows the whole logo.
+ */
+function logoImage(theme) {
+  const still = logoSources(theme, HEADER_LOGO_SIZES)
+  return h(
+    'picture',
+    null,
+    h('source', {
+      media: '(prefers-reduced-motion: no-preference)',
+      type: 'image/avif',
+      srcset: `images/botz-logo-${theme}-animated.avif`,
+    }),
+    h('source', { type: 'image/avif', srcset: still.avif, sizes: still.sizes }),
+    h('img', {
+      class: `logo-${theme}`,
+      src: still.src,
+      srcset: still.srcset,
+      sizes: still.sizes,
+      alt: t(site.name),
+      width: 128,
+      height: 50,
+    }),
+  )
+}
 
 export const logoImages = () => [logoImage('light'), logoImage('dark')]
 

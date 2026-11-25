@@ -1,9 +1,9 @@
 /** Inquiry form rules and the email it produces. No DOM access, so it is unit-tested. */
 import { INQUIRY_SERVICES } from '../config.js'
 import { responsibleFor } from '../lib/people.js'
+import { isPhone } from './phone.js'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const PHONE = /^\+?[0-9 ()-]{6,20}$/
 
 /**
  * Field name → message key in content/ui.json (`form` group). Empty object = valid.
@@ -15,7 +15,7 @@ export function validateInquiry({ name, email, phone, service, message }, { hasE
   if (name.length < 2) errors.name = 'required'
   if (!email && !phone) errors.email = 'needEmailOrPhone'
   if (email && !EMAIL.test(email)) errors.email = 'invalidEmail'
-  if (phone && !PHONE.test(phone)) errors.phone = 'invalidPhone'
+  if (phone && !isPhone(phone)) errors.phone = 'invalidPhone'
   if (!service) errors.service = 'required'
   if (!hasEstimate && message.length < 5) errors.message = 'messageTooShort'
   return errors

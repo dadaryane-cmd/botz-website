@@ -241,11 +241,6 @@
       "en": "Show all ({n})",
       "ru": "Показать всё ({n})"
     },
-    "askAbout": {
-      "hy": "Հարցնել այս փաթեթի մասին",
-      "en": "Ask about this package",
-      "ru": "Спросить об этом пакете"
-    },
     "upToTerm": {
       "hy": "մինչև {term}",
       "en": "up to {term}",
@@ -370,6 +365,56 @@
       "hy": "Ընտրեք փաթեթ կամ լրացուցիչ ծառայություն՝ նախահաշիվը տեսնելու համար։",
       "en": "Choose a package or an add-on to see an estimate.",
       "ru": "Выберите пакет или дополнение, чтобы увидеть расчёт."
+    },
+    "saveShort": {
+      "hy": "խնայում եք {amount}",
+      "en": "save {amount}",
+      "ru": "экономия {amount}"
+    },
+    "auditNotSure": {
+      "hy": "Չգիտե՞ք՝ որն ընտրել։ Անվճար կստուգենք ձեր էջը և կասենք։",
+      "en": "Not sure which one? We'll check your page for free and tell you.",
+      "ru": "Не уверены, какой выбрать? Бесплатно проверим вашу страницу и подскажем."
+    },
+    "auditLink": {
+      "hy": "Անվճար աուդիտ",
+      "en": "Free audit",
+      "ru": "Бесплатный аудит"
+    },
+    "askWhatsapp": {
+      "hy": "Գրել WhatsApp-ով",
+      "en": "Message on WhatsApp",
+      "ru": "Написать в WhatsApp"
+    },
+    "adSpend": {
+      "hy": "Գովազդի բյուջեն վճարվում է անմիջապես Meta-ին կամ Google-ին և ներառված չէ գնի մեջ։",
+      "en": "Ad spend is paid directly to Meta or Google and is not included in the price.",
+      "ru": "Рекламный бюджет оплачивается напрямую Meta или Google и в цену не входит."
+    },
+    "sendTitle": {
+      "hy": "Ուղարկե՛ք ինձ այս հաշվարկը",
+      "en": "Send me this estimate",
+      "ru": "Пришлите мне этот расчёт"
+    },
+    "sendIntro": {
+      "hy": "Թողեք ձեր համարը, և կուղարկենք հաշվարկը WhatsApp-ով կամ կզանգենք։",
+      "en": "Leave your number and we'll send you the estimate on WhatsApp or call you.",
+      "ru": "Оставьте номер — пришлём расчёт в WhatsApp или позвоним."
+    },
+    "sendPhone": {
+      "hy": "Հեռախոս կամ WhatsApp",
+      "en": "Phone or WhatsApp",
+      "ru": "Телефон или WhatsApp"
+    },
+    "sendSubmit": {
+      "hy": "Ուղարկել",
+      "en": "Send",
+      "ru": "Отправить"
+    },
+    "sendDone": {
+      "hy": "Շնորհակալություն։ Հաշվարկը կուղարկենք {phone} համարին։",
+      "en": "Thank you! We'll send the estimate to {phone}.",
+      "ru": "Спасибо! Пришлём расчёт на номер {phone}."
     }
   },
   "guide": {

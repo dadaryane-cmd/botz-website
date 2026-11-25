@@ -2692,6 +2692,25 @@ a.social-link:focus-visible {
  * follows from its own number --i, so the words light up one after another.
  */
 
+/*
+ * The statement's section fills the screen below the header (compact by then: 56px and its
+ * border), the words in the middle: a pause between the sections around it.
+ */
+.section:has(> .container > .statement) {
+  display: grid;
+  /* One column, never wider than the screen (a long word must not widen it). */
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  min-height: calc(100svh - 57px);
+}
+
+/* Phones: centred in the space above the call / WhatsApp bar (68px, mobile-bar.css). */
+@media (max-width: 720px) {
+  .section:has(> .container > .statement) {
+    padding-bottom: calc(40px + 68px);
+  }
+}
+
 .statement {
   --lit: 0;
   --progress: 0;
@@ -2718,9 +2737,15 @@ a.social-link:focus-visible {
 
 /* In the page title's tall, condensed font (hero.css), so the two read as one voice. */
 .statement-title {
+  /*
+   * On phones as large as the longest word allows, so the words fill the screen: --fit is how
+   * many times the font size that word is wide ("с творческим" 5.6, "creative twist." 5.8, with
+   * a little to spare).
+   */
+  --fit: 6.2;
   max-width: 20ch;
   margin: 0 auto;
-  font: 800 clamp(2.6rem, 8vw, 6rem) / 1 var(--font-hero);
+  font: 800 min((100vw - 2 * var(--gutter)) / var(--fit), 6rem) / 1 var(--font-hero);
   font-stretch: extra-condensed;
   text-wrap: balance;
 }
@@ -2731,7 +2756,7 @@ a.social-link:focus-visible {
 
 .statement-tagline {
   margin: clamp(20px, 3vw, 32px) 0 0;
-  font: 700 clamp(0.95rem, 2vw, 1.25rem) / 1.4 var(--font-body);
+  font: 700 clamp(1rem, 3.6vw, 1.25rem) / 1.4 var(--font-body);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent-text);
@@ -2741,6 +2766,11 @@ a.social-link:focus-visible {
 .statement-word {
   opacity: clamp(0.16, calc(var(--lit) - var(--i)), 1);
   transition: opacity 0.2s linear;
+}
+
+/* "Ռազմավարություն՝" is 8.4 times the font size wide and must stay one word. */
+:lang(hy) .statement-title {
+  --fit: 8.7;
 }
 
 /* Armenian capitals are all of a height and hard to read spaced out: normal letters there. */
@@ -3170,6 +3200,36 @@ a.social-link:focus-visible {
   color: var(--bg);
 }
 
+/* "save 24,000 ֏" under a contract length: the button grows to two lines. */
+.segmented button:has(.length-saving) {
+  border-radius: 18px;
+  line-height: 1.2;
+}
+
+.length-saving {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.segmented button[aria-pressed='true'] .length-saving {
+  color: inherit;
+  opacity: 0.8;
+}
+
+/* Phones: the three lengths side by side, each saving wrapping inside its own button. */
+@media (max-width: 600px) {
+  .segmented-lengths {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .segmented-lengths button {
+    padding-inline: 8px;
+  }
+}
+
 .pricing-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
@@ -3190,6 +3250,8 @@ a.social-link:focus-visible {
   display: flex;
   flex-direction: column;
   position: relative;
+  /* A long Armenian word wraps inside a narrow card instead of running past its edge. */
+  overflow-wrap: break-word;
   /* The price is sized to the card (cqi), so it fits however narrow the columns get. */
   container-type: inline-size;
   transition:
@@ -3292,13 +3354,21 @@ a.social-link:focus-visible {
   }
 }
 
-/* "Ask about this package": under the select button, centred. */
-.package-ask {
-  align-self: center;
-  margin-top: 4px;
-  /* A taller tap area: 10px above and below the text, in place of the margin. */
-  padding-block: 10px;
-  font-size: 0.9rem;
+/* "Message on WhatsApp": under the select button. */
+.package-whatsapp {
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.package-whatsapp svg {
+  flex: none;
+}
+
+/* "Not sure which one? … Free audit": the free first step, at the foot of every card. */
+.package-audit {
+  margin: 14px 0 0;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .package-price {
@@ -3501,6 +3571,62 @@ a.social-link:focus-visible {
   .estimate-bar .btn {
     flex: none;
   }
+}
+
+/* ---- components/send-estimate.css ---- */
+
+/*
+ * "Send me this estimate" under the live estimate (js/components/pricing/send-estimate.js): a
+ * phone field and its button on one row, set apart from the estimate's own buttons above.
+ */
+
+.send-estimate,
+.send-estimate-done {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.send-estimate-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.send-estimate label {
+  display: block;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.send-estimate-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.send-estimate-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.send-estimate-row .btn {
+  flex: none;
+}
+
+.send-estimate .field-error {
+  display: block;
+  margin-top: 6px;
+}
+
+.send-estimate-done {
+  font-weight: 600;
 }
 
 /* ---- components/badge-shine.css ---- */
@@ -4250,11 +4376,12 @@ a.social-link:focus-visible {
  * further, slightly dimmed far away. The gradient is fixed to the window (--lx, --ly in window
  * pixels), so it flows on across lines and words. The text stays real text.
  *
- * Painted on the smallest pieces of text: words that animate in (.word, .statement-word) keep
- * their own fade, and highlighted words (<em>) their own orange.
+ * Painted on the smallest pieces of text: a heading's text (.heading-text, inline), words that
+ * animate in (.word, .statement-word) keep their own fade, and highlighted words (<em>) their own
+ * orange.
  */
 :root[data-theme='dark'].text-light
-  :is(.heading:not(:has(.word)), .heading:not(:has(.word)) em, .heading .word, .statement-word) {
+  :is(.heading-text, .heading-text em, .heading .word, .statement-word) {
   --light-base: var(--text);
   background: radial-gradient(
       circle 200px at var(--lx, -999px) var(--ly, -999px),
@@ -4266,11 +4393,22 @@ a.social-link:focus-visible {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /*
+   * The gradient is painted only inside each piece's box, and with tight line heights the box
+   * ends above the letters' tails (Armenian ր ք ծ ւ, Latin g p y): room for them. Vertical
+   * padding on inline text moves nothing.
+   */
+  padding-block: 0.15em 0.3em;
+}
+
+/* Words that animate in are inline blocks: the same room, given back so the lines stay put. */
+:root[data-theme='dark'].text-light .heading .word {
+  margin-block: -0.15em -0.3em;
 }
 
 /* Orange words glow orange. */
 :root[data-theme='dark'].text-light
-  :is(.heading:not(:has(.word)) em, .heading em .word, .statement-tagline .statement-word) {
+  :is(.heading-text em, .heading em .word, .statement-tagline .statement-word) {
   --light-base: var(--accent-text);
 }
 

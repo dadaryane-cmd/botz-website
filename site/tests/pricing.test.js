@@ -109,7 +109,7 @@ describe('shareable selection links', () => {
   it('round-trips a selection through URL parameters', () => {
     const selection = {
       packageKey: 'smm-gold',
-      months: 9,
+      months: 12,
       addons: { reel: 2, 'landing-page': 1 },
       note: null,
     }
@@ -121,7 +121,7 @@ describe('shareable selection links', () => {
       new URLSearchParams('pkg=nope&months=7&addons=reel:99,fake:1,article:0'),
     )
     assert.equal(parsed.packageKey, null)
-    assert.equal(parsed.months, 6)
+    assert.equal(parsed.months, 3)
     assert.deepEqual(parsed.addons, { reel: 20 })
   })
 })

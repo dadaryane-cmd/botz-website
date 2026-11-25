@@ -73,7 +73,7 @@
         "ru": "Выберите пакет"
       },
       "defaultCategory": "smm",
-      "defaultDuration": 6,
+      "defaultDuration": 3,
       "lockCategory": false,
       "showAddons": true,
       "id": "pricing"
@@ -167,6 +167,45 @@
             "hy": "Սոցցանցերը և որոնումը ժամանակ են պահանջում։ Առաջին ամիսը գնում է ձեր բիզնեսին ծանոթանալուն, կարգավորումներին և առաջին բովանդակությանը, իսկ արդյունքները սովորաբար երևում են երկրորդ-երրորդ ամսից։ Երեք ամիսը ամենակարճ ժամկետն է, որում կարող ենք ցույց տալ իրական արդյունք։ Դեռ վստա՞հ չեք։ Սկսեք անվճար մարքեթինգային աուդիտից։",
             "en": "Social media and search take time. The first month goes into getting to know your business, setting things up and the first content, and results usually show from the second or third month. Three months is the shortest time in which we can show you real results. Not sure yet? Start with a free marketing audit.",
             "ru": "Соцсети и поиск требуют времени. Первый месяц уходит на знакомство с вашим бизнесом, настройку и первый контент, а результаты обычно видны со второго-третьего месяца. Три месяца — самый короткий срок, за который мы можем показать реальный результат. Пока не уверены? Начните с бесплатного маркетингового аудита."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Ի՞նչ է ցույց տալիս ամսական հաշվետվությունը",
+            "en": "What does the monthly report show?",
+            "ru": "Что показывает ежемесячный отчёт?"
+          },
+          "answer": {
+            "hy": "Ինչ արեցինք ամսվա ընթացքում և ինչ արդյունք տվեց դա․ քանի մարդ տեսավ ձեր գրառումները, քանիսն արձագանքեցին և գրեցին ձեզ, ինչպես փոխվեց հետևորդների թիվը։ SEO-ի դեպքում՝ քանի մարդ եկավ Google-ից և որտեղ եք երևում հիմնական որոնումներում։ Վերջում գրում ենք, թե ինչ կփոխենք հաջորդ ամիս։",
+            "en": "What we did that month and what came of it: how many people saw your posts, how many reacted and messaged you, and how your followers changed. For SEO, how many people came from Google and where you show up for your main searches. Each report ends with what we will change next month.",
+            "ru": "Что мы сделали за месяц и что из этого вышло: сколько людей увидели ваши публикации, сколько отреагировали и написали вам, как изменилось число подписчиков. Для SEO — сколько людей пришло из Google и на каких местах вы по главным запросам. В конце — что мы изменим в следующем месяце."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Կարո՞ղ եմ փոխել փաթեթը",
+            "en": "Can I switch packages?",
+            "ru": "Можно ли сменить пакет?"
+          },
+          "answer": {
+            "hy": "Այո։ Ավելի մեծ փաթեթի կարող եք անցնել հաջորդ ամսվանից, իսկ ավելի փոքրի՝ պայմանագրի ժամկետի ավարտին։ Եթե ձեզ բավական է ավելի փոքր փաթեթը, ազնվորեն կասենք։",
+            "en": "Yes. You can move up to a bigger package from the next month, and down to a smaller one when your contract term ends. If a smaller package is enough for you, we will tell you honestly.",
+            "ru": "Да. Перейти на пакет больше можно со следующего месяца, на пакет меньше — по окончании срока договора. Если вам хватит пакета поменьше, мы честно скажем."
+          },
+          "openByDefault": false
+        },
+        {
+          "question": {
+            "hy": "Ո՞ւմ են պատկանում էջերն ու հաշիվները",
+            "en": "Who owns the pages and accounts?",
+            "ru": "Кому принадлежат страницы и аккаунты?"
+          },
+          "answer": {
+            "hy": "Ձեզ։ Ձեր Instagram-ը, Facebook-ը, TikTok-ը, կայքը և Google-ի հաշիվները մնում են ձեր անունով, իսկ մենք աշխատում ենք ձեր տրամադրած մուտքով։ Եթե դադարենք համագործակցել, հաշիվները և դրանցում հրապարակված ամեն ինչ մնում են ձեզ։",
+            "en": "You do. Your Instagram, Facebook, TikTok, website and Google accounts stay in your name, and we work in them with the access you give us. If we stop working together, the accounts and everything published on them stay with you.",
+            "ru": "Вам. Ваши Instagram, Facebook, TikTok, сайт и аккаунты Google остаются на ваше имя, а мы работаем в них по доступу, который вы даёте. Если мы перестанем работать вместе, аккаунты и всё, что в них опубликовано, останутся у вас."
           },
           "openByDefault": false
         },
