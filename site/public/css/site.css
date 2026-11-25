@@ -2692,6 +2692,25 @@ a.social-link:focus-visible {
  * follows from its own number --i, so the words light up one after another.
  */
 
+/*
+ * The statement's section fills the screen below the header (compact by then: 56px and its
+ * border), the words in the middle: a pause between the sections around it.
+ */
+.section:has(> .container > .statement) {
+  display: grid;
+  /* One column, never wider than the screen (a long word must not widen it). */
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  min-height: calc(100svh - 57px);
+}
+
+/* Phones: centred in the space above the call / WhatsApp bar (68px, mobile-bar.css). */
+@media (max-width: 720px) {
+  .section:has(> .container > .statement) {
+    padding-bottom: calc(40px + 68px);
+  }
+}
+
 .statement {
   --lit: 0;
   --progress: 0;
@@ -2718,9 +2737,15 @@ a.social-link:focus-visible {
 
 /* In the page title's tall, condensed font (hero.css), so the two read as one voice. */
 .statement-title {
+  /*
+   * On phones as large as the longest word allows, so the words fill the screen: --fit is how
+   * many times the font size that word is wide ("с творческим" 5.6, "creative twist." 5.8, with
+   * a little to spare).
+   */
+  --fit: 6.2;
   max-width: 20ch;
   margin: 0 auto;
-  font: 800 clamp(2.6rem, 8vw, 6rem) / 1 var(--font-hero);
+  font: 800 min((100vw - 2 * var(--gutter)) / var(--fit), 6rem) / 1 var(--font-hero);
   font-stretch: extra-condensed;
   text-wrap: balance;
 }
@@ -2731,7 +2756,7 @@ a.social-link:focus-visible {
 
 .statement-tagline {
   margin: clamp(20px, 3vw, 32px) 0 0;
-  font: 700 clamp(0.95rem, 2vw, 1.25rem) / 1.4 var(--font-body);
+  font: 700 clamp(1rem, 3.6vw, 1.25rem) / 1.4 var(--font-body);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent-text);
@@ -2741,6 +2766,11 @@ a.social-link:focus-visible {
 .statement-word {
   opacity: clamp(0.16, calc(var(--lit) - var(--i)), 1);
   transition: opacity 0.2s linear;
+}
+
+/* "Ռազմավարություն՝" is 8.4 times the font size wide and must stay one word. */
+:lang(hy) .statement-title {
+  --fit: 8.7;
 }
 
 /* Armenian capitals are all of a height and hard to read spaced out: normal letters there. */
