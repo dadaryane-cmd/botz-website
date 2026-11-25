@@ -83,7 +83,8 @@ describe('content', () => {
   it('has a WebP fallback next to every AVIF image', () => {
     const images = join(publicDir, 'images')
     for (const file of readdirSync(images).filter((name) => name.endsWith('.avif'))) {
-      const webp = file.replace(/\.avif$/, '.webp')
+      // An animated logo falls back to the still logo: as WebP it would weigh ten times more.
+      const webp = file.replace(/(-animated)?\.avif$/, '.webp')
       assert.ok(existsSync(join(images, webp)), `images/${file} has no images/${webp}`)
     }
   })
