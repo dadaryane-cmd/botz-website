@@ -703,10 +703,19 @@ h1.heading {
   gap: 16px;
 }
 
+/*
+ * Label, field, error. The label's row takes any extra height, so two fields side by side line
+ * up even when one label wraps onto two lines (Armenian «Հեռախոս, WhatsApp կամ էլ. փոստ»).
+ */
 .field {
   display: grid;
+  grid-template-rows: 1fr auto;
   gap: 6px;
   min-width: 0;
+}
+
+.field > label {
+  align-self: end;
 }
 
 .full {

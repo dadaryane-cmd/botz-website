@@ -103,11 +103,7 @@ function directContacts() {
       copyButton(site.email),
     ]),
     hasText(site.hours) &&
-      contactRow(
-        ICON.clock,
-        ui('contact', 'hoursLabel'),
-        h('span', null, [site.location, site.hours].filter(hasText).map(t).join(' · ')),
-      ),
+      contactRow(ICON.clock, ui('contact', 'hoursLabel'), h('span', null, t(site.hours))),
   )
 }
 
