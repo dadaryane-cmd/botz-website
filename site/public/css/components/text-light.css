@@ -5,11 +5,12 @@
  * further, slightly dimmed far away. The gradient is fixed to the window (--lx, --ly in window
  * pixels), so it flows on across lines and words. The text stays real text.
  *
- * Painted on the smallest pieces of text: words that animate in (.word, .statement-word) keep
- * their own fade, and highlighted words (<em>) their own orange.
+ * Painted on the smallest pieces of text: a heading's text (.heading-text, inline), words that
+ * animate in (.word, .statement-word) keep their own fade, and highlighted words (<em>) their own
+ * orange.
  */
 :root[data-theme='dark'].text-light
-  :is(.heading:not(:has(.word)), .heading:not(:has(.word)) em, .heading .word, .statement-word) {
+  :is(.heading-text, .heading-text em, .heading .word, .statement-word) {
   --light-base: var(--text);
   background: radial-gradient(
       circle 200px at var(--lx, -999px) var(--ly, -999px),
@@ -21,10 +22,21 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /*
+   * The gradient is painted only inside each piece's box, and with tight line heights the box
+   * ends above the letters' tails (Armenian ր ք ծ ւ, Latin g p y): room for them. Vertical
+   * padding on inline text moves nothing.
+   */
+  padding-block: 0.15em 0.3em;
+}
+
+/* Words that animate in are inline blocks: the same room, given back so the lines stay put. */
+:root[data-theme='dark'].text-light .heading .word {
+  margin-block: -0.15em -0.3em;
 }
 
 /* Orange words glow orange. */
 :root[data-theme='dark'].text-light
-  :is(.heading:not(:has(.word)) em, .heading em .word, .statement-tagline .statement-word) {
+  :is(.heading-text em, .heading em .word, .statement-tagline .statement-word) {
   --light-base: var(--accent-text);
 }
