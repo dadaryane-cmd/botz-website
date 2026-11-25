@@ -6,18 +6,26 @@ import { isPhone } from './phone.js'
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 /**
- * Field name → message key in content/ui.json (`form` group). Empty object = valid.
- * `hasEstimate`: an estimate is attached, which already says what the visitor wants, so the
- * message may stay empty.
+ * One field takes a phone number or an email, whichever the visitor prefers: an "@" makes it an
+ * email. Returns both, one of them empty.
  */
-export function validateInquiry({ name, email, phone, service, message }, { hasEstimate } = {}) {
+export function splitContact(contact) {
+  if (contact.includes('@')) return { email: contact, phone: '' }
+  return { email: '', phone: contact }
+}
+
+/**
+ * Field name → message key in content/ui.json (`form` group). Empty object = valid. Only a name
+ * and a way to reach the visitor are needed: the service defaults to "not sure yet" and the
+ * message is optional, so sending takes seconds.
+ */
+export function validateInquiry({ name, contact }) {
   const errors = {}
   if (name.length < 2) errors.name = 'required'
-  if (!email && !phone) errors.email = 'needEmailOrPhone'
-  if (email && !EMAIL.test(email)) errors.email = 'invalidEmail'
-  if (phone && !isPhone(phone)) errors.phone = 'invalidPhone'
-  if (!service) errors.service = 'required'
-  if (!hasEstimate && message.length < 5) errors.message = 'messageTooShort'
+  const { email, phone } = splitContact(contact)
+  if (!contact) errors.contact = 'needEmailOrPhone'
+  else if (email && !EMAIL.test(email)) errors.contact = 'invalidEmail'
+  else if (phone && !isPhone(phone)) errors.contact = 'invalidPhone'
   return errors
 }
 
@@ -49,13 +57,14 @@ export function suggestedContact(people, service) {
  * one) and the fields shown as a table. js/services/ puts it in each delivery service's format.
  */
 export function inquiryEmail(values, { serviceLabel, contactName, estimate, page, language }) {
+  const { email, phone } = splitContact(values.contact)
   return {
     subject: `New inquiry: ${values.name} · ${serviceLabel}`,
-    replyTo: values.email || null,
+    replyTo: email || null,
     fields: {
       Name: values.name,
-      Email: values.email || '—',
-      Phone: values.phone || '—',
+      Email: email || '—',
+      Phone: phone || '—',
       Service: serviceLabel,
       'Preferred contact': contactName,
       Message: values.message || '—',

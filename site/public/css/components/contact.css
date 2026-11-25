@@ -1,5 +1,106 @@
 /* Contact section (js/components/sections/contact.js). */
 
+/* ---- one tap to reach us: WhatsApp, call, Instagram ---- */
+
+.quick-contacts {
+  display: grid;
+  /* Side by side on wide screens; on phones one under the other, each a full-width button. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quick-contact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+  height: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.quick-contact-icon {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--accent-text);
+}
+
+.quick-contact strong {
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.quick-contact-detail {
+  color: var(--muted);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+/* WhatsApp, where most people here write first: the orange one. */
+.quick-contact.is-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.quick-contact.is-primary .quick-contact-icon {
+  background: rgb(255 255 255 / 0.18);
+  color: inherit;
+}
+
+.quick-contact.is-primary .quick-contact-detail {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.quick-contact:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .quick-contact:not(.is-primary):hover {
+    border-color: var(--accent);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .quick-contact {
+    transition:
+      transform 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out);
+  }
+
+  .quick-contact:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* "Or leave your number…": the form's own title, under the buttons above. */
+.form-title {
+  margin: 0 0 20px;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+}
+
+/* Phones: "Send" across the whole form, easy to reach with a thumb. */
+@media (max-width: 560px) {
+  .contact-layout .form [type='submit'] {
+    width: 100%;
+  }
+}
+
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -13,7 +114,7 @@
     grid-template-columns: 1fr;
   }
 
-  /* On phones the form comes first: calling is already one tap away in the bottom bar. */
+  /* On phones the form comes right after the buttons; who we are and the email follow. */
   .contact-layout > .form,
   .contact-layout > .form-success {
     order: -1;

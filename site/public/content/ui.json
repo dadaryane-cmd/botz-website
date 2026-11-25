@@ -79,15 +79,15 @@
       "en": "WhatsApp",
       "ru": "WhatsApp"
     },
+    "whatsappHint": {
+      "hy": "Գրեք մեզ",
+      "en": "Write to us",
+      "ru": "Напишите нам"
+    },
     "email": {
       "hy": "Էլ. փոստ",
       "en": "Email",
       "ru": "Почта"
-    },
-    "phoneAndWhatsapp": {
-      "hy": "Հեռախոս, WhatsApp",
-      "en": "Phone and WhatsApp",
-      "ru": "Телефон и WhatsApp"
     },
     "copy": {
       "hy": "Պատճենել",
@@ -500,20 +500,15 @@
       "en": "Your name",
       "ru": "Ваше имя"
     },
-    "email": {
-      "hy": "Էլ. փոստ",
-      "en": "Email",
-      "ru": "Эл. почта"
+    "contactField": {
+      "hy": "Հեռախոս, WhatsApp կամ էլ. փոստ",
+      "en": "Phone, WhatsApp or email",
+      "ru": "Телефон, WhatsApp или почта"
     },
-    "phone": {
-      "hy": "Հեռախոս կամ WhatsApp",
-      "en": "Phone or WhatsApp",
-      "ru": "Телефон или WhatsApp"
-    },
-    "contactHint": {
-      "hy": "Նշեք էլ. փոստ կամ հեռախոսահամար՝ առնվազն մեկը։",
-      "en": "Give us at least an email or a phone number.",
-      "ru": "Укажите хотя бы почту или телефон."
+    "callbackTitle": {
+      "hy": "Կամ թողեք ձեր համարը, և մենք կկապվենք ձեզ հետ",
+      "en": "Or leave your number and we'll get back to you",
+      "ru": "Или оставьте номер, и мы с вами свяжемся"
     },
     "service": {
       "hy": "Ծառայություն",
@@ -654,11 +649,6 @@
       "hy": "Ավելացրեք էլ. փոստ կամ հեռախոսահամար",
       "en": "Add an email or a phone number",
       "ru": "Добавьте почту или телефон"
-    },
-    "messageTooShort": {
-      "hy": "Խնդրում ենք գրել գոնե մի քանի բառ",
-      "en": "Please write at least a few words",
-      "ru": "Напишите хотя бы несколько слов"
     },
     "honeypot": {
       "hy": "Թողեք այս դաշտը դատարկ",

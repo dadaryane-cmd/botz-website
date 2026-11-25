@@ -4,6 +4,7 @@ import {
   initialService,
   inquiryEmail,
   serviceFromSearch,
+  splitContact,
   suggestedContact,
   validateInquiry,
 } from '../public/js/forms/inquiry.js'
@@ -13,35 +14,35 @@ import { web3FormsBody } from '../public/js/services/web3forms.js'
 
 const valid = {
   name: 'Ani',
-  email: 'ani@example.com',
-  phone: '',
+  contact: 'ani@example.com',
   service: 'seo',
   message: 'Hello there',
 }
 
+describe('splitContact', () => {
+  it('reads an address with "@" as an email, anything else as a phone number', () => {
+    assert.deepEqual(splitContact('ani@example.com'), { email: 'ani@example.com', phone: '' })
+    assert.deepEqual(splitContact('+374 91 003099'), { email: '', phone: '+374 91 003099' })
+  })
+})
+
 describe('validateInquiry', () => {
-  it('accepts a complete inquiry', () => {
+  it('needs only a name and a phone number or an email', () => {
     assert.deepEqual(validateInquiry(valid), {})
+    assert.deepEqual(validateInquiry({ name: 'Ani', contact: '+374 91 003099' }), {})
+    assert.deepEqual(validateInquiry({ ...valid, service: '', message: '' }), {})
   })
 
-  it('needs an email or a phone number', () => {
-    assert.equal(validateInquiry({ ...valid, email: '' }).email, 'needEmailOrPhone')
-    assert.deepEqual(validateInquiry({ ...valid, email: '', phone: '+374 91 003099' }), {})
-  })
-
-  it('rejects malformed contact details and short messages', () => {
-    const errors = validateInquiry({ ...valid, email: 'ani@', phone: 'abc', message: 'hi' })
-    assert.deepEqual(errors, {
-      email: 'invalidEmail',
-      phone: 'invalidPhone',
-      message: 'messageTooShort',
+  it('asks for a way to reach the visitor', () => {
+    assert.deepEqual(validateInquiry({ name: 'A', contact: '' }), {
+      name: 'required',
+      contact: 'needEmailOrPhone',
     })
   })
 
-  it('lets the message stay empty when an estimate is attached', () => {
-    const empty = { ...valid, message: '' }
-    assert.equal(validateInquiry(empty).message, 'messageTooShort')
-    assert.deepEqual(validateInquiry(empty, { hasEstimate: true }), {})
+  it('rejects a malformed email or phone number', () => {
+    assert.equal(validateInquiry({ ...valid, contact: 'ani@' }).contact, 'invalidEmail')
+    assert.equal(validateInquiry({ ...valid, contact: 'abc' }).contact, 'invalidPhone')
   })
 })
 
@@ -102,12 +103,13 @@ describe('inquiryEmail', () => {
     const email = inquiryEmail(valid, context)
     assert.equal(email.subject, 'New inquiry: Ani · SEO')
     assert.equal(email.replyTo, 'ani@example.com')
-    assert.equal(inquiryEmail({ ...valid, email: '' }, context).replyTo, null)
+    assert.equal(inquiryEmail({ ...valid, contact: '+374 91 003099' }, context).replyTo, null)
   })
 
-  it('fills empty values with a dash', () => {
-    const { fields } = inquiryEmail({ ...valid, phone: '', message: '' }, context)
-    assert.equal(fields.Phone, '—')
+  it('puts the contact in the email or phone row, and fills empty values with a dash', () => {
+    const { fields } = inquiryEmail({ ...valid, contact: '+374 91 003099', message: '' }, context)
+    assert.equal(fields.Phone, '+374 91 003099')
+    assert.equal(fields.Email, '—')
     assert.equal(fields.Message, '—')
     assert.equal(fields.Estimate, '—')
     assert.equal(fields.Language, 'HY')

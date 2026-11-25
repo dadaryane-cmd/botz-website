@@ -22,9 +22,10 @@ import { getSelection, subscribe, updateSelection } from '../pricing/selection.j
 import { trackEvent } from '../services/analytics.js'
 import { sendInquiry } from '../services/send-inquiry.js'
 
-/** Email and phone are validated together (one of them is needed). */
-const LINKED_FIELDS = ['email', 'phone']
-const TEXT_FIELDS = ['name', 'email', 'phone', 'message']
+const TEXT_FIELDS = ['name', 'contact', 'message']
+
+/** "Not sure yet": the service sent when the visitor picks none. */
+const UNDECIDED_SERVICE = 'other'
 
 /** Numbers each form, so two forms on one page never share element ids. */
 let formCount = 0
@@ -58,26 +59,26 @@ export function renderInquiryForm({ service: pageService }) {
   const control = (tag, name, attributes = {}, ...children) =>
     h(tag, { id: id(name), name, 'aria-describedby': id(`${name}-error`), ...attributes }, children)
 
-  errorFor.service = h('span', { class: 'field-error', id: id('service-error') })
-  const serviceChoice = serviceFieldset({
-    preselected,
-    describedBy: id('service-error'),
-    extra: errorFor.service,
-  })
+  const serviceChoice = control(
+    'select',
+    'service',
+    {},
+    INQUIRY_SERVICES.map((service) =>
+      h(
+        'option',
+        { value: service, selected: service === (preselected || UNDECIDED_SERVICE) },
+        ui('services', service),
+      ),
+    ),
+  )
   const message = control('textarea', 'message', {
-    rows: 5,
+    rows: 3,
     maxlength: 4000,
     placeholder: ui('form', 'messagePlaceholder'),
   })
   const fillSuggestedNote = noteFiller(message, selection.note)
   const estimate = attachedEstimate()
-  const hasEstimate = () => Boolean(estimateSummary())
-  // An attached estimate already says what the visitor wants: the message becomes optional.
-  const messageOptional = h('span', { class: 'muted' })
-  const showMessageOptional = () => {
-    messageOptional.textContent = hasEstimate() ? ` (${ui('form', 'optional')})` : ''
-  }
-  showMessageOptional()
+  const optional = (label) => [label, h('span', { class: 'muted' }, ` (${ui('form', 'optional')})`)]
 
   const status = h('div', { class: 'form-status', role: 'status', tabindex: '-1' })
   const submitButton = h(
@@ -89,6 +90,7 @@ export function renderInquiryForm({ service: pageService }) {
   const form = h(
     'form',
     { class: 'card form', novalidate: true },
+    h('h3', { class: 'form-title' }, ui('form', 'callbackTitle')),
     h(
       'div',
       { class: 'form-grid' },
@@ -96,28 +98,22 @@ export function renderInquiryForm({ service: pageService }) {
         'name',
         ui('form', 'name'),
         control('input', 'name', { autocomplete: 'name', maxlength: 120, required: true }),
-        { full: true },
       ),
       field(
-        'email',
-        ui('form', 'email'),
-        // No spell check or capital first letter: an address is not a word.
-        control('input', 'email', {
-          type: 'email',
-          autocomplete: 'email',
+        'contact',
+        ui('form', 'contactField'),
+        // One field for a phone number or an email (an "@" makes it an email): a phone keyboard
+        // would hide the "@", so it is a text field without spell check or a capital first letter.
+        control('input', 'contact', {
+          autocomplete: 'tel',
           spellcheck: 'false',
           autocapitalize: 'off',
           maxlength: 200,
+          required: true,
         }),
       ),
-      field(
-        'phone',
-        ui('form', 'phone'),
-        control('input', 'phone', { type: 'tel', autocomplete: 'tel', maxlength: 40 }),
-      ),
-      h('p', { class: 'hint full' }, ui('form', 'contactHint')),
-      serviceChoice,
-      field('message', [ui('form', 'message'), messageOptional], message, { full: true }),
+      field('service', optional(ui('form', 'service')), serviceChoice, { full: true }),
+      field('message', optional(ui('form', 'message')), message, { full: true }),
     ),
     // Honeypot: hidden from people, but bots fill it in.
     h(
@@ -142,15 +138,11 @@ export function renderInquiryForm({ service: pageService }) {
     serviceChosenByVisitor = true
   })
   const followSelection = (service) => {
-    const radio = service && form.querySelector(`input[name="service"][value="${service}"]`)
-    if (!radio || radio.checked) return
-    radio.checked = true
-    errorFor.service.textContent = ''
+    if (service) serviceChoice.value = service
   }
 
   subscribe(form, (changed) => {
     estimate.update()
-    showMessageOptional()
     fillSuggestedNote(changed.note)
     if (!serviceChosenByVisitor) followSelection(serviceOfSelection(changed))
   })
@@ -158,17 +150,14 @@ export function renderInquiryForm({ service: pageService }) {
   /* ---------- behaviour ---------- */
 
   form.addEventListener('input', ({ target }) => {
-    const names = LINKED_FIELDS.includes(target.name) ? LINKED_FIELDS : [target.name]
-    for (const name of names) {
-      if (errorFor[name]) errorFor[name].textContent = ''
-    }
+    if (errorFor[target.name]) errorFor[target.name].textContent = ''
     target.removeAttribute('aria-invalid')
   })
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault()
     const values = readValues(form)
-    const errors = validateInquiry(values, { hasEstimate: hasEstimate() })
+    const errors = validateInquiry(values)
     showFieldErrors(form, errorFor, errors)
     const firstInvalid = Object.keys(errors)[0]
     if (firstInvalid) {
@@ -267,29 +256,6 @@ function successNextSteps(values) {
   )
 }
 
-/** The services as a row of buttons (radio buttons underneath), so every option is visible. */
-function serviceFieldset({ preselected, describedBy, extra }) {
-  return h(
-    'fieldset',
-    { class: 'full radios', 'aria-describedby': describedBy },
-    h('legend', null, ui('form', 'service')),
-    INQUIRY_SERVICES.map((service) =>
-      h(
-        'label',
-        { class: 'option' },
-        h('input', {
-          type: 'radio',
-          name: 'service',
-          value: service,
-          checked: service === preselected,
-        }),
-        h('span', null, ui('services', service)),
-      ),
-    ),
-    extra,
-  )
-}
-
 /**
  * A suggested message (package finder, lamp surprise) fills the message field, unless the
  * visitor has written their own. Notes are `{ hy, en, ru }` (older saved ones plain text) and
@@ -342,6 +308,7 @@ function readValues(form) {
   for (const key of TEXT_FIELDS) {
     values[key] = String(values[key] ?? '').trim()
   }
+  values.service = values.service || UNDECIDED_SERVICE
   return values
 }
 
@@ -356,11 +323,7 @@ function showFieldErrors(form, errorFor, errors) {
 
 /** When sending fails, offer the same message by email app or WhatsApp. */
 function fallbackLinks(values) {
-  const text = [
-    values.message,
-    estimateSummary(),
-    `${values.name} · ${values.email} ${values.phone}`,
-  ]
+  const text = [values.message, estimateSummary(), `${values.name} · ${values.contact}`]
     .filter(Boolean)
     .join('\n\n')
   return h(

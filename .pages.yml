@@ -1662,11 +1662,11 @@ content:
           - name: whatsapp
             label: Whatsapp
             component: line
+          - name: whatsappHint
+            label: Whatsapp hint
+            component: line
           - name: email
             label: Email
-            component: line
-          - name: phoneAndWhatsapp
-            label: Phone and whatsapp
             component: line
           - name: copy
             label: Copy
@@ -1923,14 +1923,11 @@ content:
           - name: name
             label: Name
             component: line
-          - name: email
-            label: Email
+          - name: contactField
+            label: Contact field
             component: line
-          - name: phone
-            label: Phone
-            component: line
-          - name: contactHint
-            label: Contact hint
+          - name: callbackTitle
+            label: Callback title
             component: line
           - name: service
             label: Service
@@ -2015,9 +2012,6 @@ content:
             component: line
           - name: needEmailOrPhone
             label: Need email or phone
-            component: line
-          - name: messageTooShort
-            label: Message too short
             component: line
           - name: honeypot
             label: Honeypot

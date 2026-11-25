@@ -1,10 +1,16 @@
-/** Contact section: the inquiry form; beside it the founders, direct contacts and next steps. */
+/**
+ * Contact section, quickest way first: three large buttons (WhatsApp, call, Instagram), then a
+ * short form for those who would rather be contacted, and beside it the founders, the email,
+ * the opening hours and what happens next.
+ */
 import { people, site } from '../../content/index.js'
 import { fromMarkup, h } from '../../lib/dom.js'
 import { hasText, t, ui } from '../../lib/i18n.js'
-import { emailHref, phoneHref } from '../../lib/links.js'
+import { emailHref, external, phoneHref } from '../../lib/links.js'
+import { profileHandle, profileOf } from '../../lib/social.js'
 import { renderInquiryForm } from '../inquiry-form.js'
-import { whatsappLinkAttributes } from '../whatsapp-link.js'
+import { networkIcon } from '../layout/social-links.js'
+import { whatsappIcon, whatsappLinkAttributes } from '../whatsapp-link.js'
 import { heading, lead, section } from './section.js'
 import { personCard } from './team.js'
 
@@ -28,12 +34,55 @@ export const renderContact = (config) =>
     config,
     heading(config.heading),
     lead(config.intro),
+    quickContacts(),
     h(
       'div',
       { class: 'contact-layout' },
-      // On phones the form comes first (css/components/contact.css); the bottom bar already calls.
+      // On phones the form comes first (css/components/contact.css).
       h('div', { class: 'contact-details' }, founders(), directContacts(), nextSteps()),
       renderInquiryForm({ service: config.service }),
+    ),
+  )
+
+/** One tap to reach us: WhatsApp, a call, and Instagram once its link is in site.json. */
+function quickContacts() {
+  const instagram = profileOf(site.social, 'instagram')
+  return h(
+    'ul',
+    { class: 'quick-contacts' },
+    quickContact(
+      { class: 'is-primary', ...whatsappLinkAttributes() },
+      whatsappIcon(),
+      ui('contact', 'whatsapp'),
+      ui('contact', 'whatsappHint'),
+    ),
+    quickContact(
+      { href: phoneHref },
+      fromMarkup(ICON.phone),
+      ui('contact', 'call'),
+      site.phoneDisplay,
+    ),
+    instagram &&
+      quickContact(
+        { href: instagram.url, ...external },
+        networkIcon('instagram'),
+        'Instagram',
+        profileHandle(instagram.url),
+      ),
+  )
+}
+
+/** A large button: icon, what it does and, under it, the number or name it opens. */
+const quickContact = (attributes, icon, title, detail) =>
+  h(
+    'li',
+    null,
+    h(
+      'a',
+      { ...attributes, class: ['quick-contact', attributes.class].filter(Boolean).join(' ') },
+      h('span', { class: 'quick-contact-icon', 'aria-hidden': 'true' }, icon),
+      h('strong', null, title),
+      h('span', { class: 'quick-contact-detail' }, detail),
     ),
   )
 
@@ -45,24 +94,11 @@ const founders = () =>
     people.map((person) => personCard(person)),
   )
 
-/** One shared number (call or WhatsApp) and the email, each with its actions. */
+/** The email (with a copy button) and the opening hours; the phone is in the buttons above. */
 function directContacts() {
   return h(
     'ul',
     { class: 'direct-contacts' },
-    contactRow(
-      ICON.phone,
-      ui('contact', 'phoneAndWhatsapp'),
-      h('strong', null, site.phoneDisplay),
-      [
-        h('a', { class: 'btn btn-secondary btn-small', href: phoneHref }, ui('contact', 'call')),
-        h(
-          'a',
-          { class: 'btn btn-secondary btn-small', ...whatsappLinkAttributes() },
-          ui('contact', 'whatsapp'),
-        ),
-      ],
-    ),
     contactRow(ICON.email, ui('contact', 'email'), h('a', { href: emailHref }, site.email), [
       copyButton(site.email),
     ]),

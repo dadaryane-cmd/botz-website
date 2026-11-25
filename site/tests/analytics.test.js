@@ -10,6 +10,7 @@ describe('analytics', () => {
     assert.equal(contactMethod('https://wa.me/37491003099?text=Hello'), 'whatsapp')
     assert.equal(contactMethod('https://api.whatsapp.com/send?phone=374'), 'whatsapp')
     assert.equal(contactMethod('https://t.me/botz'), 'telegram')
+    assert.equal(contactMethod('https://www.instagram.com/botz.agency/'), 'instagram')
     assert.equal(contactMethod('https://example.com/wa.me/'), null)
     assert.equal(contactMethod('ru/kontakty/'), null)
   })

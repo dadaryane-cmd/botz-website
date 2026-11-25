@@ -19,6 +19,7 @@ export function contactMethod(href) {
   if (address.startsWith('mailto:')) return 'email'
   if (/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(address)) return 'whatsapp'
   if (/^https:\/\/t\.me\//.test(address)) return 'telegram'
+  if (/^https:\/\/(www\.)?(instagram\.com|ig\.me)\//.test(address)) return 'instagram'
   return null
 }
 

@@ -20,6 +20,9 @@ const ICONS = {
     2.5 2.4V3z" /></svg>`,
 }
 
+/** A network's icon (Instagram, Facebook, TikTok), drawn with the text colour. */
+export const networkIcon = (network) => fromMarkup(ICONS[network])
+
 export function renderSocialLinks(social = []) {
   const known = social.filter((account) => ICONS[account.network])
   if (known.length === 0) return null
@@ -31,7 +34,7 @@ export function renderSocialLinks(social = []) {
 }
 
 function socialIcon({ network, url }) {
-  const icon = fromMarkup(ICONS[network])
+  const icon = networkIcon(network)
   if (url) {
     return h(
       'a',
