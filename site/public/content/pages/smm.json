@@ -107,17 +107,69 @@
       }
     },
     {
-      "type": "pricing",
+      "type": "servicePackages",
+      "id": "pricing",
       "heading": {
-        "hy": "SMM փաթեթներ և գներ",
-        "en": "SMM packages and prices",
-        "ru": "Пакеты и цены SMM"
+        "hy": "Ինչու SMM՝ BOTZ-ի հետ",
+        "en": "Why SMM with BOTZ",
+        "ru": "Почему SMM с BOTZ"
       },
-      "defaultCategory": "smm",
-      "defaultDuration": 3,
-      "lockCategory": true,
-      "showAddons": false,
-      "id": "pricing"
+      "advantages": [
+        {
+          "title": {
+            "hy": "Ամեն ինչ մեկ թիմում",
+            "en": "Everything in one team",
+            "ru": "Всё в одних руках"
+          },
+          "text": {
+            "hy": "Մենք պլանավորում ենք, ստեղծում դիզայնը, հրապարակում և վարում Meta-ի գովազդը, այնպես որ պետք չէ առանձին դիզայներ, տեքստագիր և գովազդի մասնագետ փնտրել։",
+            "en": "We plan, design, post and run your Meta ads, so you don't have to find a designer, a copywriter and an ads specialist separately.",
+            "ru": "Мы планируем, делаем дизайн, публикуем и ведём рекламу в Meta, поэтому вам не нужно отдельно искать дизайнера, копирайтера и таргетолога."
+          }
+        },
+        {
+          "title": {
+            "hy": "Խոսում եք հենց կատարողի հետ",
+            "en": "You talk to the person doing the work",
+            "ru": "Вы общаетесь с тем, кто делает работу"
+          },
+          "text": {
+            "hy": "Մարիամը վարում է ձեր էջը և անմիջապես պատասխանում է ձեր հաղորդագրություններին։",
+            "en": "Mariam runs your account and answers your messages directly.",
+            "ru": "Мариам ведёт ваш аккаунт и напрямую отвечает на ваши сообщения."
+          }
+        },
+        {
+          "title": {
+            "hy": "Արդյունքը՝ պարզ թվերով",
+            "en": "Results in plain numbers",
+            "ru": "Результат в понятных цифрах"
+          },
+          "text": {
+            "hy": "Հաշվետվությունները ցույց են տալիս ընդգրկումը, նոր հետևորդներին և հաղորդագրությունները, և դուք տեսնում եք, թե ինչ է տալիս ձեր ներդրումը։",
+            "en": "Reports show your reach, new followers and messages, so you see what your money brings.",
+            "ru": "Отчёты показывают охват, новых подписчиков и сообщения, и вы видите, что приносят ваши деньги."
+          }
+        },
+        {
+          "title": {
+            "hy": "Սկսեք երեք ամսից",
+            "en": "Start with three months",
+            "ru": "Начать можно с трёх месяцев"
+          },
+          "text": {
+            "hy": "Պայմանագիրը սկսվում է երեք ամսից, իսկ ավելի երկարն ամսական ավելի էժան է։",
+            "en": "Contracts start at three months, and a longer one costs less each month.",
+            "ru": "Договор заключается от трёх месяцев, а более длинный обходится дешевле в месяц."
+          }
+        }
+      ],
+      "packagesHeading": {
+        "hy": "SMM փաթեթներ",
+        "en": "SMM packages",
+        "ru": "Пакеты SMM"
+      },
+      "category": "smm"
     },
     {
       "type": "faq",
@@ -177,7 +229,11 @@
         "en": "Further reading",
         "ru": "Почитать по теме"
       },
-      "posts": ["what-is-smm", "smm-specialist-or-agency", "instagram-post-ideas"],
+      "posts": [
+        "what-is-smm",
+        "smm-specialist-or-agency",
+        "instagram-post-ideas"
+      ],
       "id": "articles"
     },
     {

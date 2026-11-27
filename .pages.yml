@@ -335,6 +335,51 @@ components:
             label: Width
             type: string
             hidden: true
+      - name: servicePackages
+        label: Advantages and packages (linked to the prices page)
+        fields:
+          - name: heading
+            label: Heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
+          - name: intro
+            label: Intro
+            component: paragraph
+          - name: advantages
+            label: Advantages
+            type: object
+            fields:
+              - name: title
+                label: Title
+                component: line
+              - name: text
+                label: Text
+                component: paragraph
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title.en}"
+          - name: packagesHeading
+            label: Packages heading
+            component: line
+            description: "Wrap words in *asterisks* to show them in the accent colour. In page titles, {logo} shows the BOTZ logo."
+          - name: category
+            label: Package group (each links to its price)
+            type: select
+            options:
+              values: [smm, seo, bundle, website]
+          - name: id
+            label: Anchor
+            type: string
+            hidden: true
+          - name: background
+            label: Background
+            type: string
+            hidden: true
+          - name: width
+            label: Width
+            type: string
+            hidden: true
       - name: process
         label: Process steps
         fields:
@@ -1755,6 +1800,12 @@ content:
             component: line
           - name: recommended
             label: Recommended
+            component: line
+          - name: seePrice
+            label: See price
+            component: line
+          - name: compareAll
+            label: Compare all
             component: line
           - name: includedTitle
             label: Included title

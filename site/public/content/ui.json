@@ -231,6 +231,16 @@
       "en": "Recommended",
       "ru": "Рекомендуем"
     },
+    "seePrice": {
+      "hy": "Գինը և ինչ է ներառված",
+      "en": "Price and what's included",
+      "ru": "Цена и что входит"
+    },
+    "compareAll": {
+      "hy": "Համեմատել բոլոր փաթեթները",
+      "en": "Compare all packages",
+      "ru": "Сравнить все пакеты"
+    },
     "includedTitle": {
       "hy": "Ինչ է ներառված",
       "en": "What's included",

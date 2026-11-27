@@ -216,6 +216,24 @@ const sectionBlocks = [
     ],
   },
   {
+    name: 'servicePackages',
+    label: 'Advantages and packages (linked to the prices page)',
+    fields: [
+      heading(),
+      text('intro', 'Intro', { long: true }),
+      list(
+        object('advantages', 'Advantages', [
+          text('title', 'Title'),
+          text('text', 'Text', { long: true }),
+        ]),
+        '{title.en}',
+      ),
+      heading('packagesHeading', 'Packages heading'),
+      select('category', 'Package group (each links to its price)', PACKAGE_CATEGORIES),
+      ...layout,
+    ],
+  },
+  {
     name: 'process',
     label: 'Process steps',
     fields: [

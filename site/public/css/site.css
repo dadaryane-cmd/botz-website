@@ -2865,6 +2865,102 @@ a.social-link:focus-visible {
   }
 }
 
+/* ---- components/service-packages.css ---- */
+
+/* A service page's advantages and its packages (js/components/sections/service-packages.js). */
+
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 28px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A short orange line above each advantage marks where one starts. */
+.advantage {
+  padding-top: 16px;
+  border-top: 2px solid var(--accent);
+}
+
+.advantage h3 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.advantage p {
+  margin: 0;
+}
+
+.service-packages-title {
+  margin: clamp(40px, 6vw, 64px) 0 16px;
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+}
+
+.service-packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The whole card is the link to that package on the prices page. */
+.service-package {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.service-package .badge {
+  align-self: flex-start;
+  margin: 0;
+}
+
+.service-package-name {
+  font: 700 1.25rem / 1.2 var(--font-display);
+}
+
+/* "Price and what's included →" at the foot of every card, whatever the length of its text. */
+.service-package-more {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.service-package:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .service-package:hover {
+    border-color: var(--accent);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .service-package {
+    transition:
+      transform 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out);
+  }
+
+  .service-package:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.service-packages-compare {
+  margin: 20px 0 0;
+}
+
 /* ---- components/team.css ---- */
 
 /* Founder cards (team and contact sections). */

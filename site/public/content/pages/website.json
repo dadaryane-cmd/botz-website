@@ -107,17 +107,69 @@
       }
     },
     {
-      "type": "pricing",
+      "type": "servicePackages",
+      "id": "pricing",
       "heading": {
-        "hy": "Վեբ կայքի պատրաստման գինը",
-        "en": "Website development price",
-        "ru": "Цена создания сайта"
+        "hy": "Ինչու կայք՝ BOTZ-ից",
+        "en": "Why a website from BOTZ",
+        "ru": "Почему сайт от BOTZ"
       },
-      "defaultCategory": "website",
-      "defaultDuration": 3,
-      "lockCategory": true,
-      "showAddons": false,
-      "id": "pricing"
+      "advantages": [
+        {
+          "title": {
+            "hy": "Արագ՝ հեռախոսով",
+            "en": "Fast on a phone",
+            "ru": "Быстрый на телефоне"
+          },
+          "text": {
+            "hy": "Էջերն արագ են բացվում և հարմար են հեռախոսով, որտեղից գալիս են ձեր այցելուների մեծ մասը։",
+            "en": "Pages load quickly and are easy to use on a phone, where most of your visitors are.",
+            "ru": "Страницы быстро загружаются и удобны на телефоне, а именно с него приходит большинство посетителей."
+          }
+        },
+        {
+          "title": {
+            "hy": "Պատրաստ Google-ի համար",
+            "en": "Ready for Google",
+            "ru": "Готов к Google"
+          },
+          "text": {
+            "hy": "Վերնագրերը, նկարագրությունները և էջերի կառուցվածքն առաջին օրվանից պատրաստ են որոնման համար։",
+            "en": "Titles, descriptions and page structure are set up for search from day one.",
+            "ru": "Заголовки, описания и структура страниц с первого дня настроены под поиск."
+          }
+        },
+        {
+          "title": {
+            "hy": "Ստեղծված՝ հարցումներ բերելու համար",
+            "en": "Made to bring inquiries",
+            "ru": "Сделан, чтобы приносить заявки"
+          },
+          "text": {
+            "hy": "Զանգը, WhatsApp-ը և ձևը միշտ ձեռքի տակ են, և պատրաստ հաճախորդը կարող է անմիջապես գրել ձեզ։",
+            "en": "Call, WhatsApp and a form are always at hand, so a visitor who is ready can write to you at once.",
+            "ru": "Звонок, WhatsApp и форма всегда под рукой, и готовый клиент сразу может вам написать."
+          }
+        },
+        {
+          "title": {
+            "hy": "Մեկ վճարում",
+            "en": "One payment",
+            "ru": "Одна оплата"
+          },
+          "text": {
+            "hy": "Կայքը միանվագ վճար է, ոչ թե ամսավճար։",
+            "en": "The website is a one-time price, not a monthly fee.",
+            "ru": "Сайт оплачивается один раз, без ежемесячной платы."
+          }
+        }
+      ],
+      "packagesHeading": {
+        "hy": "Կայքի փաթեթը",
+        "en": "The website package",
+        "ru": "Пакет «Сайт»"
+      },
+      "category": "website"
     },
     {
       "type": "faq",
@@ -177,7 +229,11 @@
         "en": "Further reading",
         "ru": "Почитать по теме"
       },
-      "posts": ["digital-marketing-guide", "google-business-profile", "smm-seo-prices-armenia"],
+      "posts": [
+        "digital-marketing-guide",
+        "google-business-profile",
+        "smm-seo-prices-armenia"
+      ],
       "id": "articles"
     },
     {

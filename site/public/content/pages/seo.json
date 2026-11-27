@@ -112,17 +112,69 @@
       }
     },
     {
-      "type": "pricing",
+      "type": "servicePackages",
+      "id": "pricing",
       "heading": {
-        "hy": "SEO փաթեթներ և գներ",
-        "en": "SEO packages and prices",
-        "ru": "Пакеты и цены SEO"
+        "hy": "Ինչու SEO՝ BOTZ-ի հետ",
+        "en": "Why SEO with BOTZ",
+        "ru": "Почему SEO с BOTZ"
       },
-      "defaultCategory": "seo",
-      "defaultDuration": 3,
-      "lockCategory": true,
-      "showAddons": false,
-      "id": "pricing"
+      "advantages": [
+        {
+          "title": {
+            "hy": "Սկզբում՝ շտկումներ",
+            "en": "Fixes come first",
+            "ru": "Сначала исправления"
+          },
+          "text": {
+            "hy": "Սկսում ենք աուդիտից և շտկում այն, ինչը խանգարում է Google-ին ցույց տալ ձեր կայքը։",
+            "en": "We start with an audit and fix what stops Google from showing your site.",
+            "ru": "Начинаем с аудита и исправляем то, что мешает Google показывать ваш сайт."
+          }
+        },
+        {
+          "title": {
+            "hy": "Ձեզ գտնում են մոտակայքում",
+            "en": "Found by people nearby",
+            "ru": "Вас находят поблизости"
+          },
+          "text": {
+            "hy": "Կարգավորում ենք ձեր Google Business Profile-ը, որպեսզի մոտակա հաճախորդները ձեզ գտնեն Google Maps-ում։",
+            "en": "We set up your Google Business Profile, so customers in your area find you on Google Maps.",
+            "ru": "Настраиваем профиль компании в Google, чтобы клиенты поблизости находили вас в Google Картах."
+          }
+        },
+        {
+          "title": {
+            "hy": "Հոդվածներ, որոնք փնտրում են",
+            "en": "Articles people search for",
+            "ru": "Статьи, которые ищут"
+          },
+          "text": {
+            "hy": "Գրում ենք էջեր և հոդվածներ այն հարցերի շուրջ, որոնք ձեր հաճախորդները գրում են Google-ում։",
+            "en": "We write pages and articles around the questions your customers type into Google.",
+            "ru": "Пишем страницы и статьи по вопросам, которые ваши клиенты вводят в Google."
+          }
+        },
+        {
+          "title": {
+            "hy": "Ամսական հաշվետվություն",
+            "en": "A report every month",
+            "ru": "Отчёт каждый месяц"
+          },
+          "text": {
+            "hy": "Ամեն ամիս տեսնում եք, թե որտեղ է ձեր կայքը Google-ում և քանի այցելու է եկել որոնումից։",
+            "en": "Each month you see where your site ranks and how many visitors came from Google.",
+            "ru": "Каждый месяц вы видите позиции сайта и сколько посетителей пришло из Google."
+          }
+        }
+      ],
+      "packagesHeading": {
+        "hy": "SEO փաթեթներ",
+        "en": "SEO packages",
+        "ru": "Пакеты SEO"
+      },
+      "category": "seo"
     },
     {
       "type": "faq",
@@ -182,7 +234,11 @@
         "en": "Further reading",
         "ru": "Почитать по теме"
       },
-      "posts": ["smm-seo-prices-armenia", "google-business-profile", "digital-marketing-guide"],
+      "posts": [
+        "smm-seo-prices-armenia",
+        "google-business-profile",
+        "digital-marketing-guide"
+      ],
       "id": "articles"
     },
     {

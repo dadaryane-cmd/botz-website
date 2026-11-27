@@ -13,6 +13,7 @@ import { renderPricing } from './pricing.js'
 import { renderProcess } from './process.js'
 import { renderSamples } from './samples.js'
 import { renderServiceDetail } from './service-detail.js'
+import { renderServicePackages } from './service-packages.js'
 import { renderServices } from './services.js'
 import { renderSplit } from './split.js'
 import { renderTeam } from './team.js'
@@ -31,6 +32,7 @@ const renderers = {
   process: renderProcess,
   samples: renderSamples,
   serviceDetail: renderServiceDetail,
+  servicePackages: renderServicePackages,
   services: renderServices,
   sign: renderStatement,
   split: renderSplit,

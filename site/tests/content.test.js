@@ -28,6 +28,7 @@ const SECTION_TYPES = [
   'process',
   'samples',
   'serviceDetail',
+  'servicePackages',
   'services',
   'sign',
   'split',
