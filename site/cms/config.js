@@ -514,6 +514,21 @@ const siteEntry = {
         message: 'Starts with G-, then capital letters or digits.',
       },
     }),
+    string('hubspotPortalId', 'HubSpot account id (optional)', {
+      description:
+        'HubSpot → your account menu (top right): the number shown as Account ID. With the form ' +
+        'id below, every inquiry is also added to HubSpot as a contact. Empty: email only.',
+      pattern: { regex: '^[0-9]+$', message: 'Digits only.' },
+    }),
+    string('hubspotFormId', 'HubSpot form id (optional)', {
+      description:
+        'HubSpot → Marketing → Forms → your website form → Share: the id in its embed code, ' +
+        'like 1a2b3c4d-1234-5678-9abc-1234567890ab.',
+      pattern: {
+        regex: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',
+        message: 'The form id: 8-4-4-4-12 letters a–f and digits.',
+      },
+    }),
     string('googleVerification', 'Google Search Console verification code (optional)', {
       description:
         'Search Console → Add property → URL prefix → HTML tag: only the content="…" part.',

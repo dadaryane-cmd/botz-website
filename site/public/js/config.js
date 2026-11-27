@@ -49,5 +49,7 @@ export const STORAGE_PREFIX = 'botz.'
 /** Inquiry delivery: Web3Forms first, FormSubmit if it fails (js/services/send-inquiry.js). */
 export const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 export const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/'
+/** HubSpot's form submissions API; the account and form ids follow in the address. */
+export const HUBSPOT_FORMS_ENDPOINT = 'https://api.hsforms.com/submissions/v3/integration/submit'
 /** How long one service may take before the next one is tried. */
 export const SEND_TIMEOUT_MS = 15000
